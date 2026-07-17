@@ -87,16 +87,25 @@ struct LevelConfig: Identifiable, Hashable {
     let title: String
     let isAdvanced: Bool
     let requiresPremium: Bool
+    /// The Mix menu starts this familiar skill straight in varied practice.
+    let startsInMix: Bool
 
     init(category: ChallengeCategory, index: Int, cardNumber: String, title: String,
-         isAdvanced: Bool = false, requiresPremium: Bool = false) {
-        self.id = "\(category.rawValue).\(index)"
+         isAdvanced: Bool = false, requiresPremium: Bool = false,
+         startsInMix: Bool = false) {
+        self.id = "\(category.rawValue).\(index)\(startsInMix ? ".mix" : "")"
         self.category = category
         self.index = index
         self.cardNumber = cardNumber
         self.title = title
         self.isAdvanced = isAdvanced
         self.requiresPremium = requiresPremium
+        self.startsInMix = startsInMix
+    }
+
+    func immediateMixVersion() -> LevelConfig {
+        LevelConfig(category: category, index: index, cardNumber: cardNumber, title: title,
+                    isAdvanced: isAdvanced, requiresPremium: requiresPremium, startsInMix: true)
     }
 }
 
@@ -106,23 +115,23 @@ enum LevelCatalog {
         var result: [ChallengeCategory: [LevelConfig]] = [:]
 
         // Addition: one clear pattern per level — repeated adding of n.
-        result[.addition] = (1...10).map {
+        result[.addition] = (1...12).map {
             LevelConfig(category: .addition, index: $0, cardNumber: "\($0)", title: "Add +\($0)")
         }
         // Addition mix: growing maximum result.
-        result[.additionMix] = [10, 15, 20, 30, 50, 100].enumerated().map { i, m in
+        result[.additionMix] = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000].enumerated().map { i, m in
             LevelConfig(category: .additionMix, index: i + 1, cardNumber: "\(m)", title: "Up to \(m)")
         }
         // Subtraction: repeatedly take away n.
-        result[.subtraction] = (1...10).map {
+        result[.subtraction] = (1...12).map {
             LevelConfig(category: .subtraction, index: $0, cardNumber: "\($0)", title: "Take −\($0)")
         }
-        // Subtraction mix: growing start numbers; the last level allows negatives.
-        var subMix = [10, 15, 20, 30, 50, 100].enumerated().map { i, m in
+        // Subtraction mix: each card shows the real maximum start number.
+        var subMix = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000].enumerated().map { i, m in
             LevelConfig(category: .subtractionMix, index: i + 1, cardNumber: "\(m)", title: "From \(m)")
         }
-        subMix.append(LevelConfig(category: .subtractionMix, index: 7, cardNumber: "±",
-                                  title: "Below zero", isAdvanced: true))
+        subMix[6] = LevelConfig(category: .subtractionMix, index: 7, cardNumber: "20",
+                                title: "Below zero", isAdvanced: true)
         result[.subtractionMix] = subMix
 
         // Times tables: one table per level (13–100 with Premium).
@@ -136,7 +145,8 @@ enum LevelCatalog {
         result[.tables] = tables
 
         // Tables mix: growing pool of already-practiced tables.
-        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12)]
+        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12),
+                              Array(1...12), Array(2...12), Array(3...12), Array(4...12), Array(5...12), Array(6...12)]
         result[.tablesMix] = pools.enumerated().map { i, pool in
             LevelConfig(category: .tablesMix, index: i + 1, cardNumber: "\(pool.max()!)",
                         title: "Tables 1–\(pool.max()!)")
@@ -144,37 +154,63 @@ enum LevelCatalog {
 
         // Fractions: one denominator per level, learning-line order (no denominator 1).
         let fractionLevels: [(Int, String)] = [(2, "Halves"), (3, "Thirds"), (4, "Quarters"),
-                                               (5, "Fifths"), (6, "Sixths"), (8, "Eighths"), (10, "Tenths")]
+                                               (5, "Fifths"), (6, "Sixths"), (8, "Eighths"), (10, "Tenths"),
+                                               (12, "Twelfths"), (15, "Fifteenths"), (20, "Twentieths"),
+                                               (25, "Twenty-fifths"), (30, "Thirtieths")]
         result[.fractions] = fractionLevels.enumerated().map { i, item in
             LevelConfig(category: .fractions, index: i + 1, cardNumber: "\(item.0)", title: item.1)
         }
         // Fractions mix: only concepts that were already introduced.
-        let fracMixTitles = ["Halves & thirds", "Compare", "Equivalent", "Add & take", "All together"]
+        let fracMixTitles = ["Halves & thirds", "Compare", "Equivalent", "Add & take", "All together",
+                             "Up to eighths", "Up to tenths", "Up to twelfths", "Up to fifteenths",
+                             "Up to twentieths", "Up to twenty-fifths", "All fractions"]
         result[.fractionsMix] = fracMixTitles.enumerated().map { i, t in
             LevelConfig(category: .fractionsMix, index: i + 1, cardNumber: "\(i + 1)", title: t,
                         isAdvanced: i == 4)
         }
 
         // Percentages: fraction-friendly percentages first.
-        let pctLevels = [50, 25, 10, 20, 75]
+        let pctLevels = [50, 25, 10, 20, 75, 5, 40, 60, 12, 15, 30, 100]
         result[.percentages] = pctLevels.enumerated().map { i, p in
             LevelConfig(category: .percentages, index: i + 1, cardNumber: "\(p)", title: "\(p)%")
         }
-        let pctMixTitles = ["Halves & quarters", "All percentages", "Discounts"]
+        let pctMixTitles = ["Halves & quarters", "All percentages", "Discounts", "Increases",
+                            "Up to 50%", "Up to 75%", "Everyday percentages", "Find the part",
+                            "Find the whole", "Sales", "Changes", "All percentages"]
         result[.percentagesMix] = pctMixTitles.enumerated().map { i, t in
             LevelConfig(category: .percentagesMix, index: i + 1, cardNumber: "\(i + 1)", title: t,
                         isAdvanced: i == 2)
         }
 
         // Mix: combines topics that were already practiced.
-        let mixTitles = ["Add & take", "+ Tables", "+ Fractions", "+ Percentages", "Everything"]
+        let mixTitles = ["Add & take", "+ Tables", "+ Fractions", "+ Percentages", "Everything",
+                         "Up to 100", "Up to 200", "Up to 300", "Up to 500", "Up to 750",
+                         "Up to 1000", "Master mix"]
         result[.mix] = mixTitles.enumerated().map { i, t in
             LevelConfig(category: .mix, index: i + 1, cardNumber: "\(i + 1)", title: t)
         }
         // Supermix: everything, harder.
-        result[.supermix] = (1...3).map {
+        result[.supermix] = (1...12).map {
             LevelConfig(category: .supermix, index: $0, cardNumber: "\($0)", title: "Supermix \($0)",
-                        isAdvanced: $0 == 3)
+                        isAdvanced: $0 >= 3)
+        }
+
+        // Each menu has its own genuine set of twelve configured free
+        // levels. Premium continues that same progression with levels 13–24.
+        for category in ChallengeCategory.allCases {
+            var levels = result[category, default: []]
+            // Tables already continue through 100 as Premium content. Every
+            // other menu gets its own "more with Premium" set as well.
+            if category != .tables {
+                for index in 13...24 {
+                    levels.append(
+                        LevelConfig(category: category, index: index,
+                                    cardNumber: "\(index)", title: "Premium practice \(index)",
+                                    isAdvanced: true, requiresPremium: true)
+                    )
+                }
+            }
+            result[category] = levels
         }
         return result
     }()
@@ -268,6 +304,9 @@ struct Question {
     let prompt: String
     let correctAnswer: String
     let distractors: [String]
+    /// True once a guided addition chain has reached its end and the level
+    /// deliberately switches to mixed practice.
+    let isRandomPractice: Bool
 }
 
 // MARK: - Question engine
@@ -287,6 +326,7 @@ final class QuestionEngine {
     // numbers while the difficulty still builds up.
     private var chainValue: Int?
     private var chainCycle = 0
+    private var additionSeriesComplete = false
 
     // Per-cycle ordering: first cycle in order (calm build-up),
     // later cycles shuffled so repeats aren't identical.
@@ -305,6 +345,7 @@ final class QuestionEngine {
         orderCycle = -1
         chainValue = nil
         chainCycle = 0
+        additionSeriesComplete = false
     }
 
     /// Extra repetition of recently missed questions.
@@ -345,6 +386,7 @@ final class QuestionEngine {
     // MARK: Generation dispatch
 
     private func generate() -> Question {
+        if level.startsInMix { return immediateMixQuestion() }
         switch level.category {
         case .addition: return additionQuestion()
         case .additionMix: return additionMixQuestion()
@@ -361,6 +403,29 @@ final class QuestionEngine {
         }
     }
 
+    /// The Mix menu uses the same subject and ceiling as Standard, but skips
+    /// the guided runway and starts immediately in varied questions.
+    private func immediateMixQuestion() -> Question {
+        switch level.category {
+        case .addition:
+            return additionMixQuestion(maxResult: max(20, level.index * 6), isRandomPractice: true)
+        case .subtraction:
+            return subtractionMixQuestion(maxStart: max(10, level.index * 5), allowNegative: false)
+        case .tables:
+            return tablesMixQuestion(pool: Array(1...min(12, level.index)))
+        case .fractions:
+            let introduced = Array(Self.fractionDenominators.prefix(max(1, level.index)))
+            return fractionsQuestion(denominator: introduced.randomElement()!)
+        case .percentages:
+            let introduced = Array(Self.percentageLevels.prefix(max(1, level.index)))
+            return percentagesQuestion(percentage: introduced.randomElement()!)
+        case .mix:
+            return mixQuestion()
+        default:
+            return supermixQuestion()
+        }
+    }
+
     // MARK: Addition
 
     /// One pattern per level, as a running chain with exactly two numbers:
@@ -368,17 +433,25 @@ final class QuestionEngine {
     /// (nextLeftOperand = previousCorrectAnswer, right operand fixed.)
     private func additionQuestion() -> Question {
         let n = level.index
-        let cap = max(12, n * 6) // manageable maximum result per level
+        // +2 now visibly continues through 20 (2+2 ... 18+2). After a
+        // completed guided chain, this level intentionally becomes mixed
+        // practice and the HUD labels that switch.
+        let cap = max(20, n * 6)
+        if additionSeriesComplete {
+            return additionMixQuestion(maxResult: cap, isRandomPractice: true)
+        }
         let left = chainValue ?? n
         let answer = left + n
-        chainValue = (answer + n > cap) ? nil : answer // restart the chain at n after the cap
+        chainValue = (answer + n > cap) ? nil : answer
+        if answer + n > cap { additionSeriesComplete = true }
         return makeQuestion("\(left) + \(n) = ?", "\(answer)",
                             [answer + 1, answer - 1, left, answer + n,
                              answer + 2, left + 1].map(String.init))
     }
 
-    private func additionMixQuestion(maxResult: Int? = nil, harder: Bool = false) -> Question {
-        let bases = [10, 15, 20, 30, 50, 100]
+    private func additionMixQuestion(maxResult: Int? = nil, harder: Bool = false,
+                                     isRandomPractice: Bool = false) -> Question {
+        let bases = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000]
         var m = maxResult ?? bases[min(level.index - 1, bases.count - 1)]
         if harder { m = min(200, m * 2) }
         // Always exactly two numbers and one operation.
@@ -387,7 +460,8 @@ final class QuestionEngine {
         let answer = a + b
         return makeQuestion("\(a) + \(b) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,
-                             answer + 10, abs(a - b), answer + 3].map(String.init))
+                             answer + 10, abs(a - b), answer + 3].map(String.init),
+                            isRandomPractice: isRandomPractice)
     }
 
     // MARK: Subtraction
@@ -413,7 +487,7 @@ final class QuestionEngine {
     }
 
     private func subtractionMixQuestion(maxStart: Int? = nil, allowNegative: Bool? = nil) -> Question {
-        let bases = [10, 15, 20, 30, 50, 100, 20]
+        let bases = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000]
         let m = maxStart ?? bases[min(level.index - 1, bases.count - 1)]
         let negative = allowNegative ?? (level.category == .subtractionMix && level.index == 7)
 
@@ -448,7 +522,8 @@ final class QuestionEngine {
     }
 
     private func tablesMixQuestion(pool: [Int]? = nil) -> Question {
-        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12)]
+        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12),
+                              Array(1...12), Array(2...12), Array(3...12), Array(4...12), Array(5...12), Array(6...12)]
         let tables = pool ?? pools[min(level.index - 1, pools.count - 1)]
         let current = tables.max()!
         // Weighted: the newest table most often, earlier tables regularly.
@@ -462,7 +537,7 @@ final class QuestionEngine {
 
     // MARK: Fractions
 
-    private static let fractionDenominators = [2, 3, 4, 5, 6, 8, 10]
+    private static let fractionDenominators = [2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30]
 
     /// One denominator per level. Wholes are generated directly from
     /// multiples of the denominator: whole = denominator × factor.
@@ -548,9 +623,11 @@ final class QuestionEngine {
 
     // MARK: Percentages
 
-    private static let percentageLevels = [50, 25, 10, 20, 75]
+    private static let percentageLevels = [50, 25, 10, 20, 75, 5, 40, 60, 12, 15, 30, 100]
     /// whole = base × factor keeps every answer a whole number.
-    private static let percentageBase: [Int: Int] = [50: 2, 25: 4, 10: 10, 20: 5, 75: 4, 100: 1]
+    private static let percentageBase: [Int: Int] = [50: 2, 25: 4, 10: 10, 20: 5, 75: 4,
+                                                     5: 20, 40: 5, 60: 5, 12: 25, 15: 20,
+                                                     30: 10, 100: 1]
     private static let percentageFraction: [Int: String] = [50: "1/2", 25: "1/4", 75: "3/4", 20: "1/5", 10: "1/10"]
 
     private func percentagesQuestion(percentage: Int? = nil) -> Question {
@@ -679,7 +756,8 @@ final class QuestionEngine {
 
     /// Deduplicates distractors, removes the correct answer from them,
     /// and pads with safe numeric variants so there are always enough.
-    private func makeQuestion(_ prompt: String, _ correct: String, _ raw: [String]) -> Question {
+    private func makeQuestion(_ prompt: String, _ correct: String, _ raw: [String],
+                              isRandomPractice: Bool = false) -> Question {
         var seen: Set<String> = [correct]
         var list: [String] = []
         for candidate in raw where !seen.contains(candidate) {
@@ -703,6 +781,7 @@ final class QuestionEngine {
             }
             salt += 1
         }
-        return Question(prompt: prompt, correctAnswer: correct, distractors: list.shuffled())
+        return Question(prompt: prompt, correctAnswer: correct, distractors: list.shuffled(),
+                        isRandomPractice: isRandomPractice)
     }
 }

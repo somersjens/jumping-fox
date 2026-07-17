@@ -59,6 +59,7 @@ final class GamePlatform: SKNode {
     private let shape: SKShapeNode
     private let label: SKLabelNode
     private let statusIcon: SKLabelNode
+    private let wrongMark: SKShapeNode
     private(set) var status: Status
     private(set) var hasBeenTriggered = false
 
@@ -69,16 +70,30 @@ final class GamePlatform: SKNode {
         self.value = value
         self.status = role == .answer ? .active : .neutralResolved
 
-        // Status icon INSIDE the block bounds (top-right corner), part of
-        // the node itself: it moves with camera/wrapping, never affects
-        // collision or size, and is empty while the block is active.
+        // Status icon sits in the centre of the block. It moves with the
+        // block but never affects its collision or size.
         statusIcon = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        statusIcon.fontSize = 11
+        // The tick must fit comfortably inside the 26 pt high block.
+        statusIcon.fontSize = 20
         statusIcon.verticalAlignmentMode = .center
         statusIcon.horizontalAlignmentMode = .center
-        statusIcon.position = CGPoint(x: Self.platformSize.width / 2 - 11, y: 3)
+        statusIcon.position = .zero
         statusIcon.zPosition = 1
         statusIcon.text = ""
+
+        // A real diagonal cross, rather than a small glyph, makes a wrong
+        // landing unmistakable while deliberately leaving the value visible.
+        let wrongPath = CGMutablePath()
+        wrongPath.move(to: CGPoint(x: -14, y: -6))
+        wrongPath.addLine(to: CGPoint(x: 14, y: 6))
+        wrongPath.move(to: CGPoint(x: -14, y: 6))
+        wrongPath.addLine(to: CGPoint(x: 14, y: -6))
+        wrongMark = SKShapeNode(path: wrongPath)
+        wrongMark.strokeColor = GameColors.wrongRed
+        wrongMark.lineWidth = 3
+        wrongMark.lineCap = .round
+        wrongMark.zPosition = 2
+        wrongMark.isHidden = true
 
         shape = SKShapeNode(rectOf: Self.platformSize, cornerRadius: Self.platformSize.height / 2)
         shape.lineWidth = 2
@@ -94,6 +109,7 @@ final class GamePlatform: SKNode {
         if role == .answer {
             addChild(label)
             addChild(statusIcon)
+            addChild(wrongMark)
         }
     }
 
@@ -122,21 +138,19 @@ final class GamePlatform: SKNode {
 
     // MARK: Status transitions (only via a real landing / question change)
 
-    /// Landed correct: register once, keep number/position/size, show ONLY
-    /// a checkmark inside the block. No overlays, no scaling, no movement.
+    /// Landed correct: replace the number with one clear, centred checkmark.
     func resolveCorrect(theme: AnimalCharacter) {
         guard status == .active else { return }
         status = .correctResolved
         hasBeenTriggered = true
         styleAsNeutral(theme: theme)
-        label.fontColor = theme.skDeep
-        label.alpha = 0.45
+        label.isHidden = true
         statusIcon.text = "✓"
         statusIcon.fontColor = GameColors.correctGreen
     }
 
-    /// Landed wrong: register once, keep number/position/size, show ONLY
-    /// a cross inside the block. No overlays, no shaking, no movement.
+    /// Landed wrong: register once, keep number/position/size, and draw a
+    /// clear red cross straight through the number. No movement is involved.
     func resolveWrong() {
         guard status == .active else { return }
         status = .wrongResolved
@@ -144,19 +158,18 @@ final class GamePlatform: SKNode {
         shape.fillColor = GameColors.disabledFill
         shape.strokeColor = GameColors.disabledStroke
         label.fontColor = .white
-        label.alpha = 0.6
-        statusIcon.text = "✕"
-        statusIcon.fontColor = GameColors.wrongRed
+        label.alpha = 0.85
+        wrongMark.isHidden = false
     }
 
-    /// Superseded by a new question (never triggered by the player):
-    /// neutral look, number stays faintly visible, no icon.
+    /// Superseded by a new question (never triggered by the player).
+    /// Keep its existing appearance: a value which was wrong before may be
+    /// right for the next sum, so it must not be visually marked unusable.
     func markSuperseded(theme: AnimalCharacter) {
         guard status == .active else { return }
         status = .neutralResolved
-        styleAsNeutral(theme: theme)
-        label.fontColor = theme.skDeep
-        label.run(.fadeAlpha(to: 0.35, duration: 0.3))
+        statusIcon.text = ""
+        wrongMark.isHidden = true
     }
 }
 
@@ -205,6 +218,9 @@ final class GameScene: SKScene {
     private let bandJitter: CGFloat = 12
     private let jumpSafetyFactor: CGFloat = 0.8
     private let placementMargin: CGFloat = 22   // visible air around every block
+    private let correctApproachWidth: CGFloat = 116
+    private let correctApproachBelow: CGFloat = 220
+    private let correctApproachAbove: CGFloat = 52
 
     // Spawn zone: new blocks are only ever created ABOVE the visible
     // viewport. The margin covers full block height (26), the highest
@@ -233,7 +249,10 @@ final class GameScene: SKScene {
     // Permanent bottom springboard: separate platform type, own height,
     // independent of the answer generator.
     private var springboard = SKShapeNode()
-    private let springboardY: CGFloat = 46
+    /// Keep the safety bounce line visible immediately above the equation
+    /// HUD. Every start, reachability and collision calculation uses this
+    /// single anchor.
+    private let springboardY: CGFloat = 142
     private let springboardVelocity: CGFloat = 1250
 
     // Loop
@@ -362,7 +381,7 @@ final class GameScene: SKScene {
         springboard.strokeColor = theme.skDeep
         springboard.lineWidth = 2
 
-        player.position = CGPoint(x: size.width / 2, y: 160)
+        player.position = CGPoint(x: size.width / 2, y: springboardY + 110)
         player.zRotation = 0
         velocityY = bounceVelocity
         velocityX = 0
@@ -374,9 +393,9 @@ final class GameScene: SKScene {
         lastReachabilityCheck = 0
 
         // A guaranteed neutral platform right below the player.
-        addNeutralPlatform(at: CGPoint(x: size.width / 2, y: 110))
+        addNeutralPlatform(at: CGPoint(x: size.width / 2, y: springboardY + 64))
 
-        nextSpawnY = 240
+        nextSpawnY = springboardY + 194
         spawnPlatformsIfNeeded()
         buildAnswerSet() // validated before the first frame is playable
     }
@@ -473,7 +492,16 @@ final class GameScene: SKScene {
     private func blocksApproach(toCorrect correct: CGPoint, candidate: CGPoint) -> Bool {
         let dx = wrapDx(correct.x, candidate.x)
         let below = correct.y - candidate.y
-        return dx < 90 && below > -40 && below < 200
+        return dx < correctApproachWidth
+            && below > -correctApproachAbove
+            && below < correctApproachBelow
+    }
+
+    /// A correct block needs a genuinely clear landing corridor. This keeps
+    /// neutral platforms as well as answer choices away from its approach.
+    private func hasClearApproach(toCorrect candidate: CGPoint, planned: [CGPoint] = []) -> Bool {
+        !platforms.contains { blocksApproach(toCorrect: candidate, candidate: $0.position) }
+            && !planned.contains { blocksApproach(toCorrect: candidate, candidate: $0) }
     }
 
     // MARK: Answer set generation (fixed order, atomic activation)
@@ -524,10 +552,10 @@ final class GameScene: SKScene {
 
     private func findCorrectPosition() -> CGPoint? {
         let yRange = answerWindowYRange()
-        for _ in 0..<20 {
+        for _ in 0..<80 {
             let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
                                     y: .random(in: yRange))
-            if isFreePosition(candidate) { return candidate }
+            if isFreePosition(candidate), hasClearApproach(toCorrect: candidate) { return candidate }
         }
         return nil
     }
@@ -552,7 +580,7 @@ final class GameScene: SKScene {
             var x: CGFloat = 60
             while x <= size.width - 60 {
                 let candidate = CGPoint(x: x, y: y)
-                if isFreePosition(candidate) { return candidate }
+                if isFreePosition(candidate), hasClearApproach(toCorrect: candidate) { return candidate }
                 x += 90
             }
             y += 60
@@ -689,7 +717,10 @@ final class GameScene: SKScene {
             for _ in 0..<12 {
                 let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
                                         y: y + CGFloat.random(in: -bandJitter...bandJitter))
-                if isFreePosition(candidate) {
+                if isFreePosition(candidate),
+                   !platforms.contains(where: { platform in
+                       platform.isActiveAnswer && blocksApproach(toCorrect: platform.position, candidate: candidate)
+                   }) {
                     addNeutralPlatform(at: candidate)
                     break
                 }
@@ -834,9 +865,10 @@ final class GameScene: SKScene {
             if platform.isActiveAnswer && answerRefreshAt == nil {
                 if platform.value == state.correctAnswer {
                     landedCorrect(on: platform)
-                } else if dx < halfWidth - 10 {
-                    // Only a clear landing can count as a wrong answer;
-                    // an edge graze is just a bounce.
+                } else {
+                    // Any real landing on a wrong answer is a wrong answer.
+                    // The wider collision check above already rules out a
+                    // pass-by, so feedback must never disappear at an edge.
                     landedWrong(on: platform)
                 }
             }

@@ -110,6 +110,16 @@ struct GameView: View {
 
     private var bottomBar: some View {
         VStack(spacing: 12) {
+            if state.isRandomPractice {
+                Label("MIX MODE", systemImage: "shuffle")
+                    .font(.caption.weight(.heavy))
+                    .tracking(1.2)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(theme.deepColor.opacity(0.9), in: Capsule())
+                    .transition(.scale.combined(with: .opacity))
+            }
             Text(state.questionText)
                 .font(.system(size: 38, weight: .heavy, design: .rounded))
                 .minimumScaleFactor(0.4)
@@ -127,6 +137,7 @@ struct GameView: View {
                 .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
                 .padding(.horizontal, 12)
         }
+        .animation(.snappy(duration: 0.25), value: state.isRandomPractice)
         .padding(.bottom, 16)
     }
 

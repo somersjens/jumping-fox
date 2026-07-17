@@ -14,25 +14,94 @@ struct LevelSelection: Identifiable {
     var id: String { level.id }
 }
 
+/// The six topic filters. Each has a regular menu, its immediate-mix form,
+/// and the more varied challenge menu.
+private enum MenuFilter: Int, CaseIterable, Identifiable {
+    case addition, subtraction, tables, fractions, percentages, mixed
+
+    var id: Int { rawValue }
+
+    var title: String {
+        switch self {
+        case .addition: return "Addition"
+        case .subtraction: return "Subtraction"
+        case .tables: return "Tables"
+        case .fractions: return "Fractions"
+        case .percentages: return "Percentages"
+        case .mixed: return "Mix"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .addition: return "plus.circle.fill"
+        case .subtraction: return "minus.circle.fill"
+        case .tables: return "multiply.circle.fill"
+        case .fractions: return "circle.lefthalf.filled"
+        case .percentages: return "percent"
+        case .mixed: return "shuffle.circle.fill"
+        }
+    }
+
+    var standard: ChallengeCategory {
+        switch self {
+        case .addition: return .addition
+        case .subtraction: return .subtraction
+        case .tables: return .tables
+        case .fractions: return .fractions
+        case .percentages: return .percentages
+        case .mixed: return .mix
+        }
+    }
+
+    var challenge: ChallengeCategory {
+        switch self {
+        case .addition: return .additionMix
+        case .subtraction: return .subtractionMix
+        case .tables: return .tablesMix
+        case .fractions: return .fractionsMix
+        case .percentages: return .percentagesMix
+        case .mixed: return .supermix
+        }
+    }
+
+    func category(for mode: MenuMode) -> ChallengeCategory {
+        mode == .challenge ? challenge : standard
+    }
+}
+
+private enum MenuMode: String, CaseIterable, Identifiable {
+    case standard, mix, challenge
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .standard: return "Standard"
+        case .mix: return "Mix"
+        case .challenge: return "Challenge"
+        }
+    }
+}
+
 // MARK: - Home screen
 
 struct ContentView: View {
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.one.rawValue
-    @AppStorage("ui.categoryIndex") private var categoryIndex = 4 // Times Tables by default
+    @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
+    @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
     @ObservedObject private var premium = PremiumStore.shared
     @State private var selection: LevelSelection?
     @State private var showSettings = false
     @State private var showPremium = false
     @State private var refreshID = UUID()
-    @State private var lastCategorySwitch = Date.distantPast
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .one }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
-    private var category: ChallengeCategory {
-        let all = ChallengeCategory.allCases
-        return all[((categoryIndex % all.count) + all.count) % all.count]
-    }
+    private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
+    private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
+    private var category: ChallengeCategory { selectedFilter.category(for: menuMode) }
 
     private let cardColumns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
     private let miniColumns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 5)
@@ -48,7 +117,9 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 18) {
                     header
-                    PlaytimeBar(accent: character.deepColor)
+                    PlaytimeBar(accent: character.deepColor) {
+                        showSettings = true
+                    }
                     categorySelector
                     levelGrid
                 }
@@ -84,10 +155,6 @@ struct ContentView: View {
         VStack(spacing: 4) {
             Text(character.emoji)
                 .font(.system(size: 56))
-            Text("Jumping Fox")
-                .font(.system(size: 34, weight: .heavy, design: .rounded))
-                .foregroundStyle(character.deepColor)
-
             Button {
                 showSettings = true
             } label: {
@@ -107,71 +174,77 @@ struct ContentView: View {
         .padding(.top, 8)
     }
 
-    // MARK: Category selector
+    // MARK: Menu filters
 
     private var categorySelector: some View {
-        HStack(spacing: 8) {
-            arrowButton(systemName: "chevron.left") { switchCategory(-1) }
+        VStack(spacing: 12) {
+            Text(selectedFilter.title)
+                .font(.title3.weight(.heavy))
+                .foregroundStyle(character.deepColor)
 
-            VStack(spacing: 2) {
-                Text(category.displayName)
-                    .font(.title3.weight(.bold))
-                    .foregroundStyle(character.deepColor)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .contentTransition(.opacity)
-                Text("\(ChallengeCategory.allCases.firstIndex(of: category)! + 1) / \(ChallengeCategory.allCases.count)")
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(character.deepColor.opacity(0.5))
+            HStack {
+                Text("Total score")
+                    .font(.subheadline.weight(.bold))
+                Spacer()
+                Label("\(groupTotalScore)", systemImage: "trophy.fill")
+                    .font(.headline.weight(.heavy))
             }
-            .frame(maxWidth: .infinity)
-            .animation(.snappy(duration: 0.2), value: categoryIndex)
+            .foregroundStyle(character.deepColor)
 
-            arrowButton(systemName: "chevron.right") { switchCategory(1) }
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 6)
-        .background(.white.opacity(0.65), in: RoundedRectangle(cornerRadius: 16))
-        // Swipe is supported in addition to (never instead of) the arrows.
-        .gesture(
-            DragGesture(minimumDistance: 30)
-                .onEnded { value in
-                    if value.translation.width < -40 { switchCategory(1) }
-                    else if value.translation.width > 40 { switchCategory(-1) }
+            HStack(spacing: 6) {
+                ForEach(MenuFilter.allCases) { filter in
+                    menuFilterButton(filter)
                 }
-        )
+            }
+
+            Picker("Menu type", selection: $menuModeRaw) {
+                ForEach(MenuMode.allCases) { mode in
+                    Text(mode.title).tag(mode.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .tint(character.color)
+            .accessibilityLabel("Choose standard or mix menu")
+        }
+        .padding(12)
+        .background(.white.opacity(0.65), in: RoundedRectangle(cornerRadius: 16))
     }
 
-    private func arrowButton(systemName: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: systemName)
+    private func menuFilterButton(_ filter: MenuFilter) -> some View {
+        let isSelected = filter == selectedFilter
+        return Button {
+            withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
+        } label: {
+            Image(systemName: filter.icon)
                 .font(.title3.weight(.bold))
-                .foregroundStyle(.white)
-                .frame(width: 44, height: 44) // always visible, comfortably tappable
-                .background(character.color, in: Circle())
+            .foregroundStyle(isSelected ? .white : character.deepColor)
+            .frame(maxWidth: .infinity)
+            .frame(height: 44)
+            .background(isSelected ? character.color : .white.opacity(0.7), in: Circle())
+            .overlay(Circle().stroke(character.color.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
     }
 
-    /// Cyclic navigation with a short debounce so rapid taps can't
-    /// cause double switches or broken state.
-    private func switchCategory(_ delta: Int) {
-        let now = Date()
-        guard now.timeIntervalSince(lastCategorySwitch) > 0.25 else { return }
-        lastCategorySwitch = now
-        let count = ChallengeCategory.allCases.count
-        withAnimation(.snappy(duration: 0.2)) {
-            categoryIndex = ((categoryIndex + delta) % count + count) % count
-        }
+    private var groupTotalScore: Int {
+        let standardLevels = LevelCatalog.levels(for: selectedFilter.standard)
+        let allModes = standardLevels
+            + standardLevels.map { $0.immediateMixVersion() }
+            + LevelCatalog.levels(for: selectedFilter.challenge)
+        return allModes
+            .filter { !$0.requiresPremium }
+            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, mode: lifeMode) }
     }
 
     // MARK: Level grid
 
     private var levelGrid: some View {
-        let levels = LevelCatalog.levels(for: category)
+        let levels = LevelCatalog.levels(for: category).map {
+            menuMode == .mix ? $0.immediateMixVersion() : $0
+        }
         let regular = levels.filter { !$0.requiresPremium }
         let premiumLevels = levels.filter { $0.requiresPremium }
-        let recommendedID = recommendedLevelID(in: regular)
+        let recommendedID = regular.first?.id
 
         return VStack(alignment: .leading, spacing: 14) {
             LazyVGrid(columns: cardColumns, spacing: 12) {
@@ -195,9 +268,6 @@ struct ContentView: View {
         if level.requiresPremium && !premium.isPremium {
             return .locked(progress: 0)
         }
-        if !ProgressStore.isUnlocked(level) {
-            return .locked(progress: ProgressStore.unlockProgress(level))
-        }
         if ProgressStore.isCompleted(level) {
             return .completed
         }
@@ -205,10 +275,6 @@ struct ContentView: View {
             return .recommended
         }
         return .available
-    }
-
-    private func recommendedLevelID(in levels: [LevelConfig]) -> String? {
-        levels.first { ProgressStore.isUnlocked($0) && !ProgressStore.isCompleted($0) }?.id
     }
 
     @ViewBuilder
@@ -247,10 +313,10 @@ struct ContentView: View {
                     Image(systemName: "crown.fill")
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Tables 13–100")
+                        Text("More levels")
                             .font(.subheadline.weight(.bold))
                             .foregroundStyle(.white)
-                        Text("Unlock with Premium")
+                        Text("Unlock more with Premium")
                             .font(.caption)
                             .foregroundStyle(.white.opacity(0.9))
                     }
@@ -272,33 +338,46 @@ struct ContentView: View {
 
 // MARK: - Playtime bar
 
-/// Compact progress line: today, week, streak. Only re-renders when a
-/// minute value or the streak actually changes.
+/// A single daily streak goal. Tapping it opens Settings to adjust the
+/// default five-minute goal.
 struct PlaytimeBar: View {
     let accent: Color
+    let action: () -> Void
     @ObservedObject private var tracker = PlaytimeTracker.shared
 
     var body: some View {
-        VStack(spacing: 5) {
-            HStack(spacing: 4) {
-                Text("Today \(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
-                Text("·")
-                Text("Week \(tracker.weekMinutes)/\(tracker.weeklyGoalMinutes) min")
-                Text("·")
-                Text("🔥 \(tracker.streakDays)")
+        Button(action: action) {
+            VStack(spacing: 5) {
+            HStack {
+                    Label("Daily streak", systemImage: "flame.fill")
+                Spacer()
+                Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.bold))
+                    .opacity(0.65)
             }
             .font(.caption.weight(.semibold))
             .foregroundStyle(accent)
-            .lineLimit(1)
-            .minimumScaleFactor(0.8)
 
-            ProgressView(value: min(1, Double(tracker.todayMinutes) / Double(max(1, tracker.dailyGoalMinutes))))
+            ProgressView(value: dailyProgress)
                 .tint(accent)
                 .scaleEffect(y: 0.8)
+
+                Text("\(tracker.streakDays) day streak")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(accent.opacity(0.8))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 12))
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 8)
-        .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 12))
+        .buttonStyle(.plain)
+        .accessibilityLabel("Daily streak, \(tracker.todayMinutes) of \(tracker.dailyGoalMinutes) minutes")
+        .accessibilityHint("Opens settings to change the daily goal")
+    }
+
+    private var dailyProgress: Double {
+        min(1, Double(tracker.todayMinutes) / Double(max(1, tracker.dailyGoalMinutes)))
     }
 }
 
@@ -311,9 +390,8 @@ enum LevelCardStatus: Equatable {
     case completed
 }
 
-/// Redesigned card: big central number first, small operation symbol
-/// second. Status is communicated with border, icon, opacity, label,
-/// scale and progress — never with color alone.
+/// Compact level card. Empty levels are intentionally available in a soft
+/// grey; a lock is reserved solely for Premium content.
 struct LevelCardView: View {
     let level: LevelConfig
     let status: LevelCardStatus
@@ -328,19 +406,9 @@ struct LevelCardView: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 2) {
-                // Secondary: small operation symbol + short category label.
-                HStack {
-                    Text(level.category.symbol)
-                        .font(.footnote.weight(.heavy))
-                        .foregroundStyle(titleColor.opacity(0.8))
-                    Spacer()
-                    statusIcon
-                }
-
-                // Primary: the big, dominant number.
+            VStack(spacing: 3) {
                 Text(level.cardNumber)
-                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .font(.system(size: 34, weight: .heavy, design: .rounded))
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
                     .foregroundStyle(titleColor)
@@ -348,8 +416,8 @@ struct LevelCardView: View {
 
                 bottomLine
             }
-            .padding(10)
-            .frame(height: 104)
+            .padding(8)
+            .frame(height: 82)
             .background(cardBackground, in: RoundedRectangle(cornerRadius: 16))
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
@@ -365,30 +433,6 @@ struct LevelCardView: View {
     // MARK: Pieces
 
     @ViewBuilder
-    private var statusIcon: some View {
-        switch status {
-        case .locked:
-            Image(systemName: "lock.fill")
-                .font(.caption)
-                .foregroundStyle(titleColor.opacity(0.8))
-        case .completed:
-            Image(systemName: "checkmark.seal.fill")
-                .font(.caption)
-                .foregroundStyle(.white)
-        case .recommended:
-            Image(systemName: "star.fill")
-                .font(.caption)
-                .foregroundStyle(.yellow)
-        case .available:
-            if level.isAdvanced {
-                Image(systemName: "flame.fill")
-                    .font(.caption)
-                    .foregroundStyle(theme.deepColor.opacity(0.7))
-            }
-        }
-    }
-
-    @ViewBuilder
     private var bottomLine: some View {
         switch status {
         case .locked(let progress) where progress > 0:
@@ -397,7 +441,7 @@ struct LevelCardView: View {
                 .tint(theme.color)
                 .scaleEffect(y: 0.7)
         case .locked:
-            Text("Locked")
+            Label("Premium", systemImage: "lock.fill")
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(titleColor.opacity(0.7))
         case .recommended:
@@ -429,7 +473,7 @@ struct LevelCardView: View {
         case .locked:
             return AnyShapeStyle(Color.white.opacity(0.5))
         default:
-            return AnyShapeStyle(Color.white.opacity(0.9))
+            return AnyShapeStyle(best == 0 ? Color.white.opacity(0.5) : Color.white.opacity(0.9))
         }
     }
 

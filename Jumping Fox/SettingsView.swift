@@ -117,10 +117,6 @@ struct SettingsView: View {
         Binding(get: { tracker.dailyGoalMinutes }, set: { tracker.setDailyGoal($0) })
     }
 
-    private var weeklyGoal: Binding<Int> {
-        Binding(get: { tracker.weeklyGoalMinutes }, set: { tracker.setWeeklyGoal($0) })
-    }
-
     private var goalsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Play goals")
@@ -157,12 +153,7 @@ struct SettingsView: View {
                     .font(.subheadline)
             }
 
-            Divider()
-
-            Stepper("Weekly goal: \(tracker.weeklyGoalMinutes) min", value: weeklyGoal, in: 5...840, step: 5)
-                .font(.subheadline)
-
-            Text("Changing the daily goal suggests day × 7 for the week — adjust the weekly goal however you like. Only active playtime counts.")
+            Text("The streak goal starts at 5 minutes per day. Only active playtime counts.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

@@ -106,6 +106,7 @@ final class GameState: ObservableObject {
 
     var correctAnswer: String { question.correctAnswer }
     var questionText: String { question.prompt }
+    var isRandomPractice: Bool { question.isRandomPractice }
 
     /// Called when the player lands on the correct platform.
     /// Only closes the current question (score); the next question is
