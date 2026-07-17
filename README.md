@@ -15,9 +15,14 @@ Adjustable daily (default 5 min) and weekly (default 35 min) play goals. Only *a
 - Sparse, Doodle Jump–style platforms with open air between them
 - Horizontal screen wrapping: leave one side, appear on the other (velocity preserved)
 - Most platforms are neutral — only a few show answers (max 3 at the start, more as you climb)
-- Falling below the screen is game over
+- A permanent springboard spans the full bottom edge — falling is never fatal
+- Block values are immutable: a visible block never changes its number, position or size; every new question gets brand-new block instances (stable UUIDs)
+- Layouts are validated before activation: no overlap (AABB + margin), uniform block height, exactly one active correct answer, and a guaranteed route to it that never requires landing on an active wrong answer (graph/BFS over springboard, neutral and resolved platforms)
+- Every visible sum shows exactly two numbers and one operation; addition/subtraction run as chains (1+1, 2+1, 3+1 …)
 - Questions in order per table (7×1, 7×2, … 7×12, then repeat)
-- Super Jump button appears when the correct answer isn't reachable
+- The bottom springboard automatically gives an extra-high launch — there is no separate Super Jump option
+- New blocks always spawn above the visible viewport (80 pt margin, 600 pt forward buffer) and only come into view through natural movement
+- Block status changes only on a real landing: checkmark inside the block for correct, cross inside the block for wrong; untouched blocks never turn gray
 - Edge grazes on wrong platforms bounce harmlessly — only clear landings count
 - Tilt controls (device) with touch-drag fallback (simulator)
 - Optional answer helper: correct platforms green, wrong ones red

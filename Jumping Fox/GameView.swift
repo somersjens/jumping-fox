@@ -2,8 +2,8 @@
 //  GameView.swift
 //  Jumping Fox
 //
-//  Game screen: SpriteKit scene plus HUD (question, lives, score,
-//  super jump button) and the game over overlay. Themed to the
+//  Game screen: SpriteKit scene plus HUD (question, lives, score)
+//  and the game over overlay. Themed to the
 //  selected character. Reports challenge lifecycle to the
 //  playtime tracker (game over is a static screen — no time counts).
 //
@@ -110,25 +110,6 @@ struct GameView: View {
 
     private var bottomBar: some View {
         VStack(spacing: 12) {
-            if state.superJumpAvailable {
-                Button {
-                    scene.superJump()
-                } label: {
-                    Label("Super Jump!", systemImage: "arrow.up.circle.fill")
-                        .font(.headline)
-                        .padding(.horizontal, 22)
-                        .padding(.vertical, 11)
-                        .background(
-                            LinearGradient(colors: [theme.color, theme.deepColor],
-                                           startPoint: .top, endPoint: .bottom),
-                            in: Capsule()
-                        )
-                        .foregroundStyle(.white)
-                        .shadow(color: theme.deepColor.opacity(0.4), radius: 6, y: 3)
-                }
-                .transition(.scale.combined(with: .opacity))
-            }
-
             Text(state.questionText)
                 .font(.system(size: 38, weight: .heavy, design: .rounded))
                 .minimumScaleFactor(0.4)
@@ -147,7 +128,6 @@ struct GameView: View {
                 .padding(.horizontal, 12)
         }
         .padding(.bottom, 16)
-        .animation(.spring(duration: 0.3), value: state.superJumpAvailable)
     }
 
     // MARK: Game over

@@ -45,7 +45,7 @@ struct PremiumView: View {
                            subtitle: "Every multiplication table from 13 to 100.")
                 featureRow(icon: "infinity",
                            title: "Unlimited lives",
-                           subtitle: "Practice as long as you like — falling still ends the game!")
+                           subtitle: "Practice as long as you like — the springboard always catches you.")
                 featureRow(icon: "pawprint.fill",
                            title: "10 characters",
                            subtitle: "Fox, frog, penguin, pig, whale, lion, octopus, crab, turtle, and bear.")

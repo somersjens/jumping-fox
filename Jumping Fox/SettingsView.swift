@@ -63,7 +63,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("The game ends when you run out of lives — or when you fall off the screen! High scores are tracked separately for each mode.")
+            Text("The game ends when you run out of lives. Falling is never fatal — the springboard at the bottom always catches you! High scores are tracked separately for each mode.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

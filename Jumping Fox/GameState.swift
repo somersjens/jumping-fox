@@ -88,7 +88,6 @@ final class GameState: ObservableObject {
     @Published private(set) var score = 0
     /// nil means unlimited lives.
     @Published private(set) var lives: Int?
-    @Published var superJumpAvailable = false
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
@@ -109,9 +108,18 @@ final class GameState: ObservableObject {
     var questionText: String { question.prompt }
 
     /// Called when the player lands on the correct platform.
+    /// Only closes the current question (score); the next question is
+    /// activated separately via `advanceQuestion()` so the HUD and the
+    /// platforms always switch together, after the confirmation.
     func answeredCorrectly() {
         guard !isGameOver else { return }
         score += 1
+    }
+
+    /// Activates the next question in the chain. Called by the scene at a
+    /// safe moment, never in the landing frame.
+    func advanceQuestion() {
+        guard !isGameOver else { return }
         question = engine.next()
     }
 
@@ -136,7 +144,6 @@ final class GameState: ObservableObject {
     private func endGame(reason: GameOverReason) {
         isGameOver = true
         gameOverReason = reason
-        superJumpAvailable = false
         if ProgressStore.recordScore(score, levelID: level.id, mode: lifeMode) {
             highScore = score
             isNewHighScore = true
@@ -149,7 +156,6 @@ final class GameState: ObservableObject {
         question = engine.next()
         score = 0
         lives = lifeMode.startingLives
-        superJumpAvailable = false
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false

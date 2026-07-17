@@ -282,6 +282,12 @@ final class QuestionEngine {
     private var lastPrompt: String?
     private var wrongBag: [Question] = []
 
+    // Running chain for addition/subtraction: the previous correct answer
+    // becomes the next left operand, so every visible sum has exactly two
+    // numbers while the difficulty still builds up.
+    private var chainValue: Int?
+    private var chainCycle = 0
+
     // Per-cycle ordering: first cycle in order (calm build-up),
     // later cycles shuffled so repeats aren't identical.
     private var orderCache: [Int] = []
@@ -297,6 +303,8 @@ final class QuestionEngine {
         wrongBag.removeAll()
         orderCache = []
         orderCycle = -1
+        chainValue = nil
+        chainCycle = 0
     }
 
     /// Extra repetition of recently missed questions.
@@ -355,32 +363,25 @@ final class QuestionEngine {
 
     // MARK: Addition
 
-    /// One pattern per level: only repeated adding of the same number.
+    /// One pattern per level, as a running chain with exactly two numbers:
+    /// level +1: 1+1, 2+1, 3+1 …  level +3: 3+3, 6+3, 9+3 …
+    /// (nextLeftOperand = previousCorrectAnswer, right operand fixed.)
     private func additionQuestion() -> Question {
         let n = level.index
-        let maxTerms = n <= 3 ? 5 : (n <= 6 ? 4 : 3)
-        let terms = cycled(Array(2...maxTerms))
-        let answer = n * terms
-        let prompt = Array(repeating: "\(n)", count: terms).joined(separator: " + ") + " = ?"
-        return makeQuestion(prompt, "\(answer)",
-                            [n * (terms + 1), n * max(1, terms - 1), answer + 1, answer - 1,
-                             answer + n, answer - n, answer + 2].map(String.init))
+        let cap = max(12, n * 6) // manageable maximum result per level
+        let left = chainValue ?? n
+        let answer = left + n
+        chainValue = (answer + n > cap) ? nil : answer // restart the chain at n after the cap
+        return makeQuestion("\(left) + \(n) = ?", "\(answer)",
+                            [answer + 1, answer - 1, left, answer + n,
+                             answer + 2, left + 1].map(String.init))
     }
 
     private func additionMixQuestion(maxResult: Int? = nil, harder: Bool = false) -> Question {
         let bases = [10, 15, 20, 30, 50, 100]
         var m = maxResult ?? bases[min(level.index - 1, bases.count - 1)]
         if harder { m = min(200, m * 2) }
-        let threeTerms = m >= 15 && Double.random(in: 0...1) < 0.3
-        if threeTerms {
-            let a = Int.random(in: 1...(m - 2))
-            let b = Int.random(in: 1...max(1, m - a - 1))
-            let c = Int.random(in: 1...max(1, m - a - b))
-            let answer = a + b + c
-            return makeQuestion("\(a) + \(b) + \(c) = ?", "\(answer)",
-                                [answer + 1, answer - 1, answer + 2, answer - 2,
-                                 answer + 10, a + b, answer + 3].map(String.init))
-        }
+        // Always exactly two numbers and one operation.
         let a = Int.random(in: 1...(m - 1))
         let b = Int.random(in: 1...(m - a))
         let answer = a + b
@@ -391,24 +392,24 @@ final class QuestionEngine {
 
     // MARK: Subtraction
 
-    /// One pattern per level: repeatedly take away the same number.
-    /// Never negative; every intermediate result stays valid.
+    /// One pattern per level, as a descending chain with exactly two
+    /// numbers: 10−1=9, 9−1=8, 8−1=7 … Never negative: when the lower
+    /// bound is reached the chain restarts from a (slightly varied) start.
     private func subtractionQuestion() -> Question {
         let n = level.index
-        let series = Array(1...8) // the answers, in a calm build-up
-        let value = cycled(series)
-        let doubleStep = cycleCount(seriesLength: series.count) >= 2 && n <= 5
-            && Double.random(in: 0...1) < 0.3
-        if doubleStep {
-            let a = value + 2 * n // both intermediates stay ≥ 0
-            return makeQuestion("\(a) − \(n) − \(n) = ?", "\(value)",
-                                [value + n, value - 1, value + 1, value + 2 * n,
-                                 a - n, value + 2].map(String.init))
+        let base = max(n * 5, 10)
+        let start = base + (chainCycle % 3) * n // vary the start per cycle
+        let left = chainValue ?? start
+        let answer = left - n
+        if answer - n >= 0 {
+            chainValue = answer
+        } else {
+            chainValue = nil // restart a new valid series next time
+            chainCycle += 1
         }
-        let a = value + n
-        return makeQuestion("\(a) − \(n) = ?", "\(value)",
-                            [value + 1, value - 1, value + n, a + n,
-                             value + 2, a].map(String.init))
+        return makeQuestion("\(left) − \(n) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + n, left + n,
+                             answer + 2, left].map(String.init))
     }
 
     private func subtractionMixQuestion(maxStart: Int? = nil, allowNegative: Bool? = nil) -> Question {
@@ -425,16 +426,8 @@ final class QuestionEngine {
                                 [answer + 1, answer - 1, b - a, answer + 2,
                                  answer - 2, a + b].map(String.init))
         }
+        // Always exactly two numbers and one operation.
         let a = Int.random(in: max(5, m / 2)...m)
-        let twoSteps = m >= 15 && Double.random(in: 0...1) < 0.35
-        if twoSteps, a >= 4 {
-            let b = Int.random(in: 1...(a - 2))
-            let c = Int.random(in: 1...(a - b))
-            let answer = a - b - c
-            return makeQuestion("\(a) − \(b) − \(c) = ?", "\(answer)",
-                                [answer + 1, answer - 1, a - b, answer + 2,
-                                 answer + c, answer + 10].map(String.init))
-        }
         let b = Int.random(in: 1...(a - 1))
         let answer = a - b
         return makeQuestion("\(a) − \(b) = ?", "\(answer)",
@@ -664,20 +657,10 @@ final class QuestionEngine {
         }
     }
 
-    /// Everything that has been unlocked, faster and harder — but always
-    /// solvable with previously introduced skills.
+    /// Everything that has been unlocked, faster and harder — but every
+    /// visible sum still shows exactly two numbers and one operation.
     private func supermixQuestion() -> Question {
         let idx = level.index
-        // Occasional two-step bonus question with explicit brackets.
-        if Double.random(in: 0...1) < 0.2 {
-            let a = Int.random(in: 2...(3 + idx * 2))
-            let b = Int.random(in: 2...(3 + idx))
-            let c = Int.random(in: 1...10)
-            let answer = a * b + c
-            return makeQuestion("(\(a) × \(b)) + \(c) = ?", "\(answer)",
-                                [a * b, a * (b + c), answer + 1, answer - 1,
-                                 a * b - c, answer + 10].map(String.init))
-        }
         switch ["addition", "subtraction", "tables", "fractions", "percentages"].randomElement()! {
         case "addition":
             return additionMixQuestion(maxResult: 30 + idx * 30, harder: idx >= 2)

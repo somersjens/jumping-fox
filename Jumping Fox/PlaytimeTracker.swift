@@ -130,7 +130,7 @@ final class PlaytimeTracker: ObservableObject {
     }
 
     /// Called on real gameplay interaction: steering, jumping on an answer,
-    /// super jump, starting a challenge.
+    /// starting a challenge.
     func registerInteraction() {
         guard challengeActive, appActive else { return }
         let now = Date()
