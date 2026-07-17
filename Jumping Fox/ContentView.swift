@@ -77,6 +77,7 @@ struct ContentView: View {
     @AppStorage(GameSettings.onboardingCompleteKey) private var onboardingComplete = false
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
     @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
+    @AppStorage(GameSettings.answerHintKey) private var answerHint = true
     @AppStorage(GameSettings.showStreakKey) private var showsStreak = true
     @AppStorage(GameSettings.showTrophiesKey) private var showsTrophies = true
     @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
@@ -90,6 +91,7 @@ struct ContentView: View {
     @State private var nameDraft = ""
     @State private var refreshID = UUID()
     @State private var showsOptions = false
+    @State private var expandedOptionInfo: String?
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -146,16 +148,9 @@ struct ContentView: View {
                     showPremium = true
                 } label: {
                     Group {
-                        if character.id == CharacterCatalog.freeCharacterID {
-                            Image("no_background")
-                                .resizable()
-                                .scaledToFill()
-                        } else {
-                            Text(character.emoji)
-                                .font(.system(size: 48))
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(.white.opacity(0.75))
-                        }
+                        character.artwork
+                            .resizable()
+                            .scaledToFill()
                     }
                     .frame(width: 74, height: 74)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -338,30 +333,29 @@ struct ContentView: View {
                     .overlay(character.color.opacity(0.2))
                     .padding(.top, 9)
 
-                VStack(alignment: .leading, spacing: 10) {
-                    optionToggle("Stoppen na 3 levens", isOn: lifeModeBinding)
-                    optionToggle("Streak laten zien", isOn: $showsStreak)
-                    optionToggle("Trofeeën laten zien", isOn: $showsTrophies)
-                    optionToggle("Afronden bij 30 punten", isOn: $capsTrophiesAtThirty)
-
-                    if capsTrophiesAtThirty {
-                        Text("Je kunt wel doorspelen, maar je kunt op elk level maximaal 30 punten halen.")
-                            .font(.caption)
-                            .foregroundStyle(character.deepColor.opacity(0.68))
-
-                        Divider().overlay(character.color.opacity(0.2))
-                    }
-
-                    optionToggle("Helpermodus", isOn: $answerHelper)
-
-                    if answerHelper {
-                        Text("Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld.")
-                            .font(.caption)
-                            .foregroundStyle(character.deepColor.opacity(0.72))
-                            .fixedSize(horizontal: false, vertical: true)
+                VStack(alignment: .leading, spacing: 0) {
+                    let rows: [(String, Binding<Bool>, String)] = [
+                        ("Stoppen na 3 levens", lifeModeBinding,
+                         "Aan: het spel stopt na drie fouten (drie hartjes). Uit: je speelt onbeperkt door, maar trofeeën tellen alleen mee tot drie fouten."),
+                        ("Streak laten zien", $showsStreak,
+                         "Toont je dagelijkse reeks op het startscherm, zodat je ziet hoeveel dagen je op rij hebt gespeeld."),
+                        ("Trofeeën laten zien", $showsTrophies,
+                         "Toont hoeveel trofeeën je per level en in totaal hebt verdiend."),
+                        ("Afronden bij 30 punten", $capsTrophiesAtThirty,
+                         "Je kunt wel doorspelen, maar je haalt op elk level maximaal 30 punten."),
+                        ("Helpermodus", $answerHelper,
+                         "Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld."),
+                        ("Antwoord bij de som (½ leven)", $answerHint,
+                         "Tik tijdens het spelen op de som en het antwoord verschijnt op de plek van het vraagteken. Dat kost je een half leven. Bij nog maar een half leven kun je niet meer tikken."),
+                    ]
+                    ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
+                        if index > 0 {
+                            Divider().overlay(character.color.opacity(0.14))
+                        }
+                        optionRow(row.0, isOn: row.1, info: row.2)
                     }
                 }
-                .padding(.top, 10)
+                .padding(.top, 4)
             }
         }
         .padding(.horizontal, 11)
@@ -370,18 +364,49 @@ struct ContentView: View {
         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(0.18), lineWidth: 1))
     }
 
-    private func optionToggle(_ title: String, isOn: Binding<Bool>) -> some View {
-        HStack(spacing: 12) {
-            Text(title)
-                .font(.subheadline.weight(.medium))
-            Spacer(minLength: 16)
-            Toggle(title, isOn: isOn)
-                .labelsHidden()
-                .tint(character.color)
-                .frame(width: 54, height: 32)
-                .accessibilityLabel(title)
+    /// A settings row: tap the title (or the info icon, or anywhere in the
+    /// text area) to expand a short explanation; the toggle works on its own.
+    private func optionRow(_ title: String, isOn: Binding<Bool>, info: String) -> some View {
+        let isExpanded = expandedOptionInfo == title
+        return VStack(alignment: .leading, spacing: 0) {
+            HStack(spacing: 8) {
+                Button {
+                    withAnimation(.snappy(duration: 0.22)) {
+                        expandedOptionInfo = isExpanded ? nil : title
+                    }
+                } label: {
+                    HStack(spacing: 6) {
+                        Text(title)
+                            .font(.subheadline.weight(.semibold))
+                            .multilineTextAlignment(.leading)
+                        Image(systemName: isExpanded ? "info.circle.fill" : "info.circle")
+                            .font(.footnote)
+                            .foregroundStyle(character.color)
+                        Spacer(minLength: 0)
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+
+                Toggle(title, isOn: isOn)
+                    .labelsHidden()
+                    .tint(character.color)
+                    .scaleEffect(0.8, anchor: .trailing)
+                    .accessibilityLabel(title)
+            }
+            .frame(minHeight: 38)
+
+            if isExpanded {
+                Text(info)
+                    .font(.footnote)
+                    .lineSpacing(2)
+                    .foregroundStyle(character.deepColor.opacity(0.7))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.trailing, 30)
+                    .padding(.bottom, 10)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+            }
         }
-        .frame(minHeight: 38)
         .foregroundStyle(character.deepColor)
     }
 

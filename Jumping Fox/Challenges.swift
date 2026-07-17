@@ -433,6 +433,23 @@ final class QuestionEngine {
         return orderCache[step % values.count]
     }
 
+    /// Value from a repeating series that is shuffled from the very first
+    /// cycle. Every value still appears exactly once per cycle (balanced
+    /// practice), but answers never follow a predictable 1, 2, 3 pattern.
+    private func shuffledCycled(_ values: [Int]) -> Int {
+        let c = step / values.count
+        if c != orderCycle || orderCache.count != values.count {
+            let lastShown = orderCache.last
+            orderCycle = c
+            var shuffled = values.shuffled()
+            if shuffled.count > 1, shuffled.first == lastShown {
+                shuffled.swapAt(0, shuffled.count - 1)
+            }
+            orderCache = shuffled
+        }
+        return orderCache[step % values.count]
+    }
+
     // MARK: Generation dispatch
 
     private func generate() -> Question {
@@ -464,11 +481,13 @@ final class QuestionEngine {
         case .tables:
             return tablesMixQuestion(pool: Array(1...min(12, level.index)))
         case .fractions:
+            // Varied question forms over everything introduced so far —
+            // clearly different from the guided Standard level.
             let introduced = Array(Self.fractionDenominators.prefix(max(1, level.index)))
-            return fractionsQuestion(denominator: introduced.randomElement()!)
+            return fractionsVarietyQuestion(denominators: introduced)
         case .percentages:
             let introduced = Array(Self.percentageLevels.prefix(max(1, level.index)))
-            return percentagesQuestion(percentage: introduced.randomElement()!)
+            return percentagesVarietyQuestion(percentages: introduced)
         case .mix:
             // Mix mode of the Mix menu: same small-operand rule, but with
             // division and percentages added on top of + − ×.
@@ -618,54 +637,53 @@ final class QuestionEngine {
     /// multiples of the denominator: whole = denominator × factor.
     private func fractionsQuestion(denominator: Int? = nil) -> Question {
         let d = denominator ?? Self.fractionDenominators[min(level.index - 1, Self.fractionDenominators.count - 1)]
-        let factors = Array(1...5)
-        let factor = cycled(factors)
-        let whole = d * factor // series d → 2d → … → 5d, then restarts
+        // Each factor appears once per cycle but in shuffled order, so the
+        // wholes (and answers) never count up predictably.
+        let factors = Array(1...6)
+        let factor = shuffledCycled(factors)
+        let whole = d * factor
         let cycle = cycleCount(seriesLength: factors.count)
 
-        // Later cycles vary the question form and the numerator.
-        if cycle >= 1, Double.random(in: 0...1) < 0.2 {
-            let num = d >= 3 ? Int.random(in: 1...(d - 1)) : 1
-            if Bool.random() {
-                return makeQuestion("Numerator of \(num)/\(d)?", "\(num)",
-                                    [d, num + 1, max(1, num - 1), d - num].map(String.init))
-            }
-            return makeQuestion("Denominator of \(num)/\(d)?", "\(d)",
-                                [num, d + 1, d - 1, d * 2].map(String.init))
-        }
-
+        // The first cycle teaches the unit fraction 1/d; afterwards the
+        // numerator varies too.
         let num = (cycle == 0 || d == 2) ? 1 : Int.random(in: 1...(d - 1))
         let unit = whole / d          // first divide…
         let answer = unit * num       // …then multiply
-        // Near-misses only: forgot to multiply (unit), numerator one off
-        // (answer ± unit), the complement, and counting slips — never the
-        // faraway whole itself.
-        return makeQuestion("\(num)/\(d) of \(whole) = ?", "\(answer)",
+        // Purely symbolic: a fraction of a whole written as a multiplication
+        // ("num/d × whole = ?"). Near-misses only: forgot to multiply (unit),
+        // numerator one off (answer ± unit), the complement, counting slips.
+        return makeQuestion("\(num)/\(d) × \(whole) = ?", "\(answer)",
                             [unit, answer + unit, max(0, answer - unit),
                              whole - answer, answer + 1, answer - 1].map(String.init))
     }
 
     private func fractionsMixQuestion() -> Question {
-        // Only concepts that were already introduced, per level.
+        // Only concepts that were already introduced, per level. Every form
+        // is a symbolic sum — no word questions.
         let denominators: [Int]
-        var forms: [String] = ["fractionOf", "numerator"]
+        var forms: [String] = ["fractionOf"]
         switch level.index {
         case 1: denominators = [2, 3]
-        case 2: denominators = [2, 3, 4]; forms.append("compare")
-        case 3: denominators = [2, 3, 4, 5]; forms += ["compare", "equivalent"]
-        case 4: denominators = [2, 3, 4, 5, 6]; forms += ["compare", "equivalent", "addSame", "subSame"]
-        default: denominators = [2, 3, 4, 5, 6, 8, 10]; forms += ["compare", "equivalent", "addSame", "subSame"]
+        case 2: denominators = [2, 3, 4]
+        case 3: denominators = [2, 3, 4, 5]; forms += ["equivalent"]
+        case 4: denominators = [2, 3, 4, 5, 6]; forms += ["equivalent", "addSame", "subSame"]
+        default: denominators = [2, 3, 4, 5, 6, 8, 10]; forms += ["equivalent", "addSame", "subSame"]
         }
+        return fractionsVarietyQuestion(denominators: denominators, forms: forms)
+    }
 
-        switch forms.randomElement()! {
-        case "compare":
-            var a = denominators.randomElement()!
-            var b = denominators.randomElement()!
-            while b == a { b = Self.fractionDenominators.filter { denominators.contains($0) }.randomElement()! }
-            let smaller = min(a, b) // 1/2 > 1/3: smaller denominator wins
-            if a > b { swap(&a, &b) }
-            return makeQuestion("Bigger: 1/\(a) or 1/\(b)?", "1/\(smaller)",
-                                ["1/\(max(a, b))", "1/\(smaller + 1)", "1/\(smaller * 2)"])
+    /// Varied fraction practice built from several question forms. This is
+    /// what makes Mix feel clearly different from the guided Standard levels.
+    /// When no forms are given, sensible ones are derived from what has
+    /// already been introduced.
+    private func fractionsVarietyQuestion(denominators: [Int], forms: [String]? = nil) -> Question {
+        let available = forms ?? {
+            var f = ["fractionOf", "fractionOf", "equivalent"]
+            if denominators.contains(where: { $0 >= 3 }) { f += ["addSame", "subSame"] }
+            return f
+        }()
+
+        switch available.randomElement()! {
         case "equivalent":
             let d = denominators.filter { $0 <= 5 }.randomElement() ?? 2
             let s = [2, 3].randomElement()!
@@ -685,15 +703,6 @@ final class QuestionEngine {
             return makeQuestion("\(n1)/\(d) − \(n2)/\(d) = ?", "\(n1 - n2)/\(d)",
                                 ["\(n1 - n2)/\(max(2, d - n2))", "\(min(d, n1 - n2 + 1))/\(d)",
                                  "\(n1 + n2)/\(d)", "\(n2)/\(d)"])
-        case "numerator":
-            let d = denominators.randomElement()!
-            let num = d >= 3 ? Int.random(in: 1...(d - 1)) : 1
-            if Bool.random() {
-                return makeQuestion("Numerator of \(num)/\(d)?", "\(num)",
-                                    [d, num + 1, max(1, num - 1), d * 2].map(String.init))
-            }
-            return makeQuestion("Denominator of \(num)/\(d)?", "\(d)",
-                                [num, d + 1, max(2, d - 1), d * 2].map(String.init))
         default: // fractionOf
             return fractionsQuestion(denominator: denominators.randomElement()!)
         }
@@ -711,14 +720,16 @@ final class QuestionEngine {
 
     private func percentagesQuestion(percentage: Int? = nil) -> Question {
         let p = percentage ?? Self.percentageLevels[min(level.index - 1, Self.percentageLevels.count - 1)]
-        let factors = Array(1...6)
-        let factor = cycled(factors)
+        // Shuffled factor series: balanced practice, but the wholes (and
+        // answers) never count up predictably 1, 2, 3.
+        let factors = Array(1...8)
+        let factor = shuffledCycled(factors)
         let whole = (Self.percentageBase[p] ?? 4) * factor
         let cycle = cycleCount(seriesLength: factors.count)
 
         if cycle >= 1, let fraction = Self.percentageFraction[p], Double.random(in: 0...1) < 0.15 {
             let others = Self.percentageLevels.filter { $0 != p }
-            return makeQuestion("\(fraction) = ?%", "\(p)%",
+            return makeQuestion("\(fraction) = ?", "\(p)%",
                                 others.map { "\($0)%" })
         }
         let answer = whole * p / 100
@@ -729,7 +740,7 @@ final class QuestionEngine {
             .sorted { abs($0 - p) < abs($1 - p) }
             .prefix(3)
             .map { whole * $0 / 100 }
-        return makeQuestion("\(p)% of \(whole) = ?", "\(answer)",
+        return makeQuestion("\(p)% × \(whole) = ?", "\(answer)",
                             (neighbours + [whole - answer, answer + 1, answer - 1])
                                 .filter { $0 >= 0 }.map(String.init))
     }
@@ -740,39 +751,40 @@ final class QuestionEngine {
         switch level.index {
         case 1: percentages = [50, 25, 100]
         case 2: percentages = [50, 25, 10, 20, 75]; forms.append("pctToFrac")
-        default: percentages = [50, 25, 10, 20, 75]; forms += ["pctToFrac", "discount", "increase"]
+        default: percentages = [50, 25, 10, 20, 75]; forms += ["pctToFrac"]
         }
+        return percentagesVarietyQuestion(percentages: percentages, forms: forms)
+    }
 
-        switch forms.randomElement()! {
+    /// Varied percentage practice: percent-of and fraction conversions, all
+    /// written as symbolic sums — clearly different from the guided Standard
+    /// levels. When no forms are given, sensible ones are derived from the
+    /// percentages that were already introduced.
+    private func percentagesVarietyQuestion(percentages: [Int], forms: [String]? = nil) -> Question {
+        let convertible = percentages.contains { Self.percentageFraction[$0] != nil }
+        var available = forms ?? {
+            var f = ["percentOf", "percentOf"]
+            if convertible { f += ["fracToPct", "pctToFrac"] }
+            return f
+        }()
+        if !convertible { available.removeAll { $0 == "fracToPct" || $0 == "pctToFrac" } }
+
+        switch available.randomElement()! {
         case "fracToPct":
             let p = percentages.compactMap { Self.percentageFraction[$0] != nil ? $0 : nil }.randomElement() ?? 50
             let fraction = Self.percentageFraction[p]!
-            return makeQuestion("\(fraction) = ?%", "\(p)%",
+            return makeQuestion("\(fraction) = ?", "\(p)%",
                                 percentages.filter { $0 != p }.map { "\($0)%" } + ["30%"])
         case "pctToFrac":
             let pairs: [(Int, Int, Int)] = [(25, 1, 4), (75, 3, 4), (50, 1, 2), (20, 1, 5)]
-            let (p, num, den) = pairs.filter { percentages.contains($0.0) }.randomElement()!
+            let (p, num, den) = pairs.filter { percentages.contains($0.0) }.randomElement() ?? (50, 1, 2)
             return makeQuestion("\(p)% = ?/\(den)", "\(num)",
                                 [den, num + 1, max(1, den - num), p / 10].map(String.init))
-        case "discount":
-            let p = [10, 25, 50].randomElement()!
-            let base = (Self.percentageBase[p] ?? 4) * Int.random(in: 2...6)
-            let answer = base - base * p / 100
-            return makeQuestion("\(base) with \(p)% off = ?", "\(answer)",
-                                [base, base * p / 100, answer + 1, answer - 1,
-                                 base + base * p / 100].map(String.init))
-        case "increase":
-            let p = [10, 25, 50].randomElement()!
-            let base = (Self.percentageBase[p] ?? 4) * Int.random(in: 2...6)
-            let answer = base + base * p / 100
-            return makeQuestion("\(base) plus \(p)% = ?", "\(answer)",
-                                [base, base * p / 100, answer + 1, answer - 1,
-                                 base - base * p / 100].map(String.init))
         default: // percentOf
             let p = percentages.randomElement()!
             if p == 100 {
                 let whole = Int.random(in: 2...30)
-                return makeQuestion("100% of \(whole) = ?", "\(whole)",
+                return makeQuestion("100% × \(whole) = ?", "\(whole)",
                                     [whole / 2, whole + 1, whole - 1, whole * 2].map(String.init))
             }
             return percentagesQuestion(percentage: p)

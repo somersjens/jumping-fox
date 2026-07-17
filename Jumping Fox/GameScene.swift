@@ -281,6 +281,13 @@ final class GameScene: SKScene {
     private var lastUpdateTime: TimeInterval = 0
     private var started = false
 
+    // Haptics: one retained generator kept "warm" via prepare(), so the
+    // Taptic Engine never cold-starts on the first correct landing (the
+    // cold start is what caused the noticeable hitch on the first jump).
+#if os(iOS)
+    private let feedbackGenerator = UINotificationFeedbackGenerator()
+#endif
+
     init(state: GameState) {
         self.state = state
         super.init(size: .zero)
@@ -294,6 +301,25 @@ final class GameScene: SKScene {
     override func didMove(to view: SKView) {
         startIfNeeded()
         startMotionUpdates()
+#if os(iOS)
+        // Warm the Taptic Engine before the first correct landing so the
+        // first success haptic doesn't cause a frame hitch.
+        feedbackGenerator.prepare()
+#endif
+        prewarmCheckmarkGlyph()
+    }
+
+    /// The first time an SKLabelNode renders the "✓" glyph, SpriteKit builds
+    /// its font texture — a one-off cost that used to land on the first
+    /// correct answer. Render it once off-screen at start-up to absorb that.
+    private func prewarmCheckmarkGlyph() {
+        let warmUp = SKLabelNode(fontNamed: "AvenirNext-Heavy")
+        warmUp.text = "✓"
+        warmUp.fontSize = 20
+        warmUp.alpha = 0
+        warmUp.position = CGPoint(x: -1000, y: -1000)
+        addChild(warmUp)
+        warmUp.run(.sequence([.wait(forDuration: 0.1), .removeFromParent()]))
     }
 
     override func willMove(from view: SKView) {
@@ -371,17 +397,12 @@ final class GameScene: SKScene {
     private func configurePlayerSprite() {
         playerSprite.removeFromParent()
 
-        if theme.id == CharacterCatalog.freeCharacterID {
-            let fox = SKSpriteNode(texture: SKTexture(imageNamed: "no_background"))
-            fox.size = CGSize(width: 82, height: 82)
-            playerSprite = fox
-        } else {
-            let emoji = SKLabelNode(fontNamed: "AvenirNext-Bold")
-            emoji.fontSize = 40
-            emoji.verticalAlignmentMode = .center
-            emoji.text = theme.emoji
-            playerSprite = emoji
-        }
+        // Every character has its own artwork (with a built-in coil spring),
+        // rendered at the same size so the jump and squash animation is
+        // identical for all of them.
+        let sprite = SKSpriteNode(texture: theme.skTexture)
+        sprite.size = CGSize(width: 82, height: 82)
+        playerSprite = sprite
 
         player.addChild(playerSprite)
     }
@@ -416,10 +437,9 @@ final class GameScene: SKScene {
         backgroundColor = theme.skSky
         configurePlayerSprite()
         springNode.strokeColor = theme.skDeep
-        // The mascot artwork already includes its own red coil spring.
-        // Keeping the separate coil for the emoji characters avoids a
-        // doubled spring below the fox.
-        springNode.isHidden = theme.id == CharacterCatalog.freeCharacterID
+        // Every character's artwork already includes its own coil spring,
+        // so the separate drawn coil stays hidden to avoid a doubled spring.
+        springNode.isHidden = true
         springboard.fillColor = theme.skPrimary
         springboard.strokeColor = theme.skDeep
         springboard.lineWidth = 2
@@ -1002,11 +1022,11 @@ final class GameScene: SKScene {
                     // The correct block registers over its full (generous)
                     // landing width — a deliberate jump is always rewarded.
                     landedCorrect(on: platform)
-                } else if dx < halfWidth - 6 {
-                    // A wrong answer only registers on a real, committed
-                    // landing. The outer edge of a wrong block bounces
-                    // like a neutral platform without penalty, so a graze
-                    // at speed never punishes the player by accident.
+                } else {
+                    // Any landing that bounces off a wrong block counts as
+                    // wrong. If the player touches it enough to spring back
+                    // up, it registers as a wrong answer (deduction) — no
+                    // silent edge-graze forgiveness.
                     landedWrong(on: platform)
                 }
             }
@@ -1040,8 +1060,9 @@ final class GameScene: SKScene {
 
     private func haptic(success: Bool) {
 #if os(iOS)
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(success ? .success : .error)
+        feedbackGenerator.notificationOccurred(success ? .success : .error)
+        // Re-arm the engine so the following landing is warm too.
+        feedbackGenerator.prepare()
 #endif
     }
 

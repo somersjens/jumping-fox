@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
+    @AppStorage(GameSettings.answerHintKey) private var answerHintEnabled = true
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var tracker = PlaytimeTracker.shared
@@ -26,6 +27,7 @@ struct SettingsView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     livesCard
+                    hintCard
                     goalsCard
                     characterCard
                     premiumCard
@@ -107,6 +109,24 @@ struct SettingsView: View {
             )
         }
         .buttonStyle(.plain)
+    }
+
+    // MARK: Hint
+
+    private var hintCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Toggle(isOn: $answerHintEnabled) {
+                Text("Antwoord-hint")
+                    .font(.headline)
+            }
+            .tint(character.color)
+
+            Text("Tik tijdens het spelen op de som om het antwoord te zien. Dat blijft staan tot de volgende som en kost je een half leven.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 16))
     }
 
     // MARK: Play goals
@@ -202,9 +222,10 @@ struct SettingsView: View {
                     Circle()
                         .fill(animal.color.opacity(0.22))
                         .frame(width: 52, height: 52)
-                    Text(animal.emoji)
-                        .font(.system(size: 30))
-                        .frame(width: 52, height: 52)
+                    animal.artwork
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 46, height: 46)
                         .opacity(isLocked ? 0.5 : 1)
                     if isLocked {
                         Image(systemName: "lock.circle.fill")

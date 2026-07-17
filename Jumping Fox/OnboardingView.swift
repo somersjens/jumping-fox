@@ -236,7 +236,10 @@ struct CharacterPickerView: View {
                         dismiss()
                     } label: {
                         VStack(spacing: 5) {
-                            Text(animal.emoji).font(.system(size: 40))
+                            animal.artwork
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 54, height: 54)
                             Text(animal.name).font(.caption.weight(.bold))
                         }
                         .frame(maxWidth: .infinity)
