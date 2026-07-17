@@ -9,9 +9,8 @@
 import Foundation
 import Combine
 
-/// How many lives a game starts with. Unlimited requires Premium.
+/// How many lives a game starts with.
 enum LifeMode: String, CaseIterable, Identifiable {
-    case one
     case three
     case unlimited
 
@@ -20,7 +19,6 @@ enum LifeMode: String, CaseIterable, Identifiable {
     /// nil means unlimited.
     var startingLives: Int? {
         switch self {
-        case .one: return 1
         case .three: return 3
         case .unlimited: return nil
         }
@@ -28,25 +26,29 @@ enum LifeMode: String, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .one: return "1 life"
         case .three: return "3 lives"
         case .unlimited: return "Unlimited"
         }
     }
 
-    var requiresPremium: Bool { self == .unlimited }
+    var requiresPremium: Bool { false }
 }
 
 /// Game settings, persisted in UserDefaults.
 enum GameSettings {
     static let lifeModeKey = "settings.lifeMode"
     static let answerHelperKey = "settings.answerHelper"
+    static let showStreakKey = "settings.showStreak"
+    static let showTrophiesKey = "settings.showTrophies"
+    static let capTrophiesKey = "settings.capTrophiesAtThirty"
     static let characterKey = "settings.character"
+    static let playerNameKey = "profile.playerName"
+    static let onboardingCompleteKey = "onboarding.complete"
 
     static var lifeMode: LifeMode {
         get {
             guard let raw = UserDefaults.standard.string(forKey: lifeModeKey),
-                  let mode = LifeMode(rawValue: raw) else { return .one }
+                  let mode = LifeMode(rawValue: raw) else { return .three }
             return mode
         }
         set { UserDefaults.standard.set(newValue.rawValue, forKey: lifeModeKey) }
@@ -58,10 +60,20 @@ enum GameSettings {
         set { UserDefaults.standard.set(newValue, forKey: answerHelperKey) }
     }
 
+    static var capsTrophiesAtThirty: Bool {
+        get { UserDefaults.standard.object(forKey: capTrophiesKey) as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: capTrophiesKey) }
+    }
+
     /// Selected character id ("fox" by default).
     static var characterID: String {
         get { UserDefaults.standard.string(forKey: characterKey) ?? "fox" }
         set { UserDefaults.standard.set(newValue, forKey: characterKey) }
+    }
+
+    static var playerName: String {
+        get { UserDefaults.standard.string(forKey: playerNameKey) ?? "" }
+        set { UserDefaults.standard.set(newValue, forKey: playerNameKey) }
     }
 
     /// Mirror of the Premium entitlement, written by PremiumStore,
@@ -82,6 +94,7 @@ final class GameState: ObservableObject {
 
     let level: LevelConfig
     let lifeMode: LifeMode
+    let isAnswerHelperEnabled: Bool
     private let engine: QuestionEngine
 
     @Published private(set) var question: Question
@@ -92,28 +105,31 @@ final class GameState: ObservableObject {
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
     @Published private(set) var highScore: Int
+    @Published private(set) var wrongAnswerCount = 0
 
     init(level: LevelConfig) {
         self.level = level
         let mode = GameSettings.lifeMode
         self.lifeMode = mode
+        self.isAnswerHelperEnabled = GameSettings.answerHelperEnabled
         self.lives = mode.startingLives
         let engine = QuestionEngine(level: level)
         self.engine = engine
         self.question = engine.next()
-        self.highScore = ProgressStore.bestScore(levelID: level.id, mode: mode)
+        self.highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
     }
 
     var correctAnswer: String { question.correctAnswer }
     var questionText: String { question.prompt }
     var isRandomPractice: Bool { question.isRandomPractice }
+    var isScoreLocked: Bool { lifeMode == .unlimited && wrongAnswerCount >= 3 }
 
     /// Called when the player lands on the correct platform.
     /// Only closes the current question (score); the next question is
     /// activated separately via `advanceQuestion()` so the HUD and the
     /// platforms always switch together, after the confirmation.
     func answeredCorrectly() {
-        guard !isGameOver else { return }
+        guard !isGameOver, !isScoreLocked else { return }
         score += 1
     }
 
@@ -128,7 +144,11 @@ final class GameState: ObservableObject {
     func answeredWrong() {
         guard !isGameOver else { return }
         engine.registerWrong(question)
-        guard let currentLives = lives else { return } // unlimited
+        wrongAnswerCount += 1
+        guard let currentLives = lives else {
+            if wrongAnswerCount == 3 { recordCurrentScore() }
+            return
+        }
         let remaining = currentLives - 1
         lives = remaining
         if remaining <= 0 {
@@ -145,9 +165,14 @@ final class GameState: ObservableObject {
     private func endGame(reason: GameOverReason) {
         isGameOver = true
         gameOverReason = reason
-        if ProgressStore.recordScore(score, levelID: level.id, mode: lifeMode) {
+        recordCurrentScore(showNewHighScore: true)
+    }
+
+    /// Paused runs should count toward the score shown on their level card.
+    func recordCurrentScore(showNewHighScore: Bool = false) {
+        if ProgressStore.recordScore(score, levelID: level.id, helperEnabled: isAnswerHelperEnabled) {
             highScore = score
-            isNewHighScore = true
+            isNewHighScore = showNewHighScore
         }
     }
 
@@ -157,10 +182,11 @@ final class GameState: ObservableObject {
         question = engine.next()
         score = 0
         lives = lifeMode.startingLives
+        wrongAnswerCount = 0
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false
-        highScore = ProgressStore.bestScore(levelID: level.id, mode: lifeMode)
+        highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
     }
 
     /// A wrong answer for the current question that isn't in `used`.

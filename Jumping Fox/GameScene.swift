@@ -181,7 +181,9 @@ final class GameScene: SKScene {
 
     // Player
     private var player = SKNode()
-    private var playerSprite = SKLabelNode(fontNamed: "AvenirNext-Bold")
+    /// The visible player. The fox uses the supplied mascot artwork; the
+    /// Premium animals keep their emoji appearance.
+    private var playerSprite = SKNode()
     private var springNode = SKShapeNode()
     private var velocityY: CGFloat = 0
     private var velocityX: CGFloat = 0
@@ -208,19 +210,26 @@ final class GameScene: SKScene {
 
     // Platforms & layout rules.
     // Reachability: max jump height = v²/2g ≈ 253 pt; with the 80% safety
-    // factor (~202 pt) every band gap incl. jitter (≤ 150 + 24 = 174 pt)
+    // factor (~202 pt) every band gap incl. jitter (≤ 135 + 24 = 159 pt)
     // stays climbable. Placement margin keeps visible air between blocks
     // (based on real block size + landing space; configurable).
     private var platforms: [GamePlatform] = []
     private var nextSpawnY: CGFloat = 0
-    private let minBandGap: CGFloat = 100
-    private let maxBandGap: CGFloat = 150
+    private let minBandGap: CGFloat = 95
+    private let maxBandGap: CGFloat = 135
     private let bandJitter: CGFloat = 12
     private let jumpSafetyFactor: CGFloat = 0.8
     private let placementMargin: CGFloat = 22   // visible air around every block
+    /// Minimum centre-to-centre distance between any two ANSWER blocks.
+    /// Answer blocks need far more air than neutral platforms: a jump
+    /// aimed at one answer must never accidentally clip a neighbour.
+    private let minAnswerSeparation: CGFloat = 128
     private let correctApproachWidth: CGFloat = 116
     private let correctApproachBelow: CGFloat = 220
-    private let correctApproachAbove: CGFloat = 52
+    /// Also keep the zone ABOVE the correct block clear: after a fast
+    /// launch the player often overshoots the correct block and falls
+    /// back down — nothing wrong may be waiting in that column.
+    private let correctApproachAbove: CGFloat = 130
 
     // Spawn zone: new blocks are only ever created ABOVE the visible
     // viewport. The margin covers full block height (26), the highest
@@ -228,8 +237,10 @@ final class GameScene: SKScene {
     // of render latency, plus animation headroom.
     private let spawnMargin: CGFloat = 80
     // Forward buffer: bands are prepared several rows ahead so fast
-    // climbs never catch up with the generator.
-    private let spawnAheadBuffer: CGFloat = 600
+    // climbs never catch up with the generator. Large enough to also
+    // cover the raised window used by skip sets (correct block one band
+    // higher than the wrong answers).
+    private let spawnAheadBuffer: CGFloat = 900
 
     private var maxJumpHeight: CGFloat { bounceVelocity * bounceVelocity / (2 * -gravity) }
     private var helperEnabled = false
@@ -245,6 +256,17 @@ final class GameScene: SKScene {
     // confirmation, never in the landing frame.
     private var answerRefreshAt: TimeInterval?
     private var lastReachabilityCheck: TimeInterval = 0
+
+    // Skip sets: occasionally the first band deliberately contains ONLY
+    // wrong answers and the correct block waits one band higher, so the
+    // player must recognise nothing fits and jump on past. Rare (about
+    // 1 in 10), never twice in a row, never in the first two questions.
+    private let skipSetChance = 0.10
+    private var setsBuilt = 0
+    private var lastSetWasSkip = false
+    /// Vertical offset of the raised correct-block window; larger than
+    /// the normal window height so the two bands never blend together.
+    private let skipSetRaise: CGFloat = 420
 
     // Permanent bottom springboard: separate platform type, own height,
     // independent of the answer generator.
@@ -333,11 +355,7 @@ final class GameScene: SKScene {
     private func setupPlayer() {
         player.removeFromParent()
         player = SKNode()
-
-        playerSprite = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        playerSprite.fontSize = 40
-        playerSprite.verticalAlignmentMode = .center
-        player.addChild(playerSprite)
+        configurePlayerSprite()
 
         springNode = makeSpring()
         springNode.position = CGPoint(x: 0, y: -18)
@@ -345,6 +363,27 @@ final class GameScene: SKScene {
 
         player.zPosition = 10
         addChild(player)
+    }
+
+    /// Changes the artwork without changing the player's collision box or
+    /// movement node. This keeps the original jump and squash animation
+    /// identical for every character.
+    private func configurePlayerSprite() {
+        playerSprite.removeFromParent()
+
+        if theme.id == CharacterCatalog.freeCharacterID {
+            let fox = SKSpriteNode(texture: SKTexture(imageNamed: "no_background"))
+            fox.size = CGSize(width: 82, height: 82)
+            playerSprite = fox
+        } else {
+            let emoji = SKLabelNode(fontNamed: "AvenirNext-Bold")
+            emoji.fontSize = 40
+            emoji.verticalAlignmentMode = .center
+            emoji.text = theme.emoji
+            playerSprite = emoji
+        }
+
+        player.addChild(playerSprite)
     }
 
     /// Drawn coil spring under the character.
@@ -375,8 +414,12 @@ final class GameScene: SKScene {
         helperEnabled = GameSettings.answerHelperEnabled
         theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
         backgroundColor = theme.skSky
-        playerSprite.text = theme.emoji
+        configurePlayerSprite()
         springNode.strokeColor = theme.skDeep
+        // The mascot artwork already includes its own red coil spring.
+        // Keeping the separate coil for the emoji characters avoids a
+        // doubled spring below the fox.
+        springNode.isHidden = theme.id == CharacterCatalog.freeCharacterID
         springboard.fillColor = theme.skPrimary
         springboard.strokeColor = theme.skDeep
         springboard.lineWidth = 2
@@ -391,6 +434,8 @@ final class GameScene: SKScene {
         lastUpdateTime = 0
         answerRefreshAt = nil
         lastReachabilityCheck = 0
+        setsBuilt = 0
+        lastSetWasSkip = false
 
         // A guaranteed neutral platform right below the player.
         addNeutralPlatform(at: CGPoint(x: size.width / 2, y: springboardY + 64))
@@ -504,6 +549,19 @@ final class GameScene: SKScene {
             && !planned.contains { blocksApproach(toCorrect: candidate, candidate: $0) }
     }
 
+    /// Enforces real air between answer blocks (planned + already active),
+    /// so a jump aimed at one answer can never clip a neighbouring answer.
+    private func farFromOtherAnswers(_ candidate: CGPoint, planned: [CGPoint],
+                                     separation: CGFloat? = nil) -> Bool {
+        let minimum = separation ?? minAnswerSeparation
+        let others = planned + platforms.filter(\.isActiveAnswer).map(\.position)
+        return others.allSatisfy { other in
+            let dx = wrapDx(candidate.x, other.x)
+            let dy = candidate.y - other.y
+            return (dx * dx + dy * dy).squareRoot() >= minimum
+        }
+    }
+
     // MARK: Answer set generation (fixed order, atomic activation)
 
     /// Fixed order: question → correct value → place correct block within
@@ -518,55 +576,128 @@ final class GameScene: SKScene {
         }
 
         let correctValue = state.correctAnswer
+        setsBuilt += 1
 
+        // Occasional skip set: only wrong answers in the first band, the
+        // correct block one band higher. Falls back to a normal set when
+        // the layout doesn't fit.
+        if setsBuilt > 2, !lastSetWasSkip, Double.random(in: 0...1) < skipSetChance,
+           let skip = buildSkipLayout(correctValue: correctValue) {
+            lastSetWasSkip = true
+            activateAnswerSet(correct: skip.correct, wrongs: skip.wrongs)
+            return
+        }
+        lastSetWasSkip = false
+
+        // A correct block with fewer than two wrong options is a weak
+        // layout: retry with a fresh position, and only accept the best
+        // attempt so far when every retry stays crowded.
+        var bestLayout: (CGPoint, [(String, CGPoint)])?
         for _ in 0..<3 {
             guard let correctPos = findCorrectPosition(), routeExists(toPosition: correctPos) else { continue }
 
             var planned: [CGPoint] = [correctPos]
-            var wrongs: [(String, CGPoint)] = []
-            for value in state.question.distractors.shuffled().prefix(wrongAnswerCount) {
-                if let pos = findWrongPosition(correct: correctPos, planned: planned) {
-                    planned.append(pos)
-                    wrongs.append((value, pos))
-                }
-                // No safe spot for this wrong block → simply fewer wrong
-                // blocks. That is always a valid layout.
+            let wrongs = placeWrongs(correct: correctPos, planned: &planned)
+            if wrongs.count >= min(2, state.question.distractors.count) {
+                activateAnswerSet(correct: (correctValue, correctPos), wrongs: wrongs)
+                return
             }
+            if wrongs.count >= (bestLayout?.1.count ?? -1) {
+                bestLayout = (correctPos, wrongs)
+            }
+        }
+        if let (correctPos, wrongs) = bestLayout {
             activateAnswerSet(correct: (correctValue, correctPos), wrongs: wrongs)
             return
         }
 
-        // Guaranteed minimal fallback: only the correct block, on a spot
-        // that is freed up if necessary. Never an invalid layout.
+        // Guaranteed minimal fallback: correct block on a spot that is
+        // freed up if necessary, plus whatever wrong blocks still fit.
         let pos = guaranteedCorrectPosition()
-        activateAnswerSet(correct: (correctValue, pos), wrongs: [])
+        var planned: [CGPoint] = [pos]
+        let wrongs = placeWrongs(correct: pos, planned: &planned)
+        activateAnswerSet(correct: (correctValue, pos), wrongs: wrongs)
+    }
+
+    /// Places as many wrong blocks as the difficulty asks for. Two passes:
+    /// strict separation first, then a slightly relaxed separation with a
+    /// taller window — so the correct answer is (almost) never alone.
+    private func placeWrongs(correct: CGPoint?, planned: inout [CGPoint]) -> [(String, CGPoint)] {
+        var wrongs: [(String, CGPoint)] = []
+        var values = state.question.distractors.shuffled()
+        while wrongs.count < wrongAnswerCount, !values.isEmpty {
+            guard let pos = findWrongPosition(correct: correct, planned: planned) else { break }
+            planned.append(pos)
+            wrongs.append((values.removeFirst(), pos))
+        }
+        return wrongs
+    }
+
+    /// Layout for a skip set: at least two wrong answers in the normal
+    /// band, the correct block in the raised band with a validated route.
+    private func buildSkipLayout(correctValue: String)
+        -> (correct: (String, CGPoint), wrongs: [(String, CGPoint)])? {
+        var planned: [CGPoint] = []
+        var wrongs: [(String, CGPoint)] = []
+        var values = state.question.distractors.shuffled()
+        while wrongs.count < max(2, wrongAnswerCount), !values.isEmpty {
+            guard let pos = findWrongPosition(correct: nil, planned: planned) else { break }
+            planned.append(pos)
+            wrongs.append((values.removeFirst(), pos))
+        }
+        guard wrongs.count >= 2,
+              let correctPos = findCorrectPosition(planned: planned, raised: true),
+              routeExists(toPosition: correctPos) else { return nil }
+        return ((correctValue, correctPos), wrongs)
     }
 
     /// Spawn zone for answer blocks: fully ABOVE the visible viewport
     /// (bottom edge of a block clears viewportTop + spawnMargin), so new
     /// blocks only come into view through natural player movement.
-    private func answerWindowYRange() -> ClosedRange<CGFloat> {
+    private func answerWindowYRange(raised: Bool = false) -> ClosedRange<CGFloat> {
         let lower = size.height + spawnMargin + GamePlatform.platformSize.height / 2
-        return lower...(lower + 260)
+            + (raised ? skipSetRaise : 0)
+        return lower...(lower + 240)
     }
 
-    private func findCorrectPosition() -> CGPoint? {
-        let yRange = answerWindowYRange()
+    /// Y-samples are weighted toward the BOTTOM of the window, so answer
+    /// blocks come into view as soon as the spawn rule allows — this keeps
+    /// the option-free climb between two questions as short as possible.
+    private func answerY(in range: ClosedRange<CGFloat>) -> CGFloat {
+        let t = pow(CGFloat.random(in: 0...1), 1.7)
+        return range.lowerBound + t * (range.upperBound - range.lowerBound)
+    }
+
+    private func findCorrectPosition(planned: [CGPoint] = [], raised: Bool = false) -> CGPoint? {
+        let yRange = answerWindowYRange(raised: raised)
         for _ in 0..<80 {
             let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
-                                    y: .random(in: yRange))
-            if isFreePosition(candidate), hasClearApproach(toCorrect: candidate) { return candidate }
+                                    y: answerY(in: yRange))
+            if isFreePosition(candidate, planned: planned),
+               hasClearApproach(toCorrect: candidate, planned: planned),
+               farFromOtherAnswers(candidate, planned: planned) { return candidate }
         }
         return nil
     }
 
-    private func findWrongPosition(correct: CGPoint, planned: [CGPoint]) -> CGPoint? {
-        let yRange = answerWindowYRange()
-        for _ in 0..<20 {
-            let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
-                                    y: .random(in: yRange))
-            guard !blocksApproach(toCorrect: correct, candidate: candidate) else { continue }
-            if isFreePosition(candidate, planned: planned) { return candidate }
+    /// `correct` may be nil for skip sets, where wrong blocks are placed
+    /// before the (raised) correct block exists. Two passes: strict
+    /// separation, then slightly relaxed with a taller window, so a set
+    /// rarely ends up with fewer than two wrong options.
+    private func findWrongPosition(correct: CGPoint?, planned: [CGPoint]) -> CGPoint? {
+        let base = answerWindowYRange()
+        for relaxed in [false, true] {
+            let yRange = relaxed ? base.lowerBound...(base.upperBound + 100) : base
+            let separation = relaxed ? minAnswerSeparation * 0.75 : minAnswerSeparation
+            for _ in 0..<40 {
+                let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
+                                        y: relaxed ? .random(in: yRange) : answerY(in: yRange))
+                if let correct, blocksApproach(toCorrect: correct, candidate: candidate) { continue }
+                if isFreePosition(candidate, planned: planned),
+                   farFromOtherAnswers(candidate, planned: planned, separation: separation) {
+                    return candidate
+                }
+            }
         }
         return nil
     }
@@ -648,7 +779,11 @@ final class GameScene: SKScene {
 
         guard !hasActiveCorrectPlatform() else { return }
         if let pos = findCorrectPosition(), routeExists(toPosition: pos) {
-            activateAnswerSet(correct: (state.correctAnswer, pos), wrongs: [])
+            // The repaired set also gets wrong options again, so a missed
+            // correct block never degrades into a lone-answer stretch.
+            var planned: [CGPoint] = [pos]
+            let wrongs = placeWrongs(correct: pos, planned: &planned)
+            activateAnswerSet(correct: (state.correctAnswer, pos), wrongs: wrongs)
         } else {
             activateAnswerSet(correct: (state.correctAnswer, guaranteedCorrectPosition()), wrongs: [])
         }
@@ -712,7 +847,7 @@ final class GameScene: SKScene {
     /// position is overlap-validated BEFORE the platform is added; there
     /// is no visible correction afterwards.
     private func spawnBand(at y: CGFloat) {
-        let count = CGFloat.random(in: 0...1) < 0.25 ? 2 : 1
+        let count = CGFloat.random(in: 0...1) < 0.4 ? 2 : 1
         for _ in 0..<count {
             for _ in 0..<12 {
                 let candidate = CGPoint(x: .random(in: 48...(size.width - 48)),
@@ -768,7 +903,7 @@ final class GameScene: SKScene {
         }
 
         // Watchdog: keep the correct answer inside the playable window.
-        if answerRefreshAt == nil, currentTime - lastReachabilityCheck > 0.75 {
+        if answerRefreshAt == nil, currentTime - lastReachabilityCheck > 0.5 {
             lastReachabilityCheck = currentTime
             ensureCorrectReachable()
         }
@@ -864,11 +999,14 @@ final class GameScene: SKScene {
             // landings are plain bounces, never a second registration.
             if platform.isActiveAnswer && answerRefreshAt == nil {
                 if platform.value == state.correctAnswer {
+                    // The correct block registers over its full (generous)
+                    // landing width — a deliberate jump is always rewarded.
                     landedCorrect(on: platform)
-                } else {
-                    // Any real landing on a wrong answer is a wrong answer.
-                    // The wider collision check above already rules out a
-                    // pass-by, so feedback must never disappear at an edge.
+                } else if dx < halfWidth - 6 {
+                    // A wrong answer only registers on a real, committed
+                    // landing. The outer edge of a wrong block bounces
+                    // like a neutral platform without penalty, so a graze
+                    // at speed never punishes the player by accident.
                     landedWrong(on: platform)
                 }
             }
@@ -884,7 +1022,10 @@ final class GameScene: SKScene {
         haptic(success: true)
         PlaytimeTracker.shared.registerInteraction()
         state.answeredCorrectly()
-        answerRefreshAt = lastUpdateTime + 0.65
+        // Short confirmation beat: long enough to see the checkmark, short
+        // enough that the next set spawns before the player climbs far —
+        // every extra tenth here directly lengthens the option-free gap.
+        answerRefreshAt = lastUpdateTime + 0.4
     }
 
     /// Register once → cross INSIDE the block → nothing else changes.

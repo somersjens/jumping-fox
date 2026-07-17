@@ -3,8 +3,8 @@
 //  Jumping Fox
 //
 //  One-time Premium in-app purchase (StoreKit 2).
-//  Premium unlocks: tables up to 100, unlimited lives,
-//  and the character selector with matching themes.
+//  Premium unlocks 100 levels per topic, the character selector,
+//  and an ad-free experience.
 //
 
 import Foundation

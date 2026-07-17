@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  Jumping Fox
 //
-//  Settings sheet: life mode, answer helper, character selector,
+//  Settings sheet: life mode, character selector,
 //  and Premium status.
 //
 
@@ -10,15 +10,14 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.one.rawValue
-    @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
+    @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var tracker = PlaytimeTracker.shared
     @State private var showPremium = false
 
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
-    private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .one }
+    private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
 
     private let characterColumns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 5)
 
@@ -28,7 +27,6 @@ struct SettingsView: View {
                 VStack(spacing: 20) {
                     livesCard
                     goalsCard
-                    helperCard
                     characterCard
                     premiumCard
                 }
@@ -63,7 +61,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("The game ends when you run out of lives. Falling is never fatal — the springboard at the bottom always catches you! High scores are tracked separately for each mode.")
+            Text("Met drie levens eindigt het spel na je laatste hartje. In oneindige modus tellen trofeeën alleen mee tot drie fouten; daarna kun je wel doorspelen.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -154,24 +152,6 @@ struct SettingsView: View {
             }
 
             Text("The streak goal starts at 5 minutes per day. Only active playtime counts.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-        }
-        .padding()
-        .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 16))
-    }
-
-    // MARK: Answer helper
-
-    private var helperCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Toggle(isOn: $answerHelper) {
-                Text("Answer helper")
-                    .font(.headline)
-            }
-            .tint(character.color)
-
-            Text("Shows the correct platform in green and wrong ones in red. Great while learning a new table!")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

@@ -29,13 +29,13 @@ Adjustable daily (default 5 min) and weekly (default 35 min) play goals. Only *a
 
 ## Modes & scores
 
-- Life modes: 1 life, 3 lives, or Unlimited (Premium)
+- Life modes: 3 lives or Unlimited
 - High scores are tracked separately per table **and** per life mode
 
 ## Premium (one-time in-app purchase)
 
 - Multiplication tables 13–100
-- Unlimited lives
+- Unlimited lives for everyone
 - 10 characters (fox, frog, penguin, pig, whale, lion, octopus, crab, turtle, bear)
 - A matching color theme for each character
 
@@ -43,7 +43,7 @@ Adjustable daily (default 5 min) and weekly (default 35 min) play goals. Only *a
 
 - `Jumping_FoxApp.swift` — app entry point
 - `ContentView.swift` — home screen (tables, premium banner, gear → settings)
-- `SettingsView.swift` — lives, answer helper, character selector
+- `OnboardingView.swift` — welcome flow and character selector
 - `PremiumView.swift` — purchase sheet
 - `PremiumStore.swift` — StoreKit 2 store
 - `Theme.swift` — character catalog and color themes

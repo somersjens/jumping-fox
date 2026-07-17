@@ -14,9 +14,8 @@ struct LevelSelection: Identifiable {
     var id: String { level.id }
 }
 
-/// The six topic filters. Each has a regular menu, its immediate-mix form,
-/// and the more varied challenge menu.
-private enum MenuFilter: Int, CaseIterable, Identifiable {
+/// The six topic filters. Each has a regular menu and an immediate-mix form.
+enum MenuFilter: Int, CaseIterable, Identifiable {
     case addition, subtraction, tables, fractions, percentages, mixed
 
     var id: Int { rawValue }
@@ -54,24 +53,11 @@ private enum MenuFilter: Int, CaseIterable, Identifiable {
         }
     }
 
-    var challenge: ChallengeCategory {
-        switch self {
-        case .addition: return .additionMix
-        case .subtraction: return .subtractionMix
-        case .tables: return .tablesMix
-        case .fractions: return .fractionsMix
-        case .percentages: return .percentagesMix
-        case .mixed: return .supermix
-        }
-    }
-
-    func category(for mode: MenuMode) -> ChallengeCategory {
-        mode == .challenge ? challenge : standard
-    }
+    func category(for mode: MenuMode) -> ChallengeCategory { standard }
 }
 
-private enum MenuMode: String, CaseIterable, Identifiable {
-    case standard, mix, challenge
+enum MenuMode: String, CaseIterable, Identifiable {
+    case standard, mix
 
     var id: String { rawValue }
 
@@ -79,7 +65,6 @@ private enum MenuMode: String, CaseIterable, Identifiable {
         switch self {
         case .standard: return "Standard"
         case .mix: return "Mix"
-        case .challenge: return "Challenge"
         }
     }
 }
@@ -88,16 +73,25 @@ private enum MenuMode: String, CaseIterable, Identifiable {
 
 struct ContentView: View {
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
-    @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.one.rawValue
+    @AppStorage(GameSettings.playerNameKey) private var playerName = ""
+    @AppStorage(GameSettings.onboardingCompleteKey) private var onboardingComplete = false
+    @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
+    @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
+    @AppStorage(GameSettings.showStreakKey) private var showsStreak = true
+    @AppStorage(GameSettings.showTrophiesKey) private var showsTrophies = true
+    @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
     @ObservedObject private var premium = PremiumStore.shared
     @State private var selection: LevelSelection?
-    @State private var showSettings = false
     @State private var showPremium = false
+    @State private var showGoalPicker = false
+    @State private var showNameEditor = false
+    @State private var nameDraft = ""
     @State private var refreshID = UUID()
+    @State private var showsOptions = false
 
-    private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .one }
+    private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
     private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
     private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
@@ -116,98 +110,128 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(spacing: 18) {
-                    header
-                    PlaytimeBar(accent: character.deepColor) {
-                        showSettings = true
-                    }
-                    categorySelector
+                    menuCard
                     levelGrid
+                        .id(showsOptions)
                 }
                 .padding()
                 .id(refreshID)
             }
         }
-        .overlay(alignment: .topTrailing) {
-            Button {
-                showSettings = true
-            } label: {
-                Image(systemName: "gearshape.fill")
-                    .font(.title2)
-                    .foregroundStyle(character.deepColor)
-                    .padding(10)
-                    .background(.white.opacity(0.7), in: Circle())
-            }
-            .padding(.trailing, 16)
-            .padding(.top, 4)
-        }
-        .sheet(isPresented: $showSettings, onDismiss: { refreshID = UUID() }) {
-            SettingsView()
-        }
         .sheet(isPresented: $showPremium) {
             PremiumView()
+        }
+        .popover(isPresented: $showGoalPicker, arrowEdge: .top) {
+            DailyGoalPicker(theme: character)
+                .padding()
+                .presentationCompactAdaptation(.popover)
+        }
+        .alert("Hoe heet je?", isPresented: $showNameEditor) {
+            TextField("Naam", text: $nameDraft)
+            Button("Bewaar") {
+                let trimmed = nameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !trimmed.isEmpty { playerName = trimmed }
+            }
+            Button("Annuleer", role: .cancel) { }
         }
         .gameCover(item: $selection, onDismiss: { refreshID = UUID() })
     }
 
-    // MARK: Header
+    // MARK: Combined top menu
 
-    private var header: some View {
-        VStack(spacing: 4) {
-            Text(character.emoji)
-                .font(.system(size: 56))
-            Button {
-                showSettings = true
-            } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: lifeMode == .unlimited ? "infinity" : "heart.fill")
-                        .foregroundStyle(.red)
-                    Text(lifeMode.label)
-                        .foregroundStyle(character.deepColor)
+    private var menuCard: some View {
+        VStack(spacing: 14) {
+            HStack(alignment: .center, spacing: 12) {
+                Button {
+                    showPremium = true
+                } label: {
+                    Group {
+                        if character.id == CharacterCatalog.freeCharacterID {
+                            Image("no_background")
+                                .resizable()
+                                .scaledToFill()
+                        } else {
+                            Text(character.emoji)
+                                .font(.system(size: 48))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(.white.opacity(0.75))
+                        }
+                    }
+                    .frame(width: 74, height: 74)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .stroke(.white.opacity(0.9), lineWidth: 2)
+                    }
+                    .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
                 }
-                .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 14)
-                .padding(.vertical, 6)
-                .background(.white.opacity(0.7), in: Capsule())
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.top, 8)
-    }
+                .buttonStyle(.plain)
+                .onLongPressGesture(minimumDuration: 2) {
+                    onboardingComplete = false
+                }
+                .accessibilityHint("Houd twee seconden ingedrukt om de onboarding opnieuw te starten")
 
-    // MARK: Menu filters
+                VStack(alignment: .leading, spacing: 6) {
+                    Button {
+                        nameDraft = playerName
+                        showNameEditor = true
+                    } label: {
+                        Text(playerName.isEmpty ? "Jumping Fox" : playerName)
+                        .font(.title3.weight(.heavy))
+                    }
+                    .buttonStyle(.plain)
 
-    private var categorySelector: some View {
-        VStack(spacing: 12) {
-            Text(selectedFilter.title)
-                .font(.title3.weight(.heavy))
+                    if showsTrophies {
+                        Label("\(totalTrophies) trofeeën\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(character.deepColor.opacity(0.78))
+                    }
+                }
                 .foregroundStyle(character.deepColor)
 
-            HStack {
-                Text("Total score")
-                    .font(.subheadline.weight(.bold))
-                Spacer()
-                Label("\(groupTotalScore)", systemImage: "trophy.fill")
-                    .font(.headline.weight(.heavy))
-            }
-            .foregroundStyle(character.deepColor)
+                Spacer(minLength: 0)
 
-            HStack(spacing: 6) {
-                ForEach(MenuFilter.allCases) { filter in
-                    menuFilterButton(filter)
+                lifeModeButton
+            }
+
+            if showsStreak {
+                PlaytimeBar(accent: character.deepColor, isEmbedded: true) {
+                    showGoalPicker = true
                 }
             }
 
-            Picker("Menu type", selection: $menuModeRaw) {
-                ForEach(MenuMode.allCases) { mode in
-                    Text(mode.title).tag(mode.rawValue)
+            Divider().overlay(character.color.opacity(0.22))
+
+            VStack(spacing: 11) {
+                HStack(alignment: .center) {
+                    Text(selectedFilter.title)
+                        .font(.title3.weight(.heavy))
+                    if showsTrophies {
+                        Label("\(categoryTrophies)\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                            .font(.subheadline.weight(.bold))
+                    }
+                    Spacer()
                 }
+                .foregroundStyle(character.deepColor)
+
+                HStack(spacing: 6) {
+                    ForEach(MenuFilter.allCases) { filter in
+                        menuFilterButton(filter)
+                    }
+                }
+
+                menuModePicker
+
+                helperModeRow
             }
-            .pickerStyle(.segmented)
-            .tint(character.color)
-            .accessibilityLabel("Choose standard or mix menu")
         }
-        .padding(12)
-        .background(.white.opacity(0.65), in: RoundedRectangle(cornerRadius: 16))
+        .padding(14)
+        .background(.white.opacity(0.76), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(.white.opacity(0.9), lineWidth: 1)
+        }
+        .shadow(color: character.deepColor.opacity(0.12), radius: 14, y: 7)
     }
 
     private func menuFilterButton(_ filter: MenuFilter) -> some View {
@@ -226,14 +250,146 @@ struct ContentView: View {
         .buttonStyle(.plain)
     }
 
-    private var groupTotalScore: Int {
-        let standardLevels = LevelCatalog.levels(for: selectedFilter.standard)
-        let allModes = standardLevels
-            + standardLevels.map { $0.immediateMixVersion() }
-            + LevelCatalog.levels(for: selectedFilter.challenge)
-        return allModes
+    private var totalTrophies: Int {
+        LevelCatalog.byCategory.values.flatMap { $0 }
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, mode: lifeMode) }
+            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, helperEnabled: answerHelper) }
+    }
+
+    private var categoryTrophies: Int {
+        LevelCatalog.levels(for: category)
+            .filter { !$0.requiresPremium }
+            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, helperEnabled: answerHelper) }
+    }
+
+    private var lifeModeButton: some View {
+        Button {
+            withAnimation(.snappy(duration: 0.2)) {
+                lifeModeRaw = lifeMode == .three ? LifeMode.unlimited.rawValue : LifeMode.three.rawValue
+            }
+        } label: {
+            HStack(spacing: 3) {
+                if lifeMode == .unlimited {
+                    Image(systemName: "infinity")
+                } else {
+                    Text("3×")
+                    Image(systemName: "heart.fill")
+                }
+            }
+            .foregroundStyle(character.deepColor)
+            .font(.system(size: 16, weight: .bold))
+            .frame(minWidth: 62, minHeight: 49)
+            .background(character.color.opacity(0.15), in: Capsule())
+            .overlay(Capsule().stroke(character.color.opacity(0.32), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(lifeMode == .three ? "Drie levens; tik voor oneindig spelen" : "Oneindig spelen; tik voor drie levens")
+    }
+
+    /// In the Mix menu the mode buttons show exactly which operations they
+    /// contain — "Standard"/"Mix" alone doesn't mean anything there.
+    private func modeLabel(_ mode: MenuMode) -> String {
+        guard selectedFilter == .mixed else { return mode.title }
+        return mode == .standard ? "+ − ×" : "+ − × ÷ %"
+    }
+
+    private var menuModePicker: some View {
+        HStack(spacing: 8) {
+            ForEach(MenuMode.allCases) { mode in
+                let isSelected = menuMode == mode
+                Button {
+                    withAnimation(.snappy(duration: 0.2)) {
+                        menuModeRaw = mode.rawValue
+                    }
+                } label: {
+                    Text(modeLabel(mode))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(isSelected ? .white : character.deepColor)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 42)
+                        .background(isSelected ? character.color : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Kies \(modeLabel(mode))")
+            }
+        }
+    }
+
+    private var helperModeRow: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Button {
+                showsOptions.toggle()
+            } label: {
+                HStack {
+                    Label("Weergave & spelopties", systemImage: "slider.horizontal.3")
+                        .font(.subheadline.weight(.bold))
+                    Spacer()
+                    Image(systemName: showsOptions ? "chevron.up" : "chevron.down")
+                        .font(.subheadline.weight(.bold))
+                }
+                .foregroundStyle(character.deepColor)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            if showsOptions {
+                Divider()
+                    .overlay(character.color.opacity(0.2))
+                    .padding(.top, 9)
+
+                VStack(alignment: .leading, spacing: 10) {
+                    optionToggle("Stoppen na 3 levens", isOn: lifeModeBinding)
+                    optionToggle("Streak laten zien", isOn: $showsStreak)
+                    optionToggle("Trofeeën laten zien", isOn: $showsTrophies)
+                    optionToggle("Afronden bij 30 punten", isOn: $capsTrophiesAtThirty)
+
+                    if capsTrophiesAtThirty {
+                        Text("Je kunt wel doorspelen, maar je kunt op elk level maximaal 30 punten halen.")
+                            .font(.caption)
+                            .foregroundStyle(character.deepColor.opacity(0.68))
+
+                        Divider().overlay(character.color.opacity(0.2))
+                    }
+
+                    optionToggle("Helpermodus", isOn: $answerHelper)
+
+                    if answerHelper {
+                        Text("Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld.")
+                            .font(.caption)
+                            .foregroundStyle(character.deepColor.opacity(0.72))
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .padding(.top, 10)
+            }
+        }
+        .padding(.horizontal, 11)
+        .padding(.vertical, 10)
+        .background(character.color.opacity(0.10), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(0.18), lineWidth: 1))
+    }
+
+    private func optionToggle(_ title: String, isOn: Binding<Bool>) -> some View {
+        HStack(spacing: 12) {
+            Text(title)
+                .font(.subheadline.weight(.medium))
+            Spacer(minLength: 16)
+            Toggle(title, isOn: isOn)
+                .labelsHidden()
+                .tint(character.color)
+                .frame(width: 54, height: 32)
+                .accessibilityLabel(title)
+        }
+        .frame(minHeight: 38)
+        .foregroundStyle(character.deepColor)
+    }
+
+    private var lifeModeBinding: Binding<Bool> {
+        Binding(
+            get: { lifeMode == .three },
+            set: { lifeModeRaw = $0 ? LifeMode.three.rawValue : LifeMode.unlimited.rawValue }
+        )
     }
 
     // MARK: Level grid
@@ -244,14 +400,22 @@ struct ContentView: View {
         }
         let regular = levels.filter { !$0.requiresPremium }
         let premiumLevels = levels.filter { $0.requiresPremium }
-        let recommendedID = regular.first?.id
+        let hasProgress = levels.contains {
+            ProgressStore.bestScore(levelID: $0.id, helperEnabled: true) > 0
+        }
+        let recommendedID = hasProgress ? nil : regular.first?.id
 
         return VStack(alignment: .leading, spacing: 14) {
             LazyVGrid(columns: cardColumns, spacing: 12) {
                 ForEach(regular) { level in
+                    let normalBest = ProgressStore.bestScore(levelID: level.id)
                     LevelCardView(level: level,
                                   status: status(for: level, recommendedID: recommendedID),
-                                  best: ProgressStore.bestScore(levelID: level.id, mode: lifeMode),
+                                  best: normalBest,
+                                  helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
+                                  showsHelperMarker: answerHelper,
+                                  showsTrophies: showsTrophies,
+                                  isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                   theme: character) {
                         selection = LevelSelection(level: level)
                     }
@@ -293,7 +457,7 @@ struct ContentView: View {
                                 Text(level.cardNumber)
                                     .font(.system(size: 17, weight: .heavy, design: .rounded))
                                     .foregroundStyle(.white)
-                                Text("🏆 \(ProgressStore.bestScore(levelID: level.id, mode: lifeMode))")
+                                Text("🏆 \(ProgressStore.bestScore(levelID: level.id))\(answerHelper && ProgressStore.helperOnlyBestScore(levelID: level.id) > ProgressStore.bestScore(levelID: level.id) ? " *" : "")")
                                     .font(.system(size: 10, weight: .semibold))
                                     .foregroundStyle(.white.opacity(0.85))
                             }
@@ -338,46 +502,93 @@ struct ContentView: View {
 
 // MARK: - Playtime bar
 
-/// A single daily streak goal. Tapping it opens Settings to adjust the
-/// default five-minute goal.
+/// A single daily streak goal. Tapping it offers a compact goal picker.
 struct PlaytimeBar: View {
     let accent: Color
+    var isEmbedded = false
     let action: () -> Void
     @ObservedObject private var tracker = PlaytimeTracker.shared
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 5) {
-            HStack {
-                    Label("Daily streak", systemImage: "flame.fill")
-                Spacer()
-                Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+            HStack(spacing: 10) {
+                Image(systemName: "flame.fill")
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 34, height: 34)
+                    .background(accent, in: Circle())
+
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Dagelijkse streak")
+                            .font(.caption.weight(.heavy))
+                        Spacer()
+                        Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+                            .font(.caption.weight(.bold))
+                    }
+                    .foregroundStyle(accent)
+
+                    streakProgressBar
+
+                    Text("\(tracker.streakDays) dagen op rij")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(accent.opacity(0.78))
+                }
+
                 Image(systemName: "chevron.right")
                     .font(.caption.weight(.bold))
-                    .opacity(0.65)
-            }
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(accent)
-
-            ProgressView(value: dailyProgress)
-                .tint(accent)
-                .scaleEffect(y: 0.8)
-
-                Text("\(tracker.streakDays) day streak")
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(accent.opacity(0.8))
+                    .foregroundStyle(accent.opacity(0.6))
             }
             .padding(.horizontal, 14)
-            .padding(.vertical, 8)
-            .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 12))
+            .padding(.vertical, 10)
+            .background(.white.opacity(isEmbedded ? 0.52 : 0.68), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(accent.opacity(0.12), lineWidth: 1))
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Daily streak, \(tracker.todayMinutes) of \(tracker.dailyGoalMinutes) minutes")
-        .accessibilityHint("Opens settings to change the daily goal")
+        .accessibilityHint("Choose a daily goal")
     }
 
     private var dailyProgress: Double {
         min(1, Double(tracker.todayMinutes) / Double(max(1, tracker.dailyGoalMinutes)))
+    }
+
+    private var streakProgressBar: some View {
+        GeometryReader { proxy in
+            ZStack(alignment: .leading) {
+                Capsule().fill(accent.opacity(0.13))
+                Capsule()
+                    .fill(LinearGradient(colors: [accent.opacity(0.65), accent], startPoint: .leading, endPoint: .trailing))
+                    .frame(width: max(7, proxy.size.width * dailyProgress))
+            }
+        }
+        .frame(height: 8)
+    }
+}
+
+struct DailyGoalPicker: View {
+    let theme: AnimalCharacter
+    @ObservedObject private var tracker = PlaytimeTracker.shared
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Dagelijks doel")
+                .font(.headline)
+            Text("Hoeveel minuten wil je per dag spelen?")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            HStack(spacing: 8) {
+                ForEach([5, 10, 15, 20], id: \.self) { minutes in
+                    Button("\(minutes)") { tracker.setDailyGoal(minutes) }
+                        .font(.subheadline.weight(.bold))
+                        .frame(width: 42, height: 36)
+                        .background(tracker.dailyGoalMinutes == minutes ? theme.color : .white,
+                                    in: RoundedRectangle(cornerRadius: 10))
+                        .foregroundStyle(tracker.dailyGoalMinutes == minutes ? .white : theme.deepColor)
+                }
+            }
+        }
+        .frame(width: 260)
     }
 }
 
@@ -396,6 +607,10 @@ struct LevelCardView: View {
     let level: LevelConfig
     let status: LevelCardStatus
     let best: Int
+    let helperBest: Int
+    let showsHelperMarker: Bool
+    let showsTrophies: Bool
+    let isPaused: Bool
     let theme: AnimalCharacter
     let action: () -> Void
 
@@ -434,7 +649,18 @@ struct LevelCardView: View {
 
     @ViewBuilder
     private var bottomLine: some View {
-        switch status {
+        if !showsTrophies {
+            if isPaused {
+                Image(systemName: "pause.fill")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundStyle(titleColor.opacity(0.75))
+            } else {
+                EmptyView()
+            }
+        } else if isPaused {
+            scoreLabel(icon: "pause.fill")
+        } else {
+            switch status {
         case .locked(let progress) where progress > 0:
             // "Almost unlocked": show how close the previous level is.
             ProgressView(value: progress)
@@ -449,14 +675,18 @@ struct LevelCardView: View {
                 .font(.system(size: 10, weight: .bold))
                 .foregroundStyle(theme.deepColor)
         default:
-            HStack(spacing: 3) {
-                Image(systemName: "trophy.fill")
-                    .font(.system(size: 9))
-                Text("\(best)")
-                    .font(.system(size: 11, weight: .bold))
+            scoreLabel(icon: "trophy.fill")
             }
-            .foregroundStyle(status == .completed ? .white : theme.deepColor.opacity(0.8))
         }
+    }
+
+    private func scoreLabel(icon: String) -> some View {
+        HStack(spacing: 3) {
+            Image(systemName: icon).font(.system(size: 9))
+            Text("\(GameSettings.capsTrophiesAtThirty && best >= ProgressStore.maximumTrophiesPerLevel ? "30 MAX" : "\(best)")\(showsHelperMarker && helperBest > best ? " *" : "")")
+                .font(.system(size: 11, weight: .bold))
+        }
+        .foregroundStyle(status == .completed ? .white : theme.deepColor.opacity(0.8))
     }
 
     private var titleColor: Color {

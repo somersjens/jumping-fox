@@ -11,8 +11,10 @@ import StoreKit
 struct PremiumView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var premium = PremiumStore.shared
+    @AppStorage(GameSettings.characterKey) private var characterID = "fox"
+    @State private var previewCharacterID = "fox"
 
-    private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
+    private var character: AnimalCharacter { CharacterCatalog.character(id: previewCharacterID) }
 
     var body: some View {
         VStack(spacing: 22) {
@@ -41,20 +43,51 @@ struct PremiumView: View {
 
             VStack(alignment: .leading, spacing: 14) {
                 featureRow(icon: "square.grid.3x3.fill",
-                           title: "Tables up to 100",
-                           subtitle: "Every multiplication table from 13 to 100.")
-                featureRow(icon: "infinity",
-                           title: "Unlimited lives",
-                           subtitle: "Practice as long as you like — the springboard always catches you.")
+                           title: "100 levels per onderwerp",
+                           subtitle: "Altijd genoeg nieuwe sommen om te oefenen.")
                 featureRow(icon: "pawprint.fill",
-                           title: "10 characters",
-                           subtitle: "Fox, frog, penguin, pig, whale, lion, octopus, crab, turtle, and bear.")
-                featureRow(icon: "paintpalette.fill",
-                           title: "Matching themes",
-                           subtitle: "Every animal colors the whole game in its own style.")
+                           title: "Kies je eigen poppetje",
+                           subtitle: "Kies hieronder jouw favoriete dier.")
+                featureRow(icon: "nosign",
+                           title: "Geen advertenties",
+                           subtitle: "Volledig zonder onderbrekingen spelen.")
             }
             .padding()
             .background(character.skyColor, in: RoundedRectangle(cornerRadius: 16))
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Kies je poppetje")
+                    .font(.headline)
+                    .foregroundStyle(character.deepColor)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 5), spacing: 8) {
+                    ForEach(CharacterCatalog.all) { animal in
+                        Button {
+                            previewCharacterID = animal.id
+                            if premium.isPremium { characterID = animal.id }
+                        } label: {
+                            VStack(spacing: 2) {
+                                Text(animal.emoji).font(.system(size: 29))
+                                Text(animal.name).font(.system(size: 8, weight: .bold))
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 6)
+                            .background(previewCharacterID == animal.id ? character.color : .white,
+                                        in: RoundedRectangle(cornerRadius: 10))
+                            .foregroundStyle(previewCharacterID == animal.id ? .white : character.deepColor)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(character.color.opacity(0.35), lineWidth: 1)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                if !premium.isPremium {
+                    Text("Tik op een dier om het te bekijken. Na aankoop wordt je keuze meteen toegepast.")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
 
             Spacer()
 
@@ -67,7 +100,10 @@ struct PremiumView: View {
                     .font(.headline)
             } else {
                 Button {
-                    Task { await premium.purchase() }
+                    Task {
+                        await premium.purchase()
+                        if premium.isPremium { characterID = previewCharacterID }
+                    }
                 } label: {
                     HStack {
                         if premium.isPurchasing {
@@ -105,6 +141,7 @@ struct PremiumView: View {
             }
         }
         .padding(24)
+        .onAppear { previewCharacterID = characterID }
         .task { await premium.refresh() }
     }
 

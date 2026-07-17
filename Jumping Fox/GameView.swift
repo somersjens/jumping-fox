@@ -19,7 +19,7 @@ struct GameView: View {
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
 
     init(level: LevelConfig) {
-        let state = GameState(level: level)
+        let state = PausedGameStore.shared.gameState(for: level)
         _state = StateObject(wrappedValue: state)
         _scene = State(initialValue: GameScene(state: state))
     }
@@ -44,6 +44,7 @@ struct GameView: View {
         .onChange(of: state.isGameOver) { _, over in
             if over {
                 PlaytimeTracker.shared.challengeEnded()
+                PausedGameStore.shared.remove(state)
             } else {
                 PlaytimeTracker.shared.challengeStarted()
             }
@@ -55,9 +56,10 @@ struct GameView: View {
     private var topBar: some View {
         HStack {
             Button {
+                PausedGameStore.shared.pause(state)
                 dismiss()
             } label: {
-                Image(systemName: "xmark.circle.fill")
+                Image(systemName: "pause.circle.fill")
                     .font(.title)
                     .foregroundStyle(theme.deepColor.opacity(0.85))
             }
@@ -90,36 +92,48 @@ struct GameView: View {
     private var livesBadge: some View {
         if let lives = state.lives {
             HStack(spacing: 2) {
-                ForEach(0..<max(lives, 0), id: \.self) { _ in
-                    Image(systemName: "heart.fill")
-                        .foregroundStyle(.red)
+                ForEach(0..<3, id: \.self) { index in
+                    lifeIcon(isLost: index >= lives)
                 }
             }
             .font(.title3)
             .animation(.snappy(duration: 0.25), value: lives)
         } else {
-            HStack(spacing: 3) {
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(.red)
+            HStack(spacing: 2) {
+                ForEach(0..<3, id: \.self) { index in
+                    lifeIcon(isLost: index < state.wrongAnswerCount)
+                }
                 Image(systemName: "infinity")
-                    .foregroundStyle(theme.deepColor)
             }
             .font(.title3)
+            .foregroundStyle(theme.deepColor)
+
+            if state.isScoreLocked {
+                excludedTrophy
+            }
         }
+    }
+
+    private func lifeIcon(isLost: Bool) -> some View {
+        Image(systemName: isLost ? "heart.slash.fill" : "heart.fill")
+            .foregroundStyle(isLost ? theme.deepColor.opacity(0.32) : theme.deepColor)
+    }
+
+    private var excludedTrophy: some View {
+        Image(systemName: "trophy.fill")
+            .font(.subheadline.weight(.bold))
+            .foregroundStyle(theme.deepColor.opacity(0.42))
+            .overlay {
+                Rectangle()
+                    .fill(theme.deepColor)
+                    .frame(width: 23, height: 2.5)
+                    .rotationEffect(.degrees(-45))
+            }
+            .accessibilityLabel("Trofeeën tellen niet meer mee")
     }
 
     private var bottomBar: some View {
         VStack(spacing: 12) {
-            if state.isRandomPractice {
-                Label("MIX MODE", systemImage: "shuffle")
-                    .font(.caption.weight(.heavy))
-                    .tracking(1.2)
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(theme.deepColor.opacity(0.9), in: Capsule())
-                    .transition(.scale.combined(with: .opacity))
-            }
             Text(state.questionText)
                 .font(.system(size: 38, weight: .heavy, design: .rounded))
                 .minimumScaleFactor(0.4)
@@ -136,6 +150,24 @@ struct GameView: View {
                 )
                 .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
                 .padding(.horizontal, 12)
+            if state.isRandomPractice {
+                Label("MIX MODE", systemImage: "shuffle")
+                    .font(.caption.weight(.heavy))
+                    .tracking(1.2)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(theme.deepColor.opacity(0.9), in: Capsule())
+                    .transition(.scale.combined(with: .opacity))
+            }
+            if state.isScoreLocked {
+                Label("Trofeeën tellen niet meer mee na 3 fouten", systemImage: "trophy.fill")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.black.opacity(0.35), in: Capsule())
+            }
         }
         .animation(.snappy(duration: 0.25), value: state.isRandomPractice)
         .padding(.bottom, 16)
@@ -182,6 +214,7 @@ struct GameView: View {
                 }
 
                 Button {
+                    PausedGameStore.shared.remove(state)
                     scene.resetGame()
                 } label: {
                     Label("Play Again", systemImage: "arrow.counterclockwise")
