@@ -78,7 +78,7 @@ final class GamePlatform: SKNode {
         statusIcon.verticalAlignmentMode = .center
         statusIcon.horizontalAlignmentMode = .center
         statusIcon.position = .zero
-        statusIcon.zPosition = 1
+        statusIcon.zPosition = 2
         statusIcon.text = ""
 
         // A real diagonal cross, rather than a small glyph, makes a wrong
@@ -92,17 +92,21 @@ final class GamePlatform: SKNode {
         wrongMark.strokeColor = GameColors.wrongRed
         wrongMark.lineWidth = 3
         wrongMark.lineCap = .round
-        wrongMark.zPosition = 2
+        wrongMark.zPosition = 3
         wrongMark.isHidden = true
 
         shape = SKShapeNode(rectOf: Self.platformSize, cornerRadius: Self.platformSize.height / 2)
         shape.lineWidth = 2
+        shape.zPosition = 0
 
         label = SKLabelNode(fontNamed: "AvenirNext-Bold")
         label.text = value
         label.fontSize = value.count >= 5 ? 13 : (value.count == 4 ? 15 : 18)
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
+        // Explicit z so the number always sits above the block fill even with
+        // ignoresSiblingOrder batching enabled on the view.
+        label.zPosition = 1
 
         super.init()
         addChild(shape)
@@ -1013,6 +1017,10 @@ final class GameScene: SKScene {
 
     /// Spring compress-then-extend on every bounce (anticipation + lift-off).
     private func bounceSpring() {
+        // Every character's artwork includes its own coil, so the separate
+        // drawn spring stays hidden. Skip the per-bounce action allocation
+        // entirely when it isn't visible.
+        guard !springNode.isHidden else { return }
         springNode.removeAllActions()
         springNode.yScale = 1
         springNode.run(.sequence([

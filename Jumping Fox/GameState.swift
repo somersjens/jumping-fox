@@ -97,6 +97,15 @@ enum GameSettings {
 
 /// Observable state for one game session of a single level.
 final class GameState: ObservableObject {
+    /// The portion of an unfinished run that must survive an app restart.
+    struct PausedSnapshot: Codable {
+        let question: Question
+        let score: Int
+        let livesHalves: Int?
+        let isEndless: Bool
+        let isAnswerRevealed: Bool
+        let highScore: Int
+    }
     enum GameOverReason {
         case outOfLives
         case fell
@@ -138,6 +147,32 @@ final class GameState: ObservableObject {
         self.engine = engine
         self.question = engine.next()
         self.highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
+    }
+
+    /// Recreates an unfinished run after the app was terminated. The engine
+    /// starts a fresh question sequence after the restored current question;
+    /// the player's visible progress remains exactly where it was paused.
+    init(level: LevelConfig, pausedSnapshot: PausedSnapshot, lifeMode: LifeMode,
+         answerHelperEnabled: Bool) {
+        self.level = level
+        self.lifeMode = lifeMode
+        self.isAnswerHelperEnabled = answerHelperEnabled
+        self.engine = QuestionEngine(level: level)
+        self.question = pausedSnapshot.question
+        self.score = pausedSnapshot.score
+        self.livesHalves = pausedSnapshot.livesHalves
+        self.isEndless = pausedSnapshot.isEndless
+        self.isAnswerRevealed = pausedSnapshot.isAnswerRevealed
+        self.highScore = pausedSnapshot.highScore
+    }
+
+    var pausedSnapshot: PausedSnapshot {
+        PausedSnapshot(question: question,
+                       score: score,
+                       livesHalves: livesHalves,
+                       isEndless: isEndless,
+                       isAnswerRevealed: isAnswerRevealed,
+                       highScore: highScore)
     }
 
     var correctAnswer: String { question.correctAnswer }

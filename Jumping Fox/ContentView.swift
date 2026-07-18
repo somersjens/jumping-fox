@@ -35,16 +35,15 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
     }
 
     var icon: String {
+        // Bare glyphs, not the `.circle.fill` variants: the surrounding button
+        // already provides the circle, so the only solid is the selected one.
         switch self {
-        case .addition: return "plus.circle.fill"
-        case .subtraction: return "minus.circle.fill"
-        case .tables: return "multiply.circle.fill"
-        case .fractions: return "circle.lefthalf.filled"
-        // There is no `percent.circle.fill` SF Symbol. The menu already draws
-        // every category inside a circular button, so this remains round while
-        // using the supported percent glyph.
+        case .addition: return "plus"
+        case .subtraction: return "minus"
+        case .tables: return "multiply"
+        case .fractions: return "divide"
         case .percentages: return "percent"
-        case .mixed: return "star.circle.fill"
+        case .mixed: return "star.fill"
         }
     }
 
@@ -291,23 +290,22 @@ struct ContentView: View {
         .buttonStyle(.plain)
     }
 
-    @ViewBuilder
     private func menuFilterIcon(_ filter: MenuFilter, isSelected: Bool) -> some View {
-        if filter == .percentages {
-            // SF Symbols has no percent.circle.fill. Draw a matching circular
-            // percent badge ourselves, so it aligns with the other topic icons.
-            Image(systemName: "percent")
-                .font(.system(size: 10, weight: .heavy))
-                .foregroundStyle(isSelected ? character.color : .white)
-                .frame(width: 20, height: 20)
-                // Use the same deep theme colour as the other unselected
-                // symbols, rather than a fixed/light orange.
-                .background(isSelected ? .white : character.deepColor, in: Circle())
-        } else {
-            Image(systemName: filter.icon)
-                .font(.title3.weight(.bold))
-                .foregroundStyle(isSelected ? .white : character.deepColor)
+        // Every topic renders the same way: a bare glyph tinted white on the
+        // selected (solid) button and the theme colour on the outlined ones.
+        // Per-symbol point sizes even out the differing optical heights (the
+        // filled star reads large, the percent glyph tall) and a shared height
+        // box keeps them all vertically centred on the same line.
+        let size: CGFloat
+        switch filter {
+        case .mixed:       size = 17   // star.fill
+        case .percentages: size = 19   // percent
+        default:           size = 21   // + − × ÷
         }
+        return Image(systemName: filter.icon)
+            .font(.system(size: size, weight: .bold))
+            .frame(height: 24)
+            .foregroundStyle(isSelected ? .white : character.color)
     }
 
     private var totalTrophies: Int {
@@ -372,14 +370,17 @@ struct ContentView: View {
     private var helperModeRow: some View {
         VStack(alignment: .leading, spacing: 0) {
             Button {
-                showsOptions.toggle()
+                withAnimation(.easeInOut(duration: 0.28)) {
+                    showsOptions.toggle()
+                }
             } label: {
                 HStack {
                     Label("menu.options", systemImage: "slider.horizontal.3")
                         .font(.subheadline.weight(.bold))
                     Spacer()
-                    Image(systemName: showsOptions ? "chevron.up" : "chevron.down")
+                    Image(systemName: "chevron.down")
                         .font(.subheadline.weight(.bold))
+                        .rotationEffect(.degrees(showsOptions ? -180 : 0))
                 }
                 .foregroundStyle(character.deepColor)
                 .contentShape(Rectangle())
@@ -387,11 +388,11 @@ struct ContentView: View {
             .buttonStyle(.plain)
 
             if showsOptions {
-                Divider()
-                    .overlay(character.color.opacity(0.2))
-                    .padding(.top, 9)
-
                 VStack(alignment: .leading, spacing: 0) {
+                    Divider()
+                        .overlay(character.color.opacity(0.2))
+                        .padding(.top, 9)
+
                     let rows: [(String, Binding<Bool>, String)] = [
                         (String(localized: "options.capAt30.title"), $capsTrophiesAtThirty,
                          String(localized: "options.capAt30.info")),
@@ -409,6 +410,7 @@ struct ContentView: View {
                         optionRow(row.0, isOn: row.1, info: row.2)
                     }
                 }
+                .transition(.opacity)
             }
         }
         .padding(.horizontal, 11)
@@ -496,6 +498,7 @@ struct ContentView: View {
                     LevelCardView(level: level,
                                   status: status(for: level, recommendedID: recommendedID),
                                   best: normalBest,
+                                  pausedBest: PausedGameStore.shared.pausedScore(forLevelID: level.id, includingHelper: answerHelper),
                                   helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
                                   showsHelperMarker: answerHelper,
                                   showsTrophies: true,
@@ -887,12 +890,15 @@ enum LevelCardStatus: Equatable {
     case completed
 }
 
-/// Compact level card. Empty levels are intentionally available in a soft
-/// grey; a lock is reserved solely for Premium content.
+/// Redesigned level card: a big central number, a trophy score line, a
+/// three-dot progress indicator, and a top-left tier badge. Reaching the
+/// maximum score turns the card into a celebratory gold "completed" card.
 struct LevelCardView: View {
     let level: LevelConfig
     let status: LevelCardStatus
     let best: Int
+    /// Live trophies of a paused run for this level, shown after a divider.
+    var pausedBest: Int = 0
     let helperBest: Int
     let showsHelperMarker: Bool
     let showsTrophies: Bool
@@ -900,114 +906,317 @@ struct LevelCardView: View {
     let theme: AnimalCharacter
     let action: () -> Void
 
+    // MARK: Tiers
+
+    /// Achievement tiers, keyed off the trophy count. Their colors form a warm
+    /// gold → orange → red progression shared by the top-left badge and the
+    /// active progress dots; the maxed tier switches to a celebratory green.
+    private enum Tier {
+        case empty          // 0 trophies
+        case one            // 1–9
+        case two            // 10–19
+        case three          // 20–29
+        case maxed          // 30 (completed)
+
+        var color: Color {
+            switch self {
+            case .empty:  return Color(white: 0.72)
+            case .one:    return Color(red: 0.93, green: 0.66, blue: 0.13)   // gold
+            case .two:    return Color(red: 0.93, green: 0.47, blue: 0.11)   // orange
+            case .three:  return Color(red: 0.83, green: 0.29, blue: 0.11)   // deep orange
+            case .maxed:  return Color(red: 0.30, green: 0.62, blue: 0.24)   // green
+            }
+        }
+
+        /// How many of the three progress dots are active.
+        var activeDots: Int {
+            switch self {
+            case .empty:          return 0
+            case .one:            return 1
+            case .two:            return 2
+            case .three, .maxed:  return 3
+            }
+        }
+    }
+
+    private var tier: Tier {
+        if best >= ProgressStore.maximumTrophiesPerLevel { return .maxed }
+        switch best {
+        case ..<1:    return .empty
+        case 1...9:   return .one
+        case 10...19: return .two
+        default:      return .three
+        }
+    }
+
     private var isLocked: Bool {
         if case .locked = status { return true }
         return false
     }
 
+    private var isCompleted: Bool { tier == .maxed }
+
+    /// Hue (0–360°) of the selected theme, used to keep the completed card's
+    /// festive colors distinct from whichever animal theme is active.
+    private var themeHue: Double {
+        let (r, g, b) = theme.primaryRGB
+        let mx = max(r, g, b), mn = min(r, g, b), d = mx - mn
+        guard d > 0 else { return 0 }
+        let h: Double
+        switch mx {
+        case r: h = (g - b) / d
+        case g: h = 2 + (b - r) / d
+        default: h = 4 + (r - g) / d
+        }
+        return (h * 60).truncatingRemainder(dividingBy: 360) + (h < 0 ? 360 : 0)
+    }
+
+    /// The completed card celebrates in two colors: a `hero` (number, score,
+    /// dots, ribbon) and a `metal` (crown, laurels, border, glow). Whichever
+    /// festive color would clash with the active theme is swapped for a violet
+    /// accent, guaranteeing strong contrast in every theme.
+    private var completedPalette: (hero: Color, metal: Color) {
+        let green = Color(red: 0.24, green: 0.60, blue: 0.28)
+        let gold = Color(red: 0.87, green: 0.66, blue: 0.12)
+        let violet = Color(red: 0.42, green: 0.35, blue: 0.78)
+        let h = themeHue
+        if (80...175).contains(h) { return (hero: violet, metal: gold) }   // green theme
+        if (38...65).contains(h)  { return (hero: green, metal: violet) }   // gold/yellow theme
+        return (hero: green, metal: gold)
+    }
+
+    /// Trophy counts shown in the menu, always clamped to the maximum — even
+    /// when in-game round-off is off and a run pushed the raw score past 30.
+    private var displayBest: Int { min(best, ProgressStore.maximumTrophiesPerLevel) }
+    private var displayPaused: Int { min(pausedBest, ProgressStore.maximumTrophiesPerLevel) }
+
+    /// A lone "1" reads right-of-centre because of its top flag, so its stem
+    /// misses the middle dot; nudge just that glyph left to line them up.
+    private var numberNudge: CGFloat { level.cardNumber == "1" ? -3 : 0 }
+
+    // MARK: Body
+
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 3) {
-                Text(level.cardNumber)
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                    .foregroundStyle(titleColor)
-                    .frame(maxWidth: .infinity)
-
-                bottomLine
+            Group {
+                if isCompleted {
+                    completedCard
+                } else {
+                    standardCard
+                }
             }
-            .padding(8)
-            .frame(height: 82)
-            .background(cardBackground, in: RoundedRectangle(cornerRadius: 16))
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(borderColor, lineWidth: status == .recommended ? 3 : 1.5)
-            )
+            .frame(height: 96)
             .opacity(isLocked ? 0.55 : 1)
-            .scaleEffect(status == .recommended ? 1.03 : 1)
+            .scaleEffect(status == .recommended ? 1.02 : 1)
         }
         .buttonStyle(.plain)
         .disabled(isLocked)
     }
 
-    // MARK: Pieces
+    // MARK: Standard card
 
-    @ViewBuilder
-    private var bottomLine: some View {
-        if !showsTrophies {
-            if isPaused {
-                Image(systemName: "pause.fill")
-                    .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(titleColor.opacity(0.75))
-            } else {
-                EmptyView()
+    private var standardCard: some View {
+        ZStack(alignment: .topLeading) {
+            VStack(spacing: 4) {
+                Spacer(minLength: 2)
+                Text(level.cardNumber)
+                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .foregroundStyle(theme.deepColor)
+                    .offset(x: numberNudge)
+                centerLine
+                Spacer(minLength: 2)
+                progressDots(active: tier.activeDots, color: tier.color)
+                    .padding(.bottom, 2)
             }
-        } else if isPaused {
-            scoreLabel(icon: "pause.fill")
-        } else {
-            switch status {
-        case .locked(let progress) where progress > 0:
-            // "Almost unlocked": show how close the previous level is.
-            ProgressView(value: progress)
-                .tint(theme.color)
-                .scaleEffect(y: 0.7)
-        case .locked:
-            Label("menu.premium", systemImage: "lock.fill")
-                .font(.system(size: 10, weight: .semibold))
-                .foregroundStyle(titleColor.opacity(0.7))
-        case .recommended:
-            Text("menu.startHere")
-                .font(.system(size: 10, weight: .bold))
-                .foregroundStyle(theme.deepColor)
-        default:
-            scoreLabel(icon: "trophy.fill")
-            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(8)
+
+            tierBadge
+                .padding(.top, 9)
+                .padding(.leading, 9)
         }
+        .background(cardFill, in: RoundedRectangle(cornerRadius: 18))
+        .overlay(
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(borderColor, lineWidth: status == .recommended ? 2.5 : 1)
+        )
+        .shadow(color: .black.opacity(0.06), radius: 5, x: 0, y: 3)
     }
 
-    private func scoreLabel(icon: String) -> some View {
-        let marker = showsHelperMarker && helperBest > best ? " *" : ""
-        let isMax = GameSettings.capsTrophiesAtThirty && best >= ProgressStore.maximumTrophiesPerLevel
-        return HStack(spacing: 3) {
-            Image(systemName: icon).font(.system(size: 9))
-            Group {
-                if isMax {
-                    Text(verbatim: String(localized: "menu.maxScore") + marker)
-                } else {
-                    Text(verbatim: "\(best)\(marker)")
-                }
-            }
-                .font(.system(size: 11, weight: .bold))
-        }
-        .foregroundStyle(status == .completed ? .white : theme.deepColor.opacity(0.8))
-    }
-
-    private var titleColor: Color {
-        status == .completed ? .white : theme.deepColor
-    }
-
-    private var cardBackground: some ShapeStyle {
-        switch status {
-        case .completed:
-            return AnyShapeStyle(
-                LinearGradient(colors: [theme.color, theme.deepColor],
-                               startPoint: .top, endPoint: .bottom)
-            )
-        case .locked:
-            return AnyShapeStyle(Color.white.opacity(0.5))
-        default:
-            return AnyShapeStyle(best == 0 ? Color.white.opacity(0.5) : Color.white.opacity(0.9))
-        }
+    private var cardFill: Color {
+        best == 0 ? Color.white.opacity(0.6) : .white
     }
 
     private var borderColor: Color {
-        switch status {
-        case .recommended: return theme.color
-        case .completed: return theme.deepColor
-        case .locked: return theme.deepColor.opacity(0.25)
-        case .available: return theme.color.opacity(0.5)
+        if status == .recommended { return theme.color }
+        return best == 0 ? Color(white: 0.85) : tier.color.opacity(0.35)
+    }
+
+    // MARK: Center score line
+
+    @ViewBuilder
+    private var centerLine: some View {
+        if status == .recommended && best == 0 && !isPaused {
+            Text("menu.startHere")
+                .font(.system(size: 10, weight: .bold))
+                .foregroundStyle(theme.deepColor)
+        } else if !showsTrophies {
+            if isPaused {
+                Image(systemName: "pause.fill")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundStyle(theme.deepColor.opacity(0.75))
+            }
+        } else {
+            HStack(spacing: 4) {
+                trophyChip
+                if isPaused {
+                    Rectangle()
+                        .fill(theme.deepColor.opacity(0.25))
+                        .frame(width: 1, height: 11)
+                    HStack(spacing: 2) {
+                        Image(systemName: "pause.fill").font(.system(size: 8))
+                        Text(verbatim: "\(displayPaused)")
+                            .font(.system(size: 11, weight: .bold))
+                    }
+                    .foregroundStyle(theme.deepColor.opacity(0.7))
+                }
+            }
         }
+    }
+
+    private var trophyChip: some View {
+        let marker = showsHelperMarker && helperBest > best ? " *" : ""
+        return HStack(spacing: 3) {
+            Image(systemName: "trophy.fill").font(.system(size: 9))
+            Text(verbatim: "\(displayBest)\(marker)")
+                .font(.system(size: 12, weight: .bold))
+        }
+        .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color)
+    }
+
+    // MARK: Tier badge (top-left)
+
+    @ViewBuilder
+    private var tierBadge: some View {
+        switch tier {
+        case .empty:
+            // No score yet: leave the corner empty.
+            EmptyView()
+        case .one:
+            RoundedRectangle(cornerRadius: 1.5)
+                .fill(tier.color)
+                .frame(width: 9, height: 9)
+                .rotationEffect(.degrees(45))
+                .padding(.leading, 1)
+        case .two:
+            tierBars(count: 2)
+        case .three, .maxed:
+            tierBars(count: 3)
+        }
+    }
+
+    private func tierBars(count: Int) -> some View {
+        HStack(spacing: 2) {
+            ForEach(0..<count, id: \.self) { _ in
+                Capsule().fill(tier.color)
+                    .frame(width: 3, height: 13)
+            }
+        }
+    }
+
+    // MARK: Progress dots
+
+    private func progressDots(active: Int, color: Color) -> some View {
+        HStack(spacing: 6) {
+            ForEach(0..<3) { index in
+                Circle()
+                    .fill(index < active ? color : Color(white: 0.85))
+                    .frame(width: 6, height: 6)
+            }
+        }
+    }
+
+    // MARK: Completed (max-score) card
+
+    private var completedCard: some View {
+        let hero = completedPalette.hero
+        let metal = completedPalette.metal
+        return ZStack {
+            VStack(spacing: 3) {
+                Spacer(minLength: 8)
+                Text(level.cardNumber)
+                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .foregroundStyle(hero)
+                    .offset(x: numberNudge)
+                HStack(spacing: 3) {
+                    Image(systemName: "trophy.fill").font(.system(size: 9))
+                    Text(verbatim: "\(displayBest)")
+                        .font(.system(size: 12, weight: .bold))
+                }
+                .foregroundStyle(hero)
+                Spacer(minLength: 2)
+                progressDots(active: 3, color: hero)
+                    .padding(.bottom, 2)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(8)
+
+            // Laurel branches flanking the number.
+            HStack {
+                Image(systemName: "laurel.leading")
+                Spacer()
+                Image(systemName: "laurel.trailing")
+            }
+            .font(.system(size: 30, weight: .regular))
+            .foregroundStyle(metal.opacity(0.55))
+            .padding(.horizontal, 3)
+
+            // Subtle sparkle accents.
+            Image(systemName: "sparkle")
+                .font(.system(size: 8))
+                .foregroundStyle(metal)
+                .offset(x: 31, y: -20)
+            Image(systemName: "sparkle")
+                .font(.system(size: 6))
+                .foregroundStyle(metal.opacity(0.8))
+                .offset(x: -33, y: 22)
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 18)
+                .fill(Color(red: 1.0, green: 0.99, blue: 0.93))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(metal, lineWidth: 2)
+        )
+        .shadow(color: metal.opacity(0.45), radius: 8)
+        .overlay(alignment: .top) {
+            completedRibbon(fill: hero, crown: metal)
+                .offset(y: -9)
+        }
+    }
+
+    /// Small ribbon with a crown that overlaps the top of the card. The ribbon
+    /// takes the hero color and the crown the contrasting metal color.
+    private func completedRibbon(fill: Color, crown: Color) -> some View {
+        Image(systemName: "crown.fill")
+            .font(.system(size: 11, weight: .bold))
+            .foregroundStyle(crown)
+            .padding(.horizontal, 11)
+            .padding(.vertical, 4)
+            .background(
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(fill)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(.white.opacity(0.6), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.15), radius: 2, y: 1)
     }
 }
 

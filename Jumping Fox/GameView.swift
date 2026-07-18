@@ -28,15 +28,25 @@ struct GameView: View {
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
 
     init(level: LevelConfig) {
-        _isContinuingLevel = State(initialValue: PausedGameStore.shared.hasPausedSession(for: level, mode: GameSettings.lifeMode))
-        let state = PausedGameStore.shared.gameState(for: level)
+        // Levels that already hit the maximum can't be resumed from a paused
+        // run — there's no visual slot for it and the score is already capped,
+        // so any lingering paused session is dropped and the level starts fresh.
+        let isMaxed = ProgressStore.bestAnyMode(levelID: level.id) >= ProgressStore.maximumTrophiesPerLevel
+        let canResume = !isMaxed && PausedGameStore.shared.hasPausedSession(for: level, mode: GameSettings.lifeMode)
+        _isContinuingLevel = State(initialValue: canResume)
+        let state = canResume ? PausedGameStore.shared.gameState(for: level) : GameState(level: level)
         _state = StateObject(wrappedValue: state)
         _scene = State(initialValue: GameScene(state: state))
     }
 
     var body: some View {
         ZStack {
-            SpriteView(scene: scene)
+            // ignoresSiblingOrder lets SpriteKit batch draw calls by texture
+            // (layering is driven by explicit zPosition, not sibling order);
+            // shouldCullNonVisibleNodes skips the platforms buffered far above
+            // the viewport. Together these cut draw calls and GPU work.
+            SpriteView(scene: scene,
+                       options: [.shouldCullNonVisibleNodes, .ignoresSiblingOrder])
                 .ignoresSafeArea()
 
             // Warm up the status-banner symbols so the very first time the
@@ -80,7 +90,7 @@ struct GameView: View {
             PlaytimeTracker.shared.challengeEnded()
             setScreenAwake(false)
         }
-        .onChange(of: state.isGameOver) { _, over in
+        .onChange(of: state.isGameOver) { over in
             if over {
                 PausedGameStore.shared.remove(state)
                 // Defer the tracker's disk write off this frame so the game-over
@@ -196,12 +206,13 @@ struct GameView: View {
         HStack(spacing: 0) {
             Button {
                 if state.isEndless {
-                    // Finishing an unlimited run still deserves the result card.
+                    // Finishing an unlimited run shows the result card and stays
+                    // put — the player leaves via its Play Again / Menu buttons.
                     state.finishEndlessRun()
                 } else {
                     PausedGameStore.shared.pause(state)
+                    dismiss()
                 }
-                dismiss()
             } label: {
                 // Normal pause button until the three lives run out; then a
                 // checkmark "done" button of the same size.
@@ -291,12 +302,8 @@ struct GameView: View {
     /// answer in place of the "?" (staying until the next question) for the
     /// cost of half a life.
     private var equationBadge: some View {
-        Text(displayedQuestion)
-            .font(.system(size: 38, weight: .heavy, design: .rounded))
-            .minimumScaleFactor(0.4)
-            .lineLimit(1)
+        equationContent
             .foregroundStyle(.white)
-            .contentTransition(.numericText())
             .animation(.snappy(duration: 0.3), value: displayedQuestion)
             .padding(.horizontal, 24)
             .padding(.vertical, 10)
@@ -314,6 +321,84 @@ struct GameView: View {
                     hintUnavailableFeedback()
                 }
             }
+    }
+
+    // MARK: Equation rendering
+
+    /// One piece of an equation: plain text, or a fraction to stack vertically.
+    private enum EquationPiece: Identifiable {
+        case text(String)
+        case fraction(numerator: String, denominator: String)
+        var id: String {
+            switch self {
+            case .text(let s): return "t:\(s)"
+            case .fraction(let n, let d): return "f:\(n)/\(d)"
+            }
+        }
+    }
+
+    /// Splits the equation on spaces; any token containing a "/" becomes a
+    /// stacked fraction (numerator over a bar over denominator).
+    private var equationPieces: [EquationPiece] {
+        displayedQuestion.split(separator: " ").map { word in
+            if let slash = word.firstIndex(of: "/") {
+                let num = String(word[word.startIndex..<slash])
+                let den = String(word[word.index(after: slash)...])
+                return .fraction(numerator: num, denominator: den)
+            }
+            return .text(String(word))
+        }
+    }
+
+    /// The equation, drawn with real stacked fractions when one is present and
+    /// with the original single-line numeric text otherwise (so addition,
+    /// tables, etc. keep their smooth digit transitions).
+    @ViewBuilder
+    private var equationContent: some View {
+        if displayedQuestion.contains("/") {
+            ViewThatFits(in: .horizontal) {
+                equationRow(fontSize: 38)
+                equationRow(fontSize: 30)
+                equationRow(fontSize: 24)
+                equationRow(fontSize: 19)
+            }
+        } else {
+            Text(displayedQuestion)
+                .font(.system(size: 38, weight: .heavy, design: .rounded))
+                .minimumScaleFactor(0.4)
+                .lineLimit(1)
+                .contentTransition(.numericText())
+        }
+    }
+
+    private func equationRow(fontSize: CGFloat) -> some View {
+        HStack(alignment: .center, spacing: fontSize * 0.18) {
+            ForEach(Array(equationPieces.enumerated()), id: \.offset) { _, piece in
+                switch piece {
+                case .text(let s):
+                    Text(s)
+                        .font(.system(size: fontSize, weight: .heavy, design: .rounded))
+                case .fraction(let num, let den):
+                    fractionView(numerator: num, denominator: den, fontSize: fontSize)
+                }
+            }
+        }
+        .lineLimit(1)
+        .fixedSize()
+    }
+
+    /// A single stacked fraction: numerator, a bar, then the denominator.
+    private func fractionView(numerator: String, denominator: String, fontSize: CGFloat) -> some View {
+        let digit = fontSize * 0.55
+        return VStack(spacing: digit * 0.14) {
+            Text(numerator)
+            RoundedRectangle(cornerRadius: 1)
+                .frame(height: max(2, digit * 0.1))
+            Text(denominator)
+        }
+        .font(.system(size: digit, weight: .heavy, design: .rounded))
+        .fixedSize()
+        .padding(.horizontal, 2)
     }
 
     /// When the last remaining half-heart cannot pay for a hint, make that

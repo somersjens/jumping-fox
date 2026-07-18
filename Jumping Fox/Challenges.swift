@@ -331,7 +331,7 @@ enum ProgressStore {
 
 // MARK: - Question
 
-struct Question {
+struct Question: Codable {
     let prompt: String
     let correctAnswer: String
     let distractors: [String]
