@@ -15,8 +15,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.jumpingfox.premium",
-      "referenceName" : "Premium",
+      "productID" : "premium_unlock_all",
+      "referenceName" : "Premium - Unlock All Levels and Characters",
       "type" : "NonConsumable"
     }
   ],

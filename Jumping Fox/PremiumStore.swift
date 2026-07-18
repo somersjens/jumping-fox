@@ -14,7 +14,8 @@ import StoreKit
 @MainActor
 final class PremiumStore: ObservableObject {
     static let shared = PremiumStore()
-    static let productID = "com.jumpingfox.premium"
+    /// Must exactly match the non-consumable Product ID in App Store Connect.
+    static let productID = "premium_unlock_all"
 
     @Published private(set) var isPremium = false
     @Published private(set) var product: Product?
