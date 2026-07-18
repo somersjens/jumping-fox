@@ -8,6 +8,9 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct LevelSelection: Identifiable {
     let level: LevelConfig
@@ -78,8 +81,6 @@ struct ContentView: View {
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
     @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
     @AppStorage(GameSettings.answerHintKey) private var answerHint = true
-    @AppStorage(GameSettings.showStreakKey) private var showsStreak = true
-    @AppStorage(GameSettings.showTrophiesKey) private var showsTrophies = true
     @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
@@ -128,15 +129,39 @@ struct ContentView: View {
                 .padding()
                 .presentationCompactAdaptation(.popover)
         }
-        .alert("Hoe heet je?", isPresented: $showNameEditor) {
-            TextField("Naam", text: $nameDraft)
-            Button("Bewaar") {
+        .sheet(isPresented: $showNameEditor) {
+            NameEditorSheet(theme: character, name: $nameDraft) {
                 let trimmed = nameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
                 if !trimmed.isEmpty { playerName = trimmed }
             }
-            Button("Annuleer", role: .cancel) { }
+            .presentationDetents([.height(300)])
+            .presentationDragIndicator(.visible)
+            .presentationBackground {
+                LinearGradient(colors: [character.skyColor, character.tintColor],
+                               startPoint: .top, endPoint: .bottom)
+            }
         }
         .gameCover(item: $selection, onDismiss: { refreshID = UUID() })
+    }
+
+    private var displayName: String { playerName.isEmpty ? "Jumping Fox" : playerName }
+
+    /// The name as shown in the header. When it's a single long word we insert
+    /// invisible soft hyphens so it can break across two lines with a "-";
+    /// names with spaces just wrap at the space (no hyphen).
+    private var wrappableName: String {
+        displayName.contains(" ")
+            ? displayName
+            : displayName.map(String.init).joined(separator: "\u{00AD}")
+    }
+
+    /// Jumps back to the welcome/onboarding screen. Triggered by a 2-second
+    /// hold on the character image.
+    private func restartOnboarding() {
+#if canImport(UIKit)
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+#endif
+        onboardingComplete = false
     }
 
     // MARK: Combined top menu
@@ -144,55 +169,62 @@ struct ContentView: View {
     private var menuCard: some View {
         VStack(spacing: 14) {
             HStack(alignment: .center, spacing: 12) {
-                Button {
-                    showPremium = true
-                } label: {
-                    Group {
-                        character.artwork
-                            .resizable()
-                            .scaledToFill()
-                    }
-                    .frame(width: 74, height: 74)
+                character.artwork
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 68, height: 68)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .overlay {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .stroke(.white.opacity(0.9), lineWidth: 2)
                     }
                     .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
-                }
-                .buttonStyle(.plain)
-                .onLongPressGesture(minimumDuration: 2) {
-                    onboardingComplete = false
-                }
-                .accessibilityHint("Houd twee seconden ingedrukt om de onboarding opnieuw te starten")
+                    .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    // A 2-second hold jumps back to the welcome/onboarding screen;
+                    // a normal tap still opens the character & premium menu. The
+                    // long press is attached first so it wins the 2s hold, and the
+                    // tap fires only on a quick touch.
+                    .onLongPressGesture(minimumDuration: 2) {
+                        restartOnboarding()
+                    }
+                    .onTapGesture {
+                        showPremium = true
+                    }
+                    .accessibilityElement()
+                    .accessibilityLabel("Personage")
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityHint("Tik om je personage te wijzigen; houd twee seconden ingedrukt om opnieuw te beginnen bij het welkomscherm")
 
                 VStack(alignment: .leading, spacing: 6) {
                     Button {
                         nameDraft = playerName
                         showNameEditor = true
                     } label: {
-                        Text(playerName.isEmpty ? "Jumping Fox" : playerName)
-                        .font(.title3.weight(.heavy))
+                        Text(wrappableName)
+                            .font(.title3.weight(.heavy))
+                            .lineLimit(2)
+                            .multilineTextAlignment(.leading)
+                            .minimumScaleFactor(0.6)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityLabel(displayName)
                     }
                     .buttonStyle(.plain)
 
-                    if showsTrophies {
-                        Label("\(totalTrophies) trofeeën\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
-                            .font(.subheadline.weight(.bold))
-                            .foregroundStyle(character.deepColor.opacity(0.78))
-                    }
+                    Label("\(totalTrophies) trofeeën\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(character.deepColor.opacity(0.78))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                 }
                 .foregroundStyle(character.deepColor)
 
-                Spacer(minLength: 0)
+                Spacer(minLength: 8)
 
-                lifeModeButton
-            }
-
-            if showsStreak {
-                PlaytimeBar(accent: character.deepColor, isEmbedded: true) {
+                // Streak lives to the right, capped to about a third of the row.
+                CompactStreakView(accent: character.deepColor) {
                     showGoalPicker = true
                 }
+                .frame(width: 106)
             }
 
             Divider().overlay(character.color.opacity(0.22))
@@ -201,10 +233,8 @@ struct ContentView: View {
                 HStack(alignment: .center) {
                     Text(selectedFilter.title)
                         .font(.title3.weight(.heavy))
-                    if showsTrophies {
-                        Label("\(categoryTrophies)\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
-                            .font(.subheadline.weight(.bold))
-                    }
+                    Label("\(categoryTrophies)\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                        .font(.subheadline.weight(.bold))
                     Spacer()
                 }
                 .foregroundStyle(character.deepColor)
@@ -248,37 +278,30 @@ struct ContentView: View {
     private var totalTrophies: Int {
         LevelCatalog.byCategory.values.flatMap { $0 }
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, helperEnabled: answerHelper) }
+            .reduce(0) { $0 + trophies(for: $1) }
     }
 
     private var categoryTrophies: Int {
         LevelCatalog.levels(for: category)
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + ProgressStore.bestScore(levelID: $1.id, helperEnabled: answerHelper) }
+            .reduce(0) { $0 + trophies(for: $1) }
     }
 
-    private var lifeModeButton: some View {
-        Button {
-            withAnimation(.snappy(duration: 0.2)) {
-                lifeModeRaw = lifeMode == .three ? LifeMode.unlimited.rawValue : LifeMode.three.rawValue
-            }
-        } label: {
-            HStack(spacing: 3) {
-                if lifeMode == .unlimited {
-                    Image(systemName: "infinity")
-                } else {
-                    Text("3×")
-                    Image(systemName: "heart.fill")
-                }
-            }
-            .foregroundStyle(character.deepColor)
-            .font(.system(size: 16, weight: .bold))
-            .frame(minWidth: 62, minHeight: 49)
-            .background(character.color.opacity(0.15), in: Capsule())
-            .overlay(Capsule().stroke(character.color.opacity(0.32), lineWidth: 1))
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(lifeMode == .three ? "Drie levens; tik voor oneindig spelen" : "Oneindig spelen; tik voor drie levens")
+    /// Trophies earned for a base level, counting both its standard and Mix-mode
+    /// variants and any in-progress paused run — whichever is highest. This is
+    /// why a paused (or Mix) level still adds to the category and grand totals.
+    private func trophies(for level: LevelConfig) -> Int {
+        let ids = Set([level.id, level.immediateMixVersion().id])
+        let recorded = ids.map {
+            ProgressStore.bestScore(levelID: $0, helperEnabled: answerHelper)
+        }.max() ?? 0
+        let pausedRaw = ids.map {
+            PausedGameStore.shared.pausedScore(forLevelID: $0, includingHelper: answerHelper)
+        }.max() ?? 0
+        let paused = capsTrophiesAtThirty
+            ? min(ProgressStore.maximumTrophiesPerLevel, pausedRaw)
+            : pausedRaw
+        return max(recorded, paused)
     }
 
     /// In the Mix menu the mode buttons show exactly which operations they
@@ -317,7 +340,7 @@ struct ContentView: View {
                 showsOptions.toggle()
             } label: {
                 HStack {
-                    Label("Weergave & spelopties", systemImage: "slider.horizontal.3")
+                    Label("Spelopties", systemImage: "slider.horizontal.3")
                         .font(.subheadline.weight(.bold))
                     Spacer()
                     Image(systemName: showsOptions ? "chevron.up" : "chevron.down")
@@ -335,18 +358,14 @@ struct ContentView: View {
 
                 VStack(alignment: .leading, spacing: 0) {
                     let rows: [(String, Binding<Bool>, String)] = [
-                        ("Stoppen na 3 levens", lifeModeBinding,
-                         "Aan: het spel stopt na drie fouten (drie hartjes). Uit: je speelt onbeperkt door, maar trofeeën tellen alleen mee tot drie fouten."),
-                        ("Streak laten zien", $showsStreak,
-                         "Toont je dagelijkse reeks op het startscherm, zodat je ziet hoeveel dagen je op rij hebt gespeeld."),
-                        ("Trofeeën laten zien", $showsTrophies,
-                         "Toont hoeveel trofeeën je per level en in totaal hebt verdiend."),
                         ("Afronden bij 30 punten", $capsTrophiesAtThirty,
-                         "Je kunt wel doorspelen, maar je haalt op elk level maximaal 30 punten."),
-                        ("Helpermodus", $answerHelper,
-                         "Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld."),
+                         "Als je 30 punten haalt, wordt het level automatisch afgerond — dat is de maximale score. Je hoeft dan niet door te spelen."),
+                        ("Onbeperkt levens", unlimitedLivesBinding,
+                         "Standaard uit. Zet je hem aan, dan speel je onbeperkt door nadat je levens op zijn — maar trofeeën tellen dan alleen mee tot drie fouten."),
                         ("Antwoord bij de som (½ leven)", $answerHint,
                          "Tik tijdens het spelen op de som en het antwoord verschijnt op de plek van het vraagteken. Dat kost je een half leven. Bij nog maar een half leven kun je niet meer tikken."),
+                        ("Helpermodus", $answerHelper,
+                         "Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld."),
                     ]
                     ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
                         if index > 0 {
@@ -355,11 +374,13 @@ struct ContentView: View {
                         optionRow(row.0, isOn: row.1, info: row.2)
                     }
                 }
-                .padding(.top, 4)
             }
         }
         .padding(.horizontal, 11)
-        .padding(.vertical, 10)
+        .padding(.top, 10)
+        // No dead space under the last row when the list is open — keep the
+        // header symmetric when it's closed.
+        .padding(.bottom, showsOptions ? 2 : 10)
         .background(character.color.opacity(0.10), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(0.18), lineWidth: 1))
     }
@@ -371,7 +392,7 @@ struct ContentView: View {
         return VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 8) {
                 Button {
-                    withAnimation(.snappy(duration: 0.22)) {
+                    withAnimation(.easeInOut(duration: 0.28)) {
                         expandedOptionInfo = isExpanded ? nil : title
                     }
                 } label: {
@@ -402,18 +423,21 @@ struct ContentView: View {
                     .lineSpacing(2)
                     .foregroundStyle(character.deepColor.opacity(0.7))
                     .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.trailing, 30)
                     .padding(.bottom, 10)
-                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    .transition(.opacity)
             }
         }
         .foregroundStyle(character.deepColor)
     }
 
-    private var lifeModeBinding: Binding<Bool> {
+    /// Toggle for the options list. ON = unlimited lives (free play), OFF
+    /// (default) = the standard three-lives game.
+    private var unlimitedLivesBinding: Binding<Bool> {
         Binding(
-            get: { lifeMode == .three },
-            set: { lifeModeRaw = $0 ? LifeMode.three.rawValue : LifeMode.unlimited.rawValue }
+            get: { lifeMode == .unlimited },
+            set: { lifeModeRaw = $0 ? LifeMode.unlimited.rawValue : LifeMode.three.rawValue }
         )
     }
 
@@ -439,7 +463,7 @@ struct ContentView: View {
                                   best: normalBest,
                                   helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
                                   showsHelperMarker: answerHelper,
-                                  showsTrophies: showsTrophies,
+                                  showsTrophies: true,
                                   isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                   theme: character) {
                         selection = LevelSelection(level: level)
@@ -588,6 +612,141 @@ struct PlaytimeBar: View {
             }
         }
         .frame(height: 8)
+    }
+}
+
+/// Compact streak widget for the top-right of the menu card: the streak-day
+/// count with a flame, a horizontal progress line for today's minutes toward
+/// the goal, and the minutes underneath. No border — it's part of the card.
+struct CompactStreakView: View {
+    let accent: Color
+    let action: () -> Void
+    @ObservedObject private var tracker = PlaytimeTracker.shared
+
+    private var dailyProgress: Double {
+        min(1, Double(tracker.todayMinutes) / Double(max(1, tracker.dailyGoalMinutes)))
+    }
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 7) {
+                HStack(spacing: 5) {
+                    Text("\(tracker.streakDays)")
+                        .font(.system(size: 27, weight: .heavy, design: .rounded))
+                    Image(systemName: "flame.fill")
+                        .font(.system(size: 16, weight: .bold))
+                }
+                .foregroundStyle(accent)
+
+                progressLine
+
+                Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(accent.opacity(0.6))
+            }
+            .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Dagelijkse streak, \(tracker.streakDays) dagen op rij, \(tracker.todayMinutes) van \(tracker.dailyGoalMinutes) minuten")
+        .accessibilityHint("Kies een dagelijks doel")
+    }
+
+    private var progressLine: some View {
+        GeometryReader { proxy in
+            ZStack(alignment: .leading) {
+                Capsule().fill(accent.opacity(0.15))
+                Capsule()
+                    .fill(LinearGradient(colors: [accent.opacity(0.6), accent],
+                                         startPoint: .leading, endPoint: .trailing))
+                    .frame(width: max(6, proxy.size.width * dailyProgress))
+                    .animation(.snappy(duration: 0.4), value: dailyProgress)
+            }
+        }
+        .frame(width: 72, height: 6)
+    }
+}
+
+/// Themed sheet for editing the player's name, styled to match the app rather
+/// than a plain system alert.
+struct NameEditorSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    let theme: AnimalCharacter
+    @Binding var name: String
+    let onSave: () -> Void
+    @FocusState private var focused: Bool
+
+    private func save() {
+        onSave()
+        dismiss()
+    }
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Spacer(minLength: 0)
+
+            VStack(spacing: 6) {
+                theme.artwork
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 54, height: 54)
+
+                Text("Hoe heet je?")
+                    .font(.system(size: 24, weight: .heavy, design: .rounded))
+                    .foregroundStyle(theme.deepColor)
+            }
+
+            TextField("", text: $name, prompt: Text("Jouw naam"))
+                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .focused($focused)
+                .textContentType(.name)
+                .submitLabel(.done)
+                .onSubmit(save)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 13)
+                .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(focused ? theme.color : theme.deepColor.opacity(0.15),
+                                lineWidth: focused ? 2 : 1)
+                )
+                .animation(.snappy(duration: 0.2), value: focused)
+
+            HStack(spacing: 12) {
+                Button { dismiss() } label: {
+                    Text("Annuleer")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 13)
+                        .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .stroke(theme.deepColor.opacity(0.15), lineWidth: 1)
+                        )
+                        .foregroundStyle(theme.deepColor)
+                }
+
+                Button(action: save) {
+                    Text("Bewaar")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 13)
+                        .background(
+                            LinearGradient(colors: [theme.color, theme.deepColor],
+                                           startPoint: .top, endPoint: .bottom),
+                            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        )
+                        .foregroundStyle(.white)
+                }
+            }
+            .buttonStyle(.plain)
+
+            Spacer(minLength: 0)
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear { focused = true }
     }
 }
 

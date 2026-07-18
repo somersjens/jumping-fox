@@ -51,10 +51,15 @@ struct GameView: View {
         .onDisappear { PlaytimeTracker.shared.challengeEnded() }
         .onChange(of: state.isGameOver) { _, over in
             if over {
-                PlaytimeTracker.shared.challengeEnded()
                 PausedGameStore.shared.remove(state)
+                // Defer the tracker's disk write off this frame so the game-over
+                // / completion overlay paints without waiting on it.
+                DispatchQueue.main.async { PlaytimeTracker.shared.challengeEnded() }
             } else {
                 PlaytimeTracker.shared.challengeStarted()
+                // Rearm the celebration for the next completion.
+                celebrate = false
+                showConfetti = false
             }
         }
     }
@@ -64,13 +69,22 @@ struct GameView: View {
     private var topBar: some View {
         HStack {
             Button {
-                PausedGameStore.shared.pause(state)
+                if state.isEndless {
+                    // Endless run ended by the player: finalise the score and leave.
+                    state.recordCurrentScore()
+                    PausedGameStore.shared.remove(state)
+                } else {
+                    PausedGameStore.shared.pause(state)
+                }
                 dismiss()
             } label: {
-                Image(systemName: "pause.circle.fill")
+                // Normal pause button until the three lives run out; then a
+                // checkmark "done" button of the same size.
+                Image(systemName: state.isEndless ? "checkmark.circle.fill" : "pause.circle.fill")
                     .font(.title)
                     .foregroundStyle(theme.deepColor.opacity(0.85))
             }
+            .animation(.snappy(duration: 0.25), value: state.isEndless)
 
             Spacer()
 
@@ -91,6 +105,7 @@ struct GameView: View {
 
             livesBadge
                 .frame(minWidth: 44, alignment: .trailing)
+                .animation(.snappy(duration: 0.3), value: state.isEndless)
         }
         .padding(.horizontal)
         .padding(.top, 8)
@@ -98,22 +113,16 @@ struct GameView: View {
 
     @ViewBuilder
     private var livesBadge: some View {
-        if let halves = state.livesHalves {
+        if state.isEndless {
+            // Lives used up in unlimited mode: swap the hearts for infinity.
+            Image(systemName: "infinity")
+                .font(.title3)
+                .foregroundStyle(theme.deepColor)
+                .transition(.scale.combined(with: .opacity))
+        } else if let halves = state.livesHalves {
             heartRow(filledHalves: halves)
                 .font(.title3)
                 .animation(.snappy(duration: 0.25), value: halves)
-        } else {
-            // Unlimited: no lives to show — just a clean infinity symbol.
-            // The crossed-out trophy only appears once trophies stop counting.
-            HStack(spacing: 6) {
-                Image(systemName: "infinity")
-                    .font(.title3)
-                    .foregroundStyle(theme.deepColor)
-                if state.isScoreLocked {
-                    excludedTrophy
-                }
-            }
-            .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
         }
     }
 
@@ -145,19 +154,6 @@ struct GameView: View {
                     }
             }
         }
-    }
-
-    private var excludedTrophy: some View {
-        Image(systemName: "trophy.fill")
-            .font(.subheadline.weight(.bold))
-            .foregroundStyle(theme.deepColor.opacity(0.42))
-            .overlay {
-                Rectangle()
-                    .fill(theme.deepColor)
-                    .frame(width: 23, height: 2.5)
-                    .rotationEffect(.degrees(-45))
-            }
-            .accessibilityLabel("Trofeeën tellen niet meer mee")
     }
 
     /// The equation the player sees. When the hint is active and the answer
@@ -195,30 +191,44 @@ struct GameView: View {
     }
 
     private var bottomBar: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 10) {
             equationBadge
-            if state.isRandomPractice {
-                Label("MIX MODE", systemImage: "shuffle")
-                    .font(.caption.weight(.heavy))
-                    .tracking(1.2)
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(theme.deepColor.opacity(0.9), in: Capsule())
-                    .transition(.scale.combined(with: .opacity))
-            }
-            if state.isScoreLocked {
-                Label("Trofeeën tellen niet meer mee na 3 fouten", systemImage: "trophy.fill")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(.black.opacity(0.35), in: Capsule())
-            }
+            // Fixed-height zone below the equation so the equation never shifts
+            // when these status labels appear or disappear — there's room on the
+            // ground to show them here.
+            // A single fixed-height status slot below the equation so it never
+            // shifts. The trophy warning takes priority; MIX MODE is subordinate
+            // and hides while the warning is showing.
+            statusLabel
+                .frame(maxWidth: .infinity, minHeight: 34, maxHeight: 34, alignment: .top)
         }
         .animation(.snappy(duration: 0.25), value: state.isRandomPractice)
-        .animation(.snappy(duration: 0.25), value: state.isAnswerRevealed)
+        .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
         .padding(.bottom, 16)
+    }
+
+    /// The one status capsule shown under the equation. The trophy warning
+    /// outranks MIX MODE, so they never stack — the equation stays put.
+    @ViewBuilder
+    private var statusLabel: some View {
+        if state.isScoreLocked {
+            Label("Trofeeën tellen niet meer mee na 3 fouten", systemImage: "trophy.fill")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(theme.deepColor.opacity(0.9), in: Capsule())
+                .transition(.scale.combined(with: .opacity))
+        } else if state.isRandomPractice {
+            Label("MIX MODE", systemImage: "shuffle")
+                .font(.caption.weight(.heavy))
+                .tracking(1.2)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(theme.deepColor.opacity(0.9), in: Capsule())
+                .transition(.scale.combined(with: .opacity))
+        }
     }
 
     // MARK: Game over
@@ -301,14 +311,17 @@ struct GameView: View {
     // MARK: Completion (reached the 30-point goal)
 
     @State private var celebrate = false
+    @State private var showConfetti = false
 
     private var completionOverlay: some View {
         ZStack {
             Color.black.opacity(0.55).ignoresSafeArea()
 
-            ConfettiView()
-                .ignoresSafeArea()
-                .allowsHitTesting(false)
+            if showConfetti {
+                ConfettiView()
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }
 
             VStack(spacing: 16) {
                 Text("🏆")
@@ -372,13 +385,16 @@ struct GameView: View {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
 #endif
+            // Let the "Gehaald!" card paint on this frame; bring the confetti in
+            // on the next runloop so building its nodes never delays the popup.
+            DispatchQueue.main.async { showConfetti = true }
         }
     }
 }
 
 /// Lightweight falling-confetti burst for the completion screen.
 private struct ConfettiView: View {
-    private let pieces = (0..<70).map { _ in ConfettiPiece() }
+    private let pieces = (0..<44).map { _ in ConfettiPiece() }
     @State private var fallen = false
 
     var body: some View {
@@ -400,6 +416,9 @@ private struct ConfettiView: View {
                         )
                 }
             }
+            // Composite all pieces into one Metal layer so the fall animates
+            // smoothly instead of stuttering as it starts.
+            .drawingGroup()
         }
         .onAppear { fallen = true }
     }

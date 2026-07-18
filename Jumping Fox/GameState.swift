@@ -20,7 +20,9 @@ enum LifeMode: String, CaseIterable, Identifiable {
     var startingLives: Int? {
         switch self {
         case .three: return 3
-        case .unlimited: return nil
+        // Unlimited also starts with three lives — the difference is that
+        // running out switches to endless play instead of ending the game.
+        case .unlimited: return 3
         }
     }
 
@@ -110,11 +112,12 @@ final class GameState: ObservableObject {
     @Published private(set) var question: Question
     @Published private(set) var score = 0
     /// Remaining lives in HALF units, so a hint can cost half a life.
-    /// nil means unlimited lives. 3 lives → starts at 6.
+    /// Both modes start at 6 (three lives).
     @Published private(set) var livesHalves: Int?
-    /// Mistakes in unlimited mode, also in HALF units (a wrong answer counts
-    /// as 2, a hint as 1). Trophies stop counting at 3 full mistakes (6).
-    @Published private(set) var mistakeHalves = 0
+    /// Unlimited mode only: true once the three lives are used up. From then on
+    /// the game never ends by lives — the HUD shows an infinity symbol instead
+    /// of hearts and trophies stop counting.
+    @Published private(set) var isEndless = false
     /// True once the answer has been revealed for the current question, so a
     /// second tap on the same question is free and shows the number again.
     @Published private(set) var isAnswerRevealed = false
@@ -139,20 +142,20 @@ final class GameState: ObservableObject {
     var questionText: String { question.prompt }
     var isRandomPractice: Bool { question.isRandomPractice }
 
-    /// Lives left as a fraction, for the HUD (e.g. 2.5). nil means unlimited.
+    /// Lives left as a fraction, for the HUD (e.g. 2.5).
     var livesRemaining: Double? { livesHalves.map { Double($0) / 2 } }
 
-    /// Whole mistakes made in unlimited mode (rounded down), for legacy checks.
-    var wrongAnswerCount: Int { mistakeHalves / 2 }
-
-    var isScoreLocked: Bool { lifeMode == .unlimited && mistakeHalves >= 6 }
+    /// In unlimited mode, trophies stop counting once the three lives are gone.
+    var isScoreLocked: Bool { isEndless }
 
     /// The hint may not be used when only half a life (or half of the
     /// unlimited-mode budget) is left — you can never spend your last half.
     var canRevealAnswer: Bool {
         guard GameSettings.answerHintEnabled, !isGameOver, !isAnswerRevealed else { return false }
+        // Endless play: the lives are already gone, so the hint is free.
+        if isEndless { return true }
         if let halves = livesHalves { return halves > 1 }
-        return mistakeHalves <= 4
+        return true
     }
 
     /// Called when the player lands on the correct platform.
@@ -200,16 +203,19 @@ final class GameState: ObservableObject {
     /// Deducts a penalty in half-life units, ending the game or locking the
     /// score as appropriate for the current life mode.
     private func applyPenalty(halves: Int) {
-        if let current = livesHalves {
-            let remaining = current - halves
-            livesHalves = remaining
-            if remaining <= 0 {
-                endGame(reason: .outOfLives)
+        guard let current = livesHalves else { return }
+        let remaining = current - halves
+        livesHalves = max(0, remaining)
+        guard remaining <= 0 else { return }
+        if lifeMode == .unlimited {
+            // Out of lives, but unlimited: switch to endless play instead of
+            // ending, and lock in the trophies earned so far.
+            if !isEndless {
+                isEndless = true
+                recordCurrentScore()
             }
         } else {
-            let wasLocked = mistakeHalves >= 6
-            mistakeHalves += halves
-            if !wasLocked && mistakeHalves >= 6 { recordCurrentScore() }
+            endGame(reason: .outOfLives)
         }
     }
 
@@ -239,7 +245,7 @@ final class GameState: ObservableObject {
         question = engine.next()
         score = 0
         livesHalves = lifeMode.startingLives.map { $0 * 2 }
-        mistakeHalves = 0
+        isEndless = false
         isAnswerRevealed = false
         isGameOver = false
         gameOverReason = nil

@@ -27,4 +27,15 @@ final class PausedGameStore {
     func hasPausedSession(for level: LevelConfig, mode: LifeMode) -> Bool {
         sessions[key(levelID: level.id, mode: mode)] != nil
     }
+
+    /// Highest live score across any paused session for this level id. Helper
+    /// runs only count when `includingHelper` is true, mirroring how helper
+    /// trophies only count while helper mode is on.
+    func pausedScore(forLevelID levelID: String, includingHelper: Bool) -> Int {
+        LifeMode.allCases.compactMap { mode -> Int? in
+            guard let session = sessions[key(levelID: levelID, mode: mode)] else { return nil }
+            if session.isAnswerHelperEnabled && !includingHelper { return nil }
+            return session.score
+        }.max() ?? 0
+    }
 }

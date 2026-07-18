@@ -47,30 +47,37 @@ struct OnboardingView: View {
     }
 
     private var nameStep: some View {
-        VStack(spacing: 18) {
-            Text("Sommen maken was nog nooit zo leuk!")
-                .font(.system(size: 30, weight: .heavy, design: .rounded))
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: .infinity)
+        VStack(spacing: 24) {
+            VStack(spacing: 10) {
+                Text("Sommen maken was\nnog nooit zo leuk!")
+                    .font(.system(size: 30, weight: .heavy, design: .rounded))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity)
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Hoe heet je?")
-                    .font(.title3.weight(.bold))
-
-                TextField("Jouw naam", text: $playerName)
-                    .focused($isNameFieldFocused)
-                    .textContentType(.name)
-                    .submitLabel(.next)
-                    .onSubmit { goToSubjects() }
-                    .padding(.horizontal, 2)
-                    .padding(.vertical, 12)
-                    .overlay(alignment: .bottom) {
-                        Rectangle()
-                            .fill(isNameFieldFocused ? Color.orange : .brown.opacity(0.25))
-                            .frame(height: isNameFieldFocused ? 2 : 1)
-                    }
+                Text("Laten we beginnen — hoe heet je?")
+                    .font(.body.weight(.medium))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
             }
+
+            TextField("", text: $playerName, prompt: Text("Jouw naam"))
+                .font(.system(size: 26, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .focused($isNameFieldFocused)
+                .textContentType(.name)
+                .submitLabel(.next)
+                .onSubmit { goToSubjects() }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
+                .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .stroke(isNameFieldFocused ? Color.orange : .brown.opacity(0.18),
+                                lineWidth: isNameFieldFocused ? 2 : 1)
+                )
+                .frame(maxWidth: 300)
+                .animation(.snappy(duration: 0.2), value: isNameFieldFocused)
 
             Button("Verder") { goToSubjects() }
                 .buttonStyle(OnboardingButtonStyle())
@@ -81,12 +88,14 @@ struct OnboardingView: View {
         VStack(spacing: 14) {
             Text("Wat wil je leren?")
                 .font(.system(size: 28, weight: .heavy, design: .rounded))
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
 
             Text("Kies een onderwerp om mee te beginnen.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
                 .padding(.bottom, 4)
 
             VStack(spacing: 8) {
