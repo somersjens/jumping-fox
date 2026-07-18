@@ -12,31 +12,36 @@ struct OnboardingView: View {
         ZStack {
             onboardingBackground
 
-            ScrollView {
-                VStack(spacing: 0) {
-                    Image("no_background")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: step == 1 ? 112 : 150, height: step == 1 ? 112 : 150)
-                        .padding(.bottom, step == 1 ? 14 : 22)
-                        .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack(spacing: 0) {
+                        Image("no_background")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: step == 1 ? 112 : 150, height: step == 1 ? 112 : 150)
+                            .padding(.bottom, step == 1 ? 14 : 22)
+                            .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
 
-                    Group {
-                        switch step {
-                        case 0: nameStep
-                        case 1: subjectStep
-                        default: levelStep
+                        Group {
+                            switch step {
+                            case 0: nameStep
+                            case 1: subjectStep
+                            default: levelStep
+                            }
                         }
+                        .id(step)
+                        .transition(.opacity.combined(with: .move(edge: .trailing)))
                     }
-                    .id(step)
-                    .transition(.opacity.combined(with: .move(edge: .trailing)))
+                    .frame(maxWidth: 500)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 28)
+                    // On normal-height screens this fills the viewport and
+                    // centres the welcome content. On smaller screens the
+                    // content simply grows taller and remains scrollable.
+                    .frame(maxWidth: .infinity, minHeight: proxy.size.height, alignment: .center)
                 }
-                .frame(maxWidth: 500)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 28)
-                .frame(maxWidth: .infinity, minHeight: 1)
+                .scrollBounceBehavior(.basedOnSize)
             }
-            .scrollBounceBehavior(.basedOnSize)
         }
         .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03))
     }
