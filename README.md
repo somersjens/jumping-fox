@@ -34,7 +34,7 @@ Adjustable daily (default 5 min) and weekly (default 35 min) play goals. Only *a
 
 ## Premium (one-time in-app purchase)
 
-- Multiplication tables 13–100
+- Multiplication tables 13–99
 - Unlimited lives for everyone
 - 10 characters (fox, frog, penguin, pig, whale, lion, octopus, crab, turtle, bear)
 - A matching color theme for each character

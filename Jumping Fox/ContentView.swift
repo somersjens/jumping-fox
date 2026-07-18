@@ -102,11 +102,13 @@ struct ContentView: View {
     private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
     private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
     private var category: ChallengeCategory { selectedFilter.category(for: menuMode) }
+    private var premiumSectionTitle: LocalizedStringKey {
+        category == .tables ? "menu.premiumTables" : "menu.premium"
+    }
 
     // Keep cards comfortably tappable on compact phones, while letting the
     // grid add columns instead of stretching a phone-sized card across iPad.
     private let cardColumns = [GridItem(.adaptive(minimum: 104, maximum: 154), spacing: 12)]
-    private let miniColumns = [GridItem(.adaptive(minimum: 58, maximum: 88), spacing: 8)]
 
     var body: some View {
         ZStack {
@@ -561,28 +563,38 @@ struct ContentView: View {
     @ViewBuilder
     private func premiumSection(_ levels: [LevelConfig]) -> some View {
         if premium.isPremium {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("menu.premiumTables")
-                    .font(.headline)
+            VStack(spacing: 14) {
+                HStack(spacing: 10) {
+                    Rectangle()
+                        .fill(character.deepColor.opacity(0.28))
+                        .frame(height: 1.5)
+                    HStack(spacing: 5) {
+                        Text(premiumSectionTitle)
+                            .font(.subheadline.weight(.bold))
+                        Image(systemName: "crown.fill")
+                            .font(.caption.weight(.bold))
+                    }
                     .foregroundStyle(character.deepColor)
-                LazyVGrid(columns: miniColumns, spacing: 8) {
+                    .fixedSize()
+                    Rectangle()
+                        .fill(character.deepColor.opacity(0.28))
+                        .frame(height: 1.5)
+                }
+
+                LazyVGrid(columns: cardColumns, spacing: 12) {
                     ForEach(levels) { level in
-                        Button {
+                        let normalBest = ProgressStore.bestScore(levelID: level.id)
+                        LevelCardView(level: level,
+                                      status: status(for: level, recommendedID: nil),
+                                      best: normalBest,
+                                      pausedBest: PausedGameStore.shared.pausedScore(forLevelID: level.id, includingHelper: answerHelper),
+                                      helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
+                                      showsHelperMarker: answerHelper,
+                                      showsTrophies: true,
+                                      isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
+                                      theme: character) {
                             selection = LevelSelection(level: level)
-                        } label: {
-                            VStack(spacing: 2) {
-                                Text(level.cardNumber)
-                                    .font(.system(size: 17, weight: .heavy, design: .rounded))
-                                    .foregroundStyle(.white)
-                                Text(verbatim: "🏆 \(ProgressStore.bestScore(levelID: level.id))\(answerHelper && ProgressStore.helperOnlyBestScore(levelID: level.id) > ProgressStore.bestScore(levelID: level.id) ? " *" : "")")
-                                    .font(.system(size: 10, weight: .semibold))
-                                    .foregroundStyle(.white.opacity(0.85))
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
-                            .background(character.deepColor, in: RoundedRectangle(cornerRadius: 10))
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -1035,9 +1047,17 @@ struct LevelCardView: View {
         }
     }
 
+    /// Helper scores are intentionally kept separate from regular progress.
+    /// When helper mode is visible, though, its score is the one the card must
+    /// celebrate; otherwise a completed assisted run looked like a 0-score
+    /// card with only an asterisk.
+    private var visibleBest: Int {
+        showsHelperMarker ? max(best, helperBest) : best
+    }
+
     private var tier: Tier {
-        if best >= ProgressStore.maximumTrophiesPerLevel { return .maxed }
-        switch best {
+        if visibleBest >= ProgressStore.maximumTrophiesPerLevel { return .maxed }
+        switch visibleBest {
         case ..<1:    return .empty
         case 1...9:   return .one
         case 10...19: return .two
@@ -1083,8 +1103,11 @@ struct LevelCardView: View {
 
     /// Trophy counts shown in the menu, always clamped to the maximum — even
     /// when in-game round-off is off and a run pushed the raw score past 30.
-    private var displayBest: Int { min(best, ProgressStore.maximumTrophiesPerLevel) }
+    private var displayBest: Int { min(visibleBest, ProgressStore.maximumTrophiesPerLevel) }
     private var displayPaused: Int { min(pausedBest, ProgressStore.maximumTrophiesPerLevel) }
+    private var helperMarker: String {
+        showsHelperMarker && helperBest > best ? " *" : ""
+    }
 
     /// A lone "1" reads right-of-centre because of its top flag, so its stem
     /// misses the middle dot; nudge just that glyph left to line them up.
@@ -1142,19 +1165,19 @@ struct LevelCardView: View {
     }
 
     private var cardFill: Color {
-        best == 0 ? Color.white.opacity(0.6) : .white
+        visibleBest == 0 ? Color.white.opacity(0.6) : .white
     }
 
     private var borderColor: Color {
         if status == .recommended { return theme.color }
-        return best == 0 ? Color(white: 0.85) : tier.color(for: theme).opacity(0.35)
+        return visibleBest == 0 ? Color(white: 0.85) : tier.color(for: theme).opacity(0.35)
     }
 
     // MARK: Center score line
 
     @ViewBuilder
     private var centerLine: some View {
-        if status == .recommended && best == 0 && !isPaused {
+        if status == .recommended && visibleBest == 0 && !isPaused {
             Text("menu.startHere")
                 .font(.system(size: 10, weight: .bold))
                 .foregroundStyle(theme.deepColor)
@@ -1183,10 +1206,9 @@ struct LevelCardView: View {
     }
 
     private var trophyChip: some View {
-        let marker = showsHelperMarker && helperBest > best ? " *" : ""
         return HStack(spacing: 3) {
             Image(systemName: "trophy.fill").font(.system(size: 9))
-            Text(verbatim: "\(displayBest)\(marker)")
+            Text(verbatim: "\(displayBest)\(helperMarker)")
                 .font(.system(size: 12, weight: .bold))
         }
         .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
@@ -1255,7 +1277,7 @@ struct LevelCardView: View {
                     .offset(x: numberNudge)
                 HStack(spacing: 3) {
                     Image(systemName: "trophy.fill").font(.system(size: 9))
-                    Text(verbatim: "\(displayBest)")
+                    Text(verbatim: "\(displayBest)\(helperMarker)")
                         .font(.system(size: 12, weight: .bold))
                 }
                 .foregroundStyle(hero)

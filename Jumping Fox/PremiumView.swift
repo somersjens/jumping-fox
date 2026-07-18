@@ -27,7 +27,10 @@ struct PremiumView: View {
             ScrollView {
                 VStack(spacing: 22) {
                     hero
-                    featureCard
+                    if !premium.isPremium {
+                        featureCard
+                            .transition(.opacity.combined(with: .scale(scale: 0.96, anchor: .top)))
+                    }
                     characterCard
                     purchaseSection
                 }
@@ -39,6 +42,7 @@ struct PremiumView: View {
         }
         .overlay(alignment: .topLeading) { closeButton }
         .animation(.easeInOut(duration: 0.25), value: previewCharacterID)
+        .animation(.spring(response: 0.42, dampingFraction: 0.7), value: premium.isPremium)
         .onAppear { previewCharacterID = characterID }
         .task { await premium.refresh() }
     }
@@ -92,10 +96,11 @@ struct PremiumView: View {
                 Text(character.localizedName)
                     .font(.system(size: 30, weight: .heavy, design: .rounded))
                     .foregroundStyle(character.deepColor)
-                if previewCharacterID != CharacterCatalog.freeCharacterID {
+                if premium.isPremium || previewCharacterID != CharacterCatalog.freeCharacterID {
                     Image(systemName: "crown.fill")
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundStyle(character.deepColor)
+                        .transition(.scale.combined(with: .opacity))
                 }
             }
         }
@@ -165,23 +170,17 @@ struct PremiumView: View {
     @ViewBuilder
     private var purchaseSection: some View {
         if premium.isPremium {
-            VStack(spacing: 12) {
-                Label("premium.youHavePremium", systemImage: "checkmark.circle.fill")
+            Button {
+                dismiss()
+            } label: {
+                Text("common.done")
                     .font(.headline)
-                    .foregroundStyle(.green)
-
-                Button {
-                    dismiss()
-                } label: {
-                    Text("common.done")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(character.color, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .foregroundStyle(.white)
-                }
-                .buttonStyle(.plain)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(character.color, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .foregroundStyle(.white)
             }
+            .buttonStyle(.plain)
         } else {
             VStack(spacing: 12) {
                 Button {
@@ -253,6 +252,7 @@ struct PremiumView: View {
             }
         }
     }
+
 }
 
 #Preview {

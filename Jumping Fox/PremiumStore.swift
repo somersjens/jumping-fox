@@ -3,7 +3,7 @@
 //  Jumping Fox
 //
 //  One-time Premium in-app purchase (StoreKit 2).
-//  Premium unlocks 100 levels per topic, the character selector,
+//  Premium unlocks 99 levels per topic, the character selector,
 //  and an ad-free experience.
 //
 

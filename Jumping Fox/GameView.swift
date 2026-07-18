@@ -147,8 +147,9 @@ struct GameView: View {
         return ZStack {
             Color.black.opacity(0.55).ignoresSafeArea()
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 18) {
                 // Keep the header focused on the level name: the character
                 // stays on the home screen and doesn't compete with the copy.
                 Text(info.title)
@@ -199,10 +200,15 @@ struct GameView: View {
                 )
                 .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
                 .background(.background, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-                .padding()
-                .frame(maxWidth: .infinity)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    // ScrollView normally pins its content to the top. Fill
+                    // the available height so this card is centred on regular
+                    // phones, while still allowing a scroll on short screens.
+                    .frame(minHeight: proxy.size.height, alignment: .center)
+                }
+                .scrollBounceBehavior(.basedOnSize)
             }
-            .scrollBounceBehavior(.basedOnSize)
         }
         .contentShape(Rectangle())
         .onTapGesture(perform: dismissIntro)
@@ -582,8 +588,9 @@ struct GameView: View {
         showsMixIndicator: Bool,
         emphasizesSubtitle: Bool
     ) -> some View {
-        ScrollView {
-            VStack(spacing: 0) {
+        GeometryReader { proxy in
+            ScrollView {
+                VStack(spacing: 0) {
             endIllustration(illustration)
                 .padding(.bottom, 18)
 
@@ -678,10 +685,14 @@ struct GameView: View {
                     .stroke(.white.opacity(0.82), lineWidth: 1)
             }
             .shadow(color: .black.opacity(0.22), radius: 24, y: 12)
-            .padding(24)
-            .frame(maxWidth: .infinity)
+                .padding(24)
+                .frame(maxWidth: .infinity)
+                // Match the intro card: centre whenever the card fits, but
+                // preserve vertical scrolling in compact landscape sizes.
+                .frame(minHeight: proxy.size.height, alignment: .center)
+            }
+            .scrollBounceBehavior(.basedOnSize)
         }
-        .scrollBounceBehavior(.basedOnSize)
     }
 
     @ViewBuilder

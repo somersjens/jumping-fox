@@ -134,11 +134,11 @@ enum LevelCatalog {
                                 title: "Below zero", isAdvanced: true)
         result[.subtractionMix] = subMix
 
-        // Times tables: one table per level (13–100 with Premium).
+        // Times tables: one table per level (13–99 with Premium).
         var tables = (1...12).map {
             LevelConfig(category: .tables, index: $0, cardNumber: "\($0)", title: "Table of \($0)")
         }
-        tables += (13...100).map {
+        tables += (13...99).map {
             LevelConfig(category: .tables, index: $0, cardNumber: "\($0)",
                         title: "Table of \($0)", requiresPremium: true)
         }
@@ -196,14 +196,14 @@ enum LevelCatalog {
                         isAdvanced: $0 >= 3)
         }
 
-        // Each menu has its own genuine set of twelve configured free
-        // levels. Premium continues that same progression with levels 13–24.
+        // Each menu has twelve free levels. Premium extends every topic and
+        // its immediate-mix mode to 99 levels in total.
         for category in ChallengeCategory.allCases {
             var levels = result[category, default: []]
-            // Tables already continue through 100 as Premium content. Every
-            // other menu gets its own "more with Premium" set as well.
+            // Tables already continue through 99 as Premium content. Every
+            // other menu gets its own Premium progression through level 99.
             if category != .tables {
-                for index in 13...24 {
+                for index in 13...99 {
                     levels.append(
                         LevelConfig(category: category, index: index,
                                     cardNumber: "\(index)", title: "Premium practice \(index)",
