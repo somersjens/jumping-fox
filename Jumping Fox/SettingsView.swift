@@ -33,6 +33,8 @@ struct SettingsView: View {
                     premiumCard
                 }
                 .padding()
+                .frame(maxWidth: 620)
+                .frame(maxWidth: .infinity)
             }
             .background(character.skyColor.ignoresSafeArea())
             .navigationTitle("settings.title")

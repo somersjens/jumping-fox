@@ -147,7 +147,8 @@ struct GameView: View {
         return ZStack {
             Color.black.opacity(0.55).ignoresSafeArea()
 
-            VStack(alignment: .leading, spacing: 18) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
                 // Keep the header focused on the level name: the character
                 // stays on the home screen and doesn't compete with the copy.
                 Text(info.title)
@@ -188,17 +189,20 @@ struct GameView: View {
                         .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                 }
                 .buttonStyle(.plain)
+                }
+                .padding(28)
+                .frame(maxWidth: 400)
+                .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 26, style: .continuous)
+                    .stroke(theme.deepColor.opacity(0.18), lineWidth: 1)
+                )
+                .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
+                .background(.background, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+                .padding()
+                .frame(maxWidth: .infinity)
             }
-            .padding(28)
-            .frame(maxWidth: 340)
-            .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: 26, style: .continuous)
-                .stroke(theme.deepColor.opacity(0.18), lineWidth: 1)
-            )
-            .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
-            .background(.background, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-            .padding()
+            .scrollBounceBehavior(.basedOnSize)
         }
         .contentShape(Rectangle())
         .onTapGesture(perform: dismissIntro)
@@ -578,7 +582,8 @@ struct GameView: View {
         showsMixIndicator: Bool,
         emphasizesSubtitle: Bool
     ) -> some View {
-        VStack(spacing: 0) {
+        ScrollView {
+            VStack(spacing: 0) {
             endIllustration(illustration)
                 .padding(.bottom, 18)
 
@@ -657,23 +662,26 @@ struct GameView: View {
                 }
             }
             .padding(.top, 24)
-        }
-        .padding(26)
-        .frame(maxWidth: 340)
-        .background(
+            }
+            .padding(26)
+            .frame(maxWidth: 400)
+            .background(
             LinearGradient(
                 colors: [theme.skyColor, .white, theme.tintColor],
                 startPoint: .top,
                 endPoint: .bottom
             ),
             in: RoundedRectangle(cornerRadius: 28, style: .continuous)
-        )
-        .overlay {
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .stroke(.white.opacity(0.82), lineWidth: 1)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    .stroke(.white.opacity(0.82), lineWidth: 1)
+            }
+            .shadow(color: .black.opacity(0.22), radius: 24, y: 12)
+            .padding(24)
+            .frame(maxWidth: .infinity)
         }
-        .shadow(color: .black.opacity(0.22), radius: 24, y: 12)
-        .padding(24)
+        .scrollBounceBehavior(.basedOnSize)
     }
 
     @ViewBuilder

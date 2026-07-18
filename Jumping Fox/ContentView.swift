@@ -103,8 +103,10 @@ struct ContentView: View {
     private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
     private var category: ChallengeCategory { selectedFilter.category(for: menuMode) }
 
-    private let cardColumns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
-    private let miniColumns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 5)
+    // Keep cards comfortably tappable on compact phones, while letting the
+    // grid add columns instead of stretching a phone-sized card across iPad.
+    private let cardColumns = [GridItem(.adaptive(minimum: 104, maximum: 154), spacing: 12)]
+    private let miniColumns = [GridItem(.adaptive(minimum: 58, maximum: 88), spacing: 8)]
 
     var body: some View {
         ZStack {
@@ -121,6 +123,8 @@ struct ContentView: View {
                         .id(showsOptions)
                 }
                 .padding()
+                .frame(maxWidth: 720)
+                .frame(maxWidth: .infinity)
                 .id(refreshID)
             }
         }
@@ -217,7 +221,7 @@ struct ContentView: View {
                         Image(systemName: "trophy.fill")
                     }
                         .font(.subheadline.weight(.bold))
-                        .foregroundStyle(character.deepColor.opacity(0.78))
+                        .foregroundStyle(character.deepColor)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                 }
@@ -238,6 +242,9 @@ struct ContentView: View {
                     showGoalPicker = true
                 }
                 .frame(width: 106, height: headerDetailsHeight > 0 ? headerDetailsHeight : nil)
+                // The right-aligned progress line has a little more visual
+                // weight than the left side of this compact cluster.
+                .offset(x: -4)
             }
             .onPreferenceChange(HeaderDetailsHeightKey.self) { headerDetailsHeight = $0 }
 
@@ -257,11 +264,7 @@ struct ContentView: View {
                 }
                 .foregroundStyle(character.deepColor)
 
-                HStack(spacing: 6) {
-                    ForEach(MenuFilter.allCases) { filter in
-                        menuFilterButton(filter)
-                    }
-                }
+                filterPicker
 
                 menuModePicker
 
@@ -289,6 +292,23 @@ struct ContentView: View {
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
+    }
+
+    /// The circular topic controls deliberately touch the same outer edges as
+    /// the Standard/Mix picker. A regular flexible HStack centres its first
+    /// and last circles inside their slots on wide screens, which made the
+    /// two rows look misaligned in landscape.
+    private var filterPicker: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(MenuFilter.allCases.enumerated()), id: \.element.id) { index, filter in
+                menuFilterButton(filter)
+                    .frame(width: 44, height: 44)
+
+                if index < MenuFilter.allCases.count - 1 {
+                    Spacer(minLength: 0)
+                }
+            }
+        }
     }
 
     private func menuFilterIcon(_ filter: MenuFilter, isSelected: Bool) -> some View {
@@ -440,7 +460,7 @@ struct ContentView: View {
                 } label: {
                     HStack(spacing: 6) {
                         Text(title)
-                            .font(.subheadline.weight(.semibold))
+                            .font(.subheadline.weight(.bold))
                             .multilineTextAlignment(.leading)
                         if let trailingIcon {
                             Image(systemName: trailingIcon)
@@ -466,7 +486,7 @@ struct ContentView: View {
 
             if isExpanded {
                 Text(info)
-                    .font(.footnote)
+                    .font(.system(size: 14, weight: .regular))
                     .lineSpacing(2)
                     .foregroundStyle(character.deepColor.opacity(0.7))
                     .fixedSize(horizontal: false, vertical: true)
@@ -582,7 +602,8 @@ struct ContentView: View {
                             .foregroundStyle(.white.opacity(0.9))
                     }
                     Spacer()
-                    Image(systemName: "lock.fill")
+                    Image(systemName: "chevron.right")
+                        .font(.subheadline.weight(.bold))
                         .foregroundStyle(.white.opacity(0.9))
                 }
                 .padding(14)
@@ -724,8 +745,13 @@ struct CompactStreakView: View {
                 Text("common.minutesShort \(progressMinutes) \(goalMinutes)")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(accent.opacity(0.6))
-                    // Align the text's visual bottom with the trophy line.
-                    .offset(x: 17, y: -1)
+                    // Use the same 72-pt rail as the progress line, so this
+                    // stays centred regardless of the number of digits.
+                    .frame(width: 72)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    // One point inward gives the text the requested optical
+                    // centring without depending on its content.
+                    .offset(x: -1, y: -1)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(Rectangle())
@@ -758,6 +784,7 @@ struct NameEditorSheet: View {
     @Binding var name: String
     let onSave: () -> Void
     @FocusState private var focused: Bool
+    @State private var hasRequestedInitialFocus = false
 
     private func save() {
         onSave()
@@ -829,7 +856,16 @@ struct NameEditorSheet: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear { focused = true }
+        .task {
+            // Requesting focus during the sheet's own presentation makes iOS
+            // animate the sheet and keyboard in competing passes. Waiting for
+            // that transition to settle gives the keyboard one smooth entry.
+            guard !hasRequestedInitialFocus else { return }
+            hasRequestedInitialFocus = true
+            try? await Task.sleep(for: .milliseconds(280))
+            guard !Task.isCancelled else { return }
+            focused = true
+        }
     }
 }
 
@@ -900,6 +936,53 @@ enum LevelCardStatus: Equatable {
     case completed
 }
 
+/// The folded, clipped-corner marker used for the 10–19 trophy tier.
+private struct CornerFlagShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.width * 0.18, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.width * 0.82, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.height * 0.18),
+                          control: CGPoint(x: rect.maxX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.height * 0.54))
+        path.addQuadCurve(to: CGPoint(x: rect.width * 0.91, y: rect.height * 0.66),
+                          control: CGPoint(x: rect.maxX, y: rect.height * 0.61))
+        path.addLine(to: CGPoint(x: rect.width * 0.23, y: rect.maxY))
+        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.height * 0.84),
+                          control: CGPoint(x: rect.width * 0.03, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.height * 0.18))
+        path.addQuadCurve(to: CGPoint(x: rect.width * 0.18, y: rect.minY),
+                          control: CGPoint(x: rect.minX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+/// The swallowtail ribbon marker used for the 20–29 trophy tier.
+private struct PennantShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.width * 0.18, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.width * 0.82, y: rect.minY))
+        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.height * 0.18),
+                          control: CGPoint(x: rect.maxX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.height * 0.86))
+        path.addQuadCurve(to: CGPoint(x: rect.width * 0.87, y: rect.maxY),
+                          control: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.width * 0.58, y: rect.height * 0.74))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.height * 0.71),
+                          control: CGPoint(x: rect.width * 0.54, y: rect.height * 0.71))
+        path.addLine(to: CGPoint(x: rect.width * 0.13, y: rect.maxY))
+        path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.height * 0.86),
+                          control: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.height * 0.18))
+        path.addQuadCurve(to: CGPoint(x: rect.width * 0.18, y: rect.minY),
+                          control: CGPoint(x: rect.minX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
 /// Redesigned level card: a big central number, a trophy score line, a
 /// three-dot progress indicator, and a top-left tier badge. Reaching the
 /// maximum score turns the card into a celebratory gold "completed" card.
@@ -918,9 +1001,9 @@ struct LevelCardView: View {
 
     // MARK: Tiers
 
-    /// Achievement tiers, keyed off the trophy count. Their colors form a warm
-    /// gold → orange → red progression shared by the top-left badge and the
-    /// active progress dots; the maxed tier switches to a celebratory green.
+    /// Achievement tiers, keyed off the trophy count. Their colors keep the
+    /// selected character's hue, stepping from its primary color through its
+    /// deep color to a darker finish as the score increases.
     private enum Tier {
         case empty          // 0 trophies
         case one            // 1–9
@@ -928,12 +1011,15 @@ struct LevelCardView: View {
         case three          // 20–29
         case maxed          // 30 (completed)
 
-        var color: Color {
+        func color(for theme: AnimalCharacter) -> Color {
             switch self {
             case .empty:  return Color(white: 0.72)
-            case .one:    return Color(red: 0.93, green: 0.66, blue: 0.13)   // gold
-            case .two:    return Color(red: 0.93, green: 0.47, blue: 0.11)   // orange
-            case .three:  return Color(red: 0.83, green: 0.29, blue: 0.11)   // deep orange
+            case .one:    return theme.color
+            case .two:    return theme.deepColor
+            case .three:
+                return Color(red: theme.deepRGB.0 * 0.76,
+                             green: theme.deepRGB.1 * 0.76,
+                             blue: theme.deepRGB.2 * 0.76)
             case .maxed:  return Color(red: 0.30, green: 0.62, blue: 0.24)   // green
             }
         }
@@ -1037,7 +1123,7 @@ struct LevelCardView: View {
                     .offset(x: numberNudge)
                 centerLine
                 Spacer(minLength: 2)
-                progressDots(active: tier.activeDots, color: tier.color)
+                progressDots(active: tier.activeDots, color: tier.color(for: theme))
                     .padding(.bottom, 2)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -1061,7 +1147,7 @@ struct LevelCardView: View {
 
     private var borderColor: Color {
         if status == .recommended { return theme.color }
-        return best == 0 ? Color(white: 0.85) : tier.color.opacity(0.35)
+        return best == 0 ? Color(white: 0.85) : tier.color(for: theme).opacity(0.35)
     }
 
     // MARK: Center score line
@@ -1103,7 +1189,7 @@ struct LevelCardView: View {
             Text(verbatim: "\(displayBest)\(marker)")
                 .font(.system(size: 12, weight: .bold))
         }
-        .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color)
+        .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
     }
 
     // MARK: Tier badge (top-left)
@@ -1116,24 +1202,29 @@ struct LevelCardView: View {
             EmptyView()
         case .one:
             RoundedRectangle(cornerRadius: 1.5)
-                .fill(tier.color)
+                .fill(tier.color(for: theme))
                 .frame(width: 9, height: 9)
                 .rotationEffect(.degrees(45))
                 .padding(.leading, 1)
         case .two:
-            tierBars(count: 2)
+            cornerFlag
         case .three, .maxed:
-            tierBars(count: 3)
+            pennant
         }
     }
 
-    private func tierBars(count: Int) -> some View {
-        HStack(spacing: 2) {
-            ForEach(0..<count, id: \.self) { _ in
-                Capsule().fill(tier.color)
-                    .frame(width: 3, height: 13)
-            }
-        }
+    /// A clipped corner flag for the middle achievement tier (10–19).
+    private var cornerFlag: some View {
+        CornerFlagShape()
+            .fill(tier.color(for: theme))
+            .frame(width: 12, height: 14)
+    }
+
+    /// A notched ribbon for the highest non-complete tier (20–29).
+    private var pennant: some View {
+        PennantShape()
+            .fill(tier.color(for: theme))
+            .frame(width: 12, height: 14)
     }
 
     // MARK: Progress dots

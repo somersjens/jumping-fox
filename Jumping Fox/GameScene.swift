@@ -624,7 +624,24 @@ final class GameScene: SKScene {
     }
 
     override func didChangeSize(_ oldSize: CGSize) {
-        startIfNeeded()
+        guard started else {
+            startIfNeeded()
+            return
+        }
+        guard oldSize.width > 0, oldSize.height > 0,
+              size.width > 50, size.height > 50 else { return }
+
+        // SpriteView uses the available device size.  When a split view,
+        // rotation or iPad window changes that size, retain the current run
+        // but move horizontal scene anchors into their equivalent new position.
+        // Without this the springboard and wallpaper stayed at the old width.
+        let horizontalScale = size.width / oldSize.width
+        player.position.x *= horizontalScale
+        for platform in platforms {
+            platform.position.x *= horizontalScale
+        }
+        setupSpringboard()
+        updateBackgroundPattern()
     }
 
     private func startIfNeeded() {

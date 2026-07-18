@@ -12,27 +12,31 @@ struct OnboardingView: View {
         ZStack {
             onboardingBackground
 
-            VStack(spacing: 0) {
-                Image("no_background")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: step == 1 ? 112 : 150, height: step == 1 ? 112 : 150)
-                    .padding(.bottom, step == 1 ? 14 : 22)
-                    .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
+            ScrollView {
+                VStack(spacing: 0) {
+                    Image("no_background")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: step == 1 ? 112 : 150, height: step == 1 ? 112 : 150)
+                        .padding(.bottom, step == 1 ? 14 : 22)
+                        .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
 
-                Group {
-                    switch step {
-                    case 0: nameStep
-                    case 1: subjectStep
-                    default: levelStep
+                    Group {
+                        switch step {
+                        case 0: nameStep
+                        case 1: subjectStep
+                        default: levelStep
+                        }
                     }
+                    .id(step)
+                    .transition(.opacity.combined(with: .move(edge: .trailing)))
                 }
-                .id(step)
-                .transition(.opacity.combined(with: .move(edge: .trailing)))
+                .frame(maxWidth: 500)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 28)
+                .frame(maxWidth: .infinity, minHeight: 1)
             }
-            .frame(maxWidth: 500)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 28)
+            .scrollBounceBehavior(.basedOnSize)
         }
         .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03))
     }

@@ -33,6 +33,8 @@ struct PremiumView: View {
                 }
                 .padding(.horizontal, 22)
                 .padding(.bottom, 28)
+                .frame(maxWidth: 620)
+                .frame(maxWidth: .infinity)
             }
         }
         .overlay(alignment: .topLeading) { closeButton }
@@ -62,24 +64,29 @@ struct PremiumView: View {
 
     private var hero: some View {
         VStack(spacing: 12) {
-            ZStack {
+            GeometryReader { proxy in
+                let heroSize = min(240, max(150, proxy.size.width * 0.52))
+                ZStack {
                 Circle()
                     .fill(
                         RadialGradient(colors: [character.color.opacity(0.35), character.color.opacity(0.05)],
                                        center: .center, startRadius: 6, endRadius: 150)
                     )
-                    .frame(width: 240, height: 240)
+                    .frame(width: heroSize, height: heroSize)
                 Circle()
                     .stroke(character.color.opacity(0.30), lineWidth: 2)
-                    .frame(width: 220, height: 220)
+                    .frame(width: heroSize * 0.92, height: heroSize * 0.92)
                 character.artwork
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 210, height: 210)
+                    .frame(width: heroSize * 0.88, height: heroSize * 0.88)
                     .shadow(color: character.deepColor.opacity(0.25), radius: 14, y: 8)
                     .id(previewCharacterID)
                     .transition(.scale.combined(with: .opacity))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .frame(height: 240)
 
             HStack(spacing: 8) {
                 Text(character.localizedName)
