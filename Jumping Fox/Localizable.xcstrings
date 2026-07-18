@@ -783,6 +783,23 @@
         }
       }
     },
+    "game.status.leaderboardMaxed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum trophies for the leaderboard reached"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximaal aantal trofeeën voor scorebord behaald"
+          }
+        }
+      }
+    },
     "game.status.scoreLocked": {
       "extractionState": "manual",
       "localizations": {

@@ -132,6 +132,9 @@ final class GameState: ObservableObject {
     /// True once the answer has been revealed for the current question, so a
     /// second tap on the same question is free and shows the number again.
     @Published private(set) var isAnswerRevealed = false
+    /// Armed by the ×2 pickup: the next CORRECT answer scores double; a
+    /// wrong answer forfeits it. Deliberately not persisted across pauses.
+    @Published private(set) var doublerArmed = false
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
@@ -185,6 +188,15 @@ final class GameState: ObservableObject {
     /// In unlimited mode, trophies stop counting once the three lives are gone.
     var isScoreLocked: Bool { isEndless }
 
+    /// True while a run keeps going after reaching the 30-trophy scoreboard cap
+    /// (only possible with "cap at 30" turned off). Extra trophies no longer
+    /// raise the recorded score, so the HUD shows a finish button and the
+    /// "scoreboard maxed" notice — but reaching the cap under the normal
+    /// completion flow ends the game, so this stays false there.
+    var isPastScoreboardCap: Bool {
+        !isGameOver && score >= ProgressStore.maximumTrophiesPerLevel
+    }
+
     /// The hint may not be used when only half a life (or half of the
     /// unlimited-mode budget) is left — you can never spend your last half.
     var canRevealAnswer: Bool {
@@ -201,13 +213,41 @@ final class GameState: ObservableObject {
     /// platforms always switch together, after the confirmation.
     func answeredCorrectly() {
         guard !isGameOver, !isScoreLocked else { return }
-        score += 1
+        score += doublerArmed ? 2 : 1
+        doublerArmed = false
         // "Round off at 30" is on: reaching the cap finishes the level with a
         // festive completion screen instead of letting the run drag on.
         if GameSettings.capsTrophiesAtThirty,
            score >= ProgressStore.maximumTrophiesPerLevel {
+            score = ProgressStore.maximumTrophiesPerLevel
             endGame(reason: .completed)
         }
+    }
+
+    /// Arms the ×2 pickup for the next answer.
+    func armDoubler() {
+        guard !isGameOver, !isScoreLocked else { return }
+        doublerArmed = true
+    }
+
+    /// The −1 hazard: touching it costs one trophy (never below zero).
+    func loseTrophy() {
+        guard !isGameOver, !isScoreLocked, score > 0 else { return }
+        score -= 1
+    }
+
+    /// Heals from a heart pickup, in half-heart units, never above the
+    /// starting total. Meaningless once endless play has begun.
+    func gainLifeHalves(_ halves: Int) {
+        guard !isGameOver, !isEndless, let current = livesHalves,
+              let start = lifeMode.startingLives else { return }
+        livesHalves = min(start * 2, current + halves)
+    }
+
+    /// Half-hearts lost so far; nil when lives don't apply.
+    var lostLifeHalves: Int? {
+        guard let current = livesHalves, let start = lifeMode.startingLives else { return nil }
+        return start * 2 - current
     }
 
     /// Activates the next question in the chain. Called by the scene at a
@@ -222,6 +262,7 @@ final class GameState: ObservableObject {
     func answeredWrong() {
         guard !isGameOver else { return }
         engine.registerWrong(question)
+        doublerArmed = false // a wrong answer forfeits the ×2
         applyPenalty(halves: 2)
     }
 
@@ -269,6 +310,14 @@ final class GameState: ObservableObject {
         endGame(reason: .finished)
     }
 
+    /// Ends the run from the HUD finish button once it is in "overtime": either
+    /// endless play (lives spent in unlimited mode) or still climbing past the
+    /// scoreboard cap. Shows the standard result screen with trophies earned.
+    func finishRun() {
+        guard !isGameOver, isEndless || isPastScoreboardCap else { return }
+        endGame(reason: .finished)
+    }
+
     private func endGame(reason: GameOverReason) {
         isGameOver = true
         gameOverReason = reason
@@ -291,6 +340,7 @@ final class GameState: ObservableObject {
         livesHalves = lifeMode.startingLives.map { $0 * 2 }
         isEndless = false
         isAnswerRevealed = false
+        doublerArmed = false
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false

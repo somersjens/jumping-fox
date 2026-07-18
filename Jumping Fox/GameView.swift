@@ -71,7 +71,12 @@ struct GameView: View {
             .ignoresSafeArea(.container, edges: .bottom)
 
             if state.isGameOver {
-                if state.gameOverReason == .completed || isShowingCompletionPreview {
+                // Reaching the 30 goal — whether it ended the run or the player
+                // kept climbing past it and then finished — earns the festive
+                // completion card (showing the real tally, e.g. 31/30).
+                if state.gameOverReason == .completed
+                    || isShowingCompletionPreview
+                    || state.score >= ProgressStore.maximumTrophiesPerLevel {
                     completionOverlay
                 } else {
                     gameOverOverlay
@@ -202,26 +207,33 @@ struct GameView: View {
 
     // MARK: HUD
 
+    /// The run is in "overtime" — endless play, or still climbing past the
+    /// scoreboard cap — so the HUD button finishes it (result screen) instead
+    /// of pausing to the menu.
+    private var isRunFinishable: Bool {
+        state.isEndless || state.isPastScoreboardCap
+    }
+
     private var topBar: some View {
         HStack(spacing: 0) {
             Button {
-                if state.isEndless {
-                    // Finishing an unlimited run shows the result card and stays
+                if isRunFinishable {
+                    // Finishing an overtime run shows the result card and stays
                     // put — the player leaves via its Play Again / Menu buttons.
-                    state.finishEndlessRun()
+                    state.finishRun()
                 } else {
                     PausedGameStore.shared.pause(state)
                     dismiss()
                 }
             } label: {
-                // Normal pause button until the three lives run out; then a
-                // checkmark "done" button of the same size.
-                Image(systemName: state.isEndless ? "checkmark.circle.fill" : "pause.circle.fill")
+                // Normal pause button during regular play; a checkmark "done"
+                // button of the same size once the run is finishable.
+                Image(systemName: isRunFinishable ? "checkmark.circle.fill" : "pause.circle.fill")
                     .font(.title)
                     .foregroundStyle(theme.deepColor.opacity(0.85))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .animation(.snappy(duration: 0.25), value: state.isEndless)
+            .animation(.snappy(duration: 0.25), value: isRunFinishable)
 
             // Just the trophy count: the score number followed by a trophy.
             // The equal-width side columns keep it perfectly centered.
@@ -399,6 +411,10 @@ struct GameView: View {
         .font(.system(size: digit, weight: .heavy, design: .rounded))
         .fixedSize()
         .padding(.horizontal, 2)
+        // The stack's geometric centre sits a touch high relative to where the
+        // "−" and the middle of "=" fall on the operator line, so nudge the
+        // whole fraction down a hair to line the bar up with them.
+        .offset(y: fontSize * 0.07)
     }
 
     /// When the last remaining half-heart cannot pay for a hint, make that
@@ -429,16 +445,29 @@ struct GameView: View {
                 .padding(.bottom, 0)
                 .animation(.snappy(duration: 0.25), value: state.isRandomPractice)
                 .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
+                .animation(.snappy(duration: 0.25), value: state.isPastScoreboardCap)
         }
         .frame(maxWidth: .infinity)
         .padding(.bottom, 16)
     }
 
-    /// The one status capsule shown under the equation. The trophy warning
-    /// outranks MIX MODE, so they never stack — the equation stays put.
+    /// The one status capsule shown under the equation. Priority, so they never
+    /// stack and the equation stays put: past-the-cap → lives gone → MIX. The
+    /// cap notice only shows while genuinely playing ON past 30 (never at the
+    /// 30/30 completion, which ends the game instead).
     @ViewBuilder
     private var statusLabel: some View {
-        if state.isScoreLocked {
+        if state.isPastScoreboardCap {
+            Label("game.status.leaderboardMaxed", systemImage: "trophy.fill")
+                .font(.caption.weight(.bold))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(theme.deepColor.opacity(0.9), in: Capsule())
+                .transition(.scale.combined(with: .opacity))
+        } else if state.isScoreLocked {
             Label("game.status.scoreLocked", systemImage: "trophy.fill")
                 .font(.caption.weight(.bold))
                 .lineLimit(1)
@@ -505,7 +534,9 @@ struct GameView: View {
                 leadingTitle: "\(state.level.index)",
                 trailingTitle: endScreenText.completionSuffix,
                 subtitle: endScreenText.completionSubtitle,
-                score: ProgressStore.maximumTrophiesPerLevel,
+                // The real tally, so a run carried past the cap reads e.g. 31/30.
+                // The debug preview keeps its clean 30/30 sample.
+                score: isShowingCompletionPreview ? ProgressStore.maximumTrophiesPerLevel : state.score,
                 illustration: .trophy,
                 titleIcon: endScreenText.menuIcon(for: state.level),
                 showsMixIndicator: state.level.startsInMix,
