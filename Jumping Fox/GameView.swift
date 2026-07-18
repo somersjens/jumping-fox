@@ -122,9 +122,9 @@ struct GameView: View {
 
     private var introCard: some View {
         let info = ModeIntro.info(for: state.level)
-        let trophyBullet = "Verdien 1 trofee per goed antwoord, met een maximum van 30."
-        let unlimitedLivesBullet = "Nadat je levens op zijn, kun je geen trofeeën meer verdienen."
-        let helperBullet = "Het goede antwoord is groen gemarkeerd omdat de helper aanstaat. Trofeeën worden daarom apart geteld met *."
+        let trophyBullet = String(localized: "game.intro.trophyBullet")
+        let unlimitedLivesBullet = String(localized: "game.intro.unlimitedBullet")
+        let helperBullet = String(localized: "game.intro.helperBullet")
         let bullets = info.bullets
             + [trophyBullet]
             + (state.lifeMode == .unlimited ? [unlimitedLivesBullet] : [])
@@ -142,7 +142,7 @@ struct GameView: View {
                     .minimumScaleFactor(0.7)
                     .frame(maxWidth: .infinity)
 
-                Text("Zo werkt dit level")
+                Text("game.intro.howItWorks")
                     .font(.headline.weight(.heavy))
                     .foregroundStyle(theme.deepColor)
 
@@ -165,7 +165,7 @@ struct GameView: View {
                 }
 
                 Button(action: dismissIntro) {
-                    Text(isContinuingLevel ? "Speel verder" : "Start level")
+                    Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
                         .font(.headline.weight(.heavy))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 15)
@@ -215,7 +215,7 @@ struct GameView: View {
             // Just the trophy count: the score number followed by a trophy.
             // The equal-width side columns keep it perfectly centered.
             HStack(spacing: 6) {
-                Text("\(state.score)")
+                Text(verbatim: "\(state.score)")
                     .font(.title2.weight(.heavy))
                     .foregroundStyle(theme.deepColor)
                     .contentTransition(.numericText())
@@ -354,7 +354,7 @@ struct GameView: View {
     @ViewBuilder
     private var statusLabel: some View {
         if state.isScoreLocked {
-            Label("Trofeeën tellen niet meer mee nadat je levens op zijn", systemImage: "trophy.fill")
+            Label("game.status.scoreLocked", systemImage: "trophy.fill")
                 .font(.caption.weight(.bold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -364,7 +364,7 @@ struct GameView: View {
                 .background(theme.deepColor.opacity(0.9), in: Capsule())
                 .transition(.scale.combined(with: .opacity))
         } else if state.isRandomPractice {
-            Label("MIX MODE", systemImage: "shuffle")
+            Label("game.status.mixMode", systemImage: "shuffle")
                 .font(.caption.weight(.heavy))
                 .tracking(1.2)
                 .lineLimit(1)
@@ -477,7 +477,7 @@ struct GameView: View {
                 if showsMixIndicator {
                     Image(systemName: "shuffle.circle.fill")
                         .font(.title3.weight(.heavy))
-                        .accessibilityLabel("Mix")
+                        .accessibilityLabel("game.accessibility.mix")
                 }
                 if let trailingTitle {
                     Text(trailingTitle)
@@ -496,7 +496,7 @@ struct GameView: View {
                 .padding(.top, 10)
                 .frame(minHeight: 30)
 
-            Text("\(score) / \(ProgressStore.maximumTrophiesPerLevel)")
+            Text(verbatim: "\(score) / \(ProgressStore.maximumTrophiesPerLevel)")
                 .font(.system(size: 30, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.color)
                 .padding(.horizontal, 27)
@@ -506,7 +506,7 @@ struct GameView: View {
                     Capsule().stroke(theme.color.opacity(0.12), lineWidth: 1)
                 }
                 .padding(.top, 22)
-                .accessibilityLabel("\(score) \(endScreenText.outOf) \(ProgressStore.maximumTrophiesPerLevel)")
+                .accessibilityLabel("game.accessibility.scoreOutOf \(score) \(ProgressStore.maximumTrophiesPerLevel)")
 
             VStack(spacing: 12) {
                 Button {
@@ -581,15 +581,15 @@ struct GameView: View {
         switch illustration {
         case .trophy:
             ZStack {
-                Text("✦")
+                Text(verbatim: "✦")
                     .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(theme.color.opacity(0.68))
                     .offset(x: -54, y: -20)
-                Text("✦")
+                Text(verbatim: "✦")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(theme.color.opacity(0.68))
                     .offset(x: 53, y: -8)
-                Text("🏆")
+                Text(verbatim: "🏆")
                     .font(.system(size: 70))
                     .scaleEffect(celebrate ? 1 : 0.4)
                     .rotationEffect(.degrees(celebrate ? 0 : -25))
@@ -605,24 +605,17 @@ struct GameView: View {
         }
     }
 
-    private var endScreenText: EndScreenText {
-        EndScreenText(languageCode: Locale.current.language.languageCode?.identifier)
-    }
+    private var endScreenText: EndScreenText { EndScreenText() }
 }
 
+/// All copy is resolved from the string catalog, so there are no
+/// language checks in the code — a new language is added purely in the catalog.
 private struct EndScreenText {
-    private let isDutch: Bool
-
-    init(languageCode: String?) {
-        isDutch = languageCode == "nl"
-    }
-
-    var completionSubtitle: String { isDutch ? "Je hebt alle punten gehaald." : "You earned every point." }
-    var completionSuffix: String { isDutch ? "afgerond!" : "complete!" }
-    var gameOverTitle: String { isDutch ? "Game over" : "Game over" }
-    var playAgain: String { isDutch ? "Nog een keer" : "Play again" }
-    var mainMenu: String { isDutch ? "Hoofdmenu" : "Main menu" }
-    var outOf: String { isDutch ? "van" : "out of" }
+    var completionSubtitle: String { String(localized: "game.end.completionSubtitle") }
+    var completionSuffix: String { String(localized: "game.end.completionSuffix") }
+    var gameOverTitle: String { String(localized: "game.end.gameOverTitle") }
+    var playAgain: String { String(localized: "game.end.playAgain") }
+    var mainMenu: String { String(localized: "game.end.mainMenu") }
 
     /// Mirrors the six symbols in the main menu, so the achievement is
     /// immediately recognisable without repeating a category name.
@@ -639,10 +632,9 @@ private struct EndScreenText {
     }
 
     func encouragement(for score: Int) -> String {
-        let messages = isDutch
-            ? ["Goed geprobeerd", "Het begin is er", "Blijf oefenen", "Lang niet slecht", "Goed bezig", "Mooie prestatie", "Knap gedaan", "Heel goed gespeeld", "Het einde is in zicht", "Je bent er bijna"]
-            : ["Good try", "It’s a start", "Keep practicing", "Not bad at all", "Doing well", "Nice performance", "Well done", "Very well played", "The finish is in sight", "You’re almost there"]
-        return messages[min(max(score, 0) / 3, messages.count - 1)]
+        // Ten graded messages, keyed game.encouragement.0 … .9 in the catalog.
+        let index = min(max(score, 0) / 3, 9)
+        return Bundle.main.localizedString(forKey: "game.encouragement.\(index)", value: nil, table: nil)
     }
 }
 

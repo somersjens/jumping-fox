@@ -35,13 +35,13 @@ struct SettingsView: View {
                 .padding()
             }
             .background(character.skyColor.ignoresSafeArea())
-            .navigationTitle("Settings")
+            .navigationTitle("settings.title")
 #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
 #endif
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                    Button("common.done") { dismiss() }
                 }
             }
         }
@@ -54,7 +54,7 @@ struct SettingsView: View {
 
     private var livesCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Lives")
+            Text("settings.lives")
                 .font(.headline)
 
             HStack(spacing: 10) {
@@ -63,7 +63,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("Met drie levens eindigt het spel na je laatste hartje. In oneindige modus tellen trofeeën alleen mee zolang je nog levens hebt; daarna kun je wel doorspelen.")
+            Text("settings.livesInfo")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -86,7 +86,7 @@ struct SettingsView: View {
                     Image(systemName: "infinity")
                         .font(.title3.weight(.bold))
                 } else {
-                    Text("\(mode.startingLives ?? 0)")
+                    Text(verbatim: "\(mode.startingLives ?? 0)")
                         .font(.title3.weight(.heavy))
                 }
                 Text(mode.label)
@@ -116,12 +116,12 @@ struct SettingsView: View {
     private var hintCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             Toggle(isOn: $answerHintEnabled) {
-                Text("Antwoord-hint")
+                Text("settings.answerHint")
                     .font(.headline)
             }
             .tint(character.color)
 
-            Text("Tik tijdens het spelen op de som om het antwoord te zien. Dat blijft staan tot de volgende som en kost je een half leven.")
+            Text("settings.answerHintInfo")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -137,18 +137,18 @@ struct SettingsView: View {
 
     private var goalsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Play goals")
+            Text("settings.playGoals")
                 .font(.headline)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text("Daily goal")
+                Text("settings.dailyGoal")
                     .font(.subheadline.weight(.semibold))
                 HStack(spacing: 8) {
                     ForEach([5, 10, 15, 20], id: \.self) { minutes in
                         Button {
                             tracker.setDailyGoal(minutes)
                         } label: {
-                            Text("\(minutes)")
+                            Text(verbatim: "\(minutes)")
                                 .font(.subheadline.weight(.bold))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 8)
@@ -167,11 +167,11 @@ struct SettingsView: View {
                         .buttonStyle(.plain)
                     }
                 }
-                Stepper("Custom: \(tracker.dailyGoalMinutes) min", value: dailyGoal, in: 1...120)
+                Stepper("settings.customMinutes \(tracker.dailyGoalMinutes)", value: dailyGoal, in: 1...120)
                     .font(.subheadline)
             }
 
-            Text("The streak goal starts at 5 minutes per day. Only active playtime counts.")
+            Text("settings.goalInfo")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -184,7 +184,7 @@ struct SettingsView: View {
     private var characterCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("Character")
+                Text("settings.character")
                     .font(.headline)
                 if !premium.isPremium {
                     Image(systemName: "lock.fill")
@@ -199,7 +199,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("Every animal brings its own color theme to the whole game.")
+            Text("settings.characterInfo")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -237,7 +237,7 @@ struct SettingsView: View {
                 .overlay(
                     Circle().stroke(isSelected ? animal.color : .clear, lineWidth: 3)
                 )
-                Text(animal.name)
+                Text(animal.localizedName)
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(.primary)
             }
@@ -253,7 +253,7 @@ struct SettingsView: View {
             HStack(spacing: 8) {
                 Image(systemName: "crown.fill")
                     .foregroundStyle(.yellow)
-                Text("Premium unlocked — thank you!")
+                Text("settings.premiumUnlocked")
                     .font(.subheadline.weight(.semibold))
             }
             .frame(maxWidth: .infinity)
@@ -264,7 +264,7 @@ struct SettingsView: View {
                 Button {
                     showPremium = true
                 } label: {
-                    Label("Unlock Premium", systemImage: "crown.fill")
+                    Label("premium.unlock", systemImage: "crown.fill")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -277,7 +277,7 @@ struct SettingsView: View {
                 }
                 .buttonStyle(.plain)
 
-                Button("Restore purchases") {
+                Button("premium.restore") {
                     Task { await premium.restorePurchases() }
                 }
                 .font(.footnote)

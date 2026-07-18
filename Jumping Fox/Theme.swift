@@ -36,6 +36,14 @@ struct AnimalCharacter: Identifiable, Equatable {
     /// The character's artwork, ready to place in a SwiftUI view.
     var artwork: Image { Image(imageName) }
 
+    /// Localized display name. `name` stays as the stable English label; this
+    /// is what the UI shows, resolved per language from the string catalog
+    /// (keys "character.fox", "character.frog", …). A runtime key lookup keeps
+    /// this data-driven, so adding a language never touches this code.
+    var localizedName: String {
+        Bundle.main.localizedString(forKey: "character.\(id)", value: nil, table: nil)
+    }
+
     // SpriteKit
     var skPrimary: SKColor { SKColor(red: primaryRGB.0, green: primaryRGB.1, blue: primaryRGB.2, alpha: 1) }
     var skDeep: SKColor { SKColor(red: deepRGB.0, green: deepRGB.1, blue: deepRGB.2, alpha: 1) }

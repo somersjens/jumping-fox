@@ -45,7 +45,7 @@ final class PremiumStore: ObservableObject {
         guard !isPurchasing else { return }
         if product == nil { await refresh() }
         guard let product else {
-            lastError = "The store is not available right now. Please try again later."
+            lastError = String(localized: "premium.storeUnavailable")
             return
         }
         isPurchasing = true

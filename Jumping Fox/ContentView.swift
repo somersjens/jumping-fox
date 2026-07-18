@@ -25,12 +25,12 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .addition: return "Addition"
-        case .subtraction: return "Subtraction"
-        case .tables: return "Tables"
-        case .fractions: return "Fractions"
-        case .percentages: return "Percentages"
-        case .mixed: return "Supermix"
+        case .addition: return String(localized: "filter.addition")
+        case .subtraction: return String(localized: "filter.subtraction")
+        case .tables: return String(localized: "filter.tables")
+        case .fractions: return String(localized: "filter.fractions")
+        case .percentages: return String(localized: "filter.percentages")
+        case .mixed: return String(localized: "filter.mixed")
         }
     }
 
@@ -69,8 +69,8 @@ enum MenuMode: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .standard: return "Standard"
-        case .mix: return "Mix"
+        case .standard: return String(localized: "mode.standard")
+        case .mix: return String(localized: "mode.mix")
         }
     }
 }
@@ -192,9 +192,9 @@ struct ContentView: View {
                         showPremium = true
                     }
                     .accessibilityElement()
-                    .accessibilityLabel("Personage")
+                    .accessibilityLabel("menu.accessibility.character")
                     .accessibilityAddTraits(.isButton)
-                    .accessibilityHint("Tik om je personage te wijzigen; houd twee seconden ingedrukt om opnieuw te beginnen bij het welkomscherm")
+                    .accessibilityHint("menu.accessibility.characterHint")
 
                 VStack(alignment: .leading, spacing: 6) {
                     Button {
@@ -211,7 +211,11 @@ struct ContentView: View {
                     }
                     .buttonStyle(.plain)
 
-                    Label("\(totalTrophies) trofeeën\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                    Label {
+                        Text(verbatim: String(localized: "menu.trophies \(totalTrophies)") + (answerHelper ? " *" : ""))
+                    } icon: {
+                        Image(systemName: "trophy.fill")
+                    }
                         .font(.subheadline.weight(.bold))
                         .foregroundStyle(character.deepColor.opacity(0.78))
                         .lineLimit(1)
@@ -243,7 +247,11 @@ struct ContentView: View {
                 HStack(alignment: .center) {
                     Text(selectedFilter.title)
                         .font(.title3.weight(.heavy))
-                    Label("\(categoryTrophies)\(answerHelper ? " *" : "")", systemImage: "trophy.fill")
+                    Label {
+                        Text(verbatim: "\(categoryTrophies)\(answerHelper ? " *" : "")")
+                    } icon: {
+                        Image(systemName: "trophy.fill")
+                    }
                         .font(.subheadline.weight(.bold))
                     Spacer()
                 }
@@ -356,7 +364,7 @@ struct ContentView: View {
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("Kies \(modeLabel(mode))")
+                .accessibilityLabel("menu.accessibility.chooseMode \(modeLabel(mode))")
             }
         }
     }
@@ -367,7 +375,7 @@ struct ContentView: View {
                 showsOptions.toggle()
             } label: {
                 HStack {
-                    Label("Spelopties", systemImage: "slider.horizontal.3")
+                    Label("menu.options", systemImage: "slider.horizontal.3")
                         .font(.subheadline.weight(.bold))
                     Spacer()
                     Image(systemName: showsOptions ? "chevron.up" : "chevron.down")
@@ -385,14 +393,14 @@ struct ContentView: View {
 
                 VStack(alignment: .leading, spacing: 0) {
                     let rows: [(String, Binding<Bool>, String)] = [
-                        ("Afronden bij 30 punten", $capsTrophiesAtThirty,
-                         "Als je 30 punten haalt, wordt het level automatisch afgerond — dat is de maximale score. Je hoeft dan niet door te spelen."),
-                        ("Onbeperkt levens", unlimitedLivesBinding,
-                         "Standaard uit. Zet je hem aan, dan speel je onbeperkt door nadat je levens op zijn — maar trofeeën tellen alleen mee zolang je nog levens hebt."),
-                        ("Antwoord bij de som (½ leven)", $answerHint,
-                         "Tik tijdens het spelen op de som en het antwoord verschijnt op de plek van het vraagteken. Dat kost je een half leven. Bij nog maar een half leven kun je niet meer tikken."),
-                        ("Helpermodus", $answerHelper,
-                         "Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld."),
+                        (String(localized: "options.capAt30.title"), $capsTrophiesAtThirty,
+                         String(localized: "options.capAt30.info")),
+                        (String(localized: "options.unlimitedLives.title"), unlimitedLivesBinding,
+                         String(localized: "options.unlimitedLives.info")),
+                        (String(localized: "options.answerHint.title"), $answerHint,
+                         String(localized: "options.answerHint.info")),
+                        (String(localized: "options.helperMode.title"), $answerHelper,
+                         String(localized: "options.helperMode.info")),
                     ]
                     ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
                         if index > 0 {
@@ -521,7 +529,7 @@ struct ContentView: View {
     private func premiumSection(_ levels: [LevelConfig]) -> some View {
         if premium.isPremium {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Premium tables")
+                Text("menu.premiumTables")
                     .font(.headline)
                     .foregroundStyle(character.deepColor)
                 LazyVGrid(columns: miniColumns, spacing: 8) {
@@ -533,7 +541,7 @@ struct ContentView: View {
                                 Text(level.cardNumber)
                                     .font(.system(size: 17, weight: .heavy, design: .rounded))
                                     .foregroundStyle(.white)
-                                Text("🏆 \(ProgressStore.bestScore(levelID: level.id))\(answerHelper && ProgressStore.helperOnlyBestScore(levelID: level.id) > ProgressStore.bestScore(levelID: level.id) ? " *" : "")")
+                                Text(verbatim: "🏆 \(ProgressStore.bestScore(levelID: level.id))\(answerHelper && ProgressStore.helperOnlyBestScore(levelID: level.id) > ProgressStore.bestScore(levelID: level.id) ? " *" : "")")
                                     .font(.system(size: 10, weight: .semibold))
                                     .foregroundStyle(.white.opacity(0.85))
                             }
@@ -553,10 +561,10 @@ struct ContentView: View {
                     Image(systemName: "crown.fill")
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("More levels")
+                        Text("menu.moreLevels")
                             .font(.subheadline.weight(.bold))
                             .foregroundStyle(.white)
-                        Text("Unlock more with Premium")
+                        Text("menu.unlockWithPremium")
                             .font(.caption)
                             .foregroundStyle(.white.opacity(0.9))
                     }
@@ -604,17 +612,17 @@ struct PlaytimeBar: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
-                        Text("Dagelijkse streak")
+                        Text("streak.daily")
                             .font(.caption.weight(.heavy))
                         Spacer()
-                        Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+                        Text("common.minutesShort \(tracker.todayMinutes) \(tracker.dailyGoalMinutes)")
                             .font(.caption.weight(.bold))
                     }
                     .foregroundStyle(accent)
 
                     streakProgressBar
 
-                    Text("\(tracker.streakDays) dagen op rij")
+                    Text("streak.daysInARow \(tracker.streakDays)")
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(accent.opacity(0.78))
                 }
@@ -629,8 +637,8 @@ struct PlaytimeBar: View {
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(accent.opacity(0.12), lineWidth: 1))
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Daily streak, \(tracker.todayMinutes) of \(tracker.dailyGoalMinutes) minutes")
-        .accessibilityHint("Choose a daily goal")
+        .accessibilityLabel("streak.accessibility.daily \(tracker.todayMinutes) \(tracker.dailyGoalMinutes)")
+        .accessibilityHint("streak.accessibility.chooseDailyGoal")
     }
 
     private var dailyProgress: Double {
@@ -678,11 +686,11 @@ struct CompactStreakView: View {
             VStack(spacing: 0) {
                 Group {
                     if tracker.streakDays == 0 {
-                        Label("Dag 1", systemImage: "sparkles")
+                        Label("streak.dayOne", systemImage: "sparkles")
                             .font(.system(size: 13, weight: .heavy, design: .rounded))
                     } else {
                         HStack(spacing: 5) {
-                            Text("\(tracker.streakDays)")
+                            Text(verbatim: "\(tracker.streakDays)")
                                 .font(.system(size: 27, weight: .heavy, design: .rounded))
                             Image(systemName: "flame.fill")
                                 .font(.system(size: 16, weight: .bold))
@@ -700,7 +708,7 @@ struct CompactStreakView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 Spacer(minLength: 4)
 
-                Text("\(progressMinutes)/\(goalMinutes) min")
+                Text("common.minutesShort \(progressMinutes) \(goalMinutes)")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(accent.opacity(0.6))
                     // Align the text's visual bottom with the trophy line.
@@ -710,8 +718,8 @@ struct CompactStreakView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("\(goalPeriod.title), \(progressMinutes) van \(goalMinutes) minuten, \(tracker.streakDays) dagen op rij")
-        .accessibilityHint("Kies een dagelijks of wekelijks doel")
+        .accessibilityLabel("streak.accessibility.compact \(goalPeriod.title) \(progressMinutes) \(goalMinutes) \(tracker.streakDays)")
+        .accessibilityHint("streak.accessibility.choosePeriod")
     }
 
     private var progressLine: some View {
@@ -753,12 +761,12 @@ struct NameEditorSheet: View {
                     .scaledToFit()
                     .frame(width: 54, height: 54)
 
-                Text("Hoe heet je?")
+                Text("name.whatsYourName")
                     .font(.system(size: 24, weight: .heavy, design: .rounded))
                     .foregroundStyle(theme.deepColor)
             }
 
-            TextField("", text: $name, prompt: Text("Jouw naam"))
+            TextField(String(), text: $name, prompt: Text("name.placeholder"))
                 .font(.system(size: 22, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .focused($focused)
@@ -777,7 +785,7 @@ struct NameEditorSheet: View {
 
             HStack(spacing: 12) {
                 Button { dismiss() } label: {
-                    Text("Annuleer")
+                    Text("common.cancel")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 13)
@@ -790,7 +798,7 @@ struct NameEditorSheet: View {
                 }
 
                 Button(action: save) {
-                    Text("Bewaar")
+                    Text("common.save")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 13)
@@ -817,7 +825,11 @@ private enum GoalPeriod: String, CaseIterable, Identifiable {
     case weekly
 
     var id: String { rawValue }
-    var title: String { self == .daily ? "Dagelijks" : "Wekelijks" }
+    var title: String {
+        self == .daily
+            ? String(localized: "goalPeriod.daily")
+            : String(localized: "goalPeriod.weekly")
+    }
 }
 
 struct DailyGoalPicker: View {
@@ -830,23 +842,25 @@ struct DailyGoalPicker: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Speeldoel")
+            Text("goal.title")
                 .font(.headline)
-            Picker("Doelperiode", selection: $goalPeriodRaw) {
+            Picker("goal.period", selection: $goalPeriodRaw) {
                 ForEach(GoalPeriod.allCases) { period in
                     Text(period.title).tag(period.rawValue)
                 }
             }
             .pickerStyle(.segmented)
 
-            Text("Hoeveel minuten wil je \(goalPeriod == .weekly ? "per week" : "per dag") spelen?")
+            Text(goalPeriod == .weekly ? "goal.promptWeekly" : "goal.promptDaily")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 4), spacing: 8) {
                 ForEach(goalOptions, id: \.self) { minutes in
-                    Button("\(minutes)") {
+                    Button {
                         goalPeriod == .weekly ? tracker.setWeeklyGoal(minutes) : tracker.setDailyGoal(minutes)
+                    } label: {
+                        Text(verbatim: "\(minutes)")
                     }
                         .font(.subheadline.weight(.bold))
                         .frame(maxWidth: .infinity, minHeight: 36)
@@ -939,11 +953,11 @@ struct LevelCardView: View {
                 .tint(theme.color)
                 .scaleEffect(y: 0.7)
         case .locked:
-            Label("Premium", systemImage: "lock.fill")
+            Label("menu.premium", systemImage: "lock.fill")
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(titleColor.opacity(0.7))
         case .recommended:
-            Text("Start here")
+            Text("menu.startHere")
                 .font(.system(size: 10, weight: .bold))
                 .foregroundStyle(theme.deepColor)
         default:
@@ -953,9 +967,17 @@ struct LevelCardView: View {
     }
 
     private func scoreLabel(icon: String) -> some View {
-        HStack(spacing: 3) {
+        let marker = showsHelperMarker && helperBest > best ? " *" : ""
+        let isMax = GameSettings.capsTrophiesAtThirty && best >= ProgressStore.maximumTrophiesPerLevel
+        return HStack(spacing: 3) {
             Image(systemName: icon).font(.system(size: 9))
-            Text("\(GameSettings.capsTrophiesAtThirty && best >= ProgressStore.maximumTrophiesPerLevel ? "30 MAX" : "\(best)")\(showsHelperMarker && helperBest > best ? " *" : "")")
+            Group {
+                if isMax {
+                    Text(verbatim: String(localized: "menu.maxScore") + marker)
+                } else {
+                    Text(verbatim: "\(best)\(marker)")
+                }
+            }
                 .font(.system(size: 11, weight: .bold))
         }
         .foregroundStyle(status == .completed ? .white : theme.deepColor.opacity(0.8))

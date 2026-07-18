@@ -49,19 +49,19 @@ struct OnboardingView: View {
     private var nameStep: some View {
         VStack(spacing: 24) {
             VStack(spacing: 10) {
-                Text("Sommen maken was\nnog nooit zo leuk!")
+                Text("onboarding.name.title")
                     .font(.system(size: 30, weight: .heavy, design: .rounded))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity)
 
-                Text("Laten we beginnen — hoe heet je?")
+                Text("onboarding.name.subtitle")
                     .font(.body.weight(.medium))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
             }
 
-            TextField("", text: $playerName, prompt: Text("Jouw naam"))
+            TextField(String(), text: $playerName, prompt: Text("name.placeholder"))
                 .font(.system(size: 26, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .focused($isNameFieldFocused)
@@ -79,19 +79,19 @@ struct OnboardingView: View {
                 .frame(maxWidth: 300)
                 .animation(.snappy(duration: 0.2), value: isNameFieldFocused)
 
-            Button("Verder") { goToSubjects() }
+            Button("common.continue") { goToSubjects() }
                 .buttonStyle(OnboardingButtonStyle())
         }
     }
 
     private var subjectStep: some View {
         VStack(spacing: 14) {
-            Text("Wat wil je leren?")
+            Text("onboarding.subject.title")
                 .font(.system(size: 28, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
 
-            Text("Kies een onderwerp om mee te beginnen.")
+            Text("onboarding.subject.subtitle")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -128,12 +128,12 @@ struct OnboardingView: View {
 
     private var levelStep: some View {
         VStack(spacing: 14) {
-            Text("Hoe goed ben je hier al in?")
+            Text("onboarding.level.title")
                 .font(.system(size: 28, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Text("Kies een startpunt voor \(MenuFilter(rawValue: menuFilterRaw)?.title ?? "dit onderwerp").")
+            Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? String(localized: "onboarding.level.thisTopic"))")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
@@ -141,8 +141,8 @@ struct OnboardingView: View {
 
             Button { finish(with: .standard) } label: {
                 OnboardingChoiceLabel(
-                    title: "Net begonnen",
-                    subtitle: "Rustig opbouwen, stap voor stap.",
+                    title: String(localized: "onboarding.level.beginner.title"),
+                    subtitle: String(localized: "onboarding.level.beginner.subtitle"),
                     icon: "leaf.fill"
                 )
             }
@@ -150,8 +150,8 @@ struct OnboardingView: View {
 
             Button { finish(with: .mix) } label: {
                 OnboardingChoiceLabel(
-                    title: "Al aardig goed",
-                    subtitle: "Direct oefenen in Mix mode.",
+                    title: String(localized: "onboarding.level.advanced.title"),
+                    subtitle: String(localized: "onboarding.level.advanced.subtitle"),
                     icon: "bolt.fill"
                 )
             }
@@ -249,7 +249,7 @@ struct CharacterPickerView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 54, height: 54)
-                            Text(animal.name).font(.caption.weight(.bold))
+                            Text(animal.localizedName).font(.caption.weight(.bold))
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -262,7 +262,7 @@ struct CharacterPickerView: View {
             }
             .padding()
             .background(theme.skyColor.ignoresSafeArea())
-            .navigationTitle("Kies je poppetje")
+            .navigationTitle("character.pickerTitle")
         }
     }
 }

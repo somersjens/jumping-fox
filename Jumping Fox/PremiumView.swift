@@ -82,7 +82,7 @@ struct PremiumView: View {
             }
 
             HStack(spacing: 8) {
-                Text(character.name)
+                Text(character.localizedName)
                     .font(.system(size: 30, weight: .heavy, design: .rounded))
                     .foregroundStyle(character.deepColor)
                 if previewCharacterID != CharacterCatalog.freeCharacterID {
@@ -100,14 +100,14 @@ struct PremiumView: View {
     private var featureCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             featureRow(icon: "square.grid.3x3.fill",
-                       title: "100 levels per onderwerp",
-                       subtitle: "Altijd genoeg nieuwe sommen om te oefenen.")
+                       title: String(localized: "premium.feature.levels.title"),
+                       subtitle: String(localized: "premium.feature.levels.subtitle"))
             featureRow(icon: "pawprint.fill",
-                       title: "Toegang tot alle dieren",
-                       subtitle: "Met premium speel je vrij met alle 10 de dieren.")
+                       title: String(localized: "premium.feature.animals.title"),
+                       subtitle: String(localized: "premium.feature.animals.subtitle"))
             featureRow(icon: "nosign",
-                       title: "Geen advertenties",
-                       subtitle: "Volledig zonder onderbrekingen spelen.")
+                       title: String(localized: "premium.feature.noAds.title"),
+                       subtitle: String(localized: "premium.feature.noAds.subtitle"))
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -159,14 +159,14 @@ struct PremiumView: View {
     private var purchaseSection: some View {
         if premium.isPremium {
             VStack(spacing: 12) {
-                Label("You have Premium!", systemImage: "checkmark.circle.fill")
+                Label("premium.youHavePremium", systemImage: "checkmark.circle.fill")
                     .font(.headline)
                     .foregroundStyle(.green)
 
                 Button {
                     dismiss()
                 } label: {
-                    Text("Done")
+                    Text("common.done")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
@@ -203,11 +203,11 @@ struct PremiumView: View {
                 .buttonStyle(.plain)
                 .disabled(premium.isPurchasing)
 
-                Text("One-time purchase. Yours forever.")
+                Text("premium.oneTime")
                     .font(.subheadline)
                     .foregroundStyle(character.deepColor.opacity(0.7))
 
-                Button("Restore purchases") {
+                Button("premium.restore") {
                     Task { await premium.restorePurchases() }
                 }
                 .font(.footnote)
@@ -225,9 +225,9 @@ struct PremiumView: View {
 
     private var purchaseButtonTitle: String {
         if let price = premium.product?.displayPrice {
-            return "Unlock Premium · \(price)"
+            return String(localized: "premium.unlockWithPrice \(price)")
         }
-        return "Unlock Premium"
+        return String(localized: "premium.unlock")
     }
 
     private func featureRow(icon: String, title: String, subtitle: String) -> some View {
