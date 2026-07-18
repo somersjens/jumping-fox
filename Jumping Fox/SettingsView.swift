@@ -63,7 +63,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("Met drie levens eindigt het spel na je laatste hartje. In oneindige modus tellen trofeeën alleen mee tot drie fouten; daarna kun je wel doorspelen.")
+            Text("Met drie levens eindigt het spel na je laatste hartje. In oneindige modus tellen trofeeën alleen mee zolang je nog levens hebt; daarna kun je wel doorspelen.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }

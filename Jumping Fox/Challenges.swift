@@ -354,10 +354,11 @@ final class QuestionEngine {
 
     // Running chain for addition/subtraction: the previous correct answer
     // becomes the next left operand, so every visible sum has exactly two
-    // numbers while the difficulty still builds up.
+    // numbers while the difficulty still builds up. Once the chain has been
+    // walked once, the level switches to its own "mix territory": random
+    // start numbers, but still always the level's own +n / −n.
     private var chainValue: Int?
-    private var chainCycle = 0
-    private var additionSeriesComplete = false
+    private var chainComplete = false
 
     // Per-cycle ordering: first cycle in order (calm build-up),
     // later cycles shuffled so repeats aren't identical.
@@ -375,8 +376,7 @@ final class QuestionEngine {
         orderCache = []
         orderCycle = -1
         chainValue = nil
-        chainCycle = 0
-        additionSeriesComplete = false
+        chainComplete = false
     }
 
     /// Extra repetition of recently missed questions.
@@ -475,9 +475,10 @@ final class QuestionEngine {
     private func immediateMixQuestion() -> Question {
         switch level.category {
         case .addition:
-            return additionMixQuestion(maxResult: max(20, level.index * 6), isRandomPractice: true)
+            // Card number = highest small operand (card 3 allows +1/+2/+3).
+            return additionSmallStepQuestion(maxAdd: level.index)
         case .subtraction:
-            return subtractionMixQuestion(maxStart: max(10, level.index * 5), allowNegative: false)
+            return subtractionSmallStepQuestion(maxTake: level.index)
         case .tables:
             return tablesMixQuestion(pool: Array(1...min(12, level.index)))
         case .fractions:
@@ -501,25 +502,43 @@ final class QuestionEngine {
 
     /// One pattern per level, as a running chain with exactly two numbers:
     /// level +1: 1+1, 2+1, 3+1 …  level +3: 3+3, 6+3, 9+3 …
-    /// (nextLeftOperand = previousCorrectAnswer, right operand fixed.)
+    /// After the chain reaches the cap (e.g. +2 up to 20), the level enters
+    /// mix territory: random start numbers like 4+2 or 7+2 — but Standard
+    /// ALWAYS keeps adding the level's own +n.
     private func additionQuestion() -> Question {
         let n = level.index
-        // +2 now visibly continues through 20 (2+2 ... 18+2). After a
-        // completed guided chain, this level intentionally becomes mixed
-        // practice and the HUD labels that switch.
         let cap = max(20, n * 6)
-        if additionSeriesComplete {
-            return additionMixQuestion(maxResult: cap, isRandomPractice: true)
+        if chainComplete {
+            let left = Int.random(in: 1...(cap - n))
+            let answer = left + n
+            return makeQuestion("\(left) + \(n) = ?", "\(answer)",
+                                [answer + 1, answer - 1, answer + 2, answer - 2,
+                                 left, answer + n].filter { $0 >= 0 }.map(String.init),
+                                isRandomPractice: true)
         }
         let left = chainValue ?? n
         let answer = left + n
         chainValue = (answer + n > cap) ? nil : answer
-        if answer + n > cap { additionSeriesComplete = true }
+        if answer + n > cap { chainComplete = true }
         // Real child errors, all close to the answer: counting slips
         // (±1/±2), forgetting to add (left) and adding n twice (answer+n).
         return makeQuestion("\(left) + \(n) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,
                              left, answer + n].filter { $0 >= 0 }.map(String.init))
+    }
+
+    /// Mix form of the addition menu. The card number is the HIGHEST small
+    /// operand: every sum adds a number from 1...maxAdd (on card 3 both
+    /// 12 + 3 and 9 + 1 are fine, but never 14 + 5).
+    private func additionSmallStepQuestion(maxAdd: Int) -> Question {
+        let cap = max(20, maxAdd * 6)
+        let add = Int.random(in: 1...maxAdd)
+        let left = Int.random(in: 1...(cap - add))
+        let answer = left + add
+        return makeQuestion("\(left) + \(add) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             left, answer + add].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
     }
 
     private func additionMixQuestion(maxResult: Int? = nil, harder: Bool = false,
@@ -547,25 +566,45 @@ final class QuestionEngine {
     // MARK: Subtraction
 
     /// One pattern per level, as a descending chain with exactly two
-    /// numbers: 10−1=9, 9−1=8, 8−1=7 … Never negative: when the lower
-    /// bound is reached the chain restarts from a (slightly varied) start.
+    /// numbers: 10−1=9, 9−1=8, 8−1=7 … When the bottom is reached the level
+    /// enters mix territory: random start numbers — but Standard ALWAYS
+    /// keeps taking away the level's own −n, and never goes negative.
     private func subtractionQuestion() -> Question {
         let n = level.index
         let base = max(n * 5, 10)
-        let start = base + (chainCycle % 3) * n // vary the start per cycle
-        let left = chainValue ?? start
+        if chainComplete {
+            let left = Int.random(in: n...(base + 2 * n))
+            let answer = left - n
+            return makeQuestion("\(left) − \(n) = ?", "\(answer)",
+                                [answer + 1, answer - 1, answer + 2, answer - 2,
+                                 left, answer - n].filter { $0 >= 0 }.map(String.init),
+                                isRandomPractice: true)
+        }
+        let left = chainValue ?? base
         let answer = left - n
         if answer - n >= 0 {
             chainValue = answer
         } else {
-            chainValue = nil // restart a new valid series next time
-            chainCycle += 1
+            chainComplete = true
         }
         // Counting slips, forgetting to subtract (left = answer + n) and
         // subtracting n twice (answer − n) — all plausible near-misses.
         return makeQuestion("\(left) − \(n) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,
                              left, answer - n].filter { $0 >= 0 }.map(String.init))
+    }
+
+    /// Mix form of the subtraction menu. The card number is the HIGHEST
+    /// number taken away: every sum subtracts a number from 1...maxTake.
+    private func subtractionSmallStepQuestion(maxTake: Int) -> Question {
+        let cap = max(20, maxTake * 6)
+        let take = Int.random(in: 1...maxTake)
+        let left = Int.random(in: take...cap)
+        let answer = left - take
+        return makeQuestion("\(left) − \(take) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             left, answer - take].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
     }
 
     private func subtractionMixQuestion(maxStart: Int? = nil, allowNegative: Bool? = nil) -> Question {

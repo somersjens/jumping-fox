@@ -100,6 +100,8 @@ final class GameState: ObservableObject {
     enum GameOverReason {
         case outOfLives
         case fell
+        /// The player deliberately ended an unlimited run from the done button.
+        case finished
         /// Reached the 30-point goal with the "round off at 30" option on.
         case completed
     }
@@ -223,6 +225,13 @@ final class GameState: ObservableObject {
     func fell() {
         guard !isGameOver else { return }
         endGame(reason: .fell)
+    }
+
+    /// Ends an unlimited run from the HUD and shows the same result screen as
+    /// any other finished attempt, including the trophies just earned.
+    func finishEndlessRun() {
+        guard isEndless, !isGameOver else { return }
+        endGame(reason: .finished)
     }
 
     private func endGame(reason: GameOverReason) {

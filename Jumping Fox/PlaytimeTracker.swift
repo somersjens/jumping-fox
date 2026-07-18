@@ -87,15 +87,14 @@ final class PlaytimeTracker: ObservableObject {
 
     var weeklyGoalMinutes: Int {
         let value = UserDefaults.standard.integer(forKey: weeklyKey)
-        return value > 0 ? value : 35
+        return value > 0 ? value : 30
     }
 
-    /// Changing the daily goal proposes daily × 7 as the new weekly goal;
-    /// the user can adjust the weekly goal afterwards.
+    /// Daily and weekly goals are chosen independently in the menu. Changing
+    /// one must not unexpectedly overwrite the other.
     func setDailyGoal(_ minutes: Int) {
         objectWillChange.send()
         UserDefaults.standard.set(minutes, forKey: dailyKey)
-        UserDefaults.standard.set(minutes * 7, forKey: weeklyKey)
         touchTodayGoal()
         save(force: true)
         recomputeDisplay()

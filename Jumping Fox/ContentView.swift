@@ -30,7 +30,7 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
         case .tables: return "Tables"
         case .fractions: return "Fractions"
         case .percentages: return "Percentages"
-        case .mixed: return "Mix"
+        case .mixed: return "Supermix"
         }
     }
 
@@ -40,8 +40,11 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
         case .subtraction: return "minus.circle.fill"
         case .tables: return "multiply.circle.fill"
         case .fractions: return "circle.lefthalf.filled"
+        // There is no `percent.circle.fill` SF Symbol. The menu already draws
+        // every category inside a circular button, so this remains round while
+        // using the supported percent glyph.
         case .percentages: return "percent"
-        case .mixed: return "shuffle.circle.fill"
+        case .mixed: return "star.circle.fill"
         }
     }
 
@@ -93,6 +96,7 @@ struct ContentView: View {
     @State private var refreshID = UUID()
     @State private var showsOptions = false
     @State private var expandedOptionInfo: String?
+    @State private var headerDetailsHeight: CGFloat = 0
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -145,7 +149,6 @@ struct ContentView: View {
     }
 
     private var displayName: String { playerName.isEmpty ? "Jumping Fox" : playerName }
-
     /// The name as shown in the header. When it's a single long word we insert
     /// invisible soft hyphens so it can break across two lines with a "-";
     /// names with spaces just wrap at the space (no hyphen).
@@ -180,10 +183,8 @@ struct ContentView: View {
                     }
                     .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
                     .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    // A 2-second hold jumps back to the welcome/onboarding screen;
-                    // a normal tap still opens the character & premium menu. The
-                    // long press is attached first so it wins the 2s hold, and the
-                    // tap fires only on a quick touch.
+                    // A 2-second hold returns to the welcome flow; a normal tap
+                    // still opens the character & premium menu.
                     .onLongPressGesture(minimumDuration: 2) {
                         restartOnboarding()
                     }
@@ -217,6 +218,14 @@ struct ContentView: View {
                         .minimumScaleFactor(0.7)
                 }
                 .foregroundStyle(character.deepColor)
+                // A player's name gets the available width before the flexible
+                // gap does, so short names do not wrap unnecessarily.
+                .layoutPriority(1)
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear.preference(key: HeaderDetailsHeightKey.self, value: proxy.size.height)
+                    }
+                }
 
                 Spacer(minLength: 8)
 
@@ -224,8 +233,9 @@ struct ContentView: View {
                 CompactStreakView(accent: character.deepColor) {
                     showGoalPicker = true
                 }
-                .frame(width: 106)
+                .frame(width: 106, height: headerDetailsHeight > 0 ? headerDetailsHeight : nil)
             }
+            .onPreferenceChange(HeaderDetailsHeightKey.self) { headerDetailsHeight = $0 }
 
             Divider().overlay(character.color.opacity(0.22))
 
@@ -264,15 +274,32 @@ struct ContentView: View {
         return Button {
             withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
         } label: {
-            Image(systemName: filter.icon)
-                .font(.title3.weight(.bold))
-            .foregroundStyle(isSelected ? .white : character.deepColor)
+            menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
             .frame(height: 44)
             .background(isSelected ? character.color : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.color.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
+    }
+
+    @ViewBuilder
+    private func menuFilterIcon(_ filter: MenuFilter, isSelected: Bool) -> some View {
+        if filter == .percentages {
+            // SF Symbols has no percent.circle.fill. Draw a matching circular
+            // percent badge ourselves, so it aligns with the other topic icons.
+            Image(systemName: "percent")
+                .font(.system(size: 10, weight: .heavy))
+                .foregroundStyle(isSelected ? character.color : .white)
+                .frame(width: 20, height: 20)
+                // Use the same deep theme colour as the other unselected
+                // symbols, rather than a fixed/light orange.
+                .background(isSelected ? .white : character.deepColor, in: Circle())
+        } else {
+            Image(systemName: filter.icon)
+                .font(.title3.weight(.bold))
+                .foregroundStyle(isSelected ? .white : character.deepColor)
+        }
     }
 
     private var totalTrophies: Int {
@@ -361,7 +388,7 @@ struct ContentView: View {
                         ("Afronden bij 30 punten", $capsTrophiesAtThirty,
                          "Als je 30 punten haalt, wordt het level automatisch afgerond — dat is de maximale score. Je hoeft dan niet door te spelen."),
                         ("Onbeperkt levens", unlimitedLivesBinding,
-                         "Standaard uit. Zet je hem aan, dan speel je onbeperkt door nadat je levens op zijn — maar trofeeën tellen dan alleen mee tot drie fouten."),
+                         "Standaard uit. Zet je hem aan, dan speel je onbeperkt door nadat je levens op zijn — maar trofeeën tellen alleen mee zolang je nog levens hebt."),
                         ("Antwoord bij de som (½ leven)", $answerHint,
                          "Tik tijdens het spelen op de som en het antwoord verschijnt op de plek van het vraagteken. Dat kost je een half leven. Bij nog maar een half leven kun je niet meer tikken."),
                         ("Helpermodus", $answerHelper,
@@ -549,6 +576,14 @@ struct ContentView: View {
     }
 }
 
+private struct HeaderDetailsHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}
+
 // MARK: - Playtime bar
 
 /// A single daily streak goal. Tapping it offers a compact goal picker.
@@ -622,34 +657,61 @@ struct CompactStreakView: View {
     let accent: Color
     let action: () -> Void
     @ObservedObject private var tracker = PlaytimeTracker.shared
+    @AppStorage("ui.goalPeriod") private var goalPeriodRaw = GoalPeriod.weekly.rawValue
+
+    private var goalPeriod: GoalPeriod { GoalPeriod(rawValue: goalPeriodRaw) ?? .weekly }
+
+    private var progressMinutes: Int {
+        goalPeriod == .weekly ? tracker.weekMinutes : tracker.todayMinutes
+    }
+
+    private var goalMinutes: Int {
+        goalPeriod == .weekly ? tracker.weeklyGoalMinutes : tracker.dailyGoalMinutes
+    }
 
     private var dailyProgress: Double {
-        min(1, Double(tracker.todayMinutes) / Double(max(1, tracker.dailyGoalMinutes)))
+        min(1, Double(progressMinutes) / Double(max(1, goalMinutes)))
     }
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 7) {
-                HStack(spacing: 5) {
-                    Text("\(tracker.streakDays)")
-                        .font(.system(size: 27, weight: .heavy, design: .rounded))
-                    Image(systemName: "flame.fill")
-                        .font(.system(size: 16, weight: .bold))
+            VStack(spacing: 0) {
+                Group {
+                    if tracker.streakDays == 0 {
+                        Label("Dag 1", systemImage: "sparkles")
+                            .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    } else {
+                        HStack(spacing: 5) {
+                            Text("\(tracker.streakDays)")
+                                .font(.system(size: 27, weight: .heavy, design: .rounded))
+                            Image(systemName: "flame.fill")
+                                .font(.system(size: 16, weight: .bold))
+                        }
+                    }
                 }
                 .foregroundStyle(accent)
+                .frame(maxWidth: .infinity, alignment: .center)
+                // `sparkles` has more empty canvas on its leading side; this
+                // keeps the visible star + title centred over the bar.
+                .offset(x: tracker.streakDays == 0 ? 13 : 17)
 
+                Spacer(minLength: 4)
                 progressLine
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Spacer(minLength: 4)
 
-                Text("\(tracker.todayMinutes)/\(tracker.dailyGoalMinutes) min")
+                Text("\(progressMinutes)/\(goalMinutes) min")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(accent.opacity(0.6))
+                    // Align the text's visual bottom with the trophy line.
+                    .offset(x: 17, y: -1)
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Dagelijkse streak, \(tracker.streakDays) dagen op rij, \(tracker.todayMinutes) van \(tracker.dailyGoalMinutes) minuten")
-        .accessibilityHint("Kies een dagelijks doel")
+        .accessibilityLabel("\(goalPeriod.title), \(progressMinutes) van \(goalMinutes) minuten, \(tracker.streakDays) dagen op rij")
+        .accessibilityHint("Kies een dagelijks of wekelijks doel")
     }
 
     private var progressLine: some View {
@@ -750,29 +812,55 @@ struct NameEditorSheet: View {
     }
 }
 
+private enum GoalPeriod: String, CaseIterable, Identifiable {
+    case daily
+    case weekly
+
+    var id: String { rawValue }
+    var title: String { self == .daily ? "Dagelijks" : "Wekelijks" }
+}
+
 struct DailyGoalPicker: View {
     let theme: AnimalCharacter
     @ObservedObject private var tracker = PlaytimeTracker.shared
+    @AppStorage("ui.goalPeriod") private var goalPeriodRaw = GoalPeriod.weekly.rawValue
+
+    private var goalPeriod: GoalPeriod { GoalPeriod(rawValue: goalPeriodRaw) ?? .weekly }
+    private let goalOptions = Array(stride(from: 5, through: 60, by: 5))
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Dagelijks doel")
+            Text("Speeldoel")
                 .font(.headline)
-            Text("Hoeveel minuten wil je per dag spelen?")
+            Picker("Doelperiode", selection: $goalPeriodRaw) {
+                ForEach(GoalPeriod.allCases) { period in
+                    Text(period.title).tag(period.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+
+            Text("Hoeveel minuten wil je \(goalPeriod == .weekly ? "per week" : "per dag") spelen?")
                 .font(.caption)
                 .foregroundStyle(.secondary)
-            HStack(spacing: 8) {
-                ForEach([5, 10, 15, 20], id: \.self) { minutes in
-                    Button("\(minutes)") { tracker.setDailyGoal(minutes) }
+
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 4), spacing: 8) {
+                ForEach(goalOptions, id: \.self) { minutes in
+                    Button("\(minutes)") {
+                        goalPeriod == .weekly ? tracker.setWeeklyGoal(minutes) : tracker.setDailyGoal(minutes)
+                    }
                         .font(.subheadline.weight(.bold))
-                        .frame(width: 42, height: 36)
-                        .background(tracker.dailyGoalMinutes == minutes ? theme.color : .white,
+                        .frame(maxWidth: .infinity, minHeight: 36)
+                        .background(selectedGoalMinutes == minutes ? theme.color : .white,
                                     in: RoundedRectangle(cornerRadius: 10))
-                        .foregroundStyle(tracker.dailyGoalMinutes == minutes ? .white : theme.deepColor)
+                        .foregroundStyle(selectedGoalMinutes == minutes ? .white : theme.deepColor)
                 }
             }
         }
-        .frame(width: 260)
+        .frame(width: 280)
+    }
+
+    private var selectedGoalMinutes: Int {
+        goalPeriod == .weekly ? tracker.weeklyGoalMinutes : tracker.dailyGoalMinutes
     }
 }
 

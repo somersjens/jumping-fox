@@ -162,14 +162,24 @@ final class GamePlatform: SKNode {
         wrongMark.isHidden = false
     }
 
-    /// Superseded by a new question (never triggered by the player).
-    /// Keep its existing appearance: a value which was wrong before may be
-    /// right for the next sum, so it must not be visually marked unusable.
+    /// Superseded by a new question (never triggered by the player). The
+    /// block stays exactly where it is — same value, position and size — so
+    /// it can still be used as a stepping stone, but it is now visually
+    /// deactivated: greyed out and dimmed with the shared disabled palette,
+    /// so it clearly reads as an old option that no longer counts as an
+    /// answer. This avoids the confusion of a live-looking tile that does
+    /// nothing when landed on. No cross is drawn (it was never answered
+    /// wrong), which keeps it distinct from a wrong-resolved block.
     func markSuperseded(theme: AnimalCharacter) {
         guard status == .active else { return }
         status = .neutralResolved
         statusIcon.text = ""
         wrongMark.isHidden = true
+        shape.fillColor = GameColors.disabledFill
+        shape.strokeColor = GameColors.disabledStroke
+        label.fontColor = .white
+        label.alpha = 0.75
+        alpha = 0.9
     }
 }
 
@@ -245,6 +255,11 @@ final class GameScene: SKScene {
     private var maxJumpHeight: CGFloat { bounceVelocity * bounceVelocity / (2 * -gravity) }
     private var helperEnabled = false
     private var totalClimb: CGFloat = 0
+
+    /// While true the field stays fully set up and rendered, but no gameplay
+    /// physics advance. Used to hold the field still behind the pre-game
+    /// intro card, then released the moment the card is dismissed.
+    var isFrozen = false
 
     /// 2 wrong blocks at the start (3 answer blocks total), more as the
     /// player climbs — never more than the question can supply.
@@ -429,6 +444,9 @@ final class GameScene: SKScene {
     /// Places the player and an initial sparse set of platforms.
     func layoutNewGame() {
         guard started else { return }
+        // The field is fully built and rendered, but held frozen until the
+        // pre-game intro card is dismissed.
+        isFrozen = true
         for platform in platforms { platform.removeFromParent() }
         platforms.removeAll()
 
@@ -887,6 +905,12 @@ final class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         guard started, !state.isGameOver else { return }
+        // Frozen for the intro card: keep the clock in sync (so there's no dt
+        // jump when it resumes) but advance no physics.
+        if isFrozen {
+            lastUpdateTime = currentTime
+            return
+        }
         if lastUpdateTime == 0 { lastUpdateTime = currentTime }
         let dt = CGFloat(min(1.0 / 30.0, currentTime - lastUpdateTime))
         lastUpdateTime = currentTime
