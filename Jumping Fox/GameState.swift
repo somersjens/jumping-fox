@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 /// How many lives a game starts with.
-enum LifeMode: String, CaseIterable, Identifiable {
+enum LifeMode: String, CaseIterable, Identifiable, Codable {
     case three
     case unlimited
 

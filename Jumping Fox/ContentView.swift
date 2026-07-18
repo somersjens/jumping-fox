@@ -992,7 +992,7 @@ struct LevelCardView: View {
 
     /// A lone "1" reads right-of-centre because of its top flag, so its stem
     /// misses the middle dot; nudge just that glyph left to line them up.
-    private var numberNudge: CGFloat { level.cardNumber == "1" ? -3 : 0 }
+    private var numberNudge: CGFloat { level.cardNumber == "1" ? -1 : 0 }
 
     // MARK: Body
 
