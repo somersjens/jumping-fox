@@ -2224,13 +2224,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tap the sum while playing and the answer appears in place of the question mark. That costs you half a life. With only half a life left you can no longer tap."
+            "value": "The correct answer gets green after you hit a wrong one, and you can tap the question to get the answer (but will cost you half a life!)"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tik tijdens het spelen op de som en het antwoord verschijnt op de plek van het vraagteken. Dat kost je een half leven. Bij nog maar een half leven kun je niet meer tikken."
+            "value": "Het goede antwoord wordt groen nadat je er een fout hebt, en je kunt op de som tikken om het antwoord te zien (maar dat kost je een half leven!)"
           }
         }
       }
@@ -2241,13 +2241,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Answer at the sum (½ life)"
+            "value": "Answer hints"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Antwoord bij de som (½ leven)"
+            "value": "Antwoordhulp"
           }
         }
       }
@@ -2275,13 +2275,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Round off at 30 points"
+            "value": "Finish at 30"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Afronden bij 30 punten"
+            "value": "Afronden bij 30"
           }
         }
       }

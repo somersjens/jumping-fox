@@ -211,7 +211,8 @@ struct ContentView: View {
                     .buttonStyle(.plain)
 
                     Label {
-                        Text(verbatim: String(localized: "menu.trophies \(totalTrophies)") + (answerHelper ? " *" : ""))
+                        // The trophy icon already says "trophies"; just the count.
+                        Text(verbatim: "\(totalTrophies)" + (answerHelper ? " *" : ""))
                     } icon: {
                         Image(systemName: "trophy.fill")
                     }
@@ -240,7 +241,7 @@ struct ContentView: View {
             }
             .onPreferenceChange(HeaderDetailsHeightKey.self) { headerDetailsHeight = $0 }
 
-            Divider().overlay(character.color.opacity(0.22))
+            Divider().overlay(character.deepColor.opacity(0.22))
 
             VStack(spacing: 11) {
                 HStack(alignment: .center) {
@@ -284,8 +285,8 @@ struct ContentView: View {
             menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
             .frame(height: 44)
-            .background(isSelected ? character.color : .white.opacity(0.7), in: Circle())
-            .overlay(Circle().stroke(character.color.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
+            .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
+            .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
     }
@@ -305,7 +306,7 @@ struct ContentView: View {
         return Image(systemName: filter.icon)
             .font(.system(size: size, weight: .bold))
             .frame(height: 24)
-            .foregroundStyle(isSelected ? .white : character.color)
+            .foregroundStyle(isSelected ? .white : character.deepColor)
     }
 
     private var totalTrophies: Int {
@@ -358,8 +359,8 @@ struct ContentView: View {
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
                         .frame(height: 42)
-                        .background(isSelected ? character.color : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("menu.accessibility.chooseMode \(modeLabel(mode))")
@@ -390,24 +391,26 @@ struct ContentView: View {
             if showsOptions {
                 VStack(alignment: .leading, spacing: 0) {
                     Divider()
-                        .overlay(character.color.opacity(0.2))
+                        .overlay(character.deepColor.opacity(0.2))
                         .padding(.top, 9)
 
-                    let rows: [(String, Binding<Bool>, String)] = [
+                    // Fourth element: an optional SF Symbol shown after the title
+                    // (the cap row spells out "Finish at 30 🏆" without the word).
+                    let rows: [(String, Binding<Bool>, String, String?)] = [
                         (String(localized: "options.capAt30.title"), $capsTrophiesAtThirty,
-                         String(localized: "options.capAt30.info")),
+                         String(localized: "options.capAt30.info"), "trophy.fill"),
                         (String(localized: "options.unlimitedLives.title"), unlimitedLivesBinding,
-                         String(localized: "options.unlimitedLives.info")),
+                         String(localized: "options.unlimitedLives.info"), nil),
                         (String(localized: "options.answerHint.title"), $answerHint,
-                         String(localized: "options.answerHint.info")),
+                         String(localized: "options.answerHint.info"), nil),
                         (String(localized: "options.helperMode.title"), $answerHelper,
-                         String(localized: "options.helperMode.info")),
+                         String(localized: "options.helperMode.info"), nil),
                     ]
                     ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
                         if index > 0 {
-                            Divider().overlay(character.color.opacity(0.14))
+                            Divider().overlay(character.deepColor.opacity(0.14))
                         }
-                        optionRow(row.0, isOn: row.1, info: row.2)
+                        optionRow(row.0, isOn: row.1, info: row.2, trailingIcon: row.3)
                     }
                 }
                 .transition(.opacity)
@@ -418,13 +421,15 @@ struct ContentView: View {
         // No dead space under the last row when the list is open — keep the
         // header symmetric when it's closed.
         .padding(.bottom, showsOptions ? 2 : 10)
-        .background(character.color.opacity(0.10), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.color.opacity(0.18), lineWidth: 1))
+        // Same light fill as an unselected filter field, for a calmer panel.
+        .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(0.18), lineWidth: 1))
     }
 
     /// A settings row: tap the title (or the info icon, or anywhere in the
     /// text area) to expand a short explanation; the toggle works on its own.
-    private func optionRow(_ title: String, isOn: Binding<Bool>, info: String) -> some View {
+    private func optionRow(_ title: String, isOn: Binding<Bool>, info: String,
+                           trailingIcon: String? = nil) -> some View {
         let isExpanded = expandedOptionInfo == title
         return VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 8) {
@@ -437,9 +442,13 @@ struct ContentView: View {
                         Text(title)
                             .font(.subheadline.weight(.semibold))
                             .multilineTextAlignment(.leading)
+                        if let trailingIcon {
+                            Image(systemName: trailingIcon)
+                                .font(.footnote)
+                        }
                         Image(systemName: isExpanded ? "info.circle.fill" : "info.circle")
                             .font(.footnote)
-                            .foregroundStyle(character.color)
+                            .foregroundStyle(character.deepColor)
                         Spacer(minLength: 0)
                     }
                     .contentShape(Rectangle())
@@ -448,11 +457,12 @@ struct ContentView: View {
 
                 Toggle(title, isOn: isOn)
                     .labelsHidden()
-                    .tint(character.color)
+                    .tint(character.deepColor)
                     .scaleEffect(0.8, anchor: .trailing)
                     .accessibilityLabel(title)
             }
-            .frame(minHeight: 38)
+            // ~10% taller rows so the list breathes a little more.
+            .frame(minHeight: 42)
 
             if isExpanded {
                 Text(info)

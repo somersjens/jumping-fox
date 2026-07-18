@@ -447,6 +447,9 @@ final class GameScene: SKScene {
 
     private var maxJumpHeight: CGFloat { bounceVelocity * bounceVelocity / (2 * -gravity) }
     private var helperEnabled = false
+    /// "Answer hints" — powers both the tap-to-reveal and the green highlight
+    /// on the correct block after a wrong landing. Off means neither happens.
+    private var answerHintEnabled = true
     private var totalClimb: CGFloat = 0
 
     /// While true the field stays fully set up and rendered, but no gameplay
@@ -731,6 +734,7 @@ final class GameScene: SKScene {
         platforms.removeAll()
 
         helperEnabled = GameSettings.answerHelperEnabled
+        answerHintEnabled = GameSettings.answerHintEnabled
         theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
         backgroundColor = theme.skSky
         updateBackgroundPattern()
@@ -1684,7 +1688,8 @@ final class GameScene: SKScene {
         }
         // …and arms redemption: the next correct block turns helper green
         // (including the one of the CURRENT question) until it is landed on.
-        if !helperEnabled, !state.isGameOver {
+        // Only when "Answer hints" is on — that toggle owns this cue too.
+        if !helperEnabled, answerHintEnabled, !state.isGameOver {
             redemptionArmed = true
             highlightCorrectForRedemption()
         }
