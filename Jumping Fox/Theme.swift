@@ -48,6 +48,14 @@ struct AnimalCharacter: Identifiable, Equatable {
     var skPrimary: SKColor { SKColor(red: primaryRGB.0, green: primaryRGB.1, blue: primaryRGB.2, alpha: 1) }
     var skDeep: SKColor { SKColor(red: deepRGB.0, green: deepRGB.1, blue: deepRGB.2, alpha: 1) }
     var skSky: SKColor { SKColor(red: skyRGB.0, green: skyRGB.1, blue: skyRGB.2, alpha: 1) }
+    /// The darker companion to `skSky`, shared with the level-card background
+    /// and used for empty (neutral) platforms.
+    var skNeutral: SKColor {
+        SKColor(red: tintRGB.0,
+                green: tintRGB.1,
+                blue: tintRGB.2,
+                alpha: 1)
+    }
     var skTexture: SKTexture { SKTexture(imageNamed: imageName) }
 }
 

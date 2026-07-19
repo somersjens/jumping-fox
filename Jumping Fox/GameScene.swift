@@ -27,7 +27,6 @@ enum GameColors {
     static let goldFlash = SKColor(red: 1.00, green: 0.78, blue: 0.15, alpha: 1)
     static let disabledFill = SKColor(white: 0.60, alpha: 1)
     static let disabledStroke = SKColor(white: 0.45, alpha: 1)
-    static let neutralFill = SKColor(white: 1.0, alpha: 0.95)
 }
 
 // MARK: - Powerups
@@ -159,7 +158,7 @@ final class GamePlatform: SKNode {
     // MARK: Styling (never changes value, position or size)
 
     func styleAsNeutral(theme: AnimalCharacter) {
-        shape.fillColor = GameColors.neutralFill
+        shape.fillColor = theme.skNeutral
         shape.strokeColor = theme.skPrimary
     }
 

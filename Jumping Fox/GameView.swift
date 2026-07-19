@@ -590,7 +590,14 @@ struct GameView: View {
         showsMixIndicator: Bool,
         emphasizesSubtitle: Bool
     ) -> some View {
-        GeometryReader { proxy in
+        // SF Symbols use their full em square, while rounded digits only fill
+        // their cap height. Keep the circular category sign optically as high
+        // as the level number instead of making its diameter equal to the
+        // number's point size.
+        let titleFontSize: CGFloat = 29
+        let titleIconSize = titleFontSize * 0.76
+
+        return GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
             endIllustration(illustration)
@@ -598,20 +605,17 @@ struct GameView: View {
 
             HStack(spacing: 7) {
                 Text(leadingTitle)
-                    .font(.system(size: 29, weight: .heavy, design: .rounded))
+                    .font(.system(size: titleFontSize, weight: .heavy, design: .rounded))
                     .minimumScaleFactor(0.72)
                     .lineLimit(1)
                 if let titleIcon {
-                    endTitleIcon(titleIcon)
-                }
-                if showsMixIndicator {
-                    Image(systemName: "shuffle.circle.fill")
-                        .font(.title3.weight(.heavy))
-                        .accessibilityLabel("game.accessibility.mix")
+                    // Sized to the visible height of the rounded number. In
+                    // Mix mode the badge scales from this same icon size.
+                    endTitleIcon(titleIcon, size: titleIconSize, showsMix: showsMixIndicator)
                 }
                 if let trailingTitle {
                     Text(trailingTitle)
-                        .font(.system(size: 29, weight: .heavy, design: .rounded))
+                        .font(.system(size: titleFontSize, weight: .heavy, design: .rounded))
                         .minimumScaleFactor(0.72)
                         .lineLimit(1)
                 }
@@ -698,19 +702,38 @@ struct GameView: View {
     }
 
     @ViewBuilder
-    private func endTitleIcon(_ icon: String) -> some View {
-        if icon == "percent" {
-            // `percent.circle.fill` is not an SF Symbol. This custom badge
-            // mirrors the circular percentage icon in the main menu.
-            Image(systemName: "percent")
-                .font(.system(size: 10, weight: .heavy))
-                .foregroundStyle(.white)
-                .frame(width: 20, height: 20)
-                .background(theme.deepColor, in: Circle())
-        } else {
-            Image(systemName: icon)
-                .font(.title3.weight(.heavy))
+    private func endTitleIcon(_ icon: String, size: CGFloat, showsMix: Bool) -> some View {
+        let mixBadgeSize = size * 0.62
+        let mixBadgeOffset = size * 0.31
+
+        Group {
+            if icon == "percent" {
+                // `percent.circle.fill` is not an SF Symbol. This custom badge
+                // mirrors the circular percentage icon in the main menu.
+                Image(systemName: "percent")
+                    .font(.system(size: size * 0.5, weight: .heavy))
+                    .foregroundStyle(.white)
+                    .frame(width: size, height: size)
+                    .background(theme.deepColor, in: Circle())
+            } else {
+                Image(systemName: icon)
+                    .font(.system(size: size, weight: .heavy))
+            }
         }
+        .overlay(alignment: .topTrailing) {
+            if showsMix {
+                // Mix badge keeps its own (smaller) size, laid over the
+                // category sign's top-right corner, about half overlapping.
+                Image(systemName: "shuffle.circle.fill")
+                    .font(.system(size: mixBadgeSize, weight: .heavy))
+                    .foregroundStyle(theme.deepColor)
+                    .background(Circle().fill(.white).padding(-1.5))
+                    .offset(x: mixBadgeOffset, y: -mixBadgeOffset)
+                    .accessibilityLabel("game.accessibility.mix")
+            }
+        }
+        // Reserve room so the overhanging mix badge never touches the next word.
+        .padding(.trailing, showsMix ? mixBadgeOffset : 0)
     }
 
     @ViewBuilder
