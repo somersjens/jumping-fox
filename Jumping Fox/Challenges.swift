@@ -75,6 +75,86 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
     }
 }
 
+// MARK: - Difficulty scaling (single source of truth)
+
+/// The ordered difficulty lists and the premium (levels 13–99) growth curves.
+/// Both the level catalog (card numbers/titles) and the question engine (the
+/// numbers actually generated) read from here, so the card a child sees and
+/// the sums they get can never drift apart.
+enum ChallengeScaling {
+    /// Fraction denominators for all 99 levels, easy → hard. Round/common
+    /// denominators lead, then the evens, then the odds (the hardest). Every
+    /// denominator 2…100 appears exactly once; there is no denominator 1.
+    static let fractionDenominators = [
+        25, 50, 75, 5, 10, 20, 40, 80, 100, 30, 60, 90, 15, 35, 45, 55, 65, 70, 85, 95,
+        2, 4, 6, 8, 12, 14, 16, 18, 22, 24, 26, 28, 32, 34, 36, 38, 42, 44, 46, 48,
+        52, 54, 56, 58, 62, 64, 66, 68, 72, 74, 76, 78, 82, 84, 86, 88, 92, 94, 96, 98,
+        3, 7, 9, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41, 43, 47, 49, 51,
+        53, 57, 59, 61, 63, 67, 69, 71, 73, 77, 79, 81, 83, 87, 89, 91, 93, 97, 99]
+
+    /// Percentages for all 99 levels, in the same easy → hard shape as the
+    /// fractions: round values first, then evens, then odds.
+    static let percentageLevels = [
+        25, 50, 75, 5, 10, 20, 40, 80, 100, 30, 60, 90, 15, 35, 45, 55, 65, 70, 85, 95,
+        2, 4, 6, 8, 12, 14, 16, 18, 22, 24, 26, 28, 32, 34, 36, 38, 42, 44, 46, 48,
+        52, 54, 56, 58, 62, 64, 66, 68, 72, 74, 76, 78, 82, 84, 86, 88, 92, 94, 96, 98,
+        1, 3, 7, 9, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41, 43, 47, 49,
+        51, 53, 57, 59, 61, 63, 67, 69, 71, 73, 77, 79, 81, 83, 87, 89, 91, 93, 97]
+
+    /// The number of free (non-premium) levels before Premium takes over.
+    static let freeLevelCount = 12
+
+    /// Display name for a fraction denominator (used only on the internal
+    /// level title; the card itself shows the number).
+    static func fractionName(for d: Int) -> String {
+        let names: [Int: String] = [2: "Halves", 3: "Thirds", 4: "Quarters", 5: "Fifths",
+                                     6: "Sixths", 8: "Eighths", 10: "Tenths", 12: "Twelfths",
+                                     20: "Twentieths", 25: "Twenty-fifths", 50: "Fiftieths",
+                                     100: "Hundredths"]
+        return names[d] ?? "\(d)ths"
+    }
+
+    /// Premium *mix* levels still review a friendly subset of percentages.
+    static let premiumFractionDenominators = [2, 4, 5, 8, 10, 20, 25]
+    static let premiumPercentages = [50, 25, 10, 20, 75, 5, 100]
+
+    /// The big round "whole" a premium fraction/percentage *mix* level works
+    /// with. Climbs in tens from 110 (level 13) toward ~970 (level 99).
+    static func premiumCeiling(_ index: Int) -> Int {
+        100 + max(1, index - 12) * 10
+    }
+
+    /// Addition-mix result ceiling for any level 1…99: hand-tuned for the free
+    /// levels, then growing by 100 per premium level beyond 1000.
+    private static let additionBases = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000]
+    static func additionMixCeiling(_ index: Int) -> Int {
+        index <= additionBases.count
+            ? additionBases[index - 1]
+            : 1000 + (index - additionBases.count) * 100
+    }
+
+    /// Subtraction-mix start ceiling for any level 1…99 (index 7 stays the
+    /// special "below zero" card, which the engine handles separately).
+    private static let subtractionBases = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000]
+    static func subtractionMixCeiling(_ index: Int) -> Int {
+        index <= subtractionBases.count
+            ? subtractionBases[index - 1]
+            : 1000 + (index - subtractionBases.count) * 100
+    }
+
+    /// Tables-mix pool for any level 1…99: fixed pools for the free levels,
+    /// then a sliding ~12-wide window climbing toward the table of 99.
+    private static let tablePools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8),
+                                              Array(1...10), Array(1...12), Array(1...12),
+                                              Array(2...12), Array(3...12), Array(4...12),
+                                              Array(5...12), Array(6...12)]
+    static func tablesMixPool(_ index: Int) -> [Int] {
+        guard index > tablePools.count else { return tablePools[index - 1] }
+        let hi = min(99, index)
+        return Array(max(2, hi - 11)...hi)
+    }
+}
+
 // MARK: - Level configuration
 
 struct LevelConfig: Identifiable, Hashable {
@@ -119,16 +199,18 @@ enum LevelCatalog {
             LevelConfig(category: .addition, index: $0, cardNumber: "\($0)", title: "Add +\($0)")
         }
         // Addition mix: growing maximum result.
-        result[.additionMix] = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000].enumerated().map { i, m in
-            LevelConfig(category: .additionMix, index: i + 1, cardNumber: "\(m)", title: "Up to \(m)")
+        result[.additionMix] = (1...12).map { i in
+            let m = ChallengeScaling.additionMixCeiling(i)
+            return LevelConfig(category: .additionMix, index: i, cardNumber: "\(m)", title: "Up to \(m)")
         }
         // Subtraction: repeatedly take away n.
         result[.subtraction] = (1...12).map {
             LevelConfig(category: .subtraction, index: $0, cardNumber: "\($0)", title: "Take −\($0)")
         }
         // Subtraction mix: each card shows the real maximum start number.
-        var subMix = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000].enumerated().map { i, m in
-            LevelConfig(category: .subtractionMix, index: i + 1, cardNumber: "\(m)", title: "From \(m)")
+        var subMix = (1...12).map { i -> LevelConfig in
+            let m = ChallengeScaling.subtractionMixCeiling(i)
+            return LevelConfig(category: .subtractionMix, index: i, cardNumber: "\(m)", title: "From \(m)")
         }
         subMix[6] = LevelConfig(category: .subtractionMix, index: 7, cardNumber: "20",
                                 title: "Below zero", isAdvanced: true)
@@ -145,21 +227,19 @@ enum LevelCatalog {
         result[.tables] = tables
 
         // Tables mix: growing pool of already-practiced tables.
-        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12),
-                              Array(1...12), Array(2...12), Array(3...12), Array(4...12), Array(5...12), Array(6...12)]
-        result[.tablesMix] = pools.enumerated().map { i, pool in
-            LevelConfig(category: .tablesMix, index: i + 1, cardNumber: "\(pool.max()!)",
-                        title: "Tables \(pool.min()!)–\(pool.max()!)")
+        result[.tablesMix] = (1...12).map { i in
+            let pool = ChallengeScaling.tablesMixPool(i)
+            return LevelConfig(category: .tablesMix, index: i, cardNumber: "\(pool.max()!)",
+                               title: "Tables \(pool.min()!)–\(pool.max()!)")
         }
 
-        // Fractions: one denominator per level, learning-line order (no denominator 1).
-        let fractionLevels: [(Int, String)] = [(2, "Halves"), (3, "Thirds"), (4, "Quarters"),
-                                               (5, "Fifths"), (6, "Sixths"), (8, "Eighths"), (10, "Tenths"),
-                                               (12, "Twelfths"), (15, "Fifteenths"), (20, "Twentieths"),
-                                               (25, "Twenty-fifths"), (30, "Thirtieths")]
-        result[.fractions] = fractionLevels.enumerated().map { i, item in
-            LevelConfig(category: .fractions, index: i + 1, cardNumber: "\(item.0)", title: item.1)
-        }
+        // Fractions: one denominator per level for all 99 levels. The first
+        // twelve are free; Premium continues the same list (see the loop below).
+        result[.fractions] = ChallengeScaling.fractionDenominators
+            .prefix(ChallengeScaling.freeLevelCount).enumerated().map { i, d in
+                LevelConfig(category: .fractions, index: i + 1, cardNumber: "\(d)",
+                            title: ChallengeScaling.fractionName(for: d))
+            }
         // Fractions mix: only concepts that were already introduced.
         let fracMixTitles = ["Halves & thirds", "Compare", "Equivalent", "Add & take", "All together",
                              "Up to eighths", "Up to tenths", "Up to twelfths", "Up to fifteenths",
@@ -169,13 +249,12 @@ enum LevelCatalog {
                         isAdvanced: i == 4)
         }
 
-        // Percentages in learning-line order: the fraction-friendly ones
-        // first (half, quarter, tenth, whole, three quarters, fifth), then
-        // the derived ones, ending with the genuinely hard 15% and 12%.
-        let pctLevels = [50, 25, 10, 100, 75, 20, 5, 30, 40, 60, 15, 12]
-        result[.percentages] = pctLevels.enumerated().map { i, p in
-            LevelConfig(category: .percentages, index: i + 1, cardNumber: "\(p)", title: "\(p)%")
-        }
+        // Percentages: one percentage per level for all 99 levels. First
+        // twelve free; Premium continues the same list (loop below).
+        result[.percentages] = ChallengeScaling.percentageLevels
+            .prefix(ChallengeScaling.freeLevelCount).enumerated().map { i, p in
+                LevelConfig(category: .percentages, index: i + 1, cardNumber: "\(p)", title: "\(p)%")
+            }
         let pctMixTitles = ["Halves & quarters", "All percentages", "Discounts", "Increases",
                             "Up to 50%", "Up to 75%", "Everyday percentages", "Find the part",
                             "Find the whole", "Sales", "Changes", "All percentages"]
@@ -196,20 +275,53 @@ enum LevelCatalog {
                         isAdvanced: $0 >= 3)
         }
 
-        // Each menu has twelve free levels. Premium extends every topic and
-        // its immediate-mix mode to 99 levels in total.
-        for category in ChallengeCategory.allCases {
+        // Each menu has twelve free levels. Premium extends every topic to 99
+        // levels — each with real, progressively harder content. The card
+        // number is always meaningful for its menu (the number added, the table,
+        // the ceiling worked toward…) and never a bare repeat of a free card.
+        // Tables already run through 99 above, so they are skipped here.
+        for category in ChallengeCategory.allCases where category != .tables {
             var levels = result[category, default: []]
-            // Tables already continue through 99 as Premium content. Every
-            // other menu gets its own Premium progression through level 99.
-            if category != .tables {
-                for index in 13...99 {
-                    levels.append(
-                        LevelConfig(category: category, index: index,
-                                    cardNumber: "\(index)", title: "Premium practice \(index)",
-                                    isAdvanced: true, requiresPremium: true)
-                    )
+            for index in 13...99 {
+                let card: String
+                let title: String
+                switch category {
+                case .addition:
+                    card = "\(index)"; title = "Add +\(index)"
+                case .subtraction:
+                    card = "\(index)"; title = "Take −\(index)"
+                case .additionMix:
+                    let c = ChallengeScaling.additionMixCeiling(index)
+                    card = "\(c)"; title = "Up to \(c)"
+                case .subtractionMix:
+                    let c = ChallengeScaling.subtractionMixCeiling(index)
+                    card = "\(c)"; title = "From \(c)"
+                case .tablesMix:
+                    let m = ChallengeScaling.tablesMixPool(index).max()!
+                    card = "\(m)"; title = "Tables to \(m)"
+                case .fractions:
+                    let d = ChallengeScaling.fractionDenominators[index - 1]
+                    card = "\(d)"; title = ChallengeScaling.fractionName(for: d)
+                case .fractionsMix:
+                    let c = ChallengeScaling.premiumCeiling(index)
+                    card = "\(c)"; title = "Fraction mix to \(c)"
+                case .percentages:
+                    let p = ChallengeScaling.percentageLevels[index - 1]
+                    card = "\(p)"; title = "\(p)%"
+                case .percentagesMix:
+                    let c = ChallengeScaling.premiumCeiling(index)
+                    card = "\(c)"; title = "Percent mix to \(c)"
+                case .mix:
+                    card = "\(index)"; title = "Mix \(index)"
+                case .supermix:
+                    card = "\(index)"; title = "Supermix \(index)"
+                case .tables:
+                    continue
                 }
+                levels.append(
+                    LevelConfig(category: category, index: index, cardNumber: card,
+                                title: title, isAdvanced: true, requiresPremium: true)
+                )
             }
             result[category] = levels
         }
@@ -480,7 +592,7 @@ final class QuestionEngine {
         case .subtraction:
             return subtractionSmallStepQuestion(maxTake: level.index)
         case .tables:
-            return tablesMixQuestion(pool: Array(1...min(12, level.index)))
+            return tablesMixQuestion(pool: Array(1...min(99, level.index)))
         case .fractions:
             // Varied question forms over everything introduced so far —
             // clearly different from the guided Standard level.
@@ -543,8 +655,7 @@ final class QuestionEngine {
 
     private func additionMixQuestion(maxResult: Int? = nil, harder: Bool = false,
                                      isRandomPractice: Bool = false) -> Question {
-        let bases = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000]
-        var m = maxResult ?? bases[min(level.index - 1, bases.count - 1)]
+        var m = maxResult ?? ChallengeScaling.additionMixCeiling(level.index)
         if harder { m = min(200, m * 2) }
         // Always exactly two numbers and one operation.
         let a = Int.random(in: 1...(m - 1))
@@ -608,8 +719,7 @@ final class QuestionEngine {
     }
 
     private func subtractionMixQuestion(maxStart: Int? = nil, allowNegative: Bool? = nil) -> Question {
-        let bases = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000]
-        let m = maxStart ?? bases[min(level.index - 1, bases.count - 1)]
+        let m = maxStart ?? ChallengeScaling.subtractionMixCeiling(level.index)
         let negative = allowNegative ?? (level.category == .subtractionMix && level.index == 7)
 
         if negative {
@@ -640,8 +750,21 @@ final class QuestionEngine {
 
     // MARK: Tables
 
+    /// Roughly 2% of the time any multiplication question becomes a "× 0"
+    /// reminder that anything times zero is zero.
+    private static let zeroMultiplyChance = 0.02
+
+    /// A rare "× 0 = 0" question. The distractors are the tempting mistakes:
+    /// answering the number itself (as if × 0 left it unchanged) or 1.
+    private func timesZeroQuestion(_ a: Int) -> Question {
+        let prompt = Bool.random() ? "\(a) × 0 = ?" : "0 × \(a) = ?"
+        return makeQuestion(prompt, "0",
+                            [a, 1, a + 1, 2, max(2, a * 2)].map(String.init))
+    }
+
     /// Questions continue in order: t×1, t×2 … t×12, then repeat (shuffled).
     private func tableQuestion(table: Int) -> Question {
+        if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(table) }
         let m = cycled(Array(1...12))
         let answer = table * m
         // Neighbouring multiples (one step up/down in the SAME table) and
@@ -654,12 +777,11 @@ final class QuestionEngine {
     }
 
     private func tablesMixQuestion(pool: [Int]? = nil) -> Question {
-        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12),
-                              Array(1...12), Array(2...12), Array(3...12), Array(4...12), Array(5...12), Array(6...12)]
-        let tables = pool ?? pools[min(level.index - 1, pools.count - 1)]
+        let tables = pool ?? ChallengeScaling.tablesMixPool(level.index)
         let current = tables.max()!
         // Weighted: the newest table most often, earlier tables regularly.
         let table = Double.random(in: 0...1) < 0.5 ? current : tables.randomElement()!
+        if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(table) }
         let m = Int.random(in: 1...12)
         let answer = table * m
         return makeQuestion("\(table) × \(m) = ?", "\(answer)",
@@ -670,7 +792,7 @@ final class QuestionEngine {
 
     // MARK: Fractions
 
-    private static let fractionDenominators = [2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30]
+    private static let fractionDenominators = ChallengeScaling.fractionDenominators
 
     /// One denominator per level. Wholes are generated directly from
     /// multiples of the denominator: whole = denominator × factor.
@@ -697,6 +819,13 @@ final class QuestionEngine {
     }
 
     private func fractionsMixQuestion() -> Question {
+        // Premium mix: everything reviewed together, on big round wholes.
+        if level.index > ChallengeScaling.fractionDenominators.count {
+            return Bool.random()
+                ? premiumFractionsQuestion()
+                : fractionsVarietyQuestion(denominators: ChallengeScaling.fractionDenominators,
+                                           forms: ["equivalent", "addSame", "subSame"])
+        }
         // Only concepts that were already introduced, per level. Every form
         // is a symbolic sum — no word questions.
         let denominators: [Int]
@@ -750,12 +879,19 @@ final class QuestionEngine {
     // MARK: Percentages
 
     /// Must stay in sync with the catalog's learning-line order above.
-    private static let percentageLevels = [50, 25, 10, 100, 75, 20, 5, 30, 40, 60, 15, 12]
-    /// whole = base × factor keeps every answer a whole number.
-    private static let percentageBase: [Int: Int] = [50: 2, 25: 4, 10: 10, 20: 5, 75: 4,
-                                                     5: 20, 40: 5, 60: 5, 12: 25, 15: 20,
-                                                     30: 10, 100: 1]
-    private static let percentageFraction: [Int: String] = [50: "1/2", 25: "1/4", 75: "3/4", 20: "1/5", 10: "1/10"]
+    private static let percentageLevels = ChallengeScaling.percentageLevels
+
+    /// The smallest whole that makes "p% of whole" a whole number. Computed so
+    /// it works for every percentage 1…100, not just the friendly ones:
+    /// whole = base × factor then always divides cleanly by 100.
+    private static func percentageBase(_ p: Int) -> Int {
+        max(1, 100 / gcd(100, p))
+    }
+    private static func gcd(_ a: Int, _ b: Int) -> Int { b == 0 ? a : gcd(b, a % b) }
+
+    private static let percentageFraction: [Int: String] = [50: "1/2", 25: "1/4", 75: "3/4",
+                                                            20: "1/5", 10: "1/10", 5: "1/20",
+                                                            80: "4/5", 90: "9/10"]
 
     private func percentagesQuestion(percentage: Int? = nil) -> Question {
         let p = percentage ?? Self.percentageLevels[min(level.index - 1, Self.percentageLevels.count - 1)]
@@ -763,7 +899,7 @@ final class QuestionEngine {
         // answers) never count up predictably 1, 2, 3.
         let factors = Array(1...8)
         let factor = shuffledCycled(factors)
-        let whole = (Self.percentageBase[p] ?? 4) * factor
+        let whole = Self.percentageBase(p) * factor
         let cycle = cycleCount(seriesLength: factors.count)
 
         if cycle >= 1, let fraction = Self.percentageFraction[p], Double.random(in: 0...1) < 0.15 {
@@ -785,6 +921,13 @@ final class QuestionEngine {
     }
 
     private func percentagesMixQuestion() -> Question {
+        // Premium mix: friendly percentages reviewed together, on big wholes.
+        if level.index > ChallengeScaling.percentageLevels.count {
+            return Bool.random()
+                ? premiumPercentagesQuestion()
+                : percentagesVarietyQuestion(percentages: ChallengeScaling.premiumPercentages,
+                                             forms: ["fracToPct", "pctToFrac"])
+        }
         let percentages: [Int]
         var forms = ["percentOf", "fracToPct"]
         switch level.index {
@@ -830,6 +973,50 @@ final class QuestionEngine {
         }
     }
 
+    // MARK: Premium fractions & percentages (levels 13–99)
+
+    /// Premium fractions review the friendly denominators, but on big round
+    /// wholes that climb toward ~1000 — mental maths with real quantities.
+    /// The whole is always an exact multiple of the denominator, so every
+    /// answer stays a whole number.
+    private func premiumFractionsQuestion() -> Question {
+        let ceiling = ChallengeScaling.premiumCeiling(level.index)
+        let d = ChallengeScaling.premiumFractionDenominators.randomElement()!
+        let target = max(2, ceiling / d)
+        let factor = Int.random(in: max(1, target - 2)...(target + 2))
+        let whole = d * factor
+        let unit = whole / d              // first divide…
+        let num = Int.random(in: 1...(d - 1))
+        let answer = unit * num           // …then multiply
+        // Near-misses only: forgot to multiply (unit), numerator one off
+        // (answer ± unit), the complement, and a rounding-style ±10 slip.
+        return makeQuestion("\(num)/\(d) × \(whole) = ?", "\(answer)",
+                            [unit, answer + unit, max(0, answer - unit),
+                             whole - answer, answer + 10, max(0, answer - 10)].map(String.init))
+    }
+
+    /// Premium percentages apply the friendly percentages to big round wholes.
+    /// base × factor keeps every answer whole (25% of 480, 10% of 730, …).
+    private func premiumPercentagesQuestion() -> Question {
+        let ceiling = ChallengeScaling.premiumCeiling(level.index)
+        let p = ChallengeScaling.premiumPercentages.randomElement()!
+        let base = Self.percentageBase(p)
+        let target = max(1, ceiling / base)
+        let factor = Int.random(in: max(1, target - 2)...(target + 2))
+        let whole = base * factor
+        let answer = whole * p / 100
+        // Neighbouring percentages of the SAME whole (25% vs 50% mix-ups),
+        // the complement, and a ±10 slip.
+        let neighbours = ChallengeScaling.percentageLevels
+            .filter { $0 != p && whole * $0 % 100 == 0 }
+            .sorted { abs($0 - p) < abs($1 - p) }
+            .prefix(3)
+            .map { whole * $0 / 100 }
+        return makeQuestion("\(p)% × \(whole) = ?", "\(answer)",
+                            (neighbours + [whole - answer, answer + 10, max(0, answer - 10)])
+                                .filter { $0 >= 0 }.map(String.init))
+    }
+
     // MARK: Mix & Supermix
 
     /// Mix: the card number n is a hard rule — every sum has at least one
@@ -860,6 +1047,7 @@ final class QuestionEngine {
                                 [answer + 1, answer - 1, answer + 2, answer - 2,
                                  a, answer - small].filter { $0 >= 0 }.map(String.init))
         case "×":
+            if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(small) }
             let m = Int.random(in: 1...12)
             let (a, b) = Bool.random() ? (small, m) : (m, small)
             let answer = small * m
@@ -892,7 +1080,7 @@ final class QuestionEngine {
         case "subtraction":
             return subtractionMixQuestion(maxStart: 30 + idx * 30, allowNegative: idx >= 3)
         case "tables":
-            return tablesMixQuestion(pool: Array(1...(8 + idx)))
+            return tablesMixQuestion(pool: Array(1...min(99, 8 + idx)))
         case "fractions":
             return fractionsQuestion(denominator: Self.fractionDenominators.randomElement()!)
         default:

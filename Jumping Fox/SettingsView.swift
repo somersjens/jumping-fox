@@ -15,6 +15,7 @@ struct SettingsView: View {
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var tracker = PlaytimeTracker.shared
+    @ObservedObject private var language = LanguageManager.shared
     @State private var showPremium = false
 
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }

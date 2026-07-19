@@ -28,8 +28,8 @@ enum LifeMode: String, CaseIterable, Identifiable, Codable {
 
     var label: String {
         switch self {
-        case .three: return String(localized: "lives.three")
-        case .unlimited: return String(localized: "lives.unlimited")
+        case .three: return L("lives.three")
+        case .unlimited: return L("lives.unlimited")
         }
     }
 

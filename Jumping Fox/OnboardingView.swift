@@ -5,6 +5,7 @@ struct OnboardingView: View {
     @AppStorage(GameSettings.onboardingCompleteKey) private var isComplete = false
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
+    @ObservedObject private var language = LanguageManager.shared
     @State private var step = 0
     @FocusState private var isNameFieldFocused: Bool
 
@@ -44,6 +45,36 @@ struct OnboardingView: View {
             }
         }
         .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03))
+        .overlay(alignment: .topLeading) {
+            // Steps 2 and 3 can step back to correct a wrong choice. Mirrors
+            // the language flag: same glass style, same top inset, left corner.
+            if step > 0 {
+                backButton
+                    .padding(.top, 8)
+                    .padding(.leading, 16)
+                    .transition(.opacity)
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            LanguagePicker(tint: Color(red: 0.43, green: 0.20, blue: 0.03).opacity(0.6))
+                .padding(.top, 8)
+                .padding(.trailing, 16)
+        }
+    }
+
+    private var backButton: some View {
+        Button {
+            advance(to: step - 1)
+        } label: {
+            Image(systemName: "chevron.left")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03).opacity(0.6))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .liquidGlassCapsule()
+                .contentShape(Capsule())
+        }
+        .accessibilityLabel(Text("common.back"))
     }
 
     private var onboardingBackground: some View {
@@ -142,7 +173,7 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? String(localized: "onboarding.level.thisTopic"))")
+            Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? L("onboarding.level.thisTopic"))")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
@@ -150,8 +181,8 @@ struct OnboardingView: View {
 
             Button { finish(with: .standard) } label: {
                 OnboardingChoiceLabel(
-                    title: String(localized: "onboarding.level.beginner.title"),
-                    subtitle: String(localized: "onboarding.level.beginner.subtitle"),
+                    title: L("onboarding.level.beginner.title"),
+                    subtitle: L("onboarding.level.beginner.subtitle"),
                     icon: "leaf.fill"
                 )
             }
@@ -159,8 +190,8 @@ struct OnboardingView: View {
 
             Button { finish(with: .mix) } label: {
                 OnboardingChoiceLabel(
-                    title: String(localized: "onboarding.level.advanced.title"),
-                    subtitle: String(localized: "onboarding.level.advanced.subtitle"),
+                    title: L("onboarding.level.advanced.title"),
+                    subtitle: L("onboarding.level.advanced.subtitle"),
                     icon: "bolt.fill"
                 )
             }
@@ -242,6 +273,7 @@ private struct OnboardingChoiceLabel: View {
 
 struct CharacterPickerView: View {
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var language = LanguageManager.shared
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     let theme: AnimalCharacter
 

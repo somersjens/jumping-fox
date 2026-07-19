@@ -11,6 +11,7 @@ import StoreKit
 struct PremiumView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var premium = PremiumStore.shared
+    @ObservedObject private var language = LanguageManager.shared
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @State private var previewCharacterID = "fox"
 
@@ -41,6 +42,11 @@ struct PremiumView: View {
             }
         }
         .overlay(alignment: .topLeading) { closeButton }
+        .overlay(alignment: .topTrailing) {
+            LanguagePicker(tint: character.deepColor.opacity(0.7))
+                .padding(.top, 24)
+                .padding(.trailing, 18)
+        }
         .animation(.easeInOut(duration: 0.25), value: previewCharacterID)
         .animation(.spring(response: 0.42, dampingFraction: 0.7), value: premium.isPremium)
         .onAppear { previewCharacterID = characterID }
@@ -60,7 +66,7 @@ struct PremiumView: View {
                 .background(.white.opacity(0.7), in: Circle())
                 .shadow(color: character.deepColor.opacity(0.15), radius: 6, y: 3)
         }
-        .padding(.top, 14)
+        .padding(.top, 24)
         .padding(.leading, 18)
     }
 
@@ -112,14 +118,14 @@ struct PremiumView: View {
     private var featureCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             featureRow(icon: "square.grid.3x3.fill",
-                       title: String(localized: "premium.feature.levels.title"),
-                       subtitle: String(localized: "premium.feature.levels.subtitle"))
+                       title: L("premium.feature.levels.title"),
+                       subtitle: L("premium.feature.levels.subtitle"))
             featureRow(icon: "pawprint.fill",
-                       title: String(localized: "premium.feature.animals.title"),
-                       subtitle: String(localized: "premium.feature.animals.subtitle"))
+                       title: L("premium.feature.animals.title"),
+                       subtitle: L("premium.feature.animals.subtitle"))
             featureRow(icon: "nosign",
-                       title: String(localized: "premium.feature.noAds.title"),
-                       subtitle: String(localized: "premium.feature.noAds.subtitle"))
+                       title: L("premium.feature.noAds.title"),
+                       subtitle: L("premium.feature.noAds.subtitle"))
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -231,9 +237,9 @@ struct PremiumView: View {
 
     private var purchaseButtonTitle: String {
         if let price = premium.product?.displayPrice {
-            return String(localized: "premium.unlockWithPrice \(price)")
+            return L("premium.unlockWithPrice \(price)")
         }
-        return String(localized: "premium.unlock")
+        return L("premium.unlock")
     }
 
     private func featureRow(icon: String, title: String, subtitle: String) -> some View {

@@ -1,6 +1,16 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@  %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@  %2$@"
+          }
+        }
+      }
+    },
     "character.bear": {
       "extractionState": "manual",
       "localizations": {
@@ -184,6 +194,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kies je poppetje"
+          }
+        }
+      }
+    },
+    "common.back": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terug"
           }
         }
       }
@@ -766,23 +793,6 @@
         }
       }
     },
-    "game.status.mixMode": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MIX MODE"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MIX-MODUS"
-          }
-        }
-      }
-    },
     "game.status.leaderboardMaxed": {
       "extractionState": "manual",
       "localizations": {
@@ -796,6 +806,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Maximaal aantal trofeeën voor scorebord behaald"
+          }
+        }
+      }
+    },
+    "game.status.mixMode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MIX MODE"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MIX-MODUS"
           }
         }
       }
@@ -915,6 +942,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wekelijks"
+          }
+        }
+      }
+    },
+    "language.select": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose language"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kies taal"
           }
         }
       }
@@ -1238,13 +1282,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Add a small number from 1 to %lld to a bigger number."
+            "value": "Add a number from 1 to %lld to a bigger number."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tel een klein getal van 1 t/m %lld op bij een groter getal."
+            "value": "Tel een getal van 1 t/m %lld op bij een groter getal."
           }
         }
       }
@@ -1313,6 +1357,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "Optellen tot %lld"
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.premium.b1 %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Work out simple fractions of round numbers up to %lld."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reken eenvoudige breuken van ronde getallen tot %lld uit."
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.premium.b2": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The numbers stay round, so the answers are always whole."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De getallen blijven rond, dus de antwoorden zijn altijd heel."
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.premium.title %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fractions to %lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Breuken tot %lld"
           }
         }
       }
@@ -1521,6 +1616,57 @@
         }
       }
     },
+    "modeIntro.percentages.premium.b1 %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Work out simple percentages of round numbers up to %lld."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reken eenvoudige procenten van ronde getallen tot %lld uit."
+          }
+        }
+      }
+    },
+    "modeIntro.percentages.premium.b2": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amounts stay round, so the answers are always whole."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De bedragen blijven rond, dus de antwoorden zijn altijd heel."
+          }
+        }
+      }
+    },
+    "modeIntro.percentages.premium.title %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentages to %lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Procenten tot %lld"
+          }
+        }
+      }
+    },
     "modeIntro.percentages.std.b1 %@": {
       "extractionState": "manual",
       "localizations": {
@@ -1714,13 +1860,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Subtract a small number from 1 to %lld."
+            "value": "Subtract a number from 1 to %lld."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Trek een klein getal van 1 t/m %lld af."
+            "value": "Trek een getal van 1 t/m %lld af."
           }
         }
       }

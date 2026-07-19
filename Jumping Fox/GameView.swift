@@ -19,6 +19,8 @@ struct GameView: View {
     @StateObject private var state: GameState
     @State private var scene: GameScene
     @AppStorage(GameSettings.answerHintKey) private var answerHintEnabled = true
+    // Refreshes the intro/end-menu copy when the language is switched.
+    @ObservedObject private var language = LanguageManager.shared
 
     // Pre-game mode intro card. The field is frozen until the player starts.
     @State private var showingIntro = true
@@ -137,9 +139,9 @@ struct GameView: View {
 
     private var introCard: some View {
         let info = ModeIntro.info(for: state.level)
-        let trophyBullet = String(localized: "game.intro.trophyBullet")
-        let unlimitedLivesBullet = String(localized: "game.intro.unlimitedBullet")
-        let helperBullet = String(localized: "game.intro.helperBullet")
+        let trophyBullet = L("game.intro.trophyBullet")
+        let unlimitedLivesBullet = L("game.intro.unlimitedBullet")
+        let helperBullet = L("game.intro.helperBullet")
         let bullets = info.bullets
             + [trophyBullet]
             + (state.lifeMode == .unlimited ? [unlimitedLivesBullet] : [])
@@ -746,11 +748,11 @@ struct GameView: View {
 /// All copy is resolved from the string catalog, so there are no
 /// language checks in the code — a new language is added purely in the catalog.
 private struct EndScreenText {
-    var completionSubtitle: String { String(localized: "game.end.completionSubtitle") }
-    var completionSuffix: String { String(localized: "game.end.completionSuffix") }
-    var gameOverTitle: String { String(localized: "game.end.gameOverTitle") }
-    var playAgain: String { String(localized: "game.end.playAgain") }
-    var mainMenu: String { String(localized: "game.end.mainMenu") }
+    var completionSubtitle: String { L("game.end.completionSubtitle") }
+    var completionSuffix: String { L("game.end.completionSuffix") }
+    var gameOverTitle: String { L("game.end.gameOverTitle") }
+    var playAgain: String { L("game.end.playAgain") }
+    var mainMenu: String { L("game.end.mainMenu") }
 
     /// Mirrors the six symbols in the main menu, so the achievement is
     /// immediately recognisable without repeating a category name.

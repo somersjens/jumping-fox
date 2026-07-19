@@ -19,124 +19,123 @@ enum ModeIntro {
         let mix = level.startsInMix
 
         // Shared bullets used by more than one mode.
-        let practiceOrder = String(localized: "modeIntro.practiceOrder")
-        let multiplyBy = String(localized: "modeIntro.tables.multiplyBy")
+        let practiceOrder = L("modeIntro.practiceOrder")
+        let multiplyBy = L("modeIntro.tables.multiplyBy")
 
         switch level.category {
         case .addition:
             let bullets = mix
-                ? [String(localized: "modeIntro.addition.varied.b1 \(n)"),
-                   String(localized: "modeIntro.addition.varied.b2")]
-                : [String(localized: "modeIntro.addition.std.b1 \(n)"), practiceOrder]
-            return (String(localized: "modeIntro.addition.title \(n)"), bullets)
+                ? [L("modeIntro.addition.varied.b1 \(n)"),
+                   L("modeIntro.addition.varied.b2")]
+                : [L("modeIntro.addition.std.b1 \(n)"), practiceOrder]
+            return (L("modeIntro.addition.title \(n)"), bullets)
 
         case .additionMix:
             let m = additionMixMax(n)
-            return (String(localized: "modeIntro.additionMix.title \(m)"),
-                    [String(localized: "modeIntro.additionMix.b1"),
-                     String(localized: "modeIntro.additionMix.b2 \(m)")])
+            return (L("modeIntro.additionMix.title \(m)"),
+                    [L("modeIntro.additionMix.b1"),
+                     L("modeIntro.additionMix.b2 \(m)")])
 
         case .subtraction:
             let bullets = mix
-                ? [String(localized: "modeIntro.subtraction.varied.b1 \(n)"),
-                   String(localized: "modeIntro.subtraction.varied.b2")]
-                : [String(localized: "modeIntro.subtraction.std.b1 \(n)"), practiceOrder]
-            return (String(localized: "modeIntro.subtraction.title \(n)"), bullets)
+                ? [L("modeIntro.subtraction.varied.b1 \(n)"),
+                   L("modeIntro.subtraction.varied.b2")]
+                : [L("modeIntro.subtraction.std.b1 \(n)"), practiceOrder]
+            return (L("modeIntro.subtraction.title \(n)"), bullets)
 
         case .subtractionMix:
-            let twoNumbers = String(localized: "modeIntro.subtractionMix.twoNumbers")
+            let twoNumbers = L("modeIntro.subtractionMix.twoNumbers")
             if n == 7 {
-                return (String(localized: "modeIntro.subtractionMix.belowZero.title"),
-                        [twoNumbers, String(localized: "modeIntro.subtractionMix.belowZero.b2")])
+                return (L("modeIntro.subtractionMix.belowZero.title"),
+                        [twoNumbers, L("modeIntro.subtractionMix.belowZero.b2")])
             }
             let m = subtractionMixMax(n)
-            return (String(localized: "modeIntro.subtractionMix.title \(m)"),
-                    [twoNumbers, String(localized: "modeIntro.subtractionMix.b2 \(m)")])
+            return (L("modeIntro.subtractionMix.title \(m)"),
+                    [twoNumbers, L("modeIntro.subtractionMix.b2 \(m)")])
 
         case .tables:
             let bullets = mix
-                ? [String(localized: "modeIntro.tables.varied.b1 \(min(12, n))"), multiplyBy]
-                : [String(localized: "modeIntro.tables.std.b1 \(n) \(n) \(n)"),
-                   String(localized: "modeIntro.tables.std.b2")]
-            return (String(localized: "modeIntro.tables.title \(n)"), bullets)
+                ? [L("modeIntro.tables.varied.b1 \(min(99, n))"), multiplyBy]
+                : [L("modeIntro.tables.std.b1 \(n) \(n) \(n)"),
+                   L("modeIntro.tables.std.b2")]
+            return (L("modeIntro.tables.title \(n)"), bullets)
 
         case .tablesMix:
             let (lo, hi) = tablesMixRange(n)
-            return (String(localized: "modeIntro.tablesMix.title \(lo) \(hi)"),
-                    [String(localized: "modeIntro.tablesMix.b1 \(lo) \(hi)"), multiplyBy])
+            return (L("modeIntro.tablesMix.title \(lo) \(hi)"),
+                    [L("modeIntro.tablesMix.b1 \(lo) \(hi)"), multiplyBy])
 
         case .fractions:
+            // One denominator per level for all 99 levels — the start screen
+            // always names the exact denominator the player will practise.
             let d = fractionDenominator(n)
             let bullets = mix
-                ? [String(localized: "modeIntro.fractions.varied.b1 \(d)"),
-                   String(localized: "modeIntro.fractions.varied.b2")]
-                : [String(localized: "modeIntro.fractions.std.b1 \(d)"),
-                   String(localized: "modeIntro.fractions.std.b2 \(d)")]
-            return (String(localized: "modeIntro.fractions.title \(d)"), bullets)
+                ? [L("modeIntro.fractions.varied.b1 \(d)"),
+                   L("modeIntro.fractions.varied.b2")]
+                : [L("modeIntro.fractions.std.b1 \(d)"),
+                   L("modeIntro.fractions.std.b2 \(d)")]
+            return (L("modeIntro.fractions.title \(d)"), bullets)
 
         case .fractionsMix:
-            return (String(localized: "modeIntro.fractionsMix.title"),
-                    [String(localized: "modeIntro.fractionsMix.b1"),
-                     String(localized: "modeIntro.fractionsMix.b2")])
+            return (L("modeIntro.fractionsMix.title"),
+                    [L("modeIntro.fractionsMix.b1"),
+                     L("modeIntro.fractionsMix.b2")])
 
         case .percentages:
+            // One percentage per level for all 99 levels.
             let p = percentageValue(n)
             // The percent sign travels inside the argument, so no catalog value
             // ever contains a bare "%".
             let pText = "\(p)%"
             let bullets = mix
-                ? [String(localized: "modeIntro.percentages.varied.b1"),
-                   String(localized: "modeIntro.percentages.varied.b2")]
-                : [String(localized: "modeIntro.percentages.std.b1 \(pText)"),
-                   String(localized: "modeIntro.percentages.std.b2")]
-            return (String(localized: "modeIntro.percentages.title \(pText)"), bullets)
+                ? [L("modeIntro.percentages.varied.b1"),
+                   L("modeIntro.percentages.varied.b2")]
+                : [L("modeIntro.percentages.std.b1 \(pText)"),
+                   L("modeIntro.percentages.std.b2")]
+            return (L("modeIntro.percentages.title \(pText)"), bullets)
 
         case .percentagesMix:
-            return (String(localized: "modeIntro.percentagesMix.title"),
-                    [String(localized: "modeIntro.percentagesMix.b1"),
-                     String(localized: "modeIntro.percentagesMix.b2")])
+            return (L("modeIntro.percentagesMix.title"),
+                    [L("modeIntro.percentagesMix.b1"),
+                     L("modeIntro.percentagesMix.b2")])
 
         case .mix:
             let bullets = mix
-                ? [String(localized: "modeIntro.mix.varied.b1"),
-                   String(localized: "modeIntro.mix.b2 \(n)")]
-                : [String(localized: "modeIntro.mix.std.b1"),
-                   String(localized: "modeIntro.mix.b2 \(n)")]
-            return (String(localized: "modeIntro.mix.title \(n)"), bullets)
+                ? [L("modeIntro.mix.varied.b1"),
+                   L("modeIntro.mix.b2 \(n)")]
+                : [L("modeIntro.mix.std.b1"),
+                   L("modeIntro.mix.b2 \(n)")]
+            return (L("modeIntro.mix.title \(n)"), bullets)
 
         case .supermix:
-            return (String(localized: "modeIntro.supermix.title \(n)"),
-                    [String(localized: "modeIntro.supermix.b1"),
-                     String(localized: "modeIntro.supermix.b2")])
+            return (L("modeIntro.supermix.title \(n)"),
+                    [L("modeIntro.supermix.b1"),
+                     L("modeIntro.supermix.b2")])
         }
     }
 
-    // MARK: - Values mirrored from QuestionEngine (kept in sync)
+    // MARK: - Values read straight from ChallengeScaling (single source of truth)
 
     private static func additionMixMax(_ index: Int) -> Int {
-        let bases = [10, 15, 20, 30, 50, 100, 150, 200, 300, 500, 750, 1000]
-        return bases[min(index - 1, bases.count - 1)]
+        ChallengeScaling.additionMixCeiling(index)
     }
 
     private static func subtractionMixMax(_ index: Int) -> Int {
-        let bases = [10, 15, 20, 30, 50, 100, 20, 150, 200, 300, 500, 1000]
-        return bases[min(index - 1, bases.count - 1)]
+        ChallengeScaling.subtractionMixCeiling(index)
     }
 
     private static func tablesMixRange(_ index: Int) -> (Int, Int) {
-        let pools: [[Int]] = [[1, 2], [1, 2, 3], Array(1...5), Array(1...8), Array(1...10), Array(1...12),
-                              Array(1...12), Array(2...12), Array(3...12), Array(4...12), Array(5...12), Array(6...12)]
-        let pool = pools[min(index - 1, pools.count - 1)]
+        let pool = ChallengeScaling.tablesMixPool(index)
         return (pool.min()!, pool.max()!)
     }
 
     private static func fractionDenominator(_ index: Int) -> Int {
-        let d = [2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30]
+        let d = ChallengeScaling.fractionDenominators
         return d[min(index - 1, d.count - 1)]
     }
 
     private static func percentageValue(_ index: Int) -> Int {
-        let p = [50, 25, 10, 100, 75, 20, 5, 30, 40, 60, 15, 12]
+        let p = ChallengeScaling.percentageLevels
         return p[min(index - 1, p.count - 1)]
     }
 }

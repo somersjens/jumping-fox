@@ -25,12 +25,12 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .addition: return String(localized: "filter.addition")
-        case .subtraction: return String(localized: "filter.subtraction")
-        case .tables: return String(localized: "filter.tables")
-        case .fractions: return String(localized: "filter.fractions")
-        case .percentages: return String(localized: "filter.percentages")
-        case .mixed: return String(localized: "filter.mixed")
+        case .addition: return L("filter.addition")
+        case .subtraction: return L("filter.subtraction")
+        case .tables: return L("filter.tables")
+        case .fractions: return L("filter.fractions")
+        case .percentages: return L("filter.percentages")
+        case .mixed: return L("filter.mixed")
         }
     }
 
@@ -68,8 +68,8 @@ enum MenuMode: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .standard: return String(localized: "mode.standard")
-        case .mix: return String(localized: "mode.mix")
+        case .standard: return L("mode.standard")
+        case .mix: return L("mode.mix")
         }
     }
 }
@@ -87,6 +87,8 @@ struct ContentView: View {
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
     @ObservedObject private var premium = PremiumStore.shared
+    // Re-renders code-resolved strings (menu names, options) on a language switch.
+    @ObservedObject private var language = LanguageManager.shared
     @State private var selection: LevelSelection?
     @State private var showPremium = false
     @State private var showGoalPicker = false
@@ -419,14 +421,14 @@ struct ContentView: View {
                     // Fourth element: an optional SF Symbol shown after the title
                     // (the cap row spells out "Finish at 30 🏆" without the word).
                     let rows: [(String, Binding<Bool>, String, String?)] = [
-                        (String(localized: "options.capAt30.title"), $capsTrophiesAtThirty,
-                         String(localized: "options.capAt30.info"), "trophy.fill"),
-                        (String(localized: "options.unlimitedLives.title"), unlimitedLivesBinding,
-                         String(localized: "options.unlimitedLives.info"), nil),
-                        (String(localized: "options.answerHint.title"), $answerHint,
-                         String(localized: "options.answerHint.info"), nil),
-                        (String(localized: "options.helperMode.title"), $answerHelper,
-                         String(localized: "options.helperMode.info"), nil),
+                        (L("options.capAt30.title"), $capsTrophiesAtThirty,
+                         L("options.capAt30.info"), "trophy.fill"),
+                        (L("options.unlimitedLives.title"), unlimitedLivesBinding,
+                         L("options.unlimitedLives.info"), nil),
+                        (L("options.answerHint.title"), $answerHint,
+                         L("options.answerHint.info"), nil),
+                        (L("options.helperMode.title"), $answerHelper,
+                         L("options.helperMode.info"), nil),
                     ]
                     ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
                         if index > 0 {
@@ -888,8 +890,8 @@ private enum GoalPeriod: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var title: String {
         self == .daily
-            ? String(localized: "goalPeriod.daily")
-            : String(localized: "goalPeriod.weekly")
+            ? L("goalPeriod.daily")
+            : L("goalPeriod.weekly")
     }
 }
 
