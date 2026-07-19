@@ -25,23 +25,6 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var displayName: String {
-        switch self {
-        case .addition: return "Addition"
-        case .additionMix: return "Addition Mix"
-        case .subtraction: return "Subtraction"
-        case .subtractionMix: return "Subtraction Mix"
-        case .tables: return "Times Tables"
-        case .tablesMix: return "Tables Mix"
-        case .fractions: return "Fractions"
-        case .fractionsMix: return "Fractions Mix"
-        case .percentages: return "Percentages"
-        case .percentagesMix: return "Percentages Mix"
-        case .mix: return "Mix"
-        case .supermix: return "Supermix"
-        }
-    }
-
     /// Small secondary symbol on level cards.
     var symbol: String {
         switch self {
@@ -105,16 +88,6 @@ enum ChallengeScaling {
     /// The number of free (non-premium) levels before Premium takes over.
     static let freeLevelCount = 12
 
-    /// Display name for a fraction denominator (used only on the internal
-    /// level title; the card itself shows the number).
-    static func fractionName(for d: Int) -> String {
-        let names: [Int: String] = [2: "Halves", 3: "Thirds", 4: "Quarters", 5: "Fifths",
-                                     6: "Sixths", 8: "Eighths", 10: "Tenths", 12: "Twelfths",
-                                     20: "Twentieths", 25: "Twenty-fifths", 50: "Fiftieths",
-                                     100: "Hundredths"]
-        return names[d] ?? "\(d)ths"
-    }
-
     /// Premium *mix* levels still review a friendly subset of percentages.
     static let premiumFractionDenominators = [2, 4, 5, 8, 10, 20, 25]
     static let premiumPercentages = [50, 25, 10, 20, 75, 5, 100]
@@ -165,27 +138,25 @@ struct LevelConfig: Identifiable, Hashable {
     let index: Int
     /// Big central text on the card (table, addend, denominator, percentage, …).
     let cardNumber: String
-    let title: String
     let isAdvanced: Bool
     let requiresPremium: Bool
     /// The Mix menu starts this familiar skill straight in varied practice.
     let startsInMix: Bool
 
-    init(category: ChallengeCategory, index: Int, cardNumber: String, title: String,
+    init(category: ChallengeCategory, index: Int, cardNumber: String,
          isAdvanced: Bool = false, requiresPremium: Bool = false,
          startsInMix: Bool = false) {
         self.id = "\(category.rawValue).\(index)\(startsInMix ? ".mix" : "")"
         self.category = category
         self.index = index
         self.cardNumber = cardNumber
-        self.title = title
         self.isAdvanced = isAdvanced
         self.requiresPremium = requiresPremium
         self.startsInMix = startsInMix
     }
 
     func immediateMixVersion() -> LevelConfig {
-        LevelConfig(category: category, index: index, cardNumber: cardNumber, title: title,
+        LevelConfig(category: category, index: index, cardNumber: cardNumber,
                     isAdvanced: isAdvanced, requiresPremium: requiresPremium, startsInMix: true)
     }
 }
@@ -197,82 +168,72 @@ enum LevelCatalog {
 
         // Addition: one clear pattern per level — repeated adding of n.
         result[.addition] = (1...12).map {
-            LevelConfig(category: .addition, index: $0, cardNumber: "\($0)", title: "Add +\($0)")
+            LevelConfig(category: .addition, index: $0, cardNumber: "\($0)")
         }
         // Addition mix: growing maximum result.
         result[.additionMix] = (1...12).map { i in
             let m = ChallengeScaling.additionMixCeiling(i)
-            return LevelConfig(category: .additionMix, index: i, cardNumber: "\(m)", title: "Up to \(m)")
+            return LevelConfig(category: .additionMix, index: i, cardNumber: "\(m)")
         }
         // Subtraction: repeatedly take away n.
         result[.subtraction] = (1...12).map {
-            LevelConfig(category: .subtraction, index: $0, cardNumber: "\($0)", title: "Take −\($0)")
+            LevelConfig(category: .subtraction, index: $0, cardNumber: "\($0)")
         }
         // Subtraction mix: each card shows the real maximum start number.
         var subMix = (1...12).map { i -> LevelConfig in
             let m = ChallengeScaling.subtractionMixCeiling(i)
-            return LevelConfig(category: .subtractionMix, index: i, cardNumber: "\(m)", title: "From \(m)")
+            return LevelConfig(category: .subtractionMix, index: i, cardNumber: "\(m)")
         }
-        subMix[6] = LevelConfig(category: .subtractionMix, index: 7, cardNumber: "20",
-                                title: "Below zero", isAdvanced: true)
+        subMix[6] = LevelConfig(category: .subtractionMix, index: 7, cardNumber: "20", isAdvanced: true)
         result[.subtractionMix] = subMix
 
         // Times tables: one table per level (13–99 with Premium).
         var tables = (1...12).map {
-            LevelConfig(category: .tables, index: $0, cardNumber: "\($0)", title: "Table of \($0)")
+            LevelConfig(category: .tables, index: $0, cardNumber: "\($0)")
         }
         tables += (13...99).map {
-            LevelConfig(category: .tables, index: $0, cardNumber: "\($0)",
-                        title: "Table of \($0)", requiresPremium: true)
+            LevelConfig(category: .tables, index: $0, cardNumber: "\($0)", requiresPremium: true)
         }
         result[.tables] = tables
 
         // Tables mix: growing pool of already-practiced tables.
         result[.tablesMix] = (1...12).map { i in
             let pool = ChallengeScaling.tablesMixPool(i)
-            return LevelConfig(category: .tablesMix, index: i, cardNumber: "\(pool.max()!)",
-                               title: "Tables \(pool.min()!)–\(pool.max()!)")
+            return LevelConfig(category: .tablesMix, index: i, cardNumber: "\(pool.max()!)")
         }
 
         // Fractions: one denominator per level for all 99 levels. The first
         // twelve are free; Premium continues the same list (see the loop below).
         result[.fractions] = ChallengeScaling.fractionDenominators
             .prefix(ChallengeScaling.freeLevelCount).enumerated().map { i, d in
-                LevelConfig(category: .fractions, index: i + 1, cardNumber: "\(d)",
-                            title: ChallengeScaling.fractionName(for: d))
+                LevelConfig(category: .fractions, index: i + 1, cardNumber: "\(d)")
             }
         // Fractions mix: only concepts that were already introduced.
-        let fracMixTitles = ["Halves & thirds", "Compare", "Equivalent", "Add & take", "All together",
-                             "Up to eighths", "Up to tenths", "Up to twelfths", "Up to fifteenths",
-                             "Up to twentieths", "Up to twenty-fifths", "All fractions"]
-        result[.fractionsMix] = fracMixTitles.enumerated().map { i, t in
-            LevelConfig(category: .fractionsMix, index: i + 1, cardNumber: "\(i + 1)", title: t,
-                        isAdvanced: i == 4)
+        result[.fractionsMix] = (1...12).map { i in
+            LevelConfig(category: .fractionsMix, index: i, cardNumber: "\(i)",
+                        isAdvanced: i == 5)
         }
 
         // Percentages: one percentage per level for all 99 levels. First
         // twelve free; Premium continues the same list (loop below).
         result[.percentages] = ChallengeScaling.percentageLevels
             .prefix(ChallengeScaling.freeLevelCount).enumerated().map { i, p in
-                LevelConfig(category: .percentages, index: i + 1, cardNumber: "\(p)", title: "\(p)%")
+                LevelConfig(category: .percentages, index: i + 1, cardNumber: "\(p)")
             }
-        let pctMixTitles = ["Halves & quarters", "All percentages", "Discounts", "Increases",
-                            "Up to 50%", "Up to 75%", "Everyday percentages", "Find the part",
-                            "Find the whole", "Sales", "Changes", "All percentages"]
-        result[.percentagesMix] = pctMixTitles.enumerated().map { i, t in
-            LevelConfig(category: .percentagesMix, index: i + 1, cardNumber: "\(i + 1)", title: t,
-                        isAdvanced: i == 2)
+        result[.percentagesMix] = (1...12).map { i in
+            LevelConfig(category: .percentagesMix, index: i, cardNumber: "\(i)",
+                        isAdvanced: i == 3)
         }
 
         // Mix: the card number is a promise — every sum keeps at least one
         // operand at or below that number (2 + 12 or 8 − 2 are both fine on
         // card 2), so the number itself tells how hard the level is.
         result[.mix] = (1...12).map {
-            LevelConfig(category: .mix, index: $0, cardNumber: "\($0)", title: "With \($0)")
+            LevelConfig(category: .mix, index: $0, cardNumber: "\($0)")
         }
         // Supermix: everything, harder.
         result[.supermix] = (1...12).map {
-            LevelConfig(category: .supermix, index: $0, cardNumber: "\($0)", title: "Supermix \($0)",
+            LevelConfig(category: .supermix, index: $0, cardNumber: "\($0)",
                         isAdvanced: $0 >= 3)
         }
 
@@ -285,43 +246,42 @@ enum LevelCatalog {
             var levels = result[category, default: []]
             for index in 13...99 {
                 let card: String
-                let title: String
                 switch category {
                 case .addition:
-                    card = "\(index)"; title = "Add +\(index)"
+                    card = "\(index)"
                 case .subtraction:
-                    card = "\(index)"; title = "Take −\(index)"
+                    card = "\(index)"
                 case .additionMix:
                     let c = ChallengeScaling.additionMixCeiling(index)
-                    card = "\(c)"; title = "Up to \(c)"
+                    card = "\(c)"
                 case .subtractionMix:
                     let c = ChallengeScaling.subtractionMixCeiling(index)
-                    card = "\(c)"; title = "From \(c)"
+                    card = "\(c)"
                 case .tablesMix:
                     let m = ChallengeScaling.tablesMixPool(index).max()!
-                    card = "\(m)"; title = "Tables to \(m)"
+                    card = "\(m)"
                 case .fractions:
                     let d = ChallengeScaling.fractionDenominators[index - 1]
-                    card = "\(d)"; title = ChallengeScaling.fractionName(for: d)
+                    card = "\(d)"
                 case .fractionsMix:
                     let c = ChallengeScaling.premiumCeiling(index)
-                    card = "\(c)"; title = "Fraction mix to \(c)"
+                    card = "\(c)"
                 case .percentages:
                     let p = ChallengeScaling.percentageLevels[index - 1]
-                    card = "\(p)"; title = "\(p)%"
+                    card = "\(p)"
                 case .percentagesMix:
                     let c = ChallengeScaling.premiumCeiling(index)
-                    card = "\(c)"; title = "Percent mix to \(c)"
+                    card = "\(c)"
                 case .mix:
-                    card = "\(index)"; title = "Mix \(index)"
+                    card = "\(index)"
                 case .supermix:
-                    card = "\(index)"; title = "Supermix \(index)"
+                    card = "\(index)"
                 case .tables:
                     continue
                 }
                 levels.append(
                     LevelConfig(category: category, index: index, cardNumber: card,
-                                title: title, isAdvanced: true, requiresPremium: true)
+                                isAdvanced: true, requiresPremium: true)
                 )
             }
             result[category] = levels

@@ -214,7 +214,7 @@ struct ContentView: View {
                 ZStack(alignment: .top) {
                     Color.black.opacity(0.06)
                         .ignoresSafeArea()
-                    Text("Je score voor dit level staat hier")
+                    Text("tutorial.scoreHint")
                         .font(.headline.weight(.heavy))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
@@ -294,11 +294,11 @@ struct ContentView: View {
                         }
                 )
                 .accessibilityLabel("menu.accessibility.character")
-                .accessibilityHint("Houd 2 seconden ingedrukt voor ontwikkelaarsmodus.")
+                .accessibilityHint("developerMode.accessibilityHint")
 
                 VStack(alignment: .leading, spacing: 6) {
                     if tutorial.developerMode {
-                        Text(LanguageManager.shared.effective == .dutch ? "Ontwikkelaarsmodus" : "Developer mode")
+                        Text("developerMode.title")
                             .font(.caption.weight(.heavy))
                             .foregroundStyle(character.deepColor)
                     }

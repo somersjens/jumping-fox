@@ -303,8 +303,39 @@
         }
       }
     },
-    "Developer mode" : {
-
+    "developerMode.accessibilityHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press and hold for 2 seconds to open developer mode."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Houd 2 seconden ingedrukt voor ontwikkelaarsmodus."
+          }
+        }
+      }
+    },
+    "developerMode.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer mode"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ontwikkelaarsmodus"
+          }
+        }
+      }
     },
     "filter.addition" : {
       "extractionState" : "manual",
@@ -693,6 +724,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nog een keer"
+          }
+        }
+      }
+    },
+    "game.highScore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High score"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Topscore"
           }
         }
       }
@@ -1274,15 +1322,6 @@
           }
         }
       }
-    },
-    "Highscore" : {
-
-    },
-    "Houd 2 seconden ingedrukt voor ontwikkelaarsmodus." : {
-
-    },
-    "Je score voor dit level staat hier" : {
-
     },
     "language.select" : {
       "extractionState" : "manual",
@@ -2702,9 +2741,6 @@
         }
       }
     },
-    "Ontwikkelaarsmodus" : {
-
-    },
     "options.capAt30.info" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3324,6 +3360,23 @@
         }
       }
     },
+    "tutorial.answerHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t know the answer? Tap the question to see it."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weet je het antwoord niet? Tik dan op de som om het antwoord te bekijken."
+          }
+        }
+      }
+    },
     "tutorial.complete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3341,6 +3394,57 @@
         }
       }
     },
+    "tutorial.correctAnswer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump on the correct answer to collect a trophy."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spring op het goede antwoord om een trofee te verzamelen."
+          }
+        }
+      }
+    },
+    "tutorial.correctAnswerGreen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The correct answer is shown in green. Now jump on the correct answer."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het goede antwoord wordt groen aangegeven. Spring nu op het goede antwoord."
+          }
+        }
+      }
+    },
+    "tutorial.doubler.answer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now jump on the correct answer to collect double trophies."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spring nu op het goede antwoord om dubbele trofeeën te verzamelen."
+          }
+        }
+      }
+    },
     "tutorial.doubler.collect" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3354,6 +3458,125 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pak de verdubbelaar om eenmalig dubbele trofeeën te krijgen."
+          }
+        }
+      }
+    },
+    "tutorial.lifePickup" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can find half a life or a full life to get lives back."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je kunt een half of een heel leven vinden om levens terug te krijgen."
+          }
+        }
+      }
+    },
+    "tutorial.minusOne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avoid the −1. It costs you one trophy."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vermijd de −1. Deze kost je één trofee."
+          }
+        }
+      }
+    },
+    "tutorial.move" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move your device to go left and right. You can also move through the sides of the screen."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beweeg je apparaat om naar links en rechts te bewegen. Je kunt ook door de zijkanten van het scherm gaan."
+          }
+        }
+      }
+    },
+    "tutorial.platforms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump on the platforms to move up."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spring op de stenen om omhoog te komen."
+          }
+        }
+      }
+    },
+    "tutorial.scoreHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your score for this level is shown here."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je score voor dit level staat hier"
+          }
+        }
+      }
+    },
+    "tutorial.star" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump into the star to shoot away wrong answers."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spring tegen de ster om foute antwoorden weg te schieten."
+          }
+        }
+      }
+    },
+    "tutorial.wrongAnswer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you choose a wrong answer, you lose one of your three lives. Try it now."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bij een fout antwoord verlies je één van je drie levens. Probeer het maar."
           }
         }
       }

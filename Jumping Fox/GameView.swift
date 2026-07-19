@@ -312,7 +312,7 @@ struct GameView: View {
                             Button(action: dismissIntro) {
                                 Group {
                                     if tutorial.developerMode {
-                                        Text(language.effective == .dutch ? "Ontwikkelaarsmodus" : "Developer mode")
+                                        Text("developerMode.title")
                                     } else {
                                         Text(isPausedIntro ? "game.intro.continue" : "game.intro.start")
                                     }
@@ -769,19 +769,19 @@ struct GameView: View {
 
     private var tutorialText: String {
         switch tutorial.currentStep {
-        case 1: return "Beweeg je apparaat om naar links en rechts te bewegen. Je kunt ook door de zijkanten van het scherm gaan."
-        case 2: return "Spring op de stenen om omhoog te komen."
-        case 3: return "Spring op het goede antwoord om een trofee te verzamelen."
-        case 4: return "Bij een fout antwoord verlies je één van je drie levens. Probeer het maar."
-        case 5: return "Het goede antwoord wordt groen aangegeven. Spring nu op het goede antwoord."
-        case 6: return "Weet je het antwoord niet? Tik dan op de som om het antwoord te bekijken."
-        case 7: return "Je kunt een half of een heel leven vinden om levens terug te krijgen."
+        case 1: return L("tutorial.move")
+        case 2: return L("tutorial.platforms")
+        case 3: return L("tutorial.correctAnswer")
+        case 4: return L("tutorial.wrongAnswer")
+        case 5: return L("tutorial.correctAnswerGreen")
+        case 6: return L("tutorial.answerHint")
+        case 7: return L("tutorial.lifePickup")
         case 8:
             return tutorial.doublerAnswerPending
-                ? "Spring nu op het goede antwoord om dubbele trofeeën te verzamelen."
+                ? L("tutorial.doubler.answer")
                 : L("tutorial.doubler.collect")
-        case 9: return "Vermijd de −1. Deze kost je één trofee."
-        case 11: return "Spring tegen de ster om foute antwoorden weg te schieten."
+        case 9: return L("tutorial.minusOne")
+        case 11: return L("tutorial.star")
         default: return ""
         }
     }
@@ -1153,11 +1153,9 @@ struct GameView: View {
         }
     }
 
-    /// This is intentionally not localized: “Highscore” is the game's fixed
-    /// celebratory label, irrespective of the language selected for the UI.
     private var newHighScoreBadge: some View {
         HStack(spacing: 4) {
-            Text(verbatim: "Highscore")
+            Text("game.highScore")
             Image(systemName: "trophy.fill")
         }
         .font(.system(size: 13, weight: .bold, design: .rounded))
@@ -1172,7 +1170,7 @@ struct GameView: View {
         .shadow(color: theme.deepColor.opacity(0.22), radius: 4, y: 2)
         .scaleEffect(0.8, anchor: .topTrailing)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Highscore")
+        .accessibilityLabel("game.highScore")
     }
 
     @ViewBuilder
