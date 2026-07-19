@@ -40,7 +40,6 @@ enum LifeMode: String, CaseIterable, Identifiable, Codable {
 enum GameSettings {
     static let lifeModeKey = "settings.lifeMode"
     static let answerHelperKey = "settings.answerHelper"
-    static let answerHintKey = "settings.answerHint"
     static let showStreakKey = "settings.showStreak"
     static let showTrophiesKey = "settings.showTrophies"
     static let capTrophiesKey = "settings.capTrophiesAtThirty"
@@ -61,13 +60,6 @@ enum GameSettings {
     static var answerHelperEnabled: Bool {
         get { UserDefaults.standard.bool(forKey: answerHelperKey) }
         set { UserDefaults.standard.set(newValue, forKey: answerHelperKey) }
-    }
-
-    /// When enabled, tapping the equation reveals the answer for the rest of
-    /// the current question, at the cost of half a life. Default on.
-    static var answerHintEnabled: Bool {
-        get { UserDefaults.standard.object(forKey: answerHintKey) as? Bool ?? true }
-        set { UserDefaults.standard.set(newValue, forKey: answerHintKey) }
     }
 
     static var capsTrophiesAtThirty: Bool {
@@ -200,7 +192,7 @@ final class GameState: ObservableObject {
     /// The hint may not be used when only half a life (or half of the
     /// unlimited-mode budget) is left — you can never spend your last half.
     var canRevealAnswer: Bool {
-        guard GameSettings.answerHintEnabled, !isGameOver, !isAnswerRevealed else { return false }
+        guard !isGameOver, !isAnswerRevealed else { return false }
         // Endless play: the lives are already gone, so the hint is free.
         if isEndless { return true }
         if let halves = livesHalves { return halves > 1 }
@@ -282,7 +274,9 @@ final class GameState: ObservableObject {
     /// score as appropriate for the current life mode.
     private func applyPenalty(halves: Int) {
         guard let current = livesHalves else { return }
-        let remaining = current - halves
+        // The required tutorial teaches mistakes, but never ends the run.
+        // Keep one full heart available until the active lesson is finished.
+        let remaining = TutorialProgress.shared.isActive ? max(2, current - halves) : current - halves
         livesHalves = max(0, remaining)
         guard remaining <= 0 else { return }
         if lifeMode == .unlimited {

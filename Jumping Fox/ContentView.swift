@@ -17,6 +17,50 @@ struct LevelSelection: Identifiable {
     var id: String { level.id }
 }
 
+/// An eager, adaptive grid for the level menu. `LazyVGrid` discards cards
+/// outside the viewport; when the options panel changes height, those cards
+/// can otherwise appear to animate in from the bottom while scrolling.
+private struct AdaptiveLevelGrid: Layout {
+    let spacing: CGFloat
+    private let minimumCardWidth: CGFloat = 104
+    private let cardHeight: CGFloat = 96
+
+    private func metrics(for width: CGFloat, itemCount: Int) -> (columns: Int, cardWidth: CGFloat) {
+        let possibleColumns = max(1, Int((width + spacing) / (minimumCardWidth + spacing)))
+        let columns = min(max(1, itemCount), possibleColumns)
+        let cardWidth = (width - CGFloat(columns - 1) * spacing) / CGFloat(columns)
+        return (columns, cardWidth)
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize,
+                      subviews: Subviews,
+                      cache: inout ()) -> CGSize {
+        guard !subviews.isEmpty else { return .zero }
+        let fallbackWidth = minimumCardWidth * CGFloat(min(subviews.count, 3))
+            + spacing * CGFloat(min(subviews.count, 3) - 1)
+        let width = proposal.width ?? fallbackWidth
+        let columns = metrics(for: width, itemCount: subviews.count).columns
+        let rows = Int(ceil(Double(subviews.count) / Double(columns)))
+        return CGSize(width: width, height: CGFloat(rows) * cardHeight + CGFloat(rows - 1) * spacing)
+    }
+
+    func placeSubviews(in bounds: CGRect,
+                       proposal: ProposedViewSize,
+                       subviews: Subviews,
+                       cache: inout ()) {
+        guard !subviews.isEmpty else { return }
+        let grid = metrics(for: bounds.width, itemCount: subviews.count)
+        for (index, subview) in subviews.enumerated() {
+            let row = index / grid.columns
+            let column = index % grid.columns
+            let x = bounds.minX + CGFloat(column) * (grid.cardWidth + spacing)
+            let y = bounds.minY + CGFloat(row) * (cardHeight + spacing)
+            subview.place(at: CGPoint(x: x, y: y), anchor: .topLeading,
+                          proposal: ProposedViewSize(width: grid.cardWidth, height: cardHeight))
+        }
+    }
+}
+
 /// The six topic filters. Each has a regular menu and an immediate-mix form.
 enum MenuFilter: Int, CaseIterable, Identifiable {
     case addition, subtraction, tables, fractions, percentages, mixed
@@ -82,13 +126,13 @@ struct ContentView: View {
     @AppStorage(GameSettings.onboardingCompleteKey) private var onboardingComplete = false
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
     @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
-    @AppStorage(GameSettings.answerHintKey) private var answerHint = true
     @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
     @ObservedObject private var premium = PremiumStore.shared
     // Re-renders code-resolved strings (menu names, options) on a language switch.
     @ObservedObject private var language = LanguageManager.shared
+    @ObservedObject private var tutorial = TutorialProgress.shared
     @State private var selection: LevelSelection?
     @State private var showPremium = false
     @State private var showGoalPicker = false
@@ -98,6 +142,10 @@ struct ContentView: View {
     @State private var showsOptions = false
     @State private var expandedOptionInfo: String?
     @State private var headerDetailsHeight: CGFloat = 0
+    @State private var showTutorialScoreHint = false
+    @State private var lastOpenedLevelID: String?
+    @State private var scoreHintLevelID: String?
+    @State private var suppressCharacterTap = false
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -107,10 +155,6 @@ struct ContentView: View {
     private var premiumSectionTitle: LocalizedStringKey {
         category == .tables ? "menu.premiumTables" : "menu.premium"
     }
-
-    // Keep cards comfortably tappable on compact phones, while letting the
-    // grid add columns instead of stretching a phone-sized card across iPad.
-    private let cardColumns = [GridItem(.adaptive(minimum: 104, maximum: 154), spacing: 12)]
 
     var body: some View {
         ZStack {
@@ -122,9 +166,8 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(spacing: 18) {
-                    menuCard
+                    menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
                     levelGrid
-                        .id(showsOptions)
                 }
                 .padding()
                 .frame(maxWidth: 720)
@@ -152,7 +195,46 @@ struct ContentView: View {
                                startPoint: .top, endPoint: .bottom)
             }
         }
-        .gameCover(item: $selection, onDismiss: { refreshID = UUID() })
+        .gameCover(item: $selection, onDismiss: {
+            refreshID = UUID()
+            guard tutorial.shouldShowScoreHint, let levelID = lastOpenedLevelID else { return }
+            scoreHintLevelID = levelID
+            withAnimation(.snappy) { showTutorialScoreHint = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+                withAnimation { showTutorialScoreHint = false }
+                scoreHintLevelID = nil
+                tutorial.consumeScoreHint()
+            }
+        })
+        .onChange(of: selection?.id) { selectionID in
+            if let selectionID { lastOpenedLevelID = selectionID }
+        }
+        .overlay {
+            if showTutorialScoreHint {
+                ZStack(alignment: .top) {
+                    Color.black.opacity(0.06)
+                        .ignoresSafeArea()
+                    Text("Je score voor dit level staat hier")
+                        .font(.headline.weight(.heavy))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .background(character.deepColor.opacity(0.96), in: Capsule())
+                        .overlay(Capsule().stroke(.white.opacity(0.9), lineWidth: 2))
+                        .shadow(color: .black.opacity(0.28), radius: 8, y: 3)
+                        .padding(.horizontal, 22)
+                        .padding(.top, 112)
+                        .allowsHitTesting(false)
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation { showTutorialScoreHint = false }
+                    scoreHintLevelID = nil
+                    tutorial.consumeScoreHint()
+                }
+            }
+        }
     }
 
     private var displayName: String { playerName.isEmpty ? "Jumping Fox" : playerName }
@@ -165,8 +247,8 @@ struct ContentView: View {
             : displayName.map(String.init).joined(separator: "\u{00AD}")
     }
 
-    /// Jumps back to the welcome/onboarding screen. Triggered by a 2-second
-    /// hold on the character image.
+    /// A long press on the home character always restarts the welcome flow.
+    /// Developer mode belongs to the character on the level start screen.
     private func restartOnboarding() {
 #if canImport(UIKit)
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -179,31 +261,47 @@ struct ContentView: View {
     private var menuCard: some View {
         VStack(spacing: 14) {
             HStack(alignment: .center, spacing: 12) {
-                character.artwork
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 68, height: 68)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(.white.opacity(0.9), lineWidth: 2)
+                Button {
+                    // A long press may also end as a button tap; consume that
+                    // trailing action instead of opening the premium sheet.
+                    guard !suppressCharacterTap else {
+                        suppressCharacterTap = false
+                        return
                     }
-                    .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
-                    .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    // A 2-second hold returns to the welcome flow; a normal tap
-                    // still opens the character & premium menu.
-                    .onLongPressGesture(minimumDuration: 2) {
-                        restartOnboarding()
-                    }
-                    .onTapGesture {
-                        showPremium = true
-                    }
-                    .accessibilityElement()
-                    .accessibilityLabel("menu.accessibility.character")
-                    .accessibilityAddTraits(.isButton)
-                    .accessibilityHint("menu.accessibility.characterHint")
+                    showPremium = true
+                } label: {
+                    character.artwork
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 68, height: 68)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(.white.opacity(0.9), lineWidth: 2)
+                        }
+                        .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
+                }
+                .buttonStyle(.plain)
+                .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                // This is deliberately high priority: unlike the old pair of
+                // independent tap gestures, a 2-second hold cannot be won by
+                // the ordinary character-button tap.
+                .highPriorityGesture(
+                    LongPressGesture(minimumDuration: 2)
+                        .onEnded { _ in
+                            suppressCharacterTap = true
+                            restartOnboarding()
+                        }
+                )
+                .accessibilityLabel("menu.accessibility.character")
+                .accessibilityHint("Houd 2 seconden ingedrukt voor ontwikkelaarsmodus.")
 
                 VStack(alignment: .leading, spacing: 6) {
+                    if tutorial.developerMode {
+                        Text(LanguageManager.shared.effective == .dutch ? "Ontwikkelaarsmodus" : "Developer mode")
+                            .font(.caption.weight(.heavy))
+                            .foregroundStyle(character.deepColor)
+                    }
                     Button {
                         nameDraft = playerName
                         showNameEditor = true
@@ -425,8 +523,6 @@ struct ContentView: View {
                          L("options.capAt30.info"), "trophy.fill"),
                         (L("options.unlimitedLives.title"), unlimitedLivesBinding,
                          L("options.unlimitedLives.info"), nil),
-                        (L("options.answerHint.title"), $answerHint,
-                         L("options.answerHint.info"), nil),
                         (L("options.helperMode.title"), $answerHelper,
                          L("options.helperMode.info"), nil),
                     ]
@@ -526,7 +622,7 @@ struct ContentView: View {
         let recommendedID = hasProgress ? nil : regular.first?.id
 
         return VStack(alignment: .leading, spacing: 14) {
-            LazyVGrid(columns: cardColumns, spacing: 12) {
+            AdaptiveLevelGrid(spacing: 12) {
                 ForEach(regular) { level in
                     let normalBest = ProgressStore.bestScore(levelID: level.id)
                     LevelCardView(level: level,
@@ -537,6 +633,8 @@ struct ContentView: View {
                                   showsHelperMarker: answerHelper,
                                   showsTrophies: true,
                                   isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
+                                  showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
+                                  dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
                                   theme: character) {
                         selection = LevelSelection(level: level)
                     }
@@ -583,7 +681,7 @@ struct ContentView: View {
                         .frame(height: 1.5)
                 }
 
-                LazyVGrid(columns: cardColumns, spacing: 12) {
+                AdaptiveLevelGrid(spacing: 12) {
                     ForEach(levels) { level in
                         let normalBest = ProgressStore.bestScore(levelID: level.id)
                         LevelCardView(level: level,
@@ -594,6 +692,8 @@ struct ContentView: View {
                                       showsHelperMarker: answerHelper,
                                       showsTrophies: true,
                                       isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
+                                      showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
+                                      dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
                                       theme: character) {
                             selection = LevelSelection(level: level)
                         }
@@ -1010,6 +1110,8 @@ struct LevelCardView: View {
     let showsHelperMarker: Bool
     let showsTrophies: Bool
     let isPaused: Bool
+    var showsTutorialScoreHint = false
+    var dimsForTutorialScoreHint = false
     let theme: AnimalCharacter
     let action: () -> Void
 
@@ -1127,7 +1229,7 @@ struct LevelCardView: View {
                 }
             }
             .frame(height: 96)
-            .opacity(isLocked ? 0.55 : 1)
+            .opacity(dimsForTutorialScoreHint ? 0.30 : (isLocked ? 0.55 : 1))
             .scaleEffect(status == .recommended ? 1.02 : 1)
         }
         .buttonStyle(.plain)
@@ -1157,12 +1259,20 @@ struct LevelCardView: View {
             tierBadge
                 .padding(.top, 9)
                 .padding(.leading, 9)
+
         }
         .background(cardFill, in: RoundedRectangle(cornerRadius: 18))
         .overlay(
             RoundedRectangle(cornerRadius: 18)
                 .stroke(borderColor, lineWidth: status == .recommended ? 2.5 : 1)
         )
+        .overlay {
+            if showsTutorialScoreHint {
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(theme.deepColor, lineWidth: 4)
+                    .shadow(color: theme.deepColor.opacity(0.75), radius: 7)
+            }
+        }
         .shadow(color: .black.opacity(0.06), radius: 5, x: 0, y: 3)
     }
 

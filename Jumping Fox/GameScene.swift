@@ -33,7 +33,7 @@ enum GameColors {
 
 /// Collectible pickups. Every pickup rides on an EMPTY (neutral) stone:
 /// the icon floats above the platform and is collected by landing on it.
-enum PowerupType {
+enum PowerupType: Equatable {
     case halfHeart   // +½ heart; only appears when ≥1 heart was lost
     case fullHeart   // +1 heart; only appears when ≥2 hearts were lost
     case eliminator  // shooting stars: streaks arc out and pop the wrong answers
@@ -254,6 +254,14 @@ final class GamePlatform: SKNode {
         status = .neutralResolved
     }
 
+    /// Disables a block without altering its current artwork. This is used
+    /// when the answer is revealed: the player should still see the answer
+    /// group exactly as it was, rather than seeing wrong options turn grey.
+    func deactivateKeepingAppearance() {
+        guard status == .active else { return }
+        status = .neutralResolved
+    }
+
     /// Consumes the pickup (once) with a small pop animation.
     func takePowerup() -> PowerupType? {
         guard let type = powerup else { return nil }
@@ -267,6 +275,15 @@ final class GamePlatform: SKNode {
             ]))
         }
         return type
+    }
+
+    /// Used when the tutorial's −1 lesson has been completed: every other
+    /// visible hazard must disappear without applying another penalty.
+    func removePowerup() {
+        powerup = nil
+        powerupIcon?.removeAllActions()
+        powerupIcon?.removeFromParent()
+        powerupIcon = nil
     }
 
     static func makePowerupIcon(_ type: PowerupType, theme: AnimalCharacter,
@@ -446,9 +463,6 @@ final class GameScene: SKScene {
 
     private var maxJumpHeight: CGFloat { bounceVelocity * bounceVelocity / (2 * -gravity) }
     private var helperEnabled = false
-    /// "Answer hints" — powers both the tap-to-reveal and the green highlight
-    /// on the correct block after a wrong landing. Off means neither happens.
-    private var answerHintEnabled = true
     private var totalClimb: CGFloat = 0
 
     /// While true the field stays fully set up and rendered, but no gameplay
@@ -509,6 +523,30 @@ final class GameScene: SKScene {
     /// helper-green until the player actually lands on it.
     private var redemptionArmed = false
 
+    // Tutorial-only flow.  It deliberately lives in the scene rather than in
+    // a modal view, so jumping, steering and scrolling never stop.
+    private let tutorial = TutorialProgress.shared
+    private var tutorialStartX: CGFloat = 0
+    private var tutorialMovedLeft = false
+    private var tutorialMovedRight = false
+    private var tutorialMovementConfirmedAt: TimeInterval?
+    private var tutorialHeartCount = 0
+    private var tutorialNextPickupAt: TimeInterval = 0
+    private var tutorialAwaitingQuestionTap = false
+    private var preserveAnswerAppearanceAfterTutorialReveal = false
+    /// After the tutorial star clears the wrong answers, the remaining good
+    /// answer is intentionally the only answer until it is collected.
+    private var awaitingCorrectAfterTutorialStar = false
+
+    /// Stages that must not silently be repopulated by the normal answer
+    /// watchdog. Without this guard the watchdog could create an answer set
+    /// during the movement/stone-only lessons.
+    private var tutorialSuppressesAnswerTiles: Bool {
+        guard tutorial.isActive else { return false }
+        if tutorial.currentStep == 8 { return !tutorial.doublerAnswerPending }
+        return [1, 2, 7, 9, 10].contains(tutorial.currentStep)
+    }
+
     // Permanent bottom springboard: separate platform type, own height,
     // independent of the answer generator.
     private var springboard = SKShapeNode()
@@ -527,6 +565,7 @@ final class GameScene: SKScene {
     // cold start is what caused the noticeable hitch on the first jump).
 #if os(iOS)
     private let feedbackGenerator = UINotificationFeedbackGenerator()
+    private let heartFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 #endif
 
     init(state: GameState) {
@@ -743,14 +782,14 @@ final class GameScene: SKScene {
     /// Places the player and an initial sparse set of platforms.
     func layoutNewGame() {
         guard started else { return }
-        // The field is fully built and rendered, but held frozen until the
-        // pre-game intro card is dismissed.
-        isFrozen = true
+        // Gameplay must start immediately.  The tutorial is an in-game
+        // overlay, never a reason to freeze the physics loop.
+        isFrozen = false
         for platform in platforms { platform.removeFromParent() }
         platforms.removeAll()
 
         helperEnabled = GameSettings.answerHelperEnabled
-        answerHintEnabled = GameSettings.answerHintEnabled
+        tutorial.beginIfNeeded(helperEnabled: helperEnabled)
         theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
         backgroundColor = theme.skSky
         updateBackgroundPattern()
@@ -780,15 +819,27 @@ final class GameScene: SKScene {
         minusOnesSpawned = 0
         answersSinceSpecial = 99
         redemptionArmed = false
+        tutorialStartX = player.position.x
+        tutorialMovedLeft = false
+        tutorialMovedRight = false
+        tutorialMovementConfirmedAt = nil
+        tutorialHeartCount = 0
+        tutorialNextPickupAt = 0
+        tutorialAwaitingQuestionTap = false
+        preserveAnswerAppearanceAfterTutorialReveal = false
+        awaitingCorrectAfterTutorialStar = false
         setDoublerVisual(false)
 
-        // A guaranteed neutral platform right below the player.
-        addNeutralPlatform(at: CGPoint(x: size.width / 2, y: springboardY + 64),
-                           allowMoving: false)
-
         nextSpawnY = springboardY + 194
-        spawnPlatformsIfNeeded()
-        buildAnswerSet() // validated before the first frame is playable
+        // The movement lesson uses only the full-width springboard.  No
+        // stones or answer tiles are created until left AND right movement
+        // has been demonstrated.
+        if !(tutorial.isActive && tutorial.currentStep == 1) {
+            addNeutralPlatform(at: CGPoint(x: size.width / 2, y: springboardY + 64),
+                               allowMoving: false)
+            spawnPlatformsIfNeeded()
+            buildAnswerSet() // validated before the first playable frame
+        }
     }
 
     /// Restart after game over.
@@ -1058,10 +1109,69 @@ final class GameScene: SKScene {
     /// blocks outside the route corridor → overlap/margins/reachability
     /// already guaranteed per placement → activate everything at once.
     private func buildAnswerSet() {
+        // Tapping the equation only reveals its result. During that tutorial
+        // transition the answer tiles remain in their existing colours; they
+        // are made inert, not greyed out like an obsolete question set.
+        if tutorial.isActive, tutorial.currentStep == 7,
+           preserveAnswerAppearanceAfterTutorialReveal {
+            for platform in platforms where platform.isActiveAnswer {
+                platform.deactivateKeepingAppearance()
+            }
+            return
+        }
+
+        // Step 5 is the immediate follow-up to the compulsory wrong answer.
+        // Its green answer remains a live answer until it is actually landed
+        // on.  A delayed/duplicate refresh must never supersede that group:
+        // doing so made the briefly green correct block turn grey and caused
+        // the player to bounce off it as if it were an ordinary stone.
+        if tutorial.isActive, tutorial.currentStep == 5,
+           let correct = platforms.first(where: {
+               $0.isActiveAnswer && $0.value == state.correctAnswer
+           }) {
+            correct.styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
+            return
+        }
+
         // The old set is superseded: values, positions and sizes stay
         // exactly as they are; only their answer function is switched off.
         for platform in platforms where platform.isActiveAnswer {
             platform.markSuperseded(theme: theme)
+        }
+
+        // Lessons 1–2 are intentionally answer-free.  The remaining guided
+        // sets are minimal and deterministic: exactly the object the lesson
+        // asks the child to use, never a random obstacle.
+        if tutorial.isActive {
+            switch tutorial.currentStep {
+            case 1, 2, 7, 9, 10:
+                return
+            case 3:
+                activateTutorialAnswers(correct: true, wrongCount: 0, showCorrect: false,
+                                       requiresUpcomingSpawn: true)
+                return
+            case 4:
+                activateTutorialAnswers(correct: false, wrongCount: 1, showCorrect: false)
+                return
+            case 5:
+                activateTutorialAnswers(correct: true, wrongCount: 3, showCorrect: true)
+                return
+            case 6:
+                if tutorialAwaitingQuestionTap { return }
+                activateTutorialAnswers(correct: true, wrongCount: 1, showCorrect: false)
+                return
+            case 8 where tutorial.doublerAnswerPending:
+                activateTutorialAnswers(correct: true, wrongCount: 0, showCorrect: false,
+                                       requiresUpcomingSpawn: true)
+                return
+            case 8:
+                return
+            case 11:
+                buildTutorialStarSet()
+                return
+            default:
+                break
+            }
         }
 
         let correctValue = state.correctAnswer
@@ -1133,13 +1243,20 @@ final class GameScene: SKScene {
         activateAnswerSet(correct: (correctValue, pos), wrongs: wrongs)
     }
 
+
     /// Places up to `count` wrong blocks. Two passes inside the position
     /// finder (strict, then slightly relaxed) keep the correct answer from
     /// ending up alone.
     private func placeWrongs(correct: CGPoint?, planned: inout [CGPoint],
                              count: Int, offset: CGFloat = 0) -> [(String, CGPoint)] {
         var wrongs: [(String, CGPoint)] = []
-        var values = state.question.distractors.shuffled()
+        // Question sources may occasionally contain the same distractor more
+        // than once. A visible answer group must never repeat an option.
+        var uniqueValues: [String] = []
+        for value in state.question.distractors where value != state.correctAnswer && !uniqueValues.contains(value) {
+            uniqueValues.append(value)
+        }
+        var values = uniqueValues.shuffled()
         while wrongs.count < count, !values.isEmpty {
             guard let pos = findWrongPosition(correct: correct, planned: planned,
                                               offset: offset) else { break }
@@ -1342,6 +1459,51 @@ final class GameScene: SKScene {
         debugValidateLayout()
     }
 
+    private func activateTutorialAnswers(correct: Bool, wrongCount: Int, showCorrect: Bool,
+                                         requiresUpcomingSpawn: Bool = false) {
+        // Prefer the normal validated spawn position.  If the current device
+        // layout has not produced a full route yet, put the lesson directly
+        // above the player instead of creating an unreachable off-screen tile.
+        let correctPosition = requiresUpcomingSpawn
+            ? (findCorrectPosition() ?? guaranteedCorrectPosition())
+            : tutorialAnswerPosition()
+        if correct {
+            let block = GamePlatform(role: .answer, value: state.correctAnswer)
+            block.position = correctPosition
+            block.styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: showCorrect)
+            addChild(block); platforms.append(block)
+        }
+        var planned = [correctPosition]
+        for value in state.question.distractors.prefix(wrongCount) {
+            guard let position = findWrongPosition(correct: correct ? correctPosition : nil, planned: planned) else { continue }
+            planned.append(position)
+            let block = GamePlatform(role: .answer, value: value)
+            block.position = position
+            block.styleAsActiveAnswer(theme: theme, isCorrect: false, helperEnabled: false)
+            addChild(block); platforms.append(block)
+        }
+    }
+
+    /// Finds a free nearby fallback when the normal above-screen route is not
+    /// ready. This prevents a tutorial tile from being created on a stone.
+    private func tutorialAnswerPosition() -> CGPoint {
+        if let candidate = findCorrectPosition(), routeExists(toPosition: candidate) {
+            return candidate
+        }
+        let horizontalOffsets: [CGFloat] = [0, -92, 92, -184, 184]
+        let verticalOffsets: [CGFloat] = [145, 190, 235, 280]
+        for yOffset in verticalOffsets {
+            for xOffset in horizontalOffsets {
+                let candidate = CGPoint(x: min(max(48, player.position.x + xOffset), size.width - 48),
+                                        y: player.position.y + yOffset)
+                if isFreePosition(candidate), hasClearApproach(toCorrect: candidate) {
+                    return candidate
+                }
+            }
+        }
+        return guaranteedCorrectPosition()
+    }
+
     /// Deferred switch to the next question: HUD and blocks change together,
     /// after the confirmation, never in the landing frame.
     private func performQuestionAdvance() {
@@ -1365,6 +1527,24 @@ final class GameScene: SKScene {
         platforms.removeAll { $0.isActiveAnswer && $0.position.y < -20 }
 
         guard !hasActiveCorrectPlatform() else { return }
+        // Before the first tutorial success (and after the star), do not
+        // turn a missed good block into a mixed answer group. A fresh good
+        // block is placed above the screen until the player gets it.
+        let onlyCorrectUntilCollected = awaitingCorrectAfterTutorialStar
+            || (tutorial.isActive && (tutorial.currentStep == 3
+                || (tutorial.currentStep == 8 && tutorial.doublerAnswerPending)))
+        if onlyCorrectUntilCollected {
+            let position = findCorrectPosition() ?? guaranteedCorrectPosition()
+            activateAnswerSet(correct: (state.correctAnswer, position), wrongs: [])
+            return
+        }
+        // Step 4 deliberately contains only the required wrong answer, and
+        // step 6 stops tiles after a correct answer until the question is
+        // tapped. The watchdog must not inject a normal answer group there.
+        if tutorial.isActive,
+           tutorial.currentStep == 4 || (tutorial.currentStep == 6 && tutorialAwaitingQuestionTap) {
+            return
+        }
         if let pos = findCorrectPosition(), routeExists(toPosition: pos) {
             // The repaired set also gets wrong options again, so a missed
             // correct block never degrades into a lone-answer stretch.
@@ -1374,6 +1554,25 @@ final class GameScene: SKScene {
         } else {
             activateAnswerSet(correct: (state.correctAnswer, guaranteedCorrectPosition()), wrongs: [])
         }
+    }
+
+    /// Step 4 must remain completable when the player jumps past its single
+    /// wrong answer. Replace it only once it has left the screen; the new
+    /// tile uses the normal safe spawn window above the viewport.
+    private func ensureRequiredTutorialWrongAnswer() {
+        guard tutorial.isActive, tutorial.currentStep == 4 else { return }
+        guard !platforms.contains(where: { $0.isActiveAnswer && $0.value != state.correctAnswer }) else {
+            return
+        }
+        let position = findCorrectPosition() ?? guaranteedCorrectPosition()
+        guard let value = state.question.distractors.first(where: { $0 != state.correctAnswer }) else {
+            return
+        }
+        let block = GamePlatform(role: .answer, value: value)
+        block.position = position
+        block.styleAsActiveAnswer(theme: theme, isCorrect: false, helperEnabled: false)
+        addChild(block)
+        platforms.append(block)
     }
 
     /// The correct block "exists" as long as it is anywhere on or above
@@ -1391,6 +1590,7 @@ final class GameScene: SKScene {
     /// active correct answer, and a wrong-answer-free route.
     private func debugValidateLayout() {
 #if DEBUG
+        if tutorial.isActive { return }
         for (i, a) in platforms.enumerated() {
             for b in platforms[(i + 1)...] {
                 let rectA = sweptRect(for: a)
@@ -1418,11 +1618,12 @@ final class GameScene: SKScene {
         platform.styleAsNeutral(theme: theme)
         addChild(platform)
         platforms.append(platform)
+        attachTutorialPickupIfNeeded(to: platform)
 
         // ~10% of the plain in-between stones patrol slowly side to side.
         // Answer blocks NEVER move (their placement guarantees stay exact);
         // landing detection reads live positions, so patrol "just works".
-        guard allowMoving, CGFloat.random(in: 0...1) < 0.10 else { return }
+        guard allowMoving, !tutorial.isActive, CGFloat.random(in: 0...1) < 0.10 else { return }
         // Bound the amplitude so the stone's ENTIRE swept range stays clear
         // of the screen edges AND every neighbour — validated before it ever
         // starts moving, so `sweptRect` (and thus every overlap check) holds.
@@ -1503,6 +1704,16 @@ final class GameScene: SKScene {
         lastUpdateTime = currentTime
 
         updateHorizontal(dt: dt)
+        if tutorial.isActive && tutorial.currentStep == 1 {
+            tutorialMovedLeft = tutorialMovedLeft || player.position.x < tutorialStartX - 45
+            tutorialMovedRight = tutorialMovedRight || player.position.x > tutorialStartX + 45
+            if (tutorialMovedLeft || tutorialMovedRight), tutorialMovementConfirmedAt == nil {
+                tutorialMovementConfirmedAt = currentTime
+            }
+            if tutorialMovedLeft, tutorialMovedRight,
+               let confirmedAt = tutorialMovementConfirmedAt,
+               currentTime - confirmedAt >= 2 { completeTutorialStep(1) }
+        }
 
         // Vertical physics.
         let previousBottom = player.position.y - playerHalfHeight
@@ -1534,12 +1745,15 @@ final class GameScene: SKScene {
         }
 
         // Watchdog: keep the correct answer inside the playable window.
-        if answerRefreshAt == nil, currentTime - lastReachabilityCheck > 0.5 {
+        if !tutorialSuppressesAnswerTiles,
+           answerRefreshAt == nil, currentTime - lastReachabilityCheck > 0.5 {
             lastReachabilityCheck = currentTime
             ensureCorrectReachable()
+            ensureRequiredTutorialWrongAnswer()
         }
 
         collectTouchedPowerups()
+        refreshMissedTutorialPickup()
         updatePlayerAppearance(dt: dt)
         scrollIfNeeded()
         spawnPlatformsIfNeeded()
@@ -1659,6 +1873,8 @@ final class GameScene: SKScene {
                     // silent edge-graze forgiveness.
                     landedWrong(on: platform)
                 }
+            } else if tutorial.isActive && tutorial.currentStep == 2 {
+                completeTutorialStep(2)
             }
             return
         }
@@ -1668,11 +1884,30 @@ final class GameScene: SKScene {
     /// ordinary platform (number, position, size unchanged) → the NEXT
     /// set is built later, validated, and activated in one update.
     private func landedCorrect(on platform: GamePlatform) {
+        // The first tutorial point gets one explicit, visual explanation of
+        // where trophies are counted. Later answers stay pleasantly quick.
+        let isFirstTutorialTrophy = tutorial.isActive && tutorial.currentStep == 3
+        let shouldRetryTutorialStar = tutorial.isActive && tutorial.currentStep == 11
+        let trophyOrigin = platform.position
         platform.resolveCorrect(theme: theme)
         haptic(success: true)
         PlaytimeTracker.shared.registerInteraction()
         let wasDoubled = state.doublerArmed
         state.answeredCorrectly()
+        // The star lesson ends only after this remaining good answer is
+        // used; from this point ordinary answer groups may resume.
+        awaitingCorrectAfterTutorialStar = false
+        if isFirstTutorialTrophy {
+            flyTutorialTrophyToHUD(from: trophyOrigin)
+        }
+        if tutorial.isActive {
+            switch tutorial.currentStep {
+            case 3, 5: completeTutorialStep(tutorial.currentStep)
+            case 6: tutorialAwaitingQuestionTap = true
+            case 8 where tutorial.doublerAnswerPending: completeTutorialStep(8)
+            default: break
+            }
+        }
         // A consumed doubler flies to the trophy score; an unarmed state
         // just makes sure no stray aura lingers. Redemption ends here too.
         if wasDoubled {
@@ -1686,7 +1921,11 @@ final class GameScene: SKScene {
         // Short confirmation beat: long enough to see the checkmark, short
         // enough that the next set spawns before the player climbs far —
         // every extra tenth here directly lengthens the option-free gap.
-        answerRefreshAt = lastUpdateTime + 0.4
+        // A good answer during the star lesson does not complete that lesson.
+        // Refresh promptly into a new group with a fresh star above screen,
+        // so the player can never strand the tutorial by taking the answer
+        // before touching the star.
+        answerRefreshAt = lastUpdateTime + (shouldRetryTutorialStar ? 0.18 : 0.4)
     }
 
     /// Register once → cross INSIDE the block → nothing else changes.
@@ -1696,16 +1935,16 @@ final class GameScene: SKScene {
         PlaytimeTracker.shared.registerInteraction()
         let hadDoubler = state.doublerArmed
         state.answeredWrong()
+        if tutorial.isActive && tutorial.currentStep == 4 { completeTutorialStep(4) }
         // A wrong answer forfeits an armed doubler: the bubble visibly pops.
         if hadDoubler {
             popDoublerVisual()
         } else {
             setDoublerVisual(false)
         }
-        // …and arms redemption: the next correct block turns helper green
+        // …and arms redemption: the next correct block turns green
         // (including the one of the CURRENT question) until it is landed on.
-        // Only when "Answer hints" is on — that toggle owns this cue too.
-        if !helperEnabled, answerHintEnabled, !state.isGameOver {
+        if !helperEnabled, !state.isGameOver {
             redemptionArmed = true
             highlightCorrectForRedemption()
         }
@@ -1717,6 +1956,7 @@ final class GameScene: SKScene {
     /// feel genuinely random — but never more than ONE special per roll and
     /// with a shared cooldown, so specials spread out instead of clustering.
     private func maybeSpawnPickups() {
+        guard !tutorial.isActive else { return }
         guard !state.isGameOver, answersSinceSpecial >= specialCooldown else { return }
         // Hearts: only in a lives game, only when they can actually heal —
         // half hearts from 1 lost heart, full hearts from 2 lost hearts.
@@ -1747,6 +1987,223 @@ final class GameScene: SKScene {
            attachPowerupToUpcomingNeutral(.minusOne) {
             minusOnesSpawned += 1
             answersSinceSpecial = 0
+        }
+    }
+
+    /// Called by the SwiftUI equation badge.  It does not freeze the scene;
+    /// it merely releases the next part of the lesson after a real tap.
+    func tutorialQuestionWasTapped() {
+        guard tutorial.isActive, tutorial.currentStep == 6 else { return }
+        preserveAnswerAppearanceAfterTutorialReveal = true
+        tutorialAwaitingQuestionTap = false
+        completeTutorialStep(6)
+    }
+
+    private func completeTutorialStep(_ step: Int) {
+        guard tutorial.isActive, tutorial.currentStep == step else { return }
+        tutorial.complete(step: step, helperEnabled: helperEnabled)
+        if step == 1 && tutorial.currentStep == 2 {
+            tutorial.complete(step: 2, helperEnabled: helperEnabled)
+        }
+        if step == 9 && tutorial.currentStep == 10 {
+            // The old recovery-heart lesson was intentionally removed.
+            tutorial.complete(step: 10, helperEnabled: helperEnabled)
+        }
+        tutorialHeartCount = 0
+        tutorialNextPickupAt = 0
+        if step == 1 {
+            // Release the first real stones only once the movement lesson is
+            // complete.  This is deliberately before the next answer set.
+            spawnPlatformsIfNeeded()
+        }
+        if tutorial.currentStep == 9 {
+            // Start the −1 lesson only on stones still above the viewport.
+            // The player should have a fair chance to see and avoid it.
+            for platform in platforms where platform.role == .neutralPlatform
+                && platform.powerup == nil && platform.position.y > size.height + 40 {
+                platform.attachPowerup(.minusOne, theme: theme)
+            }
+        }
+        // Let the current bounce/confirmation finish, then build the next
+        // guided set above the viewport.
+        answerRefreshAt = max(answerRefreshAt ?? 0, lastUpdateTime + 0.18)
+        ensureTutorialPickup()
+    }
+
+    private var tutorialRequiredPickup: PowerupType? {
+        guard tutorial.isActive else { return nil }
+        switch tutorial.currentStep {
+        case 7: return tutorialHeartCount == 0 ? .halfHeart : .fullHeart
+        case 8: return tutorial.doublerAnswerPending ? nil : .doubler
+        case 9: return .minusOne
+        case 11: return .eliminator
+        default: return nil
+        }
+    }
+
+    private func attachTutorialPickupIfNeeded(to platform: GamePlatform) {
+        guard let type = tutorialRequiredPickup, platform.powerup == nil else { return }
+        // Step 11 places its single star together with its answer group.
+        // Adding it from every spawned neutral stone created duplicate stars.
+        guard type != .eliminator else { return }
+        // Only the −1 lesson intentionally populates every suitable stone.
+        // Hearts, the doubler and the star are one-at-a-time and reappear
+        // only after the player has missed the previous one.
+        if type != .minusOne,
+           platforms.contains(where: { $0 !== platform && $0.powerup == type }) { return }
+        platform.attachPowerup(type, theme: theme, fillsRightHalf: nextHeartHalfIsRight)
+    }
+
+    private func ensureTutorialPickup() {
+        guard lastUpdateTime >= tutorialNextPickupAt else { return }
+        guard let type = tutorialRequiredPickup else { return }
+        guard type != .eliminator else { return }
+        if !platforms.contains(where: { $0.powerup == type }) {
+            _ = attachPowerupToUpcomingNeutral(type)
+        }
+    }
+
+    /// Uses the same placement logic as the normal in-game star: a proper
+    /// answer group is spawned above the viewport and the star sits on a
+    /// reachable stone directly beneath it.
+    private func buildTutorialStarSet() {
+        for platform in platforms where platform.powerup == .eliminator {
+            platform.removePowerup()
+        }
+        // Raise the whole group so the star gets its own visible runway below
+        // it, rather than sitting immediately underneath a wrong answer.
+        let tutorialStarRaise: CGFloat = 100
+        let correct = findCorrectPosition(offset: tutorialStarRaise) ?? guaranteedCorrectPosition()
+        var planned = [correct]
+        let wrongs = placeWrongs(correct: correct, planned: &planned, count: 2,
+                                 offset: tutorialStarRaise)
+        activateAnswerSet(correct: (state.correctAnswer, correct), wrongs: wrongs)
+        placeTutorialStarAboveViewport(below: correct)
+    }
+
+    private func placeTutorialStarAboveViewport(below answer: CGPoint) {
+        // The regular answer margin is intentionally roomy. The mandatory
+        // tutorial star needs to arrive much sooner after −1, while its stone
+        // must still be entirely outside the visible viewport.
+        let tutorialStarInset: CGFloat = 12
+        let minimumY = size.height + GamePlatform.platformSize.height / 2 + tutorialStarInset
+        let maximumY = answer.y - 80
+        guard maximumY > minimumY else { return }
+        let candidate = platforms
+            .filter { $0.role == .neutralPlatform && $0.powerup == nil
+                && $0.position.y >= minimumY && $0.position.y <= maximumY }
+            .min { $0.position.y < $1.position.y }
+        if let candidate {
+            candidate.attachPowerup(.eliminator, theme: theme)
+            return
+        }
+        // If no prepared stone is available, create the star near the bottom
+        // of its valid strip so it enters view shortly before the answers.
+        let earlyTop = min(maximumY, minimumY + 48)
+        for _ in 0..<40 {
+            let position = CGPoint(x: .random(in: 48...(size.width - 48)),
+                                   y: .random(in: minimumY...earlyTop))
+            if isFreePosition(position), !blocksApproach(toCorrect: answer, candidate: position) {
+                let stone = GamePlatform(role: .neutralPlatform)
+                stone.position = position
+                stone.styleAsNeutral(theme: theme)
+                stone.attachPowerup(.eliminator, theme: theme)
+                addChild(stone)
+                platforms.append(stone)
+                return
+            }
+        }
+    }
+
+    /// The tutorial star belongs below the answer pair, so the player can
+    /// collect it before reaching the wrong answer it is meant to remove.
+    private func placeTutorialStar(below answer: CGPoint) {
+        for platform in platforms where platform.powerup == .eliminator {
+            platform.removePowerup()
+        }
+        let candidate = platforms
+            .filter { $0.role == .neutralPlatform && $0.powerup == nil
+                && $0.position.y > player.position.y + 55
+                && $0.position.y < answer.y - 70 }
+            .min { $0.position.y < $1.position.y }
+        if let candidate {
+            candidate.attachPowerup(.eliminator, theme: theme)
+            return
+        }
+        let y = max(player.position.y + 150, answer.y - 130)
+        for _ in 0..<24 {
+            let position = CGPoint(x: .random(in: 48...(size.width - 48)), y: y)
+            if isFreePosition(position) {
+                let stone = GamePlatform(role: .neutralPlatform)
+                stone.position = position
+                stone.styleAsNeutral(theme: theme)
+                stone.attachPowerup(.eliminator, theme: theme)
+                addChild(stone)
+                platforms.append(stone)
+                return
+            }
+        }
+    }
+
+    /// A missed mandatory pickup is retried promptly. Once the player has
+    /// passed it, retire the icon and put a replacement on the lowest
+    /// upcoming neutral stone instead of waiting for distant culling.
+    private func refreshMissedTutorialPickup() {
+        guard tutorial.isActive, let required = tutorialRequiredPickup else { return }
+        // A star remains available until it scrolls out naturally; removing
+        // it merely because the player briefly jumped over it felt unfair.
+        if required == .eliminator {
+            ensureTutorialStar()
+            return
+        }
+        for platform in platforms where platform.powerup == required
+            // A near miss may still be collected on the downward arc. Only
+            // replace a pickup once it is well below the player.
+            && platform.position.y < -40 {
+            platform.removePowerup()
+        }
+        ensureTutorialPickup()
+    }
+
+    /// The star is mandatory. If a preceding answer refresh had no suitable
+    /// stone at that exact moment, retry placement against the current group
+    /// until one is available. `placeTutorialStarAboveViewport` guarantees
+    /// the icon is attached only to an off-screen stone.
+    private func ensureTutorialStar() {
+        guard tutorial.isActive, tutorial.currentStep == 11 else { return }
+        guard !platforms.contains(where: { $0.powerup == .eliminator }) else { return }
+        guard let correct = platforms.first(where: {
+            $0.isActiveAnswer && $0.value == state.correctAnswer
+        }) else { return }
+        placeTutorialStarAboveViewport(below: correct.position)
+    }
+
+    private func handleTutorialPowerup(_ powerup: PowerupType) {
+        guard tutorial.isActive else { return }
+        switch (tutorial.currentStep, powerup) {
+        case (7, .halfHeart):
+            tutorialHeartCount = 1
+            // Do not show the next heart while this heart is still flying to
+            // the HUD; that previously read as a doubled collection effect.
+            tutorialNextPickupAt = lastUpdateTime + 0.75
+        case (7, .fullHeart):
+            completeTutorialStep(7)
+        case (8, .doubler):
+            tutorial.setDoublerAnswerPending(true)
+            answerRefreshAt = max(answerRefreshAt ?? 0, lastUpdateTime + 0.18)
+        case (9, .minusOne):
+            for other in platforms where other.powerup == .minusOne { other.removePowerup() }
+            completeTutorialStep(9)
+        case (11, .eliminator):
+            // The firework removes all wrong options. Keep the remaining
+            // correct tile as the sole answer even after the tutorial itself
+            // has formally completed.
+            awaitingCorrectAfterTutorialStar = true
+            completeTutorialStep(11)
+            // Keep the cleared answer group clear. A normal new group only
+            // starts after the remaining good answer has been used.
+            answerRefreshAt = nil
+        default: break
         }
     }
 
@@ -1844,8 +2301,13 @@ final class GameScene: SKScene {
         case .minusOne:
             flyMinusOneToScore(from: origin)
         }
-        haptic(success: powerup != .minusOne)
+        if powerup == .halfHeart || powerup == .fullHeart {
+            heartHaptic()
+        } else {
+            haptic(success: powerup != .minusOne)
+        }
         PlaytimeTracker.shared.registerInteraction()
+        handleTutorialPowerup(powerup)
     }
 
     /// The −1 hazard: a red bubble arcs to the trophy score and takes the
@@ -2093,6 +2555,78 @@ final class GameScene: SKScene {
         ]))
     }
 
+    /// Once, on the first tutorial answer, a trophy flies from the exact
+    /// centre of the answered block to the score icon. It deliberately uses
+    /// the same flight, timing and arrival treatment as the ×2 reward.
+    private func flyTutorialTrophyToHUD(from origin: CGPoint) {
+        let target = trophyHUDPoint
+        let trophy = makeTutorialTrophyIcon(height: GamePlatform.platformSize.height)
+        trophy.position = origin
+        trophy.zPosition = 50
+        addChild(trophy)
+        trophy.run(.sequence([
+            .group([curvedFlight(from: origin, to: target, duration: 0.55),
+                    .sequence([.scale(to: 1.3, duration: 0.22),
+                               .scale(to: 0.75, duration: 0.33)])]),
+            .run { [weak self] in
+                guard let self else { return }
+                self.arrivalPing(at: target, color: self.theme.skPrimary)
+            },
+            .group([.scale(to: 0.15, duration: 0.15), .fadeOut(withDuration: 0.15)]),
+            .removeFromParent()
+        ]))
+    }
+
+    /// Small vector trophy, tinted with the active character theme. The
+    /// enclosing node is exactly as high as a regular answer block.
+    private func makeTutorialTrophyIcon(height: CGFloat) -> SKNode {
+        let trophy = SKNode()
+        let scale = height / 24
+        trophy.setScale(scale)
+
+        let cupPath = CGMutablePath()
+        cupPath.move(to: CGPoint(x: -8, y: 11))
+        cupPath.addLine(to: CGPoint(x: 8, y: 11))
+        cupPath.addLine(to: CGPoint(x: 6, y: 1))
+        cupPath.addQuadCurve(to: CGPoint(x: 0, y: -4), control: CGPoint(x: 4, y: -3))
+        cupPath.addQuadCurve(to: CGPoint(x: -6, y: 1), control: CGPoint(x: -4, y: -3))
+        cupPath.closeSubpath()
+        let cup = SKShapeNode(path: cupPath)
+        cup.fillColor = theme.skPrimary
+        cup.strokeColor = .white
+        cup.lineWidth = 1.5
+        trophy.addChild(cup)
+
+        for direction: CGFloat in [-1, 1] {
+            let handlePath = CGMutablePath()
+            handlePath.move(to: CGPoint(x: direction * 7, y: 8))
+            handlePath.addQuadCurve(to: CGPoint(x: direction * 12, y: 2),
+                                    control: CGPoint(x: direction * 13, y: 8))
+            handlePath.addQuadCurve(to: CGPoint(x: direction * 7, y: 0),
+                                    control: CGPoint(x: direction * 11, y: -1))
+            let handle = SKShapeNode(path: handlePath)
+            handle.strokeColor = .white
+            handle.lineWidth = 1.5
+            handle.lineCap = .round
+            trophy.addChild(handle)
+        }
+
+        let stem = SKShapeNode(rectOf: CGSize(width: 4, height: 5), cornerRadius: 1)
+        stem.fillColor = theme.skPrimary
+        stem.strokeColor = .white
+        stem.lineWidth = 1.2
+        stem.position.y = -6
+        trophy.addChild(stem)
+
+        let base = SKShapeNode(rectOf: CGSize(width: 12, height: 3), cornerRadius: 1.5)
+        base.fillColor = theme.skPrimary
+        base.strokeColor = .white
+        base.lineWidth = 1.2
+        base.position.y = -10
+        trophy.addChild(base)
+        return trophy
+    }
+
     /// A wrong answer with the ×2 armed: the bubble POPS on the spot —
     /// a quick over-inflate, a burst of shards, gone. Losing the doubler
     /// is unmistakable.
@@ -2133,6 +2667,13 @@ final class GameScene: SKScene {
         feedbackGenerator.notificationOccurred(success ? .success : .error)
         // Re-arm the engine so the following landing is warm too.
         feedbackGenerator.prepare()
+#endif
+    }
+
+    private func heartHaptic() {
+#if os(iOS)
+        heartFeedbackGenerator.impactOccurred()
+        heartFeedbackGenerator.prepare()
 #endif
     }
 

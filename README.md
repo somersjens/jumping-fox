@@ -25,7 +25,7 @@ Adjustable daily (default 5 min) and weekly (default 35 min) play goals. Only *a
 - Block status changes only on a real landing: checkmark inside the block for correct, cross inside the block for wrong; untouched blocks never turn gray
 - Edge grazes on wrong platforms bounce harmlessly — only clear landings count
 - Tilt controls (device) with touch-drag fallback (simulator)
-- Optional answer helper: correct platforms green, wrong ones red
+- After a wrong answer, the correct platform turns green; tapping the sum reveals the answer for half a life
 
 ## Modes & scores
 

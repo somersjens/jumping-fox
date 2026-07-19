@@ -82,24 +82,25 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
 /// numbers actually generated) read from here, so the card a child sees and
 /// the sums they get can never drift apart.
 enum ChallengeScaling {
-    /// Fraction denominators for all 99 levels, easy → hard. Round/common
-    /// denominators lead, then the evens, then the odds (the hardest). Every
-    /// denominator 2…100 appears exactly once; there is no denominator 1.
+    /// Fraction denominators for all 99 levels, in the intended learning
+    /// sequence. Each value is used both on the level card and in its sums.
     static let fractionDenominators = [
-        25, 50, 75, 5, 10, 20, 40, 80, 100, 30, 60, 90, 15, 35, 45, 55, 65, 70, 85, 95,
-        2, 4, 6, 8, 12, 14, 16, 18, 22, 24, 26, 28, 32, 34, 36, 38, 42, 44, 46, 48,
-        52, 54, 56, 58, 62, 64, 66, 68, 72, 74, 76, 78, 82, 84, 86, 88, 92, 94, 96, 98,
-        3, 7, 9, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41, 43, 47, 49, 51,
-        53, 57, 59, 61, 63, 67, 69, 71, 73, 77, 79, 81, 83, 87, 89, 91, 93, 97, 99]
+        2, 4, 8, 3, 6, 12, 5, 10, 20, 7, 14, 28, 16, 32, 64, 128, 256, 512,
+        24, 48, 96, 192, 384, 768, 40, 80, 160, 320, 640, 56, 112, 224, 448, 896,
+        9, 18, 36, 72, 144, 288, 576, 11, 22, 44, 88, 176, 352, 704, 13, 26, 52,
+        104, 208, 416, 832, 15, 30, 60, 120, 240, 480, 960, 17, 34, 68, 136, 272,
+        544, 19, 38, 76, 152, 304, 608, 21, 42, 84, 168, 336, 672, 23, 46, 92,
+        184, 368, 736, 25, 50, 100, 200, 400, 800, 27, 54, 108, 216, 432, 864, 1000]
 
-    /// Percentages for all 99 levels, in the same easy → hard shape as the
-    /// fractions: round values first, then evens, then odds.
+    /// Percentages for all 99 levels, in the intended learning sequence.
+    /// This same list drives the cards, start/pause explanation, and sums.
     static let percentageLevels = [
-        25, 50, 75, 5, 10, 20, 40, 80, 100, 30, 60, 90, 15, 35, 45, 55, 65, 70, 85, 95,
+        25, 50, 75, 5, 10, 15, 20, 40, 80, 30, 60, 90, 35, 45, 55, 65, 70, 85, 95,
         2, 4, 6, 8, 12, 14, 16, 18, 22, 24, 26, 28, 32, 34, 36, 38, 42, 44, 46, 48,
-        52, 54, 56, 58, 62, 64, 66, 68, 72, 74, 76, 78, 82, 84, 86, 88, 92, 94, 96, 98,
-        1, 3, 7, 9, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41, 43, 47, 49,
-        51, 53, 57, 59, 61, 63, 67, 69, 71, 73, 77, 79, 81, 83, 87, 89, 91, 93, 97]
+        52, 54, 56, 58, 62, 64, 66, 68, 72, 74, 76, 78, 82, 84, 86, 88, 92, 94, 96,
+        98, 1, 3, 7, 9, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41, 43, 47,
+        49, 51, 53, 57, 59, 61, 63, 67, 69, 71, 73, 77, 79, 81, 83, 87, 89, 91, 93,
+        97, 99]
 
     /// The number of free (non-premium) levels before Premium takes over.
     static let freeLevelCount = 12
@@ -464,14 +465,6 @@ final class QuestionEngine {
     private var lastPrompt: String?
     private var wrongBag: [Question] = []
 
-    // Running chain for addition/subtraction: the previous correct answer
-    // becomes the next left operand, so every visible sum has exactly two
-    // numbers while the difficulty still builds up. Once the chain has been
-    // walked once, the level switches to its own "mix territory": random
-    // start numbers, but still always the level's own +n / −n.
-    private var chainValue: Int?
-    private var chainComplete = false
-
     // Per-cycle ordering: first cycle in order (calm build-up),
     // later cycles shuffled so repeats aren't identical.
     private var orderCache: [Int] = []
@@ -487,8 +480,6 @@ final class QuestionEngine {
         wrongBag.removeAll()
         orderCache = []
         orderCycle = -1
-        chainValue = nil
-        chainComplete = false
     }
 
     /// Extra repetition of recently missed questions.
@@ -498,7 +489,7 @@ final class QuestionEngine {
     }
 
     func next() -> Question {
-        if !wrongBag.isEmpty, step > 2, Double.random(in: 0...1) < 0.2,
+        if !usesFixedStandardSequence, !wrongBag.isEmpty, step > 2, Double.random(in: 0...1) < 0.2,
            wrongBag.first?.prompt != lastPrompt {
             let question = wrongBag.removeFirst()
             lastPrompt = question.prompt
@@ -516,6 +507,12 @@ final class QuestionEngine {
         lastPrompt = question.prompt
         step += 1
         return question
+    }
+
+    /// Standard addition, subtraction and tables are fixed practice routes.
+    /// Mix levels retain their varied and revision behaviour.
+    private var usesFixedStandardSequence: Bool {
+        !level.startsInMix && [.addition, .subtraction, .tables].contains(level.category)
     }
 
     /// Current cycle number (how often the level's series has wrapped).
@@ -612,31 +609,20 @@ final class QuestionEngine {
 
     // MARK: Addition
 
-    /// One pattern per level, as a running chain with exactly two numbers:
-    /// level +1: 1+1, 2+1, 3+1 …  level +3: 3+3, 6+3, 9+3 …
-    /// After the chain reaches the cap (e.g. +2 up to 20), the level enters
-    /// mix territory: random start numbers like 4+2 or 7+2 — but Standard
-    /// ALWAYS keeps adding the level's own +n.
+    /// Fixed 30-question route, repeated from the beginning when needed.
+    /// The practiced number is always first: for +2 this starts at
+    /// 2+2, 2+4 … 2+20; then 2+3 … and finally 2+5 ….
     private func additionQuestion() -> Question {
         let n = level.index
-        let cap = max(20, n * 6)
-        if chainComplete {
-            let left = Int.random(in: 1...(cap - n))
-            let answer = left + n
-            return makeQuestion("\(left) + \(n) = ?", "\(answer)",
-                                [answer + 1, answer - 1, answer + 2, answer - 2,
-                                 left, answer + n].filter { $0 >= 0 }.map(String.init),
-                                isRandomPractice: true)
-        }
-        let left = chainValue ?? n
-        let answer = left + n
-        chainValue = (answer + n > cap) ? nil : answer
-        if answer + n > cap { chainComplete = true }
+        let position = step % 30
+        let group = position / 10
+        let other = n + [0, 1, 3][group] + (position % 10) * n
+        let answer = n + other
         // Real child errors, all close to the answer: counting slips
-        // (±1/±2), forgetting to add (left) and adding n twice (answer+n).
-        return makeQuestion("\(left) + \(n) = ?", "\(answer)",
+        // (±1/±2), forgetting to add and adding n twice.
+        return makeQuestion("\(n) + \(other) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,
-                             left, answer + n].filter { $0 >= 0 }.map(String.init))
+                             other, answer + n].filter { $0 >= 0 }.map(String.init))
     }
 
     /// Mix form of the addition menu. The card number is the HIGHEST small
@@ -676,28 +662,14 @@ final class QuestionEngine {
 
     // MARK: Subtraction
 
-    /// One pattern per level, as a descending chain with exactly two
-    /// numbers: 10−1=9, 9−1=8, 8−1=7 … When the bottom is reached the level
-    /// enters mix territory: random start numbers — but Standard ALWAYS
-    /// keeps taking away the level's own −n, and never goes negative.
+    /// Fixed 30-question descending route, repeated from the beginning when
+    /// needed. For −2 this is 22−2 … 4−2, then 23−2 … 5−2, then 25−2 … 7−2.
     private func subtractionQuestion() -> Question {
         let n = level.index
-        let base = max(n * 5, 10)
-        if chainComplete {
-            let left = Int.random(in: n...(base + 2 * n))
-            let answer = left - n
-            return makeQuestion("\(left) − \(n) = ?", "\(answer)",
-                                [answer + 1, answer - 1, answer + 2, answer - 2,
-                                 left, answer - n].filter { $0 >= 0 }.map(String.init),
-                                isRandomPractice: true)
-        }
-        let left = chainValue ?? base
+        let position = step % 30
+        let group = position / 10
+        let left = 11 * n + [0, 1, 3][group] - (position % 10) * n
         let answer = left - n
-        if answer - n >= 0 {
-            chainValue = answer
-        } else {
-            chainComplete = true
-        }
         // Counting slips, forgetting to subtract (left = answer + n) and
         // subtracting n twice (answer − n) — all plausible near-misses.
         return makeQuestion("\(left) − \(n) = ?", "\(answer)",
@@ -762,10 +734,9 @@ final class QuestionEngine {
                             [a, 1, a + 1, 2, max(2, a * 2)].map(String.init))
     }
 
-    /// Questions continue in order: t×1, t×2 … t×12, then repeat (shuffled).
+    /// Infinite fixed loop: t×1, t×2 … t×12, then back to t×1.
     private func tableQuestion(table: Int) -> Question {
-        if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(table) }
-        let m = cycled(Array(1...12))
+        let m = (step % 12) + 1
         let answer = table * m
         // Neighbouring multiples (one step up/down in the SAME table) and
         // the neighbouring TABLE with the same multiplier — exactly the

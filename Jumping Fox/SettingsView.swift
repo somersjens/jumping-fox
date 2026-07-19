@@ -11,7 +11,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage(GameSettings.lifeModeKey) private var lifeModeRaw = LifeMode.three.rawValue
-    @AppStorage(GameSettings.answerHintKey) private var answerHintEnabled = true
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var tracker = PlaytimeTracker.shared
@@ -28,7 +27,6 @@ struct SettingsView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     livesCard
-                    hintCard
                     goalsCard
                     characterCard
                     premiumCard
@@ -112,24 +110,6 @@ struct SettingsView: View {
             )
         }
         .buttonStyle(.plain)
-    }
-
-    // MARK: Hint
-
-    private var hintCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Toggle(isOn: $answerHintEnabled) {
-                Text("settings.answerHint")
-                    .font(.headline)
-            }
-            .tint(character.color)
-
-            Text("settings.answerHintInfo")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-        }
-        .padding()
-        .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 16))
     }
 
     // MARK: Play goals

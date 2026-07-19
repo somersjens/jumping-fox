@@ -14,20 +14,41 @@ import SpriteKit
 import UIKit
 #endif
 
+/// The exact points used by the paid-answer animation. Anchors keep the
+/// flight attached to the real rendered heart and question mark on every
+/// screen size, Dynamic Type setting and equation width.
+private enum AnswerHintAnchor: Hashable {
+    case heart
+    case question
+}
+
+private struct AnswerHintAnchors: PreferenceKey {
+    static var defaultValue: [AnswerHintAnchor: Anchor<CGRect>] = [:]
+
+    static func reduce(value: inout [AnswerHintAnchor: Anchor<CGRect>],
+                       nextValue: () -> [AnswerHintAnchor: Anchor<CGRect>]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
+    }
+}
+
 struct GameView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var state: GameState
     @State private var scene: GameScene
-    @AppStorage(GameSettings.answerHintKey) private var answerHintEnabled = true
     // Refreshes the intro/end-menu copy when the language is switched.
     @ObservedObject private var language = LanguageManager.shared
+    @ObservedObject private var tutorial = TutorialProgress.shared
 
     // Pre-game mode intro card. The field is frozen until the player starts.
-    @State private var showingIntro = true
+    @State private var showingIntro: Bool
     @State private var isContinuingLevel: Bool
     @State private var isPausedAtIntro = false
     @State private var isShowingCompletionPreview = false
     @State private var heartHintNudge: CGFloat = 0
+    @State private var isAnswerHintFlying = false
+    @State private var suppressIntroTap = false
+    @State private var isTutorialArrowBouncing = false
+    @State private var showsTutorialCompletion = false
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
 
     init(level: LevelConfig) {
@@ -40,6 +61,11 @@ struct GameView: View {
         let state = canResume ? PausedGameStore.shared.gameState(for: level) : GameState(level: level)
         _state = StateObject(wrappedValue: state)
         _scene = State(initialValue: GameScene(state: state))
+        // The first ever level starts straight in the live tutorial. Normal
+        // runs restore the start screen; developer runs use it as an explicit
+        // launch gate so the game cannot start behind the test menu.
+        _showingIntro = State(initialValue: TutorialProgress.shared.developerMode
+                              || !TutorialProgress.shared.isActive)
     }
 
     var body: some View {
@@ -89,18 +115,82 @@ struct GameView: View {
             if showingIntro && !state.isGameOver {
                 introCard
             }
+
+            if tutorial.isActive, (1...11).contains(tutorial.currentStep),
+               tutorial.currentStep != 1 && !state.isGameOver && !showingIntro {
+                VStack {
+                    Spacer()
+                    tutorialPrompt.padding(.bottom, 132)
+                }
+                .allowsHitTesting(false)
+            }
+
+            if showsTutorialCompletion {
+                ConfettiView()
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+                Text(L("tutorial.complete"))
+                    .font(.headline.weight(.heavy))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 14)
+                    .background(theme.deepColor.opacity(0.94), in: Capsule())
+                    .overlay(Capsule().stroke(.white.opacity(0.85), lineWidth: 2))
+                    .shadow(color: .black.opacity(0.25), radius: 8, y: 3)
+                    .padding(.horizontal, 24)
+                    .allowsHitTesting(false)
+            }
+        }
+        .overlayPreferenceValue(AnswerHintAnchors.self) { anchors in
+            GeometryReader { proxy in
+                if isAnswerHintFlying,
+                   let heartAnchor = anchors[.heart],
+                   let questionAnchor = anchors[.question] {
+                    let heart = proxy[heartAnchor]
+                    let question = proxy[questionAnchor]
+                    // The spent half is the right half of a full heart, or
+                    // the left half of an already half-filled heart.
+                    let leavesRightHalf = (state.livesHalves ?? 0).isMultiple(of: 2)
+                    AnswerHintFlight(
+                        source: CGPoint(x: heart.midX + (leavesRightHalf ? heart.width * 0.22 : -heart.width * 0.22),
+                                        y: heart.midY),
+                        destination: CGPoint(x: question.midX, y: question.midY),
+                        canvasWidth: proxy.size.width,
+                        sourceIsRightHalf: leavesRightHalf,
+                        color: theme.deepColor,
+                        onArrival: finishAnswerHintFlight
+                    )
+                    .allowsHitTesting(false)
+                }
+            }
         }
         .onAppear {
+            scene.isFrozen = showingIntro
+            // SpriteKit may lay out its initial scene just after onAppear.
+            // Reapply the gate on the next runloop so that layout cannot
+            // accidentally release the field behind the start screen.
+            DispatchQueue.main.async { scene.isFrozen = showingIntro }
+            isTutorialArrowBouncing = true
             PlaytimeTracker.shared.challengeStarted()
             setScreenAwake(true)
         }
         .onDisappear {
+            if tutorial.developerMode { tutorial.leaveDeveloperMode() }
             PlaytimeTracker.shared.challengeEnded()
             setScreenAwake(false)
+        }
+        .onChange(of: tutorial.isComplete) { complete in
+            guard complete else { return }
+            withAnimation(.snappy) { showsTutorialCompletion = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                withAnimation(.easeOut(duration: 0.25)) { showsTutorialCompletion = false }
+            }
         }
         .onChange(of: state.isGameOver) { over in
             if over {
                 PausedGameStore.shared.remove(state)
+                TutorialProgress.shared.markGameOver()
                 // Defer the tracker's disk write off this frame so the game-over
                 // / completion overlay paints without waiting on it.
                 DispatchQueue.main.async { PlaytimeTracker.shared.challengeEnded() }
@@ -110,9 +200,11 @@ struct GameView: View {
                 celebrate = false
                 showConfetti = false
                 isShowingCompletionPreview = false
-                // A fresh run (Play Again / Nog een keer) shows the intro again.
+                // After the tutorial, fresh runs use the normal level start
+                // screen again (including its route back to the main menu).
                 isContinuingLevel = false
-                beginIntro()
+                showingIntro = !tutorial.isActive
+                scene.isFrozen = !tutorial.isActive
             }
         }
     }
@@ -138,6 +230,26 @@ struct GameView: View {
         withAnimation(.snappy(duration: 0.25)) { showingIntro = false }
     }
 
+    private func dismissIntroFromTap() {
+        guard !suppressIntroTap else {
+            suppressIntroTap = false
+            return
+        }
+        dismissIntro()
+    }
+
+    /// Hidden developer entry point: it belongs to the character on the
+    /// level's own start screen, not to the character on the main menu.
+    private func activateDeveloperTutorial() {
+        guard showingIntro else { return }
+        tutorial.enterDeveloperMode()
+        isContinuingLevel = false
+        isPausedAtIntro = false
+        PausedGameStore.shared.remove(state)
+        scene.resetGame()
+        scene.isFrozen = true
+    }
+
     private func pauseToIntro() {
         guard !showingIntro else { return }
         PausedGameStore.shared.pause(state)
@@ -147,6 +259,11 @@ struct GameView: View {
     }
 
     private func returnToMainMenu() {
+        // Returning through the level start/pause screen should still point
+        // out the newly earned score after a completed tutorial run.
+        if tutorial.isComplete && state.score > 0 {
+            tutorial.markGameOver()
+        }
         dismiss()
     }
 
@@ -177,7 +294,8 @@ struct GameView: View {
                                     .minimumScaleFactor(0.80)
                                     .layoutPriority(1)
                                 HStack(spacing: 7) {
-                                    introStatusLabel(icon: "heart.fill", text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
+                                    introStatusLabel(icon: state.lifeMode == .unlimited ? "infinity" : "heart.fill",
+                                                     text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
                                     introStatusLabel(icon: "lightbulb.fill", text: state.isAnswerHelperEnabled ? L("game.intro.helperOn") : L("game.intro.helperOff"))
                                 }
                             }
@@ -192,12 +310,18 @@ struct GameView: View {
 
                         VStack(spacing: 10) {
                             Button(action: dismissIntro) {
-                                Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
-                                    .font(.headline.weight(.heavy))
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 15)
-                                    .foregroundStyle(.white)
-                                    .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                Group {
+                                    if tutorial.developerMode {
+                                        Text(language.effective == .dutch ? "Ontwikkelaarsmodus" : "Developer mode")
+                                    } else {
+                                        Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
+                                    }
+                                }
+                                .font(.headline.weight(.heavy))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 15)
+                                .foregroundStyle(.white)
+                                .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                             }
                             .buttonStyle(.plain)
 
@@ -226,7 +350,7 @@ struct GameView: View {
                     .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
                     .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
                     .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-                    .onTapGesture(perform: dismissIntro)
+                    .onTapGesture(perform: dismissIntroFromTap)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .frame(minHeight: proxy.size.height, alignment: .center)
@@ -235,7 +359,7 @@ struct GameView: View {
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture(perform: dismissIntro)
+        .onTapGesture(perform: dismissIntroFromTap)
         .transition(.opacity)
     }
 
@@ -244,14 +368,29 @@ struct GameView: View {
             .resizable()
             .scaledToFit()
             .padding(8)
-            .frame(width: 70, height: 70)
+            // The feature cards inset their 54 pt icon by 10 pt. Keeping this
+            // card 64 pt wide makes its trailing edge meet the icon edge while
+            // the following title column starts exactly with the feature copy.
+            .frame(width: 64, height: 64)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.12), lineWidth: 1))
+            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .highPriorityGesture(
+                LongPressGesture(minimumDuration: 2)
+                    .onEnded { _ in
+                        suppressIntroTap = true
+                        activateDeveloperTutorial()
+                    }
+            )
     }
 
     private func introStatusLabel(icon: String, text: String) -> some View {
-        Label(text, systemImage: icon)
+        HStack(spacing: 5) {
+            Image(systemName: icon)
+                .font(.system(size: icon == "infinity" ? 12 : 10, weight: .heavy, design: .rounded))
+            Text(text)
+        }
             .font(.system(size: 10, weight: .bold))
             .foregroundStyle(theme.deepColor.opacity(0.82))
             .lineLimit(1)
@@ -348,13 +487,14 @@ struct GameView: View {
     }
 
     private func detailDescription(info: (title: String, bullets: [String])) -> String {
-        guard state.level.category == .tables || state.level.category == .tablesMix else {
+        switch state.level.category {
+        case .addition, .subtraction, .tables:
+            // The first mode-specific bullet is intentionally shown on the
+            // second card; the first card keeps its shared practice-order copy.
+            return info.bullets[0]
+        default:
             return info.bullets[1]
         }
-        let qualifier = state.level.startsInMix || state.level.category == .tablesMix
-            ? L("game.intro.tablesOrLower")
-            : ""
-        return L("game.intro.tablesDetail \(state.level.cardNumber) \(qualifier)")
     }
 
     private var practiceSubject: String {
@@ -463,7 +603,7 @@ struct GameView: View {
         if state.isEndless {
             // Lives used up in unlimited mode: swap the hearts for infinity.
             Image(systemName: "infinity")
-                .font(.title3)
+                .font(.system(size: 21, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.deepColor)
                 .transition(.scale.combined(with: .opacity))
         } else if let halves = state.livesHalves {
@@ -476,15 +616,27 @@ struct GameView: View {
     /// A row of three hearts that can each be full, half or empty, driven by a
     /// value in HALF units (0...6). Lets a hint show as half a heart.
     private func heartRow(filledHalves: Int) -> some View {
-        HStack(spacing: 2) {
+        let spendingIndex = (filledHalves - 1) / 2
+        let spendingRightHalf = filledHalves.isMultiple(of: 2)
+        return HStack(spacing: 2) {
             ForEach(0..<3, id: \.self) { index in
-                heartIcon(fill: min(2, max(0, filledHalves - index * 2)))
+                heartIcon(fill: min(2, max(0, filledHalves - index * 2)),
+                          spendingHalf: isAnswerHintFlying && index == spendingIndex,
+                          spendingRightHalf: spendingRightHalf)
+                    .anchorPreference(key: AnswerHintAnchors.self, value: .bounds) { anchor in
+                        guard isAnswerHintFlying,
+                              index == (filledHalves - 1) / 2 else { return [:] }
+                        // An even number of half-lives ends at the right side
+                        // of a full heart; an odd amount ends at the left side.
+                        return [.heart: anchor]
+                    }
             }
         }
     }
 
     /// fill: 0 = empty, 1 = left half, 2 = full.
-    private func heartIcon(fill: Int) -> some View {
+    private func heartIcon(fill: Int, spendingHalf: Bool = false,
+                           spendingRightHalf: Bool = false) -> some View {
         ZStack {
             Image(systemName: "heart.fill")
                 .foregroundStyle(theme.deepColor.opacity(0.28))
@@ -500,17 +652,29 @@ struct GameView: View {
                         }
                     }
             }
+            // The flying piece has already left its slot. Painting this half
+            // back with the empty-heart colour makes the deduction readable
+            // from the first frame of the curved flight.
+            if spendingHalf {
+                Image(systemName: "heart.fill")
+                    .foregroundStyle(theme.deepColor.opacity(0.28))
+                    .mask(alignment: spendingRightHalf ? .trailing : .leading) {
+                        GeometryReader { geo in
+                            Rectangle().frame(width: geo.size.width / 2)
+                        }
+                    }
+            }
         }
     }
 
-    /// The equation the player sees. When the hint is active and the answer
+    /// The equation the player sees. When the answer
     /// has been revealed, the "?" is replaced by the correct answer in place.
     private var displayedQuestion: String {
-        guard answerHintEnabled, state.isAnswerRevealed else { return state.questionText }
+        guard state.isAnswerRevealed else { return state.questionText }
         return state.questionText.replacingOccurrences(of: "?", with: state.correctAnswer)
     }
 
-    /// The equation. When the hint option is on, tapping it reveals the
+    /// The equation. Tapping it reveals the
     /// answer in place of the "?" (staying until the next question) for the
     /// cost of half a life.
     private var equationBadge: some View {
@@ -525,14 +689,101 @@ struct GameView: View {
                 in: RoundedRectangle(cornerRadius: 20)
             )
             .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
+            .overlay(alignment: .topTrailing) {
+                if tutorial.isActive && tutorial.currentStep == 6 {
+                    Image(systemName: "arrow.down.left.circle.fill")
+                        .font(.title.weight(.black))
+                        .foregroundStyle(theme.deepColor)
+                        .offset(x: isTutorialArrowBouncing ? 14 : 6,
+                                y: isTutorialArrowBouncing ? -18 : -27)
+                        .scaleEffect(isTutorialArrowBouncing ? 1.08 : 0.94)
+                        .animation(.easeInOut(duration: 0.55).repeatForever(autoreverses: true),
+                                   value: isTutorialArrowBouncing)
+                        .allowsHitTesting(false)
+                }
+            }
             .padding(.horizontal, 12)
             .contentShape(Rectangle())
             .onTapGesture {
-                guard answerHintEnabled else { return }
-                if !state.revealAnswer(), state.livesHalves == 1 {
-                    hintUnavailableFeedback()
-                }
+                scene.tutorialQuestionWasTapped()
+                requestAnswerHint()
             }
+    }
+
+    /// Delay the state change until the flying half-heart reaches the question
+    /// mark. That makes the visible deduction and the revealed answer read as
+    /// one cause-and-effect gesture instead of two unrelated animations.
+    private func requestAnswerHint() {
+        guard !isAnswerHintFlying else { return }
+        guard state.canRevealAnswer else {
+            if state.livesHalves == 1 { hintUnavailableFeedback() }
+            return
+        }
+
+        guard let halves = state.livesHalves, halves > 1 else {
+            // Endless play has no remaining heart to spend, so it keeps the
+            // established instant reveal rather than inventing a fake flight.
+            _ = state.revealAnswer()
+            return
+        }
+
+#if canImport(UIKit)
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+#endif
+        isAnswerHintFlying = true
+    }
+
+    private func finishAnswerHintFlight() {
+        guard isAnswerHintFlying else { return }
+        isAnswerHintFlying = false
+        _ = state.revealAnswer()
+    }
+
+    private var tutorialPrompt: some View {
+        HStack(spacing: 10) {
+            Image(systemName: tutorialIcon)
+                .font(.title2.weight(.black))
+            Text(tutorialText)
+                .font(.callout.weight(.bold))
+                .multilineTextAlignment(.leading)
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 18)
+        .padding(.vertical, 13)
+        .frame(maxWidth: 500)
+        .background(theme.deepColor.opacity(0.92), in: Capsule())
+        .shadow(color: .black.opacity(0.22), radius: 8, y: 3)
+        .padding(.horizontal, 18)
+        .animation(.snappy, value: tutorial.currentStep)
+    }
+
+    private var tutorialIcon: String {
+        switch tutorial.currentStep {
+        case 1: return "arrow.left.arrow.right"
+        case 6: return "hand.tap.fill"
+        case 7, 10: return "heart.fill"
+        case 11: return "star.fill"
+        default: return "arrow.up.circle.fill"
+        }
+    }
+
+    private var tutorialText: String {
+        switch tutorial.currentStep {
+        case 1: return "Beweeg je apparaat om naar links en rechts te bewegen. Je kunt ook door de zijkanten van het scherm gaan."
+        case 2: return "Spring op de stenen om omhoog te komen."
+        case 3: return "Spring op het goede antwoord om een trofee te verzamelen."
+        case 4: return "Bij een fout antwoord verlies je één van je drie levens. Probeer het maar."
+        case 5: return "Het goede antwoord wordt groen aangegeven. Spring nu op het goede antwoord."
+        case 6: return "Weet je het antwoord niet? Tik dan op de som om het antwoord te bekijken."
+        case 7: return "Je kunt een half of een heel leven vinden om levens terug te krijgen."
+        case 8:
+            return tutorial.doublerAnswerPending
+                ? "Spring nu op het goede antwoord om dubbele trofeeën te verzamelen."
+                : L("tutorial.doubler.collect")
+        case 9: return "Vermijd de −1. Deze kost je één trofee."
+        case 11: return "Spring tegen de ster om foute antwoorden weg te schieten."
+        default: return ""
+        }
     }
 
     // MARK: Equation rendering
@@ -575,21 +826,23 @@ struct GameView: View {
                 equationRow(fontSize: 19)
             }
         } else {
-            Text(displayedQuestion)
-                .font(.system(size: 38, weight: .heavy, design: .rounded))
+            equationRow(fontSize: 38)
                 .minimumScaleFactor(0.4)
-                .lineLimit(1)
-                .contentTransition(.numericText())
         }
     }
 
     private func equationRow(fontSize: CGFloat) -> some View {
         HStack(alignment: .center, spacing: fontSize * 0.18) {
-            ForEach(Array(equationPieces.enumerated()), id: \.offset) { _, piece in
+            let pieces = equationPieces
+            ForEach(Array(pieces.enumerated()), id: \.offset) { index, piece in
                 switch piece {
                 case .text(let s):
                     Text(s)
                         .font(.system(size: fontSize, weight: .heavy, design: .rounded))
+                        .contentTransition(.numericText())
+                        .anchorPreference(key: AnswerHintAnchors.self, value: .bounds) { anchor in
+                            index == pieces.count - 1 ? [.question: anchor] : [:]
+                        }
                 case .fraction(let num, let den):
                     fractionView(numerator: num, denominator: den, fontSize: fontSize)
                 }
@@ -638,21 +891,32 @@ struct GameView: View {
         // than being stacked. The warning is laid out beneath the equation and
         // never gets to change the equation's position when it appears.
         ZStack(alignment: .bottom) {
-            equationBadge
-                .padding(.bottom, 36)
+            if tutorial.isActive && tutorial.currentStep == 1 {
+                // The first instruction occupies the equation lane below the
+                // jump line, leaving every part of the playfield clear.
+                tutorialPrompt
+                    .padding(.bottom, 12)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+            } else {
+                equationBadge
+                    .padding(.bottom, 36)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+            }
 
-            statusLabel
-                .padding(.bottom, 0)
-                .animation(.snappy(duration: 0.25), value: state.isRandomPractice)
-                .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
-                .animation(.snappy(duration: 0.25), value: state.isPastScoreboardCap)
+            if !(tutorial.isActive && tutorial.currentStep == 1) {
+                statusLabel
+                    .padding(.bottom, 0)
+                    .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
+                    .animation(.snappy(duration: 0.25), value: state.isPastScoreboardCap)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.bottom, 16)
+        .animation(.easeInOut(duration: 0.28), value: tutorial.currentStep)
     }
 
     /// The one status capsule shown under the equation. Priority, so they never
-    /// stack and the equation stays put: past-the-cap → lives gone → MIX. The
+    /// stack and the equation stays put: past-the-cap → lives gone. The
     /// cap notice only shows while genuinely playing ON past 30 (never at the
     /// 30/30 completion, which ends the game instead).
     @ViewBuilder
@@ -670,17 +934,6 @@ struct GameView: View {
         } else if state.isScoreLocked {
             Label("game.status.scoreLocked", systemImage: "trophy.fill")
                 .font(.caption.weight(.bold))
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .foregroundStyle(.white)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(theme.deepColor.opacity(0.9), in: Capsule())
-                .transition(.scale.combined(with: .opacity))
-        } else if state.isRandomPractice {
-            Label("game.status.mixMode", systemImage: "shuffle")
-                .font(.caption.weight(.heavy))
-                .tracking(1.2)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
                 .foregroundStyle(.white)
@@ -954,6 +1207,112 @@ struct GameView: View {
     }
 
     private var endScreenText: EndScreenText { EndScreenText() }
+}
+
+/// A half-heart that travels along the same gently bowed path used by the
+/// game's shooting stars. Its endpoint is supplied by view anchors, rather
+/// than hard-coded screen coordinates, so it lands on the actual question
+/// mark even when the equation is resized for fractions or a small phone.
+private struct AnswerHintFlight: View {
+    let source: CGPoint
+    let destination: CGPoint
+    let canvasWidth: CGFloat
+    let sourceIsRightHalf: Bool
+    let color: Color
+    let onArrival: () -> Void
+
+    @State private var progress: CGFloat = 0
+    @State private var hasArrived = false
+    @State private var arrivalRingScale: CGFloat = 0.35
+    @State private var arrivalRingOpacity = 0.0
+
+    /// A broad, two-control-point curve: it first moves out along the right
+    /// edge, travels down that edge, then turns toward the question mark.
+    private var rightEdge: CGFloat { canvasWidth - 26 }
+    private var firstControl: CGPoint {
+        CGPoint(x: rightEdge, y: source.y + 72)
+    }
+    private var secondControl: CGPoint {
+        CGPoint(x: rightEdge, y: destination.y - 94)
+    }
+
+    /// Stay at full size for almost the whole flight, then shrink rapidly into
+    /// the question mark during the final tenth of the path.
+    private var heartScale: CGFloat {
+        let finalSegment = max(CGFloat.zero, min(1, (progress - 0.90) / 0.10))
+        return 1 - finalSegment
+    }
+
+    private func point(at t: CGFloat) -> CGPoint {
+        let inverse = 1 - t
+        return CGPoint(
+            x: inverse * inverse * inverse * source.x
+                + 3 * inverse * inverse * t * firstControl.x
+                + 3 * inverse * t * t * secondControl.x
+                + t * t * t * destination.x,
+            y: inverse * inverse * inverse * source.y
+                + 3 * inverse * inverse * t * firstControl.y
+                + 3 * inverse * t * t * secondControl.y
+                + t * t * t * destination.y
+        )
+    }
+
+    var body: some View {
+        ZStack {
+            // Same arrival language as the ×2 bubble reaching the trophy:
+            // a compact ring expands exactly where the object lands.
+            Circle()
+                .stroke(color, lineWidth: 3)
+                .frame(width: 18, height: 18)
+                .scaleEffect(arrivalRingScale)
+                .opacity(arrivalRingOpacity)
+                .position(destination)
+
+            Image(systemName: "heart.fill")
+                .font(.system(size: 34, weight: .heavy))
+                .foregroundStyle(color)
+                .frame(width: 34, height: 34)
+                // Clip the actual glyph, instead of masking it. This keeps a
+                // spent RIGHT half visibly right-handed (and vice versa) on
+                // every OS rendering of SF Symbols.
+                .frame(width: 17, height: 34,
+                       alignment: sourceIsRightHalf ? .trailing : .leading)
+                .clipped()
+                .shadow(color: .white.opacity(0.7), radius: 1.5)
+                .shadow(color: color.opacity(0.38), radius: 6, y: 3)
+                .scaleEffect(heartScale)
+                .rotationEffect(.degrees(-18 + Double(progress) * 44))
+                .opacity(1)
+                .position(point(at: progress))
+
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            // Give the player an extra half-second to follow the heart all
+            // the way down the right-hand arc before the answer replaces '?'.
+            // A uniform flight keeps the last scale-down phase aligned with
+            // the actual arrival, instead of leaving an empty pause before
+            // the answer appears.
+            withAnimation(.linear(duration: 0.53)) {
+                progress = 1
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.53) {
+                guard !hasArrived else { return }
+                hasArrived = true
+                arrivalRingScale = 0.35
+                arrivalRingOpacity = 0.95
+                withAnimation(.easeOut(duration: 0.11)) {
+                    arrivalRingScale = 2.2
+                    arrivalRingOpacity = 0
+                }
+                // Keep the heart fully visible through the landing ping; the
+                // state changes only after the feedback has registered.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
+                    onArrival()
+                }
+            }
+        }
+    }
 }
 
 /// All copy is resolved from the string catalog, so there are no

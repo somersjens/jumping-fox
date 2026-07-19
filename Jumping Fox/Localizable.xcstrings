@@ -303,6 +303,9 @@
         }
       }
     },
+    "Developer mode" : {
+
+    },
     "filter.addition" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -694,6 +697,23 @@
         }
       }
     },
+    "game.intro.backToMainMenu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back to main menu"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terug naar hoofdmenu"
+          }
+        }
+      }
+    },
     "game.intro.continue" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -711,18 +731,21 @@
         }
       }
     },
-    "game.intro.backToMainMenu" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Back to main menu" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Terug naar hoofdmenu" } }
-      }
-    },
     "game.intro.continueFrom %lld" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "You’ll continue from %lld" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Je gaat verder bij %lld" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You’ll continue from %lld"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je gaat verder bij %lld"
+          }
+        }
       }
     },
     "game.intro.helperBullet" : {
@@ -793,6 +816,23 @@
         }
       }
     },
+    "game.intro.livesOff" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lives off"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Levens uit"
+          }
+        }
+      }
+    },
     "game.intro.livesOn" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -810,36 +850,72 @@
         }
       }
     },
-    "game.intro.livesOff" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : { "state" : "translated", "value" : "Lives off" }
-        },
-        "nl" : {
-          "stringUnit" : { "state" : "translated", "value" : "Levens uit" }
-        }
-      }
-    },
     "game.intro.orderAscending" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "ascending" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "oplopende" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ascending"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oplopende"
+          }
+        }
       }
     },
     "game.intro.orderRandom" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "random" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "willekeurige" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "random"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "willekeurige"
+          }
+        }
       }
     },
     "game.intro.practiceOrdered %@ %@" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Practice %@ in **%@** order." } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Oefen met de %@ in **%@** volgorde." } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice %@ in **%@** order."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oefen met de %@ in **%@** volgorde."
+          }
+        }
+      }
+    },
+    "game.intro.scorePaused" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your current score will be paused."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je huidige score wordt gepauzeerd."
+          }
+        }
       }
     },
     "game.intro.start" : {
@@ -859,60 +935,123 @@
         }
       }
     },
-    "game.intro.scorePaused" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your current score will be paused." } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Je huidige score wordt gepauzeerd." } }
-      }
-    },
     "game.intro.subject.addition" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "addition" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "optellen" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addition"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "optellen"
+          }
+        }
       }
     },
     "game.intro.subject.fractions" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "fractions" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "breuken" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fractions"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "breuken"
+          }
+        }
       }
     },
     "game.intro.subject.percentages" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "percentages" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "procenten" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "percentages"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "procenten"
+          }
+        }
       }
     },
     "game.intro.subject.subtraction" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "subtraction" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "aftrekken" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "subtraction"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aftrekken"
+          }
+        }
       }
     },
     "game.intro.subject.tables" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "times tables" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "tafels" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "times tables"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tafels"
+          }
+        }
       }
     },
     "game.intro.tablesDetail %@ %@" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Multiply %@%@ by a number from 1 to 12." } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Vermenigvuldig %@%@ met een getal van 1 t/m 12." } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiply %@%@ by a number from 1 to 12."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vermenigvuldig %@%@ met een getal van 1 t/m 12."
+          }
+        }
       }
     },
     "game.intro.tablesOrLower" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : " or lower" } },
-        "nl" : { "stringUnit" : { "state" : "translated", "value" : " of lager" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " or lower"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " of lager"
+          }
+        }
       }
     },
     "game.intro.tapToContinue" : {
@@ -1135,6 +1274,12 @@
           }
         }
       }
+    },
+    "Houd 2 seconden ingedrukt voor ontwikkelaarsmodus." : {
+
+    },
+    "Je score voor dit level staat hier" : {
+
     },
     "language.select" : {
       "extractionState" : "manual",
@@ -1438,13 +1583,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keep adding %lld to a number."
+            "value" : "You always add **%lld**. After 10 problems, the sequence changes."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tel steeds %lld bij een getal op."
+            "value" : "Je telt steeds **%lld** op. Na 10 sommen verandert de reeks."
           }
         }
       }
@@ -1455,13 +1600,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add %lld"
+            "value" : "Addition %lld"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plus %lld"
+            "value" : "Optellen %lld"
           }
         }
       }
@@ -1472,13 +1617,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add a number from 1 to %lld to a bigger number."
+            "value" : "You always add a number of **%lld or less** to another number."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tel een getal van 1 t/m %lld op bij een groter getal."
+            "value" : "Je telt steeds een getal van **%lld of lager** op bij een ander getal."
           }
         }
       }
@@ -1999,13 +2144,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You practice in order first, then with changing start numbers."
+            "value" : "Practice the fixed sequence of 30 sums; it then starts again."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Je oefent eerst op volgorde, daarna met wisselende startgetallen."
+            "value" : "Je oefent een vaste reeks van 30 sommen; daarna begint die opnieuw."
           }
         }
       }
@@ -2016,13 +2161,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keep taking %lld away from a number."
+            "value" : "You always subtract **%lld**. After 10 problems, the sequence changes."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haal steeds %lld van een getal af."
+            "value" : "Je trekt steeds **%lld** af. Na 10 sommen verandert de reeks."
           }
         }
       }
@@ -2033,13 +2178,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Minus %lld"
+            "value" : "Subtraction %lld"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Min %lld"
+            "value" : "Aftrekken %lld"
           }
         }
       }
@@ -2050,13 +2195,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Subtract a number from 1 to %lld."
+            "value" : "You always subtract a number of **%lld or less** from another number."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trek een getal van 1 t/m %lld af."
+            "value" : "Je trekt steeds een getal van **%lld of lager** af van een ander getal."
           }
         }
       }
@@ -2237,13 +2382,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Practice only the table of %lld: %lld×1 to %lld×12."
+            "value" : "You practise the **%lld times table** and multiply by the numbers 1 to 12."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oefen alleen de tafel van %lld: %lld×1 tot %lld×12."
+            "value" : "Je oefent de **tafel van %lld** met de getallen 1 t/m 12."
           }
         }
       }
@@ -2254,13 +2399,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The sums come in order first, then mixed up."
+            "value" : "After ×12, the table starts again at ×1."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "De sommen komen eerst op volgorde, daarna door elkaar."
+            "value" : "Na ×12 begint de tafel weer bij ×1."
           }
         }
       }
@@ -2288,13 +2433,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Practice the tables up to %lld."
+            "value" : "You always multiply a number of **%lld or less** by a number from 1 to 12."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oefen de tafels tot en met %lld."
+            "value" : "Je oefent de tafels van **%lld en lager** met de getallen 1 t/m 12."
           }
         }
       }
@@ -2554,39 +2699,8 @@
         }
       }
     },
-    "options.answerHint.info" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The correct answer gets green after you hit a wrong one, and you can tap the question to get the answer (but will cost you half a life!)"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Het goede antwoord wordt groen nadat je er een fout hebt, en je kunt op de som tikken om het antwoord te zien (maar dat kost je een half leven!)"
-          }
-        }
-      }
-    },
-    "options.answerHint.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Answer hints"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Antwoordhulp"
-          }
-        }
-      }
+    "Ontwikkelaarsmodus" : {
+
     },
     "options.capAt30.info" : {
       "extractionState" : "manual",
@@ -2890,40 +3004,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je hebt Premium!"
-          }
-        }
-      }
-    },
-    "settings.answerHint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Answer hint"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Antwoord-hint"
-          }
-        }
-      }
-    },
-    "settings.answerHintInfo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap the sum while playing to see the answer. It stays until the next sum and costs you half a life."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tik tijdens het spelen op de som om het antwoord te zien. Dat blijft staan tot de volgende som en kost je een half leven."
           }
         }
       }
@@ -3237,6 +3317,40 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "tutorial.complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Well done! The tutorial is complete. Now go for the high score!"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goed gedaan! De tutorial is afgerond. Ga nu voor de highscore!"
+          }
+        }
+      }
+    },
+    "tutorial.doubler.collect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collect the doubler to earn double trophies once."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pak de verdubbelaar om eenmalig dubbele trofeeën te krijgen."
           }
         }
       }
