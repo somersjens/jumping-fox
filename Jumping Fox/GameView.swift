@@ -314,7 +314,7 @@ struct GameView: View {
                                     if tutorial.developerMode {
                                         Text(language.effective == .dutch ? "Ontwikkelaarsmodus" : "Developer mode")
                                     } else {
-                                        Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
+                                        Text(isPausedIntro ? "game.intro.continue" : "game.intro.start")
                                     }
                                 }
                                 .font(.headline.weight(.heavy))
@@ -465,7 +465,7 @@ struct GameView: View {
 
     private var featureIcon: String {
         switch state.level.category {
-        case .addition, .additionMix: return "plusminus"
+        case .addition, .additionMix: return "plus"
         case .subtraction, .subtractionMix: return "minus"
         case .tables, .tablesMix: return "multiply"
         case .fractions, .fractionsMix: return "divide"
@@ -958,7 +958,8 @@ struct GameView: View {
                 illustration: .character,
                 titleIcon: nil,
                 showsMixIndicator: false,
-                emphasizesSubtitle: true
+                emphasizesSubtitle: true,
+                showsNewHighScore: state.isNewHighScore && state.score > 0
             )
             // Useful while refining the UI: a deliberate long press on the
             // game-over card previews the 30/30 completion version.
@@ -993,7 +994,8 @@ struct GameView: View {
                 illustration: .trophy,
                 titleIcon: endScreenText.menuIcon(for: state.level),
                 showsMixIndicator: state.level.startsInMix,
-                emphasizesSubtitle: false
+                emphasizesSubtitle: false,
+                showsNewHighScore: state.isNewHighScore && state.score > 0
             )
         }
         .onAppear {
@@ -1029,7 +1031,8 @@ struct GameView: View {
         illustration: EndIllustration,
         titleIcon: String?,
         showsMixIndicator: Bool,
-        emphasizesSubtitle: Bool
+        emphasizesSubtitle: Bool,
+        showsNewHighScore: Bool
     ) -> some View {
         // SF Symbols use their full em square, while rounded digits only fill
         // their cap height. Keep the circular category sign optically as high
@@ -1079,6 +1082,14 @@ struct GameView: View {
                 .background(theme.tintColor, in: Capsule())
                 .overlay {
                     Capsule().stroke(theme.color.opacity(0.12), lineWidth: 1)
+                }
+                // The smaller capsule deliberately sits just beyond the score's
+                // top-right corner, leaving the tally itself unobscured.
+                .overlay(alignment: .topTrailing) {
+                    if showsNewHighScore {
+                        newHighScoreBadge
+                            .offset(x: 30, y: -10)
+                    }
                 }
                 .padding(.top, 22)
                 .accessibilityLabel("game.accessibility.scoreOutOf \(score) \(ProgressStore.maximumTrophiesPerLevel)")
@@ -1140,6 +1151,28 @@ struct GameView: View {
             }
             .scrollBounceBehavior(.basedOnSize)
         }
+    }
+
+    /// This is intentionally not localized: “Highscore” is the game's fixed
+    /// celebratory label, irrespective of the language selected for the UI.
+    private var newHighScoreBadge: some View {
+        HStack(spacing: 4) {
+            Text(verbatim: "Highscore")
+            Image(systemName: "trophy.fill")
+        }
+        .font(.system(size: 13, weight: .bold, design: .rounded))
+        // Match the score digits exactly, for every selected character theme.
+        .foregroundStyle(.white)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(theme.color, in: Capsule())
+        .overlay {
+            Capsule().stroke(.white.opacity(0.45), lineWidth: 1)
+        }
+        .shadow(color: theme.deepColor.opacity(0.22), radius: 4, y: 2)
+        .scaleEffect(0.8, anchor: .topTrailing)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Highscore")
     }
 
     @ViewBuilder

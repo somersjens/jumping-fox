@@ -1275,6 +1275,9 @@
         }
       }
     },
+    "Highscore" : {
+
+    },
     "Houd 2 seconden ingedrukt voor ontwikkelaarsmodus." : {
 
     },
@@ -1600,13 +1603,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Addition %lld"
+            "value" : "Addition · %lld"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Optellen %lld"
+            "value" : "Optellen · %lld"
           }
         }
       }
@@ -2178,13 +2181,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Subtraction %lld"
+            "value" : "Subtraction · %lld"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aftrekken %lld"
+            "value" : "Aftrekken · %lld"
           }
         }
       }
