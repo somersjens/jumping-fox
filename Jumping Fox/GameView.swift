@@ -25,6 +25,7 @@ struct GameView: View {
     // Pre-game mode intro card. The field is frozen until the player starts.
     @State private var showingIntro = true
     @State private var isContinuingLevel: Bool
+    @State private var isPausedAtIntro = false
     @State private var isShowingCompletionPreview = false
     @State private var heartHintNudge: CGFloat = 0
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
@@ -137,76 +138,97 @@ struct GameView: View {
         withAnimation(.snappy(duration: 0.25)) { showingIntro = false }
     }
 
+    private func pauseToIntro() {
+        guard !showingIntro else { return }
+        PausedGameStore.shared.pause(state)
+        scene.isFrozen = true
+        isPausedAtIntro = true
+        withAnimation(.snappy(duration: 0.25)) { showingIntro = true }
+    }
+
+    private func returnToMainMenu() {
+        dismiss()
+    }
+
+    private var isPausedIntro: Bool {
+        isPausedAtIntro || isContinuingLevel
+    }
+
     private var introCard: some View {
         let info = ModeIntro.info(for: state.level)
-        let trophyBullet = L("game.intro.trophyBullet")
-        let unlimitedLivesBullet = L("game.intro.unlimitedBullet")
-        let helperBullet = L("game.intro.helperBullet")
-        let bullets = info.bullets
-            + [trophyBullet]
-            + (state.lifeMode == .unlimited ? [unlimitedLivesBullet] : [])
-            + (state.isAnswerHelperEnabled ? [helperBullet] : [])
+        let featureCards = [
+            IntroFeature(icon: featureIcon, text: practiceDescription(info: info)),
+            IntroFeature(number: state.level.cardNumber, text: detailDescription(info: info)),
+            IntroFeature(icon: "trophy.fill", text: trophyDescription)
+        ]
         return ZStack {
             Color.black.opacity(0.55).ignoresSafeArea()
 
             GeometryReader { proxy in
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 18) {
-                // Keep the header focused on the level name: the character
-                // stays on the home screen and doesn't compete with the copy.
-                Text(info.title)
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
-                    .foregroundStyle(theme.deepColor)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.7)
-                    .frame(maxWidth: .infinity)
+                    VStack(alignment: .leading, spacing: 14) {
+                        HStack(alignment: .bottom, spacing: 14) {
+                            characterPortrait
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(info.title)
+                                    .font(.system(size: 33, weight: .heavy, design: .rounded))
+                                    .foregroundStyle(theme.deepColor)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.80)
+                                    .layoutPriority(1)
+                                HStack(spacing: 7) {
+                                    introStatusLabel(icon: "heart.fill", text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
+                                    introStatusLabel(icon: "lightbulb.fill", text: state.isAnswerHelperEnabled ? L("game.intro.helperOn") : L("game.intro.helperOff"))
+                                }
+                            }
+                            Spacer(minLength: 0)
+                        }
+                        DashedDivider(color: theme.color.opacity(0.45))
+                            .padding(.vertical, 4)
 
-                Text("game.intro.howItWorks")
-                    .font(.headline.weight(.heavy))
-                    .foregroundStyle(theme.deepColor)
+                        ForEach(featureCards) { feature in
+                            introFeatureCard(feature)
+                        }
 
-                Rectangle()
-                    .fill(theme.color.opacity(0.3))
-                    .frame(height: 1)
+                        VStack(spacing: 10) {
+                            Button(action: dismissIntro) {
+                                Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
+                                    .font(.headline.weight(.heavy))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 15)
+                                    .foregroundStyle(.white)
+                                    .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                            }
+                            .buttonStyle(.plain)
 
-                VStack(alignment: .leading, spacing: 14) {
-                    ForEach(bullets, id: \.self) { bullet in
-                        HStack(alignment: .firstTextBaseline, spacing: 14) {
-                            Circle()
-                                .fill(theme.color)
-                                .frame(width: 10, height: 10)
-                            Text(bullet)
-                                .font(.subheadline)
-                                .foregroundStyle(theme.deepColor.opacity(0.86))
-                                .fixedSize(horizontal: false, vertical: true)
+                            Button(action: returnToMainMenu) {
+                                Text("game.intro.backToMainMenu")
+                                    .font(.headline.weight(.heavy))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 15)
+                                    .foregroundStyle(theme.deepColor)
+                                    .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                    .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                        .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
+                            }
+                            .buttonStyle(.plain)
+                        }
+
+                        if isPausedIntro {
+                            pausedIntroMessage
                         }
                     }
-                }
-
-                Button(action: dismissIntro) {
-                    Text(isContinuingLevel ? "game.intro.continue" : "game.intro.start")
-                        .font(.headline.weight(.heavy))
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .foregroundStyle(.white)
-                        .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                }
-                .buttonStyle(.plain)
-                }
-                .padding(28)
-                .frame(maxWidth: 400)
-                .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 26, style: .continuous)
-                    .stroke(theme.deepColor.opacity(0.18), lineWidth: 1)
-                )
-                .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
-                .background(.background, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+                    .padding(28)
+                    .padding(.top, 4)
+                    .frame(maxWidth: 420)
+                    .background(.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
+                    .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
+                    .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+                    .onTapGesture(perform: dismissIntro)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    // ScrollView normally pins its content to the top. Fill
-                    // the available height so this card is centred on regular
-                    // phones, while still allowing a scroll on short screens.
                     .frame(minHeight: proxy.size.height, alignment: .center)
                 }
                 .scrollBounceBehavior(.basedOnSize)
@@ -215,6 +237,173 @@ struct GameView: View {
         .contentShape(Rectangle())
         .onTapGesture(perform: dismissIntro)
         .transition(.opacity)
+    }
+
+    private var characterPortrait: some View {
+        theme.artwork
+            .resizable()
+            .scaledToFit()
+            .padding(8)
+            .frame(width: 70, height: 70)
+            .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(theme.deepColor.opacity(0.12), lineWidth: 1))
+    }
+
+    private func introStatusLabel(icon: String, text: String) -> some View {
+        Label(text, systemImage: icon)
+            .font(.system(size: 10, weight: .bold))
+            .foregroundStyle(theme.deepColor.opacity(0.82))
+            .lineLimit(1)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+            .background(theme.skyColor.opacity(0.72), in: Capsule())
+            .overlay(Capsule().stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+    }
+
+    private var pausedIntroMessage: some View {
+        Group {
+            if isPausedAtIntro && state.score > 0 {
+                Text("game.intro.scorePaused")
+            } else if isContinuingLevel && state.score > 0 {
+                HStack(spacing: 6) {
+                    Text("game.intro.continueFrom \(state.score)")
+                    Image(systemName: "trophy.fill")
+                }
+            }
+        }
+        .font(.footnote.weight(.semibold))
+        .foregroundStyle(theme.deepColor.opacity(0.62))
+        .frame(maxWidth: .infinity)
+        .padding(.top, 2)
+    }
+
+    private func introFeatureCard(_ feature: IntroFeature) -> some View {
+        HStack(alignment: .center, spacing: 14) {
+            Group {
+                if let number = feature.number {
+                    Text(number)
+                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.48)
+                        .allowsTightening(true)
+                } else {
+                    Image(systemName: feature.icon)
+                        .font(.system(size: feature.icon == "multiply" ? 34 : 28, weight: .bold))
+                }
+            }
+            .foregroundStyle(theme.deepColor)
+            .frame(width: 54, height: 54)
+            .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
+
+            emphasizedText(feature.text)
+                .font(.subheadline)
+                .foregroundStyle(theme.deepColor.opacity(0.84))
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(theme.skyColor.opacity(0.32), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+            .stroke(theme.deepColor.opacity(0.10), lineWidth: 1))
+    }
+
+    /// Localized descriptions use **bold** markers. Keeping the markers in
+    /// the string catalog lets each language choose its own emphasis.
+    private func emphasizedText(_ copy: String) -> Text {
+        let parts = copy.components(separatedBy: "**")
+        var result = Text("")
+        for (index, part) in parts.enumerated() {
+            result = result + (index.isMultiple(of: 2)
+                ? Text(part)
+                : Text(part).fontWeight(.bold))
+        }
+        return result
+    }
+
+    private var featureIcon: String {
+        switch state.level.category {
+        case .addition, .additionMix: return "plusminus"
+        case .subtraction, .subtractionMix: return "minus"
+        case .tables, .tablesMix: return "multiply"
+        case .fractions, .fractionsMix: return "divide"
+        case .percentages, .percentagesMix: return "percent"
+        case .mix, .supermix: return "shuffle"
+        }
+    }
+
+    private func practiceDescription(info: (title: String, bullets: [String])) -> String {
+        // The mixed menu is deliberately an all-in-one introduction. The five
+        // skill menus instead explain the current skill and its order clearly.
+        guard state.level.category != .mix && state.level.category != .supermix else {
+            return info.bullets[0]
+        }
+        let order = state.level.startsInMix || state.level.category.isMix
+            ? L("game.intro.orderRandom")
+            : L("game.intro.orderAscending")
+        return L("game.intro.practiceOrdered \(practiceSubject) \(order)")
+    }
+
+    private func detailDescription(info: (title: String, bullets: [String])) -> String {
+        guard state.level.category == .tables || state.level.category == .tablesMix else {
+            return info.bullets[1]
+        }
+        let qualifier = state.level.startsInMix || state.level.category == .tablesMix
+            ? L("game.intro.tablesOrLower")
+            : ""
+        return L("game.intro.tablesDetail \(state.level.cardNumber) \(qualifier)")
+    }
+
+    private var practiceSubject: String {
+        switch state.level.category {
+        case .addition, .additionMix: return L("game.intro.subject.addition")
+        case .subtraction, .subtractionMix: return L("game.intro.subject.subtraction")
+        case .tables, .tablesMix: return L("game.intro.subject.tables")
+        case .fractions, .fractionsMix: return L("game.intro.subject.fractions")
+        case .percentages, .percentagesMix: return L("game.intro.subject.percentages")
+        case .mix, .supermix: return ""
+        }
+    }
+
+    private var trophyDescription: String {
+        return L("game.intro.trophyBullet")
+    }
+
+    private struct IntroFeature: Identifiable {
+        let icon: String
+        let number: String?
+        let text: String
+        init(icon: String, text: String) {
+            self.icon = icon
+            self.number = nil
+            self.text = text
+        }
+        init(number: String, text: String) {
+            self.icon = "number"
+            self.number = number
+            self.text = text
+        }
+        var id: String { "\(icon)-\(number ?? "")-\(text)" }
+    }
+
+    /// A single-stroke divider avoids the doubled edge a dashed rectangle
+    /// creates at this small height.
+    private struct DashedDivider: View {
+        let color: Color
+
+        var body: some View {
+            GeometryReader { proxy in
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: proxy.size.height / 2))
+                    path.addLine(to: CGPoint(x: proxy.size.width, y: proxy.size.height / 2))
+                }
+                .stroke(color, style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
+            }
+            .frame(height: 2)
+        }
     }
 
     // MARK: HUD
@@ -234,8 +423,7 @@ struct GameView: View {
                     // put — the player leaves via its Play Again / Menu buttons.
                     state.finishRun()
                 } else {
-                    PausedGameStore.shared.pause(state)
-                    dismiss()
+                    pauseToIntro()
                 }
             } label: {
                 // Normal pause button during regular play; a checkmark "done"
