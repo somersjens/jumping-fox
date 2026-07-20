@@ -40,6 +40,11 @@ struct PremiumView: View {
                 .frame(maxWidth: 620)
                 .frame(maxWidth: .infinity)
             }
+            // A form sheet on iPad can be shorter than this purchase flow.
+            // Keep the action area reachable even in a short window or with
+            // larger accessibility text.
+            .scrollBounceBehavior(.always)
+            .scrollIndicators(.visible)
         }
         .overlay(alignment: .topLeading) { closeButton }
         .overlay(alignment: .topTrailing) {
@@ -259,6 +264,25 @@ struct PremiumView: View {
         }
     }
 
+}
+
+/// A purchase flow benefits from the larger page-style iPad presentation:
+/// its price and restore controls are visible without an initial scroll.
+/// Older supported iOS versions retain the largest available detent.
+extension View {
+    @ViewBuilder
+    func premiumSheetPresentation() -> some View {
+        if #available(iOS 18.0, *) {
+            self
+                .presentationSizing(.page)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        } else {
+            self
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        }
+    }
 }
 
 #Preview {

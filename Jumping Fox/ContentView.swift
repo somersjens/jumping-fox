@@ -177,6 +177,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showPremium) {
             PremiumView()
+                .premiumSheetPresentation()
         }
         .popover(isPresented: $showGoalPicker, arrowEdge: .top) {
             DailyGoalPicker(theme: character)

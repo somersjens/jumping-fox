@@ -48,6 +48,7 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showPremium) {
             PremiumView()
+                .premiumSheetPresentation()
         }
     }
 
