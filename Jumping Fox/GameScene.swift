@@ -2229,31 +2229,67 @@ final class GameScene: SKScene {
 
     // MARK: HUD anchors (scene coordinates)
 
+    /// SwiftUI reports the actual rendered HUD rectangles after layout. Cache
+    /// their scene-coordinate centres so flight effects never drift when the
+    /// HUD asset size, score width or device layout changes.
+    private var renderedTrophyHUDPoint: CGPoint?
+    private var renderedHeartHUDPoints: [Int: CGPoint] = [:]
+
+    /// Input rectangles are in the containing window's coordinate space.
+    /// `SKScene.convertPoint(fromView:)` handles the SKView's actual bounds,
+    /// scale and coordinate flip, which is more accurate than recreating
+    /// those rules from a SwiftUI GeometryReader.
+    func setHUDTargets(trophy: CGRect?, hearts: [Int: CGRect], viewSize: CGSize) {
+        guard viewSize.width > 0, viewSize.height > 0 else { return }
+        func scenePoint(for rect: CGRect) -> CGPoint {
+#if os(iOS)
+            if let skView = view, let window = skView.window {
+                let viewPoint = skView.convert(CGPoint(x: rect.midX, y: rect.midY), from: window)
+                return convertPoint(fromView: viewPoint)
+            }
+#endif
+            // Before the scene has been attached to an SKView, keep the
+            // previous scale-based fallback. It is replaced on first layout.
+            return CGPoint(x: rect.midX * size.width / viewSize.width,
+                           y: size.height - rect.midY * size.height / viewSize.height)
+        }
+        renderedTrophyHUDPoint = trophy.map(scenePoint)
+        renderedHeartHUDPoints = hearts.mapValues(scenePoint)
+    }
+
     /// Vertical centre of the HUD top row, derived from the real safe-area
     /// inset of the view so it matches every device precisely.
     private var hudRowY: CGFloat {
         let safeTop = view?.safeAreaInsets.top ?? 44
-        // top padding (8) + half the row height (~24) below the safe area.
-        return size.height - safeTop - 8 - 12
+        // top padding (8) + half the common 28 pt HUD asset below the safe
+        // area. This remains the fallback until SwiftUI reports its anchors.
+        return size.height - safeTop - 8 - GameHUDMetrics.assetSize / 2
     }
 
     /// Centre of the specific heart the pickup will fill. Mirrors the
-    /// SwiftUI layout: three ~20 pt hearts, 2 pt spacing, right-aligned
+    /// SwiftUI layout: three 28 pt hearts, 2 pt spacing, right-aligned
     /// with 16 pt padding; hearts fill left-to-right, left half first.
     private func heartHUDPoint(fillsRight: Bool) -> CGPoint {
-        let heartWidth: CGFloat = 20
-        let spacing: CGFloat = 2
+        let heartWidth = GameHUDMetrics.assetSize
+        let spacing = GameHUDMetrics.heartSpacing
         let index = min(2, max(0, (state.livesHalves ?? 0) / 2))
-        let rightEdge = size.width - 16
+        if let rendered = renderedHeartHUDPoints[index] {
+            return CGPoint(x: rendered.x + (fillsRight ? heartWidth * 0.22 : -heartWidth * 0.22),
+                           y: rendered.y)
+        }
+        let rightEdge = size.width - GameHUDMetrics.horizontalPadding
         let centerX = rightEdge - CGFloat(2 - index) * (heartWidth + spacing) - heartWidth / 2
-        return CGPoint(x: centerX + (fillsRight ? 4 : -4), y: hudRowY)
+        return CGPoint(x: centerX + (fillsRight ? heartWidth * 0.22 : -heartWidth * 0.22), y: hudRowY)
     }
 
     /// Centre of the trophy icon, which sits just right of the score number
     /// in the centred score cluster (number width scales with its digits).
     private var trophyHUDPoint: CGPoint {
+        if let renderedTrophyHUDPoint { return renderedTrophyHUDPoint }
         let digits = CGFloat(String(state.score).count)
-        return CGPoint(x: size.width / 2 + digits * 7.5 + 14, y: hudRowY)
+        let textHalfWidth = digits * 7.5
+        let trophyOffset = textHalfWidth + 3 + GameHUDMetrics.assetSize / 2
+        return CGPoint(x: size.width / 2 + trophyOffset, y: hudRowY)
     }
 
     /// A smooth arc from a pickup to its HUD element: quadratic curve that

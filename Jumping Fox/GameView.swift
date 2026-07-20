@@ -22,11 +22,38 @@ private enum AnswerHintAnchor: Hashable {
     case question
 }
 
+/// The play HUD uses one square canvas for every top-row asset. Keeping this
+/// metric shared also gives SpriteKit a sensible fallback before SwiftUI has
+/// reported the rendered anchors.
+enum GameHUDMetrics {
+    static let assetSize: CGFloat = 28
+    static let pauseAssetSize: CGFloat = assetSize * 1.1
+    static let heartSpacing: CGFloat = 2
+    static let horizontalPadding: CGFloat = 16
+}
+
+/// Exact rendered destinations for SpriteKit flights. The visual HUD is
+/// SwiftUI, so anchors are more reliable than duplicating its typography and
+/// layout maths in the scene.
+private enum GameHUDAnchor: Hashable {
+    case trophy
+    case heart(Int)
+}
+
 private struct AnswerHintAnchors: PreferenceKey {
     static var defaultValue: [AnswerHintAnchor: Anchor<CGRect>] = [:]
 
     static func reduce(value: inout [AnswerHintAnchor: Anchor<CGRect>],
                        nextValue: () -> [AnswerHintAnchor: Anchor<CGRect>]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
+    }
+}
+
+private struct GameHUDAnchors: PreferenceKey {
+    static var defaultValue: [GameHUDAnchor: Anchor<CGRect>] = [:]
+
+    static func reduce(value: inout [GameHUDAnchor: Anchor<CGRect>],
+                       nextValue: () -> [GameHUDAnchor: Anchor<CGRect>]) {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
@@ -165,6 +192,15 @@ struct GameView: View {
                 }
             }
         }
+        .overlayPreferenceValue(GameHUDAnchors.self) { anchors in
+            GeometryReader { proxy in
+                Color.clear
+                    .onAppear { updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.score) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.livesHalves) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: proxy.size) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+            }
+        }
         .onAppear {
             scene.isFrozen = showingIntro
             // SpriteKit may lay out its initial scene just after onAppear.
@@ -214,6 +250,22 @@ struct GameView: View {
 #if canImport(UIKit)
         UIApplication.shared.isIdleTimerDisabled = awake
 #endif
+    }
+
+    /// Supplies window-coordinate rectangles to SpriteKit. The scene converts
+    /// them through its actual SKView, avoiding any assumptions about safe
+    /// areas, Dynamic Island or the SwiftUI overlay's local origin.
+    private func updateSceneHUDTargets(_ anchors: [GameHUDAnchor: Anchor<CGRect>],
+                                       in proxy: GeometryProxy) {
+        let globalOrigin = proxy.frame(in: .global).origin
+        func globalRect(for anchor: Anchor<CGRect>) -> CGRect {
+            proxy[anchor].offsetBy(dx: globalOrigin.x, dy: globalOrigin.y)
+        }
+        let trophy = anchors[.trophy].map { globalRect(for: $0) }
+        let hearts = Dictionary(uniqueKeysWithValues: (0..<3).compactMap { index in
+            anchors[.heart(index)].map { (index, globalRect(for: $0)) }
+        })
+        scene.setHUDTargets(trophy: trophy, hearts: hearts, viewSize: proxy.size)
     }
 
     // MARK: Mode intro card
@@ -569,8 +621,10 @@ struct GameView: View {
                 // Normal pause button during regular play; a checkmark "done"
                 // button of the same size once the run is finishable.
                 Image(systemName: isRunFinishable ? "checkmark.circle.fill" : "pause.circle.fill")
-                    .font(.title)
-                    .foregroundStyle(theme.deepColor.opacity(0.85))
+                    .font(.system(size: GameHUDMetrics.pauseAssetSize, weight: .regular))
+                    .foregroundStyle(theme.deepColor)
+                    .frame(width: GameHUDMetrics.pauseAssetSize,
+                           height: GameHUDMetrics.pauseAssetSize)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .animation(.snappy(duration: 0.25), value: isRunFinishable)
@@ -584,8 +638,10 @@ struct GameView: View {
                     .contentTransition(.numericText())
                     .animation(.snappy(duration: 0.25), value: state.score)
                 Image(systemName: "trophy.fill")
-                    .font(.title3)
+                    .font(.system(size: GameHUDMetrics.assetSize, weight: .regular))
                     .foregroundStyle(theme.deepColor)
+                    .frame(width: GameHUDMetrics.assetSize, height: GameHUDMetrics.assetSize)
+                    .anchorPreference(key: GameHUDAnchors.self, value: .bounds) { [.trophy: $0] }
             }
             .fixedSize()
 
@@ -603,12 +659,13 @@ struct GameView: View {
         if state.isEndless {
             // Lives used up in unlimited mode: swap the hearts for infinity.
             Image(systemName: "infinity")
-                .font(.system(size: 21, weight: .heavy, design: .rounded))
+                .font(.system(size: GameHUDMetrics.assetSize, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.deepColor)
+                .frame(width: GameHUDMetrics.assetSize, height: GameHUDMetrics.assetSize)
                 .transition(.scale.combined(with: .opacity))
         } else if let halves = state.livesHalves {
             heartRow(filledHalves: halves)
-                .font(.title3)
+                .font(.system(size: GameHUDMetrics.assetSize, weight: .regular))
                 .animation(.snappy(duration: 0.25), value: halves)
         }
     }
@@ -618,11 +675,15 @@ struct GameView: View {
     private func heartRow(filledHalves: Int) -> some View {
         let spendingIndex = (filledHalves - 1) / 2
         let spendingRightHalf = filledHalves.isMultiple(of: 2)
-        return HStack(spacing: 2) {
+        return HStack(spacing: GameHUDMetrics.heartSpacing) {
             ForEach(0..<3, id: \.self) { index in
                 heartIcon(fill: min(2, max(0, filledHalves - index * 2)),
                           spendingHalf: isAnswerHintFlying && index == spendingIndex,
                           spendingRightHalf: spendingRightHalf)
+                    .frame(width: GameHUDMetrics.assetSize, height: GameHUDMetrics.assetSize)
+                    .anchorPreference(key: GameHUDAnchors.self, value: .bounds) {
+                        [.heart(index): $0]
+                    }
                     .anchorPreference(key: AnswerHintAnchors.self, value: .bounds) { anchor in
                         guard isAnswerHintFlying,
                               index == (filledHalves - 1) / 2 else { return [:] }
@@ -1300,13 +1361,13 @@ private struct AnswerHintFlight: View {
                 .position(destination)
 
             Image(systemName: "heart.fill")
-                .font(.system(size: 34, weight: .heavy))
+                .font(.system(size: GameHUDMetrics.assetSize, weight: .heavy))
                 .foregroundStyle(color)
-                .frame(width: 34, height: 34)
+                .frame(width: GameHUDMetrics.assetSize, height: GameHUDMetrics.assetSize)
                 // Clip the actual glyph, instead of masking it. This keeps a
                 // spent RIGHT half visibly right-handed (and vice versa) on
                 // every OS rendering of SF Symbols.
-                .frame(width: 17, height: 34,
+                .frame(width: GameHUDMetrics.assetSize / 2, height: GameHUDMetrics.assetSize,
                        alignment: sourceIsRightHalf ? .trailing : .leading)
                 .clipped()
                 .shadow(color: .white.opacity(0.7), radius: 1.5)
