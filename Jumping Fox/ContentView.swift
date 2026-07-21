@@ -17,6 +17,17 @@ struct LevelSelection: Identifiable {
     var id: String { level.id }
 }
 
+/// The brief return-to-menu celebration after a level earns more trophies.
+/// Keeping the before-values makes the level, category and total counters all
+/// visibly grow from the score the player just had.
+private struct ScoreCelebration: Identifiable {
+    let levelID: String
+    let levelStart: Int
+    let categoryStart: Int
+    let totalStart: Int
+    let id = UUID()
+}
+
 /// An eager, adaptive grid for the level menu. `LazyVGrid` discards cards
 /// outside the viewport; when the options panel changes height, those cards
 /// can otherwise appear to animate in from the bottom while scrolling.
@@ -168,8 +179,13 @@ struct ContentView: View {
     @State private var showsOptions = false
     @State private var expandedOptionInfo: String?
     @State private var headerDetailsHeight: CGFloat = 0
-    @State private var showTutorialScoreHint = false
     @State private var lastOpenedLevelID: String?
+    @State private var openedLevelScore = 0
+    @State private var openedCategoryTrophies = 0
+    @State private var openedTotalTrophies = 0
+    @State private var scoreCelebration: ScoreCelebration?
+    @State private var highlightsHeaderTrophies = false
+    @State private var showTutorialScoreHint = false
     @State private var scoreHintLevelID: String?
     @State private var suppressCharacterTap = false
 
@@ -229,18 +245,57 @@ struct ContentView: View {
             }
         }
         .gameCover(item: $selection, onDismiss: {
-            refreshID = UUID()
-            guard tutorial.shouldShowScoreHint, let levelID = lastOpenedLevelID else { return }
-            scoreHintLevelID = levelID
-            withAnimation(.snappy) { showTutorialScoreHint = true }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
-                withAnimation { showTutorialScoreHint = false }
-                scoreHintLevelID = nil
-                tutorial.consumeScoreHint()
+            let shouldShowTutorialHint = tutorial.shouldShowScoreHint
+            if shouldShowTutorialHint, let levelID = lastOpenedLevelID {
+                scoreHintLevelID = levelID
+                withAnimation(.easeOut(duration: 0.25)) { showTutorialScoreHint = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+                    withAnimation(.easeOut(duration: 0.2)) { showTutorialScoreHint = false }
+                    scoreHintLevelID = nil
+                    tutorial.consumeScoreHint()
+                }
+            }
+
+            guard let levelID = lastOpenedLevelID,
+                  displayedScore(forLevelID: levelID) > openedLevelScore else {
+                refreshID = UUID()
+                return
+            }
+
+            let celebration = ScoreCelebration(levelID: levelID,
+                                               levelStart: openedLevelScore,
+                                               categoryStart: openedCategoryTrophies,
+                                               totalStart: openedTotalTrophies)
+            // Apply the menu refresh and animation marker together. Otherwise
+            // SwiftUI can paint the new total for one frame before it knows to
+            // count up from the old one.
+            withAnimation(.easeOut(duration: 0.34)) {
+                scoreCelebration = celebration
+                refreshID = UUID()
+            }
+            // The reward first lands on its level. Then this small cue guides
+            // attention up to the category and overall progress.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.16) {
+                guard scoreCelebration?.id == celebration.id else { return }
+                withAnimation(.spring(response: 0.42, dampingFraction: 0.56)) {
+                    highlightsHeaderTrophies = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.82) {
+                guard scoreCelebration?.id == celebration.id else { return }
+                withAnimation(.easeOut(duration: 0.24)) { highlightsHeaderTrophies = false }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                guard scoreCelebration?.id == celebration.id else { return }
+                withAnimation(.easeOut(duration: 0.25)) { scoreCelebration = nil }
             }
         })
         .onChange(of: selection?.id) { selectionID in
-            if let selectionID { lastOpenedLevelID = selectionID }
+            guard let selectionID else { return }
+            lastOpenedLevelID = selectionID
+            openedLevelScore = displayedScore(forLevelID: selectionID)
+            openedCategoryTrophies = categoryTrophies
+            openedTotalTrophies = totalTrophies
         }
         .task {
             premium.startInitialRefresh()
@@ -248,8 +303,7 @@ struct ContentView: View {
         .overlay {
             if showTutorialScoreHint {
                 ZStack(alignment: .top) {
-                    Color.black.opacity(0.06)
-                        .ignoresSafeArea()
+                    Color.black.opacity(0.06).ignoresSafeArea()
                     Text("tutorial.scoreHint")
                         .font(.headline.weight(.heavy))
                         .multilineTextAlignment(.center)
@@ -265,7 +319,7 @@ struct ContentView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    withAnimation { showTutorialScoreHint = false }
+                    withAnimation(.easeOut(duration: 0.2)) { showTutorialScoreHint = false }
                     scoreHintLevelID = nil
                     tutorial.consumeScoreHint()
                 }
@@ -354,9 +408,13 @@ struct ContentView: View {
 
                     Label {
                         // The trophy icon already says "trophies"; just the count.
-                        Text(verbatim: "\(totalTrophies)" + (answerHelper ? " *" : ""))
+                        TrophyCountText(from: scoreCelebration?.totalStart ?? totalTrophies,
+                                         to: totalTrophies,
+                                         celebrationID: scoreCelebration?.id,
+                                         suffix: answerHelper ? " *" : "",
+                                         duration: 0.95)
                     } icon: {
-                        Image(systemName: "trophy.fill")
+                        HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
                     }
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .foregroundStyle(character.deepColor)
@@ -393,9 +451,13 @@ struct ContentView: View {
                     Text(selectedFilter.title)
                     .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
                     Label {
-                        Text(verbatim: "\(categoryTrophies)\(answerHelper ? " *" : "")")
+                        TrophyCountText(from: scoreCelebration?.categoryStart ?? categoryTrophies,
+                                         to: categoryTrophies,
+                                         celebrationID: scoreCelebration?.id,
+                                         suffix: answerHelper ? " *" : "",
+                                         duration: 0.95)
                     } icon: {
-                        Image(systemName: "trophy.fill")
+                        HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
                     }
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                     Spacer()
@@ -495,6 +557,12 @@ struct ContentView: View {
             ? min(ProgressStore.maximumTrophiesPerLevel, pausedRaw)
             : pausedRaw
         return max(recorded, paused)
+    }
+
+    /// Matches the score a level card presents in the current helper mode, so
+    /// a highlight always corresponds to a visibly improved score.
+    private func displayedScore(forLevelID levelID: String) -> Int {
+        ProgressStore.bestScore(levelID: levelID, helperEnabled: answerHelper)
     }
 
     /// In the Mix menu the mode buttons show exactly which operations they
@@ -673,8 +741,10 @@ struct ContentView: View {
                                   showsHelperMarker: answerHelper,
                                   showsTrophies: true,
                                   isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
-                                  showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
-                                  dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
+                                  scoreCelebrationStart: scoreCelebration?.levelID == level.id
+                                      ? scoreCelebration?.levelStart : nil,
+                                  isCelebratingNewScore: scoreCelebration?.levelID == level.id,
+                                  celebrationID: scoreCelebration?.id,
                                   cardHeight: levelCardHeight,
                                   theme: character) {
                         selection = LevelSelection(level: level)
@@ -736,8 +806,10 @@ struct ContentView: View {
                                       showsHelperMarker: answerHelper,
                                       showsTrophies: true,
                                       isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
-                                      showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
-                                      dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
+                                      scoreCelebrationStart: scoreCelebration?.levelID == level.id
+                                          ? scoreCelebration?.levelStart : nil,
+                                      isCelebratingNewScore: scoreCelebration?.levelID == level.id,
+                                      celebrationID: scoreCelebration?.id,
                                       cardHeight: levelCardHeight,
                                       theme: character) {
                             selection = LevelSelection(level: level)
@@ -1148,6 +1220,60 @@ private struct PennantShape: Shape {
 /// Redesigned level card: a big central number, a trophy score line, a
 /// three-dot progress indicator, and a top-left tier badge. Reaching the
 /// maximum score turns the card into a celebratory gold "completed" card.
+private struct HeaderTrophyIcon: View {
+    let isHighlighted: Bool
+
+    var body: some View {
+        ZStack {
+            Image(systemName: "trophy.fill")
+                .scaleEffect(isHighlighted ? 1.34 : 1)
+                .rotationEffect(.degrees(isHighlighted ? -7 : 0))
+            Image(systemName: "sparkle")
+                .font(.caption2.weight(.bold))
+                .offset(x: 10, y: -10)
+                .scaleEffect(isHighlighted ? 1 : 0.3)
+                .opacity(isHighlighted ? 0.9 : 0)
+        }
+    }
+}
+
+private struct TrophyCountText: View {
+    let from: Int
+    let to: Int
+    let celebrationID: UUID?
+    var suffix = ""
+    // The score waits until the trophy's landing pulse has fully settled.
+    var delay = 1.16
+    var duration = 0.78
+    @State private var startedAt = Date.distantPast
+    @State private var startedCelebrationID: UUID?
+
+    var body: some View {
+        TimelineView(.animation) { context in
+            let elapsed = context.date.timeIntervalSince(startedAt)
+            let progress = celebrationID == nil ? 1 : min(1, max(0, (elapsed - delay) / duration))
+            let eased = 1 - pow(1 - progress, 3)
+            let value = Int((Double(from) + Double(to - from) * eased).rounded())
+            Text(verbatim: "\(value)\(suffix)")
+                .contentTransition(.numericText())
+                .scaleEffect(1 + sin(progress * .pi) * 0.13)
+        }
+        .onAppear { beginAnimationIfNeeded() }
+        .onChange(of: celebrationID) { _ in beginAnimationIfNeeded() }
+        .accessibilityLabel("\(to)\(suffix)")
+    }
+
+    private func beginAnimationIfNeeded() {
+        guard let celebrationID else {
+            startedCelebrationID = nil
+            return
+        }
+        guard startedCelebrationID != celebrationID else { return }
+        startedCelebrationID = celebrationID
+        startedAt = Date()
+    }
+}
+
 struct LevelCardView: View {
     let level: LevelConfig
     let status: LevelCardStatus
@@ -1158,12 +1284,16 @@ struct LevelCardView: View {
     let showsHelperMarker: Bool
     let showsTrophies: Bool
     let isPaused: Bool
-    var showsTutorialScoreHint = false
-    var dimsForTutorialScoreHint = false
+    var scoreCelebrationStart: Int?
+    var isCelebratingNewScore = false
+    var celebrationID: UUID?
     /// iPad cards preserve the iPhone design, scaled as one component.
     var cardHeight: CGFloat = 96
     let theme: AnimalCharacter
     let action: () -> Void
+    @State private var trophyPulse = false
+    @State private var highlightOpacity = 0.0
+    @State private var animatedCelebrationID: UUID?
 
     private var cardScale: CGFloat { cardHeight / 96 }
 
@@ -1261,6 +1391,9 @@ struct LevelCardView: View {
     /// when in-game round-off is off and a run pushed the raw score past 30.
     private var displayBest: Int { min(visibleBest, ProgressStore.maximumTrophiesPerLevel) }
     private var displayPaused: Int { min(pausedBest, ProgressStore.maximumTrophiesPerLevel) }
+    private var celebrationDisplayStart: Int {
+        min(scoreCelebrationStart ?? displayBest, ProgressStore.maximumTrophiesPerLevel)
+    }
     private var helperMarker: String {
         showsHelperMarker && helperBest > best ? " *" : ""
     }
@@ -1281,11 +1414,22 @@ struct LevelCardView: View {
                 }
             }
             .frame(height: cardHeight)
-            .opacity(dimsForTutorialScoreHint ? 0.30 : (isLocked ? 0.55 : 1))
-            .scaleEffect(status == .recommended ? 1.02 : 1)
+            .opacity(isLocked ? 0.55 : 1)
+            .scaleEffect((status == .recommended ? 1.02 : 1) * (trophyPulse ? 1.04 : 1))
+            .overlay {
+                if isCelebratingNewScore {
+                    RoundedRectangle(cornerRadius: 18 * cardScale)
+                        .stroke(theme.deepColor, lineWidth: 4 * cardScale)
+                        .shadow(color: theme.color.opacity(0.85), radius: 9 * cardScale)
+                        .opacity(highlightOpacity)
+                        .allowsHitTesting(false)
+                }
+            }
         }
         .buttonStyle(.plain)
         .disabled(isLocked)
+        .onAppear { animateTrophyPulseIfNeeded() }
+        .onChange(of: isCelebratingNewScore) { _ in animateTrophyPulseIfNeeded() }
     }
 
     // MARK: Standard card
@@ -1318,13 +1462,6 @@ struct LevelCardView: View {
             RoundedRectangle(cornerRadius: 18 * cardScale)
                 .stroke(borderColor, lineWidth: (status == .recommended ? 2.5 : 1) * cardScale)
         )
-        .overlay {
-            if showsTutorialScoreHint {
-                RoundedRectangle(cornerRadius: 18 * cardScale)
-                    .stroke(theme.deepColor, lineWidth: 4 * cardScale)
-                    .shadow(color: theme.deepColor.opacity(0.75), radius: 7 * cardScale)
-            }
-        }
         .shadow(color: .black.opacity(0.06), radius: 5, x: 0, y: 3)
     }
 
@@ -1371,11 +1508,39 @@ struct LevelCardView: View {
 
     private var trophyChip: some View {
         return HStack(spacing: 3 * cardScale) {
-            Image(systemName: "trophy.fill").font(.system(size: 9 * cardScale))
-            Text(verbatim: "\(displayBest)\(helperMarker)")
+            Image(systemName: "trophy.fill")
+                .font(.system(size: 9 * cardScale))
+                .scaleEffect(trophyPulse ? 1.48 : 1)
+                .rotationEffect(.degrees(trophyPulse ? -12 : 0))
+            TrophyCountText(from: celebrationDisplayStart,
+                             to: displayBest,
+                             celebrationID: isCelebratingNewScore ? celebrationID : nil,
+                             suffix: helperMarker)
                 .font(.system(size: 12 * cardScale, weight: .bold))
         }
         .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
+    }
+
+    private func animateTrophyPulseIfNeeded() {
+        guard isCelebratingNewScore else {
+            trophyPulse = false
+            highlightOpacity = 0
+            animatedCelebrationID = nil
+            return
+        }
+        guard let celebrationID, animatedCelebrationID != celebrationID else { return }
+        animatedCelebrationID = celebrationID
+        withAnimation(.easeOut(duration: 0.38)) { highlightOpacity = 1 }
+        withAnimation(.spring(response: 0.42, dampingFraction: 0.54)) { trophyPulse = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.02) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.7)) { trophyPulse = false }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.62) {
+            withAnimation(.easeOut(duration: 0.42)) { highlightOpacity = 0.32 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.98) {
+            withAnimation(.easeOut(duration: 0.2)) { highlightOpacity = 0 }
+        }
     }
 
     // MARK: Tier badge (top-left)

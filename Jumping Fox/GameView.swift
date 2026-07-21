@@ -91,8 +91,9 @@ struct GameView: View {
     /// The card heading should lead the copy, without competing with the
     /// character portrait on iPad. The feature tiles step down separately so
     /// their explanatory text retains the established readable size.
-    private var introTitleScale: CGFloat { isPad ? 0.9 : 1 }
-    private var introFeatureIconScale: CGFloat { isPad ? 0.8 : 1 }
+    private var introTitleScale: CGFloat { 0.9 }
+    private var introFeatureIconScale: CGFloat { 0.8 }
+    private var introFeatureTextScale: CGFloat { isPad ? 1.1 : 0.88 }
 
     init(level: LevelConfig) {
         // Levels that already hit the maximum can't be resumed from a paused
@@ -506,14 +507,15 @@ struct GameView: View {
                 }
             }
             .foregroundStyle(theme.deepColor)
-            .frame(width: 54 * gameScale * introFeatureIconScale,
-                   height: 54 * gameScale * introFeatureIconScale)
+            // Keep the generous feature-tile hit area and visual rhythm; only
+            // its glyph is intentionally smaller than before.
+            .frame(width: 54 * gameScale, height: 54 * gameScale)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
 
             emphasizedText(feature.text)
-                .font(.system(size: 15 * gameTextScale, weight: .regular))
+                .font(.system(size: 15 * gameTextScale * introFeatureTextScale, weight: .regular))
                 .foregroundStyle(theme.deepColor.opacity(0.84))
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
