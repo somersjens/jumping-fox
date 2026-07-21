@@ -209,6 +209,10 @@ struct ContentView: View {
     private var menuScale: CGFloat { isPad ? 1.64 : 1 }
     private var levelCardHeight: CGFloat { isPad ? 152 : 96 }
     private var levelGridSpacing: CGFloat { isPad ? 18 : 12 }
+    /// On iPad, give the menu's stacked control rows just enough separation
+    /// to match their larger controls without turning the header into a list.
+    private var menuCardSectionSpacing: CGFloat { isPad ? 18 : 14 }
+    private var menuControlSpacing: CGFloat { isPad ? 16 : 11 }
 
     var body: some View {
         // Read the revision so an iCloud update redraws all score cards.
@@ -365,7 +369,7 @@ struct ContentView: View {
     // MARK: Combined top menu
 
     private var menuCard: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: menuCardSectionSpacing) {
             HStack(alignment: .center, spacing: 12) {
                 Button {
                     // A long press may also end as a button tap; consume that
@@ -462,7 +466,7 @@ struct ContentView: View {
 
             Divider().overlay(character.deepColor.opacity(0.22))
 
-            VStack(spacing: 11) {
+            VStack(spacing: menuControlSpacing) {
                 HStack(alignment: .center) {
                     Text(selectedFilter.title)
                     .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
