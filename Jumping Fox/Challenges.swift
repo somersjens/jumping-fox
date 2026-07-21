@@ -326,7 +326,14 @@ enum ProgressStore {
     static func bestScore(levelID: String) -> Int {
         let scores = [UserDefaults.standard.integer(forKey: key(levelID))]
             + LifeMode.allCases.map { UserDefaults.standard.integer(forKey: legacyKey(levelID, $0)) }
-        return scores.max() ?? 0
+        let localBest = scores.max() ?? 0
+        let mergedBest = ProgressSync.shared.mergedScore(for: key(levelID), localScore: localBest)
+        // Consolidate legacy per-life-mode scores into the current key while
+        // importing existing players' progress into iCloud.
+        if UserDefaults.standard.integer(forKey: key(levelID)) < mergedBest {
+            UserDefaults.standard.set(mergedBest, forKey: key(levelID))
+        }
+        return mergedBest
     }
 
     static func bestScore(levelID: String, helperEnabled: Bool) -> Int {
@@ -337,7 +344,13 @@ enum ProgressStore {
     }
 
     static func helperOnlyBestScore(levelID: String) -> Int {
-        UserDefaults.standard.integer(forKey: helperKey(levelID))
+        let storageKey = helperKey(levelID)
+        let localBest = UserDefaults.standard.integer(forKey: storageKey)
+        let mergedBest = ProgressSync.shared.mergedScore(for: storageKey, localScore: localBest)
+        if localBest < mergedBest {
+            UserDefaults.standard.set(mergedBest, forKey: storageKey)
+        }
+        return mergedBest
     }
 
     /// Kept as a convenience for unlocking code; all modes share one score.
@@ -355,8 +368,22 @@ enum ProgressStore {
             ? helperOnlyBestScore(levelID: levelID)
             : bestScore(levelID: levelID)
         guard cappedScore > currentBest else { return false }
-        UserDefaults.standard.set(cappedScore, forKey: helperEnabled ? helperKey(levelID) : key(levelID))
+        let storageKey = helperEnabled ? helperKey(levelID) : key(levelID)
+        UserDefaults.standard.set(cappedScore, forKey: storageKey)
+        _ = ProgressSync.shared.mergedScore(for: storageKey, localScore: cappedScore)
         return true
+    }
+
+    /// Reconciles every known level at launch and whenever iCloud reports a
+    /// remote change. Keeping this centralized also imports old local scores
+    /// after updating from a version that did not use iCloud.
+    static func reconcileAllWithCloud() {
+        for category in ChallengeCategory.allCases {
+            for level in LevelCatalog.levels(for: category) {
+                _ = bestScore(levelID: level.id)
+                _ = helperOnlyBestScore(levelID: level.id)
+            }
+        }
     }
 
     static func isCompleted(_ level: LevelConfig) -> Bool {

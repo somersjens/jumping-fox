@@ -172,6 +172,9 @@ struct LanguagePicker: View {
 
     /// Colour for the chevron so it can sit on light or dark backgrounds.
     var tint: Color = .secondary
+    /// Callers can opt into the larger, touch-friendly iPad treatment while
+    /// preserving the compact control on iPhone.
+    var scale: CGFloat = 1
 
     var body: some View {
         Menu {
@@ -189,13 +192,13 @@ struct LanguagePicker: View {
         } label: {
             HStack(spacing: 5) {
                 Text(language.effective.flag)
-                    .font(.system(size: 20))
+                    .font(.system(size: 20 * scale))
                 Image(systemName: "chevron.down")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 10 * scale, weight: .bold))
                     .foregroundStyle(tint)
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 12 * scale)
+            .padding(.vertical, 8 * scale)
             .liquidGlassCapsule()
             .contentShape(Capsule())
         }

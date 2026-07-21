@@ -16,6 +16,8 @@ struct PremiumView: View {
     @State private var previewCharacterID = "fox"
 
     private var character: AnimalCharacter { CharacterCatalog.character(id: previewCharacterID) }
+    private var isPad: Bool { AppLayout.isPad }
+    private var scale: CGFloat { isPad ? 1.4 : 1 }
 
     private let characterColumns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 5)
 
@@ -26,7 +28,7 @@ struct PremiumView: View {
                 .ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 22) {
+                VStack(spacing: isPad ? 28 : 22) {
                     hero
                     if !premium.isPremium {
                         featureCard
@@ -35,9 +37,9 @@ struct PremiumView: View {
                     characterCard
                     purchaseSection
                 }
-                .padding(.horizontal, 22)
-                .padding(.bottom, 28)
-                .frame(maxWidth: 620)
+                .padding(.horizontal, isPad ? 32 : 22)
+                .padding(.bottom, isPad ? 38 : 28)
+                .frame(maxWidth: isPad ? 760 : 620)
                 .frame(maxWidth: .infinity)
             }
             // A form sheet on iPad can be shorter than this purchase flow.
@@ -48,9 +50,9 @@ struct PremiumView: View {
         }
         .overlay(alignment: .topLeading) { closeButton }
         .overlay(alignment: .topTrailing) {
-            LanguagePicker(tint: character.deepColor.opacity(0.7))
-                .padding(.top, 24)
-                .padding(.trailing, 18)
+            LanguagePicker(tint: character.deepColor.opacity(0.7), scale: isPad ? 1.25 : 1)
+                .padding(.top, isPad ? 28 : 24)
+                .padding(.trailing, isPad ? 28 : 18)
         }
         .animation(.easeInOut(duration: 0.25), value: previewCharacterID)
         .animation(.spring(response: 0.42, dampingFraction: 0.7), value: premium.isPremium)
@@ -65,14 +67,14 @@ struct PremiumView: View {
             dismiss()
         } label: {
             Image(systemName: "xmark")
-                .font(.system(size: 17, weight: .bold))
+                .font(.system(size: 17 * scale, weight: .bold))
                 .foregroundStyle(character.deepColor)
-                .frame(width: 38, height: 38)
+                .frame(width: 38 * scale, height: 38 * scale)
                 .background(.white.opacity(0.7), in: Circle())
                 .shadow(color: character.deepColor.opacity(0.15), radius: 6, y: 3)
         }
-        .padding(.top, 24)
-        .padding(.leading, 18)
+        .padding(.top, isPad ? 28 : 24)
+        .padding(.leading, isPad ? 28 : 18)
     }
 
     // MARK: Hero — big preview of the selected character
@@ -80,7 +82,7 @@ struct PremiumView: View {
     private var hero: some View {
         VStack(spacing: 12) {
             GeometryReader { proxy in
-                let heroSize = min(240, max(150, proxy.size.width * 0.52))
+                let heroSize = min(isPad ? 300 : 240, max(150, proxy.size.width * 0.52))
                 ZStack {
                 Circle()
                     .fill(
@@ -101,15 +103,15 @@ struct PremiumView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(height: 240)
+            .frame(height: isPad ? 300 : 240)
 
             HStack(spacing: 8) {
                 Text(character.localizedName)
-                    .font(.system(size: 30, weight: .heavy, design: .rounded))
+                    .font(.system(size: 30 * scale, weight: .heavy, design: .rounded))
                     .foregroundStyle(character.deepColor)
                 if premium.isPremium || previewCharacterID != CharacterCatalog.freeCharacterID {
                     Image(systemName: "crown.fill")
-                        .font(.system(size: 22, weight: .heavy))
+                        .font(.system(size: 22 * scale, weight: .heavy))
                         .foregroundStyle(character.deepColor)
                         .transition(.scale.combined(with: .opacity))
                 }
@@ -132,7 +134,7 @@ struct PremiumView: View {
                        title: L("premium.feature.noAds.title"),
                        subtitle: L("premium.feature.noAds.subtitle"))
         }
-        .padding(18)
+        .padding(18 * scale)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
@@ -147,7 +149,7 @@ struct PremiumView: View {
                 }
             }
         }
-        .padding(18)
+        .padding(18 * scale)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
@@ -161,9 +163,9 @@ struct PremiumView: View {
             animal.artwork
                 .resizable()
                 .scaledToFit()
-                .frame(width: 42, height: 42)
+                .frame(width: 42 * scale, height: 42 * scale)
                 .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
+            .padding(.vertical, 8 * scale)
             .background(isSelected ? animal.color.opacity(0.18) : .white,
                         in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .foregroundStyle(character.deepColor)
@@ -185,9 +187,9 @@ struct PremiumView: View {
                 dismiss()
             } label: {
                 Text("common.done")
-                    .font(.headline)
+                    .font(isPad ? .system(size: 24, weight: .bold) : .headline)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
+                    .padding(.vertical, 14 * scale)
                     .background(character.color, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .foregroundStyle(.white)
             }
@@ -204,11 +206,11 @@ struct PremiumView: View {
                         if premium.isPurchasing {
                             ProgressView().tint(.white)
                         } else {
-                            Text(purchaseButtonTitle).font(.headline)
+                            Text(purchaseButtonTitle).font(isPad ? .system(size: 24, weight: .bold) : .headline)
                         }
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
+                    .padding(.vertical, 16 * scale)
                     .background(
                         LinearGradient(colors: [character.color, character.deepColor],
                                        startPoint: .top, endPoint: .bottom),
@@ -221,18 +223,18 @@ struct PremiumView: View {
                 .disabled(premium.isPurchasing)
 
                 Text("premium.oneTime")
-                    .font(.subheadline)
+                    .font(isPad ? .system(size: 20, weight: .regular) : .subheadline)
                     .foregroundStyle(character.deepColor.opacity(0.7))
 
                 Button("premium.restore") {
                     Task { await premium.restorePurchases() }
                 }
-                .font(.footnote)
+                .font(isPad ? .system(size: 18, weight: .regular) : .footnote)
                 .foregroundStyle(character.deepColor.opacity(0.7))
 
                 if let error = premium.lastError {
                     Text(error)
-                        .font(.footnote)
+                        .font(isPad ? .system(size: 18, weight: .regular) : .footnote)
                         .foregroundStyle(.red)
                         .multilineTextAlignment(.center)
                 }
@@ -248,17 +250,17 @@ struct PremiumView: View {
     }
 
     private func featureRow(icon: String, title: String, subtitle: String) -> some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(alignment: .top, spacing: 12 * scale) {
             Image(systemName: icon)
-                .font(.title3)
+                .font(isPad ? .system(size: 28, weight: .regular) : .title3)
                 .foregroundStyle(character.color)
-                .frame(width: 28)
+                .frame(width: 28 * scale)
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.subheadline.weight(.bold))
+                    .font(isPad ? .system(size: 24, weight: .bold) : .subheadline.weight(.bold))
                     .foregroundStyle(character.deepColor)
                 Text(subtitle)
-                    .font(.footnote)
+                    .font(isPad ? .system(size: 20, weight: .regular) : .footnote)
                     .foregroundStyle(character.deepColor.opacity(0.7))
             }
         }

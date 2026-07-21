@@ -270,9 +270,14 @@ final class GamePlatform: SKNode {
     }
 
     /// Consumes the pickup (once) with a small pop animation.
-    func takePowerup() -> PowerupType? {
+    /// Returns the pickup's actual local centre before removing it. The
+    /// follow-up flight can therefore begin at the icon itself, including its
+    /// current bob offset, instead of at an approximate platform coordinate.
+    func takePowerup() -> (type: PowerupType, localOrigin: CGPoint)? {
         guard let type = powerup else { return nil }
         powerup = nil
+        let localOrigin = powerupIcon?.position
+            ?? CGPoint(x: 0, y: platformSize.height / 2 + 18)
         if let icon = powerupIcon {
             powerupIcon = nil
             icon.removeAllActions()
@@ -281,7 +286,7 @@ final class GamePlatform: SKNode {
                 .removeFromParent()
             ]))
         }
-        return type
+        return (type, localOrigin)
     }
 
     /// Used when the tutorial's −1 lesson has been completed: every other
@@ -590,6 +595,11 @@ final class GameScene: SKScene {
         self.state = state
         super.init(size: .zero)
         scaleMode = .resizeFill
+        // Set this before SpriteView attaches and lays out the scene. Without
+        // it its first frame may use the default neutral-grey clear colour.
+        backgroundColor = CharacterCatalog.current(
+            isPremium: GameSettings.premiumUnlockedCache
+        ).skSky
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -1158,6 +1168,20 @@ final class GameScene: SKScene {
                $0.isActiveAnswer && $0.value == state.correctAnswer
            }) {
             correct.styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
+            return
+        }
+
+        // `buildAnswerSet()` is normally reached exactly once per question.
+        // SpriteKit/SwiftUI can nevertheless deliver an extra layout or scene
+        // lifecycle callback while the opening field is being attached.  Do
+        // not turn that into a second visible group for the same question
+        // (for example two `5 × 1` answer blocks at the start of table 5).
+        // Tutorial steps deliberately rebuild individual teaching groups, so
+        // their flow remains governed by the cases below.
+        if !tutorial.isActive,
+           platforms.contains(where: {
+               $0.isActiveAnswer && $0.value == state.correctAnswer
+           }) {
             return
         }
 
@@ -1826,7 +1850,8 @@ final class GameScene: SKScene {
             if wrapDx(player.position.x, platform.position.x) < playerHalfWidth + 14,
                abs(player.position.y - iconY) < playerHalfHeight + 24,
                let collected = platform.takePowerup() {
-                apply(powerup: collected, from: platform)
+                let origin = platform.convert(collected.localOrigin, to: self)
+                apply(powerup: collected.type, origin: origin)
             }
         }
     }
@@ -2291,6 +2316,10 @@ final class GameScene: SKScene {
     /// HUD asset size, score width or device layout changes.
     private var renderedTrophyHUDPoint: CGPoint?
     private var renderedHeartHUDPoints: [Int: CGPoint] = [:]
+    /// A fallback point is fine for ordinary effects, but the first tutorial
+    /// trophy must wait for a window-backed conversion so its lesson clearly
+    /// lands in the score HUD on every iPad configuration.
+    private var hasResolvedTrophyHUDTarget = false
 
     /// Input rectangles are in the containing window's coordinate space.
     /// `SKScene.convertPoint(fromView:)` handles the SKView's actual bounds,
@@ -2298,9 +2327,11 @@ final class GameScene: SKScene {
     /// those rules from a SwiftUI GeometryReader.
     func setHUDTargets(trophy: CGRect?, hearts: [Int: CGRect], viewSize: CGSize) {
         guard viewSize.width > 0, viewSize.height > 0 else { return }
+        var usedWindowCoordinates = false
         func scenePoint(for rect: CGRect) -> CGPoint {
 #if os(iOS)
             if let skView = view, let window = skView.window {
+                usedWindowCoordinates = true
                 let viewPoint = skView.convert(CGPoint(x: rect.midX, y: rect.midY), from: window)
                 return convertPoint(fromView: viewPoint)
             }
@@ -2311,6 +2342,7 @@ final class GameScene: SKScene {
                            y: size.height - rect.midY * size.height / viewSize.height)
         }
         renderedTrophyHUDPoint = trophy.map(scenePoint)
+        hasResolvedTrophyHUDTarget = trophy != nil && usedWindowCoordinates
         renderedHeartHUDPoints = hearts.mapValues(scenePoint)
     }
 
@@ -2378,9 +2410,7 @@ final class GameScene: SKScene {
         ]))
     }
 
-    private func apply(powerup: PowerupType, from platform: GamePlatform) {
-        let origin = CGPoint(x: platform.position.x,
-                             y: platform.position.y + tileSize.height / 2 + 18)
+    private func apply(powerup: PowerupType, origin: CGPoint) {
         switch powerup {
         case .halfHeart:
             flyHeartToHUD(from: origin, halves: 1)
@@ -2453,10 +2483,14 @@ final class GameScene: SKScene {
         heart.position = origin
         heart.zPosition = 50
         addChild(heart)
+        // `makeHeartIcon` is 22 points wide, while the HUD heart can be
+        // larger on iPad. Finish at its rendered size before SwiftUI swaps in
+        // the real HUD glyph, avoiding a visible size drop at arrival.
+        let hudHeartScale = GameHUDMetrics.assetSize / 22
         heart.run(.sequence([
             .group([curvedFlight(from: origin, to: target, duration: 0.55),
-                    .sequence([.scale(to: 1.35, duration: 0.2),
-                               .scale(to: 1.0, duration: 0.35)])]),
+                    .sequence([.scale(to: hudHeartScale * 1.15, duration: 0.2),
+                               .scale(to: hudHeartScale, duration: 0.35)])]),
             .run { [weak self] in
                 guard let self else { return }
                 self.state.gainLifeHalves(halves)
@@ -2496,7 +2530,10 @@ final class GameScene: SKScene {
         for (index, block) in targets.enumerated() {
             block.retireForElimination()
             let delay = 0.05 + 0.11 * Double(index)
-            let target = block.position
+            // Use coordinate conversion rather than assuming the platform is
+            // a direct scene child; the ray then remains exact if its parent
+            // hierarchy changes during a future layout refinement.
+            let target = block.convert(CGPoint.zero, to: self)
 
             // A gently bowed arc; alternate the bow side per star so a
             // volley fans out instead of overlapping.
@@ -2652,7 +2689,15 @@ final class GameScene: SKScene {
     /// centre of the answered block to the score icon. It deliberately uses
     /// the same flight, timing and arrival treatment as the ×2 reward.
     private func flyTutorialTrophyToHUD(from origin: CGPoint) {
-        let target = trophyHUDPoint
+        // The first tutorial reward can happen immediately after the HUD is
+        // shown. Wait for its real SwiftUI anchor rather than falling back to
+        // a size-based estimate, which is visibly off on iPad.
+        guard hasResolvedTrophyHUDTarget, let target = renderedTrophyHUDPoint else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) { [weak self] in
+                self?.flyTutorialTrophyToHUD(from: origin)
+            }
+            return
+        }
         let trophy = makeTutorialTrophyIcon(height: tileSize.height)
         trophy.position = origin
         trophy.zPosition = 50

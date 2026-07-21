@@ -23,10 +23,10 @@ final class PremiumStore: ObservableObject {
     @Published var lastError: String?
 
     private var updatesTask: Task<Void, Never>?
+    private var hasStartedInitialRefresh = false
 
     private init() {
         updatesTask = Task { await listenForTransactionUpdates() }
-        Task { await refresh() }
     }
 
     deinit {
@@ -40,6 +40,18 @@ final class PremiumStore: ObservableObject {
             // No store connection (e.g. simulator without a StoreKit config) — not fatal.
         }
         await updateEntitlement()
+    }
+
+    /// StoreKit may need to wake the App Store daemon on its first request.
+    /// Keep that work off the launch frame; the home screen is already usable
+    /// while the entitlement and price are fetched just after it is drawn.
+    func startInitialRefresh() {
+        guard !hasStartedInitialRefresh else { return }
+        hasStartedInitialRefresh = true
+        Task {
+            await Task.yield()
+            await refresh()
+        }
     }
 
     func purchase() async {

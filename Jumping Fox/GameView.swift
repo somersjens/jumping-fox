@@ -26,10 +26,15 @@ private enum AnswerHintAnchor: Hashable {
 /// metric shared also gives SpriteKit a sensible fallback before SwiftUI has
 /// reported the rendered anchors.
 enum GameHUDMetrics {
-    static let assetSize: CGFloat = 28
-    static let pauseAssetSize: CGFloat = assetSize * 1.1
-    static let heartSpacing: CGFloat = 2
-    static let horizontalPadding: CGFloat = 16
+    /// Direct metrics, shared by SwiftUI and SpriteKit fallback calculations.
+    /// Flights still target the rendered SwiftUI anchors, so the larger iPad
+    /// HUD remains attached to the exact visible trophy and hearts.
+    static var scale: CGFloat { AppLayout.isPad ? 1.2 : 1 }
+    static var assetSize: CGFloat { 28 * scale }
+    static var pauseAssetSize: CGFloat { assetSize * 1.1 }
+    static var heartSpacing: CGFloat { 2 * scale }
+    static var horizontalPadding: CGFloat { 16 * scale }
+    static var scoreFontSize: CGFloat { 28 * scale }
 }
 
 /// Exact rendered destinations for SpriteKit flights. The visual HUD is
@@ -77,6 +82,17 @@ struct GameView: View {
     @State private var isTutorialArrowBouncing = false
     @State private var showsTutorialCompletion = false
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
+    private var isPad: Bool { AppLayout.isPad }
+    private var gameScale: CGFloat { isPad ? 1.2 : 1 }
+    /// Text on the large iPad cards gets one additional readability step;
+    /// buttons intentionally keep their established touch proportions.
+    private var gameTextScale: CGFloat { isPad ? 1.296 : 1 }
+    private var introActionScale: CGFloat { isPad ? 1.2 : 1 }
+    /// The card heading should lead the copy, without competing with the
+    /// character portrait on iPad. The feature tiles step down separately so
+    /// their explanatory text retains the established readable size.
+    private var introTitleScale: CGFloat { isPad ? 0.9 : 1 }
+    private var introFeatureIconScale: CGFloat { isPad ? 0.8 : 1 }
 
     init(level: LevelConfig) {
         // Levels that already hit the maximum can't be resumed from a paused
@@ -97,6 +113,12 @@ struct GameView: View {
 
     var body: some View {
         ZStack {
+            // SpriteKit's backing view can briefly be visible before its
+            // scene has received a size. Keeping the game's sky behind it
+            // avoids the system-grey flash when reopening a paused tutorial.
+            theme.skyColor
+                .ignoresSafeArea()
+
             // ignoresSiblingOrder lets SpriteKit batch draw calls by texture
             // (layering is driven by explicit zPosition, not sibling order);
             // shouldCullNonVisibleNodes skips the platforms buffered far above
@@ -340,7 +362,7 @@ struct GameView: View {
                             characterPortrait
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(info.title)
-                                    .font(.system(size: 33, weight: .heavy, design: .rounded))
+                                    .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
                                     .foregroundStyle(theme.deepColor)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.80)
@@ -369,9 +391,9 @@ struct GameView: View {
                                         Text(isPausedIntro ? "game.intro.continue" : "game.intro.start")
                                     }
                                 }
-                                .font(.headline.weight(.heavy))
+                                .font(.system(size: 17 * introActionScale, weight: .heavy))
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 15)
+                                .padding(.vertical, 15 * introActionScale)
                                 .foregroundStyle(.white)
                                 .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                             }
@@ -379,9 +401,9 @@ struct GameView: View {
 
                             Button(action: returnToMainMenu) {
                                 Text("game.intro.backToMainMenu")
-                                    .font(.headline.weight(.heavy))
+                                    .font(.system(size: 17 * introActionScale, weight: .heavy))
                                     .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 15)
+                                    .padding(.vertical, 15 * introActionScale)
                                     .foregroundStyle(theme.deepColor)
                                     .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -394,9 +416,9 @@ struct GameView: View {
                             pausedIntroMessage
                         }
                     }
-                    .padding(28)
+                    .padding(28 * gameScale)
                     .padding(.top, 4)
-                    .frame(maxWidth: 420)
+                    .frame(maxWidth: 420 * gameScale)
                     .background(.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
                     .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
                     .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
@@ -423,7 +445,7 @@ struct GameView: View {
             // The feature cards inset their 54 pt icon by 10 pt. Keeping this
             // card 64 pt wide makes its trailing edge meet the icon edge while
             // the following title column starts exactly with the feature copy.
-            .frame(width: 64, height: 64)
+            .frame(width: 64 * gameScale, height: 64 * gameScale)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.12), lineWidth: 1))
@@ -440,14 +462,14 @@ struct GameView: View {
     private func introStatusLabel(icon: String, text: String) -> some View {
         HStack(spacing: 5) {
             Image(systemName: icon)
-                .font(.system(size: icon == "infinity" ? 12 : 10, weight: .heavy, design: .rounded))
+                .font(.system(size: (icon == "infinity" ? 12 : 10) * gameTextScale, weight: .heavy, design: .rounded))
             Text(text)
         }
-            .font(.system(size: 10, weight: .bold))
+            .font(.system(size: 10 * gameTextScale, weight: .bold))
             .foregroundStyle(theme.deepColor.opacity(0.82))
             .lineLimit(1)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 5)
+            .padding(.horizontal, 8 * gameScale)
+            .padding(.vertical, 5 * gameScale)
             .background(theme.skyColor.opacity(0.72), in: Capsule())
             .overlay(Capsule().stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
     }
@@ -463,7 +485,7 @@ struct GameView: View {
                 }
             }
         }
-        .font(.footnote.weight(.semibold))
+        .font(.system(size: 13 * gameTextScale, weight: .semibold))
         .foregroundStyle(theme.deepColor.opacity(0.62))
         .frame(maxWidth: .infinity)
         .padding(.top, 2)
@@ -474,29 +496,30 @@ struct GameView: View {
             Group {
                 if let number = feature.number {
                     Text(number)
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .font(.system(size: 34 * gameTextScale * introFeatureIconScale, weight: .heavy, design: .rounded))
                         .lineLimit(1)
                         .minimumScaleFactor(0.48)
                         .allowsTightening(true)
                 } else {
                     Image(systemName: feature.icon)
-                        .font(.system(size: feature.icon == "multiply" ? 34 : 28, weight: .bold))
+                        .font(.system(size: (feature.icon == "multiply" ? 34 : 28) * gameTextScale * introFeatureIconScale, weight: .bold))
                 }
             }
             .foregroundStyle(theme.deepColor)
-            .frame(width: 54, height: 54)
+            .frame(width: 54 * gameScale * introFeatureIconScale,
+                   height: 54 * gameScale * introFeatureIconScale)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
 
             emphasizedText(feature.text)
-                .font(.subheadline)
+                .font(.system(size: 15 * gameTextScale, weight: .regular))
                 .foregroundStyle(theme.deepColor.opacity(0.84))
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 6)
+            .padding(.horizontal, 10 * gameScale)
+        .padding(.vertical, 6 * gameScale)
         .background(theme.skyColor.opacity(0.32), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
             .stroke(theme.deepColor.opacity(0.10), lineWidth: 1))
@@ -633,7 +656,7 @@ struct GameView: View {
             // The equal-width side columns keep it perfectly centered.
             HStack(spacing: 6) {
                 Text(verbatim: "\(state.score)")
-                    .font(.title2.weight(.heavy))
+                    .font(.system(size: GameHUDMetrics.scoreFontSize, weight: .heavy, design: .rounded))
                     .foregroundStyle(theme.deepColor)
                     .contentTransition(.numericText())
                     .animation(.snappy(duration: 0.25), value: state.score)
@@ -752,14 +775,31 @@ struct GameView: View {
             .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
             .overlay(alignment: .topTrailing) {
                 if tutorial.isActive && tutorial.currentStep == 6 {
-                    Image(systemName: "arrow.down.left.circle.fill")
-                        .font(.title.weight(.black))
-                        .foregroundStyle(theme.deepColor)
-                        .offset(x: isTutorialArrowBouncing ? 14 : 6,
-                                y: isTutorialArrowBouncing ? -18 : -27)
-                        .scaleEffect(isTutorialArrowBouncing ? 1.08 : 0.94)
+                    ZStack {
+                        Circle()
+                            .fill(.white)
+                        Image(systemName: "arrow.down.left.circle")
+                            .foregroundStyle(theme.deepColor)
+                    }
+                    .font(.title.weight(.black))
+                    .frame(width: 34, height: 34)
+                        // The question mark sits down and to the left of this
+                        // top-trailing overlay.  Move the cue in that same
+                        // direction, rather than further along the edge.
+                        .offset(x: isTutorialArrowBouncing ? 2 : 14,
+                                y: isTutorialArrowBouncing ? -13.5 : -27)
+                        .scaleEffect(isTutorialArrowBouncing ? 1.15 : 0.94)
                         .animation(.easeInOut(duration: 0.55).repeatForever(autoreverses: true),
                                    value: isTutorialArrowBouncing)
+                        .onAppear {
+                            // This cue appears after the screen itself, so it
+                            // needs its own state transition to start the
+                            // repeating animation.
+                            isTutorialArrowBouncing = false
+                            DispatchQueue.main.async {
+                                isTutorialArrowBouncing = true
+                            }
+                        }
                         .allowsHitTesting(false)
                 }
             }
@@ -1099,16 +1139,16 @@ struct GameView: View {
         // their cap height. Keep the circular category sign optically as high
         // as the level number instead of making its diameter equal to the
         // number's point size.
-        let titleFontSize: CGFloat = 29
+        let titleFontSize: CGFloat = 29 * gameTextScale
         let titleIconSize = titleFontSize * 0.76
 
         return GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
             endIllustration(illustration)
-                .padding(.bottom, 18)
+                .padding(.bottom, 18 * gameScale)
 
-            HStack(spacing: 7) {
+            HStack(spacing: 7 * gameScale) {
                 Text(leadingTitle)
                     .font(.system(size: titleFontSize, weight: .heavy, design: .rounded))
                     .minimumScaleFactor(0.72)
@@ -1129,17 +1169,18 @@ struct GameView: View {
             .frame(maxWidth: .infinity)
 
             Text(subtitle)
-                .font(emphasizesSubtitle ? .title3.weight(.semibold) : .headline.weight(.medium))
+                .font(.system(size: (emphasizesSubtitle ? 20 : 17) * gameTextScale,
+                              weight: emphasizesSubtitle ? .semibold : .medium))
                 .foregroundStyle(theme.deepColor.opacity(0.64))
                 .multilineTextAlignment(.center)
-                .padding(.top, 10)
-                .frame(minHeight: 30)
+                .padding(.top, 10 * gameScale)
+                .frame(minHeight: 30 * gameScale)
 
             Text(verbatim: "\(score) / \(ProgressStore.maximumTrophiesPerLevel)")
-                .font(.system(size: 30, weight: .heavy, design: .rounded))
+                .font(.system(size: 30 * gameTextScale, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.color)
-                .padding(.horizontal, 27)
-                .padding(.vertical, 10)
+                .padding(.horizontal, 27 * gameScale)
+                .padding(.vertical, 10 * gameScale)
                 .background(theme.tintColor, in: Capsule())
                 .overlay {
                     Capsule().stroke(theme.color.opacity(0.12), lineWidth: 1)
@@ -1149,21 +1190,21 @@ struct GameView: View {
                 .overlay(alignment: .topTrailing) {
                     if showsNewHighScore {
                         newHighScoreBadge
-                            .offset(x: 30, y: -10)
+                            .offset(x: 30, y: -16)
                     }
                 }
-                .padding(.top, 22)
+                .padding(.top, 22 * gameScale)
                 .accessibilityLabel("game.accessibility.scoreOutOf \(score) \(ProgressStore.maximumTrophiesPerLevel)")
 
-            VStack(spacing: 12) {
+            VStack(spacing: 12 * gameScale) {
                 Button {
                     PausedGameStore.shared.remove(state)
                     scene.resetGame()
                 } label: {
                     Label(endScreenText.playAgain, systemImage: "arrow.counterclockwise")
-                        .font(.headline.weight(.bold))
+                        .font(isPad ? .title3.weight(.bold) : .headline.weight(.bold))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
+                        .padding(.vertical, 14 * gameScale)
                         .foregroundStyle(.white)
                         .background(
                             LinearGradient(colors: [theme.color, theme.deepColor],
@@ -1176,9 +1217,9 @@ struct GameView: View {
                     dismiss()
                 } label: {
                     Label(endScreenText.mainMenu, systemImage: "house.fill")
-                        .font(.headline.weight(.semibold))
+                        .font(isPad ? .title3.weight(.semibold) : .headline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
+                        .padding(.vertical, 14 * gameScale)
                         .foregroundStyle(theme.deepColor)
                         .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
                         .overlay {
@@ -1187,10 +1228,10 @@ struct GameView: View {
                         }
                 }
             }
-            .padding(.top, 24)
+            .padding(.top, 24 * gameScale)
             }
-            .padding(26)
-            .frame(maxWidth: 400)
+            .padding(26 * gameScale)
+            .frame(maxWidth: 400 * gameScale)
             .background(
             LinearGradient(
                 colors: [theme.skyColor, .white, theme.tintColor],
@@ -1219,11 +1260,11 @@ struct GameView: View {
             Text("game.highScore")
             Image(systemName: "trophy.fill")
         }
-        .font(.system(size: 13, weight: .bold, design: .rounded))
+        .font(.system(size: 13 * gameTextScale, weight: .bold, design: .rounded))
         // Match the score digits exactly, for every selected character theme.
         .foregroundStyle(.white)
-        .padding(.horizontal, 10)
-        .padding(.vertical, 6)
+        .padding(.horizontal, 10 * gameTextScale)
+        .padding(.vertical, 6 * gameTextScale)
         .background(theme.color, in: Capsule())
         .overlay {
             Capsule().stroke(.white.opacity(0.45), lineWidth: 1)
@@ -1275,25 +1316,25 @@ struct GameView: View {
         case .trophy:
             ZStack {
                 Text(verbatim: "✦")
-                    .font(.system(size: 25, weight: .bold))
+                    .font(.system(size: 25 * gameScale, weight: .bold))
                     .foregroundStyle(theme.color.opacity(0.68))
                     .offset(x: -54, y: -20)
                 Text(verbatim: "✦")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 20 * gameScale, weight: .bold))
                     .foregroundStyle(theme.color.opacity(0.68))
                     .offset(x: 53, y: -8)
                 Text(verbatim: "🏆")
-                    .font(.system(size: 70))
+                    .font(.system(size: 70 * gameScale))
                     .scaleEffect(celebrate ? 1 : 0.4)
                     .rotationEffect(.degrees(celebrate ? 0 : -25))
                     .animation(.spring(response: 0.55, dampingFraction: 0.5), value: celebrate)
             }
-            .frame(height: 92)
+            .frame(height: 92 * gameScale)
         case .character:
             theme.artwork
                 .resizable()
                 .scaledToFit()
-                .frame(width: 130, height: 104)
+                .frame(width: 130 * gameScale, height: 104 * gameScale)
                 .accessibilityHidden(true)
         }
     }

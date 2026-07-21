@@ -20,14 +20,38 @@ struct LevelSelection: Identifiable {
 /// An eager, adaptive grid for the level menu. `LazyVGrid` discards cards
 /// outside the viewport; when the options panel changes height, those cards
 /// can otherwise appear to animate in from the bottom while scrolling.
+/// The home screens intentionally keep the same visual hierarchy on iPhone
+/// and iPad. On iPad, however, the controls and cards need room to breathe
+/// rather than becoming a dense six-column grid.
+enum AppLayout {
+    static var isPad: Bool {
+#if os(iOS)
+        UIDevice.current.userInterfaceIdiom == .pad
+#else
+        false
+#endif
+    }
+}
+
 private struct AdaptiveLevelGrid: Layout {
     let spacing: CGFloat
-    private let minimumCardWidth: CGFloat = 104
-    private let cardHeight: CGFloat = 96
+    let minimumCardWidth: CGFloat
+    let maximumColumns: Int
+    let cardHeight: CGFloat
+
+    init(spacing: CGFloat,
+         minimumCardWidth: CGFloat = 104,
+         maximumColumns: Int = .max,
+         cardHeight: CGFloat = 96) {
+        self.spacing = spacing
+        self.minimumCardWidth = minimumCardWidth
+        self.maximumColumns = maximumColumns
+        self.cardHeight = cardHeight
+    }
 
     private func metrics(for width: CGFloat, itemCount: Int) -> (columns: Int, cardWidth: CGFloat) {
         let possibleColumns = max(1, Int((width + spacing) / (minimumCardWidth + spacing)))
-        let columns = min(max(1, itemCount), possibleColumns)
+        let columns = min(max(1, itemCount), possibleColumns, maximumColumns)
         let cardWidth = (width - CGFloat(columns - 1) * spacing) / CGFloat(columns)
         return (columns, cardWidth)
     }
@@ -36,8 +60,9 @@ private struct AdaptiveLevelGrid: Layout {
                       subviews: Subviews,
                       cache: inout ()) -> CGSize {
         guard !subviews.isEmpty else { return .zero }
-        let fallbackWidth = minimumCardWidth * CGFloat(min(subviews.count, 3))
-            + spacing * CGFloat(min(subviews.count, 3) - 1)
+        let fallbackColumns = min(subviews.count, maximumColumns)
+        let fallbackWidth = minimumCardWidth * CGFloat(fallbackColumns)
+            + spacing * CGFloat(fallbackColumns - 1)
         let width = proposal.width ?? fallbackWidth
         let columns = metrics(for: width, itemCount: subviews.count).columns
         let rows = Int(ceil(Double(subviews.count) / Double(columns)))
@@ -130,6 +155,7 @@ struct ContentView: View {
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
     @ObservedObject private var premium = PremiumStore.shared
+    @ObservedObject private var progress = ProgressSync.shared
     // Re-renders code-resolved strings (menu names, options) on a language switch.
     @ObservedObject private var language = LanguageManager.shared
     @ObservedObject private var tutorial = TutorialProgress.shared
@@ -155,8 +181,14 @@ struct ContentView: View {
     private var premiumSectionTitle: LocalizedStringKey {
         category == .tables ? "menu.premiumTables" : "menu.premium"
     }
+    private var isPad: Bool { AppLayout.isPad }
+    private var menuScale: CGFloat { isPad ? 1.64 : 1 }
+    private var levelCardHeight: CGFloat { isPad ? 152 : 96 }
+    private var levelGridSpacing: CGFloat { isPad ? 18 : 12 }
 
     var body: some View {
+        // Read the revision so an iCloud update redraws all score cards.
+        let _ = progress.revision
         ZStack {
             LinearGradient(
                 colors: [character.skyColor, character.tintColor],
@@ -165,12 +197,12 @@ struct ContentView: View {
             .ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 18) {
+                VStack(spacing: isPad ? 26 : 18) {
                     menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
                     levelGrid
                 }
-                .padding()
-                .frame(maxWidth: 720)
+                .padding(isPad ? 32 : 16)
+                .frame(maxWidth: isPad ? 900 : 720)
                 .frame(maxWidth: .infinity)
                 .id(refreshID)
             }
@@ -209,6 +241,9 @@ struct ContentView: View {
         })
         .onChange(of: selection?.id) { selectionID in
             if let selectionID { lastOpenedLevelID = selectionID }
+        }
+        .task {
+            premium.startInitialRefresh()
         }
         .overlay {
             if showTutorialScoreHint {
@@ -274,7 +309,7 @@ struct ContentView: View {
                     character.artwork
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 68, height: 68)
+                        .frame(width: isPad ? 118 : 68, height: isPad ? 118 : 68)
                         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                         .overlay {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -308,7 +343,7 @@ struct ContentView: View {
                         showNameEditor = true
                     } label: {
                         Text(wrappableName)
-                            .font(.title3.weight(.heavy))
+                            .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
                             .minimumScaleFactor(0.6)
@@ -323,7 +358,7 @@ struct ContentView: View {
                     } icon: {
                         Image(systemName: "trophy.fill")
                     }
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .foregroundStyle(character.deepColor)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
@@ -344,7 +379,7 @@ struct ContentView: View {
                 CompactStreakView(accent: character.deepColor) {
                     showGoalPicker = true
                 }
-                .frame(width: 106, height: headerDetailsHeight > 0 ? headerDetailsHeight : nil)
+                .frame(width: isPad ? 142 : 106, height: headerDetailsHeight > 0 ? headerDetailsHeight : nil)
                 // The right-aligned progress line has a little more visual
                 // weight than the left side of this compact cluster.
                 .offset(x: -4)
@@ -356,13 +391,13 @@ struct ContentView: View {
             VStack(spacing: 11) {
                 HStack(alignment: .center) {
                     Text(selectedFilter.title)
-                        .font(.title3.weight(.heavy))
+                    .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
                     Label {
                         Text(verbatim: "\(categoryTrophies)\(answerHelper ? " *" : "")")
                     } icon: {
                         Image(systemName: "trophy.fill")
                     }
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
                     Spacer()
                 }
                 .foregroundStyle(character.deepColor)
@@ -374,7 +409,7 @@ struct ContentView: View {
                 helperModeRow
             }
         }
-        .padding(14)
+        .padding(isPad ? 22 : 14)
         .background(.white.opacity(0.76), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -390,7 +425,7 @@ struct ContentView: View {
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
-            .frame(height: 44)
+            .frame(height: isPad ? 78 : 44 * menuScale)
             .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
@@ -405,13 +440,14 @@ struct ContentView: View {
         HStack(spacing: 0) {
             ForEach(Array(MenuFilter.allCases.enumerated()), id: \.element.id) { index, filter in
                 menuFilterButton(filter)
-                    .frame(width: 44, height: 44)
+                    .frame(width: isPad ? 78 : 44, height: isPad ? 78 : 44)
 
                 if index < MenuFilter.allCases.count - 1 {
                     Spacer(minLength: 0)
                 }
             }
         }
+        .frame(maxWidth: .infinity)
     }
 
     private func menuFilterIcon(_ filter: MenuFilter, isSelected: Bool) -> some View {
@@ -422,13 +458,13 @@ struct ContentView: View {
         // box keeps them all vertically centred on the same line.
         let size: CGFloat
         switch filter {
-        case .mixed:       size = 17   // star.fill
-        case .percentages: size = 19   // percent
-        default:           size = 21   // + − × ÷
+        case .mixed:       size = 17 * menuScale   // star.fill
+        case .percentages: size = 19 * menuScale   // percent
+        default:           size = 21 * menuScale   // + − × ÷
         }
         return Image(systemName: filter.icon)
             .font(.system(size: size, weight: .bold))
-            .frame(height: 24)
+            .frame(height: 24 * menuScale)
             .foregroundStyle(isSelected ? .white : character.deepColor)
     }
 
@@ -478,10 +514,10 @@ struct ContentView: View {
                     }
                 } label: {
                     Text(modeLabel(mode))
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 42)
+                        .frame(height: isPad ? 76 : 42)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                 }
@@ -500,10 +536,10 @@ struct ContentView: View {
             } label: {
                 HStack {
                     Label("menu.options", systemImage: "slider.horizontal.3")
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
                     Spacer()
                     Image(systemName: "chevron.down")
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .rotationEffect(.degrees(showsOptions ? -180 : 0))
                 }
                 .foregroundStyle(character.deepColor)
@@ -515,7 +551,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Divider()
                         .overlay(character.deepColor.opacity(0.2))
-                        .padding(.top, 9)
+                        .padding(.top, isPad ? 14 : 9)
 
                     // Fourth element: an optional SF Symbol shown after the title
                     // (the cap row spells out "Finish at 30 🏆" without the word).
@@ -537,11 +573,11 @@ struct ContentView: View {
                 .transition(.opacity)
             }
         }
-        .padding(.horizontal, 11)
-        .padding(.top, 10)
+        .padding(.horizontal, isPad ? 20 : 11)
+        .padding(.top, isPad ? 18 : 10)
         // No dead space under the last row when the list is open — keep the
         // header symmetric when it's closed.
-        .padding(.bottom, showsOptions ? 2 : 10)
+        .padding(.bottom, showsOptions ? (isPad ? 8 : 2) : (isPad ? 18 : 10))
         // Same light fill as an unselected filter field, for a calmer panel.
         .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(0.18), lineWidth: 1))
@@ -553,22 +589,22 @@ struct ContentView: View {
                            trailingIcon: String? = nil) -> some View {
         let isExpanded = expandedOptionInfo == title
         return VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: 8) {
+            HStack(spacing: isPad ? 12 : 8) {
                 Button {
                     withAnimation(.easeInOut(duration: 0.28)) {
                         expandedOptionInfo = isExpanded ? nil : title
                     }
                 } label: {
-                    HStack(spacing: 6) {
+                    HStack(spacing: isPad ? 8 : 6) {
                         Text(title)
-                            .font(.subheadline.weight(.bold))
+                            .font(.system(size: isPad ? 22 : 15, weight: .bold))
                             .multilineTextAlignment(.leading)
                         if let trailingIcon {
                             Image(systemName: trailingIcon)
-                                .font(.footnote)
+                                .font(.system(size: isPad ? 18 : 13))
                         }
                         Image(systemName: isExpanded ? "info.circle.fill" : "info.circle")
-                            .font(.footnote)
+                            .font(.system(size: isPad ? 18 : 13))
                             .foregroundStyle(character.deepColor)
                         Spacer(minLength: 0)
                     }
@@ -579,21 +615,21 @@ struct ContentView: View {
                 Toggle(title, isOn: isOn)
                     .labelsHidden()
                     .tint(character.deepColor)
-                    .scaleEffect(0.8, anchor: .trailing)
+                    .scaleEffect(isPad ? 1.3 : 0.8, anchor: .trailing)
                     .accessibilityLabel(title)
             }
             // ~10% taller rows so the list breathes a little more.
-            .frame(minHeight: 42)
+            .frame(minHeight: isPad ? 66 : 42)
 
             if isExpanded {
                 Text(info)
-                    .font(.system(size: 14, weight: .regular))
-                    .lineSpacing(2)
+                    .font(.system(size: isPad ? 19 : 14, weight: .regular))
+                    .lineSpacing(isPad ? 3 : 2)
                     .foregroundStyle(character.deepColor.opacity(0.7))
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.trailing, 30)
-                    .padding(.bottom, 10)
+                    .padding(.trailing, isPad ? 44 : 30)
+                    .padding(.bottom, isPad ? 14 : 10)
                     .transition(.opacity)
             }
         }
@@ -623,7 +659,10 @@ struct ContentView: View {
         let recommendedID = hasProgress ? nil : regular.first?.id
 
         return VStack(alignment: .leading, spacing: 14) {
-            AdaptiveLevelGrid(spacing: 12) {
+            AdaptiveLevelGrid(spacing: levelGridSpacing,
+                              minimumCardWidth: isPad ? 180 : 104,
+                              maximumColumns: isPad ? 3 : .max,
+                              cardHeight: levelCardHeight) {
                 ForEach(regular) { level in
                     let normalBest = ProgressStore.bestScore(levelID: level.id)
                     LevelCardView(level: level,
@@ -636,6 +675,7 @@ struct ContentView: View {
                                   isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                   showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
                                   dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
+                                  cardHeight: levelCardHeight,
                                   theme: character) {
                         selection = LevelSelection(level: level)
                     }
@@ -682,7 +722,10 @@ struct ContentView: View {
                         .frame(height: 1.5)
                 }
 
-                AdaptiveLevelGrid(spacing: 12) {
+                AdaptiveLevelGrid(spacing: levelGridSpacing,
+                                  minimumCardWidth: isPad ? 180 : 104,
+                                  maximumColumns: isPad ? 3 : .max,
+                                  cardHeight: levelCardHeight) {
                     ForEach(levels) { level in
                         let normalBest = ProgressStore.bestScore(levelID: level.id)
                         LevelCardView(level: level,
@@ -695,6 +738,7 @@ struct ContentView: View {
                                       isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                       showsTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID == level.id,
                                       dimsForTutorialScoreHint: showTutorialScoreHint && scoreHintLevelID != level.id,
+                                      cardHeight: levelCardHeight,
                                       theme: character) {
                             selection = LevelSelection(level: level)
                         }
@@ -707,21 +751,26 @@ struct ContentView: View {
             } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "crown.fill")
+                        .font(.system(size: isPad ? 24 : 17, weight: .bold))
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("menu.moreLevels")
-                            .font(.subheadline.weight(.bold))
+                            .font(.system(size: isPad ? 20 : 15, weight: .bold))
                             .foregroundStyle(.white)
                         Text("menu.unlockWithPremium")
-                            .font(.caption)
+                            .font(.system(size: isPad ? 16 : 12, weight: .regular))
                             .foregroundStyle(.white.opacity(0.9))
                     }
                     Spacer()
                     Image(systemName: "chevron.right")
-                        .font(.subheadline.weight(.bold))
+                        .font(.system(size: isPad ? 20 : 15, weight: .bold))
                         .foregroundStyle(.white.opacity(0.9))
+                        // Match the chevron's right edge with the options
+                        // panel above: that panel is inset once by the menu
+                        // card and once by its own horizontal padding.
+                        .padding(.trailing, isPad ? 22 : 11)
                 }
-                .padding(14)
+                .padding(isPad ? 20 : 14)
                 .background(
                     LinearGradient(colors: [character.color, character.deepColor],
                                    startPoint: .topLeading, endPoint: .bottomTrailing),
@@ -817,6 +866,9 @@ struct CompactStreakView: View {
     @AppStorage("ui.goalPeriod") private var goalPeriodRaw = GoalPeriod.weekly.rawValue
 
     private var goalPeriod: GoalPeriod { GoalPeriod(rawValue: goalPeriodRaw) ?? .weekly }
+    private var isPad: Bool { AppLayout.isPad }
+    private var scale: CGFloat { isPad ? 1.3 : 1 }
+    private var railWidth: CGFloat { isPad ? 104 : 72 }
 
     private var progressMinutes: Int {
         goalPeriod == .weekly ? tracker.weekMinutes : tracker.todayMinutes
@@ -836,37 +888,32 @@ struct CompactStreakView: View {
                 Group {
                     if tracker.streakDays == 0 {
                         Label("streak.dayOne", systemImage: "sparkles")
-                            .font(.system(size: 13, weight: .heavy, design: .rounded))
+                            .font(.system(size: 13 * scale, weight: .heavy, design: .rounded))
                     } else {
                         HStack(spacing: 5) {
                             Text(verbatim: "\(tracker.streakDays)")
-                                .font(.system(size: 27, weight: .heavy, design: .rounded))
+                                .font(.system(size: 27 * scale, weight: .heavy, design: .rounded))
                             Image(systemName: "flame.fill")
-                                .font(.system(size: 16, weight: .bold))
+                                .font(.system(size: 16 * scale, weight: .bold))
                         }
                     }
                 }
                 .foregroundStyle(accent)
                 .frame(maxWidth: .infinity, alignment: .center)
-                // `sparkles` has more empty canvas on its leading side; this
-                // keeps the visible star + title centred over the bar.
-                .offset(x: tracker.streakDays == 0 ? 13 : 17)
 
-                Spacer(minLength: 4)
+                Spacer(minLength: isPad ? 6 : 4)
                 progressLine
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                Spacer(minLength: 4)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer(minLength: isPad ? 6 : 4)
 
                 Text("common.minutesShort \(progressMinutes) \(goalMinutes)")
-                    .font(.system(size: 10, weight: .semibold))
+                    .font(.system(size: 10 * scale, weight: .semibold))
                     .foregroundStyle(accent.opacity(0.6))
-                    // Use the same 72-pt rail as the progress line, so this
-                    // stays centred regardless of the number of digits.
-                    .frame(width: 72)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    // One point inward gives the text the requested optical
-                    // centring without depending on its content.
-                    .offset(x: -1, y: -1)
+                    // The information and its progress rail share one centred
+                    // column, so the streak reads as a single compact module.
+                    .frame(width: railWidth)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .offset(y: -1)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(Rectangle())
@@ -887,7 +934,7 @@ struct CompactStreakView: View {
                     .animation(.snappy(duration: 0.4), value: dailyProgress)
             }
         }
-        .frame(width: 72, height: 6)
+        .frame(width: railWidth, height: 6 * scale)
     }
 }
 
@@ -1113,8 +1160,12 @@ struct LevelCardView: View {
     let isPaused: Bool
     var showsTutorialScoreHint = false
     var dimsForTutorialScoreHint = false
+    /// iPad cards preserve the iPhone design, scaled as one component.
+    var cardHeight: CGFloat = 96
     let theme: AnimalCharacter
     let action: () -> Void
+
+    private var cardScale: CGFloat { cardHeight / 96 }
 
     // MARK: Tiers
 
@@ -1229,7 +1280,7 @@ struct LevelCardView: View {
                     standardCard
                 }
             }
-            .frame(height: 96)
+            .frame(height: cardHeight)
             .opacity(dimsForTutorialScoreHint ? 0.30 : (isLocked ? 0.55 : 1))
             .scaleEffect(status == .recommended ? 1.02 : 1)
         }
@@ -1244,7 +1295,7 @@ struct LevelCardView: View {
             VStack(spacing: 4) {
                 Spacer(minLength: 2)
                 Text(level.cardNumber)
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .font(.system(size: 34 * cardScale, weight: .heavy, design: .rounded))
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
                     .foregroundStyle(theme.deepColor)
@@ -1255,23 +1306,23 @@ struct LevelCardView: View {
                     .padding(.bottom, 2)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(8)
+            .padding(8 * cardScale)
 
             tierBadge
-                .padding(.top, 9)
-                .padding(.leading, 9)
+                .padding(.top, 9 * cardScale)
+                .padding(.leading, 9 * cardScale)
 
         }
-        .background(cardFill, in: RoundedRectangle(cornerRadius: 18))
+        .background(cardFill, in: RoundedRectangle(cornerRadius: 18 * cardScale))
         .overlay(
-            RoundedRectangle(cornerRadius: 18)
-                .stroke(borderColor, lineWidth: status == .recommended ? 2.5 : 1)
+            RoundedRectangle(cornerRadius: 18 * cardScale)
+                .stroke(borderColor, lineWidth: (status == .recommended ? 2.5 : 1) * cardScale)
         )
         .overlay {
             if showsTutorialScoreHint {
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(theme.deepColor, lineWidth: 4)
-                    .shadow(color: theme.deepColor.opacity(0.75), radius: 7)
+                RoundedRectangle(cornerRadius: 18 * cardScale)
+                    .stroke(theme.deepColor, lineWidth: 4 * cardScale)
+                    .shadow(color: theme.deepColor.opacity(0.75), radius: 7 * cardScale)
             }
         }
         .shadow(color: .black.opacity(0.06), radius: 5, x: 0, y: 3)
@@ -1292,25 +1343,25 @@ struct LevelCardView: View {
     private var centerLine: some View {
         if status == .recommended && visibleBest == 0 && !isPaused {
             Text("menu.startHere")
-                .font(.system(size: 10, weight: .bold))
+                .font(.system(size: 10 * cardScale * 1.2, weight: .bold))
                 .foregroundStyle(theme.deepColor)
         } else if !showsTrophies {
             if isPaused {
                 Image(systemName: "pause.fill")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 10 * cardScale, weight: .bold))
                     .foregroundStyle(theme.deepColor.opacity(0.75))
             }
         } else {
-            HStack(spacing: 4) {
+            HStack(spacing: 4 * cardScale) {
                 trophyChip
                 if isPaused {
                     Rectangle()
                         .fill(theme.deepColor.opacity(0.25))
-                        .frame(width: 1, height: 11)
-                    HStack(spacing: 2) {
-                        Image(systemName: "pause.fill").font(.system(size: 8))
+                        .frame(width: 1, height: 11 * cardScale)
+                    HStack(spacing: 2 * cardScale) {
+                        Image(systemName: "pause.fill").font(.system(size: 8 * cardScale))
                         Text(verbatim: "\(displayPaused)")
-                            .font(.system(size: 11, weight: .bold))
+                            .font(.system(size: 11 * cardScale, weight: .bold))
                     }
                     .foregroundStyle(theme.deepColor.opacity(0.7))
                 }
@@ -1319,10 +1370,10 @@ struct LevelCardView: View {
     }
 
     private var trophyChip: some View {
-        return HStack(spacing: 3) {
-            Image(systemName: "trophy.fill").font(.system(size: 9))
+        return HStack(spacing: 3 * cardScale) {
+            Image(systemName: "trophy.fill").font(.system(size: 9 * cardScale))
             Text(verbatim: "\(displayBest)\(helperMarker)")
-                .font(.system(size: 12, weight: .bold))
+                .font(.system(size: 12 * cardScale, weight: .bold))
         }
         .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
     }
@@ -1338,7 +1389,7 @@ struct LevelCardView: View {
         case .one:
             RoundedRectangle(cornerRadius: 1.5)
                 .fill(tier.color(for: theme))
-                .frame(width: 9, height: 9)
+                .frame(width: 9 * cardScale, height: 9 * cardScale)
                 .rotationEffect(.degrees(45))
                 .padding(.leading, 1)
         case .two:
@@ -1352,24 +1403,24 @@ struct LevelCardView: View {
     private var cornerFlag: some View {
         CornerFlagShape()
             .fill(tier.color(for: theme))
-            .frame(width: 12, height: 14)
+            .frame(width: 12 * cardScale, height: 14 * cardScale)
     }
 
     /// A notched ribbon for the highest non-complete tier (20–29).
     private var pennant: some View {
         PennantShape()
             .fill(tier.color(for: theme))
-            .frame(width: 12, height: 14)
+            .frame(width: 12 * cardScale, height: 14 * cardScale)
     }
 
     // MARK: Progress dots
 
     private func progressDots(active: Int, color: Color) -> some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 6 * cardScale) {
             ForEach(0..<3) { index in
                 Circle()
                     .fill(index < active ? color : Color(white: 0.85))
-                    .frame(width: 6, height: 6)
+                    .frame(width: 6 * cardScale, height: 6 * cardScale)
             }
         }
     }
@@ -1383,15 +1434,15 @@ struct LevelCardView: View {
             VStack(spacing: 3) {
                 Spacer(minLength: 8)
                 Text(level.cardNumber)
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .font(.system(size: 34 * cardScale, weight: .heavy, design: .rounded))
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
                     .foregroundStyle(hero)
                     .offset(x: numberNudge)
                 HStack(spacing: 3) {
-                    Image(systemName: "trophy.fill").font(.system(size: 9))
+                    Image(systemName: "trophy.fill").font(.system(size: 9 * cardScale))
                     Text(verbatim: "\(displayBest)\(helperMarker)")
-                        .font(.system(size: 12, weight: .bold))
+                        .font(.system(size: 12 * cardScale, weight: .bold))
                 }
                 .foregroundStyle(hero)
                 Spacer(minLength: 2)
@@ -1399,7 +1450,7 @@ struct LevelCardView: View {
                     .padding(.bottom, 2)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(8)
+            .padding(8 * cardScale)
 
             // Laurel branches flanking the number.
             HStack {
@@ -1407,7 +1458,7 @@ struct LevelCardView: View {
                 Spacer()
                 Image(systemName: "laurel.trailing")
             }
-            .font(.system(size: 30, weight: .regular))
+            .font(.system(size: 30 * cardScale, weight: .regular))
             .foregroundStyle(metal.opacity(0.55))
             .padding(.horizontal, 3)
 
@@ -1422,14 +1473,14 @@ struct LevelCardView: View {
                 .offset(x: -33, y: 22)
         }
         .background(
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(cornerRadius: 18 * cardScale)
                 .fill(Color(red: 1.0, green: 0.99, blue: 0.93))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 18)
-                .stroke(metal, lineWidth: 2)
+                .stroke(metal, lineWidth: 2 * cardScale)
         )
-        .shadow(color: metal.opacity(0.45), radius: 8)
+        .shadow(color: metal.opacity(0.45), radius: 8 * cardScale)
         .overlay(alignment: .top) {
             completedRibbon(fill: hero, crown: metal)
                 .offset(y: -9)
