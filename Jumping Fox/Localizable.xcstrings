@@ -1146,19 +1146,19 @@
         }
       }
     },
-    "game.intro.trophyBullet" : {
+    "game.intro.trophyBullet %lld" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Earn **1** trophy per correct answer, up to a maximum of **30**."
+            "value" : "Earn **1** trophy per correct answer, up to a maximum of **%lld**."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verdien **1** trofee per goed antwoord, met een maximum van **30**."
+            "value" : "Verdien **1** trofee per goed antwoord, met een maximum van **%lld**."
           }
         }
       }
@@ -1448,6 +1448,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "30 MAX"
+          }
+        }
+      }
+    },
+    "menu.maximumCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MAX"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MAX"
+          }
+        }
+      }
+    },
+    "menu.maximumCount.accessibility %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum reached %lld times"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum %lld keer behaald"
           }
         }
       }
@@ -2757,13 +2791,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When you reach 30 points the level is finished automatically — that is the maximum score."
+            "value" : "In most levels you can earn up to 30 trophies. If this option is on the game will finish automatically."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Als je 30 punten haalt, wordt het level automatisch afgerond — dat is de maximale score."
+            "value" : "In de meeste levels kun je maximaal 30 trofeeën verdienen. Als deze optie aanstaat wordt het spel automatisch beëindigd."
           }
         }
       }
@@ -2774,13 +2808,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Finish at 30"
+            "value" : "Finish at goal"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afronden bij 30"
+            "value" : "Afronden bij doel"
           }
         }
       }
@@ -2791,13 +2825,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The correct answer is highlighted in green. Trophies are counted separately in this mode."
+            "value" : "In Helper Mode the correct answer is always shown in green. Trophies earned in this mode are counted separately and marked with a star."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Het goede antwoord is groen gemarkeerd. Trofeeën worden in deze modus apart geteld."
+            "value" : "In de hulpmodus wordt het juiste antwoord altijd groen weergegeven. Trofeeën die je in deze modus verdient worden apart geteld en gemarkeerd met een ster."
           }
         }
       }
@@ -2825,13 +2859,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Turn it on to keep playing after your lives run out — but trophies only count while you still have lives."
+            "value" : "You always start with 3 lives. The game will finish when you have no lives left. Turn this option on to keep playing and practice after your lives are gone."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zet je hem aan, dan speel je onbeperkt door nadat je levens op zijn — maar trofeeën tellen alleen mee zolang je nog levens hebt."
+            "value" : "Je begint altijd met 3 levens. Het spel wordt beëindigd als je geen levens meer hebt. Zet deze optie aan om door te spelen en te oefenen nadat je levens op zijn."
           }
         }
       }

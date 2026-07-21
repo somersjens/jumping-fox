@@ -931,34 +931,39 @@ final class GameScene: SKScene {
     private func patternGlyphImage() -> UIImage? {
         // A faint wash of the theme colour keeps the pattern subtle over the sky.
         let tint = theme.skPrimary.withAlphaComponent(0.10)
+        // The wallpaper belongs to the playfield, not to the device pixels.
+        // Use the same metric as stones and mascot so iPad's larger field
+        // does not leave a visually tiny, dense backdrop behind them.
+        let scale = verticalGameplayScale
         switch state.level.category {
         case .fractions:
             // The plain fraction levels have ONE denominator (their card number),
             // so the wallpaper mirrors it: 1/3 on the thirds level, etc.
             let denominator = Int(state.level.cardNumber) ?? 2
-            return makeFractionGlyph(numerator: 1, denominator: max(2, denominator), color: tint)
+            return makeFractionGlyph(numerator: 1, denominator: max(2, denominator), color: tint, scale: scale)
         case .fractionsMix:
             // The mixed levels span many denominators, so they fall back to halves.
-            return makeFractionGlyph(numerator: 1, denominator: 2, color: tint)
+            return makeFractionGlyph(numerator: 1, denominator: 2, color: tint, scale: scale)
         case .supermix:
-            let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .semibold)
+            let config = UIImage.SymbolConfiguration(pointSize: 22 * scale, weight: .semibold)
             return UIImage(systemName: "star.fill", withConfiguration: config)?
                 .withTintColor(tint, renderingMode: .alwaysOriginal)
         default:
-            return makeTextGlyph(backgroundPatternText() ?? "", color: tint)
+            return makeTextGlyph(backgroundPatternText() ?? "", color: tint, scale: scale)
         }
     }
 
     /// A single-line "number + sign" tile (e.g. "2+"), drawn in the rounded
     /// heavy face used across the game and tinted for the wallpaper.
-    private func makeTextGlyph(_ text: String, color: UIColor) -> UIImage {
-        let base = UIFont.systemFont(ofSize: 16, weight: .heavy)
+    private func makeTextGlyph(_ text: String, color: UIColor, scale: CGFloat) -> UIImage {
+        let base = UIFont.systemFont(ofSize: 16 * scale, weight: .heavy)
         let font = base.fontDescriptor.withDesign(.rounded)
-            .map { UIFont(descriptor: $0, size: 16) } ?? base
+            .map { UIFont(descriptor: $0, size: 16 * scale) } ?? base
         let attrs: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
         let str = NSAttributedString(string: text, attributes: attrs)
         let textSize = str.size()
-        let glyphSize = CGSize(width: ceil(textSize.width) + 6, height: ceil(textSize.height) + 2)
+        let glyphSize = CGSize(width: ceil(textSize.width) + 6 * scale,
+                               height: ceil(textSize.height) + 2 * scale)
         let renderer = UIGraphicsImageRenderer(size: glyphSize)
         return renderer.image { _ in
             str.draw(at: CGPoint(x: (glyphSize.width - textSize.width) / 2,
@@ -969,14 +974,16 @@ final class GameScene: SKScene {
     /// A small stacked fraction — numerator over a bar over denominator —
     /// matching the in-game fraction style rather than a symbol. The tile width
     /// grows with the digits so two-digit denominators (e.g. 1/12) still fit.
-    private func makeFractionGlyph(numerator: Int, denominator: Int, color: UIColor) -> UIImage {
-        let font = UIFont.systemFont(ofSize: 11, weight: .heavy)
+    private func makeFractionGlyph(numerator: Int, denominator: Int, color: UIColor,
+                                   scale: CGFloat) -> UIImage {
+        let font = UIFont.systemFont(ofSize: 11 * scale, weight: .heavy)
         let attrs: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
         let num = NSAttributedString(string: "\(numerator)", attributes: attrs)
         let den = NSAttributedString(string: "\(denominator)", attributes: attrs)
         let nSize = num.size()
         let dSize = den.size()
-        let glyphSize = CGSize(width: max(nSize.width, dSize.width) + 8, height: 26)
+        let glyphSize = CGSize(width: max(nSize.width, dSize.width) + 8 * scale,
+                               height: 26 * scale)
         let renderer = UIGraphicsImageRenderer(size: glyphSize)
         return renderer.image { ctx in
             num.draw(at: CGPoint(x: (glyphSize.width - nSize.width) / 2, y: 0))
@@ -984,8 +991,8 @@ final class GameScene: SKScene {
                                  y: glyphSize.height - dSize.height))
             // The fraction bar, centred vertically.
             color.setFill()
-            ctx.cgContext.fill(CGRect(x: 2, y: glyphSize.height / 2 - 1,
-                                      width: glyphSize.width - 4, height: 2))
+            ctx.cgContext.fill(CGRect(x: 2 * scale, y: glyphSize.height / 2 - scale,
+                                      width: glyphSize.width - 4 * scale, height: 2 * scale))
         }
     }
 
@@ -993,7 +1000,8 @@ final class GameScene: SKScene {
     /// an SKTexture, so the wallpaper costs a single sprite/draw call. Spacing
     /// grows with the glyph so wide tiles (e.g. "1000+") don't crowd together.
     private func makePatternTexture(glyph: UIImage) -> SKTexture? {
-        let step = max(58, glyph.size.width + 22)
+        let scale = verticalGameplayScale
+        let step = max(58 * scale, glyph.size.width + 22 * scale)
         let renderer = UIGraphicsImageRenderer(size: size)
         let image = renderer.image { _ in
             var row = 0
@@ -2054,7 +2062,7 @@ final class GameScene: SKScene {
         }
         // ×2 doubler: capped per run and never once 29 is within reach.
         if doublersSpawned < maxDoublersPerRun,
-           state.score <= ProgressStore.maximumTrophiesPerLevel - 2,
+           state.score <= ProgressStore.maximumTrophies(for: state.level) - 2,
            !state.isEndless,
            Double.random(in: 0...1) < doublerChance,
            attachPowerupToUpcomingNeutral(.doubler) {

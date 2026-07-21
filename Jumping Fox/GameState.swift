@@ -130,6 +130,7 @@ final class GameState: ObservableObject {
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
+    @Published private(set) var didIncreaseMaximumCount = false
     @Published private(set) var highScore: Int
 
     init(level: LevelConfig) {
@@ -186,7 +187,7 @@ final class GameState: ObservableObject {
     /// "scoreboard maxed" notice — but reaching the cap under the normal
     /// completion flow ends the game, so this stays false there.
     var isPastScoreboardCap: Bool {
-        !isGameOver && score >= ProgressStore.maximumTrophiesPerLevel
+        !isGameOver && score >= ProgressStore.maximumTrophies(for: level)
     }
 
     /// The hint may not be used when only half a life (or half of the
@@ -210,8 +211,8 @@ final class GameState: ObservableObject {
         // "Round off at 30" is on: reaching the cap finishes the level with a
         // festive completion screen instead of letting the run drag on.
         if GameSettings.capsTrophiesAtThirty,
-           score >= ProgressStore.maximumTrophiesPerLevel {
-            score = ProgressStore.maximumTrophiesPerLevel
+           score >= ProgressStore.maximumTrophies(for: level) {
+            score = ProgressStore.maximumTrophies(for: level)
             endGame(reason: .completed)
         }
     }
@@ -320,10 +321,12 @@ final class GameState: ObservableObject {
 
     /// Paused runs should count toward the score shown on their level card.
     func recordCurrentScore(showNewHighScore: Bool = false) {
-        if ProgressStore.recordScore(score, levelID: level.id, helperEnabled: isAnswerHelperEnabled) {
+        let result = ProgressStore.recordScore(score, level: level, helperEnabled: isAnswerHelperEnabled)
+        if result.isNewHighScore {
             highScore = score
             isNewHighScore = showNewHighScore
         }
+        didIncreaseMaximumCount = showNewHighScore && result.didIncreaseMaximumCount
     }
 
     /// Reset for a fresh game of the same level.
@@ -338,6 +341,7 @@ final class GameState: ObservableObject {
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false
+        didIncreaseMaximumCount = false
         highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
     }
 

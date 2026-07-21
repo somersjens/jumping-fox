@@ -307,6 +307,32 @@ enum ProgressStore {
     static let unlockThreshold = 8      // best score needed to unlock the next level
     static let completionThreshold = 12 // best score at which a level counts as completed
     static let maximumTrophiesPerLevel = 30
+    static let extendedMaximumTrophiesPerLevel = 50
+    static let maximumCompletionCount = 100
+
+    /// The two variants of the final star category have a longer 50-trophy
+    /// goal. All other levels retain their familiar 30-trophy goal.
+    static func maximumTrophies(for level: LevelConfig) -> Int {
+        switch level.category {
+        case .mix:
+            return extendedMaximumTrophiesPerLevel
+        default:
+            return maximumTrophiesPerLevel
+        }
+    }
+
+    static func maximumTrophies(forLevelID levelID: String) -> Int {
+        let categoryID = levelID.split(separator: ".").first.map(String.init)
+        guard let categoryID, let category = ChallengeCategory(rawValue: categoryID) else {
+            return maximumTrophiesPerLevel
+        }
+        switch category {
+        case .mix:
+            return extendedMaximumTrophiesPerLevel
+        default:
+            return maximumTrophiesPerLevel
+        }
+    }
 
     /// Scores belong to the level, not to a life-mode variant. The legacy
     /// keys are still read so existing players keep all of their trophies.
@@ -316,6 +342,10 @@ enum ProgressStore {
 
     private static func helperKey(_ levelID: String) -> String {
         "best.\(levelID).helper"
+    }
+
+    private static func maximumCountKey(_ levelID: String, helperEnabled: Bool) -> String {
+        "max-completions.\(levelID)\(helperEnabled ? ".helper" : "")"
     }
 
     private static func legacyKey(_ levelID: String, _ mode: LifeMode) -> String {
@@ -358,20 +388,65 @@ enum ProgressStore {
         bestScore(levelID: levelID)
     }
 
-    /// Returns true when this run set a new best for the level.
-    @discardableResult
-    static func recordScore(_ score: Int, levelID: String, helperEnabled: Bool) -> Bool {
+    struct RecordResult {
+        let isNewHighScore: Bool
+        let didIncreaseMaximumCount: Bool
+    }
+
+    /// Records a run. Reaching its goal adds one max-completion badge (up to
+    /// 100) without changing the level's best score or any trophy totals.
+    static func recordScore(_ score: Int, level: LevelConfig, helperEnabled: Bool) -> RecordResult {
+        let levelID = level.id
+        let maximum = maximumTrophies(for: level)
         let cappedScore = GameSettings.capsTrophiesAtThirty
-            ? min(maximumTrophiesPerLevel, score)
+            ? min(maximum, score)
             : score
         let currentBest = helperEnabled
             ? helperOnlyBestScore(levelID: levelID)
             : bestScore(levelID: levelID)
-        guard cappedScore > currentBest else { return false }
-        let storageKey = helperEnabled ? helperKey(levelID) : key(levelID)
-        UserDefaults.standard.set(cappedScore, forKey: storageKey)
-        _ = ProgressSync.shared.mergedScore(for: storageKey, localScore: cappedScore)
-        return true
+        let isNewHighScore = cappedScore > currentBest
+        // Read this before storing a newly achieved maximum so a player's
+        // first ever full run becomes ×1, not ×2.
+        let currentMaximumCount = score >= maximum
+            ? maxCompletionCount(levelID: levelID, helperEnabled: helperEnabled)
+            : 0
+        if isNewHighScore {
+            let storageKey = helperEnabled ? helperKey(levelID) : key(levelID)
+            UserDefaults.standard.set(cappedScore, forKey: storageKey)
+            _ = ProgressSync.shared.mergedScore(for: storageKey, localScore: cappedScore)
+        }
+
+        let didIncreaseMaximumCount: Bool
+        if score >= maximum {
+            let countKey = maximumCountKey(levelID, helperEnabled: helperEnabled)
+            let nextCount = min(maximumCompletionCount, currentMaximumCount + 1)
+            didIncreaseMaximumCount = nextCount > currentMaximumCount
+            if didIncreaseMaximumCount {
+                UserDefaults.standard.set(nextCount, forKey: countKey)
+                _ = ProgressSync.shared.mergedScore(for: countKey, localScore: nextCount)
+            }
+        } else {
+            didIncreaseMaximumCount = false
+        }
+        return RecordResult(isNewHighScore: isNewHighScore,
+                            didIncreaseMaximumCount: didIncreaseMaximumCount)
+    }
+
+    /// Existing completed levels predate the badge, so they begin at ×1.
+    static func maxCompletionCount(levelID: String, helperEnabled: Bool = false) -> Int {
+        let countKey = maximumCountKey(levelID, helperEnabled: helperEnabled)
+        let localCount = UserDefaults.standard.integer(forKey: countKey)
+        let mergedCount = ProgressSync.shared.mergedScore(for: countKey, localScore: localCount)
+        let legacyMaximum = maxCompletionCountBaseline(levelID: levelID, helperEnabled: helperEnabled)
+        let result = min(maximumCompletionCount, max(mergedCount, legacyMaximum))
+        if localCount < result { UserDefaults.standard.set(result, forKey: countKey) }
+        return result
+    }
+
+    private static func maxCompletionCountBaseline(levelID: String, helperEnabled: Bool) -> Int {
+        let maximum = maximumTrophies(forLevelID: levelID)
+        let score = helperEnabled ? helperOnlyBestScore(levelID: levelID) : bestScore(levelID: levelID)
+        return score >= maximum ? 1 : 0
     }
 
     /// Reconciles every known level at launch and whenever iCloud reports a
@@ -382,6 +457,8 @@ enum ProgressStore {
             for level in LevelCatalog.levels(for: category) {
                 _ = bestScore(levelID: level.id)
                 _ = helperOnlyBestScore(levelID: level.id)
+                _ = maxCompletionCount(levelID: level.id)
+                _ = maxCompletionCount(levelID: level.id, helperEnabled: true)
             }
         }
     }

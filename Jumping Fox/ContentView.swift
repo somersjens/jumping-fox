@@ -23,6 +23,7 @@ struct LevelSelection: Identifiable {
 private struct ScoreCelebration: Identifiable {
     let levelID: String
     let levelStart: Int
+    let maximumCountStart: Int
     let categoryStart: Int
     let totalStart: Int
     let id = UUID()
@@ -181,6 +182,7 @@ struct ContentView: View {
     @State private var headerDetailsHeight: CGFloat = 0
     @State private var lastOpenedLevelID: String?
     @State private var openedLevelScore = 0
+    @State private var openedLevelMaximumCount = 0
     @State private var openedCategoryTrophies = 0
     @State private var openedTotalTrophies = 0
     @State private var scoreCelebration: ScoreCelebration?
@@ -188,6 +190,12 @@ struct ContentView: View {
     @State private var showTutorialScoreHint = false
     @State private var scoreHintLevelID: String?
     @State private var suppressCharacterTap = false
+    @State private var maximumCountPreview: Int?
+    @State private var maximumCountPreviewLevelID: String?
+    @State private var secondMaximumCountPreview: Int?
+    @State private var secondMaximumCountPreviewLevelID: String?
+    @State private var secondScorePreview: Int?
+    @State private var secondScorePreviewLevelID: String?
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -256,14 +264,21 @@ struct ContentView: View {
                 }
             }
 
-            guard let levelID = lastOpenedLevelID,
-                  displayedScore(forLevelID: levelID) > openedLevelScore else {
+            guard let levelID = lastOpenedLevelID else {
+                refreshID = UUID()
+                return
+            }
+
+            let newScore = displayedScore(forLevelID: levelID)
+            let newMaximumCount = displayedMaximumCount(forLevelID: levelID)
+            guard newScore > openedLevelScore || newMaximumCount > openedLevelMaximumCount else {
                 refreshID = UUID()
                 return
             }
 
             let celebration = ScoreCelebration(levelID: levelID,
                                                levelStart: openedLevelScore,
+                                               maximumCountStart: openedLevelMaximumCount,
                                                categoryStart: openedCategoryTrophies,
                                                totalStart: openedTotalTrophies)
             // Apply the menu refresh and animation marker together. Otherwise
@@ -294,6 +309,7 @@ struct ContentView: View {
             guard let selectionID else { return }
             lastOpenedLevelID = selectionID
             openedLevelScore = displayedScore(forLevelID: selectionID)
+            openedLevelMaximumCount = displayedMaximumCount(forLevelID: selectionID)
             openedCategoryTrophies = categoryTrophies
             openedTotalTrophies = totalTrophies
         }
@@ -483,6 +499,7 @@ struct ContentView: View {
     private func menuFilterButton(_ filter: MenuFilter) -> some View {
         let isSelected = filter == selectedFilter
         return Button {
+            if filter != .mixed || !isSelected { clearMaximumCountPreview() }
             withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
@@ -492,6 +509,13 @@ struct ContentView: View {
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
         }
         .buttonStyle(.plain)
+        .highPriorityGesture(
+            LongPressGesture(minimumDuration: 2)
+                .onEnded { _ in
+                    guard filter == .mixed, isSelected else { return }
+                    previewMaximumCountBadge()
+                }
+        )
     }
 
     /// The circular topic controls deliberately touch the same outer edges as
@@ -554,7 +578,7 @@ struct ContentView: View {
             PausedGameStore.shared.pausedScore(forLevelID: $0, includingHelper: answerHelper)
         }.max() ?? 0
         let paused = capsTrophiesAtThirty
-            ? min(ProgressStore.maximumTrophiesPerLevel, pausedRaw)
+            ? min(ProgressStore.maximumTrophies(for: level), pausedRaw)
             : pausedRaw
         return max(recorded, paused)
     }
@@ -563,6 +587,95 @@ struct ContentView: View {
     /// a highlight always corresponds to a visibly improved score.
     private func displayedScore(forLevelID levelID: String) -> Int {
         ProgressStore.bestScore(levelID: levelID, helperEnabled: answerHelper)
+    }
+
+    private func displayedMaximumCount(forLevelID levelID: String) -> Int {
+        ProgressStore.maxCompletionCount(levelID: levelID, helperEnabled: answerHelper)
+    }
+
+    private func maximumCount(for level: LevelConfig) -> Int {
+        if maximumCountPreviewLevelID == level.id, let maximumCountPreview {
+            return maximumCountPreview
+        }
+        if secondMaximumCountPreviewLevelID == level.id, let secondMaximumCountPreview {
+            return secondMaximumCountPreview
+        }
+        return displayedMaximumCount(forLevelID: level.id)
+    }
+
+    private func displayedBest(for level: LevelConfig, best: Int) -> Int {
+        if maximumCountPreviewLevelID == level.id { return ProgressStore.maximumTrophies(for: level) }
+        if secondScorePreviewLevelID == level.id, let secondScorePreview { return secondScorePreview }
+        return best
+    }
+
+    private func isCelebratingScore(for level: LevelConfig) -> Bool {
+        guard scoreCelebration?.levelID == level.id else { return false }
+        if secondScorePreviewLevelID == level.id, let secondScorePreview {
+            return secondScorePreview > (scoreCelebration?.levelStart ?? 0)
+        }
+        return displayedScore(forLevelID: level.id) > (scoreCelebration?.levelStart ?? 0)
+    }
+
+    private func previewMaximumCountBadge() {
+        let levels = LevelCatalog.levels(for: category).map {
+            menuMode == .mix ? $0.immediateMixVersion() : $0
+        }
+        guard levels.count >= 2 else { return }
+        let firstLevelID = levels[0].id
+        let secondLevelID = levels[1].id
+        maximumCountPreviewLevelID = firstLevelID
+        secondScorePreviewLevelID = secondLevelID
+        secondScorePreview = 49
+        showMaximumCountPreview(levelID: firstLevelID, count: 99)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.35) {
+            guard self.maximumCountPreviewLevelID == firstLevelID else { return }
+            self.showMaximumCountPreview(levelID: firstLevelID,
+                                         count: ProgressStore.maximumCompletionCount)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
+            guard self.maximumCountPreviewLevelID == firstLevelID,
+                  self.secondScorePreviewLevelID == secondLevelID else { return }
+            self.secondScorePreview = 50
+            self.secondMaximumCountPreviewLevelID = secondLevelID
+            self.secondMaximumCountPreview = 1
+            self.showLevelTwoMaximumPreview(levelID: secondLevelID)
+        }
+    }
+
+    private func showMaximumCountPreview(levelID: String, count: Int) {
+        maximumCountPreview = count
+        let celebration = ScoreCelebration(levelID: levelID,
+                                           levelStart: displayedScore(forLevelID: levelID),
+                                           maximumCountStart: count - 1,
+                                           categoryStart: categoryTrophies,
+                                           totalStart: totalTrophies)
+        withAnimation(.easeOut(duration: 0.34)) {
+            scoreCelebration = celebration
+            refreshID = UUID()
+        }
+    }
+
+    private func showLevelTwoMaximumPreview(levelID: String) {
+        let celebration = ScoreCelebration(levelID: levelID,
+                                           levelStart: 49,
+                                           maximumCountStart: 0,
+                                           categoryStart: categoryTrophies,
+                                           totalStart: totalTrophies)
+        withAnimation(.easeOut(duration: 0.34)) {
+            scoreCelebration = celebration
+            refreshID = UUID()
+        }
+    }
+
+    private func clearMaximumCountPreview() {
+        maximumCountPreview = nil
+        maximumCountPreviewLevelID = nil
+        secondMaximumCountPreview = nil
+        secondMaximumCountPreviewLevelID = nil
+        secondScorePreview = nil
+        secondScorePreviewLevelID = nil
+        scoreCelebration = nil
     }
 
     /// In the Mix menu the mode buttons show exactly which operations they
@@ -577,6 +690,7 @@ struct ContentView: View {
             ForEach(MenuMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
+                    clearMaximumCountPreview()
                     withAnimation(.snappy(duration: 0.2)) {
                         menuModeRaw = mode.rawValue
                     }
@@ -606,9 +720,9 @@ struct ContentView: View {
                     Label("menu.options", systemImage: "slider.horizontal.3")
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                     Spacer()
-                    Image(systemName: "chevron.down")
+                    Image(systemName: "chevron.right")
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
-                        .rotationEffect(.degrees(showsOptions ? -180 : 0))
+                        .rotationEffect(.degrees(showsOptions ? 90 : 0))
                 }
                 .foregroundStyle(character.deepColor)
                 .contentShape(Rectangle())
@@ -732,7 +846,8 @@ struct ContentView: View {
                               maximumColumns: isPad ? 3 : .max,
                               cardHeight: levelCardHeight) {
                 ForEach(regular) { level in
-                    let normalBest = ProgressStore.bestScore(levelID: level.id)
+                    let normalBest = displayedBest(for: level,
+                                                    best: ProgressStore.bestScore(levelID: level.id))
                     LevelCardView(level: level,
                                   status: status(for: level, recommendedID: recommendedID),
                                   best: normalBest,
@@ -743,11 +858,17 @@ struct ContentView: View {
                                   isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                   scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                       ? scoreCelebration?.levelStart : nil,
-                                  isCelebratingNewScore: scoreCelebration?.levelID == level.id,
+                                  isCelebratingNewScore: isCelebratingScore(for: level),
+                                  maximumCount: maximumCount(for: level),
+                                  maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
+                                      ? scoreCelebration?.maximumCountStart : nil,
+                                  isCelebratingMaximumCount: scoreCelebration?.levelID == level.id
+                                      && maximumCount(for: level) > (scoreCelebration?.maximumCountStart ?? 0),
                                   celebrationID: scoreCelebration?.id,
                                   cardHeight: levelCardHeight,
                                   theme: character) {
                         selection = LevelSelection(level: level)
+                        clearMaximumCountPreview()
                     }
                 }
             }
@@ -797,7 +918,8 @@ struct ContentView: View {
                                   maximumColumns: isPad ? 3 : .max,
                                   cardHeight: levelCardHeight) {
                     ForEach(levels) { level in
-                        let normalBest = ProgressStore.bestScore(levelID: level.id)
+                        let normalBest = displayedBest(for: level,
+                                                        best: ProgressStore.bestScore(levelID: level.id))
                         LevelCardView(level: level,
                                       status: status(for: level, recommendedID: nil),
                                       best: normalBest,
@@ -808,11 +930,17 @@ struct ContentView: View {
                                       isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
                                       scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                           ? scoreCelebration?.levelStart : nil,
-                                      isCelebratingNewScore: scoreCelebration?.levelID == level.id,
+                                      isCelebratingNewScore: isCelebratingScore(for: level),
+                                      maximumCount: maximumCount(for: level),
+                                      maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
+                                          ? scoreCelebration?.maximumCountStart : nil,
+                                      isCelebratingMaximumCount: scoreCelebration?.levelID == level.id
+                                          && maximumCount(for: level) > (scoreCelebration?.maximumCountStart ?? 0),
                                       celebrationID: scoreCelebration?.id,
                                       cardHeight: levelCardHeight,
                                       theme: character) {
                             selection = LevelSelection(level: level)
+                            clearMaximumCountPreview()
                         }
                     }
                 }
@@ -1286,16 +1414,23 @@ struct LevelCardView: View {
     let isPaused: Bool
     var scoreCelebrationStart: Int?
     var isCelebratingNewScore = false
+    var maximumCount = 0
+    var maximumCountCelebrationStart: Int?
+    var isCelebratingMaximumCount = false
     var celebrationID: UUID?
     /// iPad cards preserve the iPhone design, scaled as one component.
     var cardHeight: CGFloat = 96
     let theme: AnimalCharacter
     let action: () -> Void
     @State private var trophyPulse = false
+    @State private var maximumCountPulse = false
+    @State private var maximumCountRingScale: CGFloat = 0.82
+    @State private var maximumCountRingOpacity = 0.0
     @State private var highlightOpacity = 0.0
     @State private var animatedCelebrationID: UUID?
 
     private var cardScale: CGFloat { cardHeight / 96 }
+    private var isPad: Bool { AppLayout.isPad }
 
     // MARK: Tiers
 
@@ -1342,7 +1477,7 @@ struct LevelCardView: View {
     }
 
     private var tier: Tier {
-        if visibleBest >= ProgressStore.maximumTrophiesPerLevel { return .maxed }
+        if visibleBest >= ProgressStore.maximumTrophies(for: level) { return .maxed }
         switch visibleBest {
         case ..<1:    return .empty
         case 1...9:   return .one
@@ -1389,10 +1524,10 @@ struct LevelCardView: View {
 
     /// Trophy counts shown in the menu, always clamped to the maximum — even
     /// when in-game round-off is off and a run pushed the raw score past 30.
-    private var displayBest: Int { min(visibleBest, ProgressStore.maximumTrophiesPerLevel) }
-    private var displayPaused: Int { min(pausedBest, ProgressStore.maximumTrophiesPerLevel) }
+    private var displayBest: Int { min(visibleBest, ProgressStore.maximumTrophies(for: level)) }
+    private var displayPaused: Int { min(pausedBest, ProgressStore.maximumTrophies(for: level)) }
     private var celebrationDisplayStart: Int {
-        min(scoreCelebrationStart ?? displayBest, ProgressStore.maximumTrophiesPerLevel)
+        min(scoreCelebrationStart ?? displayBest, ProgressStore.maximumTrophies(for: level))
     }
     private var helperMarker: String {
         showsHelperMarker && helperBest > best ? " *" : ""
@@ -1417,7 +1552,7 @@ struct LevelCardView: View {
             .opacity(isLocked ? 0.55 : 1)
             .scaleEffect((status == .recommended ? 1.02 : 1) * (trophyPulse ? 1.04 : 1))
             .overlay {
-                if isCelebratingNewScore {
+                if isCelebratingNewScore || isCelebratingMaximumCount {
                     RoundedRectangle(cornerRadius: 18 * cardScale)
                         .stroke(theme.deepColor, lineWidth: 4 * cardScale)
                         .shadow(color: theme.color.opacity(0.85), radius: 9 * cardScale)
@@ -1428,8 +1563,12 @@ struct LevelCardView: View {
         }
         .buttonStyle(.plain)
         .disabled(isLocked)
-        .onAppear { animateTrophyPulseIfNeeded() }
+        .onAppear {
+            animateTrophyPulseIfNeeded()
+            animateMaximumCountIfNeeded()
+        }
         .onChange(of: isCelebratingNewScore) { _ in animateTrophyPulseIfNeeded() }
+        .onChange(of: isCelebratingMaximumCount) { _ in animateMaximumCountIfNeeded() }
     }
 
     // MARK: Standard card
@@ -1543,6 +1682,31 @@ struct LevelCardView: View {
         }
     }
 
+    private func animateMaximumCountIfNeeded() {
+        guard isCelebratingMaximumCount else {
+            maximumCountPulse = false
+            maximumCountRingOpacity = 0
+            return
+        }
+        withAnimation(.easeOut(duration: 0.38)) { highlightOpacity = 1 }
+        withAnimation(.spring(response: 0.38, dampingFraction: 0.58)) { maximumCountPulse = true }
+        maximumCountRingScale = 0.82
+        maximumCountRingOpacity = 0.78
+        withAnimation(.easeOut(duration: 0.78)) {
+            maximumCountRingScale = 1.46
+            maximumCountRingOpacity = 0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.92) {
+            withAnimation(.spring(response: 0.32, dampingFraction: 0.72)) { maximumCountPulse = false }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.62) {
+            withAnimation(.easeOut(duration: 0.42)) { highlightOpacity = 0.32 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.98) {
+            withAnimation(.easeOut(duration: 0.2)) { highlightOpacity = 0 }
+        }
+    }
+
     // MARK: Tier badge (top-left)
 
     @ViewBuilder
@@ -1604,12 +1768,38 @@ struct LevelCardView: View {
                     .lineLimit(1)
                     .foregroundStyle(hero)
                     .offset(x: numberNudge)
-                HStack(spacing: 3) {
-                    Image(systemName: "trophy.fill").font(.system(size: 9 * cardScale))
-                    Text(verbatim: "\(displayBest)\(helperMarker)")
-                        .font(.system(size: 12 * cardScale, weight: .bold))
+                HStack(spacing: 4 * cardScale) {
+                    HStack(spacing: 3) {
+                        Image(systemName: "trophy.fill").font(.system(size: 9 * cardScale))
+                        Text(verbatim: "\(displayBest)\(helperMarker)")
+                            .font(.system(size: 12 * cardScale, weight: .bold))
+                    }
+                    .foregroundStyle(hero)
+                    // The repeat-max marker is a superscript detail, not a
+                    // second item in the centred trophy-score layout.
+                    .overlay(alignment: .topTrailing) {
+                        maximumCountBadge(fill: hero, metal: metal)
+                            // The wrapper is only an alignment column; the
+                            // visible outline keeps its natural width.
+                            .frame(width: 23 * cardScale, alignment: .leading)
+                            // Jens: adjust this x-value to fine-tune the
+                            // repeat-max badge's horizontal placement.
+                            .offset(x: 20 * cardScale, y: -7 * cardScale)
+                    }
+
+                    if isPaused {
+                        Rectangle()
+                            .fill(theme.deepColor.opacity(0.25))
+                            .frame(width: 1, height: 11 * cardScale)
+                        HStack(spacing: 2 * cardScale) {
+                            Image(systemName: "pause.fill").font(.system(size: 8 * cardScale))
+                            Text(verbatim: "\(displayPaused)")
+                                .font(.system(size: 11 * cardScale, weight: .bold))
+                        }
+                        // A paused run is live progress, never a max badge.
+                        .foregroundStyle(theme.deepColor)
+                    }
                 }
-                .foregroundStyle(hero)
                 Spacer(minLength: 2)
                 progressDots(active: 3, color: hero)
                     .padding(.bottom, 2)
@@ -1625,7 +1815,9 @@ struct LevelCardView: View {
             }
             .font(.system(size: 30 * cardScale, weight: .regular))
             .foregroundStyle(metal.opacity(0.55))
-            .padding(.horizontal, 3)
+            // Jens: iPad cards are wider but also much taller; pull the
+            // laurels inward there so they do not cling to the outer edge.
+            .padding(.horizontal, isPad ? 15 * cardScale : 3)
 
             // Subtle sparkle accents.
             Image(systemName: "sparkle")
@@ -1636,6 +1828,7 @@ struct LevelCardView: View {
                 .font(.system(size: 6))
                 .foregroundStyle(metal.opacity(0.8))
                 .offset(x: -33, y: 22)
+
         }
         .background(
             RoundedRectangle(cornerRadius: 18 * cardScale)
@@ -1656,19 +1849,46 @@ struct LevelCardView: View {
     /// takes the hero color and the crown the contrasting metal color.
     private func completedRibbon(fill: Color, crown: Color) -> some View {
         Image(systemName: "crown.fill")
-            .font(.system(size: 11, weight: .bold))
+            // Scale with the completed card on iPad; iPhone stays at 11pt.
+            .font(.system(size: 11 * cardScale, weight: .bold))
             .foregroundStyle(crown)
-            .padding(.horizontal, 11)
-            .padding(.vertical, 4)
+            .padding(.horizontal, 11 * cardScale)
+            .padding(.vertical, 4 * cardScale)
             .background(
-                RoundedRectangle(cornerRadius: 6)
+                RoundedRectangle(cornerRadius: 6 * cardScale)
                     .fill(fill)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 6)
+                RoundedRectangle(cornerRadius: 6 * cardScale)
                     .stroke(.white.opacity(0.6), lineWidth: 1)
             )
             .shadow(color: .black.opacity(0.15), radius: 2, y: 1)
+    }
+
+    private func maximumCountBadge(fill: Color, metal: Color) -> some View {
+        let cornerRadius = 3.5 * cardScale
+        return Text(maximumCount >= ProgressStore.maximumCompletionCount ? L("menu.maximumCount") : "×\(maximumCount)")
+            // Deliberately smaller than the trophy number: the airy outline,
+            // rather than the text, is the badge's visual footprint.
+            .font(.system(size: 5.6 * cardScale, weight: .heavy, design: .rounded))
+            .foregroundStyle(fill)
+            .padding(.horizontal, 1.5 * cardScale)
+            .padding(.vertical, 1 * cardScale)
+            .background(.white.opacity(0.5), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(metal.opacity(0.8), lineWidth: 1 * cardScale)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(metal, lineWidth: 1.2 * cardScale)
+                    .scaleEffect(maximumCountRingScale)
+                    .opacity(maximumCountRingOpacity)
+            }
+            .shadow(color: metal.opacity(0.18), radius: 2, y: 1)
+            .scaleEffect(maximumCountPulse ? 1.18 : 1, anchor: .center)
+            .accessibilityLabel(maximumCount >= ProgressStore.maximumCompletionCount
+                ? L("menu.maximumCount") : L("menu.maximumCount.accessibility \(maximumCount)"))
     }
 }
 

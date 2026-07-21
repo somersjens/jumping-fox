@@ -96,11 +96,9 @@ struct GameView: View {
     private var introFeatureTextScale: CGFloat { isPad ? 1.1 : 0.88 }
 
     init(level: LevelConfig) {
-        // Levels that already hit the maximum can't be resumed from a paused
-        // run — there's no visual slot for it and the score is already capped,
-        // so any lingering paused session is dropped and the level starts fresh.
-        let isMaxed = ProgressStore.bestAnyMode(levelID: level.id) >= ProgressStore.maximumTrophiesPerLevel
-        let canResume = !isMaxed && PausedGameStore.shared.hasPausedSession(for: level, mode: GameSettings.lifeMode)
+        // A maxed card also shows its paused score, so an in-progress run can
+        // be resumed regardless of the recorded best score.
+        let canResume = PausedGameStore.shared.hasPausedSession(for: level, mode: GameSettings.lifeMode)
         _isContinuingLevel = State(initialValue: canResume)
         let state = canResume ? PausedGameStore.shared.gameState(for: level) : GameState(level: level)
         _state = StateObject(wrappedValue: state)
@@ -155,7 +153,7 @@ struct GameView: View {
                 // completion card (showing the real tally, e.g. 31/30).
                 if state.gameOverReason == .completed
                     || isShowingCompletionPreview
-                    || state.score >= ProgressStore.maximumTrophiesPerLevel {
+                    || state.score >= ProgressStore.maximumTrophies(for: state.level) {
                     completionOverlay
                 } else {
                     gameOverOverlay
@@ -586,7 +584,7 @@ struct GameView: View {
     }
 
     private var trophyDescription: String {
-        return L("game.intro.trophyBullet")
+        return L("game.intro.trophyBullet \(ProgressStore.maximumTrophies(for: state.level))")
     }
 
     private struct IntroFeature: Identifiable {
@@ -1093,7 +1091,7 @@ struct GameView: View {
                 subtitle: endScreenText.completionSubtitle,
                 // The real tally, so a run carried past the cap reads e.g. 31/30.
                 // The debug preview keeps its clean 30/30 sample.
-                score: isShowingCompletionPreview ? ProgressStore.maximumTrophiesPerLevel : state.score,
+                score: isShowingCompletionPreview ? ProgressStore.maximumTrophies(for: state.level) : state.score,
                 illustration: .trophy,
                 titleIcon: endScreenText.menuIcon(for: state.level),
                 showsMixIndicator: state.level.startsInMix,
@@ -1178,7 +1176,7 @@ struct GameView: View {
                 .padding(.top, 10 * gameScale)
                 .frame(minHeight: 30 * gameScale)
 
-            Text(verbatim: "\(score) / \(ProgressStore.maximumTrophiesPerLevel)")
+            Text(verbatim: "\(score) / \(ProgressStore.maximumTrophies(for: state.level))")
                 .font(.system(size: 30 * gameTextScale, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.color)
                 .padding(.horizontal, 27 * gameScale)
@@ -1196,7 +1194,7 @@ struct GameView: View {
                     }
                 }
                 .padding(.top, 22 * gameScale)
-                .accessibilityLabel("game.accessibility.scoreOutOf \(score) \(ProgressStore.maximumTrophiesPerLevel)")
+                .accessibilityLabel("game.accessibility.scoreOutOf \(score) \(ProgressStore.maximumTrophies(for: state.level))")
 
             VStack(spacing: 12 * gameScale) {
                 Button {
