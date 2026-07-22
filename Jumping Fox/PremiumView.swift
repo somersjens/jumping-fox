@@ -14,6 +14,7 @@ struct PremiumView: View {
     @ObservedObject private var language = LanguageManager.shared
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     @State private var previewCharacterID = "fox"
+    @State private var showsParentApproval = false
 
     private var character: AnimalCharacter { CharacterCatalog.character(id: previewCharacterID) }
     private var isPad: Bool { AppLayout.isPad }
@@ -58,6 +59,18 @@ struct PremiumView: View {
         .animation(.spring(response: 0.42, dampingFraction: 0.7), value: premium.isPremium)
         .onAppear { previewCharacterID = characterID }
         .task { await premium.refresh() }
+        .sheet(isPresented: $showsParentApproval) {
+            ParentApprovalGate(
+                accent: character.color,
+                deepColor: character.deepColor,
+                onApproved: {
+                    showsParentApproval = false
+                    startPurchase()
+                }
+            )
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
+        }
     }
 
     // MARK: Close
@@ -80,7 +93,7 @@ struct PremiumView: View {
     // MARK: Hero — big preview of the selected character
 
     private var hero: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 4) {
             GeometryReader { proxy in
                 let heroSize = min(isPad ? 300 : 240, max(150, proxy.size.width * 0.52))
                 ZStack {
@@ -197,10 +210,7 @@ struct PremiumView: View {
         } else {
             VStack(spacing: 12) {
                 Button {
-                    Task {
-                        await premium.purchase()
-                        if premium.isPremium { characterID = previewCharacterID }
-                    }
+                    showsParentApproval = true
                 } label: {
                     HStack {
                         if premium.isPurchasing {
@@ -249,12 +259,21 @@ struct PremiumView: View {
         return L("premium.unlock")
     }
 
+    private func startPurchase() {
+        Task {
+            await premium.purchase()
+            if premium.isPremium { characterID = previewCharacterID }
+        }
+    }
+
     private func featureRow(icon: String, title: String, subtitle: String) -> some View {
-        HStack(alignment: .top, spacing: 12 * scale) {
+        // Keep the icon centered against the entire text block. This remains
+        // balanced when translated titles or subtitles wrap onto more lines.
+        HStack(alignment: .center, spacing: 12 * scale) {
             Image(systemName: icon)
                 .font(isPad ? .system(size: 28, weight: .regular) : .title3)
                 .foregroundStyle(character.color)
-                .frame(width: 28 * scale)
+                .frame(width: 28 * scale, alignment: .center)
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(isPad ? .system(size: 24, weight: .bold) : .subheadline.weight(.bold))
