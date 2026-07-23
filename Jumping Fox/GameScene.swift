@@ -502,6 +502,10 @@ final class GameScene: SKScene {
     // Deferred answer refresh — the next set only activates after the
     // confirmation, never in the landing frame.
     private var answerRefreshAt: TimeInterval?
+    /// The question the visible answer group was built for. Used to recognise a
+    /// genuinely duplicate build of the SAME question, without mistaking a
+    /// leftover block that happens to carry the next question's answer for one.
+    private var answerSetPrompt: String?
     private var lastReachabilityCheck: TimeInterval = 0
 
     // Skip sets: occasionally the first band deliberately contains ONLY
@@ -519,21 +523,35 @@ final class GameScene: SKScene {
     /// Hearts: independent rolls per correct answer, so they feel genuinely
     /// random, and only when they can actually heal.
     private let heartChance = 0.15
-    /// Shooting star: disarms the current set. Hard cap of 2 per run.
+    /// A run's length now depends on its practice mode (Order 20, Random 30,
+    /// Mixed 40, Supermix 50), so the per-run pickup caps are derived from that
+    /// goal instead of being fixed. This keeps the *density* of specials the
+    /// same everywhere: roughly one per 15 trophies, so a short Order run no
+    /// longer receives a full 30-trophy run's worth of pickups.
+    private var runTrophyGoal: Int { ProgressStore.maximumTrophies(for: state.level) }
+    private func perRunCap(forWindow window: Int) -> Int { max(1, window / 15) }
+
+    /// Shooting star: disarms the current set.
     private let eliminatorChance = 0.3
-    private let maxEliminatorsPerRun = 2
+    private var maxEliminatorsPerRun: Int { perRunCap(forWindow: runTrophyGoal) }
     private var eliminatorsSpawned = 0
     /// The star only makes sense under a real GROUP, so those sets are
     /// raised a little to reserve a visible strip below the group.
     private let eliminatorRaise: CGFloat = 140
-    /// ×2 doubler: hard cap of 2 per run, never near the 30-trophy cap.
+    /// ×2 doubler: never near the run's trophy goal.
     private let doublerChance = 0.12
-    private let maxDoublersPerRun = 2
+    private var maxDoublersPerRun: Int { perRunCap(forWindow: runTrophyGoal) }
     private var doublersSpawned = 0
     private var doublerAura: SKNode?
-    /// −1 hazard: same odds as the ×2, only from a score of 10 upward.
+    /// −1 hazard: same odds as the ×2, but only once the player has real
+    /// trophies to spare. It never appears below 20, so a 20-trophy Order run
+    /// stays hazard-free and only the longer modes can meet it — and its cap
+    /// counts only the trophies available ABOVE that threshold.
     private let minusOneChance = 0.12
-    private let maxMinusOnesPerRun = 2
+    private let minusOneScoreThreshold = 20
+    private var maxMinusOnesPerRun: Int {
+        perRunCap(forWindow: runTrophyGoal - minusOneScoreThreshold)
+    }
     private var minusOnesSpawned = 0
     /// Spread: at least this many correct answers between ANY two specials,
     /// so they never cluster while each individual roll stays random.
@@ -848,6 +866,7 @@ final class GameScene: SKScene {
         totalClimb = 0
         lastUpdateTime = 0
         answerRefreshAt = nil
+        answerSetPrompt = nil
         lastReachabilityCheck = 0
         setsBuilt = 0
         lastSetWasSkip = false
@@ -1180,9 +1199,14 @@ final class GameScene: SKScene {
         // lifecycle callback while the opening field is being attached.  Do
         // not turn that into a second visible group for the same question
         // (for example two `5 × 1` answer blocks at the start of table 5).
+        // The prompt check is what makes this precise: without it, a leftover
+        // wrong block whose value happens to equal the NEXT question's answer
+        // was mistaken for an already-built group, so the previous set was
+        // never greyed out and that stale block silently became the answer.
         // Tutorial steps deliberately rebuild individual teaching groups, so
         // their flow remains governed by the cases below.
         if !tutorial.isActive,
+           answerSetPrompt == state.questionText,
            platforms.contains(where: {
                $0.isActiveAnswer && $0.value == state.correctAnswer
            }) {
@@ -1194,6 +1218,7 @@ final class GameScene: SKScene {
         for platform in platforms where platform.isActiveAnswer {
             platform.markSuperseded(theme: theme)
         }
+        answerSetPrompt = state.questionText
 
         // Lessons 1–2 are intentionally answer-free.  The remaining guided
         // sets are minimal and deterministic: exactly the object the lesson
@@ -2056,9 +2081,10 @@ final class GameScene: SKScene {
                 return
             }
         }
-        // ×2 doubler: capped per run and never once 29 is within reach.
+        // ×2 doubler: capped per run and never once the goal is within reach
+        // (a ×2 that would overshoot the final trophy is just noise).
         if doublersSpawned < maxDoublersPerRun,
-           state.score <= ProgressStore.maximumTrophies(for: state.level) - 2,
+           state.score <= runTrophyGoal - 2,
            !state.isEndless,
            Double.random(in: 0...1) < doublerChance,
            attachPowerupToUpcomingNeutral(.doubler) {
@@ -2066,9 +2092,9 @@ final class GameScene: SKScene {
             answersSinceSpecial = 0
             return
         }
-        // −1 hazard: only once the player has trophies to spare (10+).
+        // −1 hazard: only once the player has real trophies to spare (20+).
         if minusOnesSpawned < maxMinusOnesPerRun,
-           state.score >= 10, !state.isEndless,
+           state.score >= minusOneScoreThreshold, !state.isEndless,
            Double.random(in: 0...1) < minusOneChance,
            attachPowerupToUpcomingNeutral(.minusOne) {
             minusOnesSpawned += 1
