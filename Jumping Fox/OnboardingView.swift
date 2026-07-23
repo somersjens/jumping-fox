@@ -5,6 +5,7 @@ struct OnboardingView: View {
     @AppStorage(GameSettings.onboardingCompleteKey) private var isComplete = false
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
+    @AppStorage("ui.supermixCategory") private var supermixCategoryRaw = ChallengeCategory.superBasic.rawValue
     @ObservedObject private var language = LanguageManager.shared
     @State private var step = 0
     @FocusState private var isNameFieldFocused: Bool
@@ -220,6 +221,11 @@ struct OnboardingView: View {
 
     private func finish(with mode: MenuMode) {
         menuModeRaw = mode.rawValue
+        // The Supermix filter has no Standard/Mix picker of its own — map the
+        // beginner/advanced choice onto its simplest and most complete button.
+        if MenuFilter(rawValue: menuFilterRaw) == .mixed {
+            supermixCategoryRaw = (mode == .mix ? ChallengeCategory.superAll : .superBasic).rawValue
+        }
         withAnimation(.easeInOut(duration: 0.55)) {
             isComplete = true
         }

@@ -99,18 +99,25 @@ enum ModeIntro {
                     [L("modeIntro.percentagesMix.b1"),
                      L("modeIntro.percentagesMix.b2")])
 
-        case .mix:
-            let bullets = mix
-                ? [L("modeIntro.mix.varied.b1"),
-                   L("modeIntro.mix.b2 \(n)")]
-                : [L("modeIntro.mix.std.b1"),
-                   L("modeIntro.mix.b2 \(n)")]
-            return (L("modeIntro.mix.title \(n)"), bullets)
+        case .superBasic:
+            return (L("modeIntro.superBasic.title \(n)"),
+                    [L("modeIntro.superBasic.b1"),
+                     L("modeIntro.super.b2")])
 
-        case .supermix:
-            return (L("modeIntro.supermix.title \(n)"),
-                    [L("modeIntro.supermix.b1"),
-                     L("modeIntro.supermix.b2")])
+        case .superTimes:
+            return (L("modeIntro.superTimes.title \(n)"),
+                    [L("modeIntro.superTimes.b1"),
+                     L("modeIntro.super.b2")])
+
+        case .superFraction:
+            return (L("modeIntro.superFraction.title \(n)"),
+                    [L("modeIntro.superFraction.b1"),
+                     L("modeIntro.super.b2")])
+
+        case .superAll:
+            return (L("modeIntro.superAll.title \(n)"),
+                    [L("modeIntro.superAll.b1"),
+                     L("modeIntro.super.b2")])
         }
     }
 

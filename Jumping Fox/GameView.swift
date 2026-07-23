@@ -545,14 +545,14 @@ struct GameView: View {
         case .tables, .tablesMix: return "multiply"
         case .fractions, .fractionsMix: return "divide"
         case .percentages, .percentagesMix: return "percent"
-        case .mix, .supermix: return "shuffle"
+        case .superBasic, .superTimes, .superFraction, .superAll: return "shuffle"
         }
     }
 
     private func practiceDescription(info: (title: String, bullets: [String])) -> String {
-        // The mixed menu is deliberately an all-in-one introduction. The five
-        // skill menus instead explain the current skill and its order clearly.
-        guard state.level.category != .mix && state.level.category != .supermix else {
+        // The Supermix menu is deliberately an all-in-one introduction. The
+        // five skill menus instead explain the current skill and its order clearly.
+        guard !state.level.category.isSupermixMenu else {
             return info.bullets[0]
         }
         let order = state.level.startsInMix || state.level.category.isMix
@@ -579,7 +579,7 @@ struct GameView: View {
         case .tables, .tablesMix: return L("game.intro.subject.tables")
         case .fractions, .fractionsMix: return L("game.intro.subject.fractions")
         case .percentages, .percentagesMix: return L("game.intro.subject.percentages")
-        case .mix, .supermix: return ""
+        case .superBasic, .superTimes, .superFraction, .superAll: return ""
         }
     }
 
@@ -1466,8 +1466,7 @@ private struct EndScreenText {
         case .tables, .tablesMix: return "multiply.circle.fill"
         case .fractions, .fractionsMix: return "circle.lefthalf.filled"
         case .percentages, .percentagesMix: return "percent"
-        case .mix: return "star.circle.fill"
-        case .supermix: return "star.circle.fill"
+        case .superBasic, .superTimes, .superFraction, .superAll: return "star.circle.fill"
         }
     }
 

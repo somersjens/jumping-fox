@@ -1969,24 +1969,126 @@
         }
       }
     },
-    "modeIntro.mix.b2 %lld" : {
+    "modeIntro.super.b2" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "One number is always %lld or smaller; the other may be bigger."
+            "value" : "The sums get a little harder each time."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eén getal is altijd %lld of kleiner; het andere mag groter zijn."
+            "value" : "De sommen worden steeds een beetje moeilijker."
           }
         }
       }
     },
-    "modeIntro.mix.std.b1" : {
+    "modeIntro.superAll.b1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice adding, subtracting, tables, fractions and percentages all mixed up."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oefen optellen, aftrekken, tafels, breuken en procenten door elkaar."
+          }
+        }
+      }
+    },
+    "modeIntro.superAll.title %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        }
+      }
+    },
+    "modeIntro.superBasic.b1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice adding and subtracting all mixed up."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oefen optellen en aftrekken door elkaar."
+          }
+        }
+      }
+    },
+    "modeIntro.superBasic.title %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        }
+      }
+    },
+    "modeIntro.superFraction.b1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice adding, subtracting, tables and fractions all mixed up."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oefen optellen, aftrekken, tafels en breuken door elkaar."
+          }
+        }
+      }
+    },
+    "modeIntro.superFraction.title %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermix %lld"
+          }
+        }
+      }
+    },
+    "modeIntro.superTimes.b1" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -2003,36 +2105,19 @@
         }
       }
     },
-    "modeIntro.mix.title %lld" : {
+    "modeIntro.superTimes.title %lld" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mix with %lld"
+            "value" : "Supermix %lld"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mix met %lld"
-          }
-        }
-      }
-    },
-    "modeIntro.mix.varied.b1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Practice adding, subtracting, tables, dividing and percentages all mixed up."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oefen optellen, aftrekken, tafels, delen en procenten door elkaar."
+            "value" : "Supermix %lld"
           }
         }
       }
@@ -2390,57 +2475,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trek steeds twee getallen van elkaar af."
-          }
-        }
-      }
-    },
-    "modeIntro.supermix.b1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Practice adding, subtracting, tables, fractions and percentages all mixed up."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oefen optellen, aftrekken, tafels, breuken en procenten door elkaar."
-          }
-        }
-      }
-    },
-    "modeIntro.supermix.b2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The sums get a little harder each time."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De sommen worden steeds een beetje moeilijker."
-          }
-        }
-      }
-    },
-    "modeIntro.supermix.title %lld" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supermix %lld"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supermix %lld"
           }
         }
       }

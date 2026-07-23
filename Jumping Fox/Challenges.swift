@@ -21,7 +21,9 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
     case tables, tablesMix
     case fractions, fractionsMix
     case percentages, percentagesMix
-    case mix, supermix
+    // The Supermix menu's four buttons: each combines progressively more
+    // operations, with harder operations weighted more heavily.
+    case superBasic, superTimes, superFraction, superAll
 
     var id: String { rawValue }
 
@@ -33,10 +35,17 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
         case .tables, .tablesMix: return "×"
         case .fractions, .fractionsMix: return "½"
         case .percentages, .percentagesMix: return "%"
-        case .mix: return "🔀"
-        case .supermix: return "🌟"
+        case .superBasic: return "+ −"
+        case .superTimes: return "+ − ×"
+        case .superFraction: return "+ − × ÷"
+        case .superAll: return "+ − × ÷ %"
         }
     }
+
+    /// The four Supermix-menu categories, in their intended button order.
+    static let supermixMenu: [ChallengeCategory] = [.superBasic, .superTimes, .superFraction, .superAll]
+
+    var isSupermixMenu: Bool { Self.supermixMenu.contains(self) }
 
     var isMix: Bool {
         switch self {
@@ -225,16 +234,14 @@ enum LevelCatalog {
                         isAdvanced: i == 3)
         }
 
-        // Mix: the card number is a promise — every sum keeps at least one
-        // operand at or below that number (2 + 12 or 8 − 2 are both fine on
-        // card 2), so the number itself tells how hard the level is.
-        result[.mix] = (1...12).map {
-            LevelConfig(category: .mix, index: $0, cardNumber: "\($0)")
-        }
-        // Supermix: everything, harder.
-        result[.supermix] = (1...12).map {
-            LevelConfig(category: .supermix, index: $0, cardNumber: "\($0)",
-                        isAdvanced: $0 >= 3)
+        // Supermix menu: four buttons, each adding one more operation on top
+        // of the last. The card number is simply the level number; difficulty
+        // comes from the growing ceilings inside each operation's own
+        // generator (see QuestionEngine.superQuestion).
+        for category in ChallengeCategory.supermixMenu {
+            result[category] = (1...12).map {
+                LevelConfig(category: category, index: $0, cardNumber: "\($0)", isAdvanced: $0 >= 3)
+            }
         }
 
         // Each menu has twelve free levels. Premium extends every topic to 99
@@ -272,9 +279,7 @@ enum LevelCatalog {
                 case .percentagesMix:
                     let c = ChallengeScaling.premiumCeiling(index)
                     card = "\(c)"
-                case .mix:
-                    card = "\(index)"
-                case .supermix:
+                case .superBasic, .superTimes, .superFraction, .superAll:
                     card = "\(index)"
                 case .tables:
                     continue
@@ -310,15 +315,11 @@ enum ProgressStore {
     static let extendedMaximumTrophiesPerLevel = 50
     static let maximumCompletionCount = 100
 
-    /// The two variants of the final star category have a longer 50-trophy
-    /// goal. All other levels retain their familiar 30-trophy goal.
+    /// The four Supermix-menu categories have a longer 50-trophy goal, since
+    /// they are the final, hardest categories. All other levels retain their
+    /// familiar 30-trophy goal.
     static func maximumTrophies(for level: LevelConfig) -> Int {
-        switch level.category {
-        case .mix:
-            return extendedMaximumTrophiesPerLevel
-        default:
-            return maximumTrophiesPerLevel
-        }
+        level.category.isSupermixMenu ? extendedMaximumTrophiesPerLevel : maximumTrophiesPerLevel
     }
 
     static func maximumTrophies(forLevelID levelID: String) -> Int {
@@ -326,12 +327,7 @@ enum ProgressStore {
         guard let categoryID, let category = ChallengeCategory(rawValue: categoryID) else {
             return maximumTrophiesPerLevel
         }
-        switch category {
-        case .mix:
-            return extendedMaximumTrophiesPerLevel
-        default:
-            return maximumTrophiesPerLevel
-        }
+        return category.isSupermixMenu ? extendedMaximumTrophiesPerLevel : maximumTrophiesPerLevel
     }
 
     /// Scores belong to the level, not to a life-mode variant. The legacy
@@ -479,24 +475,30 @@ enum ProgressStore {
         case .tablesMix: return "tables.1"
         case .fractionsMix: return "fractions.1"
         case .percentagesMix: return "percentages.1"
-        case .mix: return "subtraction.1" // plus addition.1, checked below
-        case .supermix: return nil        // custom multi-gate below
+        case .superBasic, .superTimes, .superFraction, .superAll:
+            return nil // custom multi-gate below
         default: return nil
         }
     }
 
-    static func isUnlocked(_ level: LevelConfig) -> Bool {
-        switch level.category {
-        case .mix where level.index == 1:
-            return bestAnyMode(levelID: "addition.1") >= unlockThreshold
-                && bestAnyMode(levelID: "subtraction.1") >= unlockThreshold
-        case .supermix where level.index == 1:
-            let gates = ["addition.1", "subtraction.1", "tables.1", "fractions.1", "percentages.1"]
-            return gates.allSatisfy { bestAnyMode(levelID: $0) >= unlockThreshold }
-        default:
-            guard let prereq = prerequisiteID(for: level) else { return true }
-            return bestAnyMode(levelID: prereq) >= unlockThreshold
+    /// The base skills each Supermix-menu button reviews, in growing order —
+    /// used to gate that button's first level.
+    private static func supermixGates(for category: ChallengeCategory) -> [String] {
+        switch category {
+        case .superBasic: return ["addition.1", "subtraction.1"]
+        case .superTimes: return ["addition.1", "subtraction.1", "tables.1"]
+        case .superFraction: return ["addition.1", "subtraction.1", "tables.1", "fractions.1"]
+        case .superAll: return ["addition.1", "subtraction.1", "tables.1", "fractions.1", "percentages.1"]
+        default: return []
         }
+    }
+
+    static func isUnlocked(_ level: LevelConfig) -> Bool {
+        if level.category.isSupermixMenu, level.index == 1 {
+            return supermixGates(for: level.category).allSatisfy { bestAnyMode(levelID: $0) >= unlockThreshold }
+        }
+        guard let prereq = prerequisiteID(for: level) else { return true }
+        return bestAnyMode(levelID: prereq) >= unlockThreshold
     }
 
     /// 0–1 progress toward unlocking (for "almost unlocked" cards).
@@ -638,8 +640,10 @@ final class QuestionEngine {
         case .fractionsMix: return fractionsMixQuestion()
         case .percentages: return percentagesQuestion()
         case .percentagesMix: return percentagesMixQuestion()
-        case .mix: return mixQuestion()
-        case .supermix: return supermixQuestion()
+        case .superBasic: return superQuestion(Self.superBasicWeights)
+        case .superTimes: return superQuestion(Self.superTimesWeights)
+        case .superFraction: return superQuestion(Self.superFractionWeights)
+        case .superAll: return superQuestion(Self.superAllWeights)
         }
     }
 
@@ -662,12 +666,8 @@ final class QuestionEngine {
         case .percentages:
             let introduced = Array(Self.percentageLevels.prefix(max(1, level.index)))
             return percentagesVarietyQuestion(percentages: introduced)
-        case .mix:
-            // Mix mode of the Mix menu: same small-operand rule, but with
-            // division and percentages added on top of + − ×.
-            return mixQuestion(withDivisionAndPercentages: true)
         default:
-            return supermixQuestion()
+            return superQuestion(Self.superAllWeights)
         }
     }
 
@@ -1052,74 +1052,49 @@ final class QuestionEngine {
                                 .filter { $0 >= 0 }.map(String.init))
     }
 
-    // MARK: Mix & Supermix
+    // MARK: Supermix
 
-    /// Mix: the card number n is a hard rule — every sum has at least one
-    /// operand of at most n (2 + 12 and 8 − 2 are both valid on card 2).
-    /// Standard uses only + − ×; the Mix mode additionally brings in
-    /// ÷ and % questions.
-    private func mixQuestion(withDivisionAndPercentages: Bool = false) -> Question {
-        let n = level.index
-        let small = Int.random(in: 1...n)   // the guaranteed small operand (≤ card number)
-        let bigCap = 10 + n * 5             // the free operand grows with the level
+    /// One operation in a Supermix button, with its relative weight (out of
+    /// 100) for that button — harder operations are weighted more heavily.
+    private enum SuperOp { case add, sub, mul, fraction, percent }
 
-        var operations = ["+", "−", "×"]
-        if withDivisionAndPercentages { operations += ["÷", "%"] }
+    private static let superBasicWeights: [(SuperOp, Double)] =
+        [(.add, 50), (.sub, 50)]
+    private static let superTimesWeights: [(SuperOp, Double)] =
+        [(.add, 20), (.sub, 30), (.mul, 50)]
+    private static let superFractionWeights: [(SuperOp, Double)] =
+        [(.add, 10), (.sub, 15), (.mul, 25), (.fraction, 50)]
+    private static let superAllWeights: [(SuperOp, Double)] =
+        [(.add, 10), (.sub, 15), (.mul, 20), (.fraction, 25), (.percent, 30)]
 
-        switch operations.randomElement()! {
-        case "+":
-            let big = Int.random(in: 1...bigCap)
-            let (a, b) = Bool.random() ? (small, big) : (big, small)
-            let answer = a + b
-            return makeQuestion("\(a) + \(b) = ?", "\(answer)",
-                                [answer + 1, answer - 1, answer + 2, answer - 2,
-                                 big, answer + small].filter { $0 >= 0 }.map(String.init))
-        case "−":
-            // The small operand is subtracted, so the result never goes negative.
-            let a = Int.random(in: (small + 1)...(small + bigCap))
-            let answer = a - small
-            return makeQuestion("\(a) − \(small) = ?", "\(answer)",
-                                [answer + 1, answer - 1, answer + 2, answer - 2,
-                                 a, answer - small].filter { $0 >= 0 }.map(String.init))
-        case "×":
-            if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(small) }
-            let m = Int.random(in: 1...12)
-            let (a, b) = Bool.random() ? (small, m) : (m, small)
-            let answer = small * m
-            return makeQuestion("\(a) × \(b) = ?", "\(answer)",
-                                [small * (m + 1), small * max(1, m - 1),
-                                 (small + 1) * m, max(0, (small - 1) * m),
-                                 answer + 1, answer - 1].filter { $0 >= 0 }.map(String.init))
-        case "÷":
-            // Divisor is the small operand; the answer is always whole.
-            let quotient = Int.random(in: 1...12)
-            let dividend = small * quotient
-            return makeQuestion("\(dividend) ÷ \(small) = ?", "\(quotient)",
-                                [quotient + 1, max(0, quotient - 1), quotient + 2,
-                                 small, max(0, dividend - small)].filter { $0 >= 0 }.map(String.init))
-        default: // %
-            // Percentages follow the learning line: low cards use only the
-            // easiest percentages, higher cards unlock more of them.
-            let introduced = Self.percentageLevels.prefix(max(3, min(n, Self.percentageLevels.count)))
-            return percentagesQuestion(percentage: introduced.randomElement()!)
+    /// Picks an operation according to its relative weight.
+    private func weightedOperation(_ weights: [(SuperOp, Double)]) -> SuperOp {
+        let total = weights.reduce(0) { $0 + $1.1 }
+        var r = Double.random(in: 0..<total)
+        for (op, weight) in weights {
+            if r < weight { return op }
+            r -= weight
         }
+        return weights.last!.0
     }
 
-    /// Everything that has been unlocked, faster and harder — but every
-    /// visible sum still shows exactly two numbers and one operation.
-    private func supermixQuestion() -> Question {
+    /// A Supermix button: only the operations named in `weights` appear,
+    /// harder ones proportionally more often. Every sum still shows exactly
+    /// two numbers and one operation, and difficulty climbs with the level
+    /// exactly like the other 99-level menus.
+    private func superQuestion(_ weights: [(SuperOp, Double)]) -> Question {
         let idx = level.index
-        switch ["addition", "subtraction", "tables", "fractions", "percentages"].randomElement()! {
-        case "addition":
+        switch weightedOperation(weights) {
+        case .add:
             return additionMixQuestion(maxResult: 30 + idx * 30, harder: idx >= 2)
-        case "subtraction":
+        case .sub:
             return subtractionMixQuestion(maxStart: 30 + idx * 30, allowNegative: idx >= 3)
-        case "tables":
+        case .mul:
             return tablesMixQuestion(pool: Array(1...min(99, 8 + idx)))
-        case "fractions":
-            return fractionsQuestion(denominator: Self.fractionDenominators.randomElement()!)
-        default:
-            return percentagesQuestion(percentage: Self.percentageLevels.randomElement()!)
+        case .fraction:
+            return fractionsQuestion(denominator: Self.fractionDenominators[min(idx - 1, Self.fractionDenominators.count - 1)])
+        case .percent:
+            return percentagesQuestion(percentage: Self.percentageLevels[min(idx - 1, Self.percentageLevels.count - 1)])
         }
     }
 

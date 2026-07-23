@@ -890,9 +890,9 @@ final class GameScene: SKScene {
 
     /// The number + operation sign that fills the wallpaper for a level, built
     /// from the level's own card number so it reads like the level itself:
-    /// "2+", "−2", "2×", "2%", "2★" (mix). The sign trails the number, except
-    /// subtraction where it naturally leads. Fractions draw a stacked fraction
-    /// and supermix keeps a plain star, so both return nil here.
+    /// "2+", "−2", "2×", "2%", "2★" (Supermix). The sign trails the number,
+    /// except subtraction where it naturally leads. Fractions draw a stacked
+    /// fraction, so they return nil here.
     private func backgroundPatternText() -> String? {
         let n = state.level.cardNumber
         switch state.level.category {
@@ -900,8 +900,8 @@ final class GameScene: SKScene {
         case .subtraction, .subtractionMix: return "−\(n)"
         case .tables, .tablesMix: return "\(n)×"
         case .percentages, .percentagesMix: return "\(n)%"
-        case .mix: return "\(n)★"
-        case .fractions, .fractionsMix, .supermix: return nil
+        case .superBasic, .superTimes, .superFraction, .superAll: return "\(n)★"
+        case .fractions, .fractionsMix: return nil
         }
     }
 
@@ -925,9 +925,9 @@ final class GameScene: SKScene {
     }
 
 #if os(iOS)
-    /// One tinted tile glyph for the wallpaper: a number + sign for the arithmetic
-    /// levels, a stacked fraction for the fraction levels, or a plain star for
-    /// supermix.
+    /// One tinted tile glyph for the wallpaper: a number + sign for the
+    /// arithmetic levels (Supermix included) or a stacked fraction for the
+    /// fraction levels.
     private func patternGlyphImage() -> UIImage? {
         // A faint wash of the theme colour keeps the pattern subtle over the sky.
         let tint = theme.skPrimary.withAlphaComponent(0.10)
@@ -944,10 +944,6 @@ final class GameScene: SKScene {
         case .fractionsMix:
             // The mixed levels span many denominators, so they fall back to halves.
             return makeFractionGlyph(numerator: 1, denominator: 2, color: tint, scale: scale)
-        case .supermix:
-            let config = UIImage.SymbolConfiguration(pointSize: 22 * scale, weight: .semibold)
-            return UIImage(systemName: "star.fill", withConfiguration: config)?
-                .withTintColor(tint, renderingMode: .alwaysOriginal)
         default:
             return makeTextGlyph(backgroundPatternText() ?? "", color: tint, scale: scale)
         }

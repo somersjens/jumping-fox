@@ -135,7 +135,10 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
         case .tables: return .tables
         case .fractions: return .fractions
         case .percentages: return .percentages
-        case .mixed: return .mix
+        // The Supermix filter picks its category from its own four-button
+        // row instead (see `ContentView.supermixCategory`); this default is
+        // never actually shown.
+        case .mixed: return .superBasic
         }
     }
 
@@ -166,6 +169,7 @@ struct ContentView: View {
     @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
+    @AppStorage("ui.supermixCategory") private var supermixCategoryRaw = ChallengeCategory.superBasic.rawValue
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var progress = ProgressSync.shared
     // Re-renders code-resolved strings (menu names, options) on a language switch.
@@ -201,7 +205,12 @@ struct ContentView: View {
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
     private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
     private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
-    private var category: ChallengeCategory { selectedFilter.category(for: menuMode) }
+    private var supermixCategory: ChallengeCategory {
+        ChallengeCategory(rawValue: supermixCategoryRaw) ?? .superBasic
+    }
+    private var category: ChallengeCategory {
+        selectedFilter == .mixed ? supermixCategory : selectedFilter.category(for: menuMode)
+    }
     private var premiumSectionTitle: LocalizedStringKey {
         category == .tables ? "menu.premiumTables" : "menu.premium"
     }
@@ -486,7 +495,11 @@ struct ContentView: View {
 
                 filterPicker
 
-                menuModePicker
+                if selectedFilter == .mixed {
+                    supermixCategoryPicker
+                } else {
+                    menuModePicker
+                }
 
                 helperModeRow
             }
@@ -623,7 +636,7 @@ struct ContentView: View {
 
     private func previewMaximumCountBadge() {
         let levels = LevelCatalog.levels(for: category).map {
-            menuMode == .mix ? $0.immediateMixVersion() : $0
+            (selectedFilter != .mixed && menuMode == .mix) ? $0.immediateMixVersion() : $0
         }
         guard levels.count >= 2 else { return }
         let firstLevelID = levels[0].id
@@ -682,13 +695,6 @@ struct ContentView: View {
         scoreCelebration = nil
     }
 
-    /// In the Mix menu the mode buttons show exactly which operations they
-    /// contain — "Standard"/"Mix" alone doesn't mean anything there.
-    private func modeLabel(_ mode: MenuMode) -> String {
-        guard selectedFilter == .mixed else { return mode.title }
-        return mode == .standard ? "+ − ×" : "+ − × ÷ %"
-    }
-
     private var menuModePicker: some View {
         HStack(spacing: 8) {
             ForEach(MenuMode.allCases) { mode in
@@ -699,7 +705,7 @@ struct ContentView: View {
                         menuModeRaw = mode.rawValue
                     }
                 } label: {
-                    Text(modeLabel(mode))
+                    Text(mode.title)
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
@@ -708,7 +714,35 @@ struct ContentView: View {
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("menu.accessibility.chooseMode \(modeLabel(mode))")
+                .accessibilityLabel("menu.accessibility.chooseMode \(mode.title)")
+            }
+        }
+    }
+
+    /// The Supermix filter's four buttons, each a self-contained 99-level
+    /// category that combines progressively more operations.
+    private var supermixCategoryPicker: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
+            ForEach(ChallengeCategory.supermixMenu) { menuCategory in
+                let isSelected = supermixCategory == menuCategory
+                Button {
+                    clearMaximumCountPreview()
+                    withAnimation(.snappy(duration: 0.2)) {
+                        supermixCategoryRaw = menuCategory.rawValue
+                    }
+                } label: {
+                    Text(menuCategory.symbol)
+                        .font(.system(size: isPad ? 26 : 19, weight: .bold))
+                        .foregroundStyle(isSelected ? .white : character.deepColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: isPad ? 76 : 42)
+                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("menu.accessibility.chooseMode \(menuCategory.symbol)")
             }
         }
     }
@@ -835,7 +869,7 @@ struct ContentView: View {
 
     private var levelGrid: some View {
         let levels = LevelCatalog.levels(for: category).map {
-            menuMode == .mix ? $0.immediateMixVersion() : $0
+            (selectedFilter != .mixed && menuMode == .mix) ? $0.immediateMixVersion() : $0
         }
         let regular = levels.filter { !$0.requiresPremium }
         let premiumLevels = levels.filter { $0.requiresPremium }
