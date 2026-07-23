@@ -725,8 +725,7 @@ struct ContentView: View {
                         supermixCategoryRaw = menuCategory.rawValue
                     }
                 } label: {
-                    Text(menuCategory.symbol)
-                        .font(.system(size: isPad ? 26 : 19, weight: .bold))
+                    supermixLabel(menuCategory)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .lineLimit(1)
                         .minimumScaleFactor(0.85)
@@ -739,6 +738,18 @@ struct ContentView: View {
                 .accessibilityLabel("menu.accessibility.chooseMode \(menuCategory.symbol)")
             }
         }
+    }
+
+    /// The "%" glyph reads visually heavier than +, −, × and ÷ at the same
+    /// point size, so it renders a size smaller to match.
+    private func supermixLabel(_ category: ChallengeCategory) -> Text {
+        let font = Font.system(size: isPad ? 26 : 19, weight: .bold)
+        guard category.symbol.hasSuffix("%") else {
+            return Text(category.symbol).font(font)
+        }
+        let percentFont = Font.system(size: isPad ? 22 : 16, weight: .bold)
+        let base = String(category.symbol.dropLast())
+        return Text(base).font(font) + Text("%").font(percentFont)
     }
 
     private var helperModeRow: some View {

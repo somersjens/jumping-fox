@@ -1276,16 +1276,54 @@ final class QuestionEngine {
         let idx = level.index
         switch weightedOperation(weights) {
         case .add:
-            return additionMixQuestion(maxResult: 30 + idx * 30, harder: idx >= 2)
+            return superAdditionQuestion()
         case .sub:
-            return subtractionMixQuestion(maxStart: 30 + idx * 30, allowNegative: idx >= 3)
+            return superSubtractionQuestion()
         case .mul:
-            return tablesMixQuestion(pool: Array(1...min(99, 8 + idx)))
+            // Same rule as addition/subtraction: the table itself is at most
+            // this level's own number (weighted toward it), so level 1 only
+            // ever gives ×1 sums — never something like 4×7.
+            return tablesMixQuestion(pool: Array(1...idx), weightedHard: true)
         case .fraction:
-            return fractionsQuestion(denominator: Self.fractionDenominators[min(idx - 1, Self.fractionDenominators.count - 1)])
+            let introduced = Array(Self.fractionDenominators.prefix(max(1, idx)))
+            return fractionsQuestion(denominator: weightedHardPick(introduced))
         case .percent:
-            return percentagesQuestion(percentage: Self.percentageLevels[min(idx - 1, Self.percentageLevels.count - 1)])
+            let introduced = Array(Self.percentageLevels.prefix(max(1, idx)))
+            return percentagesQuestion(percentage: weightedHardPick(introduced))
         }
+    }
+
+    /// One operand is always at most this level's own number — weighted
+    /// toward it, so lower numbers fade out as the level grows (level 12
+    /// mostly gives 8…12, rarely 3…7, never 1…2) — while the other operand's
+    /// range reuses Addition Mix's own ceiling, the same "max height" every
+    /// other menu already scales by.
+    private func superAdditionQuestion() -> Question {
+        let idx = level.index
+        let small = weightedHardPick(Array(1...idx))
+        let ceiling = ChallengeScaling.additionMixCeiling(idx)
+        let big = Int.random(in: 1...max(1, ceiling - small))
+        let (a, b) = Bool.random() ? (small, big) : (big, small)
+        let answer = a + b
+        return makeQuestion("\(a) + \(b) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             big, answer + small].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Mirrors `superAdditionQuestion`, but the subtracted number is
+    /// guaranteed small (weighted toward this level's own number) and the
+    /// result's range reuses Subtraction Mix's own ceiling.
+    private func superSubtractionQuestion() -> Question {
+        let idx = level.index
+        let small = weightedHardPick(Array(1...idx))
+        let ceiling = ChallengeScaling.subtractionMixCeiling(idx)
+        let a = Int.random(in: (small + 1)...(small + ceiling))
+        let answer = a - small
+        return makeQuestion("\(a) − \(small) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             a, answer - small].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
     }
 
     // MARK: Question assembly
