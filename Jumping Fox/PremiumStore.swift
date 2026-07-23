@@ -17,7 +17,12 @@ final class PremiumStore: ObservableObject {
     /// Must exactly match the non-consumable Product ID in App Store Connect.
     static let productID = "premium_unlock_all"
 
-    @Published private(set) var isPremium = false
+    // Seed from the cached entitlement so the very first frame already knows
+    // whether a Premium character is unlocked. Without this, launch renders one
+    // frame as the free Fox (orange) before the async entitlement check resolves
+    // and repaints in the chosen character's colour — the brief colour "switch"
+    // seen on restart. The async refresh still corrects this if it ever changes.
+    @Published private(set) var isPremium = GameSettings.premiumUnlockedCache
     @Published private(set) var product: Product?
     @Published private(set) var isPurchasing = false
     @Published var lastError: String?

@@ -1460,6 +1460,16 @@ struct LevelCardView: View {
     @State private var maximumCountRingOpacity = 0.0
     @State private var highlightOpacity = 0.0
     @State private var animatedCelebrationID: UUID?
+    // First-completion reveal: the gold border traces itself in and the
+    // crown drops onto the card. These rest at their finished values so a
+    // card that is simply already complete shows the border fully drawn.
+    @State private var firstMaxBorderTrace: CGFloat = 1
+    @State private var firstMaxCrownScale: CGFloat = 1
+    @State private var firstMaxCrownOffset: CGFloat = 0
+    @State private var firstMaxCrownTilt: Double = 0
+    @State private var firstMaxGlowScale: CGFloat = 1
+    @State private var firstMaxGlowOpacity = 0.0
+    @State private var animatedMaxCelebrationID: UUID?
 
     private var cardScale: CGFloat { cardHeight / 96 }
     private var isPad: Bool { AppLayout.isPad }
@@ -1525,6 +1535,19 @@ struct LevelCardView: View {
 
     private var isCompleted: Bool { tier == .maxed }
 
+    /// The very first time a level is completed the card gains its gold
+    /// border and crown — that milestone gets its own reveal animation and
+    /// deliberately skips the theme-color highlight.
+    private var isCelebratingFirstMax: Bool {
+        isCelebratingMaximumCount && (maximumCountCelebrationStart ?? 0) == 0
+    }
+
+    /// Every later completion keeps the existing badge pulse; the border is
+    /// already there, so only the ×N counter and theme highlight react.
+    private var isCelebratingRepeatMax: Bool {
+        isCelebratingMaximumCount && (maximumCountCelebrationStart ?? 0) >= 1
+    }
+
     /// Hue (0–360°) of the selected theme, used to keep the completed card's
     /// festive colors distinct from whichever animal theme is active.
     private var themeHue: Double {
@@ -1584,7 +1607,10 @@ struct LevelCardView: View {
             .opacity(isLocked ? 0.55 : 1)
             .scaleEffect((status == .recommended ? 1.02 : 1) * (trophyPulse ? 1.04 : 1))
             .overlay {
-                if isCelebratingNewScore || isCelebratingMaximumCount {
+                // The completed card draws its own theme highlight *behind*
+                // the gold border (see completedCard); only standard cards
+                // paint it on top here.
+                if (isCelebratingNewScore || isCelebratingMaximumCount) && !isCompleted {
                     RoundedRectangle(cornerRadius: 18 * cardScale)
                         .stroke(theme.deepColor, lineWidth: 4 * cardScale)
                         .shadow(color: theme.color.opacity(0.85), radius: 9 * cardScale)
@@ -1718,8 +1744,68 @@ struct LevelCardView: View {
         guard isCelebratingMaximumCount else {
             maximumCountPulse = false
             maximumCountRingOpacity = 0
+            firstMaxBorderTrace = 1
+            firstMaxCrownScale = 1
+            firstMaxCrownOffset = 0
+            firstMaxCrownTilt = 0
+            firstMaxGlowScale = 1
+            firstMaxGlowOpacity = 0
+            animatedMaxCelebrationID = nil
             return
         }
+        // Run the reveal or pulse exactly once per celebration, even if the
+        // grid re-renders and re-appears mid-animation.
+        guard let celebrationID, animatedMaxCelebrationID != celebrationID else { return }
+        animatedMaxCelebrationID = celebrationID
+        if isCelebratingFirstMax {
+            animateFirstMaxReveal()
+        } else {
+            animateRepeatMaxPulse()
+        }
+    }
+
+    /// First completion: the gold border draws itself around the card, a soft
+    /// metal flash blooms outward, and the crown drops in with a small settle.
+    /// Timed to finish well inside the celebration's own lifetime so it never
+    /// lingers or blocks the eye.
+    private func animateFirstMaxReveal() {
+        maximumCountPulse = false
+        maximumCountRingOpacity = 0
+        firstMaxBorderTrace = 0
+        firstMaxCrownScale = 0
+        firstMaxCrownOffset = -12
+        firstMaxCrownTilt = 0
+        firstMaxGlowScale = 0.9
+        firstMaxGlowOpacity = 0.7
+
+        withAnimation(.easeInOut(duration: 0.55)) { firstMaxBorderTrace = 1 }
+        withAnimation(.easeOut(duration: 0.7)) {
+            firstMaxGlowScale = 1.3
+            firstMaxGlowOpacity = 0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.52)) {
+                firstMaxCrownScale = 1
+                firstMaxCrownOffset = 0
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.52) {
+            withAnimation(.spring(response: 0.32, dampingFraction: 0.42)) { firstMaxCrownTilt = -6 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.74) {
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) { firstMaxCrownTilt = 0 }
+        }
+    }
+
+    /// Every later completion: the border already exists, so only the ×N badge
+    /// pulses and the theme highlight breathes — unchanged from before.
+    private func animateRepeatMaxPulse() {
+        firstMaxBorderTrace = 1
+        firstMaxCrownScale = 1
+        firstMaxCrownOffset = 0
+        firstMaxCrownTilt = 0
+        firstMaxGlowOpacity = 0
+
         withAnimation(.easeOut(duration: 0.38)) { highlightOpacity = 1 }
         withAnimation(.spring(response: 0.38, dampingFraction: 0.58)) { maximumCountPulse = true }
         maximumCountRingScale = 0.82
@@ -1808,15 +1894,19 @@ struct LevelCardView: View {
                     }
                     .foregroundStyle(hero)
                     // The repeat-max marker is a superscript detail, not a
-                    // second item in the centred trophy-score layout.
+                    // second item in the centred trophy-score layout. It only
+                    // appears from the *second* completion onward (×2, ×3, …);
+                    // the first completion is marked by the border and crown.
                     .overlay(alignment: .topTrailing) {
-                        maximumCountBadge(fill: hero, metal: metal)
-                            // The wrapper is only an alignment column; the
-                            // visible outline keeps its natural width.
-                            .frame(width: 23 * cardScale, alignment: .leading)
-                            // Jens: adjust this x-value to fine-tune the
-                            // repeat-max badge's horizontal placement.
-                            .offset(x: 20 * cardScale, y: -7 * cardScale)
+                        if maximumCount >= 2 {
+                            maximumCountBadge(fill: hero, metal: metal)
+                                // The wrapper is only an alignment column; the
+                                // visible outline keeps its natural width.
+                                .frame(width: 23 * cardScale, alignment: .leading)
+                                // Jens: adjust this x-value to fine-tune the
+                                // repeat-max badge's horizontal placement.
+                                .offset(x: 20 * cardScale, y: -7 * cardScale)
+                        }
                     }
 
                     if isPaused {
@@ -1866,14 +1956,38 @@ struct LevelCardView: View {
             RoundedRectangle(cornerRadius: 18 * cardScale)
                 .fill(Color(red: 1.0, green: 0.99, blue: 0.93))
         )
+        // Repeat-max theme highlight sits *behind* the gold border so the
+        // festive edge always stays crisp on top of the colored glow.
+        .overlay {
+            if isCelebratingRepeatMax {
+                RoundedRectangle(cornerRadius: 18 * cardScale)
+                    .stroke(theme.deepColor, lineWidth: 4 * cardScale)
+                    .shadow(color: theme.color.opacity(0.85), radius: 9 * cardScale)
+                    .opacity(highlightOpacity)
+                    .allowsHitTesting(false)
+            }
+        }
+        // The gold border. On a first completion it traces itself in
+        // (firstMaxBorderTrace 0→1); otherwise it rests fully drawn.
         .overlay(
             RoundedRectangle(cornerRadius: 18)
+                .trim(from: 0, to: firstMaxBorderTrace)
                 .stroke(metal, lineWidth: 2 * cardScale)
         )
+        // A soft metal flash that blooms outward as the border first appears.
+        .overlay {
+            RoundedRectangle(cornerRadius: 18 * cardScale)
+                .stroke(metal, lineWidth: 2.5 * cardScale)
+                .scaleEffect(firstMaxGlowScale)
+                .opacity(firstMaxGlowOpacity)
+                .allowsHitTesting(false)
+        }
         .shadow(color: metal.opacity(0.45), radius: 8 * cardScale)
         .overlay(alignment: .top) {
             completedRibbon(fill: hero, crown: metal)
-                .offset(y: -9)
+                .scaleEffect(firstMaxCrownScale, anchor: .bottom)
+                .rotationEffect(.degrees(firstMaxCrownTilt))
+                .offset(y: -9 + firstMaxCrownOffset)
         }
     }
 
