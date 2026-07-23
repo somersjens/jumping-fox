@@ -555,7 +555,7 @@ struct GameView: View {
         guard !state.level.category.isSupermixMenu else {
             return info.bullets[0]
         }
-        let order = state.level.startsInMix || state.level.category.isMix
+        let order = state.level.mode != .order || state.level.category.isMix
             ? L("game.intro.orderRandom")
             : L("game.intro.orderAscending")
         return L("game.intro.practiceOrdered \(practiceSubject) \(order)")
@@ -1094,7 +1094,7 @@ struct GameView: View {
                 score: isShowingCompletionPreview ? ProgressStore.maximumTrophies(for: state.level) : state.score,
                 illustration: .trophy,
                 titleIcon: endScreenText.menuIcon(for: state.level),
-                showsMixIndicator: state.level.startsInMix,
+                showsMixIndicator: state.level.mode != .order,
                 emphasizesSubtitle: false,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )

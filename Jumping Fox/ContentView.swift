@@ -142,20 +142,7 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
         }
     }
 
-    func category(for mode: MenuMode) -> ChallengeCategory { standard }
-}
-
-enum MenuMode: String, CaseIterable, Identifiable {
-    case standard, mix
-
-    var id: String { rawValue }
-
-    var title: String {
-        switch self {
-        case .standard: return L("mode.standard")
-        case .mix: return L("mode.mix")
-        }
-    }
+    func category(for mode: PracticeMode) -> ChallengeCategory { standard }
 }
 
 // MARK: - Home screen
@@ -168,7 +155,7 @@ struct ContentView: View {
     @AppStorage(GameSettings.answerHelperKey) private var answerHelper = false
     @AppStorage(GameSettings.capTrophiesKey) private var capsTrophiesAtThirty = true
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
-    @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
+    @AppStorage("ui.menuMode") private var menuModeRaw = PracticeMode.order.rawValue
     @AppStorage("ui.supermixCategory") private var supermixCategoryRaw = ChallengeCategory.superBasic.rawValue
     @ObservedObject private var premium = PremiumStore.shared
     @ObservedObject private var progress = ProgressSync.shared
@@ -204,7 +191,7 @@ struct ContentView: View {
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
     private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
-    private var menuMode: MenuMode { MenuMode(rawValue: menuModeRaw) ?? .standard }
+    private var menuMode: PracticeMode { PracticeMode(rawValue: menuModeRaw) ?? .order }
     private var supermixCategory: ChallengeCategory {
         ChallengeCategory(rawValue: supermixCategoryRaw) ?? .superBasic
     }
@@ -583,21 +570,21 @@ struct ContentView: View {
             .reduce(0) { $0 + trophies(for: $1) }
     }
 
-    /// Trophies earned for a base level, counting both its standard and Mix-mode
+    /// Trophies earned for a base level, counting all three of its practice-mode
     /// variants and any in-progress paused run — whichever is highest. This is
-    /// why a paused (or Mix) level still adds to the category and grand totals.
+    /// why a paused (or Random/Mixed) level still adds to the category and grand
+    /// totals.
     private func trophies(for level: LevelConfig) -> Int {
-        let ids = Set([level.id, level.immediateMixVersion().id])
-        let recorded = ids.map {
-            ProgressStore.bestScore(levelID: $0, helperEnabled: answerHelper)
+        // Each mode variant is scored and capped against its own goal (Order 20,
+        // Random 30, Mixed 40), so the best across them is compared like-for-like.
+        level.allModeVariants.map { variant in
+            let recorded = ProgressStore.bestScore(levelID: variant.id, helperEnabled: answerHelper)
+            let pausedRaw = PausedGameStore.shared.pausedScore(forLevelID: variant.id, includingHelper: answerHelper)
+            let paused = capsTrophiesAtThirty
+                ? min(ProgressStore.maximumTrophies(for: variant), pausedRaw)
+                : pausedRaw
+            return max(recorded, paused)
         }.max() ?? 0
-        let pausedRaw = ids.map {
-            PausedGameStore.shared.pausedScore(forLevelID: $0, includingHelper: answerHelper)
-        }.max() ?? 0
-        let paused = capsTrophiesAtThirty
-            ? min(ProgressStore.maximumTrophies(for: level), pausedRaw)
-            : pausedRaw
-        return max(recorded, paused)
     }
 
     /// Matches the score a level card presents in the current helper mode, so
@@ -636,7 +623,7 @@ struct ContentView: View {
 
     private func previewMaximumCountBadge() {
         let levels = LevelCatalog.levels(for: category).map {
-            (selectedFilter != .mixed && menuMode == .mix) ? $0.immediateMixVersion() : $0
+            selectedFilter != .mixed ? $0.variant(menuMode) : $0
         }
         guard levels.count >= 2 else { return }
         let firstLevelID = levels[0].id
@@ -696,8 +683,12 @@ struct ContentView: View {
     }
 
     private var menuModePicker: some View {
+        // Three equal-width buttons: Reeks · Hussel · Gemixt (Order · Random ·
+        // Mixed). The label keeps one line and shrinks to fit, so a longer word
+        // in another language still fits three-across without changing the base
+        // text size the shorter labels use.
         HStack(spacing: 8) {
-            ForEach(MenuMode.allCases) { mode in
+            ForEach(PracticeMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
                     clearMaximumCountPreview()
@@ -707,9 +698,12 @@ struct ContentView: View {
                 } label: {
                     Text(mode.title)
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
                         .frame(height: isPad ? 76 : 42)
+                        .padding(.horizontal, 2)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                 }
@@ -869,7 +863,7 @@ struct ContentView: View {
 
     private var levelGrid: some View {
         let levels = LevelCatalog.levels(for: category).map {
-            (selectedFilter != .mixed && menuMode == .mix) ? $0.immediateMixVersion() : $0
+            selectedFilter != .mixed ? $0.variant(menuMode) : $0
         }
         let regular = levels.filter { !$0.requiresPremium }
         let premiumLevels = levels.filter { $0.requiresPremium }

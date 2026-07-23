@@ -140,6 +140,41 @@ enum ChallengeScaling {
 
 // MARK: - Level configuration
 
+/// The three ways each of the five skill menus can practise a level:
+/// - `order`  (Reeks / Order):  the calm ascending sequence, as it always was.
+/// - `random` (Hussel / Random): only this level's own number, shuffled — and
+///   free to sit on either side of the sum (never for a minus, where it can't).
+/// - `mixed`  (Gemixt / Mixed):  this number *or a lower one*, all mixed up,
+///   still leaning toward the harder (higher) end.
+/// The id suffixes are deliberately kept as they were ("" and ".mix") so every
+/// existing player keeps all of their earned trophies; only `.random` is new.
+enum PracticeMode: String, CaseIterable, Identifiable {
+    // rawValues preserve the values previously stored under "ui.menuMode".
+    case order = "standard"
+    case random = "random"
+    case mixed = "mix"
+
+    var id: String { rawValue }
+
+    /// Suffix appended to a level id so each mode keeps its own score.
+    var idSuffix: String {
+        switch self {
+        case .order: return ""
+        case .random: return ".random"
+        case .mixed: return ".mix"
+        }
+    }
+
+    /// Localized button label (Reeks · Hussel · Gemixt / Order · Random · Mixed).
+    var title: String {
+        switch self {
+        case .order: return L("mode.order")
+        case .random: return L("mode.random")
+        case .mixed: return L("mode.mixed")
+        }
+    }
+}
+
 struct LevelConfig: Identifiable, Hashable {
     /// Stable identifier, e.g. "addition.3" or "tables.7".
     let id: String
@@ -149,25 +184,32 @@ struct LevelConfig: Identifiable, Hashable {
     let cardNumber: String
     let isAdvanced: Bool
     let requiresPremium: Bool
-    /// The Mix menu starts this familiar skill straight in varied practice.
-    let startsInMix: Bool
+    /// Which of the three practice modes this level was opened in.
+    let mode: PracticeMode
+
+    /// Legacy convenience: "mix" historically meant the varied (now Mixed) form.
+    var startsInMix: Bool { mode == .mixed }
 
     init(category: ChallengeCategory, index: Int, cardNumber: String,
          isAdvanced: Bool = false, requiresPremium: Bool = false,
-         startsInMix: Bool = false) {
-        self.id = "\(category.rawValue).\(index)\(startsInMix ? ".mix" : "")"
+         mode: PracticeMode = .order) {
+        self.id = "\(category.rawValue).\(index)\(mode.idSuffix)"
         self.category = category
         self.index = index
         self.cardNumber = cardNumber
         self.isAdvanced = isAdvanced
         self.requiresPremium = requiresPremium
-        self.startsInMix = startsInMix
+        self.mode = mode
     }
 
-    func immediateMixVersion() -> LevelConfig {
+    /// The same level opened in a different practice mode.
+    func variant(_ mode: PracticeMode) -> LevelConfig {
         LevelConfig(category: category, index: index, cardNumber: cardNumber,
-                    isAdvanced: isAdvanced, requiresPremium: requiresPremium, startsInMix: true)
+                    isAdvanced: isAdvanced, requiresPremium: requiresPremium, mode: mode)
     }
+
+    /// All three mode variants of this level (used to total a level's trophies).
+    var allModeVariants: [LevelConfig] { PracticeMode.allCases.map { variant($0) } }
 }
 
 /// Static level configurations, computed once and cached.
@@ -311,23 +353,36 @@ enum LevelCatalog {
 enum ProgressStore {
     static let unlockThreshold = 8      // best score needed to unlock the next level
     static let completionThreshold = 12 // best score at which a level counts as completed
-    static let maximumTrophiesPerLevel = 30
+    // Each harder practice mode carries a larger trophy goal, so climbing to the
+    // toughest mode is also worth more. Supermix keeps its own, highest goal.
+    static let orderMaximumTrophies = 20
+    static let randomMaximumTrophies = 30
+    static let mixedMaximumTrophies = 40
     static let extendedMaximumTrophiesPerLevel = 50
     static let maximumCompletionCount = 100
 
-    /// The four Supermix-menu categories have a longer 50-trophy goal, since
-    /// they are the final, hardest categories. All other levels retain their
-    /// familiar 30-trophy goal.
+    /// The trophy goal for a level depends on its practice mode: Order 20,
+    /// Random 30, Mixed 40. The four Supermix-menu categories keep their own
+    /// 50-trophy goal, since they are the final, hardest categories.
     static func maximumTrophies(for level: LevelConfig) -> Int {
-        level.category.isSupermixMenu ? extendedMaximumTrophiesPerLevel : maximumTrophiesPerLevel
+        if level.category.isSupermixMenu { return extendedMaximumTrophiesPerLevel }
+        switch level.mode {
+        case .order: return orderMaximumTrophies
+        case .random: return randomMaximumTrophies
+        case .mixed: return mixedMaximumTrophies
+        }
     }
 
     static func maximumTrophies(forLevelID levelID: String) -> Int {
         let categoryID = levelID.split(separator: ".").first.map(String.init)
         guard let categoryID, let category = ChallengeCategory(rawValue: categoryID) else {
-            return maximumTrophiesPerLevel
+            return orderMaximumTrophies
         }
-        return category.isSupermixMenu ? extendedMaximumTrophiesPerLevel : maximumTrophiesPerLevel
+        if category.isSupermixMenu { return extendedMaximumTrophiesPerLevel }
+        // The id suffix encodes the mode (see PracticeMode.idSuffix).
+        if levelID.hasSuffix(PracticeMode.mixed.idSuffix) { return mixedMaximumTrophies }
+        if levelID.hasSuffix(PracticeMode.random.idSuffix) { return randomMaximumTrophies }
+        return orderMaximumTrophies
     }
 
     /// Scores belong to the level, not to a life-mode variant. The legacy
@@ -575,10 +630,10 @@ final class QuestionEngine {
         return question
     }
 
-    /// Standard addition, subtraction and tables are fixed practice routes.
-    /// Mix levels retain their varied and revision behaviour.
+    /// Order addition, subtraction and tables are fixed practice routes.
+    /// Random and Mixed levels retain their varied and revision behaviour.
     private var usesFixedStandardSequence: Bool {
-        !level.startsInMix && [.addition, .subtraction, .tables].contains(level.category)
+        level.mode == .order && [.addition, .subtraction, .tables].contains(level.category)
     }
 
     /// Current cycle number (how often the level's series has wrapped).
@@ -628,7 +683,11 @@ final class QuestionEngine {
     // MARK: Generation dispatch
 
     private func generate() -> Question {
-        if level.startsInMix { return immediateMixQuestion() }
+        switch level.mode {
+        case .order:  break                          // fall through to the guided routes
+        case .random: return randomQuestion()
+        case .mixed:  return immediateMixQuestion()
+        }
         switch level.category {
         case .addition: return additionQuestion()
         case .additionMix: return additionMixQuestion()
@@ -647,28 +706,142 @@ final class QuestionEngine {
         }
     }
 
-    /// The Mix menu uses the same subject and ceiling as Standard, but skips
-    /// the guided runway and starts immediately in varied questions.
+    /// The Mixed menu uses this level's number *or a lower one*, all mixed up.
+    /// It leans toward the harder (higher) end — for the table of 12, ×3 still
+    /// turns up now and then, but ×8 far more often (see `weightedHard`).
     private func immediateMixQuestion() -> Question {
         switch level.category {
         case .addition:
             // Card number = highest small operand (card 3 allows +1/+2/+3).
-            return additionSmallStepQuestion(maxAdd: level.index)
+            return additionSmallStepQuestion(maxAdd: level.index, weightedHard: true)
         case .subtraction:
-            return subtractionSmallStepQuestion(maxTake: level.index)
+            return subtractionSmallStepQuestion(maxTake: level.index, weightedHard: true)
         case .tables:
-            return tablesMixQuestion(pool: Array(1...min(99, level.index)))
+            return tablesMixQuestion(pool: Array(1...min(99, level.index)), weightedHard: true)
         case .fractions:
             // Varied question forms over everything introduced so far —
-            // clearly different from the guided Standard level.
+            // clearly different from the guided Order level.
             let introduced = Array(Self.fractionDenominators.prefix(max(1, level.index)))
-            return fractionsVarietyQuestion(denominators: introduced)
+            return fractionsVarietyQuestion(denominators: introduced, weightedHard: true)
         case .percentages:
             let introduced = Array(Self.percentageLevels.prefix(max(1, level.index)))
-            return percentagesVarietyQuestion(percentages: introduced)
+            return percentagesVarietyQuestion(percentages: introduced, weightedHard: true)
         default:
             return superQuestion(Self.superAllWeights)
         }
+    }
+
+    // MARK: Random (Hussel)
+
+    /// The Random menu drills only this level's own number, but in shuffled
+    /// order — and, wherever the maths allows, with that number free to sit on
+    /// either side of the sum. A minus keeps its fixed order (a−b ≠ b−a).
+    private func randomQuestion() -> Question {
+        switch level.category {
+        case .addition:    return additionRandomQuestion()
+        case .subtraction: return subtractionRandomQuestion()
+        case .tables:      return tablesRandomQuestion()
+        case .fractions:   return fractionsRandomQuestion()
+        case .percentages: return percentagesRandomQuestion()
+        default:           return immediateMixQuestion()
+        }
+    }
+
+    /// Picks from an ordered easy→hard list, biased toward the hard (later)
+    /// end so a Mixed level keeps its weight up high: the top values appear
+    /// most, everything below still shows up occasionally. Weight grows
+    /// linearly with position, so the bias scales itself across all 99 levels
+    /// with no per-level tuning.
+    private func weightedHardPick<T>(_ items: [T]) -> T {
+        guard items.count > 1 else { return items[items.count - 1] }
+        let n = items.count
+        let total = n * (n + 1) / 2          // 1 + 2 + … + n
+        var r = Int.random(in: 1...total)
+        for i in 0..<n {
+            r -= (i + 1)                     // position i carries weight i+1
+            if r <= 0 { return items[i] }
+        }
+        return items[n - 1]
+    }
+
+    /// This level's own table, every multiplier 1…12 shuffled, and the table
+    /// free to appear before or after the ×.
+    private func tablesRandomQuestion() -> Question {
+        let table = min(99, level.index)
+        let m = shuffledCycled(Array(1...12))
+        let answer = table * m
+        let (a, b) = Bool.random() ? (table, m) : (m, table)
+        return makeQuestion("\(a) × \(b) = ?", "\(answer)",
+                            [table * (m + 1), table * max(1, m - 1),
+                             (table + 1) * m, (table - 1) * m,
+                             answer + 1, answer - 1].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Always add this level's number, shuffled through the same value set as
+    /// the Order route, with the two numbers free to swap sides.
+    private func additionRandomQuestion() -> Question {
+        let n = level.index
+        let pos = shuffledCycled(Array(0..<30))
+        let group = pos / 10
+        let other = n + [0, 1, 3][group] + (pos % 10) * n
+        let answer = n + other
+        let (a, b) = Bool.random() ? (n, other) : (other, n)
+        return makeQuestion("\(a) + \(b) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             other, answer + n].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Always subtract this level's number, shuffled through the Order route's
+    /// value set. The order never swaps — a minus is not commutative.
+    private func subtractionRandomQuestion() -> Question {
+        let n = level.index
+        let pos = shuffledCycled(Array(0..<30))
+        let group = pos / 10
+        let left = 11 * n + [0, 1, 3][group] - (pos % 10) * n
+        let answer = left - n
+        return makeQuestion("\(left) − \(n) = ?", "\(answer)",
+                            [answer + 1, answer - 1, answer + 2, answer - 2,
+                             left, answer - n].filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Only this level's own denominator, shuffled wholes, and the fraction
+    /// free to appear before or after the ×.
+    private func fractionsRandomQuestion() -> Question {
+        let d = Self.fractionDenominators[min(level.index - 1, Self.fractionDenominators.count - 1)]
+        let factor = shuffledCycled(Array(1...6))
+        let whole = d * factor
+        let num = d == 2 ? 1 : Int.random(in: 1...(d - 1))
+        let unit = whole / d              // first divide…
+        let answer = unit * num           // …then multiply
+        let frac = "\(num)/\(d)"
+        let prompt = Bool.random() ? "\(frac) × \(whole) = ?" : "\(whole) × \(frac) = ?"
+        return makeQuestion(prompt, "\(answer)",
+                            [unit, answer + unit, max(0, answer - unit),
+                             whole - answer, answer + 1, answer - 1].map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Only this level's own percentage, shuffled wholes, and the percentage
+    /// free to appear before or after the ×.
+    private func percentagesRandomQuestion() -> Question {
+        let p = Self.percentageLevels[min(level.index - 1, Self.percentageLevels.count - 1)]
+        let factor = shuffledCycled(Array(1...8))
+        let whole = Self.percentageBase(p) * factor
+        let answer = whole * p / 100
+        let pText = "\(p)%"
+        let prompt = Bool.random() ? "\(pText) × \(whole) = ?" : "\(whole) × \(pText) = ?"
+        let neighbours = Self.percentageLevels
+            .filter { $0 != p && whole * $0 % 100 == 0 }
+            .sorted { abs($0 - p) < abs($1 - p) }
+            .prefix(3)
+            .map { whole * $0 / 100 }
+        return makeQuestion(prompt, "\(answer)",
+                            (neighbours + [whole - answer, answer + 1, answer - 1])
+                                .filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
     }
 
     // MARK: Addition
@@ -692,9 +865,11 @@ final class QuestionEngine {
     /// Mix form of the addition menu. The card number is the HIGHEST small
     /// operand: every sum adds a number from 1...maxAdd (on card 3 both
     /// 12 + 3 and 9 + 1 are fine, but never 14 + 5).
-    private func additionSmallStepQuestion(maxAdd: Int) -> Question {
+    private func additionSmallStepQuestion(maxAdd: Int, weightedHard: Bool = false) -> Question {
         let cap = max(20, maxAdd * 6)
-        let add = Int.random(in: 1...maxAdd)
+        // Mixed mode leans toward the higher added numbers (harder), but the
+        // smaller ones still appear now and then.
+        let add = weightedHard ? weightedHardPick(Array(1...maxAdd)) : Int.random(in: 1...maxAdd)
         let left = Int.random(in: 1...(cap - add))
         let answer = left + add
         return makeQuestion("\(left) + \(add) = ?", "\(answer)",
@@ -743,9 +918,10 @@ final class QuestionEngine {
 
     /// Mix form of the subtraction menu. The card number is the HIGHEST
     /// number taken away: every sum subtracts a number from 1...maxTake.
-    private func subtractionSmallStepQuestion(maxTake: Int) -> Question {
+    private func subtractionSmallStepQuestion(maxTake: Int, weightedHard: Bool = false) -> Question {
         let cap = max(20, maxTake * 6)
-        let take = Int.random(in: 1...maxTake)
+        // Mixed mode leans toward the higher numbers taken away (harder).
+        let take = weightedHard ? weightedHardPick(Array(1...maxTake)) : Int.random(in: 1...maxTake)
         let left = Int.random(in: take...cap)
         let answer = left - take
         return makeQuestion("\(left) − \(take) = ?", "\(answer)",
@@ -811,11 +987,18 @@ final class QuestionEngine {
                              answer + 1, answer - 1].filter { $0 >= 0 }.map(String.init))
     }
 
-    private func tablesMixQuestion(pool: [Int]? = nil) -> Question {
+    private func tablesMixQuestion(pool: [Int]? = nil, weightedHard: Bool = false) -> Question {
         let tables = pool ?? ChallengeScaling.tablesMixPool(level.index)
-        let current = tables.max()!
-        // Weighted: the newest table most often, earlier tables regularly.
-        let table = Double.random(in: 0...1) < 0.5 ? current : tables.randomElement()!
+        let table: Int
+        if weightedHard {
+            // Mixed mode: the highest tables (nearest this level's own) come up
+            // most, but lower ones still appear from time to time.
+            table = weightedHardPick(tables.sorted())
+        } else {
+            // Supermix/legacy weighting: the newest table half the time.
+            let current = tables.max()!
+            table = Double.random(in: 0...1) < 0.5 ? current : tables.randomElement()!
+        }
         if Double.random(in: 0...1) < Self.zeroMultiplyChance { return timesZeroQuestion(table) }
         let m = Int.random(in: 1...12)
         let answer = table * m
@@ -879,7 +1062,8 @@ final class QuestionEngine {
     /// what makes Mix feel clearly different from the guided Standard levels.
     /// When no forms are given, sensible ones are derived from what has
     /// already been introduced.
-    private func fractionsVarietyQuestion(denominators: [Int], forms: [String]? = nil) -> Question {
+    private func fractionsVarietyQuestion(denominators: [Int], forms: [String]? = nil,
+                                          weightedHard: Bool = false) -> Question {
         let available = forms ?? {
             var f = ["fractionOf", "fractionOf", "equivalent"]
             if denominators.contains(where: { $0 >= 3 }) { f += ["addSame", "subSame"] }
@@ -907,7 +1091,10 @@ final class QuestionEngine {
                                 ["\(n1 - n2)/\(max(2, d - n2))", "\(min(d, n1 - n2 + 1))/\(d)",
                                  "\(n1 + n2)/\(d)", "\(n2)/\(d)"])
         default: // fractionOf
-            return fractionsQuestion(denominator: denominators.randomElement()!)
+            // Mixed mode leans toward the most recently introduced (harder)
+            // denominators; the earlier ones still return regularly.
+            let d = weightedHard ? weightedHardPick(denominators) : denominators.randomElement()!
+            return fractionsQuestion(denominator: d)
         }
     }
 
@@ -977,7 +1164,8 @@ final class QuestionEngine {
     /// written as symbolic sums — clearly different from the guided Standard
     /// levels. When no forms are given, sensible ones are derived from the
     /// percentages that were already introduced.
-    private func percentagesVarietyQuestion(percentages: [Int], forms: [String]? = nil) -> Question {
+    private func percentagesVarietyQuestion(percentages: [Int], forms: [String]? = nil,
+                                            weightedHard: Bool = false) -> Question {
         let convertible = percentages.contains { Self.percentageFraction[$0] != nil }
         var available = forms ?? {
             var f = ["percentOf", "percentOf"]
@@ -998,7 +1186,9 @@ final class QuestionEngine {
             return makeQuestion("\(p)% = ?/\(den)", "\(num)",
                                 [den, num + 1, max(1, den - num), p / 10].map(String.init))
         default: // percentOf
-            let p = percentages.randomElement()!
+            // Mixed mode leans toward the most recently introduced (harder)
+            // percentages; the earlier ones still return regularly.
+            let p = weightedHard ? weightedHardPick(percentages) : percentages.randomElement()!
             if p == 100 {
                 let whole = Int.random(in: 2...30)
                 return makeQuestion("100% × \(whole) = ?", "\(whole)",

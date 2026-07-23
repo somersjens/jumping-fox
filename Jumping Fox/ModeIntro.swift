@@ -16,18 +16,24 @@ enum ModeIntro {
     /// Title + short, scannable explanation for a level's mode.
     static func info(for level: LevelConfig) -> (title: String, bullets: [String]) {
         let n = max(1, level.index)
-        let mix = level.startsInMix
+        let mode = level.mode
 
         // Shared bullets used by more than one mode.
         let practiceOrder = L("modeIntro.practiceOrder")
         let multiplyBy = L("modeIntro.tables.multiplyBy")
+        // Random-mode second bullet: swappable subjects vs the fixed-order minus.
+        let eitherSide = L("modeIntro.random.eitherSide")
+        let fixedOrder = L("modeIntro.random.fixedOrder")
 
         switch level.category {
         case .addition:
-            let bullets = mix
-                ? [L("modeIntro.addition.varied.b1 \(n)"),
-                   L("modeIntro.addition.varied.b2")]
-                : [L("modeIntro.addition.std.b1 \(n)"), practiceOrder]
+            let bullets: [String]
+            switch mode {
+            case .order:  bullets = [L("modeIntro.addition.std.b1 \(n)"), practiceOrder]
+            case .random: bullets = [L("modeIntro.addition.random.b1 \(n)"), eitherSide]
+            case .mixed:  bullets = [L("modeIntro.addition.varied.b1 \(n)"),
+                                     L("modeIntro.addition.varied.b2")]
+            }
             return (L("modeIntro.addition.title \(n)"), bullets)
 
         case .additionMix:
@@ -37,10 +43,13 @@ enum ModeIntro {
                      L("modeIntro.additionMix.b2 \(m)")])
 
         case .subtraction:
-            let bullets = mix
-                ? [L("modeIntro.subtraction.varied.b1 \(n)"),
-                   L("modeIntro.subtraction.varied.b2")]
-                : [L("modeIntro.subtraction.std.b1 \(n)"), practiceOrder]
+            let bullets: [String]
+            switch mode {
+            case .order:  bullets = [L("modeIntro.subtraction.std.b1 \(n)"), practiceOrder]
+            case .random: bullets = [L("modeIntro.subtraction.random.b1 \(n)"), fixedOrder]
+            case .mixed:  bullets = [L("modeIntro.subtraction.varied.b1 \(n)"),
+                                     L("modeIntro.subtraction.varied.b2")]
+            }
             return (L("modeIntro.subtraction.title \(n)"), bullets)
 
         case .subtractionMix:
@@ -54,10 +63,13 @@ enum ModeIntro {
                     [twoNumbers, L("modeIntro.subtractionMix.b2 \(m)")])
 
         case .tables:
-            let bullets = mix
-                ? [L("modeIntro.tables.varied.b1 \(min(99, n))"), multiplyBy]
-                : [L("modeIntro.tables.std.b1 \(n) \(n) \(n)"),
-                   L("modeIntro.tables.std.b2")]
+            let bullets: [String]
+            switch mode {
+            case .order:  bullets = [L("modeIntro.tables.std.b1 \(n) \(n) \(n)"),
+                                     L("modeIntro.tables.std.b2")]
+            case .random: bullets = [L("modeIntro.tables.random.b1 \(min(99, n))"), eitherSide]
+            case .mixed:  bullets = [L("modeIntro.tables.varied.b1 \(min(99, n))"), multiplyBy]
+            }
             return (L("modeIntro.tables.title \(n)"), bullets)
 
         case .tablesMix:
@@ -69,11 +81,14 @@ enum ModeIntro {
             // One denominator per level for all 99 levels — the start screen
             // always names the exact denominator the player will practise.
             let d = fractionDenominator(n)
-            let bullets = mix
-                ? [L("modeIntro.fractions.varied.b1 \(d)"),
-                   L("modeIntro.fractions.varied.b2")]
-                : [L("modeIntro.fractions.std.b1 \(d)"),
-                   L("modeIntro.fractions.std.b2 \(d)")]
+            let bullets: [String]
+            switch mode {
+            case .order:  bullets = [L("modeIntro.fractions.std.b1 \(d)"),
+                                     L("modeIntro.fractions.std.b2 \(d)")]
+            case .random: bullets = [L("modeIntro.fractions.random.b1 \(d)"), eitherSide]
+            case .mixed:  bullets = [L("modeIntro.fractions.varied.b1 \(d)"),
+                                     L("modeIntro.fractions.varied.b2")]
+            }
             return (L("modeIntro.fractions.title \(d)"), bullets)
 
         case .fractionsMix:
@@ -87,11 +102,14 @@ enum ModeIntro {
             // The percent sign travels inside the argument, so no catalog value
             // ever contains a bare "%".
             let pText = "\(p)%"
-            let bullets = mix
-                ? [L("modeIntro.percentages.varied.b1"),
-                   L("modeIntro.percentages.varied.b2")]
-                : [L("modeIntro.percentages.std.b1 \(pText)"),
-                   L("modeIntro.percentages.std.b2")]
+            let bullets: [String]
+            switch mode {
+            case .order:  bullets = [L("modeIntro.percentages.std.b1 \(pText)"),
+                                     L("modeIntro.percentages.std.b2")]
+            case .random: bullets = [L("modeIntro.percentages.random.b1 \(pText)"), eitherSide]
+            case .mixed:  bullets = [L("modeIntro.percentages.varied.b1"),
+                                     L("modeIntro.percentages.varied.b2")]
+            }
             return (L("modeIntro.percentages.title \(pText)"), bullets)
 
         case .percentagesMix:

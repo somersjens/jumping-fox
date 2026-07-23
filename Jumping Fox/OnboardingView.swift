@@ -4,7 +4,7 @@ struct OnboardingView: View {
     @AppStorage(GameSettings.playerNameKey) private var playerName = ""
     @AppStorage(GameSettings.onboardingCompleteKey) private var isComplete = false
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
-    @AppStorage("ui.menuMode") private var menuModeRaw = MenuMode.standard.rawValue
+    @AppStorage("ui.menuMode") private var menuModeRaw = PracticeMode.order.rawValue
     @AppStorage("ui.supermixCategory") private var supermixCategoryRaw = ChallengeCategory.superBasic.rawValue
     @ObservedObject private var language = LanguageManager.shared
     @State private var step = 0
@@ -186,7 +186,7 @@ struct OnboardingView: View {
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 6)
 
-            Button { finish(with: .standard) } label: {
+            Button { finish(with: .order) } label: {
                 OnboardingChoiceLabel(
                     title: L("onboarding.level.beginner.title"),
                     subtitle: L("onboarding.level.beginner.subtitle"),
@@ -195,7 +195,7 @@ struct OnboardingView: View {
             }
             .buttonStyle(OnboardingOptionStyle())
 
-            Button { finish(with: .mix) } label: {
+            Button { finish(with: .mixed) } label: {
                 OnboardingChoiceLabel(
                     title: L("onboarding.level.advanced.title"),
                     subtitle: L("onboarding.level.advanced.subtitle"),
@@ -219,12 +219,12 @@ struct OnboardingView: View {
         }
     }
 
-    private func finish(with mode: MenuMode) {
+    private func finish(with mode: PracticeMode) {
         menuModeRaw = mode.rawValue
-        // The Supermix filter has no Standard/Mix picker of its own — map the
+        // The Supermix filter has no mode picker of its own — map the
         // beginner/advanced choice onto its simplest and most complete button.
         if MenuFilter(rawValue: menuFilterRaw) == .mixed {
-            supermixCategoryRaw = (mode == .mix ? ChallengeCategory.superAll : .superBasic).rawValue
+            supermixCategoryRaw = (mode == .mixed ? ChallengeCategory.superAll : .superBasic).rawValue
         }
         withAnimation(.easeInOut(duration: 0.55)) {
             isComplete = true
