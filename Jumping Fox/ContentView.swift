@@ -2180,7 +2180,7 @@ private struct TrophyCountText: View {
         }
         .onAppear { beginAnimationIfNeeded() }
         .onChange(of: celebrationID) { _ in beginAnimationIfNeeded() }
-        .accessibilityLabel("\(to)\(suffix)")
+        .accessibilityLabel(Text(verbatim: "\(to)\(suffix)"))
     }
 
     private func beginAnimationIfNeeded() {

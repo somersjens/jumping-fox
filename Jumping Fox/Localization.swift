@@ -19,28 +19,117 @@ import ObjectiveC
 
 // MARK: - Supported languages
 
-/// The languages the app is actually localized into (see the string catalog).
-enum AppLanguage: String, CaseIterable, Identifiable {
-    case english = "en"
-    case dutch = "nl"
+/// A language the app can present, identified by its ISO code and shown in the
+/// picker with a flag and its own-language name (endonym). This is a plain data
+/// model rather than an enum with per-case switches, so the full language list
+/// below is the single place to add a language — no code branches to touch.
+///
+/// The string catalog carries the actual translations for each `code`; until a
+/// language is fully translated the runtime falls back to English (see the
+/// bundle redirection further down).
+struct AppLanguage: Identifiable, Hashable, Sendable {
+    /// ISO 639 code, matching the language's `.lproj` and its column in the
+    /// string catalog.
+    let code: String
+    /// Flag shown in the picker.
+    let flag: String
+    /// The language's name in its own language — the convention for a picker.
+    let displayName: String
 
-    var id: String { rawValue }
+    var id: String { code }
 
-    /// A little flag for the picker. English uses the UK flag.
-    var flag: String {
-        switch self {
-        case .english: return "🇬🇧"
-        case .dutch: return "🇳🇱"
-        }
+    /// Every language the app is prepared to present. Order follows the roster
+    /// the app ships with; adding a row here (plus its catalog column) is all it
+    /// takes to offer a new language.
+    static let all: [AppLanguage] = [
+        AppLanguage(code: "en", flag: "🇬🇧", displayName: "English"),
+        AppLanguage(code: "nl", flag: "🇳🇱", displayName: "Nederlands"),
+        AppLanguage(code: "af", flag: "🇿🇦", displayName: "Afrikaans"),
+        AppLanguage(code: "sq", flag: "🇦🇱", displayName: "Shqip"),
+        AppLanguage(code: "am", flag: "🇪🇹", displayName: "አማርኛ"),
+        AppLanguage(code: "ar", flag: "🇸🇦", displayName: "العربية"),
+        AppLanguage(code: "hy", flag: "🇦🇲", displayName: "Հայերեն"),
+        AppLanguage(code: "as", flag: "🇮🇳", displayName: "অসমীয়া"),
+        AppLanguage(code: "az", flag: "🇦🇿", displayName: "Azərbaycanca"),
+        AppLanguage(code: "eu", flag: "🇪🇸", displayName: "Euskara"),
+        AppLanguage(code: "bn", flag: "🇧🇩", displayName: "বাংলা"),
+        AppLanguage(code: "my", flag: "🇲🇲", displayName: "မြန်မာ"),
+        AppLanguage(code: "bs", flag: "🇧🇦", displayName: "Bosanski"),
+        AppLanguage(code: "bg", flag: "🇧🇬", displayName: "Български"),
+        AppLanguage(code: "ca", flag: "🇪🇸", displayName: "Català"),
+        AppLanguage(code: "zh", flag: "🇨🇳", displayName: "中文"),
+        AppLanguage(code: "da", flag: "🇩🇰", displayName: "Dansk"),
+        AppLanguage(code: "de", flag: "🇩🇪", displayName: "Deutsch"),
+        AppLanguage(code: "et", flag: "🇪🇪", displayName: "Eesti"),
+        AppLanguage(code: "fo", flag: "🇫🇴", displayName: "Føroyskt"),
+        AppLanguage(code: "fi", flag: "🇫🇮", displayName: "Suomi"),
+        AppLanguage(code: "fr", flag: "🇫🇷", displayName: "Français"),
+        AppLanguage(code: "gl", flag: "🇪🇸", displayName: "Galego"),
+        AppLanguage(code: "ka", flag: "🇬🇪", displayName: "ქართული"),
+        AppLanguage(code: "el", flag: "🇬🇷", displayName: "Ελληνικά"),
+        AppLanguage(code: "gu", flag: "🇮🇳", displayName: "ગુજરાતી"),
+        AppLanguage(code: "he", flag: "🇮🇱", displayName: "עברית"),
+        AppLanguage(code: "hi", flag: "🇮🇳", displayName: "हिन्दी"),
+        AppLanguage(code: "hu", flag: "🇭🇺", displayName: "Magyar"),
+        AppLanguage(code: "ga", flag: "🇮🇪", displayName: "Gaeilge"),
+        AppLanguage(code: "is", flag: "🇮🇸", displayName: "Íslenska"),
+        AppLanguage(code: "id", flag: "🇮🇩", displayName: "Bahasa Indonesia"),
+        AppLanguage(code: "it", flag: "🇮🇹", displayName: "Italiano"),
+        AppLanguage(code: "ja", flag: "🇯🇵", displayName: "日本語"),
+        AppLanguage(code: "kn", flag: "🇮🇳", displayName: "ಕನ್ನಡ"),
+        AppLanguage(code: "kk", flag: "🇰🇿", displayName: "Қазақ"),
+        AppLanguage(code: "km", flag: "🇰🇭", displayName: "ខ្មែរ"),
+        AppLanguage(code: "ko", flag: "🇰🇷", displayName: "한국어"),
+        AppLanguage(code: "hr", flag: "🇭🇷", displayName: "Hrvatski"),
+        AppLanguage(code: "lo", flag: "🇱🇦", displayName: "ລາວ"),
+        AppLanguage(code: "lv", flag: "🇱🇻", displayName: "Latviešu"),
+        AppLanguage(code: "lt", flag: "🇱🇹", displayName: "Lietuvių"),
+        AppLanguage(code: "mk", flag: "🇲🇰", displayName: "Македонски"),
+        AppLanguage(code: "ms", flag: "🇲🇾", displayName: "Bahasa Melayu"),
+        AppLanguage(code: "ml", flag: "🇮🇳", displayName: "മലയാളം"),
+        AppLanguage(code: "mr", flag: "🇮🇳", displayName: "मराठी"),
+        AppLanguage(code: "mn", flag: "🇲🇳", displayName: "Монгол"),
+        AppLanguage(code: "ne", flag: "🇳🇵", displayName: "नेपाली"),
+        AppLanguage(code: "no", flag: "🇳🇴", displayName: "Norsk"),
+        AppLanguage(code: "uk", flag: "🇺🇦", displayName: "Українська"),
+        AppLanguage(code: "or", flag: "🇮🇳", displayName: "ଓଡ଼ିଆ"),
+        AppLanguage(code: "ug", flag: "🇨🇳", displayName: "ئۇيغۇرچە"),
+        AppLanguage(code: "uz", flag: "🇺🇿", displayName: "Oʻzbekcha"),
+        AppLanguage(code: "fa", flag: "🇮🇷", displayName: "فارسی"),
+        AppLanguage(code: "pl", flag: "🇵🇱", displayName: "Polski"),
+        AppLanguage(code: "pt", flag: "🇵🇹", displayName: "Português"),
+        AppLanguage(code: "pa", flag: "🇮🇳", displayName: "ਪੰਜਾਬੀ"),
+        AppLanguage(code: "ro", flag: "🇷🇴", displayName: "Română"),
+        AppLanguage(code: "ru", flag: "🇷🇺", displayName: "Русский"),
+        AppLanguage(code: "sr", flag: "🇷🇸", displayName: "Српски"),
+        AppLanguage(code: "si", flag: "🇱🇰", displayName: "සිංහල"),
+        AppLanguage(code: "sk", flag: "🇸🇰", displayName: "Slovenčina"),
+        AppLanguage(code: "sl", flag: "🇸🇮", displayName: "Slovenščina"),
+        AppLanguage(code: "es", flag: "🇪🇸", displayName: "Español"),
+        AppLanguage(code: "sw", flag: "🇰🇪", displayName: "Kiswahili"),
+        AppLanguage(code: "ta", flag: "🇮🇳", displayName: "தமிழ்"),
+        AppLanguage(code: "te", flag: "🇮🇳", displayName: "తెలుగు"),
+        AppLanguage(code: "th", flag: "🇹🇭", displayName: "ไทย"),
+        AppLanguage(code: "bo", flag: "🇨🇳", displayName: "བོད་སྐད་"),
+        AppLanguage(code: "cs", flag: "🇨🇿", displayName: "Čeština"),
+        AppLanguage(code: "tr", flag: "🇹🇷", displayName: "Türkçe"),
+        AppLanguage(code: "ur", flag: "🇵🇰", displayName: "اردو"),
+        AppLanguage(code: "vi", flag: "🇻🇳", displayName: "Tiếng Việt"),
+        AppLanguage(code: "cy", flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", displayName: "Cymraeg"),
+        AppLanguage(code: "be", flag: "🇧🇾", displayName: "Беларуская"),
+        AppLanguage(code: "zu", flag: "🇿🇦", displayName: "isiZulu"),
+        AppLanguage(code: "sv", flag: "🇸🇪", displayName: "Svenska"),
+    ]
+
+    /// Look up a language by its ISO code.
+    static func named(_ code: String) -> AppLanguage? {
+        all.first { $0.code == code }
     }
 
-    /// Language names are conventionally shown in their own language.
-    var displayName: String {
-        switch self {
-        case .english: return "English"
-        case .dutch: return "Nederlands"
-        }
-    }
+    /// The two base languages the app is authored in, used as sensible defaults
+    /// and the ultimate fallback.
+    static let english = named("en")!
+    static let dutch = named("nl")!
 }
 
 // MARK: - Language manager
@@ -55,47 +144,50 @@ final class LanguageManager: ObservableObject {
         didSet {
             let defaults = UserDefaults.standard
             if let override {
-                defaults.set(override.rawValue, forKey: Self.overrideKey)
+                defaults.set(override.code, forKey: Self.overrideKey)
             } else {
                 defaults.removeObject(forKey: Self.overrideKey)
             }
-            Bundle.setLanguage(override?.rawValue)
+            Bundle.setLanguage(override?.code)
         }
     }
 
     private init() {
         if let raw = UserDefaults.standard.string(forKey: Self.overrideKey) {
-            override = AppLanguage(rawValue: raw)
+            override = AppLanguage.named(raw)
         }
-        Bundle.setLanguage(override?.rawValue)
+        Bundle.setLanguage(override?.code)
     }
 
     /// The language actually shown: the pinned choice, or the device's best
     /// match among the languages we support. Matching is generic over
-    /// `AppLanguage.allCases`, so adding a language to the enum (and the string
+    /// `AppLanguage.all`, so adding a language to the roster (and the string
     /// catalog) is all it takes to have the device follow it automatically.
     var effective: AppLanguage {
         if let override { return override }
         for code in Bundle.main.preferredLocalizations {
             let base = code.split(separator: "-").first.map(String.init) ?? code
-            if let match = AppLanguage(rawValue: base) { return match }
+            if let match = AppLanguage.named(base) { return match }
         }
         return .english
     }
 
     /// Drives the environment locale, which both formats numbers correctly and
     /// forces every `Text` to re-render when the language changes.
-    var locale: Locale { Locale(identifier: effective.rawValue) }
+    var locale: Locale { Locale(identifier: effective.code) }
 
     /// The `.lproj` bundle for the language currently shown. `String(localized:)`
     /// ignores the runtime bundle redirection used for `Text`, so any string
     /// resolved in code must be pointed at this bundle explicitly (see `L`).
-    var bundle: Bundle {
-        if let path = Bundle.main.path(forResource: effective.rawValue, ofType: "lproj"),
-           let localized = Bundle(path: path) {
-            return localized
-        }
-        return .main
+    var bundle: Bundle { Self.lprojBundle(for: effective.code) ?? .main }
+
+    /// The English `.lproj`, used as the last-resort fallback for any key a
+    /// language has not translated yet.
+    static let englishBundle: Bundle? = lprojBundle(for: "en")
+
+    private static func lprojBundle(for code: String) -> Bundle? {
+        guard let path = Bundle.main.path(forResource: code, ofType: "lproj") else { return nil }
+        return Bundle(path: path)
     }
 
     func select(_ language: AppLanguage) {
@@ -116,7 +208,14 @@ func L(_ key: String.LocalizationValue) -> String {
 /// bundle as `L(_:)` so the in-app language switch applies consistently instead
 /// of relying on `Bundle.main`'s redirection.
 func L(key: String) -> String {
-    LanguageManager.shared.bundle.localizedString(forKey: key, value: nil, table: nil)
+    let manager = LanguageManager.shared
+    let value = manager.bundle.localizedString(forKey: key, value: key, table: nil)
+    // A key that resolves to itself was not found in the chosen language; fall
+    // back to English so an untranslated key never surfaces as a raw identifier.
+    if value == key, let english = LanguageManager.englishBundle {
+        return english.localizedString(forKey: key, value: key, table: nil)
+    }
+    return value
 }
 
 // MARK: - Bundle redirection (the mechanism behind a live switch)
@@ -128,7 +227,15 @@ private var languageBundleKey: UInt8 = 0
 private final class LanguageBundle: Bundle, @unchecked Sendable {
     override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {
         if let redirected = objc_getAssociatedObject(self, &languageBundleKey) as? Bundle {
-            return redirected.localizedString(forKey: key, value: value, table: tableName)
+            let result = redirected.localizedString(forKey: key, value: key, table: tableName)
+            // Fall back to English for any key the chosen language is missing,
+            // so a partial translation never leaves a raw key on screen.
+            if result == key,
+               let english = LanguageManager.englishBundle,
+               english !== redirected {
+                return english.localizedString(forKey: key, value: value, table: tableName)
+            }
+            return result
         }
         return super.localizedString(forKey: key, value: value, table: tableName)
     }
@@ -191,7 +298,7 @@ struct LanguagePicker: View {
 
     var body: some View {
         Menu {
-            ForEach(AppLanguage.allCases) { option in
+            ForEach(AppLanguage.all) { option in
                 Button {
                     language.select(option)
                 } label: {
