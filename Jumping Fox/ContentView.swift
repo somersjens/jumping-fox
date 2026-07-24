@@ -143,6 +143,19 @@ enum MenuFilter: Int, CaseIterable, Identifiable {
     }
 
     func category(for mode: PracticeMode) -> ChallengeCategory { standard }
+
+    /// One-line "what this topic practises" summary, shown in the tap-again
+    /// info pop-out under the shared `info.filter.header` ("Types of problems").
+    var infoBody: String {
+        switch self {
+        case .addition: return L("info.filter.addition")
+        case .subtraction: return L("info.filter.subtraction")
+        case .tables: return L("info.filter.tables")
+        case .fractions: return L("info.filter.fractions")
+        case .percentages: return L("info.filter.percentages")
+        case .mixed: return L("info.filter.mixed")
+        }
+    }
 }
 
 // MARK: - Home screen
@@ -187,6 +200,14 @@ struct ContentView: View {
     @State private var secondMaximumCountPreviewLevelID: String?
     @State private var secondScorePreview: Int?
     @State private var secondScorePreviewLevelID: String?
+    // Tap-again info pop-out: the little themed card that appears when the
+    // already-selected topic (+, −, …) or order (Reeks/Hussel/Gemixt) is
+    // tapped a second time. `levelFrames`/`controlAnchors` are collected in the
+    // shared "home" coordinate space so the pop-out can anchor to the control
+    // and a tap on a level card can both dismiss it and start that level.
+    @State private var infoPopup: InfoPopup?
+    @State private var levelFrames: [String: CGRect] = [:]
+    @State private var controlAnchors: [String: CGRect] = [:]
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -230,7 +251,15 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .id(refreshID)
             }
+
+            if let popup = infoPopup {
+                infoPopupOverlay(popup)
+                    .transition(.opacity)
+            }
         }
+        .coordinateSpace(name: Self.homeSpace)
+        .onPreferenceChange(LevelFrameKey.self) { levelFrames = $0 }
+        .onPreferenceChange(ControlAnchorKey.self) { controlAnchors = $0 }
         .sheet(isPresented: $showPremium) {
             PremiumView()
                 .premiumSheetPresentation()
@@ -503,14 +532,21 @@ struct ContentView: View {
     private func menuFilterButton(_ filter: MenuFilter) -> some View {
         let isSelected = filter == selectedFilter
         return Button {
-            if filter != .mixed || !isSelected { clearMaximumCountPreview() }
-            withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
+            // Tapping the already-selected topic reveals its info pop-out
+            // instead of re-selecting it (which did nothing before).
+            if isSelected {
+                showInfoPopup(.filter(filter), anchorKey: "filter.\(filter.rawValue)")
+            } else {
+                clearMaximumCountPreview()
+                withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
+            }
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
             .frame(height: isPad ? 78 : 44 * menuScale)
             .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
+            .reportAnchor("filter.\(filter.rawValue)")
         }
         .buttonStyle(.plain)
         .highPriorityGesture(
@@ -682,6 +718,84 @@ struct ContentView: View {
         scoreCelebration = nil
     }
 
+    // MARK: Tap-again info pop-out
+
+    /// Shared coordinate space so control anchors, level frames and the
+    /// pop-out's own placement all speak in the same points.
+    static let homeSpace = "home"
+
+    /// The levels currently on screen (regular + any premium), in the exact
+    /// mode the menu shows them — used to resolve a tapped level frame back to
+    /// its config so the pop-out can start it directly.
+    private var currentLevels: [LevelConfig] {
+        LevelCatalog.levels(for: category).map {
+            selectedFilter != .mixed ? $0.variant(menuMode) : $0
+        }
+    }
+
+    private func showInfoPopup(_ kind: InfoPopup.Kind, anchorKey: String) {
+        guard let anchor = controlAnchors[anchorKey] else { return }
+#if canImport(UIKit)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+#endif
+        withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) {
+            infoPopup = InfoPopup(kind: kind, anchor: anchor)
+        }
+    }
+
+    private func dismissInfoPopup() {
+        withAnimation(.easeOut(duration: 0.16)) { infoPopup = nil }
+    }
+
+    /// A tap anywhere behind the pop-out. On a level card it closes the pop-out
+    /// *and* starts that level; anywhere else it only closes the pop-out.
+    private func handleInfoBackgroundTap(at point: CGPoint) {
+        if let hit = levelFrames.first(where: { $0.value.contains(point) }),
+           let level = currentLevels.first(where: { $0.id == hit.key }) {
+            dismissInfoPopup()
+            selection = LevelSelection(level: level)
+            clearMaximumCountPreview()
+        } else {
+            dismissInfoPopup()
+        }
+    }
+
+    private func infoPopupOverlay(_ popup: InfoPopup) -> some View {
+        GeometryReader { geo in
+            // Convert the anchor (in "home" space) into this overlay's local
+            // space so the card sits just under the tapped control.
+            let localOrigin = geo.frame(in: .named(Self.homeSpace)).origin
+            let cardWidth = min(isPad ? 340 : 250, geo.size.width - 24)
+            let anchorMidX = popup.anchor.midX - localOrigin.x
+            let rawX = anchorMidX - cardWidth / 2
+            let x = min(max(12, rawX), max(12, geo.size.width - cardWidth - 12))
+            let y = popup.anchor.maxY - localOrigin.y + 8
+
+            ZStack(alignment: .topLeading) {
+                // Light-dismiss catcher: closes on any tap, and forwards a tap
+                // that lands on a level card straight through to start it.
+                Color.clear
+                    .contentShape(Rectangle())
+                    .gesture(
+                        SpatialTapGesture(coordinateSpace: .named(Self.homeSpace))
+                            .onEnded { value in handleInfoBackgroundTap(at: value.location) }
+                    )
+
+                // Caret points at the control, measured from the card's centre
+                // and kept inside its rounded corners.
+                let caretLimit = cardWidth / 2 - 18
+                let caret = min(max(anchorMidX - (x + cardWidth / 2), -caretLimit), caretLimit)
+                InfoPopoutCard(header: popup.header,
+                               message: popup.body,
+                               caretOffset: caret,
+                               theme: character)
+                    .frame(width: cardWidth)
+                    .offset(x: x, y: y)
+                    .onTapGesture { dismissInfoPopup() }
+            }
+        }
+    }
+
     private var menuModePicker: some View {
         // Three equal-width buttons: Reeks · Hussel · Gemixt (Order · Random ·
         // Mixed). The label keeps one line and shrinks to fit, so a longer word
@@ -691,9 +805,13 @@ struct ContentView: View {
             ForEach(PracticeMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
-                    clearMaximumCountPreview()
-                    withAnimation(.snappy(duration: 0.2)) {
-                        menuModeRaw = mode.rawValue
+                    if isSelected {
+                        showInfoPopup(.mode(mode), anchorKey: "mode.\(mode.rawValue)")
+                    } else {
+                        clearMaximumCountPreview()
+                        withAnimation(.snappy(duration: 0.2)) {
+                            menuModeRaw = mode.rawValue
+                        }
                     }
                 } label: {
                     Text(mode.title)
@@ -706,6 +824,7 @@ struct ContentView: View {
                         .padding(.horizontal, 2)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                        .reportAnchor("mode.\(mode.rawValue)")
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("menu.accessibility.chooseMode \(mode.title)")
@@ -913,6 +1032,7 @@ struct ContentView: View {
                         selection = LevelSelection(level: level)
                         clearMaximumCountPreview()
                     }
+                    .reportLevelFrame(level.id)
                 }
             }
 
@@ -985,6 +1105,7 @@ struct ContentView: View {
                             selection = LevelSelection(level: level)
                             clearMaximumCountPreview()
                         }
+                        .reportLevelFrame(level.id)
                     }
                 }
             }
@@ -1030,6 +1151,134 @@ private struct HeaderDetailsHeightKey: PreferenceKey {
 
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = max(value, nextValue())
+    }
+}
+
+// MARK: - Tap-again info pop-out
+
+/// The data behind the little themed card shown when the already-selected
+/// topic or order is tapped again. `anchor` is the tapped control's frame in
+/// the shared "home" coordinate space.
+struct InfoPopup: Identifiable {
+    enum Kind: Equatable {
+        case filter(MenuFilter)
+        case mode(PracticeMode)
+    }
+
+    let kind: Kind
+    let anchor: CGRect
+
+    var id: String {
+        switch kind {
+        case .filter(let f): return "filter.\(f.rawValue)"
+        case .mode(let m):   return "mode.\(m.rawValue)"
+        }
+    }
+
+    /// The grouping label ("Types of problems" / "Order").
+    var header: String {
+        switch kind {
+        case .filter: return L("info.filter.header")
+        case .mode:   return L("info.mode.header")
+        }
+    }
+
+    /// The one-line description of the specific selection.
+    var body: String {
+        switch kind {
+        case .filter(let f): return f.infoBody
+        case .mode(let m):   return m.infoBody
+        }
+    }
+}
+
+/// A small caret-topped card styled to match the menu panels: a faint white
+/// fill, a hairline theme stroke and a soft shadow. `caretOffset` places the
+/// pointer over the control the card belongs to.
+private struct InfoPopoutCard: View {
+    let header: String
+    let message: String
+    let caretOffset: CGFloat
+    let theme: AnimalCharacter
+    private var isPad: Bool { AppLayout.isPad }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Triangle()
+                .fill(.white)
+                .frame(width: 18, height: 9)
+                .overlay(alignment: .bottom) {
+                    // Hide the seam where the caret meets the card body.
+                    Rectangle().fill(.white).frame(height: 1).padding(.horizontal, 2)
+                }
+                .offset(x: caretOffset)
+
+            VStack(alignment: .leading, spacing: isPad ? 5 : 3) {
+                Text(header.uppercased())
+                    .font(.system(size: isPad ? 14 : 11, weight: .heavy))
+                    .tracking(0.6)
+                    .foregroundStyle(theme.deepColor.opacity(0.55))
+                Text(message)
+                    .font(.system(size: isPad ? 21 : 16, weight: .bold))
+                    .foregroundStyle(theme.deepColor)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, isPad ? 18 : 14)
+            .padding(.vertical, isPad ? 14 : 11)
+            .background(.white, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(theme.deepColor.opacity(0.18), lineWidth: 1))
+        }
+        .shadow(color: theme.deepColor.opacity(0.22), radius: 14, y: 6)
+    }
+}
+
+/// An upward-pointing triangle for the pop-out caret.
+private struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+/// Frames of the on-screen level cards, keyed by level id, in "home" space.
+private struct LevelFrameKey: PreferenceKey {
+    static var defaultValue: [String: CGRect] = [:]
+    static func reduce(value: inout [String: CGRect], nextValue: () -> [String: CGRect]) {
+        value.merge(nextValue()) { $1 }
+    }
+}
+
+/// Frames of the tappable topic/order controls, keyed by control id.
+private struct ControlAnchorKey: PreferenceKey {
+    static var defaultValue: [String: CGRect] = [:]
+    static func reduce(value: inout [String: CGRect], nextValue: () -> [String: CGRect]) {
+        value.merge(nextValue()) { $1 }
+    }
+}
+
+private extension View {
+    /// Report this control's frame (in "home" space) so the info pop-out can
+    /// anchor to it.
+    func reportAnchor(_ key: String) -> some View {
+        background(GeometryReader { geo in
+            Color.clear.preference(key: ControlAnchorKey.self,
+                                   value: [key: geo.frame(in: .named(ContentView.homeSpace))])
+        })
+    }
+
+    /// Report this level card's frame (in "home" space) so a background tap
+    /// can start it while the info pop-out is open.
+    func reportLevelFrame(_ id: String) -> some View {
+        background(GeometryReader { geo in
+            Color.clear.preference(key: LevelFrameKey.self,
+                                   value: [id: geo.frame(in: .named(ContentView.homeSpace))])
+        })
     }
 }
 

@@ -173,6 +173,16 @@ enum PracticeMode: String, CaseIterable, Identifiable {
         case .mixed: return L("mode.mixed")
         }
     }
+
+    /// One-line "how this level is sequenced" summary, shown in the tap-again
+    /// info pop-out under the shared `info.mode.header` ("Order").
+    var infoBody: String {
+        switch self {
+        case .order: return L("info.mode.order")
+        case .random: return L("info.mode.random")
+        case .mixed: return L("info.mode.mixed")
+        }
+    }
 }
 
 struct LevelConfig: Identifiable, Hashable {
