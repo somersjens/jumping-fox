@@ -1153,12 +1153,6 @@ struct GameView: View {
         ZStack {
             popoverBackdrop
 
-            if showConfetti {
-                ConfettiView()
-                    .ignoresSafeArea()
-                    .allowsHitTesting(false)
-            }
-
             endGameCard(
                 leadingTitle: "\(state.level.index)",
                 trailingTitle: endScreenText.completionSuffix,
@@ -1172,6 +1166,15 @@ struct GameView: View {
                 emphasizesSubtitle: false,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )
+
+            // Layered above the card — like the tutorial celebration — so the
+            // burst rains over the result screen rather than behind it. Brought
+            // in one runloop after the card paints, so it never adds lag.
+            if showConfetti {
+                ConfettiView()
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }
         }
         .onAppear {
             celebrate = true
@@ -1648,7 +1651,16 @@ private struct ConfettiView: View {
             // smoothly instead of stuttering as it starts.
             .drawingGroup()
         }
-        .onAppear { fallen = true }
+        // Toggle the fall on the *next* runloop, not inside this first appear.
+        // When the view is inserted and `fallen` flips in the same commit, the
+        // drawing-group snapshots the already-fallen (off-screen, transparent)
+        // state and the burst is never seen — which is exactly what happens on
+        // the completion card, where the view is inserted via a deferred flag.
+        // Committing the initial top-of-screen frame first makes the fall
+        // animate reliably wherever the view is used.
+        .onAppear {
+            DispatchQueue.main.async { fallen = true }
+        }
     }
 }
 

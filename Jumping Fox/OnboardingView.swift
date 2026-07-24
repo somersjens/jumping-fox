@@ -22,14 +22,9 @@ struct OnboardingView: View {
                     VStack(spacing: 0) {
                         Image("no_background")
                             .resizable()
-                            .scaledToFill()
-                            // The welcome artwork owns the full available
-                            // width, so the step transition has no visible
-                            // side gutters on iPad. Its height remains capped
-                            // to leave the choices comfortably reachable.
-                            .frame(width: proxy.size.width,
-                                   height: isPad ? (step == 1 ? 180 : 250) : (step == 1 ? 124 : 170))
-                            .clipped()
+                            .scaledToFit()
+                            .frame(width: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150),
+                                   height: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150))
                             .padding(.bottom, isPad ? (step == 1 ? 20 : 30) : (step == 1 ? 14 : 22))
                             .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
 
