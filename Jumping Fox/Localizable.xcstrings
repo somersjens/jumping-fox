@@ -3061,13 +3061,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Practice straight away in Mix mode."
+            "value": "Different mixed sums together."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Direct oefenen in Mix mode."
+            "value": "Verschillende mix-sommen door elkaar."
           }
         }
       }
@@ -3095,13 +3095,47 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Build up calmly, step by step."
+            "value": "Practice with sums in order."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rustig opbouwen, stap voor stap."
+            "value": "Oefenen met oplopende sommen."
+          }
+        }
+      }
+    },
+    "onboarding.level.intermediate.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sums in random order."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sommen in willekeurige volgorde."
+          }
+        }
+      }
+    },
+    "onboarding.level.intermediate.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some practice already"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al wat geoefend"
           }
         }
       }
@@ -3248,13 +3282,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Each level has a trophy goal (20, 30 or 40). If this option is on, the game finishes automatically when you reach it."
+            "value": "Each level has a trophy goal of up to 50. If this option is on, the game finishes automatically when you reach it."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elk level heeft een trofeedoel (20, 30 of 40). Als deze optie aanstaat, wordt het spel automatisch beëindigd zodra je dat haalt."
+            "value": "Elk level heeft een trofeedoel van maximaal 50. Als deze optie aanstaat, wordt het spel automatisch beëindigd zodra je dat haalt."
           }
         }
       }

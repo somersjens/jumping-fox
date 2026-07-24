@@ -96,13 +96,13 @@ struct OnboardingView: View {
         VStack(spacing: 24) {
             VStack(spacing: 10) {
                 Text("onboarding.name.title")
-                    .font(.system(size: isPad ? 46 : 30, weight: .heavy, design: .rounded))
+                    .font(.system(size: isPad ? 50 : 35, weight: .heavy, design: .rounded))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity)
 
                 Text("onboarding.name.subtitle")
-                    .font(isPad ? .title2.weight(.medium) : .body.weight(.medium))
+                    .font(isPad ? .title.weight(.medium) : .title3.weight(.medium))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
             }
@@ -134,12 +134,12 @@ struct OnboardingView: View {
     private var subjectStep: some View {
         VStack(spacing: 14) {
             Text("onboarding.subject.title")
-                .font(.system(size: isPad ? 42 : 28, weight: .heavy, design: .rounded))
+                .font(.system(size: isPad ? 46 : 32, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
 
             Text("onboarding.subject.subtitle")
-                .font(isPad ? .title2 : .subheadline)
+                .font(isPad ? .title2 : .body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
@@ -153,17 +153,17 @@ struct OnboardingView: View {
                     } label: {
                         HStack(spacing: 14) {
                             Image(systemName: filter.icon)
-                                .font(isPad ? .system(size: 28, weight: .regular) : .title3)
-                                .frame(width: isPad ? 44 : 28)
+                                .font(.system(size: isPad ? 28 : 21, weight: .bold))
+                                .frame(width: isPad ? 44 : 30)
                             Text(filter.title)
-                                .font(isPad ? .title2.weight(.semibold) : .headline)
+                                .font(isPad ? .title2.weight(.semibold) : .title3.weight(.semibold))
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .font(.caption.weight(.bold))
+                                .font(.footnote.weight(.bold))
                                 .foregroundStyle(.secondary)
                         }
                         .padding(.horizontal, isPad ? 26 : 16)
-                        .frame(maxWidth: .infinity, minHeight: isPad ? 72 : 48)
+                        .frame(maxWidth: .infinity, minHeight: isPad ? 72 : 54)
                         .background(.white.opacity(0.78), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                     }
                     .buttonStyle(OnboardingOptionStyle())
@@ -176,12 +176,12 @@ struct OnboardingView: View {
     private var levelStep: some View {
         VStack(spacing: 14) {
             Text("onboarding.level.title")
-                .font(.system(size: isPad ? 42 : 28, weight: .heavy, design: .rounded))
+                .font(.system(size: isPad ? 46 : 32, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
             Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? L("onboarding.level.thisTopic"))")
-                .font(isPad ? .title2 : .subheadline)
+                .font(isPad ? .title2 : .body)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 6)
@@ -191,6 +191,15 @@ struct OnboardingView: View {
                     title: L("onboarding.level.beginner.title"),
                     subtitle: L("onboarding.level.beginner.subtitle"),
                     icon: "leaf.fill"
+                )
+            }
+            .buttonStyle(OnboardingOptionStyle())
+
+            Button { finish(with: .random) } label: {
+                OnboardingChoiceLabel(
+                    title: L("onboarding.level.intermediate.title"),
+                    subtitle: L("onboarding.level.intermediate.subtitle"),
+                    icon: "shuffle"
                 )
             }
             .buttonStyle(OnboardingOptionStyle())
@@ -264,23 +273,23 @@ private struct OnboardingChoiceLabel: View {
     var body: some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
-            .font(isPad ? .title2 : .headline)
-            .frame(width: isPad ? 44 : 28)
+            .font(isPad ? .title2 : .title3)
+            .frame(width: isPad ? 44 : 30)
                 .foregroundStyle(.orange)
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(isPad ? .title2.weight(.semibold) : .headline)
+                    .font(isPad ? .title2.weight(.semibold) : .title3.weight(.semibold))
                 Text(subtitle)
-                    .font(isPad ? .title3 : .subheadline)
+                    .font(isPad ? .title3 : .callout)
                     .foregroundStyle(.secondary)
             }
             Spacer()
             Image(systemName: "chevron.right")
-                .font(.caption.weight(.bold))
+                .font(.footnote.weight(.bold))
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal, isPad ? 26 : 16)
-        .frame(maxWidth: .infinity, minHeight: isPad ? 94 : 64)
+        .frame(maxWidth: .infinity, minHeight: isPad ? 94 : 70)
         .background(.white.opacity(0.78), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03))
     }
