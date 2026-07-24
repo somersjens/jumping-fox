@@ -41,7 +41,7 @@ struct AnimalCharacter: Identifiable, Equatable {
     /// (keys "character.fox", "character.frog", …). A runtime key lookup keeps
     /// this data-driven, so adding a language never touches this code.
     var localizedName: String {
-        Bundle.main.localizedString(forKey: "character.\(id)", value: nil, table: nil)
+        L(key: "character.\(id)")
     }
 
     // SpriteKit

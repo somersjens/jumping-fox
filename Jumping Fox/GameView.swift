@@ -578,7 +578,7 @@ struct GameView: View {
     /// the string catalog lets each language choose its own emphasis.
     private func emphasizedText(_ copy: String) -> Text {
         let parts = copy.components(separatedBy: "**")
-        var result = Text("")
+        var result = Text(verbatim: "")
         for (index, part) in parts.enumerated() {
             result = result + (index.isMultiple(of: 2)
                 ? Text(part)
@@ -1644,7 +1644,7 @@ private struct EndScreenText {
     func encouragement(for score: Int) -> String {
         // Ten graded messages, keyed game.encouragement.0 … .9 in the catalog.
         let index = min(max(score, 0) / 3, 9)
-        return Bundle.main.localizedString(forKey: "game.encouragement.\(index)", value: nil, table: nil)
+        return L(key: "game.encouragement.\(index)")
     }
 }
 

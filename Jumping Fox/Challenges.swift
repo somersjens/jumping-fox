@@ -1332,14 +1332,15 @@ final class QuestionEngine {
                             isRandomPractice: true)
     }
 
-    /// Formats a hundredths value as a readable decimal in the player's
-    /// language (comma in Dutch, dot in English), trimming a trailing zero so
+    /// Formats a hundredths value as a readable decimal using the decimal
+    /// separator of the player's language (comma in Dutch, dot in English, and
+    /// whatever any future locale prescribes), trimming a trailing zero so
     /// 3,50 shows as 3,5 while 3,25 keeps both places.
     private static func decimalString(hundredths: Int) -> String {
         let whole = hundredths / 100
         let frac = hundredths % 100
         if frac == 0 { return "\(whole)" }
-        let separator = LanguageManager.shared.effective == .dutch ? "," : "."
+        let separator = LanguageManager.shared.locale.decimalSeparator ?? "."
         if frac % 10 == 0 { return "\(whole)\(separator)\(frac / 10)" }
         return "\(whole)\(separator)" + String(format: "%02d", frac)
     }
@@ -1347,7 +1348,11 @@ final class QuestionEngine {
     /// The inverse of `decimalString`: reads a "3,25"/"3.5"/"4" string back
     /// into hundredths so padded distractors can be nudged numerically.
     private static func hundredths(from text: String) -> Int {
-        let parts = text.replacingOccurrences(of: ",", with: ".").split(separator: ".")
+        let separator = LanguageManager.shared.locale.decimalSeparator ?? "."
+        let parts = text
+            .replacingOccurrences(of: separator, with: ".")
+            .replacingOccurrences(of: ",", with: ".")
+            .split(separator: ".")
         let whole = Int(parts.first ?? "0") ?? 0
         guard parts.count > 1 else { return whole * 100 }
         var digits = String(parts[1])

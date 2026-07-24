@@ -71,11 +71,16 @@ final class LanguageManager: ObservableObject {
     }
 
     /// The language actually shown: the pinned choice, or the device's best
-    /// match among the languages we support.
+    /// match among the languages we support. Matching is generic over
+    /// `AppLanguage.allCases`, so adding a language to the enum (and the string
+    /// catalog) is all it takes to have the device follow it automatically.
     var effective: AppLanguage {
         if let override { return override }
-        let preferred = Bundle.main.preferredLocalizations.first ?? "en"
-        return preferred.hasPrefix("nl") ? .dutch : .english
+        for code in Bundle.main.preferredLocalizations {
+            let base = code.split(separator: "-").first.map(String.init) ?? code
+            if let match = AppLanguage(rawValue: base) { return match }
+        }
+        return .english
     }
 
     /// Drives the environment locale, which both formats numbers correctly and
@@ -104,6 +109,14 @@ final class LanguageManager: ObservableObject {
 func L(_ key: String.LocalizationValue) -> String {
     let manager = LanguageManager.shared
     return String(localized: key, bundle: manager.bundle, locale: manager.locale)
+}
+
+/// Resolve a localized string from a key that is only known at runtime (for
+/// example an indexed key like `game.encouragement.3`). Routes through the same
+/// bundle as `L(_:)` so the in-app language switch applies consistently instead
+/// of relying on `Bundle.main`'s redirection.
+func L(key: String) -> String {
+    LanguageManager.shared.bundle.localizedString(forKey: key, value: nil, table: nil)
 }
 
 // MARK: - Bundle redirection (the mechanism behind a live switch)
@@ -182,10 +195,13 @@ struct LanguagePicker: View {
                 Button {
                     language.select(option)
                 } label: {
+                    // Flag + endonym are already runtime strings and must not
+                    // be treated as a localizable key, so compose them verbatim.
+                    let title = Text(verbatim: "\(option.flag)  \(option.displayName)")
                     if language.effective == option {
-                        Label("\(option.flag)  \(option.displayName)", systemImage: "checkmark")
+                        Label { title } icon: { Image(systemName: "checkmark") }
                     } else {
-                        Text("\(option.flag)  \(option.displayName)")
+                        title
                     }
                 }
             }
