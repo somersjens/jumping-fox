@@ -126,12 +126,20 @@ struct GameView: View {
                        options: [.shouldCullNonVisibleNodes, .ignoresSiblingOrder])
                 .ignoresSafeArea()
 
-            // Warm up the status-banner symbols so the very first time the
-            // trophy warning (or MIX MODE) animates in, there's no one-off
-            // glyph-rasterisation hitch. Rendered invisibly from the start.
+            // Warm up the SF Symbols that first appear mid-run, so none of them
+            // pays a one-off glyph-rasterisation hitch on first use: the
+            // status-banner symbols (trophy warning / MIX MODE), the tutorial
+            // prompt and cue icons, and the heart flown by the answer hint.
+            // Rendered invisibly from the start.
             ZStack {
                 Image(systemName: "trophy.fill")
                 Image(systemName: "shuffle")
+                Image(systemName: "hand.tap.fill")
+                Image(systemName: "arrow.down.left.circle")
+                Image(systemName: "heart.fill")
+                Image(systemName: "star.fill")
+                Image(systemName: "arrow.up.circle.fill")
+                Image(systemName: "arrow.left.arrow.right")
             }
             .font(.caption.weight(.bold))
             .opacity(0)
@@ -236,6 +244,11 @@ struct GameView: View {
             if tutorial.developerMode { tutorial.leaveDeveloperMode() }
             PlaytimeTracker.shared.challengeEnded()
             setScreenAwake(false)
+        }
+        .onChange(of: tutorial.currentStep) { step in
+            // Warm the soft haptic the moment the "tap the question mark" step
+            // appears, so the first tap doesn't cold-start the Taptic Engine.
+            if step == 6 { scene.prepareHintHaptic() }
         }
         .onChange(of: tutorial.isComplete) { complete in
             guard complete else { return }
@@ -828,9 +841,10 @@ struct GameView: View {
             return
         }
 
-#if canImport(UIKit)
-        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-#endif
+        // Use the scene's retained, pre-warmed generator rather than a freshly
+        // allocated one: a cold generator here cold-starts the Taptic Engine and
+        // hitches on the first "tap the question mark" of the tutorial.
+        scene.hintHaptic()
         isAnswerHintFlying = true
     }
 

@@ -607,6 +607,10 @@ final class GameScene: SKScene {
 #if os(iOS)
     private let feedbackGenerator = UINotificationFeedbackGenerator()
     private let heartFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    /// The soft tap played when the answer-hint ("?") is used. Retained and
+    /// kept warm just like the others so the tutorial's "tap the question mark"
+    /// step doesn't cold-start the Taptic Engine and hitch on first use.
+    private let hintFeedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
 #endif
 
     init(state: GameState) {
@@ -631,6 +635,12 @@ final class GameScene: SKScene {
         // Warm the Taptic Engine before the first correct landing so the
         // first success haptic doesn't cause a frame hitch.
         feedbackGenerator.prepare()
+        // Same warm-up for the heart-pickup and answer-hint taps, so neither
+        // cold-starts the Taptic Engine on first use. The hint tap is also
+        // re-primed right before tutorial step 6 (see prepareHintHaptic), since
+        // a prepare() here has worn off by the time that step is reached.
+        heartFeedbackGenerator.prepare()
+        hintFeedbackGenerator.prepare()
 #endif
         prewarmCheckmarkGlyph()
     }
@@ -651,11 +661,13 @@ final class GameScene: SKScene {
         stash.zPosition = -100
         addChild(stash)
 
-        // Hearts (full + cropped half), star icon, ×2 bubble & badge text.
+        // Hearts (full + cropped half), star icon, ×2 bubble & badge text, and
+        // the −1 hazard bubble so its glyph is rasterised ahead of first use.
         stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: false, fillsRightHalf: false))
         stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: true, fillsRightHalf: true))
         stash.addChild(GamePlatform.makeStarIcon(theme: theme, radius: 12))
         stash.addChild(makeDoublerBubble(radius: 16))
+        stash.addChild(makeBubbleIcon(text: "−1", fill: GameColors.wrongRed))
         stash.addChild(GamePlatform.makePowerupIcon(.doubler, theme: theme, fillsRightHalf: false))
         stash.addChild(GamePlatform.makePowerupIcon(.minusOne, theme: theme, fillsRightHalf: false))
 
@@ -685,6 +697,21 @@ final class GameScene: SKScene {
         glow.strokeColor = theme.skPrimary.withAlphaComponent(0.55)
         glow.lineWidth = 2
         stash.addChild(glow)
+
+        // The wrong-answer cross stays hidden on every answer block until the
+        // first wrong landing, so its stroked path is never rendered during
+        // normal play. Warm a matching one (same style as GamePlatform's
+        // wrongMark) so that first cross doesn't hitch.
+        let crossPath = CGMutablePath()
+        crossPath.move(to: CGPoint(x: -14, y: -6))
+        crossPath.addLine(to: CGPoint(x: 14, y: 6))
+        crossPath.move(to: CGPoint(x: -14, y: 6))
+        crossPath.addLine(to: CGPoint(x: 14, y: -6))
+        let cross = SKShapeNode(path: crossPath)
+        cross.strokeColor = GameColors.wrongRed
+        cross.lineWidth = 3
+        cross.lineCap = .round
+        stash.addChild(cross)
 
         // One frame is enough to build everything; then clean up.
         stash.run(.sequence([.wait(forDuration: 0.5), .removeFromParent()]))
@@ -2842,6 +2869,24 @@ final class GameScene: SKScene {
 #if os(iOS)
         heartFeedbackGenerator.impactOccurred()
         heartFeedbackGenerator.prepare()
+#endif
+    }
+
+    /// The soft tap for using the answer hint. Called by the SwiftUI equation
+    /// badge; re-arms itself so every later use stays warm too.
+    func hintHaptic() {
+#if os(iOS)
+        hintFeedbackGenerator.impactOccurred()
+        hintFeedbackGenerator.prepare()
+#endif
+    }
+
+    /// Warms the answer-hint generator just before it's needed. Called when the
+    /// tutorial reaches the "tap the question mark" step, so the very first tap
+    /// lands on an already-warm Taptic Engine instead of paying the cold-start.
+    func prepareHintHaptic() {
+#if os(iOS)
+        hintFeedbackGenerator.prepare()
 #endif
     }
 

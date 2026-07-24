@@ -13,6 +13,13 @@ struct Jumping_FoxApp: App {
 
     init() {
         PromotedPurchaseCoordinator.shared.startListening()
+        // Bring iCloud sync online at launch — not just once the home screen
+        // appears. On a fresh reinstall the app opens on the onboarding welcome
+        // screen (which never touches ProgressSync), so without this the saved
+        // name is never pulled back from iCloud and the name field stays empty.
+        // With it, the restore runs and @AppStorage fills the field the moment
+        // iCloud delivers the name.
+        _ = ProgressSync.shared
     }
 
     var body: some Scene {

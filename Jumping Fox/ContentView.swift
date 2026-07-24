@@ -194,6 +194,12 @@ struct ContentView: View {
     @State private var showTutorialScoreHint = false
     @State private var scoreHintLevelID: String?
     @State private var suppressCharacterTap = false
+    // Upward offset that lifts the home character out of its box for a short
+    // hop whenever the player switches (sub)category. 0 = resting in the box.
+    @State private var characterJumpOffset: CGFloat = 0
+    // Vertical scale of the character, anchored at its base, so the spring can
+    // squash down before launch and stretch on the way up. 1 = resting.
+    @State private var characterSquash: CGFloat = 1
     @State private var maximumCountPreview: Int?
     @State private var maximumCountPreviewLevelID: String?
     @State private var secondMaximumCountPreview: Int?
@@ -391,6 +397,41 @@ struct ContentView: View {
         onboardingComplete = false
     }
 
+    /// Makes the home character spring up out of its box and settle back.
+    /// A category switch (+ → −) gets a big hop whose bottom reaches halfway up
+    /// the box; a subcategory switch (Reeks → Hussel) gets a smaller quarter hop.
+    private func triggerCharacterJump(big: Bool) {
+        let box: CGFloat = isPad ? 118 : 68
+        let peak = box * (big ? 0.5 : 0.25)
+        let squash: CGFloat = big ? 0.70 : 0.80   // spring compressed before launch
+        let stretch: CGFloat = big ? 1.12 : 1.07  // body elongated while rising
+        let dip = box * 0.03                       // small crouch downwards
+        let crouch = big ? 0.22 : 0.18
+        let rise = big ? 0.18 : 0.14
+
+        // 1. Anticipation: the spring compresses and the character dips down.
+        // A longer ease-in-out makes the wind-up read as a smooth crouch.
+        withAnimation(.easeInOut(duration: crouch)) {
+            characterSquash = squash
+            characterJumpOffset = dip
+        }
+        // 2. Launch: it springs up and stretches out.
+        DispatchQueue.main.asyncAfter(deadline: .now() + crouch) {
+            withAnimation(.easeOut(duration: rise)) {
+                characterJumpOffset = -peak
+                characterSquash = stretch
+            }
+        }
+        // 3. Landing: falls back with an under-damped spring, so the scale
+        // overshoots to a brief squash on impact before settling to rest.
+        DispatchQueue.main.asyncAfter(deadline: .now() + crouch + rise) {
+            withAnimation(.spring(response: big ? 0.38 : 0.30, dampingFraction: 0.5)) {
+                characterJumpOffset = 0
+                characterSquash = 1
+            }
+        }
+    }
+
     // MARK: Combined top menu
 
     private var menuCard: some View {
@@ -405,16 +446,33 @@ struct ContentView: View {
                     }
                     showPremium = true
                 } label: {
-                    character.artwork
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: isPad ? 118 : 68, height: isPad ? 118 : 68)
-                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(.white.opacity(0.9), lineWidth: 2)
-                        }
-                        .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
+                    let box: CGFloat = isPad ? 118 : 68
+                    ZStack {
+                        // The fixed box: background sky plus its white outline.
+                        // Neither moves or resizes; a little sky shows through
+                        // while the character is airborne. The outline lives here
+                        // (behind the character) so the character hops in front of
+                        // it rather than being cut off by it.
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(LinearGradient(colors: [character.skyColor, character.tintColor],
+                                                 startPoint: .top, endPoint: .bottom))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .stroke(.white.opacity(0.9), lineWidth: 2)
+                            }
+                        // Only the character hops. It is clipped to the box shape,
+                        // squashed/stretched from its base (the spring), then
+                        // offset up as a whole so it can rise clear of the top edge.
+                        character.artwork
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: box, height: box)
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .scaleEffect(x: 1, y: characterSquash, anchor: .bottom)
+                            .offset(y: characterJumpOffset)
+                    }
+                    .frame(width: box, height: box)
+                    .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
                 }
                 .buttonStyle(.plain)
                 .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -521,10 +579,17 @@ struct ContentView: View {
             }
         }
         .padding(isPad ? 22 : 14)
-        .background(.white.opacity(0.76), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .overlay {
+        // Fill and outline both sit behind the card's content, so the character
+        // can spring up in front of the card's top edge instead of ducking
+        // behind it. The content is inset by the padding, so the outline still
+        // frames the card at rest.
+        .background {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(.white.opacity(0.9), lineWidth: 1)
+                .fill(.white.opacity(0.76))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .stroke(.white.opacity(0.9), lineWidth: 1)
+                }
         }
         .shadow(color: character.deepColor.opacity(0.12), radius: 14, y: 7)
     }
@@ -539,6 +604,7 @@ struct ContentView: View {
             } else {
                 clearMaximumCountPreview()
                 withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
+                triggerCharacterJump(big: true)
             }
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
@@ -812,6 +878,7 @@ struct ContentView: View {
                         withAnimation(.snappy(duration: 0.2)) {
                             menuModeRaw = mode.rawValue
                         }
+                        triggerCharacterJump(big: false)
                     }
                 } label: {
                     Text(mode.title)
@@ -843,6 +910,7 @@ struct ContentView: View {
                     withAnimation(.snappy(duration: 0.2)) {
                         supermixCategoryRaw = menuCategory.rawValue
                     }
+                    if !isSelected { triggerCharacterJump(big: false) }
                 } label: {
                     supermixLabel(menuCategory)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
