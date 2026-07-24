@@ -1801,6 +1801,40 @@ private struct PennantShape: Shape {
     }
 }
 
+/// A rounded rectangle whose path begins and ends at the top-edge centre —
+/// directly behind the completed card's crown. Tracing it with `.trim`
+/// (0 → 1) makes the gold border unspool from under the crown, sweep all the
+/// way around, and close its seam back behind the crown, instead of starting
+/// and stopping at the right edge.
+private struct CrownSeamRoundedRectangle: Shape {
+    var cornerRadius: CGFloat
+    func path(in rect: CGRect) -> Path {
+        let r = min(cornerRadius, min(rect.width, rect.height) / 2)
+        var path = Path()
+        // Start behind the crown, at the centre of the top edge.
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        // Top edge → top-right corner
+        path.addLine(to: CGPoint(x: rect.maxX - r, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.minY + r), radius: r,
+                    startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+        // Right edge → bottom-right corner
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
+        path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.maxY - r), radius: r,
+                    startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+        // Bottom edge → bottom-left corner
+        path.addLine(to: CGPoint(x: rect.minX + r, y: rect.maxY))
+        path.addArc(center: CGPoint(x: rect.minX + r, y: rect.maxY - r), radius: r,
+                    startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        // Left edge → top-left corner
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + r))
+        path.addArc(center: CGPoint(x: rect.minX + r, y: rect.minY + r), radius: r,
+                    startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+        // Top edge back to the centre, closing the seam behind the crown.
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        return path
+    }
+}
+
 /// Redesigned level card: a big central number, a trophy score line, a
 /// three-dot progress indicator, and a top-left tier badge. Reaching the
 /// maximum score turns the card into a celebratory gold "completed" card.
@@ -2188,10 +2222,11 @@ struct LevelCardView: View {
         }
     }
 
-    /// First completion: the gold border draws itself around the card, a soft
-    /// metal flash blooms outward, and the crown drops in with a small settle.
-    /// Timed to finish well inside the celebration's own lifetime so it never
-    /// lingers or blocks the eye.
+    /// First completion: the crown drops in first, then the gold border
+    /// unspools from behind it, sweeps around the card, and closes its seam
+    /// back behind the crown while a soft metal flash blooms outward. Timed to
+    /// finish well inside the celebration's own lifetime so it never lingers or
+    /// blocks the eye.
     private func animateFirstMaxReveal() {
         maximumCountPulse = false
         maximumCountRingOpacity = 0
@@ -2200,24 +2235,30 @@ struct LevelCardView: View {
         firstMaxCrownOffset = -12
         firstMaxCrownTilt = 0
         firstMaxGlowScale = 0.9
-        firstMaxGlowOpacity = 0.7
+        firstMaxGlowOpacity = 0
 
-        withAnimation(.easeInOut(duration: 0.55)) { firstMaxBorderTrace = 1 }
-        withAnimation(.easeOut(duration: 0.7)) {
-            firstMaxGlowScale = 1.3
-            firstMaxGlowOpacity = 0
+        // 1. The crown drops in and settles first.
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.52)) {
+            firstMaxCrownScale = 1
+            firstMaxCrownOffset = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.52)) {
-                firstMaxCrownScale = 1
-                firstMaxCrownOffset = 0
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.52) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
             withAnimation(.spring(response: 0.32, dampingFraction: 0.42)) { firstMaxCrownTilt = -6 }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.74) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) { firstMaxCrownTilt = 0 }
+        }
+
+        // 2. Once the crown has landed, the border traces out from under it and
+        //    the metal flash blooms along with it.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) {
+            firstMaxGlowScale = 0.9
+            firstMaxGlowOpacity = 0.7
+            withAnimation(.easeInOut(duration: 0.62)) { firstMaxBorderTrace = 1 }
+            withAnimation(.easeOut(duration: 0.75)) {
+                firstMaxGlowScale = 1.3
+                firstMaxGlowOpacity = 0
+            }
         }
     }
 
@@ -2391,10 +2432,11 @@ struct LevelCardView: View {
                     .allowsHitTesting(false)
             }
         }
-        // The gold border. On a first completion it traces itself in
-        // (firstMaxBorderTrace 0→1); otherwise it rests fully drawn.
+        // The gold border. On a first completion it traces itself in from
+        // behind the crown (firstMaxBorderTrace 0→1), wraps around, and closes
+        // its seam back behind the crown; otherwise it rests fully drawn.
         .overlay(
-            RoundedRectangle(cornerRadius: 18)
+            CrownSeamRoundedRectangle(cornerRadius: 18 * cardScale)
                 .trim(from: 0, to: firstMaxBorderTrace)
                 .stroke(metal, lineWidth: 2 * cardScale)
         )
