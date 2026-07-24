@@ -464,6 +464,40 @@
         }
       }
     },
+    "game.streak.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 in a row!"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 op een rij!"
+          }
+        }
+      }
+    },
+    "game.streak.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trophies ×2"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trofeeën ×2"
+          }
+        }
+      }
+    },
     "game.accessibility.scoreOutOf %lld %lld": {
       "extractionState": "manual",
       "localizations": {
@@ -4292,13 +4326,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Now jump on the correct answer to collect double trophies."
+            "value": "Now jump on the correct answer to collect triple trophies."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spring nu op het goede antwoord om dubbele trofeeën te verzamelen."
+            "value": "Spring nu op het goede antwoord om drie keer zoveel trofeeën te verzamelen."
           }
         }
       }
@@ -4309,13 +4343,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Collect the doubler to earn double trophies once."
+            "value": "Collect the ×3 coin to earn triple trophies once."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pak de verdubbelaar om eenmalig dubbele trofeeën te krijgen."
+            "value": "Pak de ×3-munt om eenmalig drie keer zoveel trofeeën te krijgen."
           }
         }
       }

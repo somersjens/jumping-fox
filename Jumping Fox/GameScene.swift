@@ -37,7 +37,7 @@ enum PowerupType: Equatable {
     case halfHeart   // +½ heart; only appears when ≥1 heart was lost
     case fullHeart   // +1 heart; only appears when ≥2 hearts were lost
     case eliminator  // shooting stars: streaks arc out and pop the wrong answers
-    case doubler     // ×2: the next CORRECT answer scores double
+    case tripler     // ×3: the next CORRECT answer scores triple
     case minusOne    // hazard: touching it costs 1 trophy (from a score of 10 up)
 }
 
@@ -386,8 +386,8 @@ final class GamePlatform: SKNode {
             return makeHeartIcon(theme: theme, half: false, fillsRightHalf: false)
         case .eliminator:
             return makeStarIcon(theme: theme, radius: 12)
-        case .doubler:
-            return makeBubbleIcon(text: "×2", fill: theme.skPrimary)
+        case .tripler:
+            return makeBubbleIcon(text: "×3", fill: theme.skPrimary)
         case .minusOne:
             return makeBubbleIcon(text: "−1", fill: GameColors.wrongRed)
         }
@@ -617,12 +617,12 @@ final class GameScene: SKScene {
     /// The star only makes sense under a real GROUP, so those sets are
     /// raised a little to reserve a visible strip below the group.
     private let eliminatorRaise: CGFloat = 140
-    /// ×2 doubler: never near the run's trophy goal.
-    private let doublerChance = 0.12
-    private var maxDoublersPerRun: Int { perRunCap(forWindow: runTrophyGoal) }
-    private var doublersSpawned = 0
-    private var doublerAura: SKNode?
-    /// −1 hazard: same odds as the ×2, but only once the player has real
+    /// ×3 tripler: never near the run's trophy goal.
+    private let triplerChance = 0.12
+    private var maxTriplersPerRun: Int { perRunCap(forWindow: runTrophyGoal) }
+    private var triplersSpawned = 0
+    private var triplerAura: SKNode?
+    /// −1 hazard: same odds as the ×3, but only once the player has real
     /// trophies to spare. It never appears below 20, so a 20-trophy Order run
     /// stays hazard-free and only the longer modes can meet it — and its cap
     /// counts only the trophies available ABOVE that threshold.
@@ -663,7 +663,7 @@ final class GameScene: SKScene {
     /// during the movement/stone-only lessons.
     private var tutorialSuppressesAnswerTiles: Bool {
         guard tutorial.isActive else { return false }
-        if tutorial.currentStep == 8 { return !tutorial.doublerAnswerPending }
+        if tutorial.currentStep == 8 { return !tutorial.triplerAnswerPending }
         return [1, 2, 7, 9, 10].contains(tutorial.currentStep)
     }
 
@@ -740,14 +740,14 @@ final class GameScene: SKScene {
         stash.zPosition = -100
         addChild(stash)
 
-        // Hearts (full + cropped half), star icon, ×2 bubble & badge text, and
+        // Hearts (full + cropped half), star icon, ×3 bubble & badge text, and
         // the −1 hazard bubble so its glyph is rasterised ahead of first use.
         stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: false, fillsRightHalf: false))
         stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: true, fillsRightHalf: true))
         stash.addChild(GamePlatform.makeStarIcon(theme: theme, radius: 12))
-        stash.addChild(makeDoublerBubble(radius: 16))
+        stash.addChild(makeTriplerBubble(radius: 16))
         stash.addChild(makeBubbleIcon(text: "−1", fill: GameColors.wrongRed))
-        stash.addChild(GamePlatform.makePowerupIcon(.doubler, theme: theme, fillsRightHalf: false))
+        stash.addChild(GamePlatform.makePowerupIcon(.tripler, theme: theme, fillsRightHalf: false))
         stash.addChild(GamePlatform.makePowerupIcon(.minusOne, theme: theme, fillsRightHalf: false))
 
         // Stroked shapes used by the animations: ping ring, arc streak,
@@ -977,7 +977,7 @@ final class GameScene: SKScene {
         setsBuilt = 0
         lastSetWasSkip = false
         eliminatorsSpawned = 0
-        doublersSpawned = 0
+        triplersSpawned = 0
         minusOnesSpawned = 0
         answersSinceSpecial = 99
         redemptionArmed = false
@@ -990,7 +990,7 @@ final class GameScene: SKScene {
         tutorialAwaitingQuestionTap = false
         preserveAnswerAppearanceAfterTutorialReveal = false
         awaitingCorrectAfterTutorialStar = false
-        setDoublerVisual(false)
+        setTriplerVisual(false)
 
         nextSpawnY = springboardY + 194 * verticalGameplayScale
         // The movement lesson uses only the full-width springboard.  No
@@ -1347,7 +1347,7 @@ final class GameScene: SKScene {
                 if tutorialAwaitingQuestionTap { return }
                 activateTutorialAnswers(correct: true, wrongCount: 1, showCorrect: false)
                 return
-            case 8 where tutorial.doublerAnswerPending:
+            case 8 where tutorial.triplerAnswerPending:
                 activateTutorialAnswers(correct: true, wrongCount: 0, showCorrect: false,
                                        requiresUpcomingSpawn: true)
                 return
@@ -1719,7 +1719,7 @@ final class GameScene: SKScene {
         // block is placed above the screen until the player gets it.
         let onlyCorrectUntilCollected = awaitingCorrectAfterTutorialStar
             || (tutorial.isActive && (tutorial.currentStep == 3
-                || (tutorial.currentStep == 8 && tutorial.doublerAnswerPending)))
+                || (tutorial.currentStep == 8 && tutorial.triplerAnswerPending)))
         if onlyCorrectUntilCollected {
             let position = findCorrectPosition() ?? guaranteedCorrectPosition()
             activateAnswerSet(correct: (state.correctAnswer, position), wrongs: [])
@@ -2109,7 +2109,7 @@ final class GameScene: SKScene {
         platform.resolveCorrect(theme: theme)
         haptic(success: true)
         PlaytimeTracker.shared.registerInteraction()
-        let wasDoubled = state.doublerArmed
+        let wasTripled = state.triplerArmed
         state.answeredCorrectly()
         // The star lesson ends only after this remaining good answer is
         // used; from this point ordinary answer groups may resume.
@@ -2121,18 +2121,29 @@ final class GameScene: SKScene {
             switch tutorial.currentStep {
             case 3, 5: completeTutorialStep(tutorial.currentStep)
             case 6: tutorialAwaitingQuestionTap = true
-            case 8 where tutorial.doublerAnswerPending: completeTutorialStep(8)
+            case 8 where tutorial.triplerAnswerPending: completeTutorialStep(8)
             default: break
             }
         }
-        // A consumed doubler flies to the trophy score; an unarmed state
+        // A consumed tripler flies to the trophy score; an unarmed state
         // just makes sure no stray aura lingers. Redemption ends here too.
-        if wasDoubled {
-            consumeDoublerVisual()
+        if wasTripled {
+            consumeTriplerVisual()
         } else {
-            setDoublerVisual(false)
+            setTriplerVisual(false)
         }
         redemptionArmed = false
+        // At a 4-answer streak, retract any ×3 coin the player hasn't seen yet
+        // (still above the viewport) so arming it can't coincide with the jump
+        // that triggers the 5-in-a-row bonus. A coin already on screen is left
+        // alone — yanking a visible pickup would feel unfair. New ×3 spawns are
+        // suppressed at this streak too (see maybeSpawnPickups).
+        if state.correctStreak == 4 {
+            for platform in platforms where platform.powerup == .tripler
+                && platform.position.y > size.height {
+                platform.removePowerup()
+            }
+        }
         answersSinceSpecial += 1
         maybeSpawnPickups()
         // Short confirmation beat: long enough to see the checkmark, short
@@ -2150,14 +2161,14 @@ final class GameScene: SKScene {
         platform.resolveWrong()
         haptic(success: false)
         PlaytimeTracker.shared.registerInteraction()
-        let hadDoubler = state.doublerArmed
+        let hadTripler = state.triplerArmed
         state.answeredWrong()
         if tutorial.isActive && tutorial.currentStep == 4 { completeTutorialStep(4) }
-        // A wrong answer forfeits an armed doubler: the bubble visibly pops.
-        if hadDoubler {
-            popDoublerVisual()
+        // A wrong answer forfeits an armed tripler: the bubble visibly pops.
+        if hadTripler {
+            popTriplerVisual()
         } else {
-            setDoublerVisual(false)
+            setTriplerVisual(false)
         }
         // …and arms redemption: the next correct block turns green
         // (including the one of the CURRENT question) until it is landed on.
@@ -2187,14 +2198,20 @@ final class GameScene: SKScene {
                 return
             }
         }
-        // ×2 doubler: capped per run and never once the goal is within reach
-        // (a ×2 that would overshoot the final trophy is just noise).
-        if doublersSpawned < maxDoublersPerRun,
+        // ×3 tripler: capped per run and never once the goal is within reach
+        // (a ×3 that would overshoot the final trophy is just noise). During an
+        // active streak it appears half as often (a ×3 is already very strong
+        // when every trophy doubles), and it is suppressed entirely at a
+        // 4-answer streak so it can never be armed for the very jump that
+        // triggers the 5-in-a-row bonus — those two rewards should not collide.
+        let triplerChanceNow = state.isStreakActive ? triplerChance * 0.5 : triplerChance
+        if triplersSpawned < maxTriplersPerRun,
+           state.correctStreak != 4,
            state.score <= runTrophyGoal - 2,
            !state.isEndless,
-           Double.random(in: 0...1) < doublerChance,
-           attachPowerupToUpcomingNeutral(.doubler) {
-            doublersSpawned += 1
+           Double.random(in: 0...1) < triplerChanceNow,
+           attachPowerupToUpcomingNeutral(.tripler) {
+            triplersSpawned += 1
             answersSinceSpecial = 0
             return
         }
@@ -2252,7 +2269,7 @@ final class GameScene: SKScene {
         guard tutorial.isActive else { return nil }
         switch tutorial.currentStep {
         case 7: return tutorialHeartCount == 0 ? .halfHeart : .fullHeart
-        case 8: return tutorial.doublerAnswerPending ? nil : .doubler
+        case 8: return tutorial.triplerAnswerPending ? nil : .tripler
         case 9: return .minusOne
         case 11: return .eliminator
         default: return nil
@@ -2265,7 +2282,7 @@ final class GameScene: SKScene {
         // Adding it from every spawned neutral stone created duplicate stars.
         guard type != .eliminator else { return }
         // Only the −1 lesson intentionally populates every suitable stone.
-        // Hearts, the doubler and the star are one-at-a-time and reappear
+        // Hearts, the tripler and the star are one-at-a-time and reappear
         // only after the player has missed the previous one.
         if type != .minusOne,
            platforms.contains(where: { $0 !== platform && $0.powerup == type }) { return }
@@ -2406,8 +2423,8 @@ final class GameScene: SKScene {
             tutorialNextPickupAt = lastUpdateTime + 0.75
         case (7, .fullHeart):
             completeTutorialStep(7)
-        case (8, .doubler):
-            tutorial.setDoublerAnswerPending(true)
+        case (8, .tripler):
+            tutorial.setTriplerAnswerPending(true)
             answerRefreshAt = max(answerRefreshAt ?? 0, lastUpdateTime + 0.18)
         case (9, .minusOne):
             for other in platforms where other.powerup == .minusOne { other.removePowerup() }
@@ -2554,9 +2571,9 @@ final class GameScene: SKScene {
             flyHeartToHUD(from: origin, halves: 2)
         case .eliminator:
             launchFirework(from: origin)
-        case .doubler:
-            state.armDoubler()
-            setDoublerVisual(true)
+        case .tripler:
+            state.armTripler()
+            setTriplerVisual(true)
         case .minusOne:
             flyMinusOneToScore(from: origin)
         }
@@ -2570,7 +2587,7 @@ final class GameScene: SKScene {
     }
 
     /// The −1 hazard: a red bubble arcs to the trophy score and takes the
-    /// trophy exactly on arrival, so the loss is as legible as the ×2 gain.
+    /// trophy exactly on arrival, so the loss is as legible as the ×3 gain.
     private func flyMinusOneToScore(from origin: CGPoint) {
         let target = trophyHUDPoint
         let bubble = makeBubbleIcon(text: "−1", fill: GameColors.wrongRed)
@@ -2591,7 +2608,7 @@ final class GameScene: SKScene {
         ]))
     }
 
-    /// Bubble builder shared with the ×2 visuals (instance-level so it can
+    /// Bubble builder shared with the ×3 visuals (instance-level so it can
     /// be reused by pop/fly effects with any colour).
     private func makeBubbleIcon(text: String, fill: SKColor) -> SKShapeNode {
         let bubble = SKShapeNode(circleOfRadius: 15)
@@ -2742,11 +2759,11 @@ final class GameScene: SKScene {
             .styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
     }
 
-    /// Pulsing aura in the THEME colour + a ×2 badge above the character
-    /// while the doubler is armed; removed the instant it is spent or lost.
-    private func setDoublerVisual(_ on: Bool) {
-        doublerAura?.removeFromParent()
-        doublerAura = nil
+    /// Pulsing aura in the THEME colour + a ×3 badge above the character
+    /// while the tripler is armed; removed the instant it is spent or lost.
+    private func setTriplerVisual(_ on: Bool) {
+        triplerAura?.removeFromParent()
+        triplerAura = nil
         guard on else { return }
         let aura = SKNode()
         let glow = SKShapeNode(circleOfRadius: 46)
@@ -2763,7 +2780,7 @@ final class GameScene: SKScene {
         badge.strokeColor = .white
         badge.lineWidth = 2
         let badgeLabel = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        badgeLabel.text = "×2"
+        badgeLabel.text = "×3"
         badgeLabel.fontSize = 14
         badgeLabel.fontColor = .white
         badgeLabel.verticalAlignmentMode = .center
@@ -2777,17 +2794,17 @@ final class GameScene: SKScene {
         aura.addChild(badge)
         aura.zPosition = -1
         player.addChild(aura)
-        doublerAura = aura
+        triplerAura = aura
     }
 
-    /// One reusable ×2 bubble node (same look as the armed badge).
-    private func makeDoublerBubble(radius: CGFloat) -> SKShapeNode {
+    /// One reusable ×3 bubble node (same look as the armed badge).
+    private func makeTriplerBubble(radius: CGFloat) -> SKShapeNode {
         let bubble = SKShapeNode(circleOfRadius: radius)
         bubble.fillColor = theme.skPrimary
         bubble.strokeColor = .white
         bubble.lineWidth = 2
         let label = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        label.text = "×2"
+        label.text = "×3"
         label.fontSize = radius * 0.95
         label.fontColor = .white
         label.verticalAlignmentMode = .center
@@ -2796,15 +2813,15 @@ final class GameScene: SKScene {
         return bubble
     }
 
-    /// On the doubled answer the ×2 bubble detaches and arcs to the trophy
+    /// On the tripled answer the ×3 bubble detaches and arcs to the trophy
     /// icon at the top, shrinking INTO it with an arrival ping — the player
     /// sees exactly where the double points land.
-    private func consumeDoublerVisual() {
-        doublerAura?.removeFromParent()
-        doublerAura = nil
+    private func consumeTriplerVisual() {
+        triplerAura?.removeFromParent()
+        triplerAura = nil
         let origin = CGPoint(x: player.position.x, y: player.position.y + 46)
         let target = trophyHUDPoint
-        let bubble = makeDoublerBubble(radius: 16)
+        let bubble = makeTriplerBubble(radius: 16)
         bubble.position = origin
         bubble.zPosition = 50
         addChild(bubble)
@@ -2823,7 +2840,7 @@ final class GameScene: SKScene {
 
     /// Once, on the first tutorial answer, a trophy flies from the exact
     /// centre of the answered block to the score icon. It deliberately uses
-    /// the same flight, timing and arrival treatment as the ×2 reward.
+    /// the same flight, timing and arrival treatment as the ×3 reward.
     private func flyTutorialTrophyToHUD(from origin: CGPoint) {
         // The first tutorial reward can happen immediately after the HUD is
         // shown. Wait for its real SwiftUI anchor rather than falling back to
@@ -2901,14 +2918,14 @@ final class GameScene: SKScene {
         return trophy
     }
 
-    /// A wrong answer with the ×2 armed: the bubble POPS on the spot —
-    /// a quick over-inflate, a burst of shards, gone. Losing the doubler
+    /// A wrong answer with the ×3 armed: the bubble POPS on the spot —
+    /// a quick over-inflate, a burst of shards, gone. Losing the tripler
     /// is unmistakable.
-    private func popDoublerVisual() {
-        doublerAura?.removeFromParent()
-        doublerAura = nil
+    private func popTriplerVisual() {
+        triplerAura?.removeFromParent()
+        triplerAura = nil
         let center = CGPoint(x: player.position.x, y: player.position.y + 46)
-        let bubble = makeDoublerBubble(radius: 15)
+        let bubble = makeTriplerBubble(radius: 15)
         bubble.position = center
         bubble.zPosition = 50
         addChild(bubble)

@@ -124,9 +124,17 @@ final class GameState: ObservableObject {
     /// True once the answer has been revealed for the current question, so a
     /// second tap on the same question is free and shows the number again.
     @Published private(set) var isAnswerRevealed = false
-    /// Armed by the ×2 pickup: the next CORRECT answer scores double; a
+    /// Armed by the ×3 pickup: the next CORRECT answer scores triple; a
     /// wrong answer forfeits it. Deliberately not persisted across pauses.
-    @Published private(set) var doublerArmed = false
+    @Published private(set) var triplerArmed = false
+    /// Consecutive correct answers, reset by any wrong answer. Once it reaches
+    /// `streakThreshold` the answer-streak turns on and every earned trophy
+    /// doubles. Not counted (nor rewarded) while the tutorial is running.
+    @Published private(set) var correctStreak = 0
+    /// True while the 5-in-a-row answer-streak is active: earned trophies are
+    /// doubled (and a collected ×3 pickup therefore pays 6). Ends on the first
+    /// wrong answer. Never turns on during the tutorial.
+    @Published private(set) var isStreakActive = false
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
@@ -200,14 +208,23 @@ final class GameState: ObservableObject {
         return true
     }
 
+    /// Correct answers needed in a row before the answer-streak turns on.
+    static let streakThreshold = 5
+
     /// Called when the player lands on the correct platform.
     /// Only closes the current question (score); the next question is
     /// activated separately via `advanceQuestion()` so the HUD and the
     /// platforms always switch together, after the confirmation.
     func answeredCorrectly() {
         guard !isGameOver, !isScoreLocked else { return }
-        score += doublerArmed ? 2 : 1
-        doublerArmed = false
+        // Base earning: a ×3 pickup triples it; an active streak then doubles
+        // whatever was earned. So 1 normally, 2 on a streak, 3 with a ×3, and
+        // 6 with a ×3 collected during a streak.
+        var earned = triplerArmed ? 3 : 1
+        if isStreakActive { earned *= 2 }
+        score += earned
+        triplerArmed = false
+        registerCorrectForStreak()
         // "Round off at 30" is on: reaching the cap finishes the level with a
         // festive completion screen instead of letting the run drag on.
         if GameSettings.capsTrophiesAtThirty,
@@ -217,10 +234,28 @@ final class GameState: ObservableObject {
         }
     }
 
-    /// Arms the ×2 pickup for the next answer.
-    func armDoubler() {
+    /// Counts one correct answer toward the streak and turns the streak on the
+    /// moment it reaches the threshold. Disabled during the tutorial so the
+    /// lesson stays focused, and never while the score is locked (endless).
+    private func registerCorrectForStreak() {
+        guard !isScoreLocked, !TutorialProgress.shared.isActive else { return }
+        correctStreak += 1
+        if !isStreakActive && correctStreak >= Self.streakThreshold {
+            isStreakActive = true
+        }
+    }
+
+    /// Clears the streak: no more doubling until five correct answers land in a
+    /// row again. Triggered by a wrong answer or by entering endless play.
+    private func resetStreak() {
+        correctStreak = 0
+        isStreakActive = false
+    }
+
+    /// Arms the ×3 pickup for the next answer.
+    func armTripler() {
         guard !isGameOver, !isScoreLocked else { return }
-        doublerArmed = true
+        triplerArmed = true
     }
 
     /// The −1 hazard: touching it costs one trophy (never below zero).
@@ -255,7 +290,8 @@ final class GameState: ObservableObject {
     func answeredWrong() {
         guard !isGameOver else { return }
         engine.registerWrong(question)
-        doublerArmed = false // a wrong answer forfeits the ×2
+        triplerArmed = false // a wrong answer forfeits the ×3
+        resetStreak()        // …and ends the answer-streak
         applyPenalty(halves: 2)
     }
 
@@ -285,6 +321,7 @@ final class GameState: ObservableObject {
             // ending, and lock in the trophies earned so far.
             if !isEndless {
                 isEndless = true
+                resetStreak() // locked score: the streak no longer applies
                 recordCurrentScore()
             }
         } else {
@@ -337,7 +374,9 @@ final class GameState: ObservableObject {
         livesHalves = lifeMode.startingLives.map { $0 * 2 }
         isEndless = false
         isAnswerRevealed = false
-        doublerArmed = false
+        triplerArmed = false
+        correctStreak = 0
+        isStreakActive = false
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false

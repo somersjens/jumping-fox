@@ -22,9 +22,14 @@ struct OnboardingView: View {
                     VStack(spacing: 0) {
                         Image("no_background")
                             .resizable()
-                            .scaledToFit()
-                            .frame(width: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150),
-                                   height: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150))
+                            .scaledToFill()
+                            // The welcome artwork owns the full available
+                            // width, so the step transition has no visible
+                            // side gutters on iPad. Its height remains capped
+                            // to leave the choices comfortably reachable.
+                            .frame(width: proxy.size.width,
+                                   height: isPad ? (step == 1 ? 180 : 250) : (step == 1 ? 124 : 170))
+                            .clipped()
                             .padding(.bottom, isPad ? (step == 1 ? 20 : 30) : (step == 1 ? 14 : 22))
                             .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
 
@@ -37,9 +42,9 @@ struct OnboardingView: View {
                         }
                         .id(step)
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
+                        .frame(maxWidth: contentWidth)
+                        .padding(.horizontal, isPad ? 36 : 24)
                     }
-                    .frame(maxWidth: contentWidth)
-                    .padding(.horizontal, isPad ? 36 : 24)
                     .padding(.vertical, isPad ? 40 : 28)
                     // On normal-height screens this fills the viewport and
                     // centres the welcome content. On smaller screens the
@@ -96,19 +101,19 @@ struct OnboardingView: View {
         VStack(spacing: 24) {
             VStack(spacing: 10) {
                 Text("onboarding.name.title")
-                    .font(.system(size: isPad ? 50 : 35, weight: .heavy, design: .rounded))
+                    .font(.system(size: isPad ? 44 : 35, weight: .heavy, design: .rounded))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity)
 
                 Text("onboarding.name.subtitle")
-                    .font(isPad ? .title.weight(.medium) : .title3.weight(.medium))
+                    .font(isPad ? .title2.weight(.medium) : .title3.weight(.medium))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
             }
 
             TextField(String(), text: $playerName, prompt: Text("name.placeholder"))
-                .font(.system(size: isPad ? 38 : 26, weight: .bold, design: .rounded))
+                .font(.system(size: isPad ? 34 : 26, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .focused($isNameFieldFocused)
                 .textContentType(.name)
@@ -134,12 +139,12 @@ struct OnboardingView: View {
     private var subjectStep: some View {
         VStack(spacing: 14) {
             Text("onboarding.subject.title")
-                .font(.system(size: isPad ? 46 : 32, weight: .heavy, design: .rounded))
+                .font(.system(size: isPad ? 42 : 32, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
 
             Text("onboarding.subject.subtitle")
-                .font(isPad ? .title2 : .body)
+                .font(isPad ? .title3 : .body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
@@ -156,7 +161,7 @@ struct OnboardingView: View {
                                 .font(.system(size: isPad ? 28 : 21, weight: .bold))
                                 .frame(width: isPad ? 44 : 30)
                             Text(filter.title)
-                                .font(isPad ? .title2.weight(.semibold) : .title3.weight(.semibold))
+                                .font(isPad ? .title3.weight(.semibold) : .title3.weight(.semibold))
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.footnote.weight(.bold))
@@ -176,12 +181,12 @@ struct OnboardingView: View {
     private var levelStep: some View {
         VStack(spacing: 14) {
             Text("onboarding.level.title")
-                .font(.system(size: isPad ? 46 : 32, weight: .heavy, design: .rounded))
+                .font(.system(size: isPad ? 42 : 32, weight: .heavy, design: .rounded))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
             Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? L("onboarding.level.thisTopic"))")
-                .font(isPad ? .title2 : .body)
+                .font(isPad ? .title3 : .body)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 6)
@@ -246,7 +251,7 @@ private struct OnboardingButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(isPad ? .title2.weight(.bold) : .headline)
+            .font(isPad ? .title3.weight(.bold) : .headline)
             .frame(maxWidth: .infinity)
             .padding(.vertical, isPad ? 22 : 15)
             .background(.orange, in: Capsule())
@@ -278,9 +283,9 @@ private struct OnboardingChoiceLabel: View {
                 .foregroundStyle(.orange)
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(isPad ? .title2.weight(.semibold) : .title3.weight(.semibold))
+                    .font(isPad ? .title3.weight(.semibold) : .title3.weight(.semibold))
                 Text(subtitle)
-                    .font(isPad ? .title3 : .callout)
+                    .font(isPad ? .body : .callout)
                     .foregroundStyle(.secondary)
             }
             Spacer()

@@ -230,11 +230,13 @@ struct ContentView: View {
     private var isPad: Bool { AppLayout.isPad }
     private var menuScale: CGFloat { isPad ? 1.64 : 1 }
     private var levelCardHeight: CGFloat { isPad ? 152 : 96 }
-    private var levelGridSpacing: CGFloat { isPad ? 18 : 12 }
+    // Keep the level cards visually grouped in columns, but leave enough
+    // vertical air between rows on the much taller iPad cards.
+    private var levelGridSpacing: CGFloat { isPad ? 24 : 12 }
     /// On iPad, give the menu's stacked control rows just enough separation
     /// to match their larger controls without turning the header into a list.
-    private var menuCardSectionSpacing: CGFloat { isPad ? 18 : 14 }
-    private var menuControlSpacing: CGFloat { isPad ? 16 : 11 }
+    private var menuCardSectionSpacing: CGFloat { isPad ? 24 : 14 }
+    private var menuControlSpacing: CGFloat { isPad ? 22 : 11 }
 
     var body: some View {
         // Read the revision so an iCloud update redraws all score cards.
@@ -435,7 +437,9 @@ struct ContentView: View {
 
     private var menuCard: some View {
         VStack(spacing: menuCardSectionSpacing) {
-            HStack(alignment: .center, spacing: 12) {
+            // A little extra room keeps the iPad header actions from reading
+            // as one dense cluster when the player name is short.
+            HStack(alignment: .center, spacing: isPad ? 20 : 12) {
                 Button {
                     // A long press may also end as a button tap; consume that
                     // trailing action instead of opening the premium sheet.
@@ -602,7 +606,7 @@ struct ContentView: View {
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
-            .frame(height: isPad ? 78 : 44 * menuScale)
+            .frame(height: isPad ? 70 : 44 * menuScale)
             .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
             .reportAnchor("filter.\(filter.rawValue)")
@@ -617,19 +621,14 @@ struct ContentView: View {
         )
     }
 
-    /// The circular topic controls deliberately touch the same outer edges as
-    /// the Standard/Mix picker. A regular flexible HStack centres its first
-    /// and last circles inside their slots on wide screens, which made the
-    /// two rows look misaligned in landscape.
+    /// Keep the topic controls as one compact, easy-to-scan group on iPad.
+    /// Flexible spacers made their gaps grow with the available width, leaving
+    /// an awkwardly sparse row above the mode buttons.
     private var filterPicker: some View {
-        HStack(spacing: 0) {
-            ForEach(Array(MenuFilter.allCases.enumerated()), id: \.element.id) { index, filter in
+        HStack(spacing: isPad ? 14 : 0) {
+            ForEach(MenuFilter.allCases) { filter in
                 menuFilterButton(filter)
-                    .frame(width: isPad ? 78 : 44, height: isPad ? 78 : 44)
-
-                if index < MenuFilter.allCases.count - 1 {
-                    Spacer(minLength: 0)
-                }
+                    .frame(width: isPad ? 70 : 44, height: isPad ? 70 : 44)
             }
         }
         .frame(maxWidth: .infinity)
@@ -896,7 +895,7 @@ struct ContentView: View {
         // Mixed). The label keeps one line and shrinks to fit, so a longer word
         // in another language still fits three-across without changing the base
         // text size the shorter labels use.
-        HStack(spacing: 8) {
+        HStack(spacing: isPad ? 12 : 8) {
             ForEach(PracticeMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
@@ -916,8 +915,8 @@ struct ContentView: View {
                         .minimumScaleFactor(0.6)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
-                        .frame(height: isPad ? 76 : 42)
-                        .padding(.horizontal, 2)
+                        .frame(height: isPad ? 84 : 42)
+                        .padding(.horizontal, isPad ? 8 : 2)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                         .reportAnchor("mode.\(mode.rawValue)")
@@ -931,7 +930,7 @@ struct ContentView: View {
     /// The Supermix filter's four buttons, each a self-contained 99-level
     /// category that combines progressively more operations.
     private var supermixCategoryPicker: some View {
-        LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: isPad ? 12 : 8), GridItem(.flexible(), spacing: isPad ? 12 : 8)], spacing: isPad ? 12 : 8) {
             ForEach(ChallengeCategory.supermixMenu) { menuCategory in
                 let isSelected = supermixCategory == menuCategory
                 Button {
@@ -950,7 +949,7 @@ struct ContentView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.85)
                         .frame(maxWidth: .infinity)
-                        .frame(height: isPad ? 76 : 42)
+                        .frame(height: isPad ? 84 : 42)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                         .reportAnchor("super.\(menuCategory.rawValue)")

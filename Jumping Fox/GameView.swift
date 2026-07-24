@@ -81,6 +81,9 @@ struct GameView: View {
     @State private var suppressIntroTap = false
     @State private var isTutorialArrowBouncing = false
     @State private var showsTutorialCompletion = false
+    /// One-shot celebratory caption explaining why the streak coin just
+    /// appeared ("5 in a row! Trophies ×2"). Auto-dismisses after a beat.
+    @State private var showStreakBanner = false
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
     private var isPad: Bool { AppLayout.isPad }
     private var gameScale: CGFloat { isPad ? 1.2 : 1 }
@@ -181,6 +184,16 @@ struct GameView: View {
                 .allowsHitTesting(false)
             }
 
+            if showStreakBanner {
+                VStack(spacing: 0) {
+                    streakBanner
+                        .padding(.top, 8 + GameHUDMetrics.assetSize + 12)
+                    Spacer()
+                }
+                .allowsHitTesting(false)
+                .transition(.move(edge: .top).combined(with: .opacity))
+            }
+
             if showsTutorialCompletion {
                 ConfettiView()
                     .ignoresSafeArea()
@@ -255,6 +268,22 @@ struct GameView: View {
             withAnimation(.snappy) { showsTutorialCompletion = true }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation(.easeOut(duration: 0.25)) { showsTutorialCompletion = false }
+            }
+        }
+        .onChange(of: state.isStreakActive) { active in
+            guard active else {
+                // The streak just broke: retract any lingering caption too.
+                if showStreakBanner {
+                    withAnimation(.easeOut(duration: 0.3)) { showStreakBanner = false }
+                }
+                return
+            }
+            // Streak just turned on: show the "why" caption for a beat.
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
+                showStreakBanner = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) {
+                withAnimation(.easeOut(duration: 0.35)) { showStreakBanner = false }
             }
         }
         .onChange(of: state.isGameOver) { over in
@@ -678,8 +707,20 @@ struct GameView: View {
                     .foregroundStyle(theme.deepColor)
                     .frame(width: GameHUDMetrics.assetSize, height: GameHUDMetrics.assetSize)
                     .anchorPreference(key: GameHUDAnchors.self, value: .bounds) { [.trophy: $0] }
+
+                // The answer-streak coin: appears just right of the trophy while
+                // the 5-in-a-row ×2 bonus is live, and pops away on the first
+                // wrong answer that ends the streak.
+                if state.isStreakActive {
+                    StreakCoin(fill: theme.color, size: GameHUDMetrics.assetSize)
+                        .transition(.asymmetric(
+                            insertion: .scale(scale: 0.15).combined(with: .opacity),
+                            removal: .streakCoinBreak))
+                }
             }
             .fixedSize()
+            .animation(.spring(response: 0.45, dampingFraction: 0.62),
+                       value: state.isStreakActive)
 
             livesBadge
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -688,6 +729,25 @@ struct GameView: View {
         }
         .padding(.horizontal)
         .padding(.top, 8)
+    }
+
+    /// The caption that punctuates a fresh streak, naming its cause (five
+    /// correct answers in a row) and its effect (trophies now double).
+    private var streakBanner: some View {
+        HStack(spacing: 7) {
+            Image(systemName: "flame.fill")
+                .font(.subheadline.weight(.black))
+                .foregroundStyle(.orange)
+            Text(verbatim: "\(L("game.streak.title"))  \(L("game.streak.subtitle"))")
+                .font(.subheadline.weight(.heavy))
+                .foregroundStyle(.white)
+                .fixedSize(horizontal: true, vertical: false)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 9)
+        .background(theme.deepColor.opacity(0.94), in: Capsule())
+        .overlay(Capsule().stroke(.white.opacity(0.85), lineWidth: 1.5))
+        .shadow(color: .black.opacity(0.22), radius: 7, y: 3)
     }
 
     @ViewBuilder
@@ -892,7 +952,7 @@ struct GameView: View {
         case 6: return L("tutorial.answerHint")
         case 7: return L("tutorial.lifePickup")
         case 8:
-            return tutorial.doublerAnswerPending
+            return tutorial.triplerAnswerPending
                 ? L("tutorial.doubler.answer")
                 : L("tutorial.doubler.collect")
         case 9: return L("tutorial.minusOne")
@@ -1354,6 +1414,75 @@ struct GameView: View {
     }
 
     private var endScreenText: EndScreenText { EndScreenText() }
+}
+
+/// The answer-streak coin shown in the HUD while the 5-in-a-row ×2 bonus is
+/// live. It flips into place with a spinning pop, glints once, then breathes
+/// gently for as long as the streak lasts — echoing the in-game ×3 pickup's
+/// look so the reward reads as "another coin, now in your pocket".
+private struct StreakCoin: View {
+    let fill: Color
+    let size: CGFloat
+
+    @State private var spin = -170.0
+    @State private var pulse = false
+    @State private var glint = false
+
+    var body: some View {
+        ZStack {
+            // Arrival glint: a ring that expands past the coin and fades once.
+            Circle()
+                .stroke(fill.opacity(0.6), lineWidth: 2)
+                .frame(width: size, height: size)
+                .scaleEffect(glint ? 2.1 : 0.7)
+                .opacity(glint ? 0 : 0.9)
+
+            Circle()
+                .fill(fill)
+                .overlay(Circle().strokeBorder(.white, lineWidth: 2))
+                .overlay(
+                    Text(verbatim: "×2")
+                        .font(.system(size: size * 0.5, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
+                )
+                .frame(width: size, height: size)
+                .rotation3DEffect(.degrees(spin), axis: (x: 0, y: 1, z: 0))
+                .scaleEffect(pulse ? 1.08 : 1.0)
+                .shadow(color: .black.opacity(0.18), radius: 2, y: 1)
+        }
+        .onAppear {
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.55)) { spin = 0 }
+            withAnimation(.easeOut(duration: 0.55)) { glint = true }
+            withAnimation(.easeInOut(duration: 0.9)
+                .repeatForever(autoreverses: true).delay(0.45)) { pulse = true }
+        }
+    }
+}
+
+extension AnyTransition {
+    /// The streak coin breaking away when the streak ends: it swells, spins a
+    /// little and fades while a red ring bursts outward. Used as a removal
+    /// transition, so SwiftUI animates identity (progress 0) → active (1).
+    static var streakCoinBreak: AnyTransition {
+        .modifier(active: StreakCoinBreakModifier(progress: 1),
+                  identity: StreakCoinBreakModifier(progress: 0))
+    }
+}
+
+private struct StreakCoinBreakModifier: ViewModifier {
+    let progress: Double
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(1 + progress * 0.7)
+            .rotationEffect(.degrees(progress * 40))
+            .opacity(1 - progress)
+            .overlay(
+                Circle()
+                    .stroke(Color.red, lineWidth: 2)
+                    .scaleEffect(0.8 + progress * 1.7)
+                    .opacity(progress < 0.5 ? progress * 1.8 : (1 - progress) * 1.8)
+            )
+    }
 }
 
 /// A half-heart that travels along the same gently bowed path used by the
