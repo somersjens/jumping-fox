@@ -72,7 +72,7 @@ struct OnboardingView: View {
         Button {
             advance(to: step - 1)
         } label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: "chevron.backward")
                 .font(.system(size: isPad ? 26 : 22, weight: .semibold))
                 .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03).opacity(0.6))
                 .padding(.horizontal, isPad ? 16 : 13)
@@ -158,7 +158,7 @@ struct OnboardingView: View {
                             Text(filter.title)
                                 .font(isPad ? .title3.weight(.semibold) : .title3.weight(.semibold))
                             Spacer()
-                            Image(systemName: "chevron.right")
+                            Image(systemName: "chevron.forward")
                                 .font(.footnote.weight(.bold))
                                 .foregroundStyle(.secondary)
                         }
@@ -284,7 +284,7 @@ private struct OnboardingChoiceLabel: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            Image(systemName: "chevron.right")
+            Image(systemName: "chevron.forward")
                 .font(.footnote.weight(.bold))
                 .foregroundStyle(.secondary)
         }

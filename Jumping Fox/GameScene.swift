@@ -2502,6 +2502,11 @@ final class GameScene: SKScene {
     private var renderedTrophyHUDPoint: CGPoint?
     private var renderedStreakCoinHUDPoint: CGPoint?
     private var renderedHeartHUDPoints: [Int: CGPoint] = [:]
+    /// Mirrors the SwiftUI layout direction so the pre-layout HUD fallbacks land
+    /// on the correct side. The animations themselves use the rendered anchor
+    /// positions above (already mirrored), so this only matters in the brief
+    /// window before SwiftUI reports its first anchors.
+    var isRTL = false
     /// A fallback point is fine for ordinary effects, but the first tutorial
     /// trophy must wait for a window-backed conversion so its lesson clearly
     /// lands in the score HUD on every iPad configuration.
@@ -2558,8 +2563,10 @@ final class GameScene: SKScene {
             return CGPoint(x: rendered.x + (fillsRight ? heartWidth * 0.22 : -heartWidth * 0.22),
                            y: rendered.y)
         }
-        let rightEdge = size.width - GameHUDMetrics.horizontalPadding
-        let centerX = rightEdge - CGFloat(2 - index) * (heartWidth + spacing) - heartWidth / 2
+        // Hearts are right-aligned in LTR, left-aligned when mirrored.
+        let padding = GameHUDMetrics.horizontalPadding
+        let step = CGFloat(2 - index) * (heartWidth + spacing) + heartWidth / 2
+        let centerX = isRTL ? (padding + step) : (size.width - padding - step)
         return CGPoint(x: centerX + (fillsRight ? heartWidth * 0.22 : -heartWidth * 0.22), y: hudRowY)
     }
 
@@ -2570,14 +2577,17 @@ final class GameScene: SKScene {
         let digits = CGFloat(String(state.score).count)
         let textHalfWidth = digits * 7.5
         let trophyOffset = textHalfWidth + 3 + GameHUDMetrics.assetSize / 2
-        return CGPoint(x: size.width / 2 + trophyOffset, y: hudRowY)
+        // In LTR the trophy sits right of the centred score; mirrored, it sits left.
+        return CGPoint(x: size.width / 2 + (isRTL ? -trophyOffset : trophyOffset), y: hudRowY)
     }
 
     /// Centre of the ×2 streak coin. The fallback mirrors the six-point HUD
     /// spacing and common 28-point asset canvas used by SwiftUI.
     private var streakCoinHUDPoint: CGPoint {
         if let renderedStreakCoinHUDPoint { return renderedStreakCoinHUDPoint }
-        return CGPoint(x: trophyHUDPoint.x + GameHUDMetrics.assetSize + 6,
+        // Just past the trophy: to its right in LTR, to its left when mirrored.
+        let gap = GameHUDMetrics.assetSize + 6
+        return CGPoint(x: trophyHUDPoint.x + (isRTL ? -gap : gap),
                        y: trophyHUDPoint.y)
     }
 

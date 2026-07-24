@@ -38,6 +38,14 @@ struct AppLanguage: Identifiable, Hashable, Sendable {
 
     var id: String { code }
 
+    /// Languages written right-to-left. The interface mirrors for these; the
+    /// SpriteKit game board keeps its own coordinate space (so a sum like
+    /// "2 + 3" is never flipped).
+    static let rtlCodes: Set<String> = ["ar", "he", "fa", "ur", "ug"]
+
+    /// Whether this language reads right-to-left.
+    var isRTL: Bool { AppLanguage.rtlCodes.contains(code) }
+
     /// Every language the app is prepared to present. Order follows the roster
     /// the app ships with; adding a row here (plus its catalog column) is all it
     /// takes to offer a new language.
@@ -176,6 +184,12 @@ final class LanguageManager: ObservableObject {
     /// forces every `Text` to re-render when the language changes.
     var locale: Locale { Locale(identifier: effective.code) }
 
+    /// Mirror the interface for right-to-left languages. Injected at the root
+    /// alongside the locale; because the in-app switch overrides the locale
+    /// (which does not, by itself, flip the layout), we set the direction
+    /// explicitly so picking e.g. Arabic on an English device still mirrors.
+    var layoutDirection: LayoutDirection { effective.isRTL ? .rightToLeft : .leftToRight }
+
     /// The `.lproj` bundle for the language currently shown. `String(localized:)`
     /// ignores the runtime bundle redirection used for `Text`, so any string
     /// resolved in code must be pointed at this bundle explicitly (see `L`).
@@ -282,6 +296,28 @@ extension View {
     /// shared by the language picker and the onboarding back button so they
     /// match exactly.
     func liquidGlassCapsule() -> some View { modifier(LiquidGlassCapsule()) }
+}
+
+// MARK: - Re-applying the language environment across modal boundaries
+
+/// Re-applies the app's locale and layout direction. Modal presentations
+/// (`sheet`, `fullScreenCover`) begin a fresh environment and do not inherit
+/// the values set at the app root, so any full-screen surface presented that
+/// way (the in-game screens) must opt back in — otherwise right-to-left
+/// languages would not mirror the game's HUD, start, pause and end screens.
+private struct GameEnvironment: ViewModifier {
+    @ObservedObject private var language = LanguageManager.shared
+    func body(content: Content) -> some View {
+        content
+            .environment(\.locale, language.locale)
+            .environment(\.layoutDirection, language.layoutDirection)
+    }
+}
+
+extension View {
+    /// Carry the chosen language's locale and layout direction into a modally
+    /// presented surface.
+    func gameEnvironment() -> some View { modifier(GameEnvironment()) }
 }
 
 // MARK: - The picker

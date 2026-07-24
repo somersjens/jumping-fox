@@ -38,6 +38,7 @@ struct Jumping_FoxApp: App {
             // changes; combined with the bundle redirection this makes the
             // switch instant, no restart required.
             .environment(\.locale, language.locale)
+            .environment(\.layoutDirection, language.layoutDirection)
             .sheet(isPresented: Binding(
                 get: { promotedPurchase.isAwaitingParentApproval },
                 set: { isPresented in

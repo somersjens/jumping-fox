@@ -71,6 +71,7 @@ struct GameView: View {
     // Refreshes the intro/end-menu copy when the language is switched.
     @ObservedObject private var language = LanguageManager.shared
     @ObservedObject private var tutorial = TutorialProgress.shared
+    @Environment(\.layoutDirection) private var layoutDirection
 
     // Pre-game mode intro card. The field is frozen until the player starts.
     @State private var showingIntro: Bool
@@ -334,6 +335,7 @@ struct GameView: View {
         let hearts = Dictionary(uniqueKeysWithValues: (0..<3).compactMap { index in
             anchors[.heart(index)].map { (index, globalRect(for: $0)) }
         })
+        scene.isRTL = layoutDirection == .rightToLeft
         scene.setHUDTargets(trophy: trophy, streakCoin: streakCoin,
                             hearts: hearts, viewSize: proxy.size)
     }
@@ -574,10 +576,12 @@ struct GameView: View {
             .stroke(theme.deepColor.opacity(0.10), lineWidth: 1))
     }
 
-    /// Localized descriptions use **bold** markers. Keeping the markers in
-    /// the string catalog lets each language choose its own emphasis.
+    /// Localized descriptions mark emphasis by wrapping words in |pipes|.
+    /// Keeping the markers in the string catalog lets each language choose its
+    /// own emphasis (see the translation CSV instructions). Text between the
+    /// first and second pipe is bold, and so on for each following pair.
     private func emphasizedText(_ copy: String) -> Text {
-        let parts = copy.components(separatedBy: "**")
+        let parts = copy.components(separatedBy: "|")
         var result = Text(verbatim: "")
         for (index, part) in parts.enumerated() {
             result = result + (index.isMultiple(of: 2)
@@ -1252,6 +1256,7 @@ struct GameView: View {
                 .frame(minHeight: 30 * gameScale)
 
             Text(verbatim: "\(score) / \(ProgressStore.maximumTrophies(for: state.level))")
+                .environment(\.layoutDirection, .leftToRight) // keep "x / y" from flipping in RTL
                 .font(.system(size: 30 * gameTextScale, weight: .heavy, design: .rounded))
                 .foregroundStyle(theme.color)
                 .padding(.horizontal, 27 * gameScale)

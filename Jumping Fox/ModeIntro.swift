@@ -21,16 +21,14 @@ enum ModeIntro {
         // Shared bullets used by more than one mode.
         let practiceOrder = L("modeIntro.practiceOrder")
         let multiplyBy = L("modeIntro.tables.multiplyBy")
-        // Random-mode second bullet: swappable subjects vs the fixed-order minus.
-        let eitherSide = L("modeIntro.random.eitherSide")
-        let fixedOrder = L("modeIntro.random.fixedOrder")
 
         switch level.category {
         case .addition:
             let bullets: [String]
             switch mode {
             case .order:  bullets = [L("modeIntro.addition.std.b1 \(n)"), practiceOrder]
-            case .random: bullets = [L("modeIntro.addition.random.b1 \(n)"), eitherSide]
+            case .random: bullets = [L("modeIntro.addition.random.b1 \(n)"),
+                                     L("modeIntro.addition.random.b2 \(n)")]
             case .mixed:  bullets = [L("modeIntro.addition.varied.b1 \(n)"),
                                      L("modeIntro.addition.varied.b2")]
             }
@@ -46,7 +44,8 @@ enum ModeIntro {
             let bullets: [String]
             switch mode {
             case .order:  bullets = [L("modeIntro.subtraction.std.b1 \(n)"), practiceOrder]
-            case .random: bullets = [L("modeIntro.subtraction.random.b1 \(n)"), fixedOrder]
+            case .random: bullets = [L("modeIntro.subtraction.random.b1 \(n)"),
+                                     L("modeIntro.subtraction.random.b2 \(n)")]
             case .mixed:  bullets = [L("modeIntro.subtraction.varied.b1 \(n)"),
                                      L("modeIntro.subtraction.varied.b2")]
             }
@@ -67,7 +66,8 @@ enum ModeIntro {
             switch mode {
             case .order:  bullets = [L("modeIntro.tables.std.b1 \(n) \(n) \(n)"),
                                      L("modeIntro.tables.std.b2")]
-            case .random: bullets = [L("modeIntro.tables.random.b1 \(min(99, n))"), eitherSide]
+            case .random: bullets = [L("modeIntro.tables.random.b1 \(min(99, n))"),
+                                     L("modeIntro.tables.random.b2")]
             case .mixed:  bullets = [L("modeIntro.tables.varied.b1 \(min(99, n))"), multiplyBy]
             }
             return (L("modeIntro.tables.title \(n)"), bullets)
@@ -85,8 +85,14 @@ enum ModeIntro {
             switch mode {
             case .order:  bullets = [L("modeIntro.fractions.std.b1 \(d)"),
                                      L("modeIntro.fractions.std.b2 \(d)")]
-            case .random: bullets = [L("modeIntro.fractions.random.b1 \(d)"),
-                                     L("modeIntro.fractions.random.b2")]
+            case .random:
+                // The example fractions use the level's own denominator. With a
+                // denominator of 2 the only multi-part fraction is 2/2, so 3/… is
+                // dropped there.
+                let examples = d == 2
+                    ? L("modeIntro.fractions.random.b2.two")
+                    : L("modeIntro.fractions.random.b2 \(d) \(d)")
+                bullets = [L("modeIntro.fractions.random.b1 \(d)"), examples]
             case .mixed:  bullets = [L("modeIntro.fractions.varied.b1"),
                                      L("modeIntro.fractions.varied.b2 \(d)")]
             }

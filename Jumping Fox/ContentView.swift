@@ -259,6 +259,7 @@ struct ContentView: View {
     // Re-renders code-resolved strings (menu names, options) on a language switch.
     @ObservedObject private var language = LanguageManager.shared
     @ObservedObject private var tutorial = TutorialProgress.shared
+    @Environment(\.layoutDirection) private var layoutDirection
     @State private var selection: LevelSelection?
     @State private var showPremium = false
     @State private var showGoalPicker = false
@@ -1307,9 +1308,12 @@ struct ContentView: View {
                     Label("menu.options", systemImage: "slider.horizontal.3")
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    // `chevron.forward` points outward in both LTR and RTL; the
+                    // open state rotates it to point down, which is +90° from a
+                    // right-pointing chevron but -90° from the mirrored one.
+                    Image(systemName: "chevron.forward")
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
-                        .rotationEffect(.degrees(showsOptions ? 90 : 0))
+                        .rotationEffect(.degrees(showsOptions ? (layoutDirection == .rightToLeft ? -90 : 90) : 0))
                 }
                 .foregroundStyle(character.deepColor)
                 .contentShape(Rectangle())
@@ -1558,7 +1562,7 @@ struct ContentView: View {
                             .foregroundStyle(.white.opacity(0.9))
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "chevron.forward")
                         .font(.system(size: isPad ? 20 : 15, weight: .bold))
                         .foregroundStyle(.white.opacity(0.9))
                         // Match the chevron's right edge with the options
@@ -1765,7 +1769,7 @@ struct PlaytimeBar: View {
                         .foregroundStyle(accent.opacity(0.78))
                 }
 
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.forward")
                     .font(.caption.weight(.bold))
                     .foregroundStyle(accent.opacity(0.6))
             }
@@ -2817,10 +2821,12 @@ extension View {
         sheet(item: item, onDismiss: onDismiss) { selection in
             GameView(level: selection.level)
                 .frame(minWidth: 420, minHeight: 720)
+                .gameEnvironment()
         }
 #else
         fullScreenCover(item: item, onDismiss: onDismiss) { selection in
             GameView(level: selection.level)
+                .gameEnvironment()
         }
 #endif
     }
