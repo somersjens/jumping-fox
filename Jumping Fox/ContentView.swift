@@ -230,6 +230,12 @@ struct ContentView: View {
     private var isPad: Bool { AppLayout.isPad }
     private var menuScale: CGFloat { isPad ? 1.64 : 1 }
     private var levelCardHeight: CGFloat { isPad ? 152 : 96 }
+    /// iPad has enough horizontal room for more prominent topic controls;
+    /// iPhone retains its established compact tap targets.
+    private var filterButtonDiameter: CGFloat { isPad ? 82 : 44 }
+    /// Keep the mode choices comfortably above the compact options control,
+    /// without making the three-button row unnecessarily tall on iPad.
+    private var modeButtonHeight: CGFloat { isPad ? 72 : 42 }
     // Keep the level cards visually grouped in columns, but leave enough
     // vertical air between rows on the much taller iPad cards.
     private var levelGridSpacing: CGFloat { isPad ? 24 : 12 }
@@ -606,7 +612,7 @@ struct ContentView: View {
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
             .frame(maxWidth: .infinity)
-            .frame(height: isPad ? 70 : 44 * menuScale)
+            .frame(height: filterButtonDiameter)
             .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
             .reportAnchor("filter.\(filter.rawValue)")
@@ -621,14 +627,18 @@ struct ContentView: View {
         )
     }
 
-    /// Keep the topic controls as one compact, easy-to-scan group on iPad.
-    /// Flexible spacers made their gaps grow with the available width, leaving
-    /// an awkwardly sparse row above the mode buttons.
+    /// Align the outer topic controls with the full-width controls underneath.
+    /// The circles retain their established tap size while the gaps absorb the
+    /// available width on both iPhone and iPad.
     private var filterPicker: some View {
-        HStack(spacing: isPad ? 14 : 0) {
-            ForEach(MenuFilter.allCases) { filter in
+        HStack(spacing: 0) {
+            ForEach(Array(MenuFilter.allCases.enumerated()), id: \.element.id) { index, filter in
                 menuFilterButton(filter)
-                    .frame(width: isPad ? 70 : 44, height: isPad ? 70 : 44)
+                    .frame(width: filterButtonDiameter, height: filterButtonDiameter)
+
+                if index < MenuFilter.allCases.count - 1 {
+                    Spacer(minLength: 0)
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -915,7 +925,7 @@ struct ContentView: View {
                         .minimumScaleFactor(0.6)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
-                        .frame(height: isPad ? 84 : 42)
+                        .frame(height: modeButtonHeight)
                         .padding(.horizontal, isPad ? 8 : 2)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
