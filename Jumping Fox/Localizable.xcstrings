@@ -2432,13 +2432,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sometimes you also name the matching fraction."
+            "value": "Sometimes you also link a fraction to its percentage."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Soms noem je ook de breuk die erbij hoort."
+            "value": "Soms koppel je ook een breuk aan het juiste percentage."
           }
         }
       }
@@ -2766,19 +2766,19 @@
         }
       }
     },
-    "modeIntro.super.b2": {
+    "modeIntro.super.b2 %lld": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sums get a little harder each time."
+            "value": "The difficulty can increase up to **level %lld** for each selected category."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "De sommen worden steeds een beetje moeilijker."
+            "value": "De moeilijkheid kan oplopen tot **level %lld** van elk geselecteerd onderdeel."
           }
         }
       }

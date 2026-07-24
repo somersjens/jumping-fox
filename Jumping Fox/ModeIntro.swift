@@ -120,22 +120,22 @@ enum ModeIntro {
         case .superBasic:
             return (L("modeIntro.superBasic.title \(n)"),
                     [L("modeIntro.superBasic.b1"),
-                     L("modeIntro.super.b2")])
+                     L("modeIntro.super.b2 \(n)")])
 
         case .superTimes:
             return (L("modeIntro.superTimes.title \(n)"),
                     [L("modeIntro.superTimes.b1"),
-                     L("modeIntro.super.b2")])
+                     L("modeIntro.super.b2 \(n)")])
 
         case .superFraction:
             return (L("modeIntro.superFraction.title \(n)"),
                     [L("modeIntro.superFraction.b1"),
-                     L("modeIntro.super.b2")])
+                     L("modeIntro.super.b2 \(n)")])
 
         case .superAll:
             return (L("modeIntro.superAll.title \(n)"),
                     [L("modeIntro.superAll.b1"),
-                     L("modeIntro.super.b2")])
+                     L("modeIntro.super.b2 \(n)")])
         }
     }
 
