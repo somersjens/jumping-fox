@@ -8,6 +8,7 @@
 //
 
 import SwiftUI
+import Combine
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -27,6 +28,89 @@ private struct ScoreCelebration: Identifiable {
     let categoryStart: Int
     let totalStart: Int
     let id = UUID()
+}
+
+/// Read-once progress used by the home menu. ProgressStore intentionally
+/// reconciles UserDefaults and iCloud on a read, which is valuable at refresh
+/// boundaries but far too expensive to repeat for every card during every
+/// category change.
+private struct HomeLevelProgress {
+    var normalBest = 0
+    var helperBest = 0
+    var normalMaximumCount = 0
+    var helperMaximumCount = 0
+    var pausedNormal = 0
+    var pausedIncludingHelper = 0
+    var isPausedInCurrentLifeMode = false
+}
+
+private struct HomeProgressSnapshot {
+    var levels: [String: HomeLevelProgress] = [:]
+
+    func value(for levelID: String) -> HomeLevelProgress {
+        levels[levelID] ?? HomeLevelProgress()
+    }
+}
+
+/// Combines the 2D turn and its small circular flight path into one animatable
+/// render transform. Unlike `sin/cos` calculated in a View body, this receives
+/// every interpolated animation frame without rebuilding the menu or cards.
+private struct CharacterSaltoGeometryEffect: GeometryEffect {
+    var angle: Double
+    let radius: CGFloat
+
+    var animatableData: Double {
+        get { angle }
+        set { angle = newValue }
+    }
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        let radians = angle * .pi / 180
+        let orbitX = CGFloat(sin(radians)) * radius
+        let orbitY = CGFloat(cos(radians) - 1) * radius
+        let center = CGPoint(x: size.width / 2, y: size.height / 2)
+
+        var transform = CGAffineTransform(
+            translationX: center.x + orbitX,
+            y: center.y + orbitY
+        )
+        transform = transform.rotated(by: CGFloat(radians))
+        transform = transform.translatedBy(x: -center.x, y: -center.y)
+        return ProjectionTransform(transform)
+    }
+}
+
+/// Mutable sequencing state that deliberately does not publish view changes.
+/// Queueing another salto must not invalidate and rebuild the entire home menu.
+private final class CharacterJumpCoordinator: ObservableObject {
+    @Published var offset: CGFloat = 0
+    @Published var squash: CGFloat = 1
+    @Published var rotation: Double = 0
+    var isJumping = false
+    var pendingFlips: [Bool] = []
+}
+
+/// The only view subscribed to the animated pose. Keeping that subscription
+/// here prevents five pose phases per jump from invalidating every level card,
+/// score and menu control in ContentView.
+private struct HomeCharacterArtwork: View {
+    let character: AnimalCharacter
+    let box: CGFloat
+    @ObservedObject var jump: CharacterJumpCoordinator
+
+    var body: some View {
+        character.artwork
+            .resizable()
+            .scaledToFill()
+            .frame(width: box, height: box)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .scaleEffect(x: 1, y: jump.squash, anchor: .bottom)
+            .modifier(CharacterSaltoGeometryEffect(
+                angle: jump.rotation,
+                radius: box * 0.105
+            ))
+            .offset(y: jump.offset)
+    }
 }
 
 /// An eager, adaptive grid for the level menu. `LazyVGrid` discards cards
@@ -193,18 +277,12 @@ struct ContentView: View {
     @State private var showTutorialScoreHint = false
     @State private var scoreHintLevelID: String?
     @State private var suppressCharacterTap = false
-    // Upward offset that lifts the home character out of its box for a short
-    // hop whenever the player switches (sub)category. 0 = resting in the box.
-    @State private var characterJumpOffset: CGFloat = 0
-    // Vertical scale of the character, anchored at its base, so the spring can
-    // squash down before launch and stretch on the way up. 1 = resting.
-    @State private var characterSquash: CGFloat = 1
     // A jump is a single, non-interruptible sequence. A selection made while
     // it is airborne is queued as a celebratory flip-jump after landing,
     // rather than fighting the current offset animation.
-    @State private var isCharacterJumping = false
-    @State private var pendingCharacterFlips: [Bool] = []
-    @State private var characterJumpRotation: Double = 0
+    @State private var characterJumpCoordinator = CharacterJumpCoordinator()
+    @State private var homeProgress = HomeProgressSnapshot()
+    @State private var homeProgressGeneration = 0
     @State private var maximumCountPreview: Int?
     @State private var maximumCountPreviewLevelID: String?
     @State private var secondMaximumCountPreview: Int?
@@ -301,6 +379,9 @@ struct ContentView: View {
             }
         }
         .gameCover(item: $selection, onDismiss: {
+            // Reconcile progress incrementally after gameplay, outside any
+            // category-switch animation.
+            refreshHomeProgress()
             let shouldShowTutorialHint = tutorial.shouldShowScoreHint
             if shouldShowTutorialHint, let levelID = lastOpenedLevelID {
                 scoreHintLevelID = levelID
@@ -317,8 +398,14 @@ struct ContentView: View {
                 return
             }
 
-            let newScore = displayedScore(forLevelID: levelID)
-            let newMaximumCount = displayedMaximumCount(forLevelID: levelID)
+            // Read this one changed level directly so celebration detection
+            // does not wait for the incremental menu snapshot.
+            let newScore = ProgressStore.bestScore(
+                levelID: levelID, helperEnabled: answerHelper
+            )
+            let newMaximumCount = ProgressStore.maxCompletionCount(
+                levelID: levelID, helperEnabled: answerHelper
+            )
             guard newScore > openedLevelScore || newMaximumCount > openedLevelMaximumCount else {
                 refreshID = UUID()
                 return
@@ -363,6 +450,13 @@ struct ContentView: View {
         }
         .task {
             premium.startInitialRefresh()
+            refreshHomeProgress()
+        }
+        .onChange(of: progress.revision) { _ in
+            refreshHomeProgress()
+        }
+        .onChange(of: lifeModeRaw) { _ in
+            refreshHomeProgress()
         }
         .overlay {
             if showTutorialScoreHint {
@@ -417,9 +511,9 @@ struct ContentView: View {
         // Do not restart an in-flight animation: that was the source of the
         // visible hitch. Keep a small, bounded queue so rapid tapping can never
         // create an unbounded pile of animation closures.
-        guard !isCharacterJumping else {
-            if pendingCharacterFlips.count < 3 {
-                pendingCharacterFlips.append(big)
+        guard !characterJumpCoordinator.isJumping else {
+            if characterJumpCoordinator.pendingFlips.count < 3 {
+                characterJumpCoordinator.pendingFlips.append(big)
             }
             return
         }
@@ -428,7 +522,7 @@ struct ContentView: View {
     }
 
     private func performCharacterJump(big: Bool, flips: Bool) {
-        isCharacterJumping = true
+        characterJumpCoordinator.isJumping = true
 
         let box: CGFloat = isPad ? 118 : 68
         // A queued salto is deliberately more airborne than an ordinary hop.
@@ -445,8 +539,8 @@ struct ContentView: View {
         // 1. Anticipation: the spring compresses and the character dips down.
         // A longer ease-in-out makes the wind-up read as a smooth crouch.
         withAnimation(.easeInOut(duration: crouch)) {
-            characterSquash = squash
-            characterJumpOffset = dip
+            characterJumpCoordinator.squash = squash
+            characterJumpCoordinator.offset = dip
         }
         // 2. Launch: an ordinary jump keeps its established springy motion.
         // A salto uses two equal flight halves so the turn, apex and touchdown
@@ -454,18 +548,18 @@ struct ContentView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + crouch) {
             if flips {
                 withAnimation(.easeOut(duration: flipHalfFlight)) {
-                    characterJumpOffset = -peak
-                    characterSquash = 1.04
+                    characterJumpCoordinator.offset = -peak
+                    characterJumpCoordinator.squash = 1.04
                 }
                 // Linear rotation is important here: 180° coincides with the
                 // apex and 360° with touchdown.
                 withAnimation(.linear(duration: flipHalfFlight * 2)) {
-                    characterJumpRotation = 360
+                    characterJumpCoordinator.rotation = 360
                 }
             } else {
                 withAnimation(.easeOut(duration: rise)) {
-                    characterJumpOffset = -peak
-                    characterSquash = stretch
+                    characterJumpCoordinator.offset = -peak
+                    characterJumpCoordinator.squash = stretch
                 }
             }
         }
@@ -476,14 +570,14 @@ struct ContentView: View {
             // landing point together.
             DispatchQueue.main.asyncAfter(deadline: .now() + crouch + flipHalfFlight) {
                 withAnimation(.easeIn(duration: flipHalfFlight)) {
-                    characterJumpOffset = 0
-                    characterSquash = 0.84
+                    characterJumpCoordinator.offset = 0
+                    characterJumpCoordinator.squash = 0.84
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + crouch + flipHalfFlight * 2) {
                 withAnimation(.spring(response: 0.28, dampingFraction: 0.58)) {
-                    characterJumpOffset = 0
-                    characterSquash = 1
+                    characterJumpCoordinator.offset = 0
+                    characterJumpCoordinator.squash = 1
                 }
             }
             DispatchQueue.main.asyncAfter(
@@ -496,8 +590,8 @@ struct ContentView: View {
             // scale briefly squashes on impact before settling to rest.
             DispatchQueue.main.asyncAfter(deadline: .now() + crouch + rise) {
                 withAnimation(.spring(response: big ? 0.38 : 0.30, dampingFraction: 0.5)) {
-                    characterJumpOffset = 0
-                    characterSquash = 1
+                    characterJumpCoordinator.offset = 0
+                    characterJumpCoordinator.squash = 1
                 }
             }
             DispatchQueue.main.asyncAfter(
@@ -515,8 +609,8 @@ struct ContentView: View {
         var transaction = Transaction()
         transaction.animation = nil
         withTransaction(transaction) {
-            characterJumpOffset = 0
-            characterSquash = 1
+            characterJumpCoordinator.offset = 0
+            characterJumpCoordinator.squash = 1
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
             finishCharacterJump()
@@ -527,16 +621,16 @@ struct ContentView: View {
     /// Keeping this hand-off serial means offset, scale and rotation animations
     /// can never overlap, even under very rapid tapping.
     private func finishCharacterJump() {
-        isCharacterJumping = false
-        guard !pendingCharacterFlips.isEmpty else { return }
+        characterJumpCoordinator.isJumping = false
+        guard !characterJumpCoordinator.pendingFlips.isEmpty else { return }
 
-        let flipIsBig = pendingCharacterFlips.removeFirst()
+        let flipIsBig = characterJumpCoordinator.pendingFlips.removeFirst()
         // 360° and 0° render identically; resetting without animation prevents
         // the angle from growing indefinitely between queued flips.
         var transaction = Transaction()
         transaction.animation = nil
         withTransaction(transaction) {
-            characterJumpRotation = 0
+            characterJumpCoordinator.rotation = 0
         }
         performCharacterJump(big: flipIsBig, flips: true)
     }
@@ -558,13 +652,6 @@ struct ContentView: View {
                     showPremium = true
                 } label: {
                     let box: CGFloat = isPad ? 118 : 68
-                    let angle = characterJumpRotation * .pi / 180
-                    let orbitRadius = box * 0.105
-                    // Start and end at zero. Over one full 2D turn the mascot
-                    // travels a compact loop around a point above its normal
-                    // flight arc: right → up → left → down → home.
-                    let orbitX = CGFloat(sin(angle)) * orbitRadius
-                    let orbitY = CGFloat(cos(angle) - 1) * orbitRadius
                     ZStack {
                         // The fixed box: background sky plus its white outline.
                         // Neither moves or resizes; a little sky shows through
@@ -581,14 +668,9 @@ struct ContentView: View {
                         // Only the character hops. It is clipped to the box shape,
                         // squashed/stretched from its base (the spring), then
                         // offset up as a whole so it can rise clear of the top edge.
-                        character.artwork
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: box, height: box)
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .scaleEffect(x: 1, y: characterSquash, anchor: .bottom)
-                            .rotationEffect(.degrees(characterJumpRotation))
-                            .offset(x: orbitX, y: characterJumpOffset + orbitY)
+                        HomeCharacterArtwork(character: character,
+                                             box: box,
+                                             jump: characterJumpCoordinator)
                     }
                     .frame(width: box, height: box)
                     .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
@@ -718,8 +800,12 @@ struct ContentView: View {
                 clearMaximumCountPreview()
                 // Keep selection animation local to the button below. A global
                 // menu transaction can retarget an in-flight character jump.
-                menuFilterRaw = filter.rawValue
                 triggerCharacterJump(big: true)
+                // Commit the heavier level-grid swap one runloop later, after
+                // Core Animation has received the launch pose.
+                DispatchQueue.main.async {
+                    menuFilterRaw = filter.rawValue
+                }
             }
         } label: {
             menuFilterIcon(filter, isSelected: isSelected)
@@ -775,6 +861,60 @@ struct ContentView: View {
             .foregroundStyle(isSelected ? .white : character.deepColor)
     }
 
+    /// Reconciles persistent progress once, in small main-actor batches. Menu
+    /// rendering then reads this in-memory snapshot instead of touching
+    /// UserDefaults/iCloud for every card and every selection change.
+    private func refreshHomeProgress() {
+        homeProgressGeneration += 1
+        let generation = homeProgressGeneration
+        let variants = LevelCatalog.byCategory.values
+            .flatMap { $0 }
+            .flatMap(\.allModeVariants)
+
+        Task { @MainActor in
+            // Let the currently requested character/menu frame commit first.
+            try? await Task.sleep(nanoseconds: 1_000_000)
+            var snapshot = HomeProgressSnapshot()
+
+            for (index, level) in variants.enumerated() {
+                guard generation == homeProgressGeneration else { return }
+                let id = level.id
+                // Some catalog paths can describe the same variant. Never pay
+                // the reconciliation cost twice in one snapshot.
+                guard snapshot.levels[id] == nil else { continue }
+
+                snapshot.levels[id] = HomeLevelProgress(
+                    normalBest: ProgressStore.bestScore(levelID: id),
+                    helperBest: ProgressStore.helperOnlyBestScore(levelID: id),
+                    normalMaximumCount: ProgressStore.maxCompletionCount(
+                        levelID: id, helperEnabled: false
+                    ),
+                    helperMaximumCount: ProgressStore.maxCompletionCount(
+                        levelID: id, helperEnabled: true
+                    ),
+                    pausedNormal: PausedGameStore.shared.pausedScore(
+                        forLevelID: id, includingHelper: false
+                    ),
+                    pausedIncludingHelper: PausedGameStore.shared.pausedScore(
+                        forLevelID: id, includingHelper: true
+                    ),
+                    isPausedInCurrentLifeMode: PausedGameStore.shared.hasPausedSession(
+                        for: level, mode: lifeMode
+                    )
+                )
+
+                // Bound each main-thread slice so Core Animation gets regular
+                // opportunities to present even during a full cloud refresh.
+                if index.isMultiple(of: 8) {
+                    try? await Task.sleep(nanoseconds: 1_000_000)
+                }
+            }
+
+            guard generation == homeProgressGeneration else { return }
+            homeProgress = snapshot
+        }
+    }
+
     private var totalTrophies: Int {
         LevelCatalog.byCategory.values.flatMap { $0 }
             .filter { !$0.requiresPremium }
@@ -795,8 +935,13 @@ struct ContentView: View {
         // Each mode variant is scored and capped against its own goal (Order 20,
         // Random 30, Mixed 40), so the best across them is compared like-for-like.
         level.allModeVariants.map { variant in
-            let recorded = ProgressStore.bestScore(levelID: variant.id, helperEnabled: answerHelper)
-            let pausedRaw = PausedGameStore.shared.pausedScore(forLevelID: variant.id, includingHelper: answerHelper)
+            let progress = homeProgress.value(for: variant.id)
+            let recorded = answerHelper
+                ? max(progress.normalBest, progress.helperBest)
+                : progress.normalBest
+            let pausedRaw = answerHelper
+                ? progress.pausedIncludingHelper
+                : progress.pausedNormal
             let paused = capsTrophiesAtThirty
                 ? min(ProgressStore.maximumTrophies(for: variant), pausedRaw)
                 : pausedRaw
@@ -807,11 +952,15 @@ struct ContentView: View {
     /// Matches the score a level card presents in the current helper mode, so
     /// a highlight always corresponds to a visibly improved score.
     private func displayedScore(forLevelID levelID: String) -> Int {
-        ProgressStore.bestScore(levelID: levelID, helperEnabled: answerHelper)
+        let progress = homeProgress.value(for: levelID)
+        return answerHelper
+            ? max(progress.normalBest, progress.helperBest)
+            : progress.normalBest
     }
 
     private func displayedMaximumCount(forLevelID levelID: String) -> Int {
-        ProgressStore.maxCompletionCount(levelID: levelID, helperEnabled: answerHelper)
+        let progress = homeProgress.value(for: levelID)
+        return answerHelper ? progress.helperMaximumCount : progress.normalMaximumCount
     }
 
     private func maximumCount(for level: LevelConfig) -> Int {
@@ -962,18 +1111,18 @@ struct ContentView: View {
         case "filter":
             guard let raw = Int(value), raw != menuFilterRaw else { return }
             clearMaximumCountPreview()
-            menuFilterRaw = raw
             triggerCharacterJump(big: true)
+            DispatchQueue.main.async { menuFilterRaw = raw }
         case "mode":
             guard value != menuModeRaw else { return }
             clearMaximumCountPreview()
-            menuModeRaw = value
             triggerCharacterJump(big: false)
+            DispatchQueue.main.async { menuModeRaw = value }
         case "super":
             guard value != supermixCategoryRaw else { return }
             clearMaximumCountPreview()
-            supermixCategoryRaw = value
             triggerCharacterJump(big: false)
+            DispatchQueue.main.async { supermixCategoryRaw = value }
         default:
             break
         }
@@ -1036,8 +1185,10 @@ struct ContentView: View {
                         showInfoPopup(.mode(mode, selectedFilter.standard), anchorKey: "mode.\(mode.rawValue)")
                     } else {
                         clearMaximumCountPreview()
-                        menuModeRaw = mode.rawValue
                         triggerCharacterJump(big: false)
+                        DispatchQueue.main.async {
+                            menuModeRaw = mode.rawValue
+                        }
                     }
                 } label: {
                     Text(mode.title(for: selectedFilter.standard))
@@ -1070,8 +1221,10 @@ struct ContentView: View {
                         showInfoPopup(.superCategory(menuCategory), anchorKey: "super.\(menuCategory.rawValue)")
                     } else {
                         clearMaximumCountPreview()
-                        supermixCategoryRaw = menuCategory.rawValue
                         triggerCharacterJump(big: false)
+                        DispatchQueue.main.async {
+                            supermixCategoryRaw = menuCategory.rawValue
+                        }
                     }
                 } label: {
                     supermixLabel(menuCategory)
@@ -1270,7 +1423,8 @@ struct ContentView: View {
         let regular = levels.filter { !$0.requiresPremium }
         let premiumLevels = levels.filter { $0.requiresPremium }
         let hasProgress = levels.contains {
-            ProgressStore.bestScore(levelID: $0.id, helperEnabled: true) > 0
+            let progress = homeProgress.value(for: $0.id)
+            return max(progress.normalBest, progress.helperBest) > 0
         }
         let recommendedID = hasProgress ? nil : regular.first?.id
 
@@ -1280,16 +1434,19 @@ struct ContentView: View {
                               maximumColumns: isPad ? 3 : .max,
                               cardHeight: levelCardHeight) {
                 ForEach(regular) { level in
+                    let progress = homeProgress.value(for: level.id)
                     let normalBest = displayedBest(for: level,
-                                                    best: ProgressStore.bestScore(levelID: level.id))
+                                                    best: progress.normalBest)
                     LevelCardView(level: level,
                                   status: status(for: level, recommendedID: recommendedID),
                                   best: normalBest,
-                                  pausedBest: PausedGameStore.shared.pausedScore(forLevelID: level.id, includingHelper: answerHelper),
-                                  helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
+                                  pausedBest: answerHelper
+                                      ? progress.pausedIncludingHelper
+                                      : progress.pausedNormal,
+                                  helperBest: progress.helperBest,
                                   showsHelperMarker: answerHelper,
                                   showsTrophies: true,
-                                  isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
+                                  isPaused: progress.isPausedInCurrentLifeMode,
                                   scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                       ? scoreCelebration?.levelStart : nil,
                                   isCelebratingNewScore: isCelebratingScore(for: level),
@@ -1318,7 +1475,7 @@ struct ContentView: View {
         if level.requiresPremium && !premium.isPremium {
             return .locked(progress: 0)
         }
-        if ProgressStore.isCompleted(level) {
+        if homeProgress.value(for: level.id).normalBest >= ProgressStore.completionThreshold {
             return .completed
         }
         if level.id == recommendedID {
@@ -1353,16 +1510,19 @@ struct ContentView: View {
                                   maximumColumns: isPad ? 3 : .max,
                                   cardHeight: levelCardHeight) {
                     ForEach(levels) { level in
+                        let progress = homeProgress.value(for: level.id)
                         let normalBest = displayedBest(for: level,
-                                                        best: ProgressStore.bestScore(levelID: level.id))
+                                                        best: progress.normalBest)
                         LevelCardView(level: level,
                                       status: status(for: level, recommendedID: nil),
                                       best: normalBest,
-                                      pausedBest: PausedGameStore.shared.pausedScore(forLevelID: level.id, includingHelper: answerHelper),
-                                      helperBest: ProgressStore.helperOnlyBestScore(levelID: level.id),
+                                      pausedBest: answerHelper
+                                          ? progress.pausedIncludingHelper
+                                          : progress.pausedNormal,
+                                      helperBest: progress.helperBest,
                                       showsHelperMarker: answerHelper,
                                       showsTrophies: true,
-                                      isPaused: PausedGameStore.shared.hasPausedSession(for: level, mode: lifeMode),
+                                      isPaused: progress.isPausedInCurrentLifeMode,
                                       scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                           ? scoreCelebration?.levelStart : nil,
                                       isCelebratingNewScore: isCelebratingScore(for: level),
