@@ -183,7 +183,6 @@ struct ContentView: View {
     @State private var refreshID = UUID()
     @State private var showsOptions = false
     @State private var expandedOptionInfo: String?
-    @State private var headerDetailsHeight: CGFloat = 0
     @State private var lastOpenedLevelID: String?
     @State private var openedLevelScore = 0
     @State private var openedLevelMaximumCount = 0
@@ -528,11 +527,6 @@ struct ContentView: View {
                 // A player's name gets the available width before the flexible
                 // gap does, so short names do not wrap unnecessarily.
                 .layoutPriority(1)
-                .background {
-                    GeometryReader { proxy in
-                        Color.clear.preference(key: HeaderDetailsHeightKey.self, value: proxy.size.height)
-                    }
-                }
 
                 Spacer(minLength: 8)
 
@@ -540,12 +534,11 @@ struct ContentView: View {
                 CompactStreakView(accent: character.deepColor) {
                     showGoalPicker = true
                 }
-                .frame(width: isPad ? 142 : 106, height: headerDetailsHeight > 0 ? headerDetailsHeight : nil)
-                // The right-aligned progress line has a little more visual
-                // weight than the left side of this compact cluster.
-                .offset(x: -4)
+                // Fixed width per idiom; the module centres itself vertically in
+                // the row (which is `.center`-aligned), so its height no longer
+                // has to track the name/trophy column beside it.
+                .frame(width: isPad ? 150 : 106)
             }
-            .onPreferenceChange(HeaderDetailsHeightKey.self) { headerDetailsHeight = $0 }
 
             Divider().overlay(character.deepColor.opacity(0.22))
 
@@ -813,16 +806,52 @@ struct ContentView: View {
         withAnimation(.easeOut(duration: 0.16)) { infoPopup = nil }
     }
 
-    /// A tap anywhere behind the pop-out. On a level card it closes the pop-out
-    /// *and* starts that level; anywhere else it only closes the pop-out.
+    /// A tap anywhere behind the pop-out. It always closes the pop-out, and if
+    /// the tap also lands on something actionable it does that in the same move:
+    /// a level card starts it; another topic/order/Supermix control switches to
+    /// it. A tap on empty space only closes.
     private func handleInfoBackgroundTap(at point: CGPoint) {
+        // A level card: close and start it.
         if let hit = levelFrames.first(where: { $0.value.contains(point) }),
            let level = currentLevels.first(where: { $0.id == hit.key }) {
             dismissInfoPopup()
             selection = LevelSelection(level: level)
             clearMaximumCountPreview()
-        } else {
+            return
+        }
+        // A topic / order / Supermix control: close and switch to it.
+        if let hit = controlAnchors.first(where: { $0.value.contains(point) }) {
             dismissInfoPopup()
+            applyControlSelection(forKey: hit.key)
+            return
+        }
+        // Empty space: close only.
+        dismissInfoPopup()
+    }
+
+    /// Apply the selection a control key ("filter.5", "mode.standard",
+    /// "super.superBasic") represents. A tap on the already-selected control is
+    /// a no-op switch, so it simply closes the pop-out.
+    private func applyControlSelection(forKey key: String) {
+        guard let dot = key.firstIndex(of: ".") else { return }
+        let prefix = key[..<dot]
+        let value = String(key[key.index(after: dot)...])
+        switch prefix {
+        case "filter":
+            guard let raw = Int(value), raw != menuFilterRaw else { return }
+            clearMaximumCountPreview()
+            withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = raw }
+        case "mode":
+            guard value != menuModeRaw else { return }
+            clearMaximumCountPreview()
+            withAnimation(.snappy(duration: 0.2)) { menuModeRaw = value }
+        case "super":
+            guard value != supermixCategoryRaw else { return }
+            clearMaximumCountPreview()
+            withAnimation(.snappy(duration: 0.2)) { supermixCategoryRaw = value }
+            triggerCharacterJump(big: false)
+        default:
+            break
         }
     }
 
@@ -1259,14 +1288,6 @@ struct ContentView: View {
     }
 }
 
-private struct HeaderDetailsHeightKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = max(value, nextValue())
-    }
-}
-
 // MARK: - Tap-again info pop-out
 
 /// The data behind the little themed card shown when the already-selected
@@ -1467,6 +1488,11 @@ struct PlaytimeBar: View {
 /// Compact streak widget for the top-right of the menu card: the streak-day
 /// count with a flame, a horizontal progress line for today's minutes toward
 /// the goal, and the minutes underneath. No border — it's part of the card.
+///
+/// The module sizes to its own content and centres itself in the header row,
+/// so its internal spacing never stretches to track a one- or two-line name
+/// beside it — only its vertical centring shifts. Every metric derives from a
+/// single scale factor, so the proportions hold on both iPhone and iPad.
 struct CompactStreakView: View {
     let accent: Color
     let action: () -> Void
@@ -1475,8 +1501,12 @@ struct CompactStreakView: View {
 
     private var goalPeriod: GoalPeriod { GoalPeriod(rawValue: goalPeriodRaw) ?? .weekly }
     private var isPad: Bool { AppLayout.isPad }
-    private var scale: CGFloat { isPad ? 1.3 : 1 }
-    private var railWidth: CGFloat { isPad ? 104 : 72 }
+
+    // One factor drives every dimension, so the widget keeps its proportions
+    // when it scales up for the larger iPad layout.
+    private var scale: CGFloat { isPad ? 1.4 : 1 }
+    private var railWidth: CGFloat { 74 * scale }
+    private var rowSpacing: CGFloat { 5 * scale }
 
     private var progressMinutes: Int {
         goalPeriod == .weekly ? tracker.weekMinutes : tracker.todayMinutes
@@ -1492,38 +1522,20 @@ struct CompactStreakView: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 0) {
-                Group {
-                    if tracker.streakDays == 0 {
-                        Label("streak.dayOne", systemImage: "sparkles")
-                            .font(.system(size: 13 * scale, weight: .heavy, design: .rounded))
-                    } else {
-                        HStack(spacing: 5) {
-                            Text(verbatim: "\(tracker.streakDays)")
-                                .font(.system(size: 27 * scale, weight: .heavy, design: .rounded))
-                            Image(systemName: "flame.fill")
-                                .font(.system(size: 16 * scale, weight: .bold))
-                        }
-                    }
-                }
-                .foregroundStyle(accent)
-                .frame(maxWidth: .infinity, alignment: .center)
-
-                Spacer(minLength: isPad ? 6 : 4)
+            // Constant spacing between three self-sizing rows: the module has a
+            // stable natural height and is centred in the header, so a longer
+            // name next to it never squashes or stretches these gaps.
+            VStack(spacing: rowSpacing) {
+                headline
+                    .foregroundStyle(accent)
                 progressLine
-                    .frame(maxWidth: .infinity, alignment: .center)
-                Spacer(minLength: isPad ? 6 : 4)
-
                 Text("common.minutesShort \(progressMinutes) \(goalMinutes)")
-                    .font(.system(size: 10 * scale, weight: .semibold))
-                    .foregroundStyle(accent.opacity(0.6))
-                    // The information and its progress rail share one centred
-                    // column, so the streak reads as a single compact module.
-                    .frame(width: railWidth)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .offset(y: -1)
+                    .font(.system(size: 11.5 * scale, weight: .semibold))
+                    .foregroundStyle(accent.opacity(0.62))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -1531,18 +1543,45 @@ struct CompactStreakView: View {
         .accessibilityHint("streak.accessibility.choosePeriod")
     }
 
+    // The day count and its flame — or the day-one badge — read as one unit:
+    // matched weights, baseline alignment, and a single tight gap keep the icon
+    // from drifting away from the text beside it.
+    @ViewBuilder private var headline: some View {
+        if tracker.streakDays == 0 {
+            HStack(alignment: .firstTextBaseline, spacing: 4 * scale) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 15 * scale, weight: .bold))
+                Text("streak.dayOne")
+                    .font(.system(size: 15 * scale, weight: .heavy, design: .rounded))
+            }
+            .fixedSize()
+            // The sparkle carries less visual weight than the text, so a
+            // geometric centre reads as shifted right; nudge left to optically
+            // centre the badge over the rail below it.
+            .offset(x: -4 * scale)
+        } else {
+            HStack(alignment: .firstTextBaseline, spacing: 4 * scale) {
+                Text(verbatim: "\(tracker.streakDays)")
+                    .font(.system(size: 28 * scale, weight: .heavy, design: .rounded))
+                Image(systemName: "flame.fill")
+                    .font(.system(size: 17 * scale, weight: .bold))
+            }
+        }
+    }
+
+    // Fixed-width rail, so the fill can be sized directly without a
+    // GeometryReader and stays perfectly centred under the day count.
     private var progressLine: some View {
-        GeometryReader { proxy in
-            ZStack(alignment: .leading) {
-                Capsule().fill(accent.opacity(0.15))
+        Capsule()
+            .fill(accent.opacity(0.15))
+            .frame(width: railWidth, height: 7 * scale)
+            .overlay(alignment: .leading) {
                 Capsule()
                     .fill(LinearGradient(colors: [accent.opacity(0.6), accent],
                                          startPoint: .leading, endPoint: .trailing))
-                    .frame(width: max(6, proxy.size.width * dailyProgress))
+                    .frame(width: max(6 * scale, railWidth * dailyProgress))
                     .animation(.snappy(duration: 0.4), value: dailyProgress)
             }
-        }
-        .frame(width: railWidth, height: 6 * scale)
     }
 }
 
