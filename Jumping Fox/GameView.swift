@@ -1126,13 +1126,10 @@ struct GameView: View {
             popoverBackdrop
 
             endGameCard(
-                leadingTitle: endScreenText.gameOverTitle,
-                trailingTitle: nil,
+                title: .plain(endScreenText.gameOverTitle),
                 subtitle: endScreenText.encouragement(for: state.score),
                 score: state.score,
                 illustration: .character,
-                titleIcon: nil,
-                showsMixIndicator: false,
                 emphasizesSubtitle: true,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )
@@ -1154,15 +1151,12 @@ struct GameView: View {
             popoverBackdrop
 
             endGameCard(
-                leadingTitle: "\(state.level.index)",
-                trailingTitle: endScreenText.completionSuffix,
+                title: .completion(state.level),
                 subtitle: endScreenText.completionSubtitle,
                 // The real tally, so a run carried past the cap reads e.g. 31/30.
                 // The debug preview keeps its clean 30/30 sample.
                 score: isShowingCompletionPreview ? ProgressStore.maximumTrophies(for: state.level) : state.score,
                 illustration: .trophy,
-                titleIcon: endScreenText.menuIcon(for: state.level),
-                showsMixIndicator: state.level.mode != .order,
                 emphasizesSubtitle: false,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )
@@ -1199,51 +1193,33 @@ struct GameView: View {
         case character
     }
 
+    private enum EndTitle {
+        /// Plain heading, e.g. the "Game over" card.
+        case plain(String)
+        /// A finished level, rendered as its own operation — "+1 afgerond!",
+        /// "×7 afgerond!", "25% afgerond!", "1 ⭐ afgerond!", or a stacked
+        /// ¹⁄₂ fraction — instead of a bare level number with a category icon.
+        case completion(LevelConfig)
+    }
+
     /// Shared visual treatment for a completed level and a game over. Keeping
     /// the two outcomes structurally identical lets the score be the focus.
     private func endGameCard(
-        leadingTitle: String,
-        trailingTitle: String?,
+        title: EndTitle,
         subtitle: String,
         score: Int,
         illustration: EndIllustration,
-        titleIcon: String?,
-        showsMixIndicator: Bool,
         emphasizesSubtitle: Bool,
         showsNewHighScore: Bool
     ) -> some View {
-        // SF Symbols use their full em square, while rounded digits only fill
-        // their cap height. Keep the circular category sign optically as high
-        // as the level number instead of making its diameter equal to the
-        // number's point size.
-        let titleFontSize: CGFloat = 29 * gameTextScale
-        let titleIconSize = titleFontSize * 0.76
-
         return GeometryReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
             endIllustration(illustration)
                 .padding(.bottom, 18 * gameScale)
 
-            HStack(spacing: 7 * gameScale) {
-                Text(leadingTitle)
-                    .font(.system(size: titleFontSize, weight: .heavy, design: .rounded))
-                    .minimumScaleFactor(0.72)
-                    .lineLimit(1)
-                if let titleIcon {
-                    // Sized to the visible height of the rounded number. In
-                    // Mix mode the badge scales from this same icon size.
-                    endTitleIcon(titleIcon, size: titleIconSize, showsMix: showsMixIndicator)
-                }
-                if let trailingTitle {
-                    Text(trailingTitle)
-                        .font(.system(size: titleFontSize, weight: .heavy, design: .rounded))
-                        .minimumScaleFactor(0.72)
-                        .lineLimit(1)
-                }
-            }
-            .foregroundStyle(theme.deepColor)
-            .frame(maxWidth: .infinity)
+            endTitleView(title)
+                .frame(maxWidth: .infinity)
 
             Text(subtitle)
                 .font(.system(size: (emphasizesSubtitle ? 20 : 17) * gameTextScale,
@@ -1352,39 +1328,79 @@ struct GameView: View {
         .accessibilityLabel("game.highScore")
     }
 
+    /// The heading row of an end-of-game card. "Game over" is plain text; a
+    /// finished level spells out the operation it practised followed by the
+    /// localized "afgerond!" suffix.
     @ViewBuilder
-    private func endTitleIcon(_ icon: String, size: CGFloat, showsMix: Bool) -> some View {
-        let mixBadgeSize = size * 0.62
-        let mixBadgeOffset = size * 0.31
+    private func endTitleView(_ title: EndTitle) -> some View {
+        let titleFontSize: CGFloat = 29 * gameTextScale
+        let titleFont = Font.system(size: titleFontSize, weight: .heavy, design: .rounded)
 
-        Group {
-            if icon == "percent" {
-                // `percent.circle.fill` is not an SF Symbol. This custom badge
-                // mirrors the circular percentage icon in the main menu.
-                Image(systemName: "percent")
-                    .font(.system(size: size * 0.5, weight: .heavy))
-                    .foregroundStyle(.white)
-                    .frame(width: size, height: size)
-                    .background(theme.deepColor, in: Circle())
-            } else {
-                Image(systemName: icon)
-                    .font(.system(size: size, weight: .heavy))
+        switch title {
+        case .plain(let text):
+            Text(text)
+                .font(titleFont)
+                .minimumScaleFactor(0.72)
+                .lineLimit(1)
+                .foregroundStyle(theme.deepColor)
+        case .completion(let level):
+            HStack(spacing: 7 * gameScale) {
+                completionOperationLabel(for: level, fontSize: titleFontSize)
+                Text(endScreenText.completionSuffix)
+                    .font(titleFont)
+                    .minimumScaleFactor(0.72)
+                    .lineLimit(1)
+            }
+            .foregroundStyle(theme.deepColor)
+        }
+    }
+
+    /// A finished level shown as the sum it stands for: "+1", "−1", "×25",
+    /// "25%", a stacked ¹⁄₂ fraction, or the Supermix level number with a star.
+    @ViewBuilder
+    private func completionOperationLabel(for level: LevelConfig, fontSize: CGFloat) -> some View {
+        let font = Font.system(size: fontSize, weight: .heavy, design: .rounded)
+        let n = level.cardNumber
+
+        switch level.category {
+        case .addition, .additionMix:
+            Text(verbatim: "+\(n)").font(font).lineLimit(1).minimumScaleFactor(0.72)
+        case .subtraction, .subtractionMix:
+            Text(verbatim: "−\(n)").font(font).lineLimit(1).minimumScaleFactor(0.72)
+        case .tables, .tablesMix:
+            Text(verbatim: "×\(n)").font(font).lineLimit(1).minimumScaleFactor(0.72)
+        case .percentages, .percentagesMix:
+            Text(verbatim: "\(n)%").font(font).lineLimit(1).minimumScaleFactor(0.72)
+        case .fractions, .fractionsMix:
+            completionFraction(numerator: "1", denominator: n, fontSize: fontSize)
+        case .superBasic, .superTimes, .superFraction, .superAll:
+            HStack(spacing: 5 * gameScale) {
+                Text(verbatim: n).font(font).lineLimit(1).minimumScaleFactor(0.72)
+                Image(systemName: "star.fill")
+                    .font(.system(size: fontSize * 0.7, weight: .heavy))
             }
         }
-        .overlay(alignment: .topTrailing) {
-            if showsMix {
-                // Mix badge keeps its own (smaller) size, laid over the
-                // category sign's top-right corner, about half overlapping.
-                Image(systemName: "shuffle.circle.fill")
-                    .font(.system(size: mixBadgeSize, weight: .heavy))
-                    .foregroundStyle(theme.deepColor)
-                    .background(Circle().fill(.white).padding(-1.5))
-                    .offset(x: mixBadgeOffset, y: -mixBadgeOffset)
-                    .accessibilityLabel("game.accessibility.mix")
-            }
+    }
+
+    /// A stacked fraction — numerator over a rule over the denominator — so a
+    /// division level reads as "¹⁄₂" rather than a flat "1/2".
+    private func completionFraction(numerator: String, denominator: String, fontSize: CGFloat) -> some View {
+        let fracFont = Font.system(size: fontSize * 0.6, weight: .heavy, design: .rounded)
+        let thickness = max(2, fontSize * 0.07)
+
+        return VStack(spacing: thickness + 3 * gameScale) {
+            Text(verbatim: numerator).font(fracFont).lineLimit(1)
+            Text(verbatim: denominator).font(fracFont).lineLimit(1).minimumScaleFactor(0.5)
         }
-        // Reserve room so the overhanging mix badge never touches the next word.
-        .padding(.trailing, showsMix ? mixBadgeOffset : 0)
+        // The rule centers vertically in the gap and spans the wider of the two
+        // numbers, since the overlay inherits the stack's natural width.
+        .overlay {
+            Rectangle()
+                .fill(theme.deepColor)
+                .frame(height: thickness)
+        }
+        .fixedSize()
+        .padding(.horizontal, 2 * gameScale)
     }
 
     @ViewBuilder
@@ -1602,19 +1618,6 @@ private struct EndScreenText {
     var gameOverTitle: String { L("game.end.gameOverTitle") }
     var playAgain: String { L("game.end.playAgain") }
     var mainMenu: String { L("game.end.mainMenu") }
-
-    /// Mirrors the six symbols in the main menu, so the achievement is
-    /// immediately recognisable without repeating a category name.
-    func menuIcon(for level: LevelConfig) -> String {
-        switch level.category {
-        case .addition, .additionMix: return "plus.circle.fill"
-        case .subtraction, .subtractionMix: return "minus.circle.fill"
-        case .tables, .tablesMix: return "multiply.circle.fill"
-        case .fractions, .fractionsMix: return "circle.lefthalf.filled"
-        case .percentages, .percentagesMix: return "percent"
-        case .superBasic, .superTimes, .superFraction, .superAll: return "star.circle.fill"
-        }
-    }
 
     func encouragement(for score: Int) -> String {
         // Ten graded messages, keyed game.encouragement.0 … .9 in the catalog.
