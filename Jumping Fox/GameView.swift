@@ -719,7 +719,7 @@ struct GameView: View {
                 // the 5-in-a-row ×2 bonus is live, and pops away on the first
                 // wrong answer that ends the streak.
                 if state.isStreakActive {
-                    StreakCoin(fill: theme.color, size: GameHUDMetrics.assetSize)
+                    StreakCoin(fill: theme.deepColor, size: GameHUDMetrics.assetSize)
                         .transition(.asymmetric(
                             insertion: .scale(scale: 0.15).combined(with: .opacity),
                             removal: .streakCoinBreak))
@@ -742,9 +742,6 @@ struct GameView: View {
     /// correct answers in a row) and its effect (trophies now double).
     private var streakBanner: some View {
         HStack(spacing: 7) {
-            Image(systemName: "flame.fill")
-                .font(.subheadline.weight(.black))
-                .foregroundStyle(.orange)
             Text(verbatim: "\(L("game.streak.title"))  \(L("game.streak.subtitle"))")
                 .font(.subheadline.weight(.heavy))
                 .foregroundStyle(.white)
@@ -752,7 +749,7 @@ struct GameView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 9)
-        .background(theme.deepColor.opacity(0.94), in: Capsule())
+        .background(theme.color.opacity(0.94), in: Capsule())
         .overlay(Capsule().stroke(.white.opacity(0.85), lineWidth: 1.5))
         .shadow(color: .black.opacity(0.22), radius: 7, y: 3)
     }

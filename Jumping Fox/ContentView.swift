@@ -869,7 +869,15 @@ struct ContentView: View {
             // Convert the anchor (in "home" space) into this overlay's local
             // space so the card sits just under the tapped control.
             let localOrigin = geo.frame(in: .named(Self.homeSpace)).origin
-            let cardWidth = min(isPad ? 340 : 250, geo.size.width - 24)
+            // Let concise explanations stay compact, while allowing longer
+            // labels to remain on one line whenever the menu's side margins
+            // permit it.
+            let cardWidth = InfoPopoutCard.preferredWidth(
+                header: popup.header,
+                message: popup.body,
+                isPad: isPad,
+                maximum: geo.size.width - 24
+            )
             let anchorMidX = popup.anchor.midX - localOrigin.x
             let rawX = anchorMidX - cardWidth / 2
             let x = min(max(12, rawX), max(12, geo.size.width - cardWidth - 12))
@@ -1347,6 +1355,27 @@ private struct InfoPopoutCard: View {
     let caretOffset: CGFloat
     let theme: AnimalCharacter
     private var isPad: Bool { AppLayout.isPad }
+
+    /// Width needed for the header or message on a single line, including the
+    /// card's horizontal padding. The caller still caps it at the available
+    /// space, preserving the 12-point safety margin at each side of the card.
+    static func preferredWidth(header: String,
+                               message: String,
+                               isPad: Bool,
+                               maximum: CGFloat) -> CGFloat {
+#if canImport(UIKit)
+        let headerFont = UIFont.systemFont(ofSize: isPad ? 14 : 11, weight: .heavy)
+        let messageFont = UIFont.systemFont(ofSize: isPad ? 21 : 16, weight: .bold)
+        let contentWidth = max(
+            (header.uppercased() as NSString).size(withAttributes: [.font: headerFont]).width,
+            (message as NSString).size(withAttributes: [.font: messageFont]).width
+        )
+        let horizontalPadding: CGFloat = isPad ? 36 : 28
+        return min(ceil(contentWidth + horizontalPadding), maximum)
+#else
+        return min(isPad ? 340 : 250, maximum)
+#endif
+    }
 
     var body: some View {
         VStack(spacing: 0) {

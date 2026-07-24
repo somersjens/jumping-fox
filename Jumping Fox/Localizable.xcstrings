@@ -4530,13 +4530,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Always one part"
+            "value": "Always a single part"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Steeds één deel"
+            "value": "Altijd een enkel deel"
           }
         }
       }
@@ -4547,13 +4547,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Several parts"
+            "value": "Single and multiple parts"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meerdere delen"
+            "value": "Enkele en meerdere delen"
           }
         }
       }
@@ -4564,13 +4564,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Whole answers"
+            "value": "Without decimal numbers"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hele uitkomsten"
+            "value": "Zonder getallen achter de komma"
           }
         }
       }
@@ -4581,13 +4581,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Answers with a decimal"
+            "value": "Including decimal numbers"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uitkomsten met een komma"
+            "value": "Ook getallen achter de komma"
           }
         }
       }
