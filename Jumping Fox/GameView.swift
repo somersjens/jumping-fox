@@ -597,10 +597,17 @@ struct GameView: View {
         guard !state.level.category.isSupermixMenu else {
             return info.bullets[0]
         }
-        let order = state.level.mode != .order || state.level.category.isMix
-            ? L("game.intro.orderRandom")
-            : L("game.intro.orderAscending")
-        return L("game.intro.practiceOrdered \(practiceSubject) \(order)")
+        switch state.level.category {
+        case .fractions, .fractionsMix, .percentages, .percentagesMix:
+            // Fractions and percentages sub-levels aren't about ascending vs
+            // random order; their first bullet names exactly what you get.
+            return info.bullets[0]
+        default:
+            let order = state.level.mode != .order || state.level.category.isMix
+                ? L("game.intro.orderRandom")
+                : L("game.intro.orderAscending")
+            return L("game.intro.practiceOrdered \(practiceSubject) \(order)")
+        }
     }
 
     private func detailDescription(info: (title: String, bullets: [String])) -> String {

@@ -2194,13 +2194,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You keep working with denominator **%lld**, in a mixed-up order."
+            "value": "You get **one or more parts** out of %lld in random order."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je blijft met noemer **%lld** werken, in willekeurige volgorde."
+            "value": "Je krijgt **één of meerdere delen** van %lld door elkaar."
           }
         }
       }
@@ -2211,13 +2211,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Work out a part of a whole with denominator %lld."
+            "value": "You get **1 part** out of %lld equal parts."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reken een deel van een geheel uit met noemer %lld."
+            "value": "Je krijgt **1 deel** van de %lld gelijke delen."
           }
         }
       }
@@ -2228,13 +2228,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You start with 1/%lld and then practice other parts too."
+            "value": "It stays 1/%lld, but the whole is mixed up each time."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je begint met 1/%lld en oefent daarna ook andere delen."
+            "value": "Het blijft 1/%lld, maar het geheel staat elke keer door elkaar."
           }
         }
       }
@@ -2252,40 +2252,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Breuken · %lld"
-          }
-        }
-      }
-    },
-    "modeIntro.fractions.varied.b1 %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Practice the fractions you already know, up to denominator %lld."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oefen met de breuken die je al kent, tot en met noemer %lld."
-          }
-        }
-      }
-    },
-    "modeIntro.fractions.varied.b2": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The different fraction sums are mixed up."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De verschillende breuk-sommen staan door elkaar."
           }
         }
       }
@@ -2392,36 +2358,19 @@
         }
       }
     },
-    "modeIntro.percentages.random.b1 %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You keep working out **%@**, in a mixed-up order."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Je blijft **%@** uitrekenen, in willekeurige volgorde."
-          }
-        }
-      }
-    },
     "modeIntro.percentages.std.b1 %@": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keep working out %@ of a number."
+            "value": "You get %@, and the answer is a **whole number**."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reken steeds %@ van een getal uit."
+            "value": "Je krijgt %@ en de uitkomst is een **heel getal**."
           }
         }
       }
@@ -2432,13 +2381,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sometimes you also link a fraction to its percentage."
+            "value": "The number always divides evenly, with no decimal."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Soms koppel je ook een breuk aan het juiste percentage."
+            "value": "Het getal deelt altijd mooi op, zonder komma."
           }
         }
       }
@@ -2466,13 +2415,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Practice the percentages you already know."
+            "value": "You get percentages from this level and **earlier levels**."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oefen met de percentages die je al kent."
+            "value": "Je krijgt percentages uit dit level en **eerdere levels**."
           }
         }
       }
@@ -2483,13 +2432,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The different percentage sums are mixed up."
+            "value": "The answers are whole numbers again."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "De verschillende procent-sommen staan door elkaar."
+            "value": "De uitkomsten zijn weer hele getallen."
           }
         }
       }
@@ -4469,6 +4418,261 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bij een fout antwoord verlies je één van je drie levens. Probeer het maar."
+          }
+        }
+      }
+    },
+    "mode.fractions.single": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Single"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eén deel"
+          }
+        }
+      }
+    },
+    "mode.fractions.multiple": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Multiple"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meerdere"
+          }
+        }
+      }
+    },
+    "mode.percentages.whole": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whole"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heel"
+          }
+        }
+      }
+    },
+    "mode.percentages.decimal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decimal"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komma"
+          }
+        }
+      }
+    },
+    "info.mode.fractions.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parts"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delen"
+          }
+        }
+      }
+    },
+    "info.mode.percentages.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soort"
+          }
+        }
+      }
+    },
+    "info.mode.fractions.single": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always one part"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Steeds één deel"
+          }
+        }
+      }
+    },
+    "info.mode.fractions.multiple": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Several parts"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meerdere delen"
+          }
+        }
+      }
+    },
+    "info.mode.percentages.whole": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whole answers"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hele uitkomsten"
+          }
+        }
+      }
+    },
+    "info.mode.percentages.decimal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Answers with a decimal"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uitkomsten met een komma"
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.random.b2": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostly several parts, now and then a single one."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meestal meerdere delen, af en toe één deel."
+          }
+        }
+      }
+    },
+    "modeIntro.percentages.random.b2": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sometimes the answer is whole, sometimes a decimal."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soms is de uitkomst heel, soms een kommagetal."
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.varied.b1": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You get fractions from this level and **earlier levels**."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je krijgt breuken uit dit level en **eerdere levels**."
+          }
+        }
+      }
+    },
+    "modeIntro.fractions.varied.b2 %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The parts that fit exactly into **%lld**."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De delen die precies in **%lld** passen."
+          }
+        }
+      }
+    },
+    "modeIntro.percentages.random.b1": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You get questions where the answer can also be a **decimal number**."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je krijgt vragen waarbij de uitkomst ook een **kommagetal** kan zijn."
           }
         }
       }

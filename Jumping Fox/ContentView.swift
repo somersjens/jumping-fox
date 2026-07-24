@@ -910,7 +910,7 @@ struct ContentView: View {
                 let isSelected = menuMode == mode
                 Button {
                     if isSelected {
-                        showInfoPopup(.mode(mode), anchorKey: "mode.\(mode.rawValue)")
+                        showInfoPopup(.mode(mode, selectedFilter.standard), anchorKey: "mode.\(mode.rawValue)")
                     } else {
                         clearMaximumCountPreview()
                         withAnimation(.snappy(duration: 0.2)) {
@@ -919,7 +919,7 @@ struct ContentView: View {
                         triggerCharacterJump(big: false)
                     }
                 } label: {
-                    Text(mode.title)
+                    Text(mode.title(for: selectedFilter.standard))
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
@@ -932,7 +932,7 @@ struct ContentView: View {
                         .reportAnchor("mode.\(mode.rawValue)")
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("menu.accessibility.chooseMode \(mode.title)")
+                .accessibilityLabel("menu.accessibility.chooseMode \(mode.title(for: selectedFilter.standard))")
             }
         }
     }
@@ -1305,7 +1305,7 @@ struct ContentView: View {
 struct InfoPopup: Identifiable {
     enum Kind: Equatable {
         case filter(MenuFilter)
-        case mode(PracticeMode)
+        case mode(PracticeMode, ChallengeCategory)
         case superCategory(ChallengeCategory)
     }
 
@@ -1315,16 +1315,16 @@ struct InfoPopup: Identifiable {
     var id: String {
         switch kind {
         case .filter(let f):        return "filter.\(f.rawValue)"
-        case .mode(let m):          return "mode.\(m.rawValue)"
+        case .mode(let m, _):       return "mode.\(m.rawValue)"
         case .superCategory(let c): return "super.\(c.rawValue)"
         }
     }
 
-    /// The grouping label ("Types of problems" / "Order").
+    /// The grouping label ("Types of problems" / "Order" / "Parts" / "Type").
     var header: String {
         switch kind {
         case .filter, .superCategory: return L("info.filter.header")
-        case .mode:                   return L("info.mode.header")
+        case .mode(let m, let c):     return m.infoHeader(for: c)
         }
     }
 
@@ -1332,7 +1332,7 @@ struct InfoPopup: Identifiable {
     var body: String {
         switch kind {
         case .filter(let f):        return f.infoBody
-        case .mode(let m):          return m.infoBody
+        case .mode(let m, let c):   return m.infoBody(for: c)
         case .superCategory(let c): return c.supermixInfoBody
         }
     }

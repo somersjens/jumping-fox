@@ -85,9 +85,10 @@ enum ModeIntro {
             switch mode {
             case .order:  bullets = [L("modeIntro.fractions.std.b1 \(d)"),
                                      L("modeIntro.fractions.std.b2 \(d)")]
-            case .random: bullets = [L("modeIntro.fractions.random.b1 \(d)"), eitherSide]
-            case .mixed:  bullets = [L("modeIntro.fractions.varied.b1 \(d)"),
-                                     L("modeIntro.fractions.varied.b2")]
+            case .random: bullets = [L("modeIntro.fractions.random.b1 \(d)"),
+                                     L("modeIntro.fractions.random.b2")]
+            case .mixed:  bullets = [L("modeIntro.fractions.varied.b1"),
+                                     L("modeIntro.fractions.varied.b2 \(d)")]
             }
             return (L("modeIntro.fractions.title \(d)"), bullets)
 
@@ -106,7 +107,8 @@ enum ModeIntro {
             switch mode {
             case .order:  bullets = [L("modeIntro.percentages.std.b1 \(pText)"),
                                      L("modeIntro.percentages.std.b2")]
-            case .random: bullets = [L("modeIntro.percentages.random.b1 \(pText)"), eitherSide]
+            case .random: bullets = [L("modeIntro.percentages.random.b1"),
+                                     L("modeIntro.percentages.random.b2")]
             case .mixed:  bullets = [L("modeIntro.percentages.varied.b1"),
                                      L("modeIntro.percentages.varied.b2")]
             }

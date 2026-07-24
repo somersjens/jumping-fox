@@ -195,6 +195,60 @@ enum PracticeMode: String, CaseIterable, Identifiable {
         case .mixed: return L("info.mode.mixed")
         }
     }
+
+    /// Fractions and Percentages don't sequence their three sub-levels by
+    /// *order*; they change *what kind* of sum you get. So those two menus show
+    /// their own button labels, info header and info body, while every other
+    /// menu keeps the shared Order · Random · Mixed wording.
+
+    /// Button label for this mode within a given topic.
+    func title(for category: ChallengeCategory) -> String {
+        switch category {
+        case .fractions, .fractionsMix:
+            switch self {
+            case .order:  return L("mode.fractions.single")
+            case .random: return L("mode.fractions.multiple")
+            case .mixed:  return L("mode.mixed")
+            }
+        case .percentages, .percentagesMix:
+            switch self {
+            case .order:  return L("mode.percentages.whole")
+            case .random: return L("mode.percentages.decimal")
+            case .mixed:  return L("mode.mixed")
+            }
+        default:
+            return title
+        }
+    }
+
+    /// Grouping label above the info body ("Order" / "Parts" / "Type").
+    func infoHeader(for category: ChallengeCategory) -> String {
+        switch category {
+        case .fractions, .fractionsMix:     return L("info.mode.fractions.header")
+        case .percentages, .percentagesMix: return L("info.mode.percentages.header")
+        default:                            return L("info.mode.header")
+        }
+    }
+
+    /// One-line description of this mode within a given topic.
+    func infoBody(for category: ChallengeCategory) -> String {
+        switch category {
+        case .fractions, .fractionsMix:
+            switch self {
+            case .order:  return L("info.mode.fractions.single")
+            case .random: return L("info.mode.fractions.multiple")
+            case .mixed:  return infoBody   // shared "Mixed with lower levels"
+            }
+        case .percentages, .percentagesMix:
+            switch self {
+            case .order:  return L("info.mode.percentages.whole")
+            case .random: return L("info.mode.percentages.decimal")
+            case .mixed:  return infoBody   // shared "Mixed with lower levels"
+            }
+        default:
+            return infoBody
+        }
+    }
 }
 
 struct LevelConfig: Identifiable, Hashable {
@@ -717,9 +771,9 @@ final class QuestionEngine {
         case .subtractionMix: return subtractionMixQuestion()
         case .tables: return tableQuestion(table: level.index)
         case .tablesMix: return tablesMixQuestion()
-        case .fractions: return fractionsQuestion()
+        case .fractions: return fractionsSingleQuestion()   // Order = "Single"
         case .fractionsMix: return fractionsMixQuestion()
-        case .percentages: return percentagesQuestion()
+        case .percentages: return percentagesWholeQuestion() // Order = "Whole"
         case .percentagesMix: return percentagesMixQuestion()
         case .superBasic: return superQuestion(Self.superBasicWeights)
         case .superTimes: return superQuestion(Self.superTimesWeights)
@@ -741,13 +795,13 @@ final class QuestionEngine {
         case .tables:
             return tablesMixQuestion(pool: Array(1...min(99, level.index)), weightedHard: true)
         case .fractions:
-            // Varied question forms over everything introduced so far —
-            // clearly different from the guided Order level.
-            let introduced = Array(Self.fractionDenominators.prefix(max(1, level.index)))
-            return fractionsVarietyQuestion(denominators: introduced, weightedHard: true)
+            // "Gemixt": this denominator mixed with the easier parts that
+            // divide into it (8 → also halves and quarters).
+            return fractionsMixedQuestion()
         case .percentages:
-            let introduced = Array(Self.percentageLevels.prefix(max(1, level.index)))
-            return percentagesVarietyQuestion(percentages: introduced, weightedHard: true)
+            // "Gemixt": this percentage mixed with the percentages of the
+            // levels before it, back to whole answers.
+            return percentagesMixedQuestion()
         default:
             return superQuestion(Self.superAllWeights)
         }
@@ -763,8 +817,8 @@ final class QuestionEngine {
         case .addition:    return additionRandomQuestion()
         case .subtraction: return subtractionRandomQuestion()
         case .tables:      return tablesRandomQuestion()
-        case .fractions:   return fractionsRandomQuestion()
-        case .percentages: return percentagesRandomQuestion()
+        case .fractions:   return fractionsMultipleQuestion() // "Meerdere"
+        case .percentages: return percentagesDecimalQuestion() // "Komma"
         default:           return immediateMixQuestion()
         }
     }
@@ -829,41 +883,81 @@ final class QuestionEngine {
                             isRandomPractice: true)
     }
 
-    /// Only this level's own denominator, shuffled wholes, and the fraction
-    /// free to appear before or after the ×.
-    private func fractionsRandomQuestion() -> Question {
-        let d = Self.fractionDenominators[min(level.index - 1, Self.fractionDenominators.count - 1)]
-        let factor = shuffledCycled(Array(1...6))
-        let whole = d * factor
-        let num = d == 2 ? 1 : Int.random(in: 1...(d - 1))
-        let unit = whole / d              // first divide…
+    // MARK: Fractions & percentages sub-levels
+    //
+    // Fractions and Percentages both have three sub-levels that change *what
+    // kind* of sum you get rather than how it is ordered:
+    //
+    //   Fractions   Single (1/d) · Multiple (n/d) · Mixed (also easier parts)
+    //   Percentages Whole answer · Decimal answer · Mixed (earlier percentages)
+    //
+    // These map onto the three PracticeModes (order · random · mixed).
+
+    /// This level's own fraction denominator.
+    private var currentDenominator: Int {
+        Self.fractionDenominators[min(level.index - 1, Self.fractionDenominators.count - 1)]
+    }
+
+    /// This level's own percentage.
+    private var currentPercentage: Int {
+        Self.percentageLevels[min(level.index - 1, Self.percentageLevels.count - 1)]
+    }
+
+    /// The denominators the Mixed ("Gemixt") fraction level reviews: this
+    /// level's own denominator plus the denominators of *earlier* levels that
+    /// divide evenly into it (8 → [2, 4, 8], 12 → [2, 3, 4, 6, 12]). It never
+    /// reaches for a harder new part — a 7th of a level-3 whole would be harder,
+    /// not easier — so the parts always come from this level and earlier ones.
+    private func fractionMixedPool() -> [Int] {
+        let d = currentDenominator
+        let earlier = Set(Self.fractionDenominators.prefix(level.index))
+        let pool = (2...max(2, d)).filter { d % $0 == 0 && earlier.contains($0) }
+        return pool.isEmpty ? [d] : pool
+    }
+
+    /// Builds one "num/den × whole = ?" fraction question with child-plausible
+    /// near-miss distractors.
+    private func fractionOfWhole(num: Int, den: Int, whole: Int) -> Question {
+        let unit = whole / den            // first divide…
         let answer = unit * num           // …then multiply
-        let frac = "\(num)/\(d)"
-        let prompt = Bool.random() ? "\(frac) × \(whole) = ?" : "\(whole) × \(frac) = ?"
-        return makeQuestion(prompt, "\(answer)",
-                            [unit, answer + unit, max(0, answer - unit),
-                             whole - answer, answer + 1, answer - 1].map(String.init),
+        return makeQuestion("\(num)/\(den) × \(whole) = ?", "\(answer)",
+                            [unit, whole, answer + unit, max(0, answer - unit),
+                             whole - answer, answer + 1, answer - 1]
+                                .filter { $0 >= 0 }.map(String.init),
                             isRandomPractice: true)
     }
 
-    /// Only this level's own percentage, shuffled wholes, and the percentage
-    /// free to appear before or after the ×.
-    private func percentagesRandomQuestion() -> Question {
-        let p = Self.percentageLevels[min(level.index - 1, Self.percentageLevels.count - 1)]
-        let factor = shuffledCycled(Array(1...8))
-        let whole = Self.percentageBase(p) * factor
-        let answer = whole * p / 100
-        let pText = "\(p)%"
-        let prompt = Bool.random() ? "\(pText) × \(whole) = ?" : "\(whole) × \(pText) = ?"
-        let neighbours = Self.percentageLevels
-            .filter { $0 != p && whole * $0 % 100 == 0 }
-            .sorted { abs($0 - p) < abs($1 - p) }
-            .prefix(3)
-            .map { whole * $0 / 100 }
-        return makeQuestion(prompt, "\(answer)",
-                            (neighbours + [whole - answer, answer + 1, answer - 1])
-                                .filter { $0 >= 0 }.map(String.init),
-                            isRandomPractice: true)
+    /// Single ("Eén deel"): always the unit fraction 1/d of a whole, with the
+    /// whole shuffled so the answers never count up predictably.
+    private func fractionsSingleQuestion() -> Question {
+        let d = currentDenominator
+        let whole = d * shuffledCycled(Array(1...6))
+        return fractionOfWhole(num: 1, den: d, whole: whole)
+    }
+
+    /// Multiple ("Meerdere"): mostly several parts of d (3/8, 6/8…), with a
+    /// single part 1/d turning up about a quarter of the time.
+    private func fractionsMultipleQuestion() -> Question {
+        let d = currentDenominator
+        let whole = d * shuffledCycled(Array(1...6))
+        let num: Int
+        if d <= 2 {
+            num = 1                                   // 1/2 is the only proper part
+        } else if Double.random(in: 0..<1) < 0.25 {
+            num = 1                                   // 25% single parts
+        } else {
+            num = Int.random(in: 2...(d - 1))         // 75% multiple parts
+        }
+        return fractionOfWhole(num: num, den: d, whole: whole)
+    }
+
+    /// Mixed ("Gemixt"): this denominator mixed with the easier parts that
+    /// divide into it — leaning toward d itself, the earlier ones still return.
+    private func fractionsMixedQuestion() -> Question {
+        let den = weightedHardPick(fractionMixedPool().sorted())
+        let whole = den * Int.random(in: 1...6)
+        let num = den <= 2 ? 1 : Int.random(in: 1...(den - 1))
+        return fractionOfWhole(num: num, den: den, whole: whole)
     }
 
     // MARK: Addition
@@ -1164,6 +1258,103 @@ final class QuestionEngine {
                                 .filter { $0 >= 0 }.map(String.init))
     }
 
+    /// Whole ("Heel"): p% of a number that always divides cleanly, so the
+    /// answer is a whole number.
+    private func percentagesWholeQuestion() -> Question {
+        let p = currentPercentage
+        let whole = Self.percentageBase(p) * shuffledCycled(Array(1...8))
+        let answer = whole * p / 100
+        let neighbours = Self.percentageLevels
+            .filter { $0 != p && whole * $0 % 100 == 0 }
+            .sorted { abs($0 - p) < abs($1 - p) }
+            .prefix(3)
+            .map { whole * $0 / 100 }
+        return makeQuestion("\(p)% × \(whole) = ?", "\(answer)",
+                            (neighbours + [whole - answer, answer + 1, answer - 1])
+                                .filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// The only fractional parts a Decimal answer may end in, in hundredths:
+    /// the tenths 0,1–0,9, the quarters 0,25/0,75 and the (rounded) thirds
+    /// 0,33/0,67. Nothing messier, so the answers stay readable.
+    private static let decimalRemainders: Set<Int> = [10, 20, 30, 40, 50, 60, 70, 80, 90, 25, 75, 33, 67]
+
+    /// Decimal ("Komma"): the same percentage as the Whole level. Half the
+    /// questions keep a clean whole answer, the other half land behind the
+    /// comma — always on one of the friendly decimals in `decimalRemainders`.
+    /// The whole itself stays an ordinary integer.
+    private func percentagesDecimalQuestion() -> Question {
+        // 50/50 split between whole-number and decimal answers.
+        if Bool.random() { return percentagesWholeQuestion() }
+        let p = currentPercentage
+        // Every integer whole whose "p% of whole" lands on a friendly decimal
+        // with a small, readable answer (≤ 60). Working in hundredths keeps the
+        // maths exact — no floating-point rounding anywhere.
+        var candidates: [(whole: Int, hundredths: Int)] = []
+        for whole in 1...600 {
+            let hundredths = whole * p            // = answer × 100
+            guard hundredths <= 6000 else { break }
+            if Self.decimalRemainders.contains(hundredths % 100) {
+                candidates.append((whole, hundredths))
+            }
+        }
+        // Degenerate safety net (e.g. p a multiple of 100): fall back to whole.
+        guard let pick = candidates.randomElement() else { return percentagesWholeQuestion() }
+        let answerText = Self.decimalString(hundredths: pick.hundredths)
+        // Near-misses a child actually produces: dropped the decimal (rounded
+        // to a whole), the tenth above/below, and one whole off.
+        let roundedDown = (pick.hundredths / 100) * 100
+        let wrong = [roundedDown, roundedDown + 100,
+                     pick.hundredths + 10, pick.hundredths - 10,
+                     pick.hundredths + 100, pick.hundredths - 100]
+            .filter { $0 >= 0 && $0 != pick.hundredths }
+            .map { Self.decimalString(hundredths: $0) }
+        return makeQuestion("\(p)% × \(pick.whole) = ?", answerText, wrong,
+                            isRandomPractice: true)
+    }
+
+    /// Mixed ("Gemixt"): this percentage together with the percentages of the
+    /// levels before it — back to whole answers, leaning toward this level's own.
+    private func percentagesMixedQuestion() -> Question {
+        let pool = Array(Self.percentageLevels.prefix(max(1, level.index)))
+        let p = weightedHardPick(pool)
+        let whole = Self.percentageBase(p) * Int.random(in: 1...8)
+        let answer = whole * p / 100
+        let neighbours = pool
+            .filter { $0 != p && whole * $0 % 100 == 0 }
+            .sorted { abs($0 - p) < abs($1 - p) }
+            .prefix(3)
+            .map { whole * $0 / 100 }
+        return makeQuestion("\(p)% × \(whole) = ?", "\(answer)",
+                            (neighbours + [whole - answer, answer + 1, answer - 1])
+                                .filter { $0 >= 0 }.map(String.init),
+                            isRandomPractice: true)
+    }
+
+    /// Formats a hundredths value as a readable decimal in the player's
+    /// language (comma in Dutch, dot in English), trimming a trailing zero so
+    /// 3,50 shows as 3,5 while 3,25 keeps both places.
+    private static func decimalString(hundredths: Int) -> String {
+        let whole = hundredths / 100
+        let frac = hundredths % 100
+        if frac == 0 { return "\(whole)" }
+        let separator = LanguageManager.shared.effective == .dutch ? "," : "."
+        if frac % 10 == 0 { return "\(whole)\(separator)\(frac / 10)" }
+        return "\(whole)\(separator)" + String(format: "%02d", frac)
+    }
+
+    /// The inverse of `decimalString`: reads a "3,25"/"3.5"/"4" string back
+    /// into hundredths so padded distractors can be nudged numerically.
+    private static func hundredths(from text: String) -> Int {
+        let parts = text.replacingOccurrences(of: ",", with: ".").split(separator: ".")
+        let whole = Int(parts.first ?? "0") ?? 0
+        guard parts.count > 1 else { return whole * 100 }
+        var digits = String(parts[1])
+        if digits.count == 1 { digits += "0" }          // "5" → 50 hundredths
+        return whole * 100 + (Int(digits.prefix(2)) ?? 0)
+    }
+
     private func percentagesMixQuestion() -> Question {
         // Premium mix: friendly percentages reviewed together, on big wholes.
         if level.index > ChallengeScaling.percentageLevels.count {
@@ -1368,6 +1559,12 @@ final class QuestionEngine {
                 candidate = String(max(level.isAdvanced ? -99 : 0, c + offset))
             } else if correct.contains("/") {
                 candidate = "\(Int.random(in: 1...9))/\(Int.random(in: 2...10))"
+            } else if correct.contains(",") || correct.contains(".") {
+                // Decimal answer (percentages "Komma"): nudge by tenths so the
+                // padded options are still plausible decimals, never "%".
+                let base = Self.hundredths(from: correct)
+                let offset = (salt % 2 == 0 ? salt : -salt) * 10
+                candidate = Self.decimalString(hundredths: max(0, base + offset))
             } else {
                 candidate = "\(Int.random(in: 1...9))0%"
             }
