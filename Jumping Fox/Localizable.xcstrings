@@ -2,7 +2,6 @@
   "sourceLanguage": "en",
   "strings": {
     "": {},
-    "%": {},
     "%@  %@": {
       "localizations": {
         "en": {
@@ -1515,6 +1514,74 @@
           "stringUnit": {
             "state": "translated",
             "value": "Willekeurige volgorde"
+          }
+        }
+      }
+    },
+    "info.super.all": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addition, subtraction, multiplication, division, and percentages"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optellen, aftrekken, vermenigvuldigen, delen en percentages"
+          }
+        }
+      }
+    },
+    "info.super.basic": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addition and subtraction"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optellen en aftrekken"
+          }
+        }
+      }
+    },
+    "info.super.fraction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addition, subtraction, multiplication, and division"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optellen, aftrekken, vermenigvuldigen en delen"
+          }
+        }
+      }
+    },
+    "info.super.times": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addition, subtraction, and multiplication"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optellen, aftrekken en vermenigvuldigen"
           }
         }
       }

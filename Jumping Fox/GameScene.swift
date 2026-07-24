@@ -96,6 +96,10 @@ final class GamePlatform: SKNode {
     }
     private let shape: SKShapeNode
     private let label: SKLabelNode
+    /// When the value is a fraction (e.g. "3/4") this holds the stacked
+    /// numerator-over-denominator artwork shown instead of the flat label,
+    /// matching the way the question renders its fractions. `nil` otherwise.
+    private let fractionNode: SKNode?
     private let statusIcon: SKLabelNode
     private let wrongMark: SKShapeNode
     private(set) var status: Status
@@ -139,8 +143,13 @@ final class GamePlatform: SKNode {
         shape.lineWidth = 2
         shape.zPosition = 0
 
+        // A value like "3/4" is a fraction: render it stacked (numerator over a
+        // bar over denominator) exactly like the question, instead of a flat
+        // "3/4". Everything else keeps the single-line label.
+        let fractionParts = Self.fractionParts(from: value)
+
         label = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        label.text = value
+        label.text = fractionParts == nil ? value : ""
         label.fontSize = (value.count >= 5 ? 13 : (value.count == 4 ? 15 : 18)) * scale
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
@@ -148,13 +157,80 @@ final class GamePlatform: SKNode {
         // ignoresSiblingOrder batching enabled on the view.
         label.zPosition = 1
 
+        if let parts = fractionParts {
+            fractionNode = Self.makeFractionNode(numerator: parts.numerator,
+                                                 denominator: parts.denominator,
+                                                 scale: scale)
+        } else {
+            fractionNode = nil
+        }
+
         super.init()
         addChild(shape)
         if role == .answer {
-            addChild(label)
+            if let fractionNode {
+                addChild(fractionNode)
+            } else {
+                addChild(label)
+            }
             addChild(statusIcon)
             addChild(wrongMark)
         }
+    }
+
+    /// Splits an answer value into a fraction's two parts when it is a plain
+    /// `numerator/denominator` (both sides non-empty, no extra "/"), else `nil`.
+    private static func fractionParts(from value: String) -> (numerator: String, denominator: String)? {
+        let sides = value.split(separator: "/", omittingEmptySubsequences: false)
+        guard sides.count == 2, !sides[0].isEmpty, !sides[1].isEmpty else { return nil }
+        return (String(sides[0]), String(sides[1]))
+    }
+
+    /// Builds the stacked fraction shown on an answer stone. The stone is only
+    /// 26 pt tall, so the digits are sized to stay clearly readable while
+    /// leaving a small safety margin above and below the bar. Two-digit parts
+    /// (e.g. "1/12") drop a step so they never touch the rounded ends.
+    private static func makeFractionNode(numerator: String, denominator: String,
+                                         scale: CGFloat) -> SKNode {
+        let container = SKNode()
+        container.zPosition = 1
+
+        let maxDigits = max(numerator.count, denominator.count)
+        // Comfortable on iPad and iPhone: single-digit parts get the roomy
+        // size, two-plus-digit parts shrink just enough to fit the width.
+        let fontSize = (maxDigits >= 2 ? 11.0 : 13.0) * scale
+        // Vertical gap of each part's centre from the bar. Tied to the font so
+        // the numerator/denominator clear the bar without crowding the edges.
+        let offset = fontSize * 0.56
+
+        func part(_ text: String, y: CGFloat) -> SKLabelNode {
+            let node = SKLabelNode(fontNamed: "AvenirNext-Bold")
+            node.text = text
+            node.fontSize = fontSize
+            node.fontColor = .white
+            node.verticalAlignmentMode = .center
+            node.horizontalAlignmentMode = .center
+            node.position = CGPoint(x: 0, y: y)
+            node.zPosition = 1
+            return node
+        }
+
+        let num = part(numerator, y: offset)
+        let den = part(denominator, y: -offset)
+        container.addChild(num)
+        container.addChild(den)
+
+        // The bar spans the wider of the two parts plus a little overhang.
+        let barWidth = max(num.frame.width, den.frame.width) + 6 * scale
+        let bar = SKShapeNode(rectOf: CGSize(width: barWidth, height: max(1.5, 2 * scale)),
+                              cornerRadius: scale)
+        bar.fillColor = .white
+        bar.strokeColor = .clear
+        bar.position = .zero
+        bar.zPosition = 1
+        container.addChild(bar)
+
+        return container
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -189,6 +265,7 @@ final class GamePlatform: SKNode {
         hasBeenTriggered = true
         styleAsNeutral(theme: theme)
         label.isHidden = true
+        fractionNode?.isHidden = true
         statusIcon.text = "✓"
         statusIcon.fontColor = GameColors.correctGreen
     }
@@ -203,6 +280,7 @@ final class GamePlatform: SKNode {
         shape.strokeColor = GameColors.disabledStroke
         label.fontColor = .white
         label.alpha = 0.85
+        fractionNode?.alpha = 0.85
         wrongMark.isHidden = false
     }
 
@@ -223,6 +301,7 @@ final class GamePlatform: SKNode {
         shape.strokeColor = GameColors.disabledStroke
         label.fontColor = .white
         label.alpha = 0.75
+        fractionNode?.alpha = 0.75
         alpha = 0.9
     }
 

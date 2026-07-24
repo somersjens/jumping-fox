@@ -47,6 +47,18 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
 
     var isSupermixMenu: Bool { Self.supermixMenu.contains(self) }
 
+    /// One-line description of which operations a Supermix button practises,
+    /// shown in the tap-again info pop-out under the "Types of problems" header.
+    var supermixInfoBody: String {
+        switch self {
+        case .superBasic:    return L("info.super.basic")
+        case .superTimes:    return L("info.super.times")
+        case .superFraction: return L("info.super.fraction")
+        case .superAll:      return L("info.super.all")
+        default:             return ""
+        }
+    }
+
     var isMix: Bool {
         switch self {
         case .addition, .subtraction, .tables, .fractions, .percentages: return false

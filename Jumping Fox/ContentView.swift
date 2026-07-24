@@ -906,11 +906,15 @@ struct ContentView: View {
             ForEach(ChallengeCategory.supermixMenu) { menuCategory in
                 let isSelected = supermixCategory == menuCategory
                 Button {
-                    clearMaximumCountPreview()
-                    withAnimation(.snappy(duration: 0.2)) {
-                        supermixCategoryRaw = menuCategory.rawValue
+                    if isSelected {
+                        showInfoPopup(.superCategory(menuCategory), anchorKey: "super.\(menuCategory.rawValue)")
+                    } else {
+                        clearMaximumCountPreview()
+                        withAnimation(.snappy(duration: 0.2)) {
+                            supermixCategoryRaw = menuCategory.rawValue
+                        }
+                        triggerCharacterJump(big: false)
                     }
-                    if !isSelected { triggerCharacterJump(big: false) }
                 } label: {
                     supermixLabel(menuCategory)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
@@ -920,6 +924,7 @@ struct ContentView: View {
                         .frame(height: isPad ? 76 : 42)
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                        .reportAnchor("super.\(menuCategory.rawValue)")
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("menu.accessibility.chooseMode \(menuCategory.symbol)")
@@ -927,16 +932,56 @@ struct ContentView: View {
         }
     }
 
-    /// The "%" glyph reads visually heavier than +, −, × and ÷ at the same
-    /// point size, so it renders a size smaller to match.
-    private func supermixLabel(_ category: ChallengeCategory) -> Text {
-        let font = Font.system(size: isPad ? 26 : 19, weight: .bold)
-        guard category.symbol.hasSuffix("%") else {
-            return Text(category.symbol).font(font)
+    /// The five operators a Supermix button can show, in their fixed order.
+    private static let supermixOperators = ["+", "−", "×", "÷", "%"]
+
+    /// How many of `supermixOperators`, from the start, this button shows.
+    private func supermixOperatorCount(_ category: ChallengeCategory) -> Int {
+        switch category {
+        case .superBasic: return 2
+        case .superTimes: return 3
+        case .superFraction: return 4
+        case .superAll: return 5
+        default: return 0
         }
-        let percentFont = Font.system(size: isPad ? 22 : 16, weight: .bold)
-        let base = String(category.symbol.dropLast())
-        return Text(base).font(font) + Text("%").font(percentFont)
+    }
+
+    /// The 2×2 grid's left column (superBasic over superFraction) tops out
+    /// at 4 operators, the right column (superTimes over superAll) at 5 —
+    /// each column reserves that many slots, so its own shorter button
+    /// centers within it rather than sizing to its own operator count.
+    private func supermixSlotCount(_ category: ChallengeCategory) -> Int {
+        switch category {
+        case .superBasic, .superFraction: return 4
+        default: return 5
+        }
+    }
+
+    /// Each column reserves a fixed number of slots (see `supermixSlotCount`);
+    /// a button with fewer operators than its column centers within them
+    /// (superBasic's "+ −" sits in slots 2–3 of 4), while the longest button
+    /// per column fills every slot. This keeps shared operators lined up
+    /// between the two buttons stacked in the same column. The "%" glyph
+    /// also reads visually heavier than the others at the same point size,
+    /// so it gets its own smaller size.
+    private func supermixLabel(_ category: ChallengeCategory) -> some View {
+        let font = Font.system(size: isPad ? 26 : 19, weight: .bold)
+        // jens: tweak these two numbers (iPad, iPhone) to resize the "%" glyph.
+        let percentFont = Font.system(size: isPad ? 21 : 15, weight: .bold)
+        let slotWidth: CGFloat = isPad ? 30 : 20
+        let activeCount = supermixOperatorCount(category)
+        let totalSlots = supermixSlotCount(category)
+        let offset = (totalSlots - activeCount) / 2
+        return HStack(spacing: 2) {
+            ForEach(0..<totalSlots, id: \.self) { slot in
+                let opIndex = slot - offset
+                let symbol = (opIndex >= 0 && opIndex < activeCount) ? Self.supermixOperators[opIndex] : ""
+                let isPercent = symbol == "%"
+                Text(symbol)
+                    .font(isPercent ? percentFont : font)
+                    .frame(width: isPercent ? slotWidth * 0.8 : slotWidth)
+            }
+        }
     }
 
     private var helperModeRow: some View {
@@ -1231,6 +1276,7 @@ struct InfoPopup: Identifiable {
     enum Kind: Equatable {
         case filter(MenuFilter)
         case mode(PracticeMode)
+        case superCategory(ChallengeCategory)
     }
 
     let kind: Kind
@@ -1238,24 +1284,26 @@ struct InfoPopup: Identifiable {
 
     var id: String {
         switch kind {
-        case .filter(let f): return "filter.\(f.rawValue)"
-        case .mode(let m):   return "mode.\(m.rawValue)"
+        case .filter(let f):        return "filter.\(f.rawValue)"
+        case .mode(let m):          return "mode.\(m.rawValue)"
+        case .superCategory(let c): return "super.\(c.rawValue)"
         }
     }
 
     /// The grouping label ("Types of problems" / "Order").
     var header: String {
         switch kind {
-        case .filter: return L("info.filter.header")
-        case .mode:   return L("info.mode.header")
+        case .filter, .superCategory: return L("info.filter.header")
+        case .mode:                   return L("info.mode.header")
         }
     }
 
     /// The one-line description of the specific selection.
     var body: String {
         switch kind {
-        case .filter(let f): return f.infoBody
-        case .mode(let m):   return m.infoBody
+        case .filter(let f):        return f.infoBody
+        case .mode(let m):          return m.infoBody
+        case .superCategory(let c): return c.supermixInfoBody
         }
     }
 }
