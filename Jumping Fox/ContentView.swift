@@ -199,6 +199,12 @@ struct ContentView: View {
     // Vertical scale of the character, anchored at its base, so the spring can
     // squash down before launch and stretch on the way up. 1 = resting.
     @State private var characterSquash: CGFloat = 1
+    // A jump is a single, non-interruptible sequence. A selection made while
+    // it is airborne is queued as a celebratory flip-jump after landing,
+    // rather than fighting the current offset animation.
+    @State private var isCharacterJumping = false
+    @State private var pendingCharacterFlips: [Bool] = []
+    @State private var characterJumpRotation: Double = 0
     @State private var maximumCountPreview: Int?
     @State private var maximumCountPreviewLevelID: String?
     @State private var secondMaximumCountPreview: Int?
@@ -408,13 +414,33 @@ struct ContentView: View {
     /// A category switch (+ → −) gets a big hop whose bottom reaches halfway up
     /// the box; a subcategory switch (Reeks → Hussel) gets a smaller quarter hop.
     private func triggerCharacterJump(big: Bool) {
+        // Do not restart an in-flight animation: that was the source of the
+        // visible hitch. Keep a small, bounded queue so rapid tapping can never
+        // create an unbounded pile of animation closures.
+        guard !isCharacterJumping else {
+            if pendingCharacterFlips.count < 3 {
+                pendingCharacterFlips.append(big)
+            }
+            return
+        }
+
+        performCharacterJump(big: big, flips: false)
+    }
+
+    private func performCharacterJump(big: Bool, flips: Bool) {
+        isCharacterJumping = true
+
         let box: CGFloat = isPad ? 118 : 68
-        let peak = box * (big ? 0.5 : 0.25)
+        // A queued salto is deliberately more airborne than an ordinary hop.
+        let peak = box * (big ? 0.5 : 0.25) * (flips ? 1.34 : 1)
         let squash: CGFloat = big ? 0.70 : 0.80   // spring compressed before launch
         let stretch: CGFloat = big ? 1.12 : 1.07  // body elongated while rising
         let dip = box * 0.03                       // small crouch downwards
         let crouch = big ? 0.22 : 0.18
         let rise = big ? 0.18 : 0.14
+        let ordinaryLandingSettle = big ? 0.72 : 0.60
+        let flipHalfFlight = big ? 0.28 : 0.25
+        let flipLandingSettle = 0.50
 
         // 1. Anticipation: the spring compresses and the character dips down.
         // A longer ease-in-out makes the wind-up read as a smooth crouch.
@@ -422,21 +448,97 @@ struct ContentView: View {
             characterSquash = squash
             characterJumpOffset = dip
         }
-        // 2. Launch: it springs up and stretches out.
+        // 2. Launch: an ordinary jump keeps its established springy motion.
+        // A salto uses two equal flight halves so the turn, apex and touchdown
+        // stay synchronised as one movement.
         DispatchQueue.main.asyncAfter(deadline: .now() + crouch) {
-            withAnimation(.easeOut(duration: rise)) {
-                characterJumpOffset = -peak
-                characterSquash = stretch
+            if flips {
+                withAnimation(.easeOut(duration: flipHalfFlight)) {
+                    characterJumpOffset = -peak
+                    characterSquash = 1.04
+                }
+                // Linear rotation is important here: 180° coincides with the
+                // apex and 360° with touchdown.
+                withAnimation(.linear(duration: flipHalfFlight * 2)) {
+                    characterJumpRotation = 360
+                }
+            } else {
+                withAnimation(.easeOut(duration: rise)) {
+                    characterJumpOffset = -peak
+                    characterSquash = stretch
+                }
             }
         }
-        // 3. Landing: falls back with an under-damped spring, so the scale
-        // overshoots to a brief squash on impact before settling to rest.
-        DispatchQueue.main.asyncAfter(deadline: .now() + crouch + rise) {
-            withAnimation(.spring(response: big ? 0.38 : 0.30, dampingFraction: 0.5)) {
-                characterJumpOffset = 0
-                characterSquash = 1
+
+        if flips {
+            // Descend during the second half of the turn. The circular offset
+            // also returns to zero at 360°, so every transform reaches the
+            // landing point together.
+            DispatchQueue.main.asyncAfter(deadline: .now() + crouch + flipHalfFlight) {
+                withAnimation(.easeIn(duration: flipHalfFlight)) {
+                    characterJumpOffset = 0
+                    characterSquash = 0.84
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + crouch + flipHalfFlight * 2) {
+                withAnimation(.spring(response: 0.28, dampingFraction: 0.58)) {
+                    characterJumpOffset = 0
+                    characterSquash = 1
+                }
+            }
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + crouch + flipHalfFlight * 2 + flipLandingSettle
+            ) {
+                completeCharacterLanding()
+            }
+        } else {
+            // Ordinary landing: falls back with an under-damped spring, so the
+            // scale briefly squashes on impact before settling to rest.
+            DispatchQueue.main.asyncAfter(deadline: .now() + crouch + rise) {
+                withAnimation(.spring(response: big ? 0.38 : 0.30, dampingFraction: 0.5)) {
+                    characterJumpOffset = 0
+                    characterSquash = 1
+                }
+            }
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + crouch + rise + ordinaryLandingSettle
+            ) {
+                completeCharacterLanding()
             }
         }
+    }
+
+    /// Pins the character to its exact resting pose after the visual spring has
+    /// fully settled, then holds that pose briefly. This small beat makes every
+    /// landing readable before a queued salto starts winding up.
+    private func completeCharacterLanding() {
+        var transaction = Transaction()
+        transaction.animation = nil
+        withTransaction(transaction) {
+            characterJumpOffset = 0
+            characterSquash = 1
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+            finishCharacterJump()
+        }
+    }
+
+    /// Ends one fully settled jump and starts at most one queued successor.
+    /// Keeping this hand-off serial means offset, scale and rotation animations
+    /// can never overlap, even under very rapid tapping.
+    private func finishCharacterJump() {
+        isCharacterJumping = false
+        guard !pendingCharacterFlips.isEmpty else { return }
+
+        let flipIsBig = pendingCharacterFlips.removeFirst()
+        // 360° and 0° render identically; resetting without animation prevents
+        // the angle from growing indefinitely between queued flips.
+        var transaction = Transaction()
+        transaction.animation = nil
+        withTransaction(transaction) {
+            characterJumpRotation = 0
+        }
+        performCharacterJump(big: flipIsBig, flips: true)
     }
 
     // MARK: Combined top menu
@@ -456,6 +558,13 @@ struct ContentView: View {
                     showPremium = true
                 } label: {
                     let box: CGFloat = isPad ? 118 : 68
+                    let angle = characterJumpRotation * .pi / 180
+                    let orbitRadius = box * 0.105
+                    // Start and end at zero. Over one full 2D turn the mascot
+                    // travels a compact loop around a point above its normal
+                    // flight arc: right → up → left → down → home.
+                    let orbitX = CGFloat(sin(angle)) * orbitRadius
+                    let orbitY = CGFloat(cos(angle) - 1) * orbitRadius
                     ZStack {
                         // The fixed box: background sky plus its white outline.
                         // Neither moves or resizes; a little sky shows through
@@ -478,7 +587,8 @@ struct ContentView: View {
                             .frame(width: box, height: box)
                             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .scaleEffect(x: 1, y: characterSquash, anchor: .bottom)
-                            .offset(y: characterJumpOffset)
+                            .rotationEffect(.degrees(characterJumpRotation))
+                            .offset(x: orbitX, y: characterJumpOffset + orbitY)
                     }
                     .frame(width: box, height: box)
                     .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
@@ -606,7 +716,9 @@ struct ContentView: View {
                 showInfoPopup(.filter(filter), anchorKey: "filter.\(filter.rawValue)")
             } else {
                 clearMaximumCountPreview()
-                withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = filter.rawValue }
+                // Keep selection animation local to the button below. A global
+                // menu transaction can retarget an in-flight character jump.
+                menuFilterRaw = filter.rawValue
                 triggerCharacterJump(big: true)
             }
         } label: {
@@ -616,6 +728,7 @@ struct ContentView: View {
             .background(isSelected ? character.deepColor : .white.opacity(0.7), in: Circle())
             .overlay(Circle().stroke(character.deepColor.opacity(isSelected ? 0 : 0.25), lineWidth: 1))
             .reportAnchor("filter.\(filter.rawValue)")
+            .animation(.snappy(duration: 0.2), value: isSelected)
         }
         .buttonStyle(.plain)
         .highPriorityGesture(
@@ -849,15 +962,17 @@ struct ContentView: View {
         case "filter":
             guard let raw = Int(value), raw != menuFilterRaw else { return }
             clearMaximumCountPreview()
-            withAnimation(.snappy(duration: 0.2)) { menuFilterRaw = raw }
+            menuFilterRaw = raw
+            triggerCharacterJump(big: true)
         case "mode":
             guard value != menuModeRaw else { return }
             clearMaximumCountPreview()
-            withAnimation(.snappy(duration: 0.2)) { menuModeRaw = value }
+            menuModeRaw = value
+            triggerCharacterJump(big: false)
         case "super":
             guard value != supermixCategoryRaw else { return }
             clearMaximumCountPreview()
-            withAnimation(.snappy(duration: 0.2)) { supermixCategoryRaw = value }
+            supermixCategoryRaw = value
             triggerCharacterJump(big: false)
         default:
             break
@@ -921,9 +1036,7 @@ struct ContentView: View {
                         showInfoPopup(.mode(mode, selectedFilter.standard), anchorKey: "mode.\(mode.rawValue)")
                     } else {
                         clearMaximumCountPreview()
-                        withAnimation(.snappy(duration: 0.2)) {
-                            menuModeRaw = mode.rawValue
-                        }
+                        menuModeRaw = mode.rawValue
                         triggerCharacterJump(big: false)
                     }
                 } label: {
@@ -938,6 +1051,7 @@ struct ContentView: View {
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                         .reportAnchor("mode.\(mode.rawValue)")
+                        .animation(.snappy(duration: 0.2), value: isSelected)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("menu.accessibility.chooseMode \(mode.title(for: selectedFilter.standard))")
@@ -956,9 +1070,7 @@ struct ContentView: View {
                         showInfoPopup(.superCategory(menuCategory), anchorKey: "super.\(menuCategory.rawValue)")
                     } else {
                         clearMaximumCountPreview()
-                        withAnimation(.snappy(duration: 0.2)) {
-                            supermixCategoryRaw = menuCategory.rawValue
-                        }
+                        supermixCategoryRaw = menuCategory.rawValue
                         triggerCharacterJump(big: false)
                     }
                 } label: {
@@ -971,6 +1083,7 @@ struct ContentView: View {
                         .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
                         .reportAnchor("super.\(menuCategory.rawValue)")
+                        .animation(.snappy(duration: 0.2), value: isSelected)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("menu.accessibility.chooseMode \(menuCategory.symbol)")

@@ -135,6 +135,9 @@ final class GameState: ObservableObject {
     /// doubled (and a collected ×3 pickup therefore pays 6). Ends on the first
     /// wrong answer. Never turns on during the tutorial.
     @Published private(set) var isStreakActive = false
+    /// Brief visual-only handoff while ×3 joins ×2 in the HUD and both coins
+    /// jump to the trophy. Scoring and streak state never depend on this flag.
+    @Published private(set) var isStreakComboAnimating = false
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
@@ -250,12 +253,17 @@ final class GameState: ObservableObject {
     private func resetStreak() {
         correctStreak = 0
         isStreakActive = false
+        isStreakComboAnimating = false
     }
 
     /// Arms the ×3 pickup for the next answer.
     func armTripler() {
         guard !isGameOver, !isScoreLocked else { return }
         triplerArmed = true
+    }
+
+    func setStreakComboAnimating(_ animating: Bool) {
+        isStreakComboAnimating = animating
     }
 
     /// The −1 hazard: touching it costs one trophy (never below zero).
@@ -377,6 +385,7 @@ final class GameState: ObservableObject {
         triplerArmed = false
         correctStreak = 0
         isStreakActive = false
+        isStreakComboAnimating = false
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false

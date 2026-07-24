@@ -42,6 +42,7 @@ enum GameHUDMetrics {
 /// layout maths in the scene.
 private enum GameHUDAnchor: Hashable {
     case trophy
+    case streakCoin
     case heart(Int)
 }
 
@@ -240,6 +241,10 @@ struct GameView: View {
                     .onAppear { updateSceneHUDTargets(anchors, in: proxy) }
                     .onChange(of: state.score) { _ in updateSceneHUDTargets(anchors, in: proxy) }
                     .onChange(of: state.livesHalves) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.isStreakActive) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.isStreakComboAnimating) { _ in
+                        updateSceneHUDTargets(anchors, in: proxy)
+                    }
                     .onChange(of: proxy.size) { _ in updateSceneHUDTargets(anchors, in: proxy) }
             }
         }
@@ -325,10 +330,12 @@ struct GameView: View {
             proxy[anchor].offsetBy(dx: globalOrigin.x, dy: globalOrigin.y)
         }
         let trophy = anchors[.trophy].map { globalRect(for: $0) }
+        let streakCoin = anchors[.streakCoin].map { globalRect(for: $0) }
         let hearts = Dictionary(uniqueKeysWithValues: (0..<3).compactMap { index in
             anchors[.heart(index)].map { (index, globalRect(for: $0)) }
         })
-        scene.setHUDTargets(trophy: trophy, hearts: hearts, viewSize: proxy.size)
+        scene.setHUDTargets(trophy: trophy, streakCoin: streakCoin,
+                            hearts: hearts, viewSize: proxy.size)
     }
 
     // MARK: Mode intro card
@@ -719,7 +726,18 @@ struct GameView: View {
                 // the 5-in-a-row ×2 bonus is live, and pops away on the first
                 // wrong answer that ends the streak.
                 if state.isStreakActive {
-                    StreakCoin(fill: theme.deepColor, size: GameHUDMetrics.assetSize)
+                    StreakCoin(ink: theme.tintColor,
+                               coinFill: theme.deepColor,
+                               size: GameHUDMetrics.assetSize)
+                        .anchorPreference(key: GameHUDAnchors.self, value: .bounds) {
+                            [.streakCoin: $0]
+                        }
+                        // Keep its layout slot and anchor alive during the
+                        // SpriteKit combo, so neither the trophy nor the exact
+                        // ×2 destination shifts while the real coin is hidden.
+                        .opacity(state.isStreakComboAnimating ? 0 : 1)
+                        .animation(.easeOut(duration: 0.16),
+                                   value: state.isStreakComboAnimating)
                         .transition(.asymmetric(
                             insertion: .scale(scale: 0.15).combined(with: .opacity),
                             removal: .streakCoinBreak))
@@ -1444,7 +1462,8 @@ struct GameView: View {
 /// gently for as long as the streak lasts — echoing the in-game ×3 pickup's
 /// look so the reward reads as "another coin, now in your pocket".
 private struct StreakCoin: View {
-    let fill: Color
+    let ink: Color
+    let coinFill: Color
     let size: CGFloat
 
     @State private var spin = -170.0
@@ -1455,18 +1474,17 @@ private struct StreakCoin: View {
         ZStack {
             // Arrival glint: a ring that expands past the coin and fades once.
             Circle()
-                .stroke(fill.opacity(0.6), lineWidth: 2)
+                .stroke(ink.opacity(0.55), lineWidth: 2)
                 .frame(width: size, height: size)
                 .scaleEffect(glint ? 2.1 : 0.7)
                 .opacity(glint ? 0 : 0.9)
 
             Circle()
-                .fill(fill)
-                .overlay(Circle().strokeBorder(.white, lineWidth: 2))
+                .fill(coinFill)
                 .overlay(
                     Text(verbatim: "×2")
                         .font(.system(size: size * 0.5, weight: .heavy, design: .rounded))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(ink)
                 )
                 .frame(width: size, height: size)
                 .rotation3DEffect(.degrees(spin), axis: (x: 0, y: 1, z: 0))

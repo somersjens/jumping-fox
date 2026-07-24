@@ -387,21 +387,24 @@ final class GamePlatform: SKNode {
         case .eliminator:
             return makeStarIcon(theme: theme, radius: 12)
         case .tripler:
-            return makeBubbleIcon(text: "×3", fill: theme.skPrimary)
+            return makeBubbleIcon(text: "×3", fill: theme.skDeep,
+                                  ink: theme.skNeutral, stroke: .clear)
         case .minusOne:
             return makeBubbleIcon(text: "−1", fill: GameColors.wrongRed)
         }
     }
 
-    private static func makeBubbleIcon(text: String, fill: SKColor) -> SKNode {
+    private static func makeBubbleIcon(text: String, fill: SKColor,
+                                       ink: SKColor = .white,
+                                       stroke: SKColor = .white) -> SKNode {
         let circle = SKShapeNode(circleOfRadius: 14)
         circle.fillColor = fill
-        circle.strokeColor = .white
+        circle.strokeColor = stroke
         circle.lineWidth = 2
         let label = SKLabelNode(fontNamed: "AvenirNext-Heavy")
         label.text = text
         label.fontSize = 14
-        label.fontColor = .white
+        label.fontColor = ink
         label.verticalAlignmentMode = .center
         label.zPosition = 1
         circle.addChild(label)
@@ -2044,6 +2047,31 @@ final class GameScene: SKScene {
         player.zRotation += (targetRotation - player.zRotation) * min(1, dt * 10)
     }
 
+    /// One purely visual 2D salto for the bounce that activates the five-answer
+    /// streak. Only the artwork rotates: the player node, velocity, collision
+    /// box, jump height and steering remain completely untouched.
+    private func performStreakSalto() {
+        let actionKey = "streak-salto"
+        guard playerSprite.action(forKey: actionKey) == nil else { return }
+
+        // Finish around the apex. A platform landing is only checked while
+        // descending, so the sprite is guaranteed to be back at rest before
+        // any following bounce can begin.
+        let ascentDuration = TimeInterval(bounceVelocity / -gravity)
+        let direction: CGFloat = velocityX >= 0 ? -1 : 1
+        let turn = SKAction.rotate(byAngle: direction * .pi * 2,
+                                   duration: ascentDuration * 1.08)
+        turn.timingMode = .easeInEaseOut
+        playerSprite.run(.sequence([
+            turn,
+            .run { [weak self] in
+                // 2π and 0 render identically; normalising keeps every later
+                // jump's ordinary appearance calculations clean.
+                self?.playerSprite.zRotation = 0
+            }
+        ]), withKey: actionKey)
+    }
+
     /// Spring compress-then-extend on every bounce (anticipation + lift-off).
     private func bounceSpring() {
         // Every character's artwork includes its own coil, so the separate
@@ -2110,7 +2138,11 @@ final class GameScene: SKScene {
         haptic(success: true)
         PlaytimeTracker.shared.registerInteraction()
         let wasTripled = state.triplerArmed
+        let wasStreakActive = state.isStreakActive
         state.answeredCorrectly()
+        if !wasStreakActive && state.isStreakActive {
+            performStreakSalto()
+        }
         // The star lesson ends only after this remaining good answer is
         // used; from this point ordinary answer groups may resume.
         awaitingCorrectAfterTutorialStar = false
@@ -2468,6 +2500,7 @@ final class GameScene: SKScene {
     /// their scene-coordinate centres so flight effects never drift when the
     /// HUD asset size, score width or device layout changes.
     private var renderedTrophyHUDPoint: CGPoint?
+    private var renderedStreakCoinHUDPoint: CGPoint?
     private var renderedHeartHUDPoints: [Int: CGPoint] = [:]
     /// A fallback point is fine for ordinary effects, but the first tutorial
     /// trophy must wait for a window-backed conversion so its lesson clearly
@@ -2478,7 +2511,8 @@ final class GameScene: SKScene {
     /// `SKScene.convertPoint(fromView:)` handles the SKView's actual bounds,
     /// scale and coordinate flip, which is more accurate than recreating
     /// those rules from a SwiftUI GeometryReader.
-    func setHUDTargets(trophy: CGRect?, hearts: [Int: CGRect], viewSize: CGSize) {
+    func setHUDTargets(trophy: CGRect?, streakCoin: CGRect?,
+                       hearts: [Int: CGRect], viewSize: CGSize) {
         guard viewSize.width > 0, viewSize.height > 0 else { return }
         var usedWindowCoordinates = false
         func scenePoint(for rect: CGRect) -> CGPoint {
@@ -2495,6 +2529,11 @@ final class GameScene: SKScene {
                            y: size.height - rect.midY * size.height / viewSize.height)
         }
         renderedTrophyHUDPoint = trophy.map(scenePoint)
+        // Preserve the last exact ×2 location while SwiftUI temporarily hides
+        // the real coin for the combined ×3 → ×2 → trophy animation.
+        if let streakCoin {
+            renderedStreakCoinHUDPoint = scenePoint(for: streakCoin)
+        }
         hasResolvedTrophyHUDTarget = trophy != nil && usedWindowCoordinates
         renderedHeartHUDPoints = hearts.mapValues(scenePoint)
     }
@@ -2532,6 +2571,14 @@ final class GameScene: SKScene {
         let textHalfWidth = digits * 7.5
         let trophyOffset = textHalfWidth + 3 + GameHUDMetrics.assetSize / 2
         return CGPoint(x: size.width / 2 + trophyOffset, y: hudRowY)
+    }
+
+    /// Centre of the ×2 streak coin. The fallback mirrors the six-point HUD
+    /// spacing and common 28-point asset canvas used by SwiftUI.
+    private var streakCoinHUDPoint: CGPoint {
+        if let renderedStreakCoinHUDPoint { return renderedStreakCoinHUDPoint }
+        return CGPoint(x: trophyHUDPoint.x + GameHUDMetrics.assetSize + 6,
+                       y: trophyHUDPoint.y)
     }
 
     /// A smooth arc from a pickup to its HUD element: quadratic curve that
@@ -2776,13 +2823,13 @@ final class GameScene: SKScene {
         ])))
         aura.addChild(glow)
         let badge = SKShapeNode(circleOfRadius: 15)
-        badge.fillColor = theme.skPrimary
-        badge.strokeColor = .white
-        badge.lineWidth = 2
+        badge.fillColor = theme.skDeep
+        badge.strokeColor = .clear
+        badge.lineWidth = 0
         let badgeLabel = SKLabelNode(fontNamed: "AvenirNext-Heavy")
         badgeLabel.text = "×3"
         badgeLabel.fontSize = 14
-        badgeLabel.fontColor = .white
+        badgeLabel.fontColor = theme.skNeutral
         badgeLabel.verticalAlignmentMode = .center
         badgeLabel.zPosition = 1
         badge.addChild(badgeLabel)
@@ -2797,20 +2844,25 @@ final class GameScene: SKScene {
         triplerAura = aura
     }
 
-    /// One reusable ×3 bubble node (same look as the armed badge).
-    private func makeTriplerBubble(radius: CGFloat) -> SKShapeNode {
-        let bubble = SKShapeNode(circleOfRadius: radius)
-        bubble.fillColor = theme.skPrimary
-        bubble.strokeColor = .white
-        bubble.lineWidth = 2
+    /// One reusable multiplier coin with a solid deep-theme outside and a
+    /// light theme symbol, without the old white surround.
+    private func makeMultiplierCoin(_ text: String, radius: CGFloat) -> SKShapeNode {
+        let coin = SKShapeNode(circleOfRadius: radius)
+        coin.fillColor = theme.skDeep
+        coin.strokeColor = .clear
+        coin.lineWidth = 0
         let label = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        label.text = "×3"
+        label.text = text
         label.fontSize = radius * 0.95
-        label.fontColor = .white
+        label.fontColor = theme.skNeutral
         label.verticalAlignmentMode = .center
         label.zPosition = 1
-        bubble.addChild(label)
-        return bubble
+        coin.addChild(label)
+        return coin
+    }
+
+    private func makeTriplerBubble(radius: CGFloat) -> SKShapeNode {
+        makeMultiplierCoin("×3", radius: radius)
     }
 
     /// On the tripled answer the ×3 bubble detaches and arcs to the trophy
@@ -2820,6 +2872,15 @@ final class GameScene: SKScene {
         triplerAura?.removeFromParent()
         triplerAura = nil
         let origin = CGPoint(x: player.position.x, y: player.position.y + 46)
+        if state.isStreakActive {
+            // Let SwiftUI finish the score-number layout first. Its reported
+            // trophy and ×2 anchors can move when the score gains a digit.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) { [weak self] in
+                self?.consumeStreakTriplerCombo(from: origin)
+            }
+            return
+        }
+
         let target = trophyHUDPoint
         let bubble = makeTriplerBubble(radius: 16)
         bubble.position = origin
@@ -2834,6 +2895,81 @@ final class GameScene: SKScene {
                 self.arrivalPing(at: target, color: self.theme.skPrimary)
             },
             .group([.scale(to: 0.15, duration: 0.15), .fadeOut(withDuration: 0.15)]),
+            .removeFromParent()
+        ]))
+    }
+
+    /// With ×2 already active, ×3 first joins it at the exact rendered HUD
+    /// location. The two flat coins then hop to the trophy in quick succession.
+    /// This is presentation only; the six trophies were already awarded by
+    /// GameState and neither physics nor scoring waits on these actions.
+    private func consumeStreakTriplerCombo(from origin: CGPoint) {
+        let staging = streakCoinHUDPoint
+        let target = trophyHUDPoint
+        let hudRadius = GameHUDMetrics.assetSize / 2
+        let tripler = makeMultiplierCoin("×3", radius: 16)
+        let doubler = makeMultiplierCoin("×2", radius: hudRadius)
+        let triplerHUDScale = GameHUDMetrics.assetSize / 32
+
+        state.setStreakComboAnimating(true)
+
+        doubler.position = staging
+        doubler.zPosition = 50
+        addChild(doubler)
+
+        tripler.position = origin
+        tripler.zPosition = 51
+        addChild(tripler)
+
+        // ×3 lands directly on ×2, then takes the first short hop.
+        tripler.run(.sequence([
+            .group([
+                curvedFlight(from: origin, to: staging, duration: 0.48),
+                .sequence([
+                    .scale(to: triplerHUDScale * 1.12, duration: 0.20),
+                    .scale(to: triplerHUDScale, duration: 0.28)
+                ])
+            ]),
+            .run { [weak self] in
+                guard let self else { return }
+                self.arrivalPing(at: staging, color: self.theme.skDeep)
+            },
+            .wait(forDuration: 0.08),
+            .group([
+                curvedFlight(from: staging, to: target, duration: 0.30),
+                .sequence([
+                    .scale(to: triplerHUDScale * 1.12, duration: 0.12),
+                    .scale(to: triplerHUDScale * 0.55, duration: 0.18)
+                ])
+            ]),
+            .run { [weak self] in
+                guard let self else { return }
+                self.arrivalPing(at: target, color: self.theme.skDeep)
+            },
+            .group([.scale(to: 0.12, duration: 0.12),
+                    .fadeOut(withDuration: 0.12)]),
+            .removeFromParent()
+        ]))
+
+        // ×2 follows a fraction later, making the multiplication order legible.
+        doubler.run(.sequence([
+            .wait(forDuration: 0.68),
+            .group([
+                curvedFlight(from: staging, to: target, duration: 0.30),
+                .sequence([
+                    .scale(to: 1.12, duration: 0.12),
+                    .scale(to: 0.55, duration: 0.18)
+                ])
+            ]),
+            .run { [weak self] in
+                guard let self else { return }
+                self.arrivalPing(at: target, color: self.theme.skDeep)
+            },
+            .group([.scale(to: 0.12, duration: 0.12),
+                    .fadeOut(withDuration: 0.12)]),
+            .run { [weak self] in
+                self?.state.setStreakComboAnimating(false)
+            },
             .removeFromParent()
         ]))
     }
