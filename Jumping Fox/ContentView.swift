@@ -827,7 +827,7 @@ struct ContentView: View {
                         TrophyCountText(from: scoreCelebration?.totalStart ?? totalTrophies,
                                          to: totalTrophies,
                                          celebrationStartedAt: scoreCelebration?.startedAt,
-                                         suffix: answerHelper ? " *" : "",
+                                         suffix: answerHelper ? "*" : "",
                                          duration: 0.95)
                     } icon: {
                         HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
@@ -864,7 +864,7 @@ struct ContentView: View {
                         TrophyCountText(from: scoreCelebration?.categoryStart ?? categoryTrophies,
                                          to: categoryTrophies,
                                          celebrationStartedAt: scoreCelebration?.startedAt,
-                                         suffix: answerHelper ? " *" : "",
+                                         suffix: answerHelper ? "*" : "",
                                          duration: 0.95)
                     } icon: {
                         HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
@@ -2559,7 +2559,7 @@ struct LevelCardView: View {
             + levelScoreCountDuration * progressWhenFinalValueAppears
     }
     private var helperMarker: String {
-        showsHelperMarker && helperBest > best ? " *" : ""
+        showsHelperMarker && helperBest > best ? "*" : ""
     }
 
     /// A lone "1" reads right-of-centre because of its top flag, so its stem
@@ -2669,28 +2669,42 @@ struct LevelCardView: View {
                     .font(.system(size: 10 * cardScale, weight: .bold))
                     .foregroundStyle(theme.deepColor.opacity(0.75))
             }
-        } else {
-            HStack(spacing: 4 * cardScale) {
-                trophyChip
-                if isPaused {
-                    Rectangle()
-                        .fill(theme.deepColor.opacity(0.25))
-                        .frame(width: 1, height: 11 * cardScale)
-                    HStack(spacing: 2 * cardScale) {
-                        Image(systemName: "pause.fill").font(.system(size: 8 * cardScale))
-                        Text(verbatim: "\(displayPaused)")
-                            .font(.system(size: 11 * cardScale, weight: .bold))
-                    }
-                    .foregroundStyle(theme.deepColor.opacity(0.7))
-                }
+        } else if isPaused {
+            // Measure both rows at their natural width. Without `fixedSize`,
+            // SwiftUI can report the regular row as fitting only after it has
+            // already shortened the trophy count to an ellipsis.
+            ViewThatFits(in: .horizontal) {
+                pausedScoreLine(isCompact: false)
+                    .fixedSize(horizontal: true, vertical: false)
+                pausedScoreLine(isCompact: true)
+                    .fixedSize(horizontal: true, vertical: false)
             }
+        } else {
+            trophyChip()
         }
     }
 
-    private var trophyChip: some View {
-        return HStack(spacing: 3 * cardScale) {
+    private func pausedScoreLine(isCompact: Bool) -> some View {
+        let contentScale: CGFloat = isCompact ? 0.88 : 1
+        return HStack(spacing: (isCompact ? 2 : 4) * cardScale) {
+            trophyChip(contentScale: contentScale)
+            Rectangle()
+                .fill(theme.deepColor.opacity(0.25))
+                .frame(width: 1, height: 11 * cardScale * contentScale)
+            HStack(spacing: (isCompact ? 1 : 2) * cardScale) {
+                Image(systemName: "pause.fill")
+                    .font(.system(size: 8 * cardScale * contentScale))
+                Text(verbatim: "\(displayPaused)")
+                    .font(.system(size: 11 * cardScale * contentScale, weight: .bold))
+            }
+            .foregroundStyle(theme.deepColor.opacity(0.7))
+        }
+    }
+
+    private func trophyChip(contentScale: CGFloat = 1) -> some View {
+        HStack(spacing: (contentScale < 1 ? 1 : 3) * cardScale) {
             Image(systemName: "trophy.fill")
-                .font(.system(size: 9 * cardScale))
+                .font(.system(size: 9 * cardScale * contentScale))
                 .scaleEffect(trophyPulse ? 1.48 : 1)
                 .rotationEffect(.degrees(trophyPulse ? -12 : 0))
             TrophyCountText(from: celebrationDisplayStart,
@@ -2700,7 +2714,7 @@ struct LevelCardView: View {
                              suffix: helperMarker,
                              delay: levelScoreCountDelay,
                              duration: levelScoreCountDuration)
-                .font(.system(size: 12 * cardScale, weight: .bold))
+                .font(.system(size: 12 * cardScale * contentScale, weight: .bold))
         }
         .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
     }

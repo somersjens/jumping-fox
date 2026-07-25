@@ -387,10 +387,9 @@ final class GamePlatform: SKNode {
         case .eliminator:
             return makeStarIcon(theme: theme, radius: 12)
         case .tripler:
-            // Keep the ×3's theme colour, but give the pickup the same light
-            // outline and symbol treatment as the −1 hazard. The HUD ×2 uses
-            // its own SwiftUI view and deliberately does not inherit this.
-            return makeBubbleIcon(text: "×3", fill: theme.skDeep,
+            // Match the light theme colour used by active answer stones. The
+            // HUD ×2 uses its own SwiftUI view and deliberately stays unchanged.
+            return makeBubbleIcon(text: "×3", fill: theme.skPrimary,
                                   ink: .white, stroke: .white)
         case .minusOne:
             return makeBubbleIcon(text: "−1", fill: GameColors.wrongRed)
@@ -2835,17 +2834,7 @@ final class GameScene: SKScene {
             .scale(to: 1.0, duration: 0.5)
         ])))
         aura.addChild(glow)
-        let badge = SKShapeNode(circleOfRadius: 15)
-        badge.fillColor = theme.skDeep
-        badge.strokeColor = .clear
-        badge.lineWidth = 0
-        let badgeLabel = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        badgeLabel.text = "×3"
-        badgeLabel.fontSize = 14
-        badgeLabel.fontColor = theme.skNeutral
-        badgeLabel.verticalAlignmentMode = .center
-        badgeLabel.zPosition = 1
-        badge.addChild(badgeLabel)
+        let badge = makeTriplerBubble(radius: 15)
         badge.position = CGPoint(x: 0, y: 60)
         badge.run(.repeatForever(.sequence([
             .scale(to: 1.15, duration: 0.35),
@@ -2857,8 +2846,8 @@ final class GameScene: SKScene {
         triplerAura = aura
     }
 
-    /// One reusable multiplier coin with a solid deep-theme outside and a
-    /// light theme symbol, without the old white surround.
+    /// The temporary ×2 coin used by the streak-combination animation.
+    /// Its styling stays identical to the permanent SwiftUI streak coin.
     private func makeMultiplierCoin(_ text: String, radius: CGFloat) -> SKShapeNode {
         let coin = SKShapeNode(circleOfRadius: radius)
         coin.fillColor = theme.skDeep
@@ -2875,7 +2864,18 @@ final class GameScene: SKScene {
     }
 
     private func makeTriplerBubble(radius: CGFloat) -> SKShapeNode {
-        makeMultiplierCoin("×3", radius: radius)
+        let coin = SKShapeNode(circleOfRadius: radius)
+        coin.fillColor = theme.skPrimary
+        coin.strokeColor = .white
+        coin.lineWidth = 2
+        let label = SKLabelNode(fontNamed: "AvenirNext-Heavy")
+        label.text = "×3"
+        label.fontSize = radius * 0.95
+        label.fontColor = .white
+        label.verticalAlignmentMode = .center
+        label.zPosition = 1
+        coin.addChild(label)
+        return coin
     }
 
     /// On the tripled answer the ×3 bubble detaches and arcs to the trophy
@@ -2920,7 +2920,7 @@ final class GameScene: SKScene {
         let staging = streakCoinHUDPoint
         let target = trophyHUDPoint
         let hudRadius = GameHUDMetrics.assetSize / 2
-        let tripler = makeMultiplierCoin("×3", radius: 16)
+        let tripler = makeTriplerBubble(radius: 16)
         let doubler = makeMultiplierCoin("×2", radius: hudRadius)
         let triplerHUDScale = GameHUDMetrics.assetSize / 32
 
@@ -2988,8 +2988,8 @@ final class GameScene: SKScene {
     }
 
     /// Once, on the first tutorial answer, a trophy flies from the exact
-    /// centre of the answered block to the score icon. It deliberately uses
-    /// the same flight, timing and arrival treatment as the ×3 reward.
+    /// centre of the answered block to the score icon. It uses the exact same
+    /// SF Symbol, weight, size and colour as the SwiftUI trophy in the HUD.
     private func flyTutorialTrophyToHUD(from origin: CGPoint) {
         // The first tutorial reward can happen immediately after the HUD is
         // shown. Wait for its real SwiftUI anchor rather than falling back to
@@ -3000,70 +3000,47 @@ final class GameScene: SKScene {
             }
             return
         }
-        let trophy = makeTutorialTrophyIcon(height: tileSize.height)
+        let trophy = makeTutorialTrophyIcon()
         trophy.position = origin
         trophy.zPosition = 50
+        trophy.setScale(0.45)
         addChild(trophy)
         trophy.run(.sequence([
-            .group([curvedFlight(from: origin, to: target, duration: 0.55),
-                    .sequence([.scale(to: 1.3, duration: 0.22),
-                               .scale(to: 0.75, duration: 0.33)])]),
-            .run { [weak self] in
-                guard let self else { return }
-                self.arrivalPing(at: target, color: self.theme.skPrimary)
-            },
-            .group([.scale(to: 0.15, duration: 0.15), .fadeOut(withDuration: 0.15)]),
+            .group([curvedFlight(from: origin, to: target, duration: 0.9),
+                    .scale(to: 1, duration: 0.9)]),
             .removeFromParent()
         ]))
     }
 
-    /// Small vector trophy, tinted with the active character theme. The
-    /// enclosing node is exactly as high as a regular answer block.
-    private func makeTutorialTrophyIcon(height: CGFloat) -> SKNode {
-        let trophy = SKNode()
-        let scale = height / 24
-        trophy.setScale(scale)
+    /// Rasterises the very same `trophy.fill` used by the SwiftUI HUD. Its
+    /// unscaled size is the final HUD size, so reaching scale 1 merges cleanly
+    /// into the trophy that is already visible at the destination.
+    private func makeTutorialTrophyIcon() -> SKSpriteNode {
+        let configuration = UIImage.SymbolConfiguration(
+            pointSize: GameHUDMetrics.assetSize,
+            weight: .regular
+        )
+        let symbol = UIImage(systemName: "trophy.fill", withConfiguration: configuration)!
 
-        let cupPath = CGMutablePath()
-        cupPath.move(to: CGPoint(x: -8, y: 11))
-        cupPath.addLine(to: CGPoint(x: 8, y: 11))
-        cupPath.addLine(to: CGPoint(x: 6, y: 1))
-        cupPath.addQuadCurve(to: CGPoint(x: 0, y: -4), control: CGPoint(x: 4, y: -3))
-        cupPath.addQuadCurve(to: CGPoint(x: -6, y: 1), control: CGPoint(x: -4, y: -3))
-        cupPath.closeSubpath()
-        let cup = SKShapeNode(path: cupPath)
-        cup.fillColor = theme.skPrimary
-        cup.strokeColor = .white
-        cup.lineWidth = 1.5
-        trophy.addChild(cup)
-
-        for direction: CGFloat in [-1, 1] {
-            let handlePath = CGMutablePath()
-            handlePath.move(to: CGPoint(x: direction * 7, y: 8))
-            handlePath.addQuadCurve(to: CGPoint(x: direction * 12, y: 2),
-                                    control: CGPoint(x: direction * 13, y: 8))
-            handlePath.addQuadCurve(to: CGPoint(x: direction * 7, y: 0),
-                                    control: CGPoint(x: direction * 11, y: -1))
-            let handle = SKShapeNode(path: handlePath)
-            handle.strokeColor = .white
-            handle.lineWidth = 1.5
-            handle.lineCap = .round
-            trophy.addChild(handle)
+        // `UIImage(systemName:)` is a template/symbol recipe rather than a
+        // colour-baked bitmap. Render its tinted variant into a new transparent
+        // bitmap before creating the SKTexture, so the colour survives without
+        // also filling the symbol's rectangular image bounds.
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = UIScreen.main.scale
+        format.opaque = false
+        let bounds = CGRect(origin: .zero, size: symbol.size)
+        let tintedSymbol = symbol.withTintColor(theme.skDeep, renderingMode: .alwaysOriginal)
+        let image = UIGraphicsImageRenderer(size: symbol.size, format: format).image { _ in
+            tintedSymbol.draw(in: bounds)
         }
 
-        let stem = SKShapeNode(rectOf: CGSize(width: 4, height: 5), cornerRadius: 1)
-        stem.fillColor = theme.skPrimary
-        stem.strokeColor = .white
-        stem.lineWidth = 1.2
-        stem.position.y = -6
-        trophy.addChild(stem)
-
-        let base = SKShapeNode(rectOf: CGSize(width: 12, height: 3), cornerRadius: 1.5)
-        base.fillColor = theme.skPrimary
-        base.strokeColor = .white
-        base.lineWidth = 1.2
-        base.position.y = -10
-        trophy.addChild(base)
+        let texture = SKTexture(image: image)
+        texture.filteringMode = .linear
+        let trophy = SKSpriteNode(texture: texture)
+        let aspectRatio = symbol.size.width / symbol.size.height
+        trophy.size = CGSize(width: GameHUDMetrics.assetSize * aspectRatio,
+                             height: GameHUDMetrics.assetSize)
         return trophy
     }
 
