@@ -398,8 +398,9 @@ struct GameView: View {
     private var introCard: some View {
         let info = ModeIntro.info(for: state.level)
         let featureCards = [
-            IntroFeature(icon: featureIcon, text: practiceDescription(info: info)),
-            IntroFeature(number: state.level.cardNumber, text: detailDescription(info: info)),
+            // Row 1 is the shared intro line; row 2 is the mode-specific detail.
+            IntroFeature(icon: featureIcon, text: info.bullets[0]),
+            IntroFeature(number: state.level.cardNumber, text: info.bullets[1]),
             IntroFeature(icon: "trophy.fill", text: trophyDescription)
         ]
         return ZStack {
@@ -599,47 +600,6 @@ struct GameView: View {
         case .fractions, .fractionsMix: return "divide"
         case .percentages, .percentagesMix: return "percent"
         case .superBasic, .superTimes, .superFraction, .superAll: return "shuffle"
-        }
-    }
-
-    private func practiceDescription(info: (title: String, bullets: [String])) -> String {
-        // The Supermix menu is deliberately an all-in-one introduction. The
-        // five skill menus instead explain the current skill and its order clearly.
-        guard !state.level.category.isSupermixMenu else {
-            return info.bullets[0]
-        }
-        switch state.level.category {
-        case .fractions, .fractionsMix, .percentages, .percentagesMix:
-            // Fractions and percentages sub-levels aren't about ascending vs
-            // random order; their first bullet names exactly what you get.
-            return info.bullets[0]
-        default:
-            let order = state.level.mode != .order || state.level.category.isMix
-                ? L("game.intro.orderRandom")
-                : L("game.intro.orderAscending")
-            return L("game.intro.practiceOrdered \(practiceSubject) \(order)")
-        }
-    }
-
-    private func detailDescription(info: (title: String, bullets: [String])) -> String {
-        switch state.level.category {
-        case .addition, .subtraction, .tables:
-            // The first mode-specific bullet is intentionally shown on the
-            // second card; the first card keeps its shared practice-order copy.
-            return info.bullets[0]
-        default:
-            return info.bullets[1]
-        }
-    }
-
-    private var practiceSubject: String {
-        switch state.level.category {
-        case .addition, .additionMix: return L("game.intro.subject.addition")
-        case .subtraction, .subtractionMix: return L("game.intro.subject.subtraction")
-        case .tables, .tablesMix: return L("game.intro.subject.tables")
-        case .fractions, .fractionsMix: return L("game.intro.subject.fractions")
-        case .percentages, .percentagesMix: return L("game.intro.subject.percentages")
-        case .superBasic, .superTimes, .superFraction, .superAll: return ""
         }
     }
 

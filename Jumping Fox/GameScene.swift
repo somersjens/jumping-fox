@@ -387,8 +387,11 @@ final class GamePlatform: SKNode {
         case .eliminator:
             return makeStarIcon(theme: theme, radius: 12)
         case .tripler:
+            // Keep the ×3's theme colour, but give the pickup the same light
+            // outline and symbol treatment as the −1 hazard. The HUD ×2 uses
+            // its own SwiftUI view and deliberately does not inherit this.
             return makeBubbleIcon(text: "×3", fill: theme.skDeep,
-                                  ink: theme.skNeutral, stroke: .clear)
+                                  ink: .white, stroke: .white)
         case .minusOne:
             return makeBubbleIcon(text: "−1", fill: GameColors.wrongRed)
         }

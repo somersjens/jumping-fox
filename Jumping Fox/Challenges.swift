@@ -493,6 +493,17 @@ enum ProgressStore {
         return mergedBest
     }
 
+    /// Fast, local-only values for constructing the first menu frame. Unlike
+    /// the regular readers these never contact iCloud or write migrations, so
+    /// a cold launch can show remembered progress without blocking rendering.
+    static func locallyStoredBestScore(levelID: String) -> Int {
+        ([UserDefaults.standard.integer(forKey: key(levelID))]
+            + LifeMode.allCases.map {
+                UserDefaults.standard.integer(forKey: legacyKey(levelID, $0))
+            })
+            .max() ?? 0
+    }
+
     static func bestScore(levelID: String, helperEnabled: Bool) -> Int {
         guard helperEnabled else { return bestScore(levelID: levelID) }
         // Helper mode includes progress already earned without assistance,
@@ -508,6 +519,10 @@ enum ProgressStore {
             UserDefaults.standard.set(mergedBest, forKey: storageKey)
         }
         return mergedBest
+    }
+
+    static func locallyStoredHelperOnlyBestScore(levelID: String) -> Int {
+        UserDefaults.standard.integer(forKey: helperKey(levelID))
     }
 
     /// Kept as a convenience for unlocking code; all modes share one score.
@@ -568,6 +583,20 @@ enum ProgressStore {
         let result = min(maximumCompletionCount, max(mergedCount, legacyMaximum))
         if localCount < result { UserDefaults.standard.set(result, forKey: countKey) }
         return result
+    }
+
+    static func locallyStoredMaxCompletionCount(
+        levelID: String,
+        helperEnabled: Bool = false
+    ) -> Int {
+        let stored = UserDefaults.standard.integer(
+            forKey: maximumCountKey(levelID, helperEnabled: helperEnabled)
+        )
+        let score = helperEnabled
+            ? locallyStoredHelperOnlyBestScore(levelID: levelID)
+            : locallyStoredBestScore(levelID: levelID)
+        let legacyMinimum = score >= maximumTrophies(forLevelID: levelID) ? 1 : 0
+        return min(maximumCompletionCount, max(stored, legacyMinimum))
     }
 
     private static func maxCompletionCountBaseline(levelID: String, helperEnabled: Bool) -> Int {

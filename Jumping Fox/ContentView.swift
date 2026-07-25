@@ -27,14 +27,18 @@ private struct ScoreCelebration: Identifiable {
     let maximumCountStart: Int
     let categoryStart: Int
     let totalStart: Int
+    /// Captured once from the before/after values. Views use this instead of
+    /// re-reading a cache that may be reconciling while the menu appears.
+    let scoreDidIncrease: Bool
     let id = UUID()
+    let startedAt = Date()
 }
 
 /// Read-once progress used by the home menu. ProgressStore intentionally
 /// reconciles UserDefaults and iCloud on a read, which is valuable at refresh
 /// boundaries but far too expensive to repeat for every card during every
 /// category change.
-private struct HomeLevelProgress {
+private struct HomeLevelProgress: Codable {
     var normalBest = 0
     var helperBest = 0
     var normalMaximumCount = 0
@@ -44,11 +48,64 @@ private struct HomeLevelProgress {
     var isPausedInCurrentLifeMode = false
 }
 
-private struct HomeProgressSnapshot {
+private struct HomeProgressSnapshot: Codable {
+    private static let cacheKey = "menu.homeProgressSnapshot.v1"
+
     var levels: [String: HomeLevelProgress] = [:]
 
     func value(for levelID: String) -> HomeLevelProgress {
         levels[levelID] ?? HomeLevelProgress()
+    }
+
+    /// The last fully rendered menu state is available synchronously on a cold
+    /// launch. Persistent stores/cloud can then reconcile behind this state
+    /// instead of briefly presenting every level as zero.
+    static func loadCached() -> HomeProgressSnapshot {
+        if let data = UserDefaults.standard.data(forKey: cacheKey),
+           let snapshot = try? JSONDecoder().decode(HomeProgressSnapshot.self, from: data) {
+            return snapshot
+        }
+
+        // Migration/fallback for the first launch of the version that
+        // introduced the menu snapshot. Read only local values: this is still
+        // cheap enough to finish before the first frame and avoids a one-time
+        // all-zero menu for existing players.
+        let lifeModeRaw = UserDefaults.standard.string(forKey: GameSettings.lifeModeKey)
+        let lifeMode = LifeMode(rawValue: lifeModeRaw ?? "") ?? .three
+        let variants = LevelCatalog.byCategory.values
+            .flatMap { $0 }
+            .flatMap(\.allModeVariants)
+        var snapshot = HomeProgressSnapshot()
+
+        for level in variants where snapshot.levels[level.id] == nil {
+            let id = level.id
+            snapshot.levels[id] = HomeLevelProgress(
+                normalBest: ProgressStore.locallyStoredBestScore(levelID: id),
+                helperBest: ProgressStore.locallyStoredHelperOnlyBestScore(levelID: id),
+                normalMaximumCount: ProgressStore.locallyStoredMaxCompletionCount(
+                    levelID: id, helperEnabled: false
+                ),
+                helperMaximumCount: ProgressStore.locallyStoredMaxCompletionCount(
+                    levelID: id, helperEnabled: true
+                ),
+                pausedNormal: PausedGameStore.shared.pausedScore(
+                    forLevelID: id, includingHelper: false
+                ),
+                pausedIncludingHelper: PausedGameStore.shared.pausedScore(
+                    forLevelID: id, includingHelper: true
+                ),
+                isPausedInCurrentLifeMode: PausedGameStore.shared.hasPausedSession(
+                    for: level, mode: lifeMode
+                )
+            )
+        }
+        snapshot.persist()
+        return snapshot
+    }
+
+    func persist() {
+        guard let data = try? JSONEncoder().encode(self) else { return }
+        UserDefaults.standard.set(data, forKey: Self.cacheKey)
     }
 }
 
@@ -269,6 +326,7 @@ struct ContentView: View {
     @State private var showsOptions = false
     @State private var expandedOptionInfo: String?
     @State private var lastOpenedLevelID: String?
+    @State private var lastOpenedLevel: LevelConfig?
     @State private var openedLevelScore = 0
     @State private var openedLevelMaximumCount = 0
     @State private var openedCategoryTrophies = 0
@@ -282,8 +340,9 @@ struct ContentView: View {
     // it is airborne is queued as a celebratory flip-jump after landing,
     // rather than fighting the current offset animation.
     @State private var characterJumpCoordinator = CharacterJumpCoordinator()
-    @State private var homeProgress = HomeProgressSnapshot()
+    @State private var homeProgress = HomeProgressSnapshot.loadCached()
     @State private var homeProgressGeneration = 0
+    @State private var defersHomeProgressRefresh = false
     @State private var maximumCountPreview: Int?
     @State private var maximumCountPreviewLevelID: String?
     @State private var secondMaximumCountPreview: Int?
@@ -380,70 +439,122 @@ struct ContentView: View {
             }
         }
         .gameCover(item: $selection, onDismiss: {
-            // Reconcile progress incrementally after gameplay, outside any
-            // category-switch animation.
-            refreshHomeProgress()
+            // Stop any in-flight all-level reconciliation from replacing the
+            // menu snapshot while the return celebration is running.
+            defersHomeProgressRefresh = true
+            homeProgressGeneration += 1
+
             let shouldShowTutorialHint = tutorial.shouldShowScoreHint
-            if shouldShowTutorialHint, let levelID = lastOpenedLevelID {
-                scoreHintLevelID = levelID
-                withAnimation(.easeOut(duration: 0.25)) { showTutorialScoreHint = true }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
-                    withAnimation(.easeOut(duration: 0.2)) { showTutorialScoreHint = false }
-                    scoreHintLevelID = nil
-                    tutorial.consumeScoreHint()
-                }
-            }
 
-            guard let levelID = lastOpenedLevelID else {
-                refreshID = UUID()
+            guard let levelID = lastOpenedLevelID, let level = lastOpenedLevel else {
+                defersHomeProgressRefresh = false
+                refreshHomeProgress()
                 return
             }
 
-            // Read this one changed level directly so celebration detection
-            // does not wait for the incremental menu snapshot.
-            let newScore = ProgressStore.bestScore(
-                levelID: levelID, helperEnabled: answerHelper
-            )
-            let newMaximumCount = ProgressStore.maxCompletionCount(
-                levelID: levelID, helperEnabled: answerHelper
-            )
-            guard newScore > openedLevelScore || newMaximumCount > openedLevelMaximumCount else {
-                refreshID = UUID()
-                return
-            }
+            // Gameplay can only have changed this level. Reading and patching
+            // that one entry avoids rebuilding every card as the cover leaves.
+            let updatedProgress = readHomeProgress(for: level)
+            let newScore = answerHelper
+                ? max(updatedProgress.normalBest, updatedProgress.helperBest)
+                : updatedProgress.normalBest
+            let newMaximumCount = answerHelper
+                ? updatedProgress.helperMaximumCount
+                : updatedProgress.normalMaximumCount
+            let scoreDidIncrease = newScore > openedLevelScore
+            let earnedMore = scoreDidIncrease
+                || newMaximumCount > openedLevelMaximumCount
+            var updatedSnapshot = homeProgress
+            updatedSnapshot.levels[levelID] = updatedProgress
+            // Encode/write before the live-frame barrier, so persistence can
+            // never steal time from the outline and score animations.
+            updatedSnapshot.persist()
 
             let celebration = ScoreCelebration(levelID: levelID,
                                                levelStart: openedLevelScore,
                                                maximumCountStart: openedLevelMaximumCount,
                                                categoryStart: openedCategoryTrophies,
-                                               totalStart: openedTotalTrophies)
-            // Apply the menu refresh and animation marker together. Otherwise
-            // SwiftUI can paint the new total for one frame before it knows to
-            // count up from the old one.
-            withAnimation(.easeOut(duration: 0.34)) {
-                scoreCelebration = celebration
-                refreshID = UUID()
-            }
-            // The reward first lands on its level. Then this small cue guides
-            // attention up to the category and overall progress.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.16) {
-                guard scoreCelebration?.id == celebration.id else { return }
-                withAnimation(.spring(response: 0.42, dampingFraction: 0.56)) {
-                    highlightsHeaderTrophies = true
+                                               totalStart: openedTotalTrophies,
+                                               scoreDidIncrease: scoreDidIncrease)
+
+            Task { @MainActor in
+                // fullScreenCover can finish its dismissal using a snapshot of
+                // the presenting view. Give the menu one real presentation
+                // frame before changing the score or starting its animations.
+                await Task.yield()
+                try? await Task.sleep(for: .milliseconds(24))
+                guard selection == nil, lastOpenedLevelID == levelID else {
+                    defersHomeProgressRefresh = false
+                    refreshHomeProgress()
+                    return
                 }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.82) {
-                guard scoreCelebration?.id == celebration.id else { return }
-                withAnimation(.easeOut(duration: 0.24)) { highlightsHeaderTrophies = false }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-                guard scoreCelebration?.id == celebration.id else { return }
-                withAnimation(.easeOut(duration: 0.25)) { scoreCelebration = nil }
+
+                // Install the target score and its starting values atomically.
+                // The card's own animations then start from an already-live
+                // hierarchy, without recreating the entire menu via refreshID.
+                let transaction = Transaction(animation: nil)
+                withTransaction(transaction) {
+                    homeProgress = updatedSnapshot
+                    if earnedMore {
+                        scoreCelebration = celebration
+                    }
+                }
+
+                guard earnedMore else {
+                    defersHomeProgressRefresh = false
+                    if shouldShowTutorialHint {
+                        scheduleTutorialScoreHint(for: levelID, after: 0.05)
+                    }
+                    return
+                }
+
+                // The reward first lands on its level. Then this small cue
+                // guides attention up to category and overall progress.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.16) {
+                    guard scoreCelebration?.id == celebration.id else { return }
+                    withAnimation(.spring(response: 0.42, dampingFraction: 0.56)) {
+                        highlightsHeaderTrophies = true
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.82) {
+                    guard scoreCelebration?.id == celebration.id else { return }
+                    withAnimation(.easeOut(duration: 0.24)) {
+                        highlightsHeaderTrophies = false
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                    guard scoreCelebration?.id == celebration.id else { return }
+                    withAnimation(.easeOut(duration: 0.25)) {
+                        scoreCelebration = nil
+                    }
+                    if shouldShowTutorialHint {
+                        scheduleTutorialScoreHint(for: levelID, after: 0.08)
+                    }
+                    // Keep the all-level cloud reconciliation away from both
+                    // the celebration's fade-out and, on first play, the hint.
+                    let refreshDelay = shouldShowTutorialHint ? 3.2 : 0.35
+                    DispatchQueue.main.asyncAfter(deadline: .now() + refreshDelay) {
+                        guard selection == nil, lastOpenedLevelID == levelID else {
+                            defersHomeProgressRefresh = false
+                            return
+                        }
+                        defersHomeProgressRefresh = false
+                        refreshHomeProgress()
+                    }
+                }
             }
         })
         .onChange(of: selection?.id) { selectionID in
             guard let selectionID else { return }
+            // Starting another level ends any return celebration cleanly. Its
+            // delayed callbacks are ID-guarded and therefore become no-ops.
+            if scoreCelebration != nil {
+                scoreCelebration = nil
+                highlightsHeaderTrophies = false
+                defersHomeProgressRefresh = false
+            }
             lastOpenedLevelID = selectionID
+            lastOpenedLevel = selection?.level
             openedLevelScore = displayedScore(forLevelID: selectionID)
             openedLevelMaximumCount = displayedMaximumCount(forLevelID: selectionID)
             openedCategoryTrophies = categoryTrophies
@@ -715,7 +826,7 @@ struct ContentView: View {
                         // The trophy icon already says "trophies"; just the count.
                         TrophyCountText(from: scoreCelebration?.totalStart ?? totalTrophies,
                                          to: totalTrophies,
-                                         celebrationID: scoreCelebration?.id,
+                                         celebrationStartedAt: scoreCelebration?.startedAt,
                                          suffix: answerHelper ? " *" : "",
                                          duration: 0.95)
                     } icon: {
@@ -752,7 +863,7 @@ struct ContentView: View {
                     Label {
                         TrophyCountText(from: scoreCelebration?.categoryStart ?? categoryTrophies,
                                          to: categoryTrophies,
-                                         celebrationID: scoreCelebration?.id,
+                                         celebrationStartedAt: scoreCelebration?.startedAt,
                                          suffix: answerHelper ? " *" : "",
                                          duration: 0.95)
                     } icon: {
@@ -866,6 +977,7 @@ struct ContentView: View {
     /// rendering then reads this in-memory snapshot instead of touching
     /// UserDefaults/iCloud for every card and every selection change.
     private func refreshHomeProgress() {
+        guard !defersHomeProgressRefresh else { return }
         homeProgressGeneration += 1
         let generation = homeProgressGeneration
         let variants = LevelCatalog.byCategory.values
@@ -884,25 +996,7 @@ struct ContentView: View {
                 // the reconciliation cost twice in one snapshot.
                 guard snapshot.levels[id] == nil else { continue }
 
-                snapshot.levels[id] = HomeLevelProgress(
-                    normalBest: ProgressStore.bestScore(levelID: id),
-                    helperBest: ProgressStore.helperOnlyBestScore(levelID: id),
-                    normalMaximumCount: ProgressStore.maxCompletionCount(
-                        levelID: id, helperEnabled: false
-                    ),
-                    helperMaximumCount: ProgressStore.maxCompletionCount(
-                        levelID: id, helperEnabled: true
-                    ),
-                    pausedNormal: PausedGameStore.shared.pausedScore(
-                        forLevelID: id, includingHelper: false
-                    ),
-                    pausedIncludingHelper: PausedGameStore.shared.pausedScore(
-                        forLevelID: id, includingHelper: true
-                    ),
-                    isPausedInCurrentLifeMode: PausedGameStore.shared.hasPausedSession(
-                        for: level, mode: lifeMode
-                    )
-                )
+                snapshot.levels[id] = readHomeProgress(for: level)
 
                 // Bound each main-thread slice so Core Animation gets regular
                 // opportunities to present even during a full cloud refresh.
@@ -913,6 +1007,52 @@ struct ContentView: View {
 
             guard generation == homeProgressGeneration else { return }
             homeProgress = snapshot
+            snapshot.persist()
+        }
+    }
+
+    /// Reads the complete cache entry for one level. This is deliberately
+    /// shared by the background reconciliation and the lightweight return
+    /// path after gameplay.
+    private func readHomeProgress(for level: LevelConfig) -> HomeLevelProgress {
+        let id = level.id
+        return HomeLevelProgress(
+            normalBest: ProgressStore.bestScore(levelID: id),
+            helperBest: ProgressStore.helperOnlyBestScore(levelID: id),
+            normalMaximumCount: ProgressStore.maxCompletionCount(
+                levelID: id, helperEnabled: false
+            ),
+            helperMaximumCount: ProgressStore.maxCompletionCount(
+                levelID: id, helperEnabled: true
+            ),
+            pausedNormal: PausedGameStore.shared.pausedScore(
+                forLevelID: id, includingHelper: false
+            ),
+            pausedIncludingHelper: PausedGameStore.shared.pausedScore(
+                forLevelID: id, includingHelper: true
+            ),
+            isPausedInCurrentLifeMode: PausedGameStore.shared.hasPausedSession(
+                for: level, mode: lifeMode
+            )
+        )
+    }
+
+    /// The first-run explanation is useful, but its full-screen overlay should
+    /// never animate at the same time as the score returning to the menu.
+    private func scheduleTutorialScoreHint(for levelID: String, after delay: TimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            guard selection == nil, tutorial.shouldShowScoreHint else { return }
+            scoreHintLevelID = levelID
+            withAnimation(.easeOut(duration: 0.25)) {
+                showTutorialScoreHint = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    showTutorialScoreHint = false
+                }
+                scoreHintLevelID = nil
+                tutorial.consumeScoreHint()
+            }
         }
     }
 
@@ -981,11 +1121,9 @@ struct ContentView: View {
     }
 
     private func isCelebratingScore(for level: LevelConfig) -> Bool {
-        guard scoreCelebration?.levelID == level.id else { return false }
-        if secondScorePreviewLevelID == level.id, let secondScorePreview {
-            return secondScorePreview > (scoreCelebration?.levelStart ?? 0)
-        }
-        return displayedScore(forLevelID: level.id) > (scoreCelebration?.levelStart ?? 0)
+        guard let celebration = scoreCelebration,
+              celebration.levelID == level.id else { return false }
+        return celebration.scoreDidIncrease
     }
 
     private func previewMaximumCountBadge() {
@@ -1020,7 +1158,8 @@ struct ContentView: View {
                                            levelStart: displayedScore(forLevelID: levelID),
                                            maximumCountStart: count - 1,
                                            categoryStart: categoryTrophies,
-                                           totalStart: totalTrophies)
+                                           totalStart: totalTrophies,
+                                           scoreDidIncrease: false)
         withAnimation(.easeOut(duration: 0.34)) {
             scoreCelebration = celebration
             refreshID = UUID()
@@ -1032,7 +1171,8 @@ struct ContentView: View {
                                            levelStart: 49,
                                            maximumCountStart: 0,
                                            categoryStart: categoryTrophies,
-                                           totalStart: totalTrophies)
+                                           totalStart: totalTrophies,
+                                           scoreDidIncrease: true)
         withAnimation(.easeOut(duration: 0.34)) {
             scoreCelebration = celebration
             refreshID = UUID()
@@ -1144,7 +1284,15 @@ struct ContentView: View {
                 maximum: geo.size.width - 24
             )
             let anchorMidX = popup.anchor.midX - localOrigin.x
-            let rawX = anchorMidX - cardWidth / 2
+            // The first two operation buttons and the first sequencing button
+            // have ample room to their right.  Keep their pop-outs anchored at
+            // the control's leading edge so a longer translation grows into
+            // that space, rather than pushing further towards the screen edge.
+            // The remaining controls retain the centred placement, which lets
+            // their cards use the room on their left.
+            let expandsRight = popoutExpandsRight(popup.kind)
+            let leadingAnchorX = popup.anchor.minX - localOrigin.x
+            let rawX = expandsRight ? leadingAnchorX : anchorMidX - cardWidth / 2
             let x = min(max(12, rawX), max(12, geo.size.width - cardWidth - 12))
             let y = popup.anchor.maxY - localOrigin.y + 8
 
@@ -1170,6 +1318,15 @@ struct ContentView: View {
                     .offset(x: x, y: y)
                     .onTapGesture { dismissInfoPopup() }
             }
+        }
+    }
+
+    private func popoutExpandsRight(_ kind: InfoPopup.Kind) -> Bool {
+        switch kind {
+        case .filter(.addition), .filter(.subtraction), .mode(.order, _):
+            return true
+        default:
+            return false
         }
     }
 
@@ -1454,6 +1611,9 @@ struct ContentView: View {
                                   scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                       ? scoreCelebration?.levelStart : nil,
                                   isCelebratingNewScore: isCelebratingScore(for: level),
+                                  returnFocusStartedAt: scoreCelebration?.levelID == level.id
+                                      && scoreCelebration?.scoreDidIncrease == true
+                                      ? scoreCelebration?.startedAt : nil,
                                   maximumCount: maximumCount(for: level),
                                   maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
                                       ? scoreCelebration?.maximumCountStart : nil,
@@ -1530,6 +1690,9 @@ struct ContentView: View {
                                       scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                           ? scoreCelebration?.levelStart : nil,
                                       isCelebratingNewScore: isCelebratingScore(for: level),
+                                      returnFocusStartedAt: scoreCelebration?.levelID == level.id
+                                          && scoreCelebration?.scoreDidIncrease == true
+                                          ? scoreCelebration?.startedAt : nil,
                                       maximumCount: maximumCount(for: level),
                                       maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
                                           ? scoreCelebration?.maximumCountStart : nil,
@@ -1643,8 +1806,16 @@ private struct InfoPopoutCard: View {
 #if canImport(UIKit)
         let headerFont = UIFont.systemFont(ofSize: isPad ? 14 : 11, weight: .heavy)
         let messageFont = UIFont.systemFont(ofSize: isPad ? 21 : 16, weight: .bold)
+        // `Text(header)` adds 0.6 points between every pair of letters below.
+        // Include that tracking here as well, otherwise headings such as
+        // "Types of problems" can be measured a little too narrowly and wrap
+        // even when the pop-out has room to grow horizontally.
+        let uppercasedHeader = header.uppercased()
+        let headerTracking = CGFloat(max(0, uppercasedHeader.count - 1)) * 0.6
+        let headerWidth = (uppercasedHeader as NSString)
+            .size(withAttributes: [.font: headerFont]).width + headerTracking
         let contentWidth = max(
-            (header.uppercased() as NSString).size(withAttributes: [.font: headerFont]).width,
+            headerWidth,
             (message as NSString).size(withAttributes: [.font: messageFont]).width
         )
         let horizontalPadding: CGFloat = isPad ? 36 : 28
@@ -2164,37 +2335,58 @@ private struct HeaderTrophyIcon: View {
 private struct TrophyCountText: View {
     let from: Int
     let to: Int
-    let celebrationID: UUID?
+    let celebrationStartedAt: Date?
     var suffix = ""
     // The score waits until the trophy's landing pulse has fully settled.
     var delay = 1.16
     var duration = 0.78
-    @State private var startedAt = Date.distantPast
-    @State private var startedCelebrationID: UUID?
 
     var body: some View {
         TimelineView(.animation) { context in
-            let elapsed = context.date.timeIntervalSince(startedAt)
-            let progress = celebrationID == nil ? 1 : min(1, max(0, (elapsed - delay) / duration))
+            let elapsed = celebrationStartedAt.map {
+                context.date.timeIntervalSince($0)
+            } ?? .greatestFiniteMagnitude
+            let progress = celebrationStartedAt == nil
+                ? 1
+                : min(1, max(0, (elapsed - delay) / duration))
             let eased = 1 - pow(1 - progress, 3)
             let value = Int((Double(from) + Double(to - from) * eased).rounded())
             Text(verbatim: "\(value)\(suffix)")
                 .contentTransition(.numericText())
                 .scaleEffect(1 + sin(progress * .pi) * 0.13)
         }
-        .onAppear { beginAnimationIfNeeded() }
-        .onChange(of: celebrationID) { _ in beginAnimationIfNeeded() }
         .accessibilityLabel(Text(verbatim: "\(to)\(suffix)"))
     }
+}
 
-    private func beginAnimationIfNeeded() {
-        guard let celebrationID else {
-            startedCelebrationID = nil
-            return
+/// A time-driven focus outline for an improved ordinary level score. This
+/// deliberately has no `@State` or `onChange`: as long as the celebration
+/// exists, the current frame can always derive the correct glow intensity.
+private struct LevelReturnFocusGlow: View {
+    let startedAt: Date
+    let cornerRadius: CGFloat
+    let lineWidth: CGFloat
+    let glowRadius: CGFloat
+    let strokeColor: Color
+    let glowColor: Color
+
+    var body: some View {
+        TimelineView(.animation) { context in
+            let elapsed = max(0, context.date.timeIntervalSince(startedAt))
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(strokeColor, lineWidth: lineWidth)
+                .shadow(color: glowColor.opacity(0.85), radius: glowRadius)
+                .opacity(glowOpacity(at: elapsed))
         }
-        guard startedCelebrationID != celebrationID else { return }
-        startedCelebrationID = celebrationID
-        startedAt = Date()
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+
+    private func glowOpacity(at elapsed: TimeInterval) -> Double {
+        if elapsed < 0.28 { return elapsed / 0.28 }
+        if elapsed < 1.45 { return 1 }
+        if elapsed < 1.98 { return 1 - ((elapsed - 1.45) / 0.53) }
+        return 0
     }
 }
 
@@ -2210,6 +2402,9 @@ struct LevelCardView: View {
     let isPaused: Bool
     var scoreCelebrationStart: Int?
     var isCelebratingNewScore = false
+    /// A timestamp drives the focus glow directly, so no SwiftUI change event
+    /// can be coalesced or missed while the full-screen game is dismissed.
+    var returnFocusStartedAt: Date?
     var maximumCount = 0
     var maximumCountCelebrationStart: Int?
     var isCelebratingMaximumCount = false
@@ -2348,6 +2543,21 @@ struct LevelCardView: View {
     private var celebrationDisplayStart: Int {
         min(scoreCelebrationStart ?? displayBest, ProgressStore.maximumTrophies(for: level))
     }
+    private var levelScoreCountDelay: TimeInterval { 0.3 }
+    private var levelScoreCountDuration: TimeInterval { 0.78 }
+
+    /// `TrophyCountText` rounds each interpolated value. With the cubic easing,
+    /// the final integer therefore appears before progress reaches exactly 1.
+    /// Schedule the icon pulse at that real visual landing point, rather than
+    /// at an unrelated fixed delay.
+    private var levelScoreFinalValueOffset: TimeInterval {
+        let difference = abs(displayBest - celebrationDisplayStart)
+        guard difference > 0 else { return levelScoreCountDelay }
+        let finalRoundingDistance = 0.5 / Double(difference)
+        let progressWhenFinalValueAppears = 1 - pow(finalRoundingDistance, 1.0 / 3.0)
+        return levelScoreCountDelay
+            + levelScoreCountDuration * progressWhenFinalValueAppears
+    }
     private var helperMarker: String {
         showsHelperMarker && helperBest > best ? " *" : ""
     }
@@ -2371,15 +2581,18 @@ struct LevelCardView: View {
             .opacity(isLocked ? 0.55 : 1)
             .scaleEffect((status == .recommended ? 1.02 : 1) * (trophyPulse ? 1.04 : 1))
             .overlay {
-                // The completed card draws its own theme highlight *behind*
-                // the gold border (see completedCard); only standard cards
-                // paint it on top here.
-                if (isCelebratingNewScore || isCelebratingMaximumCount) && !isCompleted {
-                    RoundedRectangle(cornerRadius: 18 * cardScale)
-                        .stroke(theme.deepColor, lineWidth: 4 * cardScale)
-                        .shadow(color: theme.color.opacity(0.85), radius: 9 * cardScale)
-                        .opacity(highlightOpacity)
-                        .allowsHitTesting(false)
+                // Ordinary cards always get an independent focus glow after
+                // returning from their level. Max cards intentionally stay on
+                // their existing gold-border animation path below.
+                if let returnFocusStartedAt, !isCompleted {
+                    LevelReturnFocusGlow(
+                        startedAt: returnFocusStartedAt,
+                        cornerRadius: 18 * cardScale,
+                        lineWidth: 4 * cardScale,
+                        glowRadius: 9 * cardScale,
+                        strokeColor: theme.deepColor,
+                        glowColor: theme.color
+                    )
                 }
             }
         }
@@ -2391,6 +2604,13 @@ struct LevelCardView: View {
         }
         .onChange(of: isCelebratingNewScore) { _ in animateTrophyPulseIfNeeded() }
         .onChange(of: isCelebratingMaximumCount) { _ in animateMaximumCountIfNeeded() }
+        // The celebration token is the authoritative trigger. Watching it as
+        // well makes the outline reliable when score data and celebration
+        // state arrive atomically in the same return-to-menu transaction.
+        .onChange(of: celebrationID) { _ in
+            animateTrophyPulseIfNeeded()
+            animateMaximumCountIfNeeded()
+        }
     }
 
     // MARK: Standard card
@@ -2475,8 +2695,11 @@ struct LevelCardView: View {
                 .rotationEffect(.degrees(trophyPulse ? -12 : 0))
             TrophyCountText(from: celebrationDisplayStart,
                              to: displayBest,
-                             celebrationID: isCelebratingNewScore ? celebrationID : nil,
-                             suffix: helperMarker)
+                             celebrationStartedAt: isCelebratingNewScore
+                                 ? returnFocusStartedAt : nil,
+                             suffix: helperMarker,
+                             delay: levelScoreCountDelay,
+                             duration: levelScoreCountDuration)
                 .font(.system(size: 12 * cardScale, weight: .bold))
         }
         .foregroundStyle(tier == .empty ? Color(white: 0.6) : tier.color(for: theme))
@@ -2492,9 +2715,34 @@ struct LevelCardView: View {
         guard let celebrationID, animatedCelebrationID != celebrationID else { return }
         animatedCelebrationID = celebrationID
         withAnimation(.easeOut(duration: 0.38)) { highlightOpacity = 1 }
-        withAnimation(.spring(response: 0.42, dampingFraction: 0.54)) { trophyPulse = true }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.02) {
-            withAnimation(.spring(response: 0.34, dampingFraction: 0.7)) { trophyPulse = false }
+
+        if isCompleted {
+            // Preserve the existing timing of the gold/max-level path.
+            withAnimation(.spring(response: 0.42, dampingFraction: 0.54)) {
+                trophyPulse = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.02) {
+                withAnimation(.spring(response: 0.34, dampingFraction: 0.7)) {
+                    trophyPulse = false
+                }
+            }
+        } else {
+            let pulseDelay = returnFocusStartedAt.map {
+                max(0, $0.addingTimeInterval(levelScoreFinalValueOffset).timeIntervalSinceNow)
+            } ?? 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + pulseDelay) {
+                guard animatedCelebrationID == celebrationID,
+                      isCelebratingNewScore else { return }
+                withAnimation(.spring(response: 0.42, dampingFraction: 0.54)) {
+                    trophyPulse = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + pulseDelay + 0.62) {
+                guard animatedCelebrationID == celebrationID else { return }
+                withAnimation(.spring(response: 0.34, dampingFraction: 0.7)) {
+                    trophyPulse = false
+                }
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.62) {
             withAnimation(.easeOut(duration: 0.42)) { highlightOpacity = 0.32 }
