@@ -1,0 +1,440 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ModeIntro.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "modeIntro.tables.multiplyBy",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.addition.order %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.addition.random %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.addition.mixed %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.addition.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.addition.intro",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.additionMix.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.additionMix.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.additionMix.b2 %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtraction.order %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtraction.random %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtraction.mixed %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtraction.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtraction.intro",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtractionMix.twoNumbers",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtractionMix.belowZero.title",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtractionMix.belowZero.b2",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtractionMix.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.subtractionMix.b2 %lld",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tables.order %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tables.random %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tables.mixed %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tables.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tables.intro",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tablesMix.title %lld %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.tablesMix.b1 %lld %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractions.order %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractions.random %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractions.mixed",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractions.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 89
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractions.intro",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractionsMix.title",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractionsMix.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 94
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.fractionsMix.b2",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 95
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentages.order %@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentages.random %@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 104
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentages.mixed",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentages.title %@",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 107
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentages.intro",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentagesMix.title",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentagesMix.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.percentagesMix.b2",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superBasic.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superBasic.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 117
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.super.b2 %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superTimes.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superTimes.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 122
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.super.b2 %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superFraction.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superFraction.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 127
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.super.b2 %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superAll.title %lld",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.superAll.b1",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 132
+        }
+      },
+      {
+        "comment": "",
+        "key": "modeIntro.super.b2 %lld",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 133
+        }
+      }
+    ]
+  },
+  "version": 1
+}
