@@ -691,6 +691,11 @@ final class GameScene: SKScene {
 #if os(iOS)
     private let feedbackGenerator = UINotificationFeedbackGenerator()
     private let heartFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    /// A pickup touch and a platform landing can be registered in the same
+    /// update. Coalesce their feedback so that one gameplay moment never
+    /// feels like two rapid taps.
+    private var lastGameplayHapticAt: TimeInterval = -.infinity
+    private let gameplayHapticCoalescingWindow: TimeInterval = 0.12
     /// The soft tap played when the answer-hint ("?") is used. Retained and
     /// kept warm just like the others so the tutorial's "tap the question mark"
     /// step doesn't cold-start the Taptic Engine and hitch on first use.
@@ -3081,6 +3086,7 @@ final class GameScene: SKScene {
 
     private func haptic(success: Bool) {
 #if os(iOS)
+        guard shouldPlayGameplayHaptic() else { return }
         feedbackGenerator.notificationOccurred(success ? .success : .error)
         // Re-arm the engine so the following landing is warm too.
         feedbackGenerator.prepare()
@@ -3089,10 +3095,22 @@ final class GameScene: SKScene {
 
     private func heartHaptic() {
 #if os(iOS)
+        guard shouldPlayGameplayHaptic() else { return }
         heartFeedbackGenerator.impactOccurred()
         heartFeedbackGenerator.prepare()
 #endif
     }
+
+#if os(iOS)
+    private func shouldPlayGameplayHaptic() -> Bool {
+        let now = ProcessInfo.processInfo.systemUptime
+        guard now - lastGameplayHapticAt >= gameplayHapticCoalescingWindow else {
+            return false
+        }
+        lastGameplayHapticAt = now
+        return true
+    }
+#endif
 
     /// The soft tap for using the answer hint. Called by the SwiftUI equation
     /// badge; re-arms itself so every later use stays warm too.

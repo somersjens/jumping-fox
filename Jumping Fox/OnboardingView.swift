@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct OnboardingView: View {
     @AppStorage(GameSettings.playerNameKey) private var playerName = ""
@@ -95,11 +96,10 @@ struct OnboardingView: View {
     private var nameStep: some View {
         VStack(spacing: 24) {
             VStack(spacing: 10) {
-                Text("onboarding.name.title")
-                    .font(.system(size: isPad ? 44 : 35, weight: .heavy, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: .infinity)
+                OnboardingTitle(
+                    text: L("onboarding.name.title"),
+                    fontSize: isPad ? 44 : 35
+                )
 
                 Text("onboarding.name.subtitle")
                     .font(isPad ? .title2.weight(.medium) : .title3.weight(.medium))
@@ -133,10 +133,10 @@ struct OnboardingView: View {
 
     private var subjectStep: some View {
         VStack(spacing: 14) {
-            Text("onboarding.subject.title")
-                .font(.system(size: isPad ? 42 : 32, weight: .heavy, design: .rounded))
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
+            OnboardingTitle(
+                text: L("onboarding.subject.title"),
+                fontSize: isPad ? 42 : 32
+            )
 
             Text("onboarding.subject.subtitle")
                 .font(isPad ? .title3 : .body)
@@ -238,6 +238,78 @@ struct OnboardingView: View {
         withAnimation(.easeInOut(duration: 0.55)) {
             isComplete = true
         }
+    }
+}
+
+/// Keeps translated onboarding headings compact without leaving an orphaned
+/// word on the second line. A short heading is allowed to remain on one line;
+/// otherwise the fallback inserts the most visually even word-boundary break.
+private struct OnboardingTitle: View {
+    let text: String
+    let fontSize: CGFloat
+
+    private var normalizedText: String {
+        text.components(separatedBy: .whitespacesAndNewlines)
+            .filter { !$0.isEmpty }
+            .joined(separator: " ")
+    }
+
+    private var balancedText: String {
+        Self.balancedTwoLineText(normalizedText, fontSize: fontSize)
+    }
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            // `fixedSize` makes this candidate report its true one-line width,
+            // so ViewThatFits only chooses it when it genuinely fits.
+            titleText(normalizedText)
+                .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: true)
+
+            titleText(balancedText)
+                .lineLimit(2)
+                .minimumScaleFactor(0.68)
+                .allowsTightening(true)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
+        .accessibilityLabel(Text(verbatim: normalizedText))
+    }
+
+    private func titleText(_ value: String) -> some View {
+        Text(verbatim: value)
+            .font(.system(size: fontSize, weight: .heavy, design: .rounded))
+    }
+
+    private static func balancedTwoLineText(_ text: String, fontSize: CGFloat) -> String {
+        let words = text.split(whereSeparator: \.isWhitespace).map(String.init)
+        guard words.count > 1 else { return text }
+
+        let baseFont = UIFont.systemFont(ofSize: fontSize, weight: .heavy)
+        let font = baseFont.fontDescriptor.withDesign(.rounded)
+            .map { UIFont(descriptor: $0, size: fontSize) } ?? baseFont
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+
+        var bestIndex = 1
+        var smallestDifference = CGFloat.greatestFiniteMagnitude
+
+        for index in 1..<words.count {
+            let firstLine = words[..<index].joined(separator: " ")
+            let secondLine = words[index...].joined(separator: " ")
+            let firstWidth = (firstLine as NSString).size(withAttributes: attributes).width
+            let secondWidth = (secondLine as NSString).size(withAttributes: attributes).width
+            let difference = abs(firstWidth - secondWidth)
+
+            if difference < smallestDifference {
+                smallestDifference = difference
+                bestIndex = index
+            }
+        }
+
+        return words[..<bestIndex].joined(separator: " ")
+            + "\n"
+            + words[bestIndex...].joined(separator: " ")
     }
 }
 

@@ -22,6 +22,8 @@ struct ParentApprovalGate: View {
     @State private var heldShape: GateShape?
     @State private var activeTouchShape: GateShape?
     @State private var ignoresCompletedHoldRelease = false
+    @State private var isTransitioningToTap = false
+    @State private var isCompletingTap = false
     @State private var holdTask: Task<Void, Never>?
     @State private var isShowingSuccess = false
     @State private var isShieldPulsing = false
@@ -117,6 +119,8 @@ struct ParentApprovalGate: View {
             .minimumScaleFactor(0.80)
             .frame(maxWidth: .infinity)
             .frame(minHeight: 62)
+            .contentTransition(.opacity)
+            .animation(.easeInOut(duration: 0.42), value: instruction)
     }
 
     private var shapeBoard: some View {
@@ -151,6 +155,8 @@ struct ParentApprovalGate: View {
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity)
         .padding(.top, 1)
+        .contentTransition(.numericText())
+        .animation(.easeInOut(duration: 0.25), value: remainingTaps)
     }
 
     private var failureIndicator: some View {
@@ -186,14 +192,18 @@ struct ParentApprovalGate: View {
 
     private var instruction: String {
         phase == .hold
-            ? L("parentGate.holdInstruction \(challenge.holdShape.localizedName) \(challenge.holdSeconds)")
-            : L("parentGate.tapInstruction \(challenge.tapCount) \(challenge.tapShape.localizedName)")
+            ? L("parentGate.holdInstruction \(challenge.holdShape.localizedName) \(holdProgress)")
+            : L("parentGate.tapInstruction \(remainingTaps) \(challenge.tapShape.localizedName)")
     }
 
     private var progressTitle: String {
         phase == .hold
             ? L("parentGate.holdProgress \(holdProgress)")
-            : L("parentGate.tapProgress \(tapCount) \(challenge.tapCount)")
+            : L("parentGate.tapProgress \(remainingTaps) \(challenge.tapCount)")
+    }
+
+    private var remainingTaps: Int {
+        max(0, challenge.tapCount - tapCount)
     }
 
     private var attemptsTitle: String {
@@ -201,7 +211,10 @@ struct ParentApprovalGate: View {
     }
 
     private func touchBegan(on shape: GateShape) {
-        guard activeTouchShape == nil, !isShowingSuccess else { return }
+        guard activeTouchShape == nil,
+              !isShowingSuccess,
+              !isTransitioningToTap,
+              !isCompletingTap else { return }
         activeTouchShape = shape
         guard phase == .hold else { return }
         guard shape == challenge.holdShape else {
@@ -228,7 +241,16 @@ struct ParentApprovalGate: View {
                     heldShape = nil
                     holdProgress = 0
                     ignoresCompletedHoldRelease = true
-                    phase = .tap
+                    isTransitioningToTap = true
+                    do {
+                        try await Task.sleep(for: .milliseconds(420))
+                    } catch {
+                        return
+                    }
+                    withAnimation(.easeInOut(duration: 0.42)) {
+                        phase = .tap
+                        isTransitioningToTap = false
+                    }
                     return
                 }
                 try? await Task.sleep(for: .milliseconds(50))
@@ -237,13 +259,20 @@ struct ParentApprovalGate: View {
     }
 
     private func touchTapped(_ shape: GateShape) {
-        guard phase == .tap, !isShowingSuccess else { return }
+        guard phase == .tap, !isShowingSuccess, !isCompletingTap else { return }
         guard shape == challenge.tapShape else {
             registerFailure()
             return
         }
         tapCount += 1
-        if tapCount == challenge.tapCount { complete() }
+        if tapCount == challenge.tapCount {
+            isCompletingTap = true
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(320))
+                guard isCompletingTap else { return }
+                complete()
+            }
+        }
         if tapCount > challenge.tapCount { registerFailure() }
     }
 
@@ -252,6 +281,8 @@ struct ParentApprovalGate: View {
         heldShape = nil
         activeTouchShape = nil
         ignoresCompletedHoldRelease = false
+        isTransitioningToTap = false
+        isCompletingTap = false
         failures += 1
         guard failures < 3 else {
             dismiss()
