@@ -1300,7 +1300,7 @@ struct ContentView: View {
     private var categoryTrophies: Int {
         LevelCatalog.levels(for: category)
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + trophies(for: $1) }
+            .reduce(0) { $0 + trophiesInActiveSubcategory(for: $1) }
     }
 
     /// The `(from, to, startedAt)` a header trophy counter should use. It holds
@@ -1317,26 +1317,37 @@ struct ContentView: View {
         return (current, current, nil)
     }
 
-    /// Trophies earned for a base level, counting all three of its practice-mode
-    /// variants and any in-progress paused run — whichever is highest. This is
-    /// why a paused (or Random/Mixed) level still adds to the category and grand
-    /// totals.
+    /// The category header belongs to the selected subcategory. Reeks, Hussel
+    /// and Gemixt therefore contribute independently: a Hussel improvement from
+    /// 0 to 1 grows the Hussel total even when Reeks already has a higher score.
+    /// Supermix has no practice-mode row and keeps using its concrete level id.
+    private func trophiesInActiveSubcategory(for level: LevelConfig) -> Int {
+        let activeLevel = selectedFilter == .mixed ? level : level.variant(menuMode)
+        return trophies(forExactLevel: activeLevel)
+    }
+
+    /// The overall player total retains its existing meaning: for every base
+    /// level, use the strongest of its three practice-mode variants.
     private func trophies(for level: LevelConfig) -> Int {
         // Each mode variant is scored and capped against its own goal (Order 20,
         // Random 30, Mixed 40), so the best across them is compared like-for-like.
-        level.allModeVariants.map { variant in
-            let progress = homeProgress.value(for: variant.id)
-            let recorded = answerHelper
-                ? max(progress.normalBest, progress.helperBest)
-                : progress.normalBest
-            let pausedRaw = answerHelper
-                ? progress.pausedIncludingHelper
-                : progress.pausedNormal
-            let paused = capsTrophiesAtThirty
-                ? min(ProgressStore.maximumTrophies(for: variant), pausedRaw)
-                : pausedRaw
-            return max(recorded, paused)
-        }.max() ?? 0
+        level.allModeVariants.map(trophies(forExactLevel:)).max() ?? 0
+    }
+
+    /// Score contribution of one exact level+mode id, including a higher paused
+    /// score in that same subcategory only.
+    private func trophies(forExactLevel level: LevelConfig) -> Int {
+        let progress = homeProgress.value(for: level.id)
+        let recorded = answerHelper
+            ? max(progress.normalBest, progress.helperBest)
+            : progress.normalBest
+        let pausedRaw = answerHelper
+            ? progress.pausedIncludingHelper
+            : progress.pausedNormal
+        let paused = capsTrophiesAtThirty
+            ? min(ProgressStore.maximumTrophies(for: level), pausedRaw)
+            : pausedRaw
+        return max(recorded, paused)
     }
 
     /// Matches the score a level card presents in the current helper mode, so
