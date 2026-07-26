@@ -9,6 +9,7 @@
 
 import SwiftUI
 import Combine
+import StoreKit
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -317,6 +318,8 @@ struct ContentView: View {
     @ObservedObject private var language = LanguageManager.shared
     @ObservedObject private var tutorial = TutorialProgress.shared
     @Environment(\.layoutDirection) private var layoutDirection
+    @Environment(\.requestReview) private var requestReview
+    @Environment(\.scenePhase) private var scenePhase
     @State private var selection: LevelSelection?
     @State private var showPremium = false
     @State private var showGoalPicker = false
@@ -535,6 +538,7 @@ struct ContentView: View {
         })
         .onChange(of: selection?.id) { selectionID in
             guard let selectionID else { return }
+            ReviewRequestCoordinator.shared.discardPendingReturn()
             // Starting another level ends any return celebration cleanly. Its
             // delayed callbacks are ID-guarded and therefore become no-ops.
             if scoreCelebration != nil {
@@ -561,6 +565,10 @@ struct ContentView: View {
         }
         .onChange(of: lifeModeRaw) { _ in
             refreshHomeProgress()
+        }
+        .onChange(of: scenePhase) { phase in
+            guard phase == .active else { return }
+            requestReviewAfterSettledReturn()
         }
         .overlay {
             if showTutorialScoreHint {
@@ -1111,7 +1119,15 @@ struct ContentView: View {
         guard earnedMore else {
             defersHomeProgressRefresh = false
             if showTutorialHintAfter {
-                scheduleTutorialScoreHint(for: levelID, after: 0.05)
+                scheduleTutorialScoreHint(for: levelID, after: 0.05) {
+                    // The state is already hidden, but its 0.2-second fade must
+                    // finish before StoreKit is allowed to present.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        requestReviewAfterSettledReturn()
+                    }
+                }
+            } else {
+                requestReviewAfterSettledReturn()
             }
             return
         }
@@ -1204,8 +1220,28 @@ struct ContentView: View {
                 }
                 defersHomeProgressRefresh = false
                 refreshHomeProgress()
+                requestReviewAfterSettledReturn()
             }
         }
+    }
+
+    /// Uses StoreKit's native prompt only after the presenting menu is active
+    /// and every return animation or overlay has left the screen. If the app is
+    /// backgrounded mid-sequence, scenePhase retries the pending opportunity.
+    @MainActor
+    private func requestReviewAfterSettledReturn() {
+        guard scenePhase == .active,
+              selection == nil,
+              scoreCelebration == nil,
+              flyingTrophy == nil,
+              !showTutorialScoreHint,
+              !showPremium,
+              !showNameEditor,
+              infoPopup == nil,
+              ReviewRequestCoordinator.shared.menuReturnDidSettle() else {
+            return
+        }
+        requestReview()
     }
 
     /// Sends the trophy copy from the celebrating card up to the category

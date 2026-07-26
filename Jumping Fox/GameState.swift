@@ -359,19 +359,27 @@ final class GameState: ObservableObject {
     }
 
     private func endGame(reason: GameOverReason) {
+        guard !isGameOver else { return }
         isGameOver = true
         gameOverReason = reason
-        recordCurrentScore(showNewHighScore: true)
+        let result = recordCurrentScore(showNewHighScore: true)
+        ReviewRequestCoordinator.shared.recordCompletedGame(
+            isNewHighScore: result.isNewHighScore,
+            score: score,
+            maximumScore: ProgressStore.maximumTrophies(for: level)
+        )
     }
 
     /// Paused runs should count toward the score shown on their level card.
-    func recordCurrentScore(showNewHighScore: Bool = false) {
+    @discardableResult
+    func recordCurrentScore(showNewHighScore: Bool = false) -> ProgressStore.RecordResult {
         let result = ProgressStore.recordScore(score, level: level, helperEnabled: isAnswerHelperEnabled)
         if result.isNewHighScore {
             highScore = score
             isNewHighScore = showNewHighScore
         }
         didIncreaseMaximumCount = showNewHighScore && result.didIncreaseMaximumCount
+        return result
     }
 
     /// Reset for a fresh game of the same level.

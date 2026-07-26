@@ -12,6 +12,9 @@ struct Jumping_FoxApp: App {
     @StateObject private var promotedPurchase = PromotedPurchaseCoordinator.shared
 
     init() {
+        // Capture the first launch date independently of when the player first
+        // finishes a game; later review phases use age since installation.
+        _ = ReviewRequestCoordinator.shared
         PromotedPurchaseCoordinator.shared.startListening()
         // Bring iCloud sync online at launch — not just once the home screen
         // appears. On a fresh reinstall the app opens on the onboarding welcome
