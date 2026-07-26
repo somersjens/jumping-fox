@@ -33,7 +33,13 @@ struct OnboardingView: View {
                             switch step {
                             case 0: nameStep
                             case 1: subjectStep
-                            default: levelStep
+                            default:
+                                levelStep(
+                                    availableWidth: min(
+                                        contentWidth,
+                                        max(0, proxy.size.width - (isPad ? 72 : 48))
+                                    )
+                                )
                             }
                         }
                         .id(step)
@@ -173,12 +179,14 @@ struct OnboardingView: View {
         }
     }
 
-    private var levelStep: some View {
-        VStack(spacing: 14) {
-            Text("onboarding.level.title")
-                .font(.system(size: isPad ? 42 : 32, weight: .heavy, design: .rounded))
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
+    private func levelStep(availableWidth: CGFloat) -> some View {
+        let choiceSizing = levelChoiceSizing(availableWidth: availableWidth)
+
+        return VStack(spacing: 14) {
+            OnboardingTitle(
+                text: L("onboarding.level.title"),
+                fontSize: isPad ? 42 : 32
+            )
 
             Text("onboarding.level.subtitle \(MenuFilter(rawValue: menuFilterRaw)?.title ?? L("onboarding.level.thisTopic"))")
                 .font(isPad ? .title3 : .body)
@@ -190,7 +198,10 @@ struct OnboardingView: View {
                 OnboardingChoiceLabel(
                     title: L("onboarding.level.beginner.title"),
                     subtitle: L("onboarding.level.beginner.subtitle"),
-                    icon: "leaf.fill"
+                    icon: "leaf.fill",
+                    textScale: choiceSizing.scale,
+                    allowsTwoLines: choiceSizing.allowsTwoLines,
+                    rowHeight: choiceSizing.rowHeight
                 )
             }
             .buttonStyle(OnboardingOptionStyle())
@@ -199,7 +210,10 @@ struct OnboardingView: View {
                 OnboardingChoiceLabel(
                     title: L("onboarding.level.intermediate.title"),
                     subtitle: L("onboarding.level.intermediate.subtitle"),
-                    icon: "shuffle"
+                    icon: "shuffle",
+                    textScale: choiceSizing.scale,
+                    allowsTwoLines: choiceSizing.allowsTwoLines,
+                    rowHeight: choiceSizing.rowHeight
                 )
             }
             .buttonStyle(OnboardingOptionStyle())
@@ -208,11 +222,62 @@ struct OnboardingView: View {
                 OnboardingChoiceLabel(
                     title: L("onboarding.level.advanced.title"),
                     subtitle: L("onboarding.level.advanced.subtitle"),
-                    icon: "bolt.fill"
+                    icon: "bolt.fill",
+                    textScale: choiceSizing.scale,
+                    allowsTwoLines: choiceSizing.allowsTwoLines,
+                    rowHeight: choiceSizing.rowHeight
                 )
             }
             .buttonStyle(OnboardingOptionStyle())
         }
+    }
+
+    /// Uses one shared scale for every level choice, based on the widest title
+    /// or subtitle in the active language. If a modest scale-down is not
+    /// enough, all three rows grow equally and may use a second line.
+    private func levelChoiceSizing(
+        availableWidth: CGFloat
+    ) -> (scale: CGFloat, allowsTwoLines: Bool, rowHeight: CGFloat) {
+        let titles = [
+            L("onboarding.level.beginner.title"),
+            L("onboarding.level.intermediate.title"),
+            L("onboarding.level.advanced.title")
+        ]
+        let subtitles = [
+            L("onboarding.level.beginner.subtitle"),
+            L("onboarding.level.intermediate.subtitle"),
+            L("onboarding.level.advanced.subtitle")
+        ]
+
+        let titleSize: CGFloat = isPad ? 20 : 20
+        let subtitleSize: CGFloat = isPad ? 17 : 16
+        let titleFont = UIFont.systemFont(ofSize: titleSize, weight: .semibold)
+        let subtitleFont = UIFont.systemFont(ofSize: subtitleSize)
+        let titleAttributes: [NSAttributedString.Key: Any] = [.font: titleFont]
+        let subtitleAttributes: [NSAttributedString.Key: Any] = [.font: subtitleFont]
+
+        let widestTitle = titles.map {
+            ($0 as NSString).size(withAttributes: titleAttributes).width
+        }.max() ?? 0
+        let widestSubtitle = subtitles.map {
+            ($0 as NSString).size(withAttributes: subtitleAttributes).width
+        }.max() ?? 0
+        let widestText = max(widestTitle, widestSubtitle)
+
+        // Space occupied by the row padding, icon, chevron and HStack gaps.
+        // A small safety inset avoids wrapping caused by fractional glyph
+        // measurements at different display scales.
+        let reservedWidth: CGFloat = isPad ? 168 : 128
+        let textWidth = max(1, availableWidth - reservedWidth)
+        let requiredScale = min(1, textWidth / max(1, widestText))
+        let minimumComfortableScale: CGFloat = isPad ? 0.82 : 0.78
+        let allowsTwoLines = requiredScale < minimumComfortableScale
+        let scale = max(requiredScale, minimumComfortableScale)
+        let rowHeight: CGFloat = isPad
+            ? (allowsTwoLines ? 120 : 94)
+            : (allowsTwoLines ? 96 : 70)
+
+        return (scale, allowsTwoLines, rowHeight)
     }
 
     private func goToSubjects() {
@@ -340,6 +405,9 @@ private struct OnboardingChoiceLabel: View {
     let title: String
     let subtitle: String
     let icon: String
+    let textScale: CGFloat
+    let allowsTwoLines: Bool
+    let rowHeight: CGFloat
     private var isPad: Bool { AppLayout.isPad }
 
     var body: some View {
@@ -350,9 +418,13 @@ private struct OnboardingChoiceLabel: View {
                 .foregroundStyle(.orange)
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(isPad ? .title3.weight(.semibold) : .title3.weight(.semibold))
+                    .font(.system(size: 20 * textScale, weight: .semibold))
+                    .lineLimit(allowsTwoLines ? 2 : 1)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(subtitle)
-                    .font(isPad ? .body : .callout)
+                    .font(.system(size: (isPad ? 17 : 16) * textScale))
+                    .lineLimit(allowsTwoLines ? 2 : 1)
+                    .fixedSize(horizontal: false, vertical: true)
                     .foregroundStyle(.secondary)
             }
             Spacer()
@@ -361,7 +433,8 @@ private struct OnboardingChoiceLabel: View {
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal, isPad ? 26 : 16)
-        .frame(maxWidth: .infinity, minHeight: isPad ? 94 : 70)
+        .frame(maxWidth: .infinity)
+        .frame(height: rowHeight)
         .background(.white.opacity(0.78), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .foregroundStyle(Color(red: 0.43, green: 0.20, blue: 0.03))
     }

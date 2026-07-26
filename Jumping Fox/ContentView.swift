@@ -445,11 +445,6 @@ struct ContentView: View {
             PremiumView()
                 .premiumSheetPresentation()
         }
-        .popover(isPresented: $showGoalPicker, arrowEdge: .top) {
-            DailyGoalPicker(theme: character)
-                .padding()
-                .presentationCompactAdaptation(.popover)
-        }
         .sheet(isPresented: $showNameEditor) {
             NameEditorSheet(theme: character, name: $nameDraft) {
                 let trimmed = nameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -850,6 +845,15 @@ struct ContentView: View {
                 // the row (which is `.center`-aligned), so its height no longer
                 // has to track the name/trophy column beside it.
                 .frame(width: isPad ? 150 : 106)
+                // Keep the popover attached to the streak control itself. When
+                // this lived on the screen-wide container, changing the period
+                // rebuilt the picker and let SwiftUI fall back to that
+                // container's centre as the presentation source.
+                .popover(isPresented: $showGoalPicker, arrowEdge: .top) {
+                    DailyGoalPicker(theme: character)
+                        .padding()
+                        .presentationCompactAdaptation(.popover)
+                }
             }
 
             Divider().overlay(character.deepColor.opacity(0.22))
@@ -2024,9 +2028,9 @@ private struct InfoPopoutCard: View {
     let theme: AnimalCharacter
     private var isPad: Bool { AppLayout.isPad }
 
-    /// Width needed for the header or message on a single line, including the
-    /// card's horizontal padding. The caller still caps it at the available
-    /// space, preserving the 12-point safety margin at each side of the card.
+    /// Width needed for the header or message, including the card's horizontal
+    /// padding. Longer messages deliberately use the narrowest width that still
+    /// fits them on two lines, instead of making the pop-out screen-wide.
     static func preferredWidth(header: String,
                                message: String,
                                isPad: Bool,
@@ -2042,12 +2046,39 @@ private struct InfoPopoutCard: View {
         let headerTracking = CGFloat(max(0, uppercasedHeader.count - 1)) * 0.6
         let headerWidth = (uppercasedHeader as NSString)
             .size(withAttributes: [.font: headerFont]).width + headerTracking
-        let contentWidth = max(
-            headerWidth,
-            (message as NSString).size(withAttributes: [.font: messageFont]).width
-        )
+        let messageString = message as NSString
+        let messageWidth = messageString
+            .size(withAttributes: [.font: messageFont]).width
         let horizontalPadding: CGFloat = isPad ? 36 : 28
-        return min(ceil(contentWidth + horizontalPadding), maximum)
+        let maximumContentWidth = max(1, maximum - horizontalPadding)
+
+        // Keep short explanations on one line. For longer translations, find
+        // the smallest content width that needs no more than two lines. This
+        // keeps the second line from leaving a large empty tail in the card.
+        if max(headerWidth, messageWidth) <= maximumContentWidth {
+            return ceil(max(headerWidth, messageWidth) + horizontalPadding)
+        }
+
+        var lowerBound = min(maximumContentWidth, max(headerWidth, isPad ? 220 : 170))
+        var upperBound = maximumContentWidth
+        let twoLineHeight = messageFont.lineHeight * 2.05
+
+        for _ in 0..<9 {
+            let candidate = (lowerBound + upperBound) / 2
+            let measured = messageString.boundingRect(
+                with: CGSize(width: candidate, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: [.font: messageFont],
+                context: nil
+            )
+            if measured.height <= twoLineHeight {
+                upperBound = candidate
+            } else {
+                lowerBound = candidate
+            }
+        }
+
+        return ceil(upperBound + horizontalPadding)
 #else
         return min(isPad ? 340 : 250, maximum)
 #endif
