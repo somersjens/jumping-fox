@@ -684,6 +684,12 @@ final class GameScene: SKScene {
     // Loop
     private var lastUpdateTime: TimeInterval = 0
     private var started = false
+    /// The final-answer handoff keeps SpriteKit alive long enough for the
+    /// character to spring cleanly out of frame before SwiftUI presents the
+    /// completion card.
+    private var completionFinishAt: TimeInterval?
+    private var completionPersistenceAt: TimeInterval?
+    private var hasPreparedCompletionResult = false
 
     // Haptics: one retained generator kept "warm" via prepare(), so the
     // Taptic Engine never cold-starts on the first correct landing (the
@@ -974,6 +980,9 @@ final class GameScene: SKScene {
         player.position = CGPoint(x: size.width / 2,
                                   y: springboardY + 110 * verticalGameplayScale)
         routeAnchorX = player.position.x
+        player.zPosition = 10
+        player.removeAllActions()
+        playerSprite.removeAllActions()
         player.zRotation = 0
         velocityY = bounceVelocity
         velocityX = 0
@@ -982,6 +991,9 @@ final class GameScene: SKScene {
         totalClimb = 0
         lastUpdateTime = 0
         answerRefreshAt = nil
+        completionFinishAt = nil
+        completionPersistenceAt = nil
+        hasPreparedCompletionResult = false
         answerSetPrompt = nil
         lastReachabilityCheck = 0
         setsBuilt = 0
@@ -1929,6 +1941,33 @@ final class GameScene: SKScene {
         let dt = CGFloat(min(1.0 / 30.0, currentTime - lastUpdateTime))
         lastUpdateTime = currentTime
 
+        // Victory exit: no steering, collisions, spawning or scrolling. The
+        // player follows one uninterrupted launch beyond the top edge while
+        // result persistence is absorbed midway through the animation.
+        if let finishAt = completionFinishAt {
+            velocityY += gravity * dt
+            player.position.y += velocityY * dt
+            updatePlayerAppearance(dt: dt)
+
+            if !hasPreparedCompletionResult,
+               let persistenceAt = completionPersistenceAt,
+               currentTime >= persistenceAt {
+                hasPreparedCompletionResult = true
+                state.prepareCompletedLevel()
+                PausedGameStore.shared.remove(state)
+            }
+            if currentTime >= finishAt {
+                completionFinishAt = nil
+                completionPersistenceAt = nil
+                if !hasPreparedCompletionResult {
+                    state.prepareCompletedLevel()
+                    PausedGameStore.shared.remove(state)
+                }
+                state.presentCompletedLevel()
+            }
+            return
+        }
+
         updateHorizontal(dt: dt)
         if tutorial.isActive && tutorial.currentStep == 1 {
             tutorialMovedLeft = tutorialMovedLeft || player.position.x < tutorialStartX - 45
@@ -2146,7 +2185,18 @@ final class GameScene: SKScene {
         PlaytimeTracker.shared.registerInteraction()
         let wasTripled = state.triplerArmed
         let wasStreakActive = state.isStreakActive
-        state.answeredCorrectly()
+        let scoreBeforeAnswer = state.score
+        let completesLevel = state.answeredCorrectly()
+        if completesLevel {
+            // The final score is already visible in the HUD. Close every
+            // gameplay-only effect and turn the ordinary bounce into a clean,
+            // high victory launch; no new question, pickup or streak can start.
+            setTriplerVisual(false)
+            redemptionArmed = false
+            awaitingCorrectAfterTutorialStar = false
+            beginCompletionCelebration(from: platform.position)
+            return
+        }
         if !wasStreakActive && state.isStreakActive {
             performStreakSalto()
         }
@@ -2184,7 +2234,15 @@ final class GameScene: SKScene {
             }
         }
         answersSinceSpecial += 1
-        maybeSpawnPickups()
+        let crossedScoreboardMaximum = scoreBeforeAnswer < runTrophyGoal
+            && state.score >= runTrophyGoal
+        // With automatic finishing off, the threshold frame already updates
+        // the score and stages the HUD's finish controls. A new pickup can wait
+        // until the following answer, avoiding random scene-tree work on the
+        // exact landing that reaches the maximum.
+        if !crossedScoreboardMaximum {
+            maybeSpawnPickups()
+        }
         // Short confirmation beat: long enough to see the checkmark, short
         // enough that the next set spawns before the player climbs far —
         // every extra tenth here directly lengthens the option-free gap.
@@ -2193,6 +2251,37 @@ final class GameScene: SKScene {
         // so the player can never strand the tutorial by taking the answer
         // before touching the star.
         answerRefreshAt = lastUpdateTime + (shouldRetryTutorialStar ? 0.18 : 0.4)
+    }
+
+    /// Launches the character high enough to be fully beyond the screen at the
+    /// handoff time on every device size. The result is prepared partway
+    /// through, when motion is already established, and only presented after
+    /// the character has cleared the top edge.
+    private func beginCompletionCelebration(from origin: CGPoint) {
+        let duration: TimeInterval = 0.92
+        let targetY = size.height + playerHalfHeight + 72
+        let seconds = CGFloat(duration)
+        let requiredLaunch = (targetY - player.position.y
+            - 0.5 * gravity * seconds * seconds) / seconds
+        let turnDirection: CGFloat = velocityX >= 0 ? -1 : 1
+
+        answerRefreshAt = nil
+        targetX = nil
+        velocityX = 0
+        velocityY = max(springboardVelocity, requiredLaunch)
+        completionPersistenceAt = lastUpdateTime + 0.38
+        completionFinishAt = lastUpdateTime + duration
+        hasPreparedCompletionResult = false
+        player.zPosition = 100
+
+        // One light, readable victory turn. It affects artwork only; the
+        // manual trajectory above remains deterministic.
+        playerSprite.removeAction(forKey: "streak-salto")
+        let turn = SKAction.rotate(byAngle: turnDirection * .pi * 2,
+                                   duration: duration * 0.9)
+        turn.timingMode = .easeInEaseOut
+        playerSprite.run(turn, withKey: "completion-turn")
+        arrivalPing(at: origin, color: theme.skPrimary)
     }
 
     /// Register once → cross INSIDE the block → nothing else changes.
@@ -3158,6 +3247,7 @@ final class GameScene: SKScene {
     // MARK: Input (touch fallback — tilt is primary on device)
 
     private func steer(toX x: CGFloat) {
+        guard completionFinishAt == nil, !state.isCompletingLevel else { return }
         targetX = x
         PlaytimeTracker.shared.registerInteraction()
     }

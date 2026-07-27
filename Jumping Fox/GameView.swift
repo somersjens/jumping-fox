@@ -78,6 +78,11 @@ struct GameView: View {
     @State private var isContinuingLevel: Bool
     @State private var isPausedAtIntro = false
     @State private var isShowingCompletionPreview = false
+    @State private var showEndScreen = false
+    /// When automatic finishing is off, reaching the scoreboard maximum swaps
+    /// two HUD regions at once. Stage that swap just after the score animation
+    /// begins so the landing frame itself remains light.
+    @State private var showsScoreboardFinishControls: Bool
     @State private var heartHintNudge: CGFloat = 0
     @State private var isAnswerHintFlying = false
     @State private var suppressIntroTap = false
@@ -108,6 +113,10 @@ struct GameView: View {
         let state = canResume ? PausedGameStore.shared.gameState(for: level) : GameState(level: level)
         _state = StateObject(wrappedValue: state)
         _scene = State(initialValue: GameScene(state: state))
+        _showsScoreboardFinishControls = State(
+            initialValue: state.score >= ProgressStore.maximumTrophies(for: level)
+                && !GameSettings.capsTrophiesAtThirty
+        )
         // The first ever level starts straight in the live tutorial. Normal
         // runs restore the start screen; developer runs use it as an explicit
         // launch gate so the game cannot start behind the test menu.
@@ -145,6 +154,9 @@ struct GameView: View {
                 Image(systemName: "star.fill")
                 Image(systemName: "arrow.up.circle.fill")
                 Image(systemName: "arrow.left.arrow.right")
+                Image(systemName: "checkmark.circle.fill")
+                Text(verbatim: "🏆")
+                Text(verbatim: "✦")
             }
             .font(.caption.weight(.bold))
             .opacity(0)
@@ -277,6 +289,10 @@ struct GameView: View {
             }
         }
         .onChange(of: state.isStreakActive) { active in
+            guard !state.isCompletingLevel, !state.isGameOver else {
+                showStreakBanner = false
+                return
+            }
             guard active else {
                 // The streak just broke: retract any lingering caption too.
                 if showStreakBanner {
@@ -292,18 +308,39 @@ struct GameView: View {
                 withAnimation(.easeOut(duration: 0.35)) { showStreakBanner = false }
             }
         }
+        .onChange(of: state.isCompletingLevel) { completing in
+            if completing {
+                showStreakBanner = false
+            }
+        }
+        .onChange(of: state.isPastScoreboardCap) { reachedCap in
+            guard reachedCap else {
+                showsScoreboardFinishControls = false
+                return
+            }
+            // Separate the finish affordance from the numeric score transition.
+            // The glyph is prewarmed above, so this later swap is inexpensive.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.16) {
+                guard state.isPastScoreboardCap, !state.isGameOver else { return }
+                showsScoreboardFinishControls = true
+            }
+        }
         .onChange(of: state.isGameOver) { over in
             if over {
-                PausedGameStore.shared.remove(state)
+                // Completed levels remove their paused snapshot during the
+                // victory exit. Other endings still clean it up here.
+                if state.gameOverReason != .completed {
+                    PausedGameStore.shared.remove(state)
+                }
                 TutorialProgress.shared.markGameOver()
-                // Defer the tracker's disk write off this frame so the game-over
-                // / completion overlay paints without waiting on it.
-                DispatchQueue.main.async { PlaytimeTracker.shared.challengeEnded() }
+                PlaytimeTracker.shared.challengeEnded(deferPersistence: true)
             } else {
                 PlaytimeTracker.shared.challengeStarted()
                 // Rearm the celebration for the next completion.
                 celebrate = false
                 showConfetti = false
+                showEndScreen = false
+                showsScoreboardFinishControls = false
                 isShowingCompletionPreview = false
                 // After the tutorial, fresh runs use the normal level start
                 // screen again (including its route back to the main menu).
@@ -647,7 +684,7 @@ struct GameView: View {
     /// scoreboard cap — so the HUD button finishes it (result screen) instead
     /// of pausing to the menu.
     private var isRunFinishable: Bool {
-        state.isEndless || state.isPastScoreboardCap
+        state.isEndless || showsScoreboardFinishControls
     }
 
     private var topBar: some View {
@@ -671,6 +708,10 @@ struct GameView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .animation(.snappy(duration: 0.25), value: isRunFinishable)
+            .disabled(
+                state.isCompletingLevel
+                    || (state.isPastScoreboardCap && !showsScoreboardFinishControls)
+            )
 
             // Just the trophy count: the score number followed by a trophy.
             // The equal-width side columns keep it perfectly centered.
@@ -1068,7 +1109,8 @@ struct GameView: View {
                 statusLabel
                     .padding(.bottom, 0)
                     .animation(.snappy(duration: 0.25), value: state.isScoreLocked)
-                    .animation(.snappy(duration: 0.25), value: state.isPastScoreboardCap)
+                    .animation(.snappy(duration: 0.25),
+                               value: showsScoreboardFinishControls)
             }
         }
         .frame(maxWidth: .infinity)
@@ -1082,7 +1124,7 @@ struct GameView: View {
     /// 30/30 completion, which ends the game instead).
     @ViewBuilder
     private var statusLabel: some View {
-        if state.isPastScoreboardCap {
+        if showsScoreboardFinishControls {
             Label("game.status.leaderboardMaxed", systemImage: "trophy.fill")
                 .font(.caption.weight(.bold))
                 .lineLimit(1)
@@ -1119,12 +1161,18 @@ struct GameView: View {
                 emphasizesSubtitle: true,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )
+            .opacity(showEndScreen ? 1 : 0)
+            .scaleEffect(showEndScreen ? 1 : 0.93)
+            .offset(y: showEndScreen ? 0 : 18)
+            .animation(.spring(response: 0.46, dampingFraction: 0.82),
+                       value: showEndScreen)
             // Useful while refining the UI: a deliberate long press on the
             // game-over card previews the 30/30 completion version.
             .onLongPressGesture(minimumDuration: 2) {
                 isShowingCompletionPreview = true
             }
         }
+        .onAppear { presentEndScreen(celebrating: false) }
     }
 
     // MARK: Completion (reached the 30-point goal)
@@ -1146,10 +1194,15 @@ struct GameView: View {
                 emphasizesSubtitle: false,
                 showsNewHighScore: state.isNewHighScore && state.score > 0
             )
+            .opacity(showEndScreen ? 1 : 0)
+            .scaleEffect(showEndScreen ? 1 : 0.93)
+            .offset(y: showEndScreen ? 0 : 18)
+            .animation(.spring(response: 0.46, dampingFraction: 0.82),
+                       value: showEndScreen)
 
             // Layered above the card — like the tutorial celebration — so the
-            // burst rains over the result screen rather than behind it. Brought
-            // in one runloop after the card paints, so it never adds lag.
+            // burst rains over the result screen rather than behind it. It
+            // starts only after the card entrance is visibly underway.
             if showConfetti {
                 ConfettiView()
                     .ignoresSafeArea()
@@ -1157,21 +1210,39 @@ struct GameView: View {
             }
         }
         .onAppear {
-            celebrate = true
-#if canImport(UIKit)
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-#endif
-            // Let the completion card paint on this frame; bring the confetti in
-            // on the next runloop so building its nodes never delays the popup.
-            DispatchQueue.main.async { showConfetti = true }
+            presentEndScreen(celebrating: true)
+        }
+    }
+
+    /// Paints the scrim and card first, then starts the optional celebration
+    /// after the entrance is visibly underway. Delays are long enough to cross
+    /// a real display frame rather than relying on runloop coalescing.
+    private func presentEndScreen(celebrating: Bool) {
+        showEndScreen = false
+        showConfetti = false
+        if celebrating { celebrate = false }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
+            guard state.isGameOver else { return }
+            showEndScreen = true
+            if celebrating { celebrate = true }
+        }
+        guard celebrating else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
+            guard state.isGameOver,
+                  state.gameOverReason == .completed
+                    || state.score >= ProgressStore.maximumTrophies(for: state.level)
+                    || isShowingCompletionPreview else { return }
+            showConfetti = true
         }
     }
 
     /// The result remains a pop-over: the playing field stays subtly visible,
     /// while the dark scrim separates it from the solid result card.
     private var popoverBackdrop: some View {
-        Color.black.opacity(0.56).ignoresSafeArea()
+        Color.black.opacity(showEndScreen ? 0.56 : 0)
+            .ignoresSafeArea()
+            .animation(.easeOut(duration: 0.24), value: showEndScreen)
     }
 
     private enum EndIllustration {
@@ -1615,8 +1686,12 @@ private struct EndScreenText {
 
 /// Lightweight falling-confetti burst for the completion screen.
 private struct ConfettiView: View {
-    private let pieces = (0..<44).map { _ in ConfettiPiece() }
+    @State private var pieces: [ConfettiPiece]
     @State private var fallen = false
+
+    init() {
+        _pieces = State(initialValue: (0..<44).map { _ in ConfettiPiece() })
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -1637,19 +1712,14 @@ private struct ConfettiView: View {
                         )
                 }
             }
-            // Composite all pieces into one Metal layer so the fall animates
-            // smoothly instead of stuttering as it starts.
-            .drawingGroup()
         }
-        // Toggle the fall on the *next* runloop, not inside this first appear.
-        // When the view is inserted and `fallen` flips in the same commit, the
-        // drawing-group snapshots the already-fallen (off-screen, transparent)
-        // state and the burst is never seen — which is exactly what happens on
-        // the completion card, where the view is inserted via a deferred flag.
-        // Committing the initial top-of-screen frame first makes the fall
-        // animate reliably wherever the view is used.
+        // A short real-time gap guarantees the initial above-screen positions
+        // have been presented before the fall begins. The pieces live in State,
+        // so their UUIDs and random paths remain stable across body updates.
         .onAppear {
-            DispatchQueue.main.async { fallen = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                fallen = true
+            }
         }
     }
 }

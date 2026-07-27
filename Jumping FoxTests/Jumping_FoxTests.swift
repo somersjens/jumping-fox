@@ -11,9 +11,18 @@ import XCTest
 final class Jumping_FoxTests: XCTestCase {
     private var defaults: UserDefaults!
     private var suiteName: String!
+    private var previousLifeMode: LifeMode!
+    private var previousCapSetting: Bool!
+    private var previousHelperSetting: Bool!
 
     override func setUp() {
         super.setUp()
+        previousLifeMode = GameSettings.lifeMode
+        previousCapSetting = GameSettings.capsTrophiesAtThirty
+        previousHelperSetting = GameSettings.answerHelperEnabled
+        GameSettings.lifeMode = .three
+        GameSettings.capsTrophiesAtThirty = true
+        GameSettings.answerHelperEnabled = false
         suiteName = "ReviewRequestCoordinatorTests.\(UUID().uuidString)"
         defaults = UserDefaults(suiteName: suiteName)
     }
@@ -22,7 +31,51 @@ final class Jumping_FoxTests: XCTestCase {
         defaults.removePersistentDomain(forName: suiteName)
         defaults = nil
         suiteName = nil
+        GameSettings.lifeMode = previousLifeMode
+        GameSettings.capsTrophiesAtThirty = previousCapSetting
+        GameSettings.answerHelperEnabled = previousHelperSetting
         super.tearDown()
+    }
+
+    func testMaximumScoreStagesCompletionBeforePresentingGameOver() {
+        let level = LevelConfig(category: .addition, index: 1, cardNumber: "1")
+        let state = GameState(level: level)
+        let maximum = ProgressStore.maximumTrophies(for: level)
+        var reachedMaximum = false
+
+        for _ in 0..<(maximum + 2) {
+            if state.answeredCorrectly() {
+                reachedMaximum = true
+                break
+            }
+        }
+
+        XCTAssertTrue(reachedMaximum)
+        XCTAssertEqual(state.score, maximum)
+        XCTAssertTrue(state.isCompletingLevel)
+        XCTAssertFalse(state.isGameOver)
+        XCTAssertNil(state.gameOverReason)
+
+        // The celebration handoff is input-locked: a duplicate landing cannot
+        // add points or prematurely publish the result card.
+        XCTAssertFalse(state.answeredCorrectly())
+        XCTAssertEqual(state.score, maximum)
+        XCTAssertFalse(state.canRevealAnswer)
+    }
+
+    func testDisabledScoreCapKeepsPlayingPastMaximum() {
+        GameSettings.capsTrophiesAtThirty = false
+        let level = LevelConfig(category: .addition, index: 1, cardNumber: "1")
+        let state = GameState(level: level)
+        let maximum = ProgressStore.maximumTrophies(for: level)
+
+        while state.score < maximum {
+            XCTAssertFalse(state.answeredCorrectly())
+        }
+
+        XCTAssertFalse(state.isCompletingLevel)
+        XCTAssertFalse(state.isGameOver)
+        XCTAssertTrue(state.isPastScoreboardCap)
     }
 
     func testThresholdIsNotAnExactGameNumber() {

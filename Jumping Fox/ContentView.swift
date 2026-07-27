@@ -1294,13 +1294,16 @@ struct ContentView: View {
     private var totalTrophies: Int {
         LevelCatalog.byCategory.values.flatMap { $0 }
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + trophies(for: $1) }
+            .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1) }
     }
 
     private var categoryTrophies: Int {
-        LevelCatalog.levels(for: category)
+        let levels = selectedFilter == .mixed
+            ? ChallengeCategory.supermixMenu.flatMap { LevelCatalog.levels(for: $0) }
+            : LevelCatalog.levels(for: category)
+        return levels
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + trophiesInActiveSubcategory(for: $1) }
+            .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1) }
     }
 
     /// The `(from, to, startedAt)` a header trophy counter should use. It holds
@@ -1317,21 +1320,18 @@ struct ContentView: View {
         return (current, current, nil)
     }
 
-    /// The category header belongs to the selected subcategory. Reeks, Hussel
-    /// and Gemixt therefore contribute independently: a Hussel improvement from
-    /// 0 to 1 grows the Hussel total even when Reeks already has a higher score.
-    /// Supermix has no practice-mode row and keeps using its concrete level id.
-    private func trophiesInActiveSubcategory(for level: LevelConfig) -> Int {
-        let activeLevel = selectedFilter == .mixed ? level : level.variant(menuMode)
-        return trophies(forExactLevel: activeLevel)
-    }
-
-    /// The overall player total retains its existing meaning: for every base
-    /// level, use the strongest of its three practice-mode variants.
-    private func trophies(for level: LevelConfig) -> Int {
-        // Each mode variant is scored and capped against its own goal (Order 20,
-        // Random 30, Mixed 40), so the best across them is compared like-for-like.
-        level.allModeVariants.map(trophies(forExactLevel:)).max() ?? 0
+    /// A base level contributes the total of all three practice modes to both
+    /// its topic and the player's overall total. The exact variant scores remain
+    /// separate on their level cards, but Reeks, Hussel and Gemixt all count.
+    /// Supermix has no practice-mode row and therefore contributes each of its
+    /// concrete levels exactly once.
+    private func trophiesAcrossPracticeModes(for level: LevelConfig) -> Int {
+        guard !level.category.isSupermixMenu else {
+            return trophies(forExactLevel: level)
+        }
+        return level.allModeVariants.reduce(0) {
+            $0 + trophies(forExactLevel: $1)
+        }
     }
 
     /// Score contribution of one exact level+mode id, including a higher paused

@@ -71,13 +71,15 @@ final class ProgressSync: ObservableObject {
     /// Merges a local score with iCloud and writes the winner to both stores.
     /// This is intentionally a maximum, rather than last-write-wins, so a
     /// score earned on either device can never erase a better score elsewhere.
+    /// `NSUbiquitousKeyValueStore` propagates `set` operations automatically;
+    /// forcing `synchronize()` here can block the gameplay/main thread for
+    /// several seconds on a slow iCloud connection.
     func mergedScore(for key: String, localScore: Int) -> Int {
         let cloudScore = (cloudStore.object(forKey: key) as? NSNumber)?.intValue ?? 0
         let winner = max(localScore, cloudScore)
 
         if cloudScore < winner {
             cloudStore.set(NSNumber(value: winner), forKey: key)
-            cloudStore.synchronize()
         }
         return winner
     }
@@ -101,7 +103,6 @@ final class ProgressSync: ObservableObject {
             lastKnownPlayerName = cloudName
         } else if !localName.isEmpty, cloudName != localName {
             cloudStore.set(localName, forKey: playerNameCloudKey)
-            cloudStore.synchronize()
             lastKnownPlayerName = localName
         }
     }
@@ -126,6 +127,5 @@ final class ProgressSync: ObservableObject {
         lastKnownPlayerName = localName
         guard !localName.isEmpty else { return }
         cloudStore.set(localName, forKey: playerNameCloudKey)
-        cloudStore.synchronize()
     }
 }

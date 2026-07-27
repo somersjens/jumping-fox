@@ -138,11 +138,16 @@ final class GameState: ObservableObject {
     /// Brief visual-only handoff while ×3 joins ×2 in the HUD and both coins
     /// jump to the trophy. Scoring and streak state never depend on this flag.
     @Published private(set) var isStreakComboAnimating = false
+    /// The final correct answer has been scored, but the scene is still playing
+    /// its short victory exit. Gameplay is locked during this handoff; the
+    /// result card is presented only after the character has left the screen.
+    @Published private(set) var isCompletingLevel = false
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
     @Published private(set) var didIncreaseMaximumCount = false
     @Published private(set) var highScore: Int
+    private var hasPreparedCompletedLevel = false
 
     init(level: LevelConfig) {
         self.level = level
@@ -198,13 +203,14 @@ final class GameState: ObservableObject {
     /// "scoreboard maxed" notice — but reaching the cap under the normal
     /// completion flow ends the game, so this stays false there.
     var isPastScoreboardCap: Bool {
-        !isGameOver && score >= ProgressStore.maximumTrophies(for: level)
+        !isGameOver && !isCompletingLevel
+            && score >= ProgressStore.maximumTrophies(for: level)
     }
 
     /// The hint may not be used when only half a life (or half of the
     /// unlimited-mode budget) is left — you can never spend your last half.
     var canRevealAnswer: Bool {
-        guard !isGameOver, !isAnswerRevealed else { return false }
+        guard !isGameOver, !isCompletingLevel, !isAnswerRevealed else { return false }
         // Endless play: the lives are already gone, so the hint is free.
         if isEndless { return true }
         if let halves = livesHalves { return halves > 1 }
@@ -218,8 +224,9 @@ final class GameState: ObservableObject {
     /// Only closes the current question (score); the next question is
     /// activated separately via `advanceQuestion()` so the HUD and the
     /// platforms always switch together, after the confirmation.
-    func answeredCorrectly() {
-        guard !isGameOver, !isScoreLocked else { return }
+    @discardableResult
+    func answeredCorrectly() -> Bool {
+        guard !isGameOver, !isCompletingLevel, !isScoreLocked else { return false }
         // Base earning: a ×3 pickup triples it; an active streak then doubles
         // whatever was earned. So 1 normally, 2 on a streak, 3 with a ×3, and
         // 6 with a ×3 collected during a streak.
@@ -227,14 +234,40 @@ final class GameState: ObservableObject {
         if isStreakActive { earned *= 2 }
         score += earned
         triplerArmed = false
-        registerCorrectForStreak()
         // "Round off at 30" is on: reaching the cap finishes the level with a
-        // festive completion screen instead of letting the run drag on.
+        // festive completion sequence instead of letting the run drag on.
+        // Do not publish `isGameOver` here: SpriteKit first gets a short,
+        // input-locked victory beat in which the character exits the screen.
         if GameSettings.capsTrophiesAtThirty,
            score >= ProgressStore.maximumTrophies(for: level) {
             score = ProgressStore.maximumTrophies(for: level)
-            endGame(reason: .completed)
+            isStreakComboAnimating = false
+            isCompletingLevel = true
+            return true
         }
+        registerCorrectForStreak()
+        return false
+    }
+
+    /// Persists the completed run while SpriteKit is already playing the
+    /// victory exit. Keeping this separate from presentation means disk/cloud
+    /// bookkeeping cannot hold up the first frame of the result card.
+    func prepareCompletedLevel() {
+        guard isCompletingLevel, !isGameOver, !hasPreparedCompletedLevel else { return }
+        let result = recordCurrentScore(showNewHighScore: true)
+        recordCompletedGame(using: result)
+        hasPreparedCompletedLevel = true
+    }
+
+    /// Called by the scene after the character has cleared the top edge.
+    /// `isGameOver` is deliberately published last so SwiftUI observes a fully
+    /// prepared, internally consistent result.
+    func presentCompletedLevel() {
+        guard isCompletingLevel, !isGameOver else { return }
+        prepareCompletedLevel()
+        gameOverReason = .completed
+        isCompletingLevel = false
+        isGameOver = true
     }
 
     /// Counts one correct answer toward the streak and turns the streak on the
@@ -258,24 +291,25 @@ final class GameState: ObservableObject {
 
     /// Arms the ×3 pickup for the next answer.
     func armTripler() {
-        guard !isGameOver, !isScoreLocked else { return }
+        guard !isGameOver, !isCompletingLevel, !isScoreLocked else { return }
         triplerArmed = true
     }
 
     func setStreakComboAnimating(_ animating: Bool) {
+        guard !isCompletingLevel || !animating else { return }
         isStreakComboAnimating = animating
     }
 
     /// The −1 hazard: touching it costs one trophy (never below zero).
     func loseTrophy() {
-        guard !isGameOver, !isScoreLocked, score > 0 else { return }
+        guard !isGameOver, !isCompletingLevel, !isScoreLocked, score > 0 else { return }
         score -= 1
     }
 
     /// Heals from a heart pickup, in half-heart units, never above the
     /// starting total. Meaningless once endless play has begun.
     func gainLifeHalves(_ halves: Int) {
-        guard !isGameOver, !isEndless, let current = livesHalves,
+        guard !isGameOver, !isCompletingLevel, !isEndless, let current = livesHalves,
               let start = lifeMode.startingLives else { return }
         livesHalves = min(start * 2, current + halves)
     }
@@ -289,14 +323,14 @@ final class GameState: ObservableObject {
     /// Activates the next question in the chain. Called by the scene at a
     /// safe moment, never in the landing frame.
     func advanceQuestion() {
-        guard !isGameOver else { return }
+        guard !isGameOver, !isCompletingLevel else { return }
         question = engine.next()
         isAnswerRevealed = false
     }
 
     /// Called when the player lands on a wrong platform.
     func answeredWrong() {
-        guard !isGameOver else { return }
+        guard !isGameOver, !isCompletingLevel else { return }
         engine.registerWrong(question)
         triplerArmed = false // a wrong answer forfeits the ×3
         resetStreak()        // …and ends the answer-streak
@@ -308,6 +342,7 @@ final class GameState: ObservableObject {
     /// time per question. Returns whether the answer is now revealed.
     @discardableResult
     func revealAnswer() -> Bool {
+        guard !isGameOver, !isCompletingLevel else { return false }
         guard !isAnswerRevealed else { return true }
         guard canRevealAnswer else { return false }
         isAnswerRevealed = true
@@ -339,14 +374,14 @@ final class GameState: ObservableObject {
 
     /// Called when the player falls below the screen — always game over.
     func fell() {
-        guard !isGameOver else { return }
+        guard !isGameOver, !isCompletingLevel else { return }
         endGame(reason: .fell)
     }
 
     /// Ends an unlimited run from the HUD and shows the same result screen as
     /// any other finished attempt, including the trophies just earned.
     func finishEndlessRun() {
-        guard isEndless, !isGameOver else { return }
+        guard isEndless, !isGameOver, !isCompletingLevel else { return }
         endGame(reason: .finished)
     }
 
@@ -354,15 +389,19 @@ final class GameState: ObservableObject {
     /// endless play (lives spent in unlimited mode) or still climbing past the
     /// scoreboard cap. Shows the standard result screen with trophies earned.
     func finishRun() {
-        guard !isGameOver, isEndless || isPastScoreboardCap else { return }
+        guard !isGameOver, !isCompletingLevel, isEndless || isPastScoreboardCap else { return }
         endGame(reason: .finished)
     }
 
     private func endGame(reason: GameOverReason) {
         guard !isGameOver else { return }
-        isGameOver = true
-        gameOverReason = reason
         let result = recordCurrentScore(showNewHighScore: true)
+        recordCompletedGame(using: result)
+        gameOverReason = reason
+        isGameOver = true
+    }
+
+    private func recordCompletedGame(using result: ProgressStore.RecordResult) {
         ReviewRequestCoordinator.shared.recordCompletedGame(
             isNewHighScore: result.isNewHighScore,
             score: score,
@@ -394,10 +433,12 @@ final class GameState: ObservableObject {
         correctStreak = 0
         isStreakActive = false
         isStreakComboAnimating = false
+        isCompletingLevel = false
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false
         didIncreaseMaximumCount = false
+        hasPreparedCompletedLevel = false
         highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
     }
 

@@ -123,9 +123,16 @@ final class PlaytimeTracker: ObservableObject {
     }
 
     /// Also called when a static screen (game over) appears.
-    func challengeEnded() {
-        pauseAccrual()
+    func challengeEnded(deferPersistence: Bool = false) {
+        pauseAccrual(saveImmediately: !deferPersistence)
         challengeActive = false
+        if deferPersistence {
+            // The elapsed time is already frozen above. Only the JSON write is
+            // postponed so it cannot compete with a result-card transition.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { [weak self] in
+                self?.save(force: true)
+            }
+        }
     }
 
     /// Called on real gameplay interaction: steering, jumping on an answer,
@@ -143,18 +150,21 @@ final class PlaytimeTracker: ObservableObject {
         lastAccrual = now
     }
 
-    private func pauseAccrual() {
+    private func pauseAccrual(saveImmediately: Bool = true) {
         if challengeActive, let last = lastAccrual {
             let delta = Date().timeIntervalSince(last)
             if delta > 0 && delta <= idleLimit {
-                accrue(delta, at: Date())
+                accrue(delta, at: Date(), allowPersistence: saveImmediately)
             }
         }
         lastAccrual = nil
-        save(force: true)
+        if saveImmediately {
+            save(force: true)
+        }
     }
 
-    private func accrue(_ delta: TimeInterval, at date: Date) {
+    private func accrue(_ delta: TimeInterval, at date: Date,
+                        allowPersistence: Bool = true) {
         let key = dayFormatter.string(from: date)
         var record = days[key] ?? DayRecord(date: key, seconds: 0, goalMinutes: dailyGoalMinutes)
         record.seconds += delta
@@ -162,7 +172,7 @@ final class PlaytimeTracker: ObservableObject {
         days[key] = record
 
         unsavedSeconds += delta
-        if unsavedSeconds >= saveInterval {
+        if allowPersistence, unsavedSeconds >= saveInterval {
             save(force: false)
         }
         recomputeDisplay()
