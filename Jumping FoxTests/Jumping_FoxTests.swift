@@ -111,6 +111,35 @@ final class Jumping_FoxTests: XCTestCase {
         XCTAssertNil(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "af"))
     }
 
+    func testEmphasisContinuesAcrossLineBreak() {
+        let result = emphasizedAttributedString("|First line\nsecond line|")
+        let runs = result.runs.map {
+            (
+                String(result.characters[$0.range]),
+                $0.inlinePresentationIntent?.contains(.stronglyEmphasized) == true
+            )
+        }
+
+        XCTAssertEqual(String(result.characters), "First line\nsecond line")
+        XCTAssertEqual(runs.count, 1)
+        XCTAssertEqual(runs.first?.0, "First line\nsecond line")
+        XCTAssertEqual(runs.first?.1, true)
+    }
+
+    func testSeparateBoldLinesStayIndependentlyEmphasized() {
+        let result = emphasizedAttributedString("|First line|\n|Second line|")
+        let runs = result.runs.map {
+            (
+                String(result.characters[$0.range]),
+                $0.inlinePresentationIntent?.contains(.stronglyEmphasized) == true
+            )
+        }
+
+        XCTAssertEqual(String(result.characters), "First line\nSecond line")
+        XCTAssertEqual(runs.map(\.0), ["First line", "\n", "Second line"])
+        XCTAssertEqual(runs.map(\.1), [true, false, true])
+    }
+
     func testDutchFractionsUseSchoolOrdinalsRatherThanDivision() {
         XCTAssertEqual(AppAudio.spokenText(for: "1/20 × 20 = ?", languageCode: "nl"),
                        "1 20ste keer 20")
@@ -140,6 +169,112 @@ final class Jumping_FoxTests: XCTestCase {
         }
         XCTAssertEqual(Set(SpokenMath.lexicons.keys).subtracting(["nl"]),
                        Set(SpokenMath.fractionPatternLanguageCodes))
+    }
+
+    func testArithmeticOrderRoutesUseThreeGroupsOfFive() {
+        let addition = QuestionEngine(
+            level: LevelConfig(category: .addition, index: 2, cardNumber: "2")
+        )
+        XCTAssertEqual(
+            (0..<16).map { _ in addition.next().prompt },
+            [
+                "2 + 2 = ?", "2 + 4 = ?", "2 + 6 = ?", "2 + 8 = ?", "2 + 10 = ?",
+                "2 + 3 = ?", "2 + 5 = ?", "2 + 7 = ?", "2 + 9 = ?", "2 + 11 = ?",
+                "2 + 5 = ?", "2 + 7 = ?", "2 + 9 = ?", "2 + 11 = ?", "2 + 13 = ?",
+                "2 + 2 = ?"
+            ]
+        )
+
+        let subtraction = QuestionEngine(
+            level: LevelConfig(category: .subtraction, index: 2, cardNumber: "2")
+        )
+        XCTAssertEqual(
+            (0..<16).map { _ in subtraction.next().prompt },
+            [
+                "12 − 2 = ?", "10 − 2 = ?", "8 − 2 = ?", "6 − 2 = ?", "4 − 2 = ?",
+                "13 − 2 = ?", "11 − 2 = ?", "9 − 2 = ?", "7 − 2 = ?", "5 − 2 = ?",
+                "15 − 2 = ?", "13 − 2 = ?", "11 − 2 = ?", "9 − 2 = ?", "7 − 2 = ?",
+                "12 − 2 = ?"
+            ]
+        )
+    }
+
+    func testArithmeticRandomRangesIncludeEveryValueBelowTheSequenceCeiling() {
+        XCTAssertEqual(ChallengeScaling.additionSequenceCeiling(2), 13)
+        XCTAssertEqual(ChallengeScaling.subtractionSequenceCeiling(2), 15)
+
+        let addition = QuestionEngine(
+            level: LevelConfig(category: .addition, index: 2, cardNumber: "2", mode: .random)
+        )
+        var additionOthers = Set<Int>()
+        for _ in 0..<13 {
+            let values = integers(in: addition.next().prompt)
+            XCTAssertEqual(values.count, 2)
+            additionOthers.insert(values[0] == 2 ? values[1] : values[0])
+        }
+        XCTAssertEqual(additionOthers, Set(1...13))
+
+        let subtraction = QuestionEngine(
+            level: LevelConfig(category: .subtraction, index: 2, cardNumber: "2", mode: .random)
+        )
+        let starts = Set((0..<14).compactMap { _ in integers(in: subtraction.next().prompt).first })
+        XCTAssertEqual(starts, Set(2...15))
+    }
+
+    func testPercentageDecimalSharesAreFortyAndTwentyPercent() {
+        let decimal = QuestionEngine(
+            level: LevelConfig(category: .percentages, index: 1, cardNumber: "25", mode: .random)
+        )
+        let decimalAnswers = (0..<5)
+            .map { _ in decimal.next().correctAnswer }
+            .filter(hasDecimalSeparator)
+        XCTAssertEqual(decimalAnswers.count, 2)
+
+        let mixed = QuestionEngine(
+            level: LevelConfig(category: .percentages, index: 1, cardNumber: "25", mode: .mixed)
+        )
+        let mixedDecimalAnswers = (0..<5)
+            .map { _ in mixed.next().correctAnswer }
+            .filter(hasDecimalSeparator)
+        XCTAssertEqual(mixedDecimalAnswers.count, 1)
+    }
+
+    func testEverySupermixCategoryUsesTheSelectedValuesSequenceCeiling() {
+        XCTAssertEqual(ChallengeScaling.additionSequenceCeiling(12), 63)
+        XCTAssertEqual(ChallengeScaling.subtractionSequenceCeiling(12), 75)
+
+        for category in ChallengeCategory.supermixMenu {
+            for index in [1, 2, 12, 13, 99] {
+                let engine = QuestionEngine(
+                    level: LevelConfig(category: category, index: index, cardNumber: "\(index)")
+                )
+                for _ in 0..<250 {
+                    let question = engine.next()
+                    let values = integers(in: question.prompt)
+                    if question.prompt.contains("+") {
+                        XCTAssertEqual(values.count, 2)
+                        let matchesSelectedValueCeiling =
+                            (values[0] <= index
+                                && values[1] <= ChallengeScaling.additionSequenceCeiling(values[0]))
+                            || (values[1] <= index
+                                && values[0] <= ChallengeScaling.additionSequenceCeiling(values[1]))
+                        XCTAssertTrue(
+                            matchesSelectedValueCeiling,
+                            "\(category.rawValue) \(question.prompt)"
+                        )
+                    } else if question.prompt.contains("−") {
+                        XCTAssertEqual(values.count, 2)
+                        let selected = values[1]
+                        XCTAssertLessThanOrEqual(selected, index)
+                        XCTAssertLessThanOrEqual(
+                            values[0],
+                            ChallengeScaling.subtractionSequenceCeiling(selected),
+                            "\(category.rawValue) \(question.prompt)"
+                        )
+                    }
+                }
+            }
+        }
     }
 
     func testMaximumScoreStagesCompletionBeforePresentingGameOver() {
@@ -261,5 +396,13 @@ final class Jumping_FoxTests: XCTestCase {
                 maximumScore: 20
             )
         }
+    }
+
+    private func integers(in prompt: String) -> [Int] {
+        prompt.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
+    }
+
+    private func hasDecimalSeparator(_ answer: String) -> Bool {
+        answer.contains(".") || answer.contains(",")
     }
 }

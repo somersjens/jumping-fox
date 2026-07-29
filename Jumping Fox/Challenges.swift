@@ -86,6 +86,39 @@ enum ChallengeCategory: String, CaseIterable, Identifiable {
 /// numbers actually generated) read from here, so the card a child sees and
 /// the sums they get can never drift apart.
 enum ChallengeScaling {
+    /// Addition and subtraction Order routes consist of three short groups.
+    /// Five questions per group keeps each run compact before it starts over.
+    static let arithmeticSequenceGroupSize = 5
+    static let arithmeticSequenceOffsets = [0, 1, 3]
+
+    static func additionSequenceOther(_ index: Int, position: Int) -> Int {
+        let group = (position / arithmeticSequenceGroupSize) % arithmeticSequenceOffsets.count
+        let offset = position % arithmeticSequenceGroupSize
+        return index + arithmeticSequenceOffsets[group] + offset * index
+    }
+
+    static func subtractionSequenceStart(_ index: Int, position: Int) -> Int {
+        let group = (position / arithmeticSequenceGroupSize) % arithmeticSequenceOffsets.count
+        let offset = position % arithmeticSequenceGroupSize
+        return (arithmeticSequenceGroupSize + 1) * index
+            + arithmeticSequenceOffsets[group]
+            - offset * index
+    }
+
+    static func additionSequenceCeiling(_ index: Int) -> Int {
+        additionSequenceOther(
+            index,
+            position: arithmeticSequenceGroupSize * arithmeticSequenceOffsets.count - 1
+        )
+    }
+
+    static func subtractionSequenceCeiling(_ index: Int) -> Int {
+        subtractionSequenceStart(
+            index,
+            position: arithmeticSequenceGroupSize * (arithmeticSequenceOffsets.count - 1)
+        )
+    }
+
     /// Fraction denominators for all 99 levels, in the intended learning
     /// sequence. Each value is used both on the level card and in its sums.
     static let fractionDenominators = [
@@ -883,13 +916,13 @@ final class QuestionEngine {
                             isRandomPractice: true)
     }
 
-    /// Always add this level's number, shuffled through the same value set as
-    /// the Order route, with the two numbers free to swap sides.
+    /// Always add this level's number. The other number may be any value up to
+    /// the highest value introduced by the Order route, rather than only one of
+    /// the values that happens to occur in that route.
     private func additionRandomQuestion() -> Question {
         let n = level.index
-        let pos = shuffledCycled(Array(0..<30))
-        let group = pos / 10
-        let other = n + [0, 1, 3][group] + (pos % 10) * n
+        let ceiling = ChallengeScaling.additionSequenceCeiling(n)
+        let other = shuffledCycled(Array(1...ceiling))
         let answer = n + other
         let (a, b) = Bool.random() ? (n, other) : (other, n)
         return makeQuestion("\(a) + \(b) = ?", "\(answer)",
@@ -898,13 +931,13 @@ final class QuestionEngine {
                             isRandomPractice: true)
     }
 
-    /// Always subtract this level's number, shuffled through the Order route's
-    /// value set. The order never swaps — a minus is not commutative.
+    /// Always subtract this level's number. The starting number may be any
+    /// value up to the Order route's ceiling. The order never swaps because a
+    /// minus is not commutative.
     private func subtractionRandomQuestion() -> Question {
         let n = level.index
-        let pos = shuffledCycled(Array(0..<30))
-        let group = pos / 10
-        let left = 11 * n + [0, 1, 3][group] - (pos % 10) * n
+        let ceiling = ChallengeScaling.subtractionSequenceCeiling(n)
+        let left = shuffledCycled(Array(n...ceiling))
         let answer = left - n
         return makeQuestion("\(left) − \(n) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,
@@ -991,14 +1024,14 @@ final class QuestionEngine {
 
     // MARK: Addition
 
-    /// Fixed 30-question route, repeated from the beginning when needed.
+    /// Fixed 15-question route, repeated from the beginning when needed.
     /// The practiced number is always first: for +2 this starts at
-    /// 2+2, 2+4 … 2+20; then 2+3 … and finally 2+5 ….
+    /// 2+2 … 2+10; then 2+3 … 2+11 and finally 2+5 … 2+13.
     private func additionQuestion() -> Question {
         let n = level.index
-        let position = step % 30
-        let group = position / 10
-        let other = n + [0, 1, 3][group] + (position % 10) * n
+        let seriesLength = ChallengeScaling.arithmeticSequenceGroupSize
+            * ChallengeScaling.arithmeticSequenceOffsets.count
+        let other = ChallengeScaling.additionSequenceOther(n, position: step % seriesLength)
         let answer = n + other
         // Real child errors, all close to the answer: counting slips
         // (±1/±2), forgetting to add and adding n twice.
@@ -1046,13 +1079,13 @@ final class QuestionEngine {
 
     // MARK: Subtraction
 
-    /// Fixed 30-question descending route, repeated from the beginning when
-    /// needed. For −2 this is 22−2 … 4−2, then 23−2 … 5−2, then 25−2 … 7−2.
+    /// Fixed 15-question descending route, repeated from the beginning when
+    /// needed. For −2 this is 12−2 … 4−2, then 13−2 … 5−2, then 15−2 … 7−2.
     private func subtractionQuestion() -> Question {
         let n = level.index
-        let position = step % 30
-        let group = position / 10
-        let left = 11 * n + [0, 1, 3][group] - (position % 10) * n
+        let seriesLength = ChallengeScaling.arithmeticSequenceGroupSize
+            * ChallengeScaling.arithmeticSequenceOffsets.count
+        let left = ChallengeScaling.subtractionSequenceStart(n, position: step % seriesLength)
         let answer = left - n
         // Counting slips, forgetting to subtract (left = answer + n) and
         // subtracting n twice (answer − n) — all plausible near-misses.
@@ -1289,8 +1322,8 @@ final class QuestionEngine {
 
     /// Whole ("Heel"): p% of a number that always divides cleanly, so the
     /// answer is a whole number.
-    private func percentagesWholeQuestion() -> Question {
-        let p = currentPercentage
+    private func percentagesWholeQuestion(percentage: Int? = nil) -> Question {
+        let p = percentage ?? currentPercentage
         let whole = Self.percentageBase(p) * shuffledCycled(Array(1...8))
         let answer = whole * p / 100
         let neighbours = Self.percentageLevels
@@ -1309,14 +1342,16 @@ final class QuestionEngine {
     /// 0,33/0,67. Nothing messier, so the answers stay readable.
     private static let decimalRemainders: Set<Int> = [10, 20, 30, 40, 50, 60, 70, 80, 90, 25, 75, 33, 67]
 
-    /// Decimal ("Komma"): the same percentage as the Whole level. Half the
-    /// questions keep a clean whole answer, the other half land behind the
-    /// comma — always on one of the friendly decimals in `decimalRemainders`.
+    /// Decimal ("Komma"): the same percentage as the Whole level. Exactly two
+    /// positions in every five-question cycle (40%) land behind the comma;
+    /// the other three keep a clean whole answer.
     /// The whole itself stays an ordinary integer.
-    private func percentagesDecimalQuestion() -> Question {
-        // 50/50 split between whole-number and decimal answers.
-        if Bool.random() { return percentagesWholeQuestion() }
-        let p = currentPercentage
+    private func percentagesDecimalQuestion(percentage: Int? = nil,
+                                            decimalSlotsPerFive: Int = 2) -> Question {
+        let p = percentage ?? currentPercentage
+        guard step % 5 < decimalSlotsPerFive else {
+            return percentagesWholeQuestion(percentage: p)
+        }
         // Every integer whole whose "p% of whole" lands on a friendly decimal
         // with a small, readable answer (≤ 60). Working in hundredths keeps the
         // maths exact — no floating-point rounding anywhere.
@@ -1329,7 +1364,9 @@ final class QuestionEngine {
             }
         }
         // Degenerate safety net (e.g. p a multiple of 100): fall back to whole.
-        guard let pick = candidates.randomElement() else { return percentagesWholeQuestion() }
+        guard let pick = candidates.randomElement() else {
+            return percentagesWholeQuestion(percentage: p)
+        }
         let answerText = Self.decimalString(hundredths: pick.hundredths)
         // Near-misses a child actually produces: dropped the decimal (rounded
         // to a whole), the tenth above/below, and one whole off.
@@ -1344,10 +1381,14 @@ final class QuestionEngine {
     }
 
     /// Mixed ("Gemixt"): this percentage together with the percentages of the
-    /// levels before it — back to whole answers, leaning toward this level's own.
+    /// levels before it, leaning toward this level's own. One position in every
+    /// five-question cycle (20%) has a decimal answer.
     private func percentagesMixedQuestion() -> Question {
         let pool = Array(Self.percentageLevels.prefix(max(1, level.index)))
         let p = weightedHardPick(pool)
+        if step % 5 == 0 {
+            return percentagesDecimalQuestion(percentage: p, decimalSlotsPerFive: 1)
+        }
         let whole = Self.percentageBase(p) * Int.random(in: 1...8)
         let answer = whole * p / 100
         let neighbours = pool
@@ -1540,16 +1581,14 @@ final class QuestionEngine {
         }
     }
 
-    /// One operand is always at most this level's own number — weighted
-    /// toward it, so lower numbers fade out as the level grows (level 12
-    /// mostly gives 8…12, rarely 3…7, never 1…2) — while the other operand's
-    /// range reuses Addition Mix's own ceiling, the same "max height" every
-    /// other menu already scales by.
+    /// One operand is selected from 1...this level. Its other operand uses the
+    /// exact same ceiling as that selected value's dedicated Addition Random
+    /// route: selected × 5 + 3.
     private func superAdditionQuestion() -> Question {
         let idx = level.index
         let small = weightedHardPick(Array(1...idx))
-        let ceiling = ChallengeScaling.additionMixCeiling(idx)
-        let big = Int.random(in: 1...max(1, ceiling - small))
+        let otherCeiling = ChallengeScaling.additionSequenceCeiling(small)
+        let big = Int.random(in: 1...otherCeiling)
         let (a, b) = Bool.random() ? (small, big) : (big, small)
         let answer = a + b
         return makeQuestion("\(a) + \(b) = ?", "\(answer)",
@@ -1558,14 +1597,13 @@ final class QuestionEngine {
                             isRandomPractice: true)
     }
 
-    /// Mirrors `superAdditionQuestion`, but the subtracted number is
-    /// guaranteed small (weighted toward this level's own number) and the
-    /// result's range reuses Subtraction Mix's own ceiling.
+    /// Mirrors the dedicated Subtraction Random route for the selected value:
+    /// the starting number is at most selected × 6 + 3.
     private func superSubtractionQuestion() -> Question {
         let idx = level.index
         let small = weightedHardPick(Array(1...idx))
-        let ceiling = ChallengeScaling.subtractionMixCeiling(idx)
-        let a = Int.random(in: (small + 1)...(small + ceiling))
+        let startCeiling = ChallengeScaling.subtractionSequenceCeiling(small)
+        let a = Int.random(in: small...startCeiling)
         let answer = a - small
         return makeQuestion("\(a) − \(small) = ?", "\(answer)",
                             [answer + 1, answer - 1, answer + 2, answer - 2,

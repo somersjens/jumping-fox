@@ -737,18 +737,10 @@ struct GameView: View {
     }
 
     /// Localized descriptions mark emphasis by wrapping words in |pipes|.
-    /// Keeping the markers in the string catalog lets each language choose its
-    /// own emphasis (see the translation CSV instructions). Text between the
-    /// first and second pipe is bold, and so on for each following pair.
+    /// A single attributed string preserves that emphasis when a bold span
+    /// wraps onto a second line, as well as for multiple separate bold spans.
     private func emphasizedText(_ copy: String) -> Text {
-        let parts = copy.components(separatedBy: "|")
-        var result = Text(verbatim: "")
-        for (index, part) in parts.enumerated() {
-            result = result + (index.isMultiple(of: 2)
-                ? Text(part)
-                : Text(part).fontWeight(.bold))
-        }
-        return result
+        Text(emphasizedAttributedString(copy))
     }
 
     private var featureIcon: String {

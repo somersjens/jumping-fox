@@ -370,6 +370,7 @@ struct ContentView: View {
     // Launch/land frames for the trophy that flies from a level card up to the
     // category header once that level earns more, plus the live flight itself.
     @State private var cardTrophyAnchors: [String: CGRect] = [:]
+    @State private var homeViewportFrame: CGRect = .zero
     @State private var flyingTrophy: FlyingTrophy?
     // When the flying trophy merges into the header, the category and grand
     // totals start counting from this instant — decoupled from the card's own
@@ -418,6 +419,13 @@ struct ContentView: View {
         // Read the revision so an iCloud update redraws all score cards.
         let _ = progress.revision
         ZStack {
+            GeometryReader { geo in
+                Color.clear.preference(
+                    key: HomeViewportFrameKey.self,
+                    value: geo.frame(in: .named(Self.homeSpace))
+                )
+            }
+
             LinearGradient(
                 colors: [character.skyColor, character.tintColor],
                 startPoint: .top, endPoint: .bottom
@@ -455,6 +463,7 @@ struct ContentView: View {
         .onPreferenceChange(LevelFrameKey.self) { levelFrames = $0 }
         .onPreferenceChange(ControlAnchorKey.self) { controlAnchors = $0 }
         .onPreferenceChange(CardTrophyAnchorKey.self) { cardTrophyAnchors = $0 }
+        .onPreferenceChange(HomeViewportFrameKey.self) { homeViewportFrame = $0 }
         .sheet(isPresented: $showPremium, onDismiss: {
             celebratedCharacterUnlock = nil
             premiumInitialCharacterID = nil
@@ -1377,13 +1386,17 @@ struct ContentView: View {
             landHeaderTrophies(for: celebration)
             return
         }
-        // A sensible on-screen start when the earning card is scrolled far below
-        // the (now visible) header: the trophy rises up into the total from the
-        // lower part of the screen instead of not flying at all.
+        // If scrolling the header into view moved the earning card completely
+        // outside the viewport, launch from a sensible on-screen position.
+        // A visible glyph must always win: using only its distance from the
+        // header incorrectly replaced real launch points on tall screens.
         let fallbackSource = CGRect(x: destination.midX - 8,
                                     y: destination.maxY + 420, width: 16, height: 16)
-        var source = cardTrophyAnchors[celebration.levelID] ?? fallbackSource
-        if source.minY - destination.maxY > 600 { source = fallbackSource }
+        let source = cardTrophyAnchors[celebration.levelID].flatMap { candidate in
+            homeViewportFrame.isEmpty || homeViewportFrame.intersects(candidate)
+                ? candidate
+                : nil
+        } ?? fallbackSource
         let cardScale = levelCardHeight / 96
         withTransaction(Transaction(animation: nil)) {
             flyingTrophy = FlyingTrophy(
@@ -2364,6 +2377,16 @@ private struct CardTrophyAnchorKey: PreferenceKey {
     static var defaultValue: [String: CGRect] = [:]
     static func reduce(value: inout [String: CGRect], nextValue: () -> [String: CGRect]) {
         value.merge(nextValue()) { $1 }
+    }
+}
+
+/// The visible bounds of the home screen in the same coordinate space as the
+/// trophy anchors. This distinguishes a genuinely off-screen card from a
+/// visible card that merely sits far below the header on a tall display.
+private struct HomeViewportFrameKey: PreferenceKey {
+    static var defaultValue: CGRect = .zero
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
     }
 }
 
