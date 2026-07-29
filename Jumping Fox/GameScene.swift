@@ -24,9 +24,36 @@ import UIKit
 enum GameColors {
     static let correctGreen = SKColor(red: 0.24, green: 0.68, blue: 0.32, alpha: 1)
     static let wrongRed = SKColor(red: 0.86, green: 0.27, blue: 0.23, alpha: 1)
+    /// Matches the violet contrast accent used for green themes on the menu.
+    static let contrastViolet = SKColor(red: 0.42, green: 0.35, blue: 0.78, alpha: 1)
     static let goldFlash = SKColor(red: 1.00, green: 0.78, blue: 0.15, alpha: 1)
     static let disabledFill = SKColor(white: 0.60, alpha: 1)
     static let disabledStroke = SKColor(white: 0.45, alpha: 1)
+
+    /// Helper feedback must remain distinct from the character's normal
+    /// answer-tile colour. Green would blend into the frog theme.
+    static func helperCorrect(for theme: AnimalCharacter) -> SKColor {
+        theme.id == "frog" ? contrastViolet : correctGreen
+    }
+
+    /// The crab's normal answer tiles are already red, so its helper needs a
+    /// different error colour to make wrong options immediately recognisable.
+    static func helperWrong(for theme: AnimalCharacter) -> SKColor {
+        theme.id == "crab"
+            ? CharacterCatalog.character(id: "fox").skPrimary
+            : wrongRed
+    }
+
+    /// A full-opacity, darker companion of a fill colour. Neutral stones carry
+    /// a crisp, clearly darker edge (their skPrimary stroke against a pale
+    /// fill); the coloured answer stones use this so their outline reads with
+    /// the same weight instead of the washed-out same-hue edge they had before.
+    static func outline(for fill: SKColor) -> SKColor {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        guard fill.getRed(&r, green: &g, blue: &b, alpha: &a) else { return fill }
+        let factor: CGFloat = 0.68
+        return SKColor(red: r * factor, green: g * factor, blue: b * factor, alpha: 1)
+    }
 }
 
 // MARK: - Powerups
@@ -247,8 +274,12 @@ final class GamePlatform: SKNode {
     func styleAsActiveAnswer(theme: AnimalCharacter, isCorrect: Bool, helperEnabled: Bool) {
         guard status == .active else { return }
         if helperEnabled {
-            shape.fillColor = isCorrect ? GameColors.correctGreen : GameColors.wrongRed
-            shape.strokeColor = shape.fillColor.withAlphaComponent(0.6)
+            shape.fillColor = isCorrect
+                ? GameColors.helperCorrect(for: theme)
+                : GameColors.helperWrong(for: theme)
+            // Match the neutral stones' crisp, full-opacity darker edge rather
+            // than a faint same-hue outline, so every stone reads as one set.
+            shape.strokeColor = GameColors.outline(for: shape.fillColor)
         } else {
             shape.fillColor = theme.skPrimary
             shape.strokeColor = theme.skDeep
@@ -317,6 +348,7 @@ final class GamePlatform: SKNode {
         powerup = type
         let scale = platformSize.width / Self.platformSize.width
         let icon = Self.makePowerupIcon(type, theme: theme, fillsRightHalf: fillsRightHalf)
+        icon.name = "powerupIcon"
         icon.position = CGPoint(x: 0, y: platformSize.height / 2 + 18)
         icon.zPosition = 4
         // Sparkle in (also covers attaching to an on-screen stone), then bob.
@@ -375,6 +407,28 @@ final class GamePlatform: SKNode {
         powerupIcon?.removeAllActions()
         powerupIcon?.removeFromParent()
         powerupIcon = nil
+    }
+
+    /// Returns an off-screen neutral stone to a clean, reusable state.
+    /// `SKShapeNode` construction and its first rasterisation are relatively
+    /// expensive, so the scene keeps a small pool instead of rebuilding every
+    /// ordinary stone while the player climbs quickly.
+    func prepareForReuse() {
+        guard role == .neutralPlatform else { return }
+        removeAllActions()
+        removePowerup()
+        // A just-collected icon may already have cleared `powerupIcon` while
+        // its short pop animation is still attached to the platform.
+        childNode(withName: "powerupIcon")?.removeFromParent()
+        patrolAmplitude = 0
+        patrolCenterX = 0
+        position = .zero
+        zRotation = 0
+        xScale = 1
+        yScale = 1
+        alpha = 1
+        isHidden = false
+        removeFromParent()
     }
 
     static func makePowerupIcon(_ type: PowerupType, theme: AnimalCharacter,
@@ -534,6 +588,11 @@ final class GameScene: SKScene {
     // stays climbable. Placement margin keeps visible air between blocks
     // (based on real block size + landing space; configurable).
     private var platforms: [GamePlatform] = []
+    /// Ordinary platforms all have identical geometry and no answer value.
+    /// Reusing them avoids continuous SKShapeNode/path allocation and glyph/
+    /// shader preparation as old rows leave the screen.
+    private var neutralPlatformPool: [GamePlatform] = []
+    private let neutralPlatformPoolLimit = 24
     /// The first stone in each spawned band stays within a safe horizontal
     /// step of this anchor. This guarantees a neutral route on wide iPads
     /// instead of relying on random placement across the whole display.
@@ -586,6 +645,13 @@ final class GameScene: SKScene {
     // Deferred answer refresh — the next set only activates after the
     // confirmation, never in the landing frame.
     private var answerRefreshAt: TimeInterval?
+    /// Publishing a question invalidates the SwiftUI HUD. Building and
+    /// validating its SpriteKit answer group in that same frame caused a
+    /// noticeable hitch, especially for fractions and larger groups. Keep the
+    /// handoff atomic to the player, but give SwiftUI one rendered frame before
+    /// doing the scene-tree work.
+    private var answerBuildPending = false
+    private var answerBuildNotBefore: TimeInterval = 0
     /// The question the visible answer group was built for. Used to recognise a
     /// genuinely duplicate build of the SAME question, without mistaking a
     /// leftover block that happens to carry the next question's answer for one.
@@ -691,6 +757,12 @@ final class GameScene: SKScene {
     private var completionPersistenceAt: TimeInterval?
     private var hasPreparedCompletionResult = false
 
+    /// The tutorial trophy is an SF Symbol rasterised into an SKTexture — a
+    /// one-off cost (symbol lookup + bitmap render + GPU upload) that used to
+    /// land on the FIRST correct answer (tutorial step 3) and hitch the frame.
+    /// Build it once, up front, and reuse the same texture on every flight.
+    private var cachedTrophyTexture: SKTexture?
+
     // Haptics: one retained generator kept "warm" via prepare(), so the
     // Taptic Engine never cold-starts on the first correct landing (the
     // cold start is what caused the noticeable hitch on the first jump).
@@ -766,6 +838,20 @@ final class GameScene: SKScene {
         stash.addChild(GamePlatform.makePowerupIcon(.tripler, theme: theme, fillsRightHalf: false))
         stash.addChild(GamePlatform.makePowerupIcon(.minusOne, theme: theme, fillsRightHalf: false))
 
+        // The tutorial's first correct answer flies a rasterised trophy to the
+        // HUD. Build its texture now (cached) and submit one draw so the GPU
+        // upload is done before that reward moment, never during it.
+        stash.addChild(makeTutorialTrophyIcon())
+
+        // Answer labels are created repeatedly during play and use several
+        // font sizes plus a separate stacked-fraction path. Warm representative
+        // glyphs while the scene is first settling instead of on a fast jump.
+        for value in ["012", "1234", "12345", "12/34"] {
+            let answer = GamePlatform(role: .answer, value: value, size: tileSize)
+            answer.styleAsActiveAnswer(theme: theme, isCorrect: false, helperEnabled: false)
+            stash.addChild(answer)
+        }
+
         // Stroked shapes used by the animations: ping ring, arc streak,
         // burst dot, aura glow.
         let ring = SKShapeNode(circleOfRadius: 10)
@@ -814,13 +900,16 @@ final class GameScene: SKScene {
 
     /// The first time an SKLabelNode renders the "✓" glyph, SpriteKit builds
     /// its font texture — a one-off cost that used to land on the first
-    /// correct answer. Render it once off-screen at start-up to absorb that.
+    /// correct answer. Keep it just visible enough and inside the viewport:
+    /// the SpriteView culls off-screen nodes, and a fully transparent node is
+    /// not guaranteed to submit a draw at all.
     private func prewarmCheckmarkGlyph() {
         let warmUp = SKLabelNode(fontNamed: "AvenirNext-Heavy")
         warmUp.text = "✓"
-        warmUp.fontSize = 20
-        warmUp.alpha = 0
-        warmUp.position = CGPoint(x: -1000, y: -1000)
+        warmUp.fontSize = 20 * tileScale
+        warmUp.alpha = 0.001
+        warmUp.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        warmUp.zPosition = -100
         addChild(warmUp)
         warmUp.run(.sequence([.wait(forDuration: 0.1), .removeFromParent()]))
     }
@@ -924,12 +1013,12 @@ final class GameScene: SKScene {
     private func configurePlayerSprite() {
         playerSprite.removeFromParent()
 
-        // Every character has its own artwork (with a built-in coil spring),
-        // rendered at the same size so the jump and squash animation is
-        // identical for all of them.
+        // Penguin and octopus fill more of their source canvases, so only
+        // their rendered artwork is reduced. Collision and movement stay
+        // identical for every character.
         let sprite = SKSpriteNode(texture: theme.skTexture)
-        sprite.size = CGSize(width: 82 * verticalGameplayScale,
-                             height: 82 * verticalGameplayScale)
+        sprite.size = CGSize(width: 82 * verticalGameplayScale * theme.gameplayArtworkScale,
+                             height: 82 * verticalGameplayScale * theme.gameplayArtworkScale)
         playerSprite = sprite
 
         player.addChild(playerSprite)
@@ -960,7 +1049,9 @@ final class GameScene: SKScene {
         // Gameplay must start immediately.  The tutorial is an in-game
         // overlay, never a reason to freeze the physics loop.
         isFrozen = false
-        for platform in platforms { platform.removeFromParent() }
+        for platform in platforms {
+            recycleNeutralPlatformIfPossible(platform)
+        }
         platforms.removeAll()
 
         helperEnabled = GameSettings.answerHelperEnabled
@@ -991,6 +1082,8 @@ final class GameScene: SKScene {
         totalClimb = 0
         lastUpdateTime = 0
         answerRefreshAt = nil
+        answerBuildPending = false
+        answerBuildNotBefore = 0
         completionFinishAt = nil
         completionPersistenceAt = nil
         hasPreparedCompletionResult = false
@@ -1717,7 +1810,12 @@ final class GameScene: SKScene {
     /// after the confirmation, never in the landing frame.
     private func performQuestionAdvance() {
         state.advanceQuestion()
-        buildAnswerSet()
+        answerBuildPending = true
+        // A 60 Hz frame is enough to separate SwiftUI's question/HUD update
+        // from SpriteKit's layout search and node creation. On 120 Hz devices
+        // this intentionally spans two short frames rather than recombining
+        // both workloads in one.
+        answerBuildNotBefore = lastUpdateTime + (1.0 / 60.0)
     }
 
     /// Watchdog repair: only acts when the correct block has scrolled off
@@ -1826,7 +1924,8 @@ final class GameScene: SKScene {
     // MARK: Neutral platform spawning (while climbing)
 
     private func addNeutralPlatform(at position: CGPoint, allowMoving: Bool = true) {
-        let platform = GamePlatform(role: .neutralPlatform, size: tileSize)
+        let platform = neutralPlatformPool.popLast()
+            ?? GamePlatform(role: .neutralPlatform, size: tileSize)
         platform.position = position
         platform.styleAsNeutral(theme: theme)
         addChild(platform)
@@ -2009,9 +2108,16 @@ final class GameScene: SKScene {
             performQuestionAdvance()
         }
 
+        // Do not interpret the previous question's still-visible tiles using
+        // the newly published answer. Until the new group is ready they are
+        // ordinary bounce platforms, exactly like during the confirmation.
+        let shouldBuildAnswers = answerBuildPending
+            && currentTime >= answerBuildNotBefore
+
         // Watchdog: keep the correct answer inside the playable window.
         if !tutorialSuppressesAnswerTiles,
-           answerRefreshAt == nil, currentTime - lastReachabilityCheck > 0.5 {
+           answerRefreshAt == nil, !answerBuildPending,
+           currentTime - lastReachabilityCheck > 0.5 {
             lastReachabilityCheck = currentTime
             ensureCorrectReachable()
             ensureRequiredTutorialWrongAnswer()
@@ -2023,6 +2129,14 @@ final class GameScene: SKScene {
         scrollIfNeeded()
         spawnPlatformsIfNeeded()
         cullPlatforms()
+
+        // Keep this last: node creation and route validation never share the
+        // frame with the SwiftUI publication above or with additional
+        // post-build watchdog work.
+        if shouldBuildAnswers {
+            answerBuildPending = false
+            buildAnswerSet()
+        }
     }
 
     /// Pickups are collected by TOUCH: brushing the floating icon while
@@ -2152,7 +2266,7 @@ final class GameScene: SKScene {
 
             // While the next answer set is pending, the old set is closed:
             // landings are plain bounces, never a second registration.
-            if platform.isActiveAnswer && answerRefreshAt == nil {
+            if platform.isActiveAnswer && answerRefreshAt == nil && !answerBuildPending {
                 if platform.value == state.correctAnswer {
                     // The correct block registers over its full (generous)
                     // landing width — a deliberate jump is always rewarded.
@@ -3108,8 +3222,24 @@ final class GameScene: SKScene {
 
     /// Rasterises the very same `trophy.fill` used by the SwiftUI HUD. Its
     /// unscaled size is the final HUD size, so reaching scale 1 merges cleanly
-    /// into the trophy that is already visible at the destination.
+    /// into the trophy that is already visible at the destination. The texture
+    /// is built once (see `trophyTexture()`) and reused, so the flight never
+    /// pays the rasterisation cost mid-gameplay.
     private func makeTutorialTrophyIcon() -> SKSpriteNode {
+        let texture = trophyTexture()
+        let trophy = SKSpriteNode(texture: texture)
+        let size = texture.size()
+        let aspectRatio = size.height > 0 ? size.width / size.height : 1
+        trophy.size = CGSize(width: GameHUDMetrics.assetSize * aspectRatio,
+                             height: GameHUDMetrics.assetSize)
+        return trophy
+    }
+
+    /// Builds (and caches) the tinted trophy texture. Called from `prewarmEffects`
+    /// so the symbol lookup, bitmap render and GPU upload happen while the scene
+    /// is first settling, not on the first correct answer.
+    private func trophyTexture() -> SKTexture {
+        if let cachedTrophyTexture { return cachedTrophyTexture }
         let configuration = UIImage.SymbolConfiguration(
             pointSize: GameHUDMetrics.assetSize,
             weight: .regular
@@ -3131,11 +3261,8 @@ final class GameScene: SKScene {
 
         let texture = SKTexture(image: image)
         texture.filteringMode = .linear
-        let trophy = SKSpriteNode(texture: texture)
-        let aspectRatio = symbol.size.width / symbol.size.height
-        trophy.size = CGSize(width: GameHUDMetrics.assetSize * aspectRatio,
-                             height: GameHUDMetrics.assetSize)
-        return trophy
+        cachedTrophyTexture = texture
+        return texture
     }
 
     /// A wrong answer with the ×3 armed: the bubble POPS on the spot —
@@ -3237,11 +3364,23 @@ final class GameScene: SKScene {
         let cutoff: CGFloat = -60
         platforms.removeAll { platform in
             if platform.position.y < cutoff {
-                platform.removeFromParent()
+                recycleNeutralPlatformIfPossible(platform)
                 return true
             }
             return false
         }
+    }
+
+    /// Recycles only the cheap, immutable neutral role. Answer nodes keep
+    /// their stable identity/value contract and are discarded normally.
+    private func recycleNeutralPlatformIfPossible(_ platform: GamePlatform) {
+        guard platform.role == .neutralPlatform,
+              neutralPlatformPool.count < neutralPlatformPoolLimit else {
+            platform.removeFromParent()
+            return
+        }
+        platform.prepareForReuse()
+        neutralPlatformPool.append(platform)
     }
 
     // MARK: Input (touch fallback — tilt is primary on device)

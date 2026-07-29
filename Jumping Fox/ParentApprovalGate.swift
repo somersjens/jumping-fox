@@ -156,7 +156,10 @@ struct ParentApprovalGate: View {
         .frame(maxWidth: .infinity)
         .padding(.top, 1)
         .contentTransition(.numericText())
-        .animation(.easeInOut(duration: 0.25), value: remainingTaps)
+        .animation(
+            .easeInOut(duration: 0.25),
+            value: phase == .hold ? holdProgress : remainingTaps
+        )
     }
 
     private var failureIndicator: some View {
@@ -228,6 +231,7 @@ struct ParentApprovalGate: View {
 
     private func startHoldTimer() {
         let seconds = challenge.holdSeconds
+        let firstTickLead = 0.5
         holdTask?.cancel()
         holdTask = Task { @MainActor in
             let start = ContinuousClock.now
@@ -235,15 +239,17 @@ struct ParentApprovalGate: View {
                 let components = start.duration(to: .now).components
                 let elapsed = Double(components.seconds)
                     + Double(components.attoseconds) / 1_000_000_000_000_000_000
-                let remaining = max(0, Int(ceil(Double(seconds) - elapsed)))
+                let remaining = max(
+                    0,
+                    Int(ceil(Double(seconds) - elapsed - firstTickLead))
+                )
                 holdProgress = remaining
-                if elapsed >= Double(seconds) {
+                if remaining == 0 {
                     heldShape = nil
-                    holdProgress = 0
                     ignoresCompletedHoldRelease = true
                     isTransitioningToTap = true
                     do {
-                        try await Task.sleep(for: .milliseconds(420))
+                        try await Task.sleep(for: .milliseconds(500))
                     } catch {
                         return
                     }

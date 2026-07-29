@@ -14,12 +14,14 @@ final class Jumping_FoxTests: XCTestCase {
     private var previousLifeMode: LifeMode!
     private var previousCapSetting: Bool!
     private var previousHelperSetting: Bool!
+    private var previousTrophyTotal: Int!
 
     override func setUp() {
         super.setUp()
         previousLifeMode = GameSettings.lifeMode
         previousCapSetting = GameSettings.capsTrophiesAtThirty
         previousHelperSetting = GameSettings.answerHelperEnabled
+        previousTrophyTotal = CharacterUnlockStore.trophyTotal
         GameSettings.lifeMode = .three
         GameSettings.capsTrophiesAtThirty = true
         GameSettings.answerHelperEnabled = false
@@ -34,7 +36,43 @@ final class Jumping_FoxTests: XCTestCase {
         GameSettings.lifeMode = previousLifeMode
         GameSettings.capsTrophiesAtThirty = previousCapSetting
         GameSettings.answerHelperEnabled = previousHelperSetting
+        CharacterUnlockStore.trophyTotal = previousTrophyTotal
         super.tearDown()
+    }
+
+    func testTrophyCharacterThresholdsAndPremiumExclusives() {
+        XCTAssertEqual(CharacterUnlockStore.threshold(for: "frog"), 500)
+        XCTAssertEqual(CharacterUnlockStore.threshold(for: "penguin"), 1_500)
+        XCTAssertEqual(CharacterUnlockStore.threshold(for: "bunny"), 3_000)
+        XCTAssertEqual(CharacterUnlockStore.threshold(for: "dog"), 5_000)
+        XCTAssertNil(CharacterUnlockStore.threshold(for: "lion"))
+
+        CharacterUnlockStore.trophyTotal = 499
+        XCTAssertFalse(CharacterUnlockStore.canUse(characterID: "frog", isPremium: false))
+        CharacterUnlockStore.trophyTotal = 500
+        XCTAssertTrue(CharacterUnlockStore.canUse(characterID: "frog", isPremium: false))
+        XCTAssertFalse(CharacterUnlockStore.canUse(characterID: "lion", isPremium: false))
+        XCTAssertTrue(CharacterUnlockStore.canUse(characterID: "lion", isPremium: true))
+        XCTAssertTrue(CharacterUnlockStore.canUse(characterID: "fox", isPremium: false))
+    }
+
+    func testHelperAnswerColorsContrastWithGreenAndRedCharacters() {
+        let frog = CharacterCatalog.character(id: "frog")
+        let crab = CharacterCatalog.character(id: "crab")
+        let fox = CharacterCatalog.character(id: "fox")
+
+        XCTAssertTrue(GameColors.helperCorrect(for: frog).isEqual(GameColors.contrastViolet))
+        XCTAssertTrue(GameColors.helperWrong(for: crab).isEqual(fox.skPrimary))
+        XCTAssertTrue(GameColors.helperCorrect(for: fox).isEqual(GameColors.correctGreen))
+        XCTAssertTrue(GameColors.helperWrong(for: fox).isEqual(GameColors.wrongRed))
+    }
+
+    func testCharacterArtworkScaleCompensatesForPenguinAndOctopus() {
+        for character in CharacterCatalog.all {
+            let usesLargerSourceArtwork = character.id == "penguin" || character.id == "octopus"
+            XCTAssertEqual(character.selectorArtworkScale, usesLargerSourceArtwork ? 1 : 1.1)
+            XCTAssertEqual(character.gameplayArtworkScale, usesLargerSourceArtwork ? 0.9 : 1)
+        }
     }
 
     func testMaximumScoreStagesCompletionBeforePresentingGameOver() {

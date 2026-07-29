@@ -322,6 +322,10 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var selection: LevelSelection?
     @State private var showPremium = false
+    @State private var premiumInitialCharacterID: String?
+    @State private var celebratedCharacterUnlock: TrophyCharacterMilestone?
+    @State private var isCharacterUnlockPreview = false
+    @State private var pendingCharacterUnlocks: [TrophyCharacterMilestone] = []
     @State private var showGoalPicker = false
     @State private var showNameEditor = false
     @State private var nameDraft = ""
@@ -444,8 +448,21 @@ struct ContentView: View {
         .onPreferenceChange(LevelFrameKey.self) { levelFrames = $0 }
         .onPreferenceChange(ControlAnchorKey.self) { controlAnchors = $0 }
         .onPreferenceChange(CardTrophyAnchorKey.self) { cardTrophyAnchors = $0 }
-        .sheet(isPresented: $showPremium) {
-            PremiumView()
+        .sheet(isPresented: $showPremium, onDismiss: {
+            celebratedCharacterUnlock = nil
+            premiumInitialCharacterID = nil
+            isCharacterUnlockPreview = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                if !presentPendingCharacterUnlockIfPossible() {
+                    requestReviewAfterSettledReturn()
+                }
+            }
+        }) {
+            PremiumView(
+                initialCharacterID: premiumInitialCharacterID,
+                celebratedUnlock: celebratedCharacterUnlock,
+                isUnlockPreview: isCharacterUnlockPreview
+            )
                 .premiumSheetPresentation()
         }
         .sheet(isPresented: $showNameEditor) {
@@ -759,7 +776,7 @@ struct ContentView: View {
                         suppressCharacterTap = false
                         return
                     }
-                    showPremium = true
+                    openCharacterCollection()
                 } label: {
                     let box: CGFloat = isPad ? 118 : 68
                     ZStack {
@@ -1021,6 +1038,7 @@ struct ContentView: View {
 
             guard generation == homeProgressGeneration else { return }
             homeProgress = snapshot
+            CharacterUnlockStore.trophyTotal = totalTrophies(in: snapshot)
             snapshot.persist()
         }
     }
@@ -1109,6 +1127,13 @@ struct ContentView: View {
         // without recreating the entire menu via refreshID.
         withTransaction(Transaction(animation: nil)) {
             homeProgress = snapshot
+            let newTotal = totalTrophies(in: snapshot)
+            CharacterUnlockStore.trophyTotal = newTotal
+            let newlyReached = CharacterUnlockStore.unannouncedMilestones(at: newTotal)
+                .filter { $0.threshold > celebration.totalStart }
+            for milestone in newlyReached where !pendingCharacterUnlocks.contains(milestone) {
+                pendingCharacterUnlocks.append(milestone)
+            }
             headerTrophyArrival = nil
             flyingTrophy = nil
             reachedMaximumCelebrationID = nil
@@ -1123,11 +1148,15 @@ struct ContentView: View {
                     // The state is already hidden, but its 0.2-second fade must
                     // finish before StoreKit is allowed to present.
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        requestReviewAfterSettledReturn()
+                        if !presentPendingCharacterUnlockIfPossible() {
+                            requestReviewAfterSettledReturn()
+                        }
                     }
                 }
             } else {
-                requestReviewAfterSettledReturn()
+                if !presentPendingCharacterUnlockIfPossible() {
+                    requestReviewAfterSettledReturn()
+                }
             }
             return
         }
@@ -1220,9 +1249,49 @@ struct ContentView: View {
                 }
                 defersHomeProgressRefresh = false
                 refreshHomeProgress()
-                requestReviewAfterSettledReturn()
+                if !presentPendingCharacterUnlockIfPossible() {
+                    requestReviewAfterSettledReturn()
+                }
             }
         }
+    }
+
+    /// Presents one earned character only after the home return sequence has
+    /// completely left the screen. Additional milestones remain queued and
+    /// appear after the player closes the current collection sheet.
+    @MainActor
+    @discardableResult
+    private func presentPendingCharacterUnlockIfPossible() -> Bool {
+        guard selection == nil,
+              scoreCelebration == nil,
+              flyingTrophy == nil,
+              !showTutorialScoreHint,
+              !showPremium,
+              !showNameEditor,
+              infoPopup == nil,
+              let milestone = pendingCharacterUnlocks.first else {
+            return false
+        }
+        pendingCharacterUnlocks.removeFirst()
+        CharacterUnlockStore.markAnnounced(milestone)
+        presentCharacterUnlock(milestone, isPreview: false)
+        return true
+    }
+
+    @MainActor
+    private func presentCharacterUnlock(_ milestone: TrophyCharacterMilestone,
+                                        isPreview: Bool) {
+        premiumInitialCharacterID = milestone.characterID
+        celebratedCharacterUnlock = milestone
+        isCharacterUnlockPreview = isPreview
+        showPremium = true
+    }
+
+    private func openCharacterCollection(initialCharacterID: String? = nil) {
+        premiumInitialCharacterID = initialCharacterID
+        celebratedCharacterUnlock = nil
+        isCharacterUnlockPreview = false
+        showPremium = true
     }
 
     /// Uses StoreKit's native prompt only after the presenting menu is active
@@ -1292,9 +1361,13 @@ struct ContentView: View {
     }
 
     private var totalTrophies: Int {
+        totalTrophies(in: homeProgress)
+    }
+
+    private func totalTrophies(in snapshot: HomeProgressSnapshot) -> Int {
         LevelCatalog.byCategory.values.flatMap { $0 }
             .filter { !$0.requiresPremium }
-            .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1) }
+            .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1, snapshot: snapshot) }
     }
 
     private var categoryTrophies: Int {
@@ -1326,18 +1399,28 @@ struct ContentView: View {
     /// Supermix has no practice-mode row and therefore contributes each of its
     /// concrete levels exactly once.
     private func trophiesAcrossPracticeModes(for level: LevelConfig) -> Int {
+        trophiesAcrossPracticeModes(for: level, snapshot: homeProgress)
+    }
+
+    private func trophiesAcrossPracticeModes(for level: LevelConfig,
+                                             snapshot: HomeProgressSnapshot) -> Int {
         guard !level.category.isSupermixMenu else {
-            return trophies(forExactLevel: level)
+            return trophies(forExactLevel: level, snapshot: snapshot)
         }
         return level.allModeVariants.reduce(0) {
-            $0 + trophies(forExactLevel: $1)
+            $0 + trophies(forExactLevel: $1, snapshot: snapshot)
         }
     }
 
     /// Score contribution of one exact level+mode id, including a higher paused
     /// score in that same subcategory only.
     private func trophies(forExactLevel level: LevelConfig) -> Int {
-        let progress = homeProgress.value(for: level.id)
+        trophies(forExactLevel: level, snapshot: homeProgress)
+    }
+
+    private func trophies(forExactLevel level: LevelConfig,
+                           snapshot: HomeProgressSnapshot) -> Int {
+        let progress = snapshot.value(for: level.id)
         let recorded = answerHelper
             ? max(progress.normalBest, progress.helperBest)
             : progress.normalBest
@@ -1409,6 +1492,17 @@ struct ContentView: View {
             self.secondMaximumCountPreviewLevelID = secondLevelID
             self.secondMaximumCountPreview = 1
             self.showLevelTwoMaximumPreview(levelID: secondLevelID)
+        }
+        // This secret preview deliberately appends the new frog unlock after
+        // both existing maximum-count reveals have fully settled.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.25) {
+            guard self.maximumCountPreviewLevelID == firstLevelID,
+                  self.secondMaximumCountPreviewLevelID == secondLevelID else { return }
+            self.clearMaximumCountPreview()
+            self.presentCharacterUnlock(
+                TrophyCharacterMilestone(characterID: "frog", threshold: 500),
+                isPreview: true
+            )
         }
     }
 
@@ -1989,7 +2083,7 @@ struct ContentView: View {
             }
         } else {
             Button {
-                showPremium = true
+                openCharacterCollection()
             } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "crown.fill")

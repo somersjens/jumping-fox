@@ -443,6 +443,7 @@ private struct OnboardingChoiceLabel: View {
 struct CharacterPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var language = LanguageManager.shared
+    @ObservedObject private var premium = PremiumStore.shared
     @AppStorage(GameSettings.characterKey) private var characterID = "fox"
     let theme: AnimalCharacter
 
@@ -450,15 +451,28 @@ struct CharacterPickerView: View {
         NavigationStack {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 74))], spacing: 14) {
                 ForEach(CharacterCatalog.all) { animal in
+                    let isAvailable = CharacterUnlockStore.canUse(
+                        characterID: animal.id,
+                        isPremium: premium.isPremium
+                    )
                     Button {
+                        guard isAvailable else { return }
                         characterID = animal.id
                         dismiss()
                     } label: {
                         VStack(spacing: 5) {
-                            animal.artwork
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 54, height: 54)
+                            ZStack(alignment: .bottomTrailing) {
+                                animal.artwork
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 54, height: 54)
+                                    .opacity(isAvailable ? 1 : 0.45)
+                                if !isAvailable {
+                                    Image(systemName: "lock.circle.fill")
+                                        .foregroundStyle(.secondary)
+                                        .background(.white, in: Circle())
+                                }
+                            }
                             Text(animal.localizedName).font(.caption.weight(.bold))
                         }
                         .frame(maxWidth: .infinity)
@@ -468,6 +482,7 @@ struct CharacterPickerView: View {
                         .foregroundStyle(characterID == animal.id ? .white : theme.deepColor)
                     }
                     .buttonStyle(.plain)
+                    .disabled(!isAvailable)
                 }
             }
             .padding()

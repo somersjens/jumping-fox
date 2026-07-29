@@ -144,22 +144,40 @@ struct GameView: View {
             // pays a one-off glyph-rasterisation hitch on first use: the
             // status-banner symbols (trophy warning / MIX MODE), the tutorial
             // prompt and cue icons, and the heart flown by the answer hint.
-            // Rendered invisibly from the start.
+            //
+            // Symbol glyph textures are cached per (symbol, point-size, weight),
+            // so each symbol must be warmed at the SAME font it is actually
+            // shown at — warming the tutorial cue at a smaller size does NOT
+            // prevent its hitch. Rendered near-invisibly (a fully transparent
+            // view is not guaranteed to rasterise, so 0.001 rather than 0).
             ZStack {
-                Image(systemName: "trophy.fill")
-                Image(systemName: "shuffle")
-                Image(systemName: "hand.tap.fill")
+                // Status-banner and general symbols, shown at caption size.
+                ZStack {
+                    Image(systemName: "trophy.fill")
+                    Image(systemName: "shuffle")
+                    Image(systemName: "heart.fill")
+                    Image(systemName: "checkmark.circle.fill")
+                    Text(verbatim: "🏆")
+                    Text(verbatim: "✦")
+                }
+                .font(.caption.weight(.bold))
+
+                // The tutorial prompt icons (see `tutorialIcon`), always shown
+                // at title2 / black.
+                ZStack {
+                    Image(systemName: "arrow.left.arrow.right")
+                    Image(systemName: "hand.tap.fill")
+                    Image(systemName: "heart.fill")
+                    Image(systemName: "star.fill")
+                    Image(systemName: "arrow.up.circle.fill")
+                }
+                .font(.title2.weight(.black))
+
+                // The step-6 "tap the question" cue arrow, shown at title / black.
                 Image(systemName: "arrow.down.left.circle")
-                Image(systemName: "heart.fill")
-                Image(systemName: "star.fill")
-                Image(systemName: "arrow.up.circle.fill")
-                Image(systemName: "arrow.left.arrow.right")
-                Image(systemName: "checkmark.circle.fill")
-                Text(verbatim: "🏆")
-                Text(verbatim: "✦")
+                    .font(.title.weight(.black))
             }
-            .font(.caption.weight(.bold))
-            .opacity(0)
+            .opacity(0.001)
             .allowsHitTesting(false)
 
             VStack(spacing: 0) {
@@ -1004,8 +1022,8 @@ struct GameView: View {
 
     /// Splits the equation on spaces; any token containing a "/" becomes a
     /// stacked fraction (numerator over a bar over denominator).
-    private var equationPieces: [EquationPiece] {
-        displayedQuestion.split(separator: " ").map { word in
+    private func equationPieces(from question: String) -> [EquationPiece] {
+        question.split(separator: " ").map { word in
             if let slash = word.firstIndex(of: "/") {
                 let num = String(word[word.startIndex..<slash])
                 let den = String(word[word.index(after: slash)...])
@@ -1020,22 +1038,23 @@ struct GameView: View {
     /// tables, etc. keep their smooth digit transitions).
     @ViewBuilder
     private var equationContent: some View {
-        if displayedQuestion.contains("/") {
+        let question = displayedQuestion
+        let pieces = equationPieces(from: question)
+        if question.contains("/") {
             ViewThatFits(in: .horizontal) {
-                equationRow(fontSize: 38)
-                equationRow(fontSize: 30)
-                equationRow(fontSize: 24)
-                equationRow(fontSize: 19)
+                equationRow(fontSize: 38, pieces: pieces)
+                equationRow(fontSize: 30, pieces: pieces)
+                equationRow(fontSize: 24, pieces: pieces)
+                equationRow(fontSize: 19, pieces: pieces)
             }
         } else {
-            equationRow(fontSize: 38)
+            equationRow(fontSize: 38, pieces: pieces)
                 .minimumScaleFactor(0.4)
         }
     }
 
-    private func equationRow(fontSize: CGFloat) -> some View {
+    private func equationRow(fontSize: CGFloat, pieces: [EquationPiece]) -> some View {
         HStack(alignment: .center, spacing: fontSize * 0.18) {
-            let pieces = equationPieces
             ForEach(Array(pieces.enumerated()), id: \.offset) { index, piece in
                 switch piece {
                 case .text(let s):

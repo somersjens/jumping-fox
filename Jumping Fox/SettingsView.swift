@@ -193,7 +193,10 @@ struct SettingsView: View {
 
     private func characterButton(for animal: AnimalCharacter) -> some View {
         let isSelected = characterID == animal.id
-        let isLocked = animal.id != CharacterCatalog.freeCharacterID && !premium.isPremium
+        let isLocked = !CharacterUnlockStore.canUse(
+            characterID: animal.id,
+            isPremium: premium.isPremium
+        )
         return Button {
             if isLocked {
                 showPremium = true

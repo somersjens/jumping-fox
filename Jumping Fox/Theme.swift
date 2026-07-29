@@ -36,6 +36,17 @@ struct AnimalCharacter: Identifiable, Equatable {
     /// The character's artwork, ready to place in a SwiftUI view.
     var artwork: Image { Image(imageName) }
 
+    /// Penguin and octopus artwork already fills more of its source canvas.
+    /// The selector compensates for the extra whitespace in all other assets,
+    /// while gameplay slightly reduces only these two visually larger animals.
+    var selectorArtworkScale: CGFloat {
+        id == "penguin" || id == "octopus" ? 1 : 1.1
+    }
+
+    var gameplayArtworkScale: CGFloat {
+        id == "penguin" || id == "octopus" ? 0.9 : 1
+    }
+
     /// Localized display name. `name` stays as the stable English label; this
     /// is what the UI shows, resolved per language from the string catalog
     /// (keys "character.fox", "character.frog", …). A runtime key lookup keeps
@@ -60,7 +71,8 @@ struct AnimalCharacter: Identifiable, Equatable {
 }
 
 enum CharacterCatalog {
-    /// The fox is free; the rest are part of Premium.
+    /// The fox is available immediately. Four more characters can be earned
+    /// with trophies; the final five remain exclusive to Premium.
     static let freeCharacterID = "fox"
 
     static let all: [AnimalCharacter] = [
@@ -100,13 +112,68 @@ enum CharacterCatalog {
         all.first { $0.id == id } ?? all[0]
     }
 
+    static var trophyCharacters: [AnimalCharacter] {
+        all.filter { CharacterUnlockStore.threshold(for: $0.id) != nil || $0.id == freeCharacterID }
+    }
+
+    static var premiumCharacters: [AnimalCharacter] {
+        all.filter { CharacterUnlockStore.threshold(for: $0.id) == nil && $0.id != freeCharacterID }
+    }
+
     /// The currently selected character (falls back to the fox
-    /// if a premium character is selected without Premium).
+    /// if the selected character is not available yet).
     static func current(isPremium: Bool) -> AnimalCharacter {
         let selected = character(id: GameSettings.characterID)
-        if selected.id != freeCharacterID && !isPremium {
+        if !CharacterUnlockStore.canUse(characterID: selected.id, isPremium: isPremium) {
             return character(id: freeCharacterID)
         }
         return selected
+    }
+}
+
+struct TrophyCharacterMilestone: Identifiable, Equatable {
+    let characterID: String
+    let threshold: Int
+    var id: String { characterID }
+}
+
+/// Trophy character access is derived from the player's score, so it can never
+/// be lost through a missed animation. Only the one-time celebration receipt
+/// is stored separately.
+enum CharacterUnlockStore {
+    static let trophyTotalKey = "characters.trophyTotal"
+    private static let announcedKey = "characters.announcedTrophyUnlocks"
+
+    static let milestones: [TrophyCharacterMilestone] = [
+        TrophyCharacterMilestone(characterID: "frog", threshold: 500),
+        TrophyCharacterMilestone(characterID: "penguin", threshold: 1_500),
+        TrophyCharacterMilestone(characterID: "bunny", threshold: 3_000),
+        TrophyCharacterMilestone(characterID: "dog", threshold: 5_000)
+    ]
+
+    static var trophyTotal: Int {
+        get { UserDefaults.standard.integer(forKey: trophyTotalKey) }
+        set { UserDefaults.standard.set(max(0, newValue), forKey: trophyTotalKey) }
+    }
+
+    static func threshold(for characterID: String) -> Int? {
+        milestones.first { $0.characterID == characterID }?.threshold
+    }
+
+    static func canUse(characterID: String, isPremium: Bool) -> Bool {
+        if characterID == CharacterCatalog.freeCharacterID || isPremium { return true }
+        guard let threshold = threshold(for: characterID) else { return false }
+        return trophyTotal >= threshold
+    }
+
+    static func unannouncedMilestones(at total: Int) -> [TrophyCharacterMilestone] {
+        let announced = Set(UserDefaults.standard.stringArray(forKey: announcedKey) ?? [])
+        return milestones.filter { total >= $0.threshold && !announced.contains($0.characterID) }
+    }
+
+    static func markAnnounced(_ milestone: TrophyCharacterMilestone) {
+        var announced = Set(UserDefaults.standard.stringArray(forKey: announcedKey) ?? [])
+        announced.insert(milestone.characterID)
+        UserDefaults.standard.set(Array(announced).sorted(), forKey: announcedKey)
     }
 }
