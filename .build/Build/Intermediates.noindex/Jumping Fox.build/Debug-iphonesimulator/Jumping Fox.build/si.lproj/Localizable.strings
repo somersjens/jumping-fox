@@ -352,6 +352,42 @@
 	<string>ඔබේ නම</string>
 	<key>name.whatsYourName</key>
 	<string>ඔබේ නම මොකක්ද?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: මෙම සතා අගුලු හැරීමට තවත් කුසලාන කිහිපයක් උපයන්න! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>යාමට ඇත්තේ කුසලාන %lldක් පමණි! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ඔබේ සතුන් බලා සිටී. ක්‍රීඩා කිරීමට නැවත පැමිණ කුසලාන එකතු කර ගන්න!</string>
+	<key>notif.comeback.title</key>
+	<string>අපිට ඔයාව දැනෙනවා! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>මිනිත්තු %lldක ක්‍රීඩා සැසියක් ආරම්භ කර ඔබේ දෛනික ක්‍රීඩා මාලාව දිගු කරන්න.</string>
+	<key>notif.day3.title</key>
+	<string>3 වන දිනය සිදු කරමු! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>වැරදි පිළිතුරක් මඟහැර දිගටම කඳු නැගීම සඳහා Jump Pad භාවිතා කරන්න!</string>
+	<key>notif.jumppad.title</key>
+	<string>වැරදි පිළිතුරු පසුකර යන්න! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium හි සෑම මාතෘකාවක් සඳහාම මට්ටම් %lldක් සහ සියලුම සතුන් 10ක් ඇතුළත් වේ. වික්‍රමය දිගටම පවතී!</string>
+	<key>notif.premium.title</key>
+	<string>තවත් මට්ටම් සහ සතුන් අගුළු හරින්න! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>දවස් %lldක් ගියා. අපි ගණිත අභ්‍යාස කිහිපයක් විසඳා තවත් කුසලාන උපයා ගනිමු!</string>
+	<key>notif.reactivate.title</key>
+	<string>නැවත ක්‍රීඩා කිරීමට සූදානම්ද? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>මිනිත්තු %lld ක් ක්‍රීඩා කර ඔබේ දෛනික ක්‍රීඩා මාලාව දිගටම කරගෙන යන්න!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ඔබේ දෛනික ක්‍රීඩා මාලාව දින %lldකට ළඟා වී ඇත! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>නියම වැඩක්! අපි විනාඩි %lld ක් සෙල්ලම් කර තවත් එකතු කරමු.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>ඔබ කුසලාන %lldක් උපයා ඇත! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>එය ඔබගේ මුළු කුසලාන %lld දක්වා ගෙන එයි. පුදුම වැඩක්!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ඔබ මේ සතියේ කුසලාන %lldක් උපයා ගත්තා! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>විවිධ මිශ්‍ර ගණන් එකට.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>තට්ටු: %1$lld න් %2$lld</string>
 	<key>parentGate.title</key>
 	<string>වැඩිහිටි අනුමැතිය අවශ්‍යයි</string>
+	<key>premium.availableAt %lld</key>
+	<string>කුසලාන %lld සිට ලබා ගත හැක</string>
+	<key>premium.availableFromStart</key>
+	<string>ආරම්භයේ සිට ලබා ගත හැක</string>
+	<key>premium.characterUnlocked</key>
+	<string>නව චරිතයක් විවෘතයි</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ විවෘතයි</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>ඔබ කුසලාන %lldක් උපයා ඇත</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium සමඟ පමණි</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium සමඟ පමණි</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>ප්‍රීමියම් සමඟ සතුන් 10 දෙනාම නිදහසේ භාවිතා කළ හැක.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>එක් වරක් ගන්න. සදහටම ඔබේ.</string>
 	<key>premium.restore</key>
 	<string>මිලදී ගැනීම් ප්‍රතිස්ථාපනය කරන්න</string>
+	<key>premium.start</key>
+	<string>අරඹන්න</string>
 	<key>premium.storeUnavailable</key>
 	<string>වෙළඳසැල දැන් ලබාගත නොහැක. පසුව නැවත උත්සාහ කරන්න.</string>
 	<key>premium.unlock</key>
 	<string>ප්‍රීමියම් විවෘත කරන්න</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>ප්‍රීමියම් විවෘත කරන්න · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>කුසලානවලින් විවෘත කරන්න</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium සමඟ විවෘතයි</string>
 	<key>premium.youHavePremium</key>
 	<string>ඔබට ප්‍රීමියම් තියෙනවා!</string>
 	<key>settings.character</key>

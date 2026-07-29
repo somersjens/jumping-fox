@@ -352,6 +352,42 @@
 	<string>ឈ្មោះរបស់អ្នក</string>
 	<key>name.whatsYourName</key>
 	<string>អ្នកឈ្មោះអ្វី?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ទទួលបានពានរង្វាន់ពីរបីទៀតដើម្បីដោះសោសត្វនេះ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>នៅសល់តែ %lld ពានទេ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>សត្វរបស់អ្នកកំពុងរង់ចាំ។ត្រលប់មកលេង ហើយបន្តប្រមូលពានរង្វាន់!</string>
+	<key>notif.comeback.title</key>
+	<string>យើងនឹកអ្នក! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ចាប់ផ្តើមវគ្គលេងរយៈពេល %lld នាទី និងពង្រីកការលេងប្រចាំថ្ងៃរបស់អ្នក។</string>
+	<key>notif.day3.title</key>
+	<string>សូមឱ្យថ្ងៃទី 3 កើតឡើង! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ប្រើ Jump Pad ដើម្បីរំលងចម្លើយខុស ហើយបន្តឡើង!</string>
+	<key>notif.jumppad.title</key>
+	<string>រំលង​ចម្លើយ​ខុស! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium រួមបញ្ចូលកម្រិត %lld សម្រាប់គ្រប់ប្រធានបទ និងសត្វទាំង 10 ។ដំណើរផ្សងព្រេងនៅតែបន្ត!</string>
+	<key>notif.premium.title</key>
+	<string>ដោះសោកម្រិតនិងសត្វកាន់តែច្រើន! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>មានរយៈពេល %lld ថ្ងៃ។តោះ​ដោះស្រាយ​លំហាត់​គណិត​ខ្លះ​ហើយ​ឈ្នះ​ពាន​ទៀត!</string>
+	<key>notif.reactivate.title</key>
+	<string>ត្រៀម​លេង​ម្ដង​ទៀត​ហើយ​ឬ​នៅ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>លេងរយៈពេល %lld នាទីហើយបន្តការលេងប្រចាំថ្ងៃរបស់អ្នក!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ការលេងប្រចាំថ្ងៃរបស់អ្នកបានឈានដល់ %lld ថ្ងៃហើយ! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ការងារដ៏អស្ចារ្យ! តោះលេង %lld នាទីហើយប្រមូលកាន់តែច្រើន។</string>
+	<key>notif.trophies.title %lld</key>
+	<string>អ្នកទទួលបាន %lld ពានរង្វាន់! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>នោះនាំឱ្យចំនួនសរុបរបស់អ្នកដល់ %lld ពានរង្វាន់។ការងារ​អស្ចារ្យ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>អ្នកទទួលបានពានរង្វាន់ចំនួន %lld នៅសប្តាហ៍នេះ! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>លំហាត់ចម្រុះផ្សេងៗលាយគ្នា។</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>ចំនួនប៉ះ៖ %1$lld ក្នុងចំណោម %2$lld</string>
 	<key>parentGate.title</key>
 	<string>ត្រូវការការយល់ព្រមពីមនុស្សពេញវ័យ</string>
+	<key>premium.availableAt %lld</key>
+	<string>មានចាប់ពីពាន %lld</string>
+	<key>premium.availableFromStart</key>
+	<string>មានតាំងពីដំបូង</string>
+	<key>premium.characterUnlocked</key>
+	<string>បានដោះសោតួអង្គថ្មី</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>បានដោះសោ %@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>អ្នករកបានពាន %lld</string>
+	<key>premium.exclusiveBadge</key>
+	<string>ផ្តាច់មុខជាមួយ Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>ផ្តាច់មុខជាមួយ Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>ជាមួយព្រីមៀម អ្នកអាចលេងដោយសេរីជាមួយសត្វទាំង 10។</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>ទិញតែម្តង។ ជារបស់អ្នករហូត។</string>
 	<key>premium.restore</key>
 	<string>ស្ដារការទិញ</string>
+	<key>premium.start</key>
+	<string>ចាប់ផ្តើម</string>
 	<key>premium.storeUnavailable</key>
 	<string>ហាងមិនអាចប្រើបានឥឡូវនេះទេ។ សូមព្យាយាមម្ដងទៀតពេលក្រោយ។</string>
 	<key>premium.unlock</key>
 	<string>ដោះសោព្រីមៀម</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>ដោះសោព្រីមៀម · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ដោះសោដោយប្រើពាន</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>បានដោះសោជាមួយ Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>អ្នកមានព្រីមៀមហើយ!</string>
 	<key>settings.character</key>

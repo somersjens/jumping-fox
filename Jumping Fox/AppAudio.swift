@@ -69,8 +69,18 @@ final class AppAudio: NSObject, ObservableObject {
     private var musicPlayer: AVAudioPlayer?
     private let synthesizer = AVSpeechSynthesizer()
 
-    /// One reusable player per sound effect, keyed by `Effect.key`.
-    private var effectPlayers: [String: AVAudioPlayer] = [:]
+    /// Sound effects play through one long-lived `AVAudioEngine` instead of a
+    /// pool of `AVAudioPlayer`s. The render graph stays up for the whole
+    /// session, so firing an effect is just "schedule a preloaded PCM buffer on
+    /// a node" — no per-play decode, no audio-session touch and no graph rebuild
+    /// to land in the same frame as SpriteKit. Because the graph never tears
+    /// down, a speech start or an audio-route change can no longer stall them.
+    private let engine = AVAudioEngine()
+    /// One player node per effect, kept in its always-on "playing" state so a
+    /// trigger is a single cheap `scheduleBuffer(.interrupts)` on the node.
+    private var effectNodes: [String: AVAudioPlayerNode] = [:]
+    /// Preloaded, lead-trimmed PCM buffer per effect, ready to schedule.
+    private var effectBuffers: [String: AVAudioPCMBuffer] = [:]
 
     /// The catalog of one-shot sound effects. The per-file `volume` values were
     /// measured (each file's RMS) and chosen so every effect lands at the same
@@ -86,27 +96,32 @@ final class AppAudio: NSObject, ObservableObject {
         /// sound fires immediately (measured per file; no re-encoding needed).
         let lead: TimeInterval
     }
+    // Short effects are shipped as uncompressed CAF/PCM: unlike MP3 they need no
+    // runtime decode, so re-triggering one (rewind to `lead` + `play`) during a
+    // busy frame costs no CPU and can't contend for the shared audio decoder.
+    // The four `wav` files were already PCM. `volume`/`lead` are unchanged: the
+    // conversion preserved each file's sample rate, channels and timing exactly.
     private static let effects: [Effect] = [
-        Effect(key: "correct",       file: "sfx_correct",        ext: "mp3", volume: 0.16, lead: 0.0),
-        Effect(key: "wrong",         file: "sfx_wrong",          ext: "mp3", volume: 0.11, lead: 0.065),
-        Effect(key: "triplerPickup", file: "sfx_tripler_pickup", ext: "mp3", volume: 0.18, lead: 0.0),
-        Effect(key: "triplerUsed",   file: "sfx_tripler_used",   ext: "mp3", volume: 0.15, lead: 0.0),
-        Effect(key: "life",          file: "sfx_life",           ext: "mp3", volume: 0.15, lead: 0.155),
+        Effect(key: "correct",       file: "sfx_correct",        ext: "caf", volume: 0.16, lead: 0.0),
+        Effect(key: "wrong",         file: "sfx_wrong",          ext: "caf", volume: 0.11, lead: 0.065),
+        Effect(key: "triplerPickup", file: "sfx_tripler_pickup", ext: "caf", volume: 0.18, lead: 0.0),
+        Effect(key: "triplerUsed",   file: "sfx_tripler_used",   ext: "caf", volume: 0.15, lead: 0.0),
+        Effect(key: "life",          file: "sfx_life",           ext: "caf", volume: 0.15, lead: 0.155),
         // Deliberately louder than the rest — the source is boosted and it plays
         // above the pack, because at the matched level it was barely audible.
         Effect(key: "heartArrive",   file: "sfx_heart_arrive",   ext: "wav", volume: 0.50, lead: 0.0),
-        Effect(key: "minus",         file: "sfx_minus_coin",     ext: "mp3", volume: 0.24, lead: 0.045),
-        Effect(key: "shootingStar",  file: "sfx_shooting_star",  ext: "mp3", volume: 0.31, lead: 0.045),
-        Effect(key: "streak",        file: "sfx_streak",         ext: "mp3", volume: 0.16, lead: 0.225),
-        Effect(key: "levelComplete", file: "sfx_level_complete", ext: "mp3", volume: 0.10, lead: 0.010),
-        Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "mp3", volume: 0.12, lead: 0.050),
+        Effect(key: "minus",         file: "sfx_minus_coin",     ext: "caf", volume: 0.24, lead: 0.045),
+        Effect(key: "shootingStar",  file: "sfx_shooting_star",  ext: "caf", volume: 0.31, lead: 0.045),
+        Effect(key: "streak",        file: "sfx_streak",         ext: "caf", volume: 0.16, lead: 0.225),
+        Effect(key: "levelComplete", file: "sfx_level_complete", ext: "caf", volume: 0.10, lead: 0.010),
+        Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "caf", volume: 0.12, lead: 0.050),
         Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.20, lead: 0.015),
-        Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "mp3", volume: 1.0,  lead: 0.065),
+        Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "caf", volume: 1.0,  lead: 0.065),
         Effect(key: "trophyTotal",   file: "sfx_trophy_total",   ext: "wav", volume: 0.08, lead: 0.015),
         Effect(key: "select",        file: "sfx_select",         ext: "wav", volume: 0.17, lead: 0.0),
         // Toggle switches in the menu (helper mode, etc.).
-        Effect(key: "switchOn",      file: "sfx_switch_on",      ext: "mp3", volume: 0.89, lead: 0.200),
-        Effect(key: "switchOff",     file: "sfx_switch_off",     ext: "mp3", volume: 1.0,  lead: 0.170)
+        Effect(key: "switchOn",      file: "sfx_switch_on",      ext: "caf", volume: 0.89, lead: 0.200),
+        Effect(key: "switchOff",     file: "sfx_switch_off",     ext: "caf", volume: 1.0,  lead: 0.170)
     ]
 
     /// True while a level is actually being played (not the menu, the intro/
@@ -143,6 +158,10 @@ final class AppAudio: NSObject, ObservableObject {
         self.mode = GameSettings.audioMode
         super.init()
         synthesizer.delegate = self
+        // Speak through the app's own (already-active) audio session rather than
+        // letting the synthesizer manage a private one — that private-session
+        // churn is what let a spoken sum disturb the effects' audio route.
+        synthesizer.usesApplicationAudioSession = true
         registerForInterruptions()
     }
 
@@ -172,16 +191,16 @@ final class AppAudio: NSObject, ObservableObject {
         prepareQueue.async { [weak self] in
             guard let self else { return }
             let music = Self.makePlayer(named: "music_background", loops: -1, volume: 0)
-            var effects: [String: AVAudioPlayer] = [:]
+            // Decode + lead-trim every effect into a ready-to-schedule PCM buffer
+            // here, off the main thread, so play time does no file work at all.
+            var buffers: [String: AVAudioPCMBuffer] = [:]
             for effect in Self.effects {
-                effects[effect.key] = Self.makePlayer(named: effect.file, ext: effect.ext,
-                                                       loops: 0, volume: effect.volume)
+                buffers[effect.key] = Self.makeBuffer(named: effect.file, ext: effect.ext,
+                                                      trimLeading: effect.lead)
             }
             DispatchQueue.main.async {
                 if self.musicPlayer == nil { self.musicPlayer = music }
-                for (key, player) in effects where self.effectPlayers[key] == nil {
-                    self.effectPlayers[key] = player
-                }
+                self.installEffectBuffers(buffers)
                 // Only touch the audio session (and warm speech) when sound is
                 // on, so a muted app never interrupts the user's own audio.
                 if self.isEnabled {
@@ -190,6 +209,30 @@ final class AppAudio: NSObject, ObservableObject {
                 }
             }
         }
+    }
+
+    /// Attaches one player node per effect and wires it to the engine's mixer at
+    /// the buffer's own format (the mixer resamples as needed, so effects keep
+    /// their native rates). Runs once, on the main thread, after the background
+    /// decode; the engine itself is only started when sound is on.
+    private func installEffectBuffers(_ buffers: [String: AVAudioPCMBuffer]) {
+        for effect in Self.effects where effectBuffers[effect.key] == nil {
+            guard let buffer = buffers[effect.key] else { continue }
+            effectBuffers[effect.key] = buffer
+            let node = AVAudioPlayerNode()
+            node.volume = effect.volume
+            engine.attach(node)
+            engine.connect(node, to: engine.mainMixerNode, format: buffer.format)
+            effectNodes[effect.key] = node
+        }
+        // The session can go active before this background decode finishes — the
+        // tutorial starts gameplay immediately, with no start card, so
+        // `activateSession()` runs while `effectNodes` is still empty and
+        // `startEngineIfNeeded()` skips (nothing to play). Once activated,
+        // `activateSession()` short-circuits and never retries, so the engine
+        // would stay down and every effect would be silent. Now that the nodes
+        // exist, bring the engine up here.
+        if sessionActive { startEngineIfNeeded() }
     }
 
     /// Builds a fully prepared player. Runs the decode/`prepareToPlay` cost on
@@ -202,6 +245,44 @@ final class AppAudio: NSObject, ObservableObject {
         player.volume = volume
         player.prepareToPlay()
         return player
+    }
+
+    /// Decodes a sound file into a PCM buffer, dropping `trimLeading` seconds of
+    /// leading silence so a scheduled buffer sounds immediately. (The old players
+    /// did this by seeking on every play; baking it into the buffer once makes
+    /// each trigger free.) Runs on whatever background queue calls it.
+    private static func makeBuffer(named name: String, ext: String,
+                                   trimLeading: TimeInterval) -> AVAudioPCMBuffer? {
+        guard let url = Bundle.main.url(forResource: name, withExtension: ext),
+              let file = try? AVAudioFile(forReading: url) else { return nil }
+        let format = file.processingFormat
+        let skip = AVAudioFramePosition((trimLeading * format.sampleRate).rounded())
+        let start = min(max(0, skip), file.length)
+        file.framePosition = start
+        let frames = AVAudioFrameCount(file.length - start)
+        guard frames > 0,
+              let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frames),
+              (try? file.read(into: buffer)) != nil else { return nil }
+        return buffer
+    }
+
+    /// Starts the effects engine (once) and puts every effect node into its
+    /// always-on "playing" state, so a later trigger is a single scheduleBuffer
+    /// with nothing to spin up. Requires the session active; a no-op when sound
+    /// is off, the engine is already running, or the nodes aren't attached yet.
+    private func startEngineIfNeeded() {
+        guard isEnabled, !engine.isRunning, !effectNodes.isEmpty else { return }
+        engine.prepare()
+        guard (try? engine.start()) != nil else { return }
+        for node in effectNodes.values { node.play() }
+    }
+
+    /// Stops the effect nodes and the engine (used when going silent or
+    /// backgrounding); the attached graph is kept for a later restart.
+    private func stopEngine() {
+        guard engine.isRunning else { return }
+        for node in effectNodes.values { node.stop() }
+        engine.stop()
     }
 
     /// Speaks a silent utterance so the very first real sum doesn't pay the
@@ -236,10 +317,12 @@ final class AppAudio: NSObject, ObservableObject {
         configureSessionIfNeeded()
         try? AVAudioSession.sharedInstance().setActive(true)
         sessionActive = true
+        startEngineIfNeeded()                  // bring the effects graph up with it
     }
 
     private func deactivateSession() {
         guard sessionActive else { return }
+        stopEngine()
         // Let any paused apps (music, podcasts) resume once we go quiet.
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         sessionActive = false
@@ -344,17 +427,16 @@ final class AppAudio: NSObject, ObservableObject {
     private func playEffect(_ key: String) {
         guard isEnabled else { return }
         activateSession()
-        guard let effect = Self.effects.first(where: { $0.key == key }) else { return }
-        // Preloaded by `prepare()`; the fallback only runs if a sound is needed
-        // before preparation finished (rare — play happens well after launch).
-        if effectPlayers[key] == nil {
-            effectPlayers[key] = Self.makePlayer(named: effect.file, ext: effect.ext,
-                                                 loops: 0, volume: effect.volume)
-        }
-        guard let player = effectPlayers[key] else { return }
-        // Start past the file's leading silence so it sounds immediately.
-        player.currentTime = effect.lead
-        player.play()
+        // Preloaded by `prepare()`. If a sound is somehow needed before that
+        // finished (rare — play happens well after launch) it's simply skipped;
+        // no synchronous file work is ever done on this hot path.
+        guard let node = effectNodes[key], let buffer = effectBuffers[key] else { return }
+        // The node is already running (see `startEngineIfNeeded`); `.interrupts`
+        // restarts it from the top with nothing to allocate — the whole trigger
+        // is one buffer schedule on the audio render thread, invisible to the
+        // frame. The lead trim and volume are already baked in at load time.
+        if !node.isPlaying { node.play() }
+        node.scheduleBuffer(buffer, at: nil, options: .interrupts, completionHandler: nil)
     }
 
     // MARK: - Spoken sums
@@ -478,6 +560,10 @@ final class AppAudio: NSObject, ObservableObject {
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(handleInterruption(_:)),
                            name: AVAudioSession.interruptionNotification, object: nil)
+        // A route change (headphones plugged/unplugged, etc.) stops the engine;
+        // this brings it back so effects keep working afterwards.
+        center.addObserver(self, selector: #selector(handleEngineConfigurationChange),
+                           name: .AVAudioEngineConfigurationChange, object: engine)
 #if canImport(UIKit)
         center.addObserver(self, selector: #selector(appWillResignActive),
                            name: UIApplication.willResignActiveNotification, object: nil)
@@ -494,9 +580,13 @@ final class AppAudio: NSObject, ObservableObject {
         case .began:
             musicPlayer?.pause()
             synthesizer.stopSpeaking(at: .immediate)
+            // The system deactivates our session and stops the engine; mirror
+            // that so `ended` can cleanly reactivate and bring the effects back.
+            stopEngine()
         case .ended:
             if let optionsRaw = info[AVAudioSessionInterruptionOptionKey] as? UInt,
                AVAudioSession.InterruptionOptions(rawValue: optionsRaw).contains(.shouldResume) {
+                sessionActive = false   // force a real reactivation of session + engine
                 startMusic()
             }
         @unknown default:
@@ -504,14 +594,22 @@ final class AppAudio: NSObject, ObservableObject {
         }
     }
 
+    /// The route/config changed and stopped the engine; restart it in place.
+    @objc private func handleEngineConfigurationChange() {
+        DispatchQueue.main.async { [weak self] in self?.startEngineIfNeeded() }
+    }
+
     @objc private func appWillResignActive() {
         musicPlayer?.pause()
         synthesizer.stopSpeaking(at: .immediate)
+        stopEngine()
     }
 
     @objc private func appDidBecomeActive() {
-        // The loop plays app-wide, so resume it wherever the player is.
+        // The loop plays app-wide, so resume it wherever the player is, and
+        // bring the effects engine back up (it was stopped on resigning active).
         startMusic()
+        startEngineIfNeeded()
     }
 }
 

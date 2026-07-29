@@ -352,6 +352,42 @@
 	<string>Dy enw</string>
 	<key>name.whatsYourName</key>
 	<string>Beth yw dy enw?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Enillwch ychydig mwy o dlysau i ddatgloi'r anifail hwn! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Dim ond %lld tlws i fynd! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Mae eich anifeiliaid yn aros. Dewch yn ôl i chwarae a daliwch ati i gasglu tlysau!</string>
+	<key>notif.comeback.title</key>
+	<string>Rydym yn colli chi! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Dechreuwch sesiwn chwarae %lld munud ac ymestyn eich rhediad chwarae dyddiol.</string>
+	<key>notif.day3.title</key>
+	<string>Gadewch i ni wneud i ddiwrnod 3 ddigwydd! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Defnyddiwch y Pad Neidio i hepgor ateb anghywir a daliwch ati i ddringo!</string>
+	<key>notif.jumppad.title</key>
+	<string>Neidiwch heibio atebion anghywir! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Mae Premiwm Jumping Fox yn cynnwys %lld lefel ar gyfer pob pwnc a phob un o'r 10 anifail. Mae'r antur yn dal i fynd!</string>
+	<key>notif.premium.title</key>
+	<string>Datgloi mwy o lefelau ac anifeiliaid! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Mae wedi bod yn %lld diwrnod. Gadewch i ni ddatrys rhai ymarferion mathemateg ac ennill mwy o dlysau!</string>
+	<key>notif.reactivate.title</key>
+	<string>Barod i chwarae eto? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Chwarae am %lld munud a chadwch eich rhediad chwarae dyddiol i fynd!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Mae eich rhediad chwarae dyddiol wedi cyrraedd %lld diwrnod! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Gwaith gwych! Gadewch i ni chwarae am %lld munud a chasglu hyd yn oed mwy.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Rydych chi wedi ennill %lld o dlysau! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Daw hynny â’ch cyfanswm i %lld o dlysau. Gwaith anhygoel!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Fe enilloch chi %lld tlws yr wythnos hon! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Gwahanol symiau cymysg gyda'i gilydd.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Tapiau: %1$lld o %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Angen cymeradwyaeth oedolyn</string>
+	<key>premium.availableAt %lld</key>
+	<string>Ar gael o %lld tlws</string>
+	<key>premium.availableFromStart</key>
+	<string>Ar gael o’r dechrau</string>
+	<key>premium.characterUnlocked</key>
+	<string>CYMERIAD NEWYDD WEDI’I DDATGLOI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ wedi’i ddatgloi</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Rwyt ti wedi ennill %lld tlws</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Yn unigryw gyda Premiwm</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Yn unigryw gyda Premiwm</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Gyda Premiwm, gelli di chwarae'n rhydd gyda'r 10 anifail.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Pryniant unwaith. Yn eiddo i ti am byth.</string>
 	<key>premium.restore</key>
 	<string>Adfer pryniannau</string>
+	<key>premium.start</key>
+	<string>Dechrau</string>
 	<key>premium.storeUnavailable</key>
 	<string>Nid yw'r siop ar gael ar hyn o bryd. Rho gynnig arall arni nes ymlaen.</string>
 	<key>premium.unlock</key>
 	<string>Datgloi Premiwm</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Datgloi Premiwm · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Datgloi gyda thlysau</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Wedi’i ddatgloi gyda Premiwm</string>
 	<key>premium.youHavePremium</key>
 	<string>Mae Premiwm gen ti!</string>
 	<key>settings.character</key>

@@ -352,6 +352,42 @@
 	<string>Twoje imię</string>
 	<key>name.whatsYourName</key>
 	<string>Jak masz na imię?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zdobądź jeszcze kilka trofeów, aby odblokować to zwierzę! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Pozostało tylko %lld trofeów! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Twoje zwierzęta czekają. Wróć do gry i zbieraj trofea!</string>
+	<key>notif.comeback.title</key>
+	<string>Tęsknimy za tobą! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Rozpocznij %lld-minutową sesję gry i przedłuż swoją codzienną passę.</string>
+	<key>notif.day3.title</key>
+	<string>Sprawmy, aby dzień 3 się odbył! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Użyj panelu skokowego, aby pominąć błędną odpowiedź i wspinaj się dalej!</string>
+	<key>notif.jumppad.title</key>
+	<string>Przeskocz błędne odpowiedzi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium zawiera %lld poziomów dla każdego tematu i wszystkich 10 zwierząt. Przygoda trwa!</string>
+	<key>notif.premium.title</key>
+	<string>Odblokuj więcej poziomów i zwierząt! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Minęły %lld dni. Rozwiążmy kilka ćwiczeń matematycznych i zdobądźmy więcej trofeów!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gotowy do ponownej gry? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Graj przez %lld minut i podtrzymaj swoją codzienną passę!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Twoja codzienna passa gry osiągnęła %lld dni! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Świetna robota! Zagrajmy przez %lld minut i zbierzmy jeszcze więcej.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Zdobyłeś %lld trofeów! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>To daje w sumie %lld trofeów. Niesamowita praca!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>W tym tygodniu zdobyłeś %lld trofeów! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Różne działania wymieszane razem.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Stuknięcia: %1$lld z %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Wymagana zgoda dorosłego</string>
+	<key>premium.availableAt %lld</key>
+	<string>Dostępne od %lld pucharów</string>
+	<key>premium.availableFromStart</key>
+	<string>Dostępne od początku</string>
+	<key>premium.characterUnlocked</key>
+	<string>ODBLOKOWANO NOWĄ POSTAĆ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>Odblokowano: %@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Masz już %lld pucharów</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Tylko z Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Tylko z Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Z Premium możesz grać wszystkimi 10 zwierzętami.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Kupujesz raz. Masz na zawsze.</string>
 	<key>premium.restore</key>
 	<string>Przywróć zakupy</string>
+	<key>premium.start</key>
+	<string>Start</string>
 	<key>premium.storeUnavailable</key>
 	<string>Sklep jest teraz niedostępny. Spróbuj ponownie później.</string>
 	<key>premium.unlock</key>
 	<string>Odblokuj Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Odblokuj Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Odblokuj za puchary</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Odblokowano z Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Masz Premium!</string>
 	<key>settings.character</key>

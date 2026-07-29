@@ -352,6 +352,42 @@
 	<string>Il tuo nome</string>
 	<key>name.whatsYourName</key>
 	<string>Come ti chiami?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Guadagna qualche altro trofeo per sbloccare questo animale! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>EMancano solo %lld trofei! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>EI tuoi animali stanno aspettando. Torna a giocare e continua a collezionare trofei!</string>
+	<key>notif.comeback.title</key>
+	<string>ECi manchi! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>EInizia una sessione di gioco di %lld minuti ed estendi la tua serie di giochi giornaliera.</string>
+	<key>notif.day3.title</key>
+	<string>ERealizziamo il terzo giorno! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>EUsa il Jump Pad per saltare la risposta sbagliata e continuare a salire!</string>
+	<key>notif.jumppad.title</key>
+	<string>ESalta oltre le risposte sbagliate! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>EJumping Fox Premium include %lld livelli per ogni argomento e tutti i 10 animali. L'avventura continua!</string>
+	<key>notif.premium.title</key>
+	<string>ESblocca più livelli e animali! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>ESono passati %lld giorni. Risolviamo alcuni esercizi di matematica e guadagniamo più trofei!</string>
+	<key>notif.reactivate.title</key>
+	<string>EPronti a giocare di nuovo? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>EGioca per %lld minuti e continua la tua serie di giochi giornalieri!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ELa tua serie di giochi giornalieri ha raggiunto i %lld giorni! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>EOttimo lavoro! Giochiamo per %lld minuti e raccogliamo ancora di più.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>EHai guadagnato %lld trofei! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ECiò porta il tuo totale a %lld trofei. Lavoro fantastico!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>EHai guadagnato %lld trofei questa settimana! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Diversi esercizi misti insieme.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Tocchi: %1$lld su %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Serve l’approvazione di un adulto</string>
+	<key>premium.availableAt %lld</key>
+	<string>Disponibile da %lld trofei</string>
+	<key>premium.availableFromStart</key>
+	<string>Disponibile dall’inizio</string>
+	<key>premium.characterUnlocked</key>
+	<string>NUOVO PERSONAGGIO SBLOCCATO</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ sbloccato</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Hai conquistato %lld trofei</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Esclusivo con Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Esclusivo con Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Con Premium puoi giocare liberamente con tutti e 10 gli animali.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Acquisto unico. Tuo per sempre.</string>
 	<key>premium.restore</key>
 	<string>Ripristina acquisti</string>
+	<key>premium.start</key>
+	<string>Inizia</string>
 	<key>premium.storeUnavailable</key>
 	<string>Il negozio non è disponibile ora. Riprova più tardi.</string>
 	<key>premium.unlock</key>
 	<string>Sblocca Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Sblocca Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Sblocca con i trofei</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Sbloccato con Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Hai Premium!</string>
 	<key>settings.character</key>

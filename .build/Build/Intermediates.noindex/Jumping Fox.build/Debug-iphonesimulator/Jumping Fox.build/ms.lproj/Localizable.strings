@@ -352,6 +352,42 @@
 	<string>Nama kamu</string>
 	<key>name.whatsYourName</key>
 	<string>Siapa nama kamu?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Peroleh beberapa lagi trofi untuk membuka kunci haiwan ini! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Hanya tinggal %lld trofi lagi! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Haiwan anda sedang menunggu. Kembali bermain dan terus mengumpul trofi!</string>
+	<key>notif.comeback.title</key>
+	<string>Kami rindu awak! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Mulakan sesi bermain selama %lld minit dan lanjutkan rentak permainan harian anda.</string>
+	<key>notif.day3.title</key>
+	<string>Mari jadikan hari ke-3 berlaku! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Gunakan Jump Pad untuk melangkau jawapan yang salah dan terus mendaki!</string>
+	<key>notif.jumppad.title</key>
+	<string>Lompat melepasi jawapan yang salah! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium termasuk %lld tahap untuk setiap topik dan kesemua 10 haiwan. Pengembaraan diteruskan!</string>
+	<key>notif.premium.title</key>
+	<string>Buka kunci lebih banyak tahap dan haiwan! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>dah %lld hari. Mari selesaikan beberapa latihan matematik dan dapatkan lebih banyak trofi!</string>
+	<key>notif.reactivate.title</key>
+	<string>Bersedia untuk bermain lagi? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Main selama %lld minit dan teruskan rentak permainan harian anda!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Rentak permainan harian anda telah mencapai %lld hari! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Kerja bagus! Mari bermain selama %lld minit dan mengumpul lebih banyak lagi.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Anda telah memperoleh %lld trofi! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Itu menjadikan jumlah anda sebanyak %lld trofi. Kerja yang menakjubkan!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Anda memperoleh %lld trofi minggu ini! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Soalan campur yang berbeza.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Ketikan: %1$lld daripada %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Kelulusan orang dewasa diperlukan</string>
+	<key>premium.availableAt %lld</key>
+	<string>Tersedia mulai %lld trofi</string>
+	<key>premium.availableFromStart</key>
+	<string>Tersedia sejak mula</string>
+	<key>premium.characterUnlocked</key>
+	<string>WATAK BAHARU DIBUKA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ dibuka</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Kamu telah memperoleh %lld trofi</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Eksklusif dengan Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Eksklusif dengan Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Dengan premium, kamu bebas bermain dengan semua 10 haiwan.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Beli sekali. Milik kamu selamanya.</string>
 	<key>premium.restore</key>
 	<string>Pulihkan pembelian</string>
+	<key>premium.start</key>
+	<string>Mula</string>
 	<key>premium.storeUnavailable</key>
 	<string>Kedai tidak tersedia sekarang. Cuba lagi nanti.</string>
 	<key>premium.unlock</key>
 	<string>Buka Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Buka Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Buka dengan trofi</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Dibuka dengan Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Kamu ada Premium!</string>
 	<key>settings.character</key>

@@ -352,6 +352,42 @@
 	<string>तिम्रो नाम</string>
 	<key>name.whatsYourName</key>
 	<string>तिम्रो नाम के हो?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: यो जनावर अनलक गर्न केहि थप ट्रफीहरू कमाउनुहोस्! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>केवल %lld ट्रफीहरू जान बाँकी! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>तपाईंका जनावरहरू पर्खिरहेका छन्। खेल्न फिर्ता आउनुहोस् र ट्रफीहरू सङ्कलन गरिरहनुहोस्!</string>
+	<key>notif.comeback.title</key>
+	<string>हामी तपाईंलाई सम्झन्छौं! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld-मिनेट खेल सत्र सुरु गर्नुहोस् र आफ्नो दैनिक खेल स्ट्रीक विस्तार गर्नुहोस्।</string>
+	<key>notif.day3.title</key>
+	<string>दिन 3 बनाउनुहोस्! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>गलत जवाफ छोड्न जम्प प्याड प्रयोग गर्नुहोस् र आरोहण जारी राख्नुहोस्!</string>
+	<key>notif.jumppad.title</key>
+	<string>गलत जवाफहरू पछि जानुहोस्! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>जम्पिङ फक्स प्रिमियमले हरेक विषय र सबै 10 जनावरहरूको लागि %lld स्तरहरू समावेश गर्दछ। साहसिक कार्य जारी छ!</string>
+	<key>notif.premium.title</key>
+	<string>थप स्तर र जनावरहरू अनलक गर्नुहोस्! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld दिन भयो। केही गणित अभ्यासहरू समाधान गरौं र थप ट्रफीहरू कमाउनुहोस्!</string>
+	<key>notif.reactivate.title</key>
+	<string>फेरि खेल्न तयार हुनुहुन्छ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld मिनेटको लागि खेल्नुहोस् र तपाईंको दैनिक प्ले स्ट्रीक जारी राख्नुहोस्!</string>
+	<key>notif.streak.title %lld</key>
+	<string>तपाइँको दैनिक प्ले स्ट्रीक %lld दिन पुगेको छ! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>राम्रो काम!%lld मिनेटको लागि खेलौं र अझ धेरै सङ्कलन गरौं।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>तपाईंले %lld ट्रफीहरू कमाउनुभएको छ! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>यसले तपाइँको कुल %lld ट्रफी ल्याउँछ। अचम्मको काम!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>तपाईंले यो हप्ता %lld ट्राफीहरू कमाउनुभयो! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>विभिन्न मिश्रित हिसाब सँगै।</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>ट्याप: %1$lld मध्ये %2$lld</string>
 	<key>parentGate.title</key>
 	<string>वयस्कको स्वीकृति चाहिन्छ</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ट्रफीबाट उपलब्ध</string>
+	<key>premium.availableFromStart</key>
+	<string>सुरुदेखि उपलब्ध</string>
+	<key>premium.characterUnlocked</key>
+	<string>नयाँ पात्र खुल्यो</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ खुल्यो</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>तिमीले %lld ट्रफी कमायौ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium मा मात्र</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium मा मात्र</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>प्रिमियममा सबै १० जनावरसँग स्वतन्त्र खेल।</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>एकपटकको खरिद। सधैं तिम्रो।</string>
 	<key>premium.restore</key>
 	<string>खरिद पुनःस्थापना</string>
+	<key>premium.start</key>
+	<string>सुरु</string>
 	<key>premium.storeUnavailable</key>
 	<string>अहिले स्टोर उपलब्ध छैन। पछि फेरि प्रयास गर्नुहोस्।</string>
 	<key>premium.unlock</key>
 	<string>प्रिमियम खोल</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>प्रिमियम खोल · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ट्रफीले खोल</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ले खुल्यो</string>
 	<key>premium.youHavePremium</key>
 	<string>तिमीसँग प्रिमियम छ!</string>
 	<key>settings.character</key>

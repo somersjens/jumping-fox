@@ -352,6 +352,42 @@
 	<string>Jina lako</string>
 	<key>name.whatsYourName</key>
 	<string>Unaitwa nani?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Pata vikombe vichache zaidi ili kumfungulia mnyama huyu! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Zimesalia kutwaa taji %lld tu! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Wanyama wako wanasubiri. Rudi kucheza na uendelee kukusanya vikombe!</string>
+	<key>notif.comeback.title</key>
+	<string>Tunakukumbuka! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Anza kipindi cha kucheza cha dakika %lld na uongeze mfululizo wako wa kucheza wa kila siku.</string>
+	<key>notif.day3.title</key>
+	<string>Wacha tuifanye siku ya 3 ifanyike! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Tumia Padi ya Kuruka ili kuruka jibu lisilo sahihi na kuendelea kupanda!</string>
+	<key>notif.jumppad.title</key>
+	<string>Rukia majibu yasiyo sahihi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Kuruka Fox Premium inajumuisha viwango %lld kwa kila mada na wanyama wote 10. Matukio yanaendelea!</string>
+	<key>notif.premium.title</key>
+	<string>Fungua viwango zaidi na wanyama! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Imekuwa siku %lld. Wacha tusuluhishe mazoezi kadhaa ya hesabu na tupate nyara zaidi!</string>
+	<key>notif.reactivate.title</key>
+	<string>Je, uko tayari kucheza tena? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Cheza kwa dakika %lld na uendeleze mfululizo wako wa kucheza wa kila siku!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Mfululizo wako wa kucheza wa kila siku umefikia siku %lld! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Kazi nzuri! Wacha tucheze kwa dakika %lld na kukusanya zaidi.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Umejishindia vikombe %lld! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Hiyo inaleta jumla yako hadi nyara %lld. Kazi ya ajabu!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Umejishindia vikombe %lld wiki hii! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Hesabu tofauti zilizochanganywa.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Miguso: %1$lld kati ya %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Idhini ya mtu mzima inahitajika</string>
+	<key>premium.availableAt %lld</key>
+	<string>Inapatikana kuanzia vikombe %lld</string>
+	<key>premium.availableFromStart</key>
+	<string>Inapatikana tangu mwanzo</string>
+	<key>premium.characterUnlocked</key>
+	<string>MHUSIKA MPYA AMEFUNGULIWA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ amefunguliwa</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Umepata vikombe %lld</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Kwa Premium pekee</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Kwa Premium pekee</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Ukiwa na Premium, unacheza kwa uhuru na wanyama wote 10.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Nunua mara moja. Ni yako milele.</string>
 	<key>premium.restore</key>
 	<string>Rejesha ununuzi</string>
+	<key>premium.start</key>
+	<string>Anza</string>
 	<key>premium.storeUnavailable</key>
 	<string>Duka halipatikani sasa. Tafadhali jaribu tena baadaye.</string>
 	<key>premium.unlock</key>
 	<string>Fungua Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Fungua Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Fungua kwa vikombe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Imefunguliwa kwa Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Una Premium!</string>
 	<key>settings.character</key>

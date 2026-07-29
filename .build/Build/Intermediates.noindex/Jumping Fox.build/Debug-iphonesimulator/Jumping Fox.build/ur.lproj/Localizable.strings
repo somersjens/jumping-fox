@@ -352,6 +352,42 @@
 	<string>آپ کا نام</string>
 	<key>name.whatsYourName</key>
 	<string>آپ کا نام کیا ہے؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: اس جانور کو غیر مقفل کرنے کے لیے کچھ اور ٹرافیاں حاصل کریں! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>صرف %lld ٹرافیاں باقی ہیں! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>آپ کے جانور انتظار کر رہے ہیں۔کھیلنے کے لیے واپس آئیں اور ٹرافیاں جمع کرتے رہیں!</string>
+	<key>notif.comeback.title</key>
+	<string>ہم آپ کو یاد کرتے ہیں! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld منٹ کا پلے سیشن شروع کریں اور اپنے روزانہ کھیلنے کے سلسلے کو بڑھا دیں۔</string>
+	<key>notif.day3.title</key>
+	<string>آئیے دن 3 کو انجام دیں! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>غلط جواب کو چھوڑنے کے لیے جمپ پیڈ کا استعمال کریں اور چڑھتے رہیں!</string>
+	<key>notif.jumppad.title</key>
+	<string>غلط جوابات سے گزریں! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>جمپنگ فاکس پریمیم میں ہر موضوع کے لیے %lld لیولز اور تمام 10 جانور شامل ہیں۔ایڈونچر جاری ہے!</string>
+	<key>notif.premium.title</key>
+	<string>مزید سطحوں اور جانوروں کو غیر مقفل کریں! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld دن ہو گئے ہیں۔آئیے ریاضی کی کچھ مشقیں حل کریں اور مزید ٹرافیاں حاصل کریں!</string>
+	<key>notif.reactivate.title</key>
+	<string>دوبارہ کھیلنے کے لیے تیار ہیں؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld منٹ تک کھیلیں اور اپنی روزانہ کی کھیل کو جاری رکھیں!</string>
+	<key>notif.streak.title %lld</key>
+	<string>آپ کا روزانہ کھیلنے کا سلسلہ %lld دن تک پہنچ گیا ہے! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>بہت اچھا کام! آئیے %lld منٹ کھیلیں اور مزید جمع کریں۔</string>
+	<key>notif.trophies.title %lld</key>
+	<string>آپ نے %lld ٹرافیاں حاصل کی ہیں! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>اس سے آپ کی کل ٹرافیاں %lld ہو جاتی ہیں۔حیرت انگیز کام!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>آپ نے اس ہفتے %lld ٹرافیاں حاصل کیں! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>مختلف ملے جلے سوال۔</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>ٹیپس: %1$lld از %2$lld</string>
 	<key>parentGate.title</key>
 	<string>بالغ کی منظوری ضروری</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ٹرافیوں سے دستیاب</string>
+	<key>premium.availableFromStart</key>
+	<string>شروع سے دستیاب</string>
+	<key>premium.characterUnlocked</key>
+	<string>نیا کردار کھل گیا</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ کھل گیا</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>آپ نے %lld ٹرافیاں کمائی ہیں</string>
+	<key>premium.exclusiveBadge</key>
+	<string>صرف Premium کے ساتھ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>صرف Premium کے ساتھ</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>پریمیم کے ساتھ تمام 10 جانوروں سے آزادانہ کھیلیں۔</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>ایک بار خریدیں۔ ہمیشہ آپ کا۔</string>
 	<key>premium.restore</key>
 	<string>خریداریاں بحال کریں</string>
+	<key>premium.start</key>
+	<string>شروع</string>
 	<key>premium.storeUnavailable</key>
 	<string>اس وقت اسٹور دستیاب نہیں۔ بعد میں دوبارہ کوشش کریں۔</string>
 	<key>premium.unlock</key>
 	<string>پریمیم کھولیں</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>پریمیم کھولیں · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ٹرافیوں سے کھولیں</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium کے ساتھ کھلا</string>
 	<key>premium.youHavePremium</key>
 	<string>آپ کے پاس پریمیم ہے!</string>
 	<key>settings.character</key>

@@ -352,6 +352,42 @@
 	<string>Emri yt</string>
 	<key>name.whatsYourName</key>
 	<string>Si quhesh?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Fitoni disa trofe të tjerë për të zhbllokuar këtë kafshë! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kanë mbetur vetëm %lld trofe! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Kafshët tuaja janë duke pritur. Kthehuni për të luajtur dhe vazhdoni të mblidhni trofe!</string>
+	<key>notif.comeback.title</key>
+	<string>Na mungoni! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Filloni një seancë %lld-minutëshe të lojës dhe zgjeroni brezin tuaj të përditshëm të lojërave.</string>
+	<key>notif.day3.title</key>
+	<string>Le të realizojmë ditën e tretë! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Përdorni "Jump Pad" për të kapërcyer një përgjigje të gabuar dhe për të vazhduar ngjitjen!</string>
+	<key>notif.jumppad.title</key>
+	<string>Kaloni përgjigjet e gabuara! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium përfshin %lld nivele për çdo temë dhe të 10 kafshët. Aventura vazhdon!</string>
+	<key>notif.premium.title</key>
+	<string>Zhbllokoni më shumë nivele dhe kafshë! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Kanë kaluar %lld ditë. Le të zgjidhim disa ushtrime matematikore dhe të fitojmë më shumë trofe!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gati për të luajtur përsëri? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Luaj për %lld minuta dhe vazhdo serinë e përditshme të lojës!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Seria juaj e përditshme e lojërave ka arritur në %lld ditë! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Punë e madhe! Le të luajmë për %lld minuta dhe të mbledhim edhe më shumë.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Ju keni fituar %lld trofe! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Kjo e çon totalin tuaj në %lld trofe. Punë e mahnitshme!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ju fituat %lld trofe këtë javë! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Detyra të ndryshme të përziera.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Prekje: %1$lld nga %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Duhet miratimi i një të rrituri</string>
+	<key>premium.availableAt %lld</key>
+	<string>I disponueshëm nga %lld trofe</string>
+	<key>premium.availableFromStart</key>
+	<string>I disponueshëm që nga fillimi</string>
+	<key>premium.characterUnlocked</key>
+	<string>U ZHBLLOKUA NJË PERSONAZH I RI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ u zhbllokua</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Ke fituar %lld trofe</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Ekskluziv me Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Ekskluziv me Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Me Premium luan lirshëm me të 10 kafshët.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Një blerje e vetme. E jotja përgjithmonë.</string>
 	<key>premium.restore</key>
 	<string>Rikthe blerjet</string>
+	<key>premium.start</key>
+	<string>Fillo</string>
 	<key>premium.storeUnavailable</key>
 	<string>Dyqani nuk është i disponueshëm tani. Provo përsëri më vonë.</string>
 	<key>premium.unlock</key>
 	<string>Zhblloko Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Zhblloko Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Zhblloko me trofe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>U zhbllokua me Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Ke Premium!</string>
 	<key>settings.character</key>

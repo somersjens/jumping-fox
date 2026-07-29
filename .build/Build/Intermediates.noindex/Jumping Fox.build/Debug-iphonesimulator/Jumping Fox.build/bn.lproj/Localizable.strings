@@ -352,6 +352,42 @@
 	<string>তোমার নাম</string>
 	<key>name.whatsYourName</key>
 	<string>তোমার নাম কী?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: এই প্রাণীটিকে আনলক করতে আরও কয়েকটি ট্রফি অর্জন করুন! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>আর মাত্র %lldটি ট্রফি! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>আপনার পশুরা অপেক্ষা করছে। খেলতে ফিরে আসুন এবং ট্রফি সংগ্রহ করতে থাকুন!</string>
+	<key>notif.comeback.title</key>
+	<string>আমরা আপনাকে মিস করি! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>একটি %lld-মিনিটের খেলার সেশন শুরু করুন এবং আপনার প্রতিদিনের খেলার স্ট্রীক প্রসারিত করুন।</string>
+	<key>notif.day3.title</key>
+	<string>দিন 3 ঘটতে দিন! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>একটি ভুল উত্তর এড়িয়ে যেতে এবং আরোহণ চালিয়ে যেতে জাম্প প্যাড ব্যবহার করুন!</string>
+	<key>notif.jumppad.title</key>
+	<string>ভুল উত্তর অতীত লাফ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>জাম্পিং ফক্স প্রিমিয়ামে প্রতিটি বিষয়ের জন্য %lldটি স্তর এবং সমস্ত 10টি প্রাণী রয়েছে। অ্যাডভেঞ্চার চলতে থাকে!</string>
+	<key>notif.premium.title</key>
+	<string>আরও স্তর এবং প্রাণী আনলক করুন! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld দিন হয়ে গেল। আসুন কিছু গণিত অনুশীলন সমাধান করি এবং আরও ট্রফি অর্জন করি!</string>
+	<key>notif.reactivate.title</key>
+	<string>আবার খেলার জন্য প্রস্তুত? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld মিনিটের জন্য খেলুন এবং আপনার প্রতিদিনের খেলার ধারা অব্যাহত রাখুন!</string>
+	<key>notif.streak.title %lld</key>
+	<string>আপনার দৈনিক খেলার ধারা %lld দিনে পৌঁছেছে! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>দারুণ কাজ! আসুন %lld মিনিটের জন্য খেলি এবং আরও বেশি সংগ্রহ করি।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>আপনি %lldটি ট্রফি জিতেছেন! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>এটি আপনার মোট %lld ট্রফি নিয়ে আসে। আশ্চর্যজনক কাজ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>আপনি এই সপ্তাহে %lldটি ট্রফি জিতেছেন! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>বিভিন্ন মিশ্র অঙ্ক একসঙ্গে।</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>ট্যাপ: %1$lld-এর মধ্যে %2$lld</string>
 	<key>parentGate.title</key>
 	<string>প্রাপ্তবয়স্কের অনুমতি দরকার</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lldটি ট্রফি থেকে পাওয়া যাবে</string>
+	<key>premium.availableFromStart</key>
+	<string>শুরু থেকেই পাওয়া যাবে</string>
+	<key>premium.characterUnlocked</key>
+	<string>নতুন চরিত্র আনলক হয়েছে</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ আনলক হয়েছে</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>তুমি %lldটি ট্রফি অর্জন করেছ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>শুধু Premium-এ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>শুধু Premium-এ</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>প্রিমিয়ামে ১০টি প্রাণী নিয়েই স্বাধীনভাবে খেলতে পারবে।</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>একবার কিনলেই চিরদিন তোমার।</string>
 	<key>premium.restore</key>
 	<string>কেনাকাটা পুনরুদ্ধার</string>
+	<key>premium.start</key>
+	<string>শুরু</string>
 	<key>premium.storeUnavailable</key>
 	<string>স্টোর এখন পাওয়া যাচ্ছে না। পরে আবার চেষ্টা করুন।</string>
 	<key>premium.unlock</key>
 	<string>প্রিমিয়াম আনলক</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>প্রিমিয়াম আনলক · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ট্রফি দিয়ে আনলক করো</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium দিয়ে আনলক হয়েছে</string>
 	<key>premium.youHavePremium</key>
 	<string>তোমার প্রিমিয়াম আছে!</string>
 	<key>settings.character</key>

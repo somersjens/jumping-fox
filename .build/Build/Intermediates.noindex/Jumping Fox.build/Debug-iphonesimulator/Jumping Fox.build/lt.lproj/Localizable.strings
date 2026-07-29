@@ -352,6 +352,42 @@
 	<string>Tavo vardas</string>
 	<key>name.whatsYourName</key>
 	<string>Koks tavo vardas?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Uždirbkite dar kelis trofėjus, kad atrakintumėte šį gyvūną! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Liko tik %lld trofėjai! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jūsų gyvūnai laukia. Grįžkite žaisti ir toliau rinkti trofėjus!</string>
+	<key>notif.comeback.title</key>
+	<string>Mes tavęs pasiilgome! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Pradėkite %lld minučių žaidimo sesiją ir pratęskite savo kasdienę žaidimų seriją.</string>
+	<key>notif.day3.title</key>
+	<string>Kad įvyktų 3 diena! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Naudokite Jump Pad, kad praleistumėte neteisingą atsakymą ir toliau koptumėte!</string>
+	<key>notif.jumppad.title</key>
+	<string>Peršok neteisingus atsakymus! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium apima %lld lygius kiekvienai temai ir visiems 10 gyvūnų. Nuotykis tęsiasi!</string>
+	<key>notif.premium.title</key>
+	<string>Atrakinkite daugiau lygių ir gyvūnų! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Praėjo %lld dienos. Išspręskime keletą matematikos pratimų ir pelnykime daugiau trofėjų!</string>
+	<key>notif.reactivate.title</key>
+	<string>Pasiruošę vėl žaisti? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Žaiskite %lld minučių ir tęskite savo kasdienę žaidimų seriją!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jūsų kasdienė žaidimų serija pasiekė %lld dienas! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Puikus darbas! Žaiskime %lld minučių ir surinkite dar daugiau.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jūs uždirbote %lld trofėjų! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tai padidins jūsų bendrą %lld trofėjų. Nuostabus darbas!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Šią savaitę pelnėte %lld trofėjų! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Įvairios mišrios užduotys kartu.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Bakstelėjimai: %1$lld iš %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Reikia suaugusiojo patvirtinimo</string>
+	<key>premium.availableAt %lld</key>
+	<string>Pasiekiama nuo %lld trofėjų</string>
+	<key>premium.availableFromStart</key>
+	<string>Pasiekiama nuo pradžių</string>
+	<key>premium.characterUnlocked</key>
+	<string>ATRAKINTAS NAUJAS VEIKĖJAS</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ atrakintas</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Turi %lld trofėjų</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Tik su Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Tik su Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Su Premium gali laisvai žaisti su visais 10 gyvūnų.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Vienkartinis pirkinys. Tavo visam laikui.</string>
 	<key>premium.restore</key>
 	<string>Atkurti pirkinius</string>
+	<key>premium.start</key>
+	<string>Pradėti</string>
 	<key>premium.storeUnavailable</key>
 	<string>Parduotuvė dabar nepasiekiama. Bandyk dar kartą vėliau.</string>
 	<key>premium.unlock</key>
 	<string>Atrakinti Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Atrakinti Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Atrakink trofėjais</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Atrakinta su Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Turi Premium!</string>
 	<key>settings.character</key>

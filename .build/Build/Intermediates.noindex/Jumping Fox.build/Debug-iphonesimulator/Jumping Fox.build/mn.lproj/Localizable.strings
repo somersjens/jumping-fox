@@ -352,6 +352,42 @@
 	<string>Чиний нэр</string>
 	<key>name.whatsYourName</key>
 	<string>Чамайг хэн гэдэг вэ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Энэ амьтны түгжээг тайлахын тулд хэд хэдэн цом цуглуулаарай! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Зөвхөн %lld цом үлдлээ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Таны амьтад хүлээж байна. Тоглохоор буцаж ирээд цом цуглуулж байгаарай!</string>
+	<key>notif.comeback.title</key>
+	<string>Бид чамайг санаж байна! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минутын тоглолтыг эхлүүлж, өдөр бүр тоглох цувралаа уртасга.</string>
+	<key>notif.day3.title</key>
+	<string>3 дахь өдрөө амжилттай болгоцгооё! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Jump Pad ашиглан буруу хариултыг алгасаад үргэлжлүүлэн авираарай!</string>
+	<key>notif.jumppad.title</key>
+	<string>Буруу хариултуудыг давж гараарай! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium нь сэдэв бүрийн %lld түвшин болон бүх 10 амьтныг агуулдаг. Адал явдал үргэлжилсээр байна!</string>
+	<key>notif.premium.title</key>
+	<string>Илүү олон түвшин, амьтдын түгжээг нээ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld хонож байна. Математикийн дасгалуудыг шийдэж, илүү олон цом олцгооё!</string>
+	<key>notif.reactivate.title</key>
+	<string>Дахин тоглоход бэлэн үү? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут тоглож, өдөр тутмынхаа цувралыг үргэлжлүүлээрэй!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Таны өдөр тутмын тоглолтын цуврал %lld хоног боллоо! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Маш сайн ажил!%lld минут тоглож, бүр илүү ихийг цуглуулцгаая.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Та %lld цом авлаа! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Ингэснээр таны нийт %lld цом авчирна. Гайхалтай ажил!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Та энэ долоо хоногт %lld цом авлаа! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Өөр өөр холимог бодлогууд.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Товшилт: %1$lld-аас %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Насанд хүрэгчийн зөвшөөрөл хэрэгтэй</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld цомоос эхлэн нээгдэнэ</string>
+	<key>premium.availableFromStart</key>
+	<string>Эхнээсээ нээлттэй</string>
+	<key>premium.characterUnlocked</key>
+	<string>ШИНЭ ДҮР НЭЭГДЛЭЭ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ нээгдлээ</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Чи %lld цом авсан</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Зөвхөн Premium-д</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Зөвхөн Premium-д</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Премиумтай бол 10 амьтнаар бүгдээр нь чөлөөтэй тоглоно.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Нэг удаагийн худалдан авалт. Үүрд чинийх.</string>
 	<key>premium.restore</key>
 	<string>Худалдан авалтыг сэргээх</string>
+	<key>premium.start</key>
+	<string>Эхлэх</string>
 	<key>premium.storeUnavailable</key>
 	<string>Дэлгүүр одоогоор ажиллахгүй байна. Дараа дахин оролдоорой.</string>
 	<key>premium.unlock</key>
 	<string>Премиум нээх</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Премиум нээх · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Цомоор нээ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium-аар нээгдсэн</string>
 	<key>premium.youHavePremium</key>
 	<string>Чи Премиумтай!</string>
 	<key>settings.character</key>

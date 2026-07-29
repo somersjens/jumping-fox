@@ -352,6 +352,42 @@
 	<string>तुम्हारा नाम</string>
 	<key>name.whatsYourName</key>
 	<string>तुम्हारा नाम क्या है?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: इस जानवर को अनलॉक करने के लिए कुछ और ट्राफियां अर्जित करें! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>केवल %lld ट्राफियां बाकी हैं! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>आपके जानवर इंतज़ार कर रहे हैं. खेलने के लिए वापस आएँ और ट्राफियाँ इकट्ठा करते रहें!</string>
+	<key>notif.comeback.title</key>
+	<string>हमें आपकी याद आती है! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld मिनट का खेल सत्र शुरू करें और अपने दैनिक खेल क्रम का विस्तार करें।</string>
+	<key>notif.day3.title</key>
+	<string>आइए तीसरे दिन को सफल बनाएं! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>गलत उत्तर को छोड़ने और चढ़ते रहने के लिए जंप पैड का उपयोग करें!</string>
+	<key>notif.jumppad.title</key>
+	<string>ग़लत उत्तरों से आगे बढ़ें! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>जंपिंग फॉक्स प्रीमियम में प्रत्येक विषय और सभी 10 जानवरों के लिए %lld स्तर शामिल हैं। साहसिक कार्य चलता रहता है!</string>
+	<key>notif.premium.title</key>
+	<string>अधिक स्तरों और जानवरों को अनलॉक करें! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld दिन हो गये. आइए गणित के कुछ अभ्यास हल करें और अधिक ट्राफियां अर्जित करें!</string>
+	<key>notif.reactivate.title</key>
+	<string>फिर से खेलने के लिए तैयार हैं? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld मिनट तक खेलें और अपने दैनिक खेल क्रम को जारी रखें!</string>
+	<key>notif.streak.title %lld</key>
+	<string>आपके दैनिक खेल का क्रम %lld दिनों तक पहुंच गया है! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>अच्छा काम! आइए %lld मिनट तक खेलें और और भी अधिक इकट्ठा करें।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>आपने %lld ट्रॉफियां अर्जित की हैं! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>इससे आपकी कुल ट्रॉफियां %lld हो जाती हैं। अद्भुत कार्य!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>आपने इस सप्ताह %lld ट्राफियां अर्जित कीं! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>अलग-अलग मिली-जुली गणनाएँ।</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>टैप: %1$lld में से %2$lld</string>
 	<key>parentGate.title</key>
 	<string>किसी बड़े की मंज़ूरी चाहिए</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ट्रॉफियों से उपलब्ध</string>
+	<key>premium.availableFromStart</key>
+	<string>शुरू से उपलब्ध</string>
+	<key>premium.characterUnlocked</key>
+	<string>नया किरदार अनलॉक हुआ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ अनलॉक हुआ</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>तुमने %lld ट्रॉफियाँ कमाईं</string>
+	<key>premium.exclusiveBadge</key>
+	<string>सिर्फ़ Premium के साथ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>सिर्फ़ Premium के साथ</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>प्रीमियम में सभी 10 जानवरों के साथ खुलकर खेलो।</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>एक बार खरीदें। हमेशा आपका।</string>
 	<key>premium.restore</key>
 	<string>खरीदारी बहाल करें</string>
+	<key>premium.start</key>
+	<string>शुरू करें</string>
 	<key>premium.storeUnavailable</key>
 	<string>स्टोर अभी उपलब्ध नहीं है। बाद में फिर कोशिश करें।</string>
 	<key>premium.unlock</key>
 	<string>प्रीमियम अनलॉक करें</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>प्रीमियम अनलॉक करें · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ट्रॉफियों से अनलॉक करें</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium से अनलॉक हुआ</string>
 	<key>premium.youHavePremium</key>
 	<string>तुम्हारे पास प्रीमियम है!</string>
 	<key>settings.character</key>

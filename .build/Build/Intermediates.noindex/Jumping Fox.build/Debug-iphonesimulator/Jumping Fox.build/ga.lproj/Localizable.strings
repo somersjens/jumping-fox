@@ -352,6 +352,42 @@
 	<string>D’ainm</string>
 	<key>name.whatsYourName</key>
 	<string>Cad is ainm duit?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Faigh cúpla trófaithe eile chun an t-ainmhí seo a dhíghlasáil! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Níl ach %lld thrófaí le dul! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Tá do chuid ainmhithe ag fanacht. Tar ar ais ag imirt agus lean ort ag bailiú trófaithe!</string>
+	<key>notif.comeback.title</key>
+	<string>Is fada uainn thú! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Tosaigh seisiún súgartha %lld-nóiméad agus síneadh do stríoc imeartha laethúil.</string>
+	<key>notif.day3.title</key>
+	<string>Déanaimis an tríú lá! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Bain úsáid as an bPad Léim le freagra mícheart a scipeáil agus lean ort ag dreapadh!</string>
+	<key>notif.jumppad.title</key>
+	<string>Léim anuas freagraí míchearta! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Cuimsíonn Jumping Fox Premium %lld leibhéal do gach ábhar agus do gach 10 n-ainmhí. Leanann an eachtra ar aghaidh!</string>
+	<key>notif.premium.title</key>
+	<string>Díghlasáil níos mó leibhéil agus ainmhithe! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Tá sé %lld lá. Déanaimis roinnt cleachtaí matamaitice a réiteach agus níos mó trófaithe a thuilleamh!</string>
+	<key>notif.reactivate.title</key>
+	<string>Réidh le himirt arís? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Seinn ar feadh %lld nóiméad agus coinnigh do stríoc imeartha laethúil ag dul!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Tá do stríoc imeartha laethúil %lld lá bainte amach! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Jab iontach! A ligean ar imirt ar feadh %lld nóiméad agus a bhailiú fiú níos mó.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Tá %lld trófaí tuillte agat! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tugann sé sin do iomlán go %lld trófaí. Obair iontach!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ghnóthaigh tú %lld trófaí an tseachtain seo chaite! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Suimeanna éagsúla measctha le chéile.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Tapálacha: %1$lld as %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Cead duine fásta de dhíth</string>
+	<key>premium.availableAt %lld</key>
+	<string>Ar fáil ó %lld trófaí</string>
+	<key>premium.availableFromStart</key>
+	<string>Ar fáil ón tús</string>
+	<key>premium.characterUnlocked</key>
+	<string>CARACHTAR NUA DÍGHLASÁILTE</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ díghlasáilte</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tá %lld trófaí tuillte agat</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Eisiach le Préimh</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Eisiach le Préimh</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Le Préimh, is féidir leat imirt gan srian leis na 10 n-ainmhí.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Ceannach aonuaire. Is leatsa go deo é.</string>
 	<key>premium.restore</key>
 	<string>Athchóirigh ceannacháin</string>
+	<key>premium.start</key>
+	<string>Tosaigh</string>
 	<key>premium.storeUnavailable</key>
 	<string>Níl an siopa ar fáil anois. Bain triail eile as ar ball.</string>
 	<key>premium.unlock</key>
 	<string>Díghlasáil Préimh</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Díghlasáil Préimh · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Díghlasáil le trófaithe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Díghlasáilte le Préimh</string>
 	<key>premium.youHavePremium</key>
 	<string>Tá Préimh agat!</string>
 	<key>settings.character</key>

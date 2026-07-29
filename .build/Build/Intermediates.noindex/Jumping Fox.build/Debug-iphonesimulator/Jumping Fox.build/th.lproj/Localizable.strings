@@ -352,6 +352,42 @@
 	<string>ชื่อของเธอ</string>
 	<key>name.whatsYourName</key>
 	<string>เธอชื่ออะไร?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: รับถ้วยรางวัลเพิ่มอีกเล็กน้อยเพื่อปลดล็อคสัตว์ตัวนี้! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>เหลือเพียง %lld ถ้วยรางวัล! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>สัตว์ของคุณกำลังรออยู่กลับมาเล่นสะสมถ้วยรางวัลกันต่อ!</string>
+	<key>notif.comeback.title</key>
+	<string>เราคิดถึงคุณ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>เริ่มเซสชั่นการเล่น %lld นาทีและขยายแนวการเล่นประจำวันของคุณ</string>
+	<key>notif.day3.title</key>
+	<string>มาทำให้วันที่ 3 เกิดขึ้นกันเถอะ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ใช้ Jump Pad เพื่อข้ามคำตอบที่ผิดแล้วปีนต่อไป!</string>
+	<key>notif.jumppad.title</key>
+	<string>ข้ามคำตอบที่ผิดไป! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium มี %lld ด่านสำหรับทุกหัวข้อและสัตว์ทั้งหมด 10 ตัวการผจญภัยดำเนินต่อไป!</string>
+	<key>notif.premium.title</key>
+	<string>ปลดล็อคระดับและสัตว์เพิ่มเติม! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>ผ่านมา %lld วันแล้วมาแก้แบบฝึกหัดคณิตศาสตร์และรับถ้วยรางวัลเพิ่มกันเถอะ!</string>
+	<key>notif.reactivate.title</key>
+	<string>พร้อมที่จะเล่นอีกครั้งหรือยัง? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>เล่นเป็นเวลา %lld นาทีและเล่นต่อเนื่องทุกวัน!</string>
+	<key>notif.streak.title %lld</key>
+	<string>แนวการเล่นประจำวันของคุณถึง %lld วันแล้ว! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>เยี่ยมมาก! มาเล่นกันสัก %lld นาทีแล้วสะสมให้มากขึ้น</string>
+	<key>notif.trophies.title %lld</key>
+	<string>คุณได้รับ %lld ถ้วยรางวัล! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>นั่นจะทำให้คุณได้รับถ้วยรางวัลถึง %lld ถ้วยผลงานน่าทึ่ง!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>คุณได้รับ %lld ถ้วยรางวัลในสัปดาห์นี้! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>โจทย์ผสมหลายแบบคละกัน</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>แตะแล้ว: %1$lld จาก %2$lld</string>
 	<key>parentGate.title</key>
 	<string>ต้องได้รับอนุมัติจากผู้ใหญ่</string>
+	<key>premium.availableAt %lld</key>
+	<string>ใช้ได้เมื่อมีถ้วยรางวัล %lld ใบ</string>
+	<key>premium.availableFromStart</key>
+	<string>ใช้ได้ตั้งแต่เริ่มต้น</string>
+	<key>premium.characterUnlocked</key>
+	<string>ปลดล็อกตัวละครใหม่แล้ว</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>ปลดล็อก %@ แล้ว</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>คุณได้รับถ้วยรางวัล %lld ใบแล้ว</string>
+	<key>premium.exclusiveBadge</key>
+	<string>เฉพาะ Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>เฉพาะ Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>พรีเมียมให้เล่นกับสัตว์ทั้ง 10 ตัวได้อย่างอิสระ</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>ซื้อครั้งเดียว เป็นของเธอตลอดไป</string>
 	<key>premium.restore</key>
 	<string>กู้คืนการซื้อ</string>
+	<key>premium.start</key>
+	<string>เริ่ม</string>
 	<key>premium.storeUnavailable</key>
 	<string>ขณะนี้ร้านค้าใช้งานไม่ได้ โปรดลองอีกครั้งภายหลัง</string>
 	<key>premium.unlock</key>
 	<string>ปลดล็อกพรีเมียม</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>ปลดล็อกพรีเมียม · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ปลดล็อกด้วยถ้วยรางวัล</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>ปลดล็อกด้วย Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>เธอมีพรีเมียมแล้ว!</string>
 	<key>settings.character</key>

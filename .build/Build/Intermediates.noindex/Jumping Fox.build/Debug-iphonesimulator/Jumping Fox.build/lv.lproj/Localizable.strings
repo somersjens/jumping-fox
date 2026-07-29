@@ -352,6 +352,42 @@
 	<string>Tavs vārds</string>
 	<key>name.whatsYourName</key>
 	<string>Kā tevi sauc?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Nopelniet vēl dažas trofejas, lai atbloķētu šo dzīvnieku! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Vēl tikai %lld trofejas! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jūsu dzīvnieki gaida. Atgriezieties spēlēt un turpiniet vākt trofejas!</string>
+	<key>notif.comeback.title</key>
+	<string>Mums tevis pietrūkst! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Sāciet %lld minūšu spēles sesiju un pagariniet savu ikdienas spēļu sēriju.</string>
+	<key>notif.day3.title</key>
+	<string>Panāksim 3. dienu! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Izmantojiet Jump Pad, lai izlaistu nepareizu atbildi un turpinātu kāpt!</string>
+	<key>notif.jumppad.title</key>
+	<string>Pārlēkt garām nepareizām atbildēm! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium ietver %lld līmeņus katrai tēmai un visiem 10 dzīvniekiem. Piedzīvojums turpinās!</string>
+	<key>notif.premium.title</key>
+	<string>Atbloķējiet vairāk līmeņu un dzīvnieku! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Ir pagājušas %lld dienas. Atrisināsim dažus matemātikas uzdevumus un nopelnīsim vairāk trofeju!</string>
+	<key>notif.reactivate.title</key>
+	<string>Vai esat gatavs spēlēt vēlreiz? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spēlējiet %lld minūtes un turpiniet savu ikdienas spēļu sēriju!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jūsu ikdienas spēļu sērija ir sasniegusi %lld dienas! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Lielisks darbs! Spēlēsim %lld minūtes un savāksim vēl vairāk.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jūs esat nopelnījis %lld trofejas! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tādējādi jūs kopā iegūstat %lld trofejas. Apbrīnojams darbs!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Šonedēļ jūs nopelnījāt %lld trofejas! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Dažādi jaukti uzdevumi kopā.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Pieskārieni: %1$lld no %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Vajadzīgs pieaugušā apstiprinājums</string>
+	<key>premium.availableAt %lld</key>
+	<string>Pieejams no %lld trofejām</string>
+	<key>premium.availableFromStart</key>
+	<string>Pieejams jau no sākuma</string>
+	<key>premium.characterUnlocked</key>
+	<string>ATBLOĶĒTS JAUNS TĒLS</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ atbloķēts</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tev ir %lld trofejas</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Tikai ar Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Tikai ar Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Ar Premium vari brīvi spēlēt ar visiem 10 dzīvniekiem.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Vienreizējs pirkums. Tavs uz visiem laikiem.</string>
 	<key>premium.restore</key>
 	<string>Atjaunot pirkumus</string>
+	<key>premium.start</key>
+	<string>Sākt</string>
 	<key>premium.storeUnavailable</key>
 	<string>Veikals pašlaik nav pieejams. Lūdzu, mēģini vēlāk.</string>
 	<key>premium.unlock</key>
 	<string>Atbloķēt Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Atbloķēt Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Atbloķē ar trofejām</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Atbloķēts ar Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Tev ir Premium!</string>
 	<key>settings.character</key>

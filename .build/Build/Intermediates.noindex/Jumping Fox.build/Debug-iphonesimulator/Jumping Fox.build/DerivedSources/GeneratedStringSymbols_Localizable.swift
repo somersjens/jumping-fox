@@ -1111,6 +1111,132 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “notif.animal.body %@” in table “Localizable.xcstrings”.
+     */
+    static func notifAnimalBody(_ arg1: String) -> LocalizedStringResource {
+        LocalizedStringResource("notif.animal.body %@", defaultValue: "\(arg1)", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.animal.title %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifAnimalTitle(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.animal.title %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.comeback.body” in table “Localizable.xcstrings”.
+     */
+    static var notifComebackBody: LocalizedStringResource {
+        LocalizedStringResource("notif.comeback.body", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.comeback.title” in table “Localizable.xcstrings”.
+     */
+    static var notifComebackTitle: LocalizedStringResource {
+        LocalizedStringResource("notif.comeback.title", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.day3.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifDay3Body(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.day3.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.day3.title” in table “Localizable.xcstrings”.
+     */
+    static var notifDay3Title: LocalizedStringResource {
+        LocalizedStringResource("notif.day3.title", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.jumppad.body” in table “Localizable.xcstrings”.
+     */
+    static var notifJumppadBody: LocalizedStringResource {
+        LocalizedStringResource("notif.jumppad.body", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.jumppad.title” in table “Localizable.xcstrings”.
+     */
+    static var notifJumppadTitle: LocalizedStringResource {
+        LocalizedStringResource("notif.jumppad.title", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.premium.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifPremiumBody(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.premium.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.premium.title” in table “Localizable.xcstrings”.
+     */
+    static var notifPremiumTitle: LocalizedStringResource {
+        LocalizedStringResource("notif.premium.title", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.reactivate.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifReactivateBody(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.reactivate.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.reactivate.title” in table “Localizable.xcstrings”.
+     */
+    static var notifReactivateTitle: LocalizedStringResource {
+        LocalizedStringResource("notif.reactivate.title", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.streak.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifStreakBody(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.streak.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.streak.title %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifStreakTitle(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.streak.title %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.trophies.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifTrophiesBody(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.trophies.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.trophies.title %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifTrophiesTitle(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.trophies.title %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.weekly.body %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifWeeklyBody(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.weekly.body %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “notif.weekly.title %lld” in table “Localizable.xcstrings”.
+     */
+    static func notifWeeklyTitle(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("notif.weekly.title %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “onboarding.level.advanced.subtitle” in table “Localizable.xcstrings”.
      */
     static var onboardingLevelAdvancedSubtitle: LocalizedStringResource {
@@ -1377,6 +1503,55 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “premium.availableAt %lld” in table “Localizable.xcstrings”.
+     */
+    static func premiumAvailableAt(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("premium.availableAt %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.availableFromStart” in table “Localizable.xcstrings”.
+     */
+    static var premiumAvailableFromStart: LocalizedStringResource {
+        LocalizedStringResource("premium.availableFromStart", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.characterUnlocked” in table “Localizable.xcstrings”.
+     */
+    static var premiumCharacterUnlocked: LocalizedStringResource {
+        LocalizedStringResource("premium.characterUnlocked", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.characterUnlocked %@” in table “Localizable.xcstrings”.
+     */
+    static func premiumCharacterUnlocked(_ arg1: String) -> LocalizedStringResource {
+        LocalizedStringResource("premium.characterUnlocked %@", defaultValue: "\(arg1)", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.earnedTrophies %lld” in table “Localizable.xcstrings”.
+     */
+    static func premiumEarnedTrophies(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("premium.earnedTrophies %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.exclusiveBadge” in table “Localizable.xcstrings”.
+     */
+    static var premiumExclusiveBadge: LocalizedStringResource {
+        LocalizedStringResource("premium.exclusiveBadge", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.exclusiveWithPremium” in table “Localizable.xcstrings”.
+     */
+    static var premiumExclusiveWithPremium: LocalizedStringResource {
+        LocalizedStringResource("premium.exclusiveWithPremium", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “premium.feature.animals.subtitle” in table “Localizable.xcstrings”.
      */
     static var premiumFeatureAnimalsSubtitle: LocalizedStringResource {
@@ -1433,6 +1608,13 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “premium.start” in table “Localizable.xcstrings”.
+     */
+    static var premiumStart: LocalizedStringResource {
+        LocalizedStringResource("premium.start", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “premium.storeUnavailable” in table “Localizable.xcstrings”.
      */
     static var premiumStoreUnavailable: LocalizedStringResource {
@@ -1451,6 +1633,20 @@ nonisolated extension LocalizedStringResource {
      */
     static func premiumUnlockWithPrice(_ arg1: String) -> LocalizedStringResource {
         LocalizedStringResource("premium.unlockWithPrice %@", defaultValue: "\(arg1)", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.unlockWithTrophies” in table “Localizable.xcstrings”.
+     */
+    static var premiumUnlockWithTrophies: LocalizedStringResource {
+        LocalizedStringResource("premium.unlockWithTrophies", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “premium.unlockedWithPremium” in table “Localizable.xcstrings”.
+     */
+    static var premiumUnlockedWithPremium: LocalizedStringResource {
+        LocalizedStringResource("premium.unlockedWithPremium", table: "Localizable", bundle: resourceBundleDescription)
     }
 
     /**

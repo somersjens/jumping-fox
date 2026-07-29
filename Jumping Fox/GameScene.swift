@@ -347,6 +347,10 @@ final class GamePlatform: SKNode {
         guard role == .neutralPlatform, powerup == nil else { return }
         powerup = type
         let scale = platformSize.width / Self.platformSize.width
+        // The platform already scales for iPad, but ×3 is the most information-
+        // dense pickup and still read smaller than the heart/star silhouettes.
+        // Give only that icon a modest extra step on enlarged playfields.
+        let pickupScale = scale * (type == .tripler && scale > 1 ? 1.15 : 1)
         let icon = Self.makePowerupIcon(type, theme: theme, fillsRightHalf: fillsRightHalf)
         icon.name = "powerupIcon"
         icon.position = CGPoint(x: 0, y: platformSize.height / 2 + 18)
@@ -354,8 +358,8 @@ final class GamePlatform: SKNode {
         // Sparkle in (also covers attaching to an on-screen stone), then bob.
         icon.setScale(0.01)
         icon.run(.sequence([
-            .scale(to: 1.2 * scale, duration: 0.18),
-            .scale(to: scale, duration: 0.12),
+            .scale(to: 1.2 * pickupScale, duration: 0.18),
+            .scale(to: pickupScale, duration: 0.12),
             .repeatForever(.sequence([
                 .moveBy(x: 0, y: 5, duration: 0.6),
                 .moveBy(x: 0, y: -5, duration: 0.6)
@@ -633,6 +637,9 @@ final class GameScene: SKScene {
     private let spawnAheadBuffer: CGFloat = 900
 
     private var maxJumpHeight: CGFloat { bounceVelocity * bounceVelocity / (2 * -gravity) }
+    /// Effects attached directly to the mascot must scale independently from
+    /// platform icons. On iPhone this remains exactly 1.
+    private var playerEffectScale: CGFloat { verticalGameplayScale }
     private var helperEnabled = false
     private var totalClimb: CGFloat = 0
 
@@ -1823,6 +1830,16 @@ final class GameScene: SKScene {
         answerBuildNotBefore = lastUpdateTime + (1.0 / 60.0)
     }
 
+    /// Rebuilds the guided answer group for the CURRENT tutorial step after a
+    /// short beat, keeping the sum on screen. Tutorial step transitions (moving,
+    /// bouncing, the reveal, a heart/×3/−1 pickup) use this so the equation
+    /// stays put; only landing on a correct answer rolls a fresh sum, exactly
+    /// like ordinary play (see `landedCorrect` → `performQuestionAdvance`).
+    private func scheduleTutorialAnswerRebuild(delay: TimeInterval = 0.18) {
+        answerBuildPending = true
+        answerBuildNotBefore = max(answerBuildNotBefore, lastUpdateTime + delay)
+    }
+
     /// Watchdog repair: only acts when the correct block has scrolled off
     /// the BOTTOM of the screen (it was never landed on). The invisible
     /// old block is removed off-screen — no visible status change — and a
@@ -1979,10 +1996,14 @@ final class GameScene: SKScene {
     /// Bands are prepared up to `spawnAheadBuffer` above the viewport, so
     /// even at the highest climb speed blocks exist long before they come
     /// into view — nothing ever pops in visibly.
-    private func spawnPlatformsIfNeeded() {
-        while nextSpawnY < size.height + spawnAheadBuffer {
+    private func spawnPlatformsIfNeeded(aheadBuffer: CGFloat? = nil,
+                                        maximumBands: Int = .max) {
+        let targetY = size.height + (aheadBuffer ?? spawnAheadBuffer)
+        var spawnedBands = 0
+        while nextSpawnY < targetY, spawnedBands < maximumBands {
             spawnBand(at: nextSpawnY)
             nextSpawnY += CGFloat.random(in: minBandGap...maxBandGap)
+            spawnedBands += 1
         }
     }
 
@@ -2042,7 +2063,10 @@ final class GameScene: SKScene {
             return
         }
         if lastUpdateTime == 0 { lastUpdateTime = currentTime }
-        let dt = CGFloat(min(1.0 / 30.0, currentTime - lastUpdateTime))
+        // Preserve more real elapsed time after an isolated slow frame. The
+        // previous 1/30 cap made the world visibly enter brief slow motion;
+        // 1/20 is still safely bounded for the swept landing checks below.
+        let dt = CGFloat(min(1.0 / 20.0, currentTime - lastUpdateTime))
         lastUpdateTime = currentTime
 
         // Victory exit: no steering, collisions, spawning or scrolling. The
@@ -2142,8 +2166,22 @@ final class GameScene: SKScene {
         refreshMissedTutorialPickup()
         updatePlayerAppearance(dt: dt)
         scrollIfNeeded()
-        spawnPlatformsIfNeeded()
         cullPlatforms()
+
+        // Building a platform band means allocating/configuring several
+        // SpriteKit nodes. Keep that work away from the fastest part of the
+        // ascent and spread catch-up across frames near the apex/descent. A
+        // smaller emergency buffer remains available so generation can never
+        // fall behind an unusually long launch.
+        if shouldBuildAnswers {
+            // The answer group is the expensive, gameplay-critical build for
+            // this frame. Only service the small safety buffer beside it.
+            spawnPlatformsIfNeeded(aheadBuffer: 360, maximumBands: 1)
+        } else if velocityY <= 250 {
+            spawnPlatformsIfNeeded(maximumBands: 2)
+        } else {
+            spawnPlatformsIfNeeded(aheadBuffer: 360, maximumBands: 1)
+        }
 
         // Keep this last: node creation and route validation never share the
         // frame with the SwiftUI publication above or with additional
@@ -2381,9 +2419,13 @@ final class GameScene: SKScene {
         }
         if tutorial.isActive {
             switch tutorial.currentStep {
-            case 3, 5: completeTutorialStep(tutorial.currentStep)
-            case 6: tutorialAwaitingQuestionTap = true
-            case 8 where tutorial.triplerAnswerPending: completeTutorialStep(8)
+            // Step 6 teaches the reveal aid, then finishes like any other answer
+            // step: landing on the correct block scores it and moves on. Tapping
+            // the question only reveals which block is correct (see
+            // `tutorialQuestionWasTapped`); it no longer ends the step, so the
+            // revealed answer stays a live block the child can actually jump on.
+            case 3, 5, 6: completeTutorialStep(tutorial.currentStep, viaCorrectAnswer: true)
+            case 8 where tutorial.triplerAnswerPending: completeTutorialStep(8, viaCorrectAnswer: true)
             default: break
             }
         }
@@ -2528,16 +2570,22 @@ final class GameScene: SKScene {
         }
     }
 
-    /// Called by the SwiftUI equation badge.  It does not freeze the scene;
-    /// it merely releases the next part of the lesson after a real tap.
+    /// Called by the SwiftUI equation badge on tapping the question during the
+    /// reveal lesson (step 6). It reveals the answer (the SwiftUI side spends the
+    /// half-life and shows the number) and marks the correct block green so the
+    /// child can see which one to jump on. It deliberately does NOT finish the
+    /// step: the tiles stay live, and landing on the now-known correct block is
+    /// what completes step 6 (see `landedCorrect`). Finishing here — as it did
+    /// before — jumped straight to step 7 and made the tiles inert, so the
+    /// visible correct answer could no longer be jumped on.
     func tutorialQuestionWasTapped() {
         guard tutorial.isActive, tutorial.currentStep == 6 else { return }
-        preserveAnswerAppearanceAfterTutorialReveal = true
         tutorialAwaitingQuestionTap = false
-        completeTutorialStep(6)
+        platforms.first { $0.isActiveAnswer && $0.value == state.correctAnswer }?
+            .styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
     }
 
-    private func completeTutorialStep(_ step: Int) {
+    private func completeTutorialStep(_ step: Int, viaCorrectAnswer: Bool = false) {
         guard tutorial.isActive, tutorial.currentStep == step else { return }
         tutorial.complete(step: step, helperEnabled: helperEnabled)
         if step == 1 && tutorial.currentStep == 2 {
@@ -2563,8 +2611,14 @@ final class GameScene: SKScene {
             }
         }
         // Let the current bounce/confirmation finish, then build the next
-        // guided set above the viewport.
-        answerRefreshAt = max(answerRefreshAt ?? 0, lastUpdateTime + 0.18)
+        // guided set above the viewport — keeping the SAME sum. A correct answer
+        // instead advances to a fresh sum (handled by `landedCorrect`), so the
+        // equation only ever changes when the child actually answers, never on a
+        // teaching step or the reveal. `tutorial.isActive` is already false once
+        // the final star step completes, which correctly skips this.
+        if !viaCorrectAnswer, tutorial.isActive {
+            scheduleTutorialAnswerRebuild()
+        }
         ensureTutorialPickup()
     }
 
@@ -2728,7 +2782,9 @@ final class GameScene: SKScene {
             completeTutorialStep(7)
         case (8, .tripler):
             tutorial.setTriplerAnswerPending(true)
-            answerRefreshAt = max(answerRefreshAt ?? 0, lastUpdateTime + 0.18)
+            // Show the ×3-armed answer for the sum already on screen; answering
+            // it (not this pickup) is what rolls the next sum.
+            scheduleTutorialAnswerRebuild()
         case (9, .minusOne):
             for other in platforms where other.powerup == .minusOne { other.removePowerup() }
             completeTutorialStep(9)
@@ -3037,7 +3093,9 @@ final class GameScene: SKScene {
             arc.move(to: origin)
             arc.addQuadCurve(to: target, control: control)
 
-            // The fading streak that traces the arc.
+            // The fading streak that traces the initial arc. The star itself
+            // tracks the live block below, so scrolling during the volley
+            // cannot make the impact miss its target on a tall iPad field.
             let line = SKShapeNode(path: arc)
             line.strokeColor = theme.skPrimary
             line.lineWidth = 3
@@ -3055,7 +3113,8 @@ final class GameScene: SKScene {
 
             // The shooting star itself: a spinning theme-coloured star that
             // follows the arc; impact pops the block with a small ping.
-            let star = GamePlatform.makeStarIcon(theme: theme, radius: 8)
+            let star = GamePlatform.makeStarIcon(theme: theme,
+                                                 radius: 8 * playerEffectScale)
             star.fillColor = theme.skPrimary
             star.strokeColor = .white
             star.lineWidth = 1
@@ -3064,8 +3123,17 @@ final class GameScene: SKScene {
             star.alpha = 0
             addChild(star)
             let travelTime = 0.22 + Double(distance) / 2200
-            let travel = SKAction.follow(arc, asOffset: false, orientToPath: false,
-                                         duration: travelTime)
+            let bow = CGVector(dx: control.x - mid.x, dy: control.y - mid.y)
+            let travel = SKAction.customAction(withDuration: travelTime) { [weak block] node, elapsed in
+                guard let block else { return }
+                let progress = min(1, max(0, elapsed / CGFloat(travelTime)))
+                let liveTarget = block.position
+                let curve = sin(.pi * progress)
+                node.position = CGPoint(
+                    x: origin.x + (liveTarget.x - origin.x) * progress + bow.dx * curve,
+                    y: origin.y + (liveTarget.y - origin.y) * progress + bow.dy * curve
+                )
+            }
             travel.timingMode = .easeIn
             star.run(.sequence([
                 .wait(forDuration: delay),
@@ -3102,17 +3170,18 @@ final class GameScene: SKScene {
         triplerAura = nil
         guard on else { return }
         let aura = SKNode()
-        let glow = SKShapeNode(circleOfRadius: 46)
+        let effectScale = playerEffectScale
+        let glow = SKShapeNode(circleOfRadius: 46 * effectScale)
         glow.fillColor = theme.skPrimary.withAlphaComponent(0.20)
         glow.strokeColor = theme.skPrimary.withAlphaComponent(0.55)
-        glow.lineWidth = 2
+        glow.lineWidth = 2 * effectScale
         glow.run(.repeatForever(.sequence([
             .scale(to: 1.12, duration: 0.5),
             .scale(to: 1.0, duration: 0.5)
         ])))
         aura.addChild(glow)
-        let badge = makeTriplerBubble(radius: 15)
-        badge.position = CGPoint(x: 0, y: 60)
+        let badge = makeTriplerBubble(radius: 15 * effectScale)
+        badge.position = CGPoint(x: 0, y: 60 * effectScale)
         badge.run(.repeatForever(.sequence([
             .scale(to: 1.15, duration: 0.35),
             .scale(to: 1.0, duration: 0.35)

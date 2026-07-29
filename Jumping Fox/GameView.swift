@@ -89,6 +89,11 @@ struct GameView: View {
     @State private var suppressIntroTap = false
     @State private var isTutorialArrowBouncing = false
     @State private var showsTutorialCompletion = false
+    /// The tutorial keeps one stable sum, and its equation is hidden during the
+    /// movement lesson (step 1). Read that sum aloud once — the first time the
+    /// equation actually appears — instead of at gameplay start when nothing is
+    /// on screen yet. `false` until it has been announced.
+    @State private var hasAnnouncedTutorialSum = false
     /// One-shot celebratory caption explaining why the streak coin just
     /// appeared ("5 in a row! Trophies ×2"). Auto-dismisses after a beat.
     @State private var showStreakBanner = false
@@ -102,9 +107,11 @@ struct GameView: View {
     /// The card heading should lead the copy, without competing with the
     /// character portrait on iPad. The feature tiles step down separately so
     /// their explanatory text retains the established readable size.
-    private var introTitleScale: CGFloat { 0.9 }
+    private var introTitleScale: CGFloat { 1.2 }
     private var introFeatureIconScale: CGFloat { 0.8 }
-    private var introFeatureTextScale: CGFloat { isPad ? 1.1 : 0.88 }
+    /// The three explanatory lines are intentionally one step quieter than
+    /// before on both phone and iPad; their tiles and icons retain their size.
+    private var introFeatureTextScale: CGFloat { (isPad ? 1.1 : 0.88) * 0.9 }
 
     init(level: LevelConfig) {
         // A maxed card also shows its paused score, so an in-progress run can
@@ -302,6 +309,13 @@ struct GameView: View {
             // Warm the soft haptic the moment the "tap the question mark" step
             // appears, so the first tap doesn't cold-start the Taptic Engine.
             if step == 6 { scene.prepareHintHaptic() }
+            // Step 1 hides the equation; the moment it first appears (any later
+            // step), read the sum aloud once. The tutorial's sum never changes,
+            // so it is deliberately not repeated on the following steps.
+            if step != 1, !hasAnnouncedTutorialSum, !showingIntro, !state.isGameOver {
+                hasAnnouncedTutorialSum = true
+                AppAudio.shared.speakQuestion(state.questionText)
+            }
         }
         .onChange(of: tutorial.isComplete) { complete in
             guard complete else { return }
@@ -388,7 +402,17 @@ struct GameView: View {
     /// state: audible only while a level is live (no intro card, not over).
     private func updateGameplayAudio() {
         let active = !showingIntro && !state.isGameOver
-        AppAudio.shared.setGameplayActive(active, questionText: state.questionText)
+        // Don't read the sum aloud while its equation is still hidden behind the
+        // step-1 movement instruction; `tutorialSumBecameVisible()` speaks it the
+        // moment it appears instead.
+        let questionText = tutorialEquationHidden ? nil : state.questionText
+        AppAudio.shared.setGameplayActive(active, questionText: questionText)
+    }
+
+    /// The equation is replaced by the instruction during the tutorial's
+    /// movement lesson (step 1); it is on screen for every other step.
+    private var tutorialEquationHidden: Bool {
+        tutorial.isActive && tutorial.currentStep == 1
     }
 
     /// Keep the display from dimming/locking during play.
@@ -489,24 +513,21 @@ struct GameView: View {
                         HStack(alignment: .top, spacing: 14) {
                             characterPortrait
                             // The title and the status labels together span the
-                            // exact height of the character: title pinned to the
-                            // top, labels to the bottom (the Spacer fills between).
+                            // exact height of the character box: title pinned to
+                            // the top, labels to the bottom (the Spacer fills
+                            // between). Both share this single column, which runs
+                            // as wide as possible while the HStack spacing leaves
+                            // a safety margin to the sound toggle on the right.
                             VStack(alignment: .leading, spacing: 0) {
-                                // Title line: the sound toggle sits right beside
-                                // the title, at its height, pinned to the edge.
-                                HStack(alignment: .center, spacing: 10) {
-                                    Text(info.title)
-                                        .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
-                                        .foregroundStyle(theme.deepColor)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.70)
-                                        .layoutPriority(1)
-                                    Spacer(minLength: 6)
-                                    musicToggleButton
-                                }
+                                Text(info.title)
+                                    .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
+                                    .foregroundStyle(theme.deepColor)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 Spacer(minLength: 0)
-                                // Status labels sit on their own row and may run
-                                // the full width of the card, under the toggle.
+                                // Status labels sit on their own row, sharing the
+                                // title's width and stopping short of the toggle.
                                 HStack(spacing: 7) {
                                     introStatusLabel(icon: state.lifeMode == .unlimited ? "infinity" : "heart.fill",
                                                      text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
@@ -515,6 +536,9 @@ struct GameView: View {
                                 }
                             }
                             .frame(height: introPortraitSize)
+                            // Sound toggle to the right of the title/labels
+                            // column, its top aligned with the title.
+                            musicToggleButton
                         }
                         DashedDivider(color: theme.color.opacity(0.45))
                             .padding(.vertical, 4)
@@ -586,7 +610,9 @@ struct GameView: View {
         theme.artwork
             .resizable()
             .scaledToFit()
-            .padding(8)
+            // Tighter inset renders the character ~10% larger inside the same
+            // box — the outline/background frame below is unchanged.
+            .padding(5)
             .frame(width: introPortraitSize, height: introPortraitSize)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -614,6 +640,8 @@ struct GameView: View {
                 .frame(width: 44 * gameScale, height: 44 * gameScale)
                 .background(theme.skyColor.opacity(audio.isEnabled ? 1 : 0.5),
                             in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text(verbatim: audioModeAccessibilityLabel))

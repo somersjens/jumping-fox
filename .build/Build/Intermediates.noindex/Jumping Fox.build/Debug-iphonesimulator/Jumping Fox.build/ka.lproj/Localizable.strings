@@ -352,6 +352,42 @@
 	<string>შენი სახელი</string>
 	<key>name.whatsYourName</key>
 	<string>რა გქვია?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: იშოვე კიდევ რამდენიმე ტროფი ამ ცხოველის განბლოკვისთვის! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>დარჩენილია მხოლოდ %lld ტიტული! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>თქვენი ცხოველები გელოდებიან. დაბრუნდი სათამაშოდ და გააგრძელე თასების შეგროვება!</string>
+	<key>notif.comeback.title</key>
+	<string>გვენატრებით! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>დაიწყეთ %lld წუთიანი სათამაშო სესია და გააგრძელეთ თქვენი ყოველდღიური სათამაშო სერია.</string>
+	<key>notif.day3.title</key>
+	<string>მოდით, მე-3 დღე მოხდეს! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>გამოიყენეთ Jump Pad, რათა გამოტოვოთ არასწორი პასუხი და განაგრძოთ ასვლა!</string>
+	<key>notif.jumppad.title</key>
+	<string>გადალახეთ არასწორი პასუხები! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium მოიცავს %lld დონეს ყველა თემისთვის და 10-ვე ცხოველისთვის. თავგადასავალი გრძელდება!</string>
+	<key>notif.premium.title</key>
+	<string>გახსენით მეტი დონე და ცხოველები! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>უკვე %lld დღეა. მოდით გადავწყვიტოთ რამდენიმე მათემატიკური სავარჯიშო და მოვიგოთ მეტი თასი!</string>
+	<key>notif.reactivate.title</key>
+	<string>მზად ხართ კვლავ ითამაშოთ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>ითამაშეთ %lld წუთის განმავლობაში და გააგრძელეთ თქვენი ყოველდღიური სათამაშო სერია!</string>
+	<key>notif.streak.title %lld</key>
+	<string>თქვენი ყოველდღიური სათამაშო სერია %lld დღეს მიაღწია! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>დიდი სამუშაო! მოდით ვითამაშოთ %lld წუთი და კიდევ შევაგროვოთ.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>თქვენ მოიპოვეთ %lld თასი! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ამით თქვენი სულ %lld ტიტულს მიაღწევთ. საოცარი ნამუშევარი!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ამ კვირაში %lld ტიტული მოიპოვე! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>სხვადასხვა შერეული ამოცანა ერთად.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>შეხებები: %1$lld / %2$lld</string>
 	<key>parentGate.title</key>
 	<string>საჭიროა უფროსის თანხმობა</string>
+	<key>premium.availableAt %lld</key>
+	<string>ხელმისაწვდომია %lld თასიდან</string>
+	<key>premium.availableFromStart</key>
+	<string>ხელმისაწვდომია თავიდანვე</string>
+	<key>premium.characterUnlocked</key>
+	<string>ახალი პერსონაჟი გაიხსნა</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ გაიხსნა</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>შენ მოიპოვე %lld თასი</string>
+	<key>premium.exclusiveBadge</key>
+	<string>მხოლოდ Premium-ით</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>მხოლოდ Premium-ით</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Premium-ით თავისუფლად ითამაშებ ათივე ცხოველით.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>ერთჯერადი შეძენა. სამუდამოდ შენია.</string>
 	<key>premium.restore</key>
 	<string>შეძენების აღდგენა</string>
+	<key>premium.start</key>
+	<string>დაწყება</string>
 	<key>premium.storeUnavailable</key>
 	<string>მაღაზია ახლა მიუწვდომელია. მოგვიანებით სცადე.</string>
 	<key>premium.unlock</key>
 	<string>Premium-ის გახსნა</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Premium-ის გახსნა · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>გახსენი თასებით</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>გაიხსნა Premium-ით</string>
 	<key>premium.youHavePremium</key>
 	<string>შენ გაქვს Premium!</string>
 	<key>settings.character</key>

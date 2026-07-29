@@ -352,6 +352,42 @@
 	<string>Nafnið þitt</string>
 	<key>name.whatsYourName</key>
 	<string>Hvað heitir þú?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Fáðu þér nokkra titla í viðbót til að opna þetta dýr! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Aðeins %lld bikarar eftir! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Dýrin þín bíða. Komdu aftur til að spila og haltu áfram að safna titlum!</string>
+	<key>notif.comeback.title</key>
+	<string>Við söknum þín! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Byrjaðu %lld mínútna leiklotu og lengdu daglega spilahrinu þína.</string>
+	<key>notif.day3.title</key>
+	<string>Látum dag 3 gerast! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Notaðu Jump Pad til að sleppa rangu svari og halda áfram að klifra!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hoppa framhjá röngum svörum! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium inniheldur %lld stig fyrir hvert efni og öll 10 dýrin. Ævintýrið heldur áfram!</string>
+	<key>notif.premium.title</key>
+	<string>Opnaðu fleiri stig og dýr! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Það eru %lld dagar síðan. Við skulum leysa nokkrar stærðfræðiæfingar og vinna okkur inn fleiri titla!</string>
+	<key>notif.reactivate.title</key>
+	<string>Tilbúinn til að spila aftur? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spilaðu í %lld mínútur og haltu daglegu leiklotunni gangandi!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Daglega spilahraðan þín er komin í %lld daga! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Frábært starf! Leikum í %lld mínútur og söfnum enn meira.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Þú hefur unnið þér inn %lld titla! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Það færir þér samtals %lld titla. Ótrúlegt verk!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Þú vannst %lld titla í vikunni! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Mismunandi blönduð dæmi saman.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Pikk: %1$lld af %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Samþykki fullorðins þarf</string>
+	<key>premium.availableAt %lld</key>
+	<string>Í boði frá %lld bikurum</string>
+	<key>premium.availableFromStart</key>
+	<string>Í boði frá upphafi</string>
+	<key>premium.characterUnlocked</key>
+	<string>NÝ PERSÓNA OPNUÐ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ opnað</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Þú hefur unnið %lld bikara</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Aðeins með Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Aðeins með Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Með Premium geturðu spilað frjálst með öllum 10 dýrunum.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Eingreiðsla. Þitt að eilífu.</string>
 	<key>premium.restore</key>
 	<string>Endurheimta kaup</string>
+	<key>premium.start</key>
+	<string>Byrja</string>
 	<key>premium.storeUnavailable</key>
 	<string>Verslunin er ekki tiltæk núna. Reyndu aftur síðar.</string>
 	<key>premium.unlock</key>
 	<string>Opna Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Opna Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Opna með bikurum</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Opnað með Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Þú ert með Premium!</string>
 	<key>settings.character</key>

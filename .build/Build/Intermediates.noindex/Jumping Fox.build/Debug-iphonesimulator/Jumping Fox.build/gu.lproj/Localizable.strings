@@ -352,6 +352,42 @@
 	<string>તમારું નામ</string>
 	<key>name.whatsYourName</key>
 	<string>તમારું નામ શું છે?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: આ પ્રાણીને અનલૉક કરવા માટે થોડી વધુ ટ્રોફી કમાઓ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>માત્ર %lld ટ્રોફી બાકી છે! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>તમારા પ્રાણીઓ રાહ જોઈ રહ્યા છે. રમવા માટે પાછા આવો અને ટ્રોફી એકત્રિત કરવાનું ચાલુ રાખો!</string>
+	<key>notif.comeback.title</key>
+	<string>અમે તમને યાદ કરીએ છીએ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld-મિનિટનું રમતનું સત્ર શરૂ કરો અને તમારી દૈનિક રમવાની સ્ટ્રીકને લંબાવો.</string>
+	<key>notif.day3.title</key>
+	<string>ચાલો દિવસ 3 ની ઘટના બનાવીએ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ખોટો જવાબ છોડવા માટે જમ્પ પેડનો ઉપયોગ કરો અને ચઢતા રહો!</string>
+	<key>notif.jumppad.title</key>
+	<string>ખોટા જવાબો પર જાઓ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>જમ્પિંગ ફોક્સ પ્રીમિયમમાં દરેક વિષય માટે %lld સ્તરો અને તમામ 10 પ્રાણીઓનો સમાવેશ થાય છે. સાહસ ચાલુ રહે છે!</string>
+	<key>notif.premium.title</key>
+	<string>વધુ સ્તરો અને પ્રાણીઓને અનલૉક કરો! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld દિવસ થઈ ગયા. ચાલો ગણિતની કેટલીક કસરતો ઉકેલીએ અને વધુ ટ્રોફી કમાઈએ!</string>
+	<key>notif.reactivate.title</key>
+	<string>ફરીથી રમવા માટે તૈયાર છો? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld મિનિટ રમો અને તમારી દૈનિક રમતની સિલસિલો ચાલુ રાખો!</string>
+	<key>notif.streak.title %lld</key>
+	<string>તમારી દૈનિક રમવાની શ્રેણી %lld દિવસ સુધી પહોંચી ગઈ છે! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>સરસ કામ! ચાલો %lld મિનિટ રમીએ અને હજી વધુ એકત્રિત કરીએ.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>તમે %lld ટ્રોફી મેળવી છે! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>તે તમારી કુલ %lld ટ્રોફી લાવે છે. અમેઝિંગ કામ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>તમે આ અઠવાડિયે %lld ટ્રોફી મેળવી છે! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>અલગ અલગ મિશ્ર દાખલા સાથે.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>ટેપ: %1$lld માંથી %2$lld</string>
 	<key>parentGate.title</key>
 	<string>મોટા વ્યક્તિની મંજૂરી જરૂરી</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ટ્રોફીથી ઉપલબ્ધ</string>
+	<key>premium.availableFromStart</key>
+	<string>શરૂઆતથી ઉપલબ્ધ</string>
+	<key>premium.characterUnlocked</key>
+	<string>નવું પાત્ર ખૂલ્યું</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ખૂલ્યું</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>તમે %lld ટ્રોફી મેળવી છે</string>
+	<key>premium.exclusiveBadge</key>
+	<string>ફક્ત Premium સાથે</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>ફક્ત Premium સાથે</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>પ્રીમિયમથી તમે બધા 10 પ્રાણીઓ સાથે મનમુકીને રમી શકો.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>એક વખતની ખરીદી. હંમેશા તમારી.</string>
 	<key>premium.restore</key>
 	<string>ખરીદીઓ પાછી મેળવો</string>
+	<key>premium.start</key>
+	<string>શરૂ કરો</string>
 	<key>premium.storeUnavailable</key>
 	<string>હમણાં સ્ટોર ઉપલબ્ધ નથી. કૃપા કરીને પછી ફરી પ્રયત્ન કરો.</string>
 	<key>premium.unlock</key>
 	<string>પ્રીમિયમ ખોલો</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>પ્રીમિયમ ખોલો · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ટ્રોફીથી ખોલો</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium સાથે ખૂલ્યું</string>
 	<key>premium.youHavePremium</key>
 	<string>તમારી પાસે પ્રીમિયમ છે!</string>
 	<key>settings.character</key>

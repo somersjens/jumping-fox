@@ -352,6 +352,42 @@
 	<string>Adın</string>
 	<key>name.whatsYourName</key>
 	<string>Adın ne?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Bu hayvanın kilidini açmak için birkaç kupa daha kazanın! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Geriye yalnızca %lld kupa kaldı! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Hayvanlarınız bekliyor. Oynamak için geri gelin ve kupa toplamaya devam edin!</string>
+	<key>notif.comeback.title</key>
+	<string>Seni özledik! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld dakikalık bir oyun seansı başlatın ve günlük oyun serinizi uzatın.</string>
+	<key>notif.day3.title</key>
+	<string>Haydi 3. günü gerçekleştirelim! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Yanlış bir cevabı atlayıp tırmanmaya devam etmek için Jump Pad'i kullanın!</string>
+	<key>notif.jumppad.title</key>
+	<string>Yanlış cevapları atlayın! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium, her konu ve 10 hayvanın tümü için %lld seviye içerir. Macera devam ediyor!</string>
+	<key>notif.premium.title</key>
+	<string>Daha fazla seviyenin ve hayvanın kilidini açın! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld gün oldu. Hadi bazı matematik alıştırmalarını çözelim ve daha fazla kupa kazanalım!</string>
+	<key>notif.reactivate.title</key>
+	<string>Tekrar oynamaya hazır mısın? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld dakika oynayın ve günlük oyun serinizi sürdürün!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Günlük oyun seriniz %lld güne ulaştı! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Harika iş!%lld dakika oynayalım ve daha fazlasını toplayalım.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld kupa kazandınız! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Bu, toplamınızı %lld kupaya çıkarır. Harika iş!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Bu hafta %lld kupa kazandınız! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Farklı karışık işlemler bir arada.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Dokunma: %1$lld/%2$lld</string>
 	<key>parentGate.title</key>
 	<string>Yetişkin onayı gerekli</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld kupadan itibaren kullanılabilir</string>
+	<key>premium.availableFromStart</key>
+	<string>Başlangıçtan itibaren kullanılabilir</string>
+	<key>premium.characterUnlocked</key>
+	<string>YENİ KARAKTER AÇILDI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ açıldı</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>%lld kupa kazandın</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Yalnızca Premium ile</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Yalnızca Premium ile</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Premium ile 10 hayvanın hepsiyle özgürce oynarsın.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Tek seferlik satın alma. Sonsuza kadar senin.</string>
 	<key>premium.restore</key>
 	<string>Satın alımları geri yükle</string>
+	<key>premium.start</key>
+	<string>Başla</string>
 	<key>premium.storeUnavailable</key>
 	<string>Mağaza şu anda kullanılamıyor. Lütfen daha sonra tekrar dene.</string>
 	<key>premium.unlock</key>
 	<string>Premium'u aç</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Premium'u aç · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Kupalarla aç</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ile açıldı</string>
 	<key>premium.youHavePremium</key>
 	<string>Premium'un var!</string>
 	<key>settings.character</key>

@@ -352,6 +352,42 @@
 	<string>നിന്റെ പേര്</string>
 	<key>name.whatsYourName</key>
 	<string>നിന്റെ പേരെന്താണ്?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ഈ മൃഗത്തെ അൺലോക്ക് ചെയ്യാൻ കുറച്ച് ട്രോഫികൾ കൂടി നേടൂ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ഇനി %lld ട്രോഫികൾ മാത്രം! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>നിങ്ങളുടെ മൃഗങ്ങൾ കാത്തിരിക്കുന്നു. കളിക്കാൻ തിരികെ വരിക, ട്രോഫികൾ ശേഖരിക്കുന്നത് തുടരുക!</string>
+	<key>notif.comeback.title</key>
+	<string>എനിക്ക് നിന്നെ മിസ്സാകും! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ഒരു %lld മിനിറ്റ് പ്ലേ സെഷൻ ആരംഭിച്ച് നിങ്ങളുടെ ദൈനംദിന പ്ലേ സ്ട്രീക്ക് നീട്ടുക.</string>
+	<key>notif.day3.title</key>
+	<string>നമുക്ക് ദിവസം 3 ആക്കാം! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>തെറ്റായ ഉത്തരം ഒഴിവാക്കാനും കയറുന്നത് തുടരാനും ജമ്പ് പാഡ് ഉപയോഗിക്കുക!</string>
+	<key>notif.jumppad.title</key>
+	<string>തെറ്റായ ഉത്തരങ്ങൾ മറികടക്കുക! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ജമ്പിംഗ് ഫോക്സ് പ്രീമിയത്തിൽ ഓരോ വിഷയത്തിനും എല്ലാ 10 മൃഗങ്ങൾക്കും %lld ലെവലുകൾ ഉൾപ്പെടുന്നു. സാഹസികത തുടരുന്നു!</string>
+	<key>notif.premium.title</key>
+	<string>കൂടുതൽ ലെവലുകളും മൃഗങ്ങളും അൺലോക്ക് ചെയ്യുക! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ദിവസമായി. നമുക്ക് ചില ഗണിത വ്യായാമങ്ങൾ പരിഹരിച്ച് കൂടുതൽ ട്രോഫികൾ നേടാം!</string>
+	<key>notif.reactivate.title</key>
+	<string>വീണ്ടും കളിക്കാൻ തയ്യാറാണോ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld മിനിറ്റ് കളിക്കുക, നിങ്ങളുടെ ദൈനംദിന കളി തുടരുക!</string>
+	<key>notif.streak.title %lld</key>
+	<string>നിങ്ങളുടെ പ്രതിദിന പ്ലേ സ്ട്രീക്ക് %lld ദിവസത്തിലെത്തി! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>മികച്ച ജോലി! നമുക്ക് %lld മിനിറ്റ് കളിച്ച് കൂടുതൽ ശേഖരിക്കാം.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>അത് നിങ്ങളുടെ ആകെ %lld ട്രോഫികളായി എത്തിക്കുന്നു. അത്ഭുതകരമായ പ്രവൃത്തി!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ഈ ആഴ്ച നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>വ്യത്യസ്ത മിക്സ് കണക്കുകൾ ഒരുമിച്ച്.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>തട്ടുകൾ: %1$lldൽ %2$lld</string>
 	<key>parentGate.title</key>
 	<string>മുതിർന്നയാളുടെ അനുമതി വേണം</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ട്രോഫികൾ മുതൽ ലഭ്യം</string>
+	<key>premium.availableFromStart</key>
+	<string>തുടക്കം മുതൽ ലഭ്യം</string>
+	<key>premium.characterUnlocked</key>
+	<string>പുതിയ കഥാപാത്രം തുറന്നു</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ തുറന്നു</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>നിങ്ങൾ %lld ട്രോഫികൾ നേടി</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium-ൽ മാത്രം</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium-ൽ മാത്രം</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>പ്രീമിയത്തിൽ 10 മൃഗങ്ങളുമായും സ്വതന്ത്രമായി കളിക്കാം.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>ഒറ്റത്തവണ വാങ്ങൽ. എന്നേക്കും നിന്റേത്.</string>
 	<key>premium.restore</key>
 	<string>വാങ്ങലുകൾ പുനഃസ്ഥാപിക്കൂ</string>
+	<key>premium.start</key>
+	<string>തുടങ്ങുക</string>
 	<key>premium.storeUnavailable</key>
 	<string>സ്റ്റോർ ഇപ്പോൾ ലഭ്യമല്ല. പിന്നീട് വീണ്ടും ശ്രമിക്കൂ.</string>
 	<key>premium.unlock</key>
 	<string>പ്രീമിയം തുറക്കൂ</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>പ്രീമിയം തുറക്കൂ · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ട്രോഫികൾ ഉപയോഗിച്ച് തുറക്കൂ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ഉപയോഗിച്ച് തുറന്നു</string>
 	<key>premium.youHavePremium</key>
 	<string>നിനക്ക് പ്രീമിയം ലഭിച്ചു!</string>
 	<key>settings.character</key>

@@ -352,6 +352,42 @@
 	<string>Zure izena</string>
 	<key>name.whatsYourName</key>
 	<string>Nola duzu izena?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Irabazi trofeo batzuk animalia hau desblokeatzeko! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>%lld trofeo baino ez dira falta! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Zure animaliak zain daude. Itzuli jolastera eta jarraitu garaikurrak biltzen!</string>
+	<key>notif.comeback.title</key>
+	<string>Faltan botatzen zaitugu! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Hasi %lld minutuko jolas-saio bat eta luzatu zure eguneroko jolas bolada.</string>
+	<key>notif.day3.title</key>
+	<string>Egin dezagun 3. eguna! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Erabili Jump Pad erantzun oker bat saltatzeko eta igotzen jarraitzeko!</string>
+	<key>notif.jumppad.title</key>
+	<string>Saltatu okerreko erantzunetatik! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium-ek %lld maila biltzen ditu gai bakoitzeko eta 10 animalia guztientzat. Abenturak aurrera jarraitzen du!</string>
+	<key>notif.premium.title</key>
+	<string>Desblokeatu maila eta animalia gehiago! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld egun pasa dira. Ebatzi ditzagun matematikako ariketa batzuk eta irabaz ditzagun garaikur gehiago!</string>
+	<key>notif.reactivate.title</key>
+	<string>Berriro jolasteko prest? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Jokatu %lld minutuz eta mantendu zure eguneroko jolas-boluari!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Zure eguneroko jokatzeko bolada %lld egunetara iritsi da! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Lan bikaina! Joka dezagun %lld minutuz eta bil ditzagun are gehiago.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld garaikur irabazi dituzu! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Horrek %lld garaikurra ekartzen ditu guztira. Lan harrigarria!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>%lld txapel irabazi dituzu aste honetan! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Nahasketa-ariketa desberdinak batera.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Sakatzeak: %1$lld / %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Heldu baten baimena behar da</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld garaikurretik aurrera erabilgarri</string>
+	<key>premium.availableFromStart</key>
+	<string>Hasieratik erabilgarri</string>
+	<key>premium.characterUnlocked</key>
+	<string>PERTSONAIA BERRIA DESBLOKEATU DA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ desblokeatu da</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>%lld garaikur irabazi dituzu</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium-ekin esklusiboa</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium-ekin esklusiboa</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Premium-ekin, libre jokatu dezakezu 10 animaliekin.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Ordainketa bakarra. Betiko zurea.</string>
 	<key>premium.restore</key>
 	<string>Berrezarri erosketak</string>
+	<key>premium.start</key>
+	<string>Hasi</string>
 	<key>premium.storeUnavailable</key>
 	<string>Denda ez dago erabilgarri orain. Saiatu berriro geroago.</string>
 	<key>premium.unlock</key>
 	<string>Desblokeatu Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Desblokeatu Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Desblokeatu garaikurrekin</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium-ekin desblokeatua</string>
 	<key>premium.youHavePremium</key>
 	<string>Premium duzu!</string>
 	<key>settings.character</key>

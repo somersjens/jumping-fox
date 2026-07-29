@@ -352,6 +352,42 @@
 	<string>Tvé jméno</string>
 	<key>name.whatsYourName</key>
 	<string>Jak se jmenuješ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Získejte několik dalších trofejí a odemkněte toto zvíře! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Zbývá už jen %lld trofejí! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vaše zvířata čekají. Vraťte se ke hře a pokračujte ve sbírání trofejí!</string>
+	<key>notif.comeback.title</key>
+	<string>Chybíš nám! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Začněte %lldminutovou herní relaci a prodlužte si svou každodenní herní sérii.</string>
+	<key>notif.day3.title</key>
+	<string>Pojďme uskutečnit den 3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Použijte Jump Pad k přeskočení špatné odpovědi a pokračujte ve stoupání!</string>
+	<key>notif.jumppad.title</key>
+	<string>Přeskočte přes špatné odpovědi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium obsahuje %lld úrovní pro každé téma a všech 10 zvířat. Dobrodružství pokračuje!</string>
+	<key>notif.premium.title</key>
+	<string>Odemkněte další úrovně a zvířata! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Jsou to %lld dny. Pojďme vyřešit pár matematických cvičení a vydělat více trofejí!</string>
+	<key>notif.reactivate.title</key>
+	<string>Jste připraveni znovu hrát? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Hrajte %lld minut a udržujte svou každodenní herní sérii v chodu!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Vaše denní hrací série dosáhla %lld dnů! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Skvělá práce! Pojďme hrát %lld minut a inkasovat ještě víc.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Získali jste %lld trofejí! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>To znamená, že máte celkem %lld trofejí. Úžasná práce!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Tento týden jste získali %lld trofejí! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Různé smíšené příklady dohromady.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Klepnutí: %1$lld z %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Nutné schválení dospělým</string>
+	<key>premium.availableAt %lld</key>
+	<string>Dostupné od %lld trofejí</string>
+	<key>premium.availableFromStart</key>
+	<string>Dostupné od začátku</string>
+	<key>premium.characterUnlocked</key>
+	<string>ODEMČENA NOVÁ POSTAVA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>Postava %@ odemčena</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Máš %lld trofejí</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exkluzivně s Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exkluzivně s Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>S Premium můžeš volně hrát se všemi 10 zvířaty.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Jednorázový nákup. Navždy tvé.</string>
 	<key>premium.restore</key>
 	<string>Obnovit nákupy</string>
+	<key>premium.start</key>
+	<string>Začít</string>
 	<key>premium.storeUnavailable</key>
 	<string>Obchod teď není dostupný. Zkus to prosím později.</string>
 	<key>premium.unlock</key>
 	<string>Odemknout Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Odemknout Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Odemkni trofejemi</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Odemčeno s Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Máš Premium!</string>
 	<key>settings.character</key>

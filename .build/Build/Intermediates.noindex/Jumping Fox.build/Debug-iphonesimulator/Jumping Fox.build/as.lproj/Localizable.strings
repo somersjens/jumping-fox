@@ -352,6 +352,42 @@
 	<string>তোমাৰ নাম</string>
 	<key>name.whatsYourName</key>
 	<string>তোমাৰ নাম কি?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: এই জন্তুটোৰ তলা খুলিবলৈ আৰু কেইটামান ট্ৰফী অৰ্জন কৰক! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>মাত্ৰ %lld টা ট্ৰফী বাকী আছে! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>তোমাৰ জীৱ-জন্তুবোৰে ৰৈ আছে। খেলিবলৈ উভতি আহক আৰু ট্ৰফী সংগ্ৰহ কৰি থাকিব!</string>
+	<key>notif.comeback.title</key>
+	<string>আমি তোমাক মিছ কৰিছো! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld মিনিটৰ খেলা অধিবেশন আৰম্ভ কৰক আৰু আপোনাৰ দৈনিক খেলাৰ ধাৰা বৃদ্ধি কৰক।</string>
+	<key>notif.day3.title</key>
+	<string>3য় দিনটো ঘটাওঁ আহক! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ভুল উত্তৰ এৰিবলৈ আৰু বগাই যাবলৈ জাম্প পেড ব্যৱহাৰ কৰক!</string>
+	<key>notif.jumppad.title</key>
+	<string>ভুল উত্তৰৰ কাষেৰে জপিয়াই যাওক! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>জাম্পিং ফক্স প্ৰিমিয়ামত প্ৰতিটো বিষয় আৰু সকলো 10টা প্ৰাণীৰ বাবে %lldটা স্তৰ অন্তৰ্ভুক্ত কৰা হৈছে। দুঃসাহসিক অভিযান চলি থাকে!</string>
+	<key>notif.premium.title</key>
+	<string>অধিক স্তৰ আৰু প্ৰাণী আনলক! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld দিন হ'ল। আহকচোন কিছুমান গণিতৰ অনুশীলন সমাধান কৰি আৰু অধিক ট্ৰফী উপাৰ্জন কৰো!</string>
+	<key>notif.reactivate.title</key>
+	<string>আকৌ খেলিবলৈ সাজুনে? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld মিনিট খেলক আৰু আপোনাৰ দৈনন্দিন খেলাৰ ধাৰাটো চলি থাকিব!</string>
+	<key>notif.streak.title %lld</key>
+	<string>আপোনাৰ দৈনিক খেলাৰ ধাৰা %lld দিন হ’ল! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ডাঙৰ কাম!%lld মিনিট খেলি আৰু অধিক সংগ্ৰহ কৰোঁ আহক।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld টা ট্ৰফী উপাৰ্জন কৰিলা! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>তেতিয়া আপোনাৰ মুঠ %lld ট্ৰফী হ’ব। আচৰিত কাম!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>এই সপ্তাহত আপুনি %lldটা ট্ৰফী অৰ্জন কৰিলে! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>বেলেগ বেলেগ মিশ্ৰ অংক একেলগে।</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>টেপ: %1$lld ৰ ভিতৰত %2$lld</string>
 	<key>parentGate.title</key>
 	<string>ডাঙৰৰ অনুমোদন লাগিব</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lldটা ট্ৰফীৰ পৰা উপলব্ধ</string>
+	<key>premium.availableFromStart</key>
+	<string>আৰম্ভণিৰ পৰাই উপলব্ধ</string>
+	<key>premium.characterUnlocked</key>
+	<string>নতুন চৰিত্ৰ খোলা হ’ল</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ খোলা হ’ল</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>তুমি %lldটা ট্ৰফী অৰ্জন কৰিলা</string>
+	<key>premium.exclusiveBadge</key>
+	<string>কেৱল Premium-ত</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>কেৱল Premium-ত</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>প্ৰিমিয়ামত সকলো ১০টা জন্তুৰে মুক্তভাৱে খেলিব পাৰা।</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>এবাৰ কিনিলেই চিৰদিন তোমাৰ।</string>
 	<key>premium.restore</key>
 	<string>ক্ৰয় পুনৰুদ্ধাৰ</string>
+	<key>premium.start</key>
+	<string>আৰম্ভ</string>
 	<key>premium.storeUnavailable</key>
 	<string>এতিয়া ষ্ট’ৰ উপলব্ধ নহয়। পিছত আকৌ চেষ্টা কৰা।</string>
 	<key>premium.unlock</key>
 	<string>প্ৰিমিয়াম খোলা</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>প্ৰিমিয়াম খোলা · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ট্ৰফীৰে খোলা</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium-এৰে খোলা হ’ল</string>
 	<key>premium.youHavePremium</key>
 	<string>তোমাৰ প্ৰিমিয়াম আছে!</string>
 	<key>settings.character</key>

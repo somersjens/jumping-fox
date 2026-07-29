@@ -1,3 +1,4 @@
+/Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/AppAudio.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/Challenges.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/ContentView.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/GameScene.swift
@@ -6,6 +7,7 @@
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/Jumping_FoxApp.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/Localization.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/ModeIntro.swift
+/Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/Notifications.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/OnboardingView.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/ParentApprovalGate.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/PausedGameStore.swift
@@ -14,7 +16,9 @@
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/PremiumView.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/ProgressSync.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/PromotedPurchaseCoordinator.swift
+/Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/ReviewRequestCoordinator.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/SettingsView.swift
+/Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/SpokenMath.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/Theme.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/Jumping\ Fox/TutorialProgress.swift
 /Users/jenssomers/Desktop/Jumping\ Fox/.build/Build/Intermediates.noindex/Jumping\ Fox.build/Debug-iphonesimulator/Jumping\ Fox.build/DerivedSources/GeneratedAssetSymbols.swift

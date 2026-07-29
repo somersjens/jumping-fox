@@ -352,6 +352,42 @@
 	<string>Ton prénom</string>
 	<key>name.whatsYourName</key>
 	<string>Comment t’appelles-tu ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Gagnez quelques trophées supplémentaires pour débloquer cet animal ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Plus que %lld trophées à remporter ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vos animaux attendent. Revenez jouer et continuez à collecter des trophées !</string>
+	<key>notif.comeback.title</key>
+	<string>Tu nous manques ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Démarrez une session de jeu de %lld minutes et prolongez votre séquence de jeu quotidienne.</string>
+	<key>notif.day3.title</key>
+	<string>Faisons en sorte que le troisième jour ait lieu ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Utilisez le Jump Pad pour sauter une mauvaise réponse et continuer à grimper !</string>
+	<key>notif.jumppad.title</key>
+	<string>Évitez les mauvaises réponses ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium comprend %lld niveaux pour chaque sujet et les 10 animaux. L'aventure continue !</string>
+	<key>notif.premium.title</key>
+	<string>Débloquez plus de niveaux et d'animaux ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Cela fait %lld jours. Résolvons quelques exercices de mathématiques et gagnons plus de trophées !</string>
+	<key>notif.reactivate.title</key>
+	<string>Prêt à rejouer ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Jouez pendant %lld minutes et continuez votre séquence de jeu quotidienne !</string>
+	<key>notif.streak.title %lld</key>
+	<string>Votre séquence de jeu quotidienne a atteint %lld jours ! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Super travail ! Jouons pendant %lld minutes et collectons encore plus.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Vous avez gagné %lld trophées ! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Cela porte votre total à %lld trophées. Un travail incroyable !</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Vous avez remporté %lld trophées cette semaine ! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Différents calculs mélangés.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Touches : %1$lld sur %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Autorisation d’un adulte requise</string>
+	<key>premium.availableAt %lld</key>
+	<string>Disponible à partir de %lld trophées</string>
+	<key>premium.availableFromStart</key>
+	<string>Disponible dès le début</string>
+	<key>premium.characterUnlocked</key>
+	<string>NOUVEAU PERSONNAGE DÉBLOQUÉ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ débloqué</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tu as gagné %lld trophées</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exclusif avec Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exclusif avec Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Avec Premium, joue librement avec les 10 animaux.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Un seul achat. À toi pour toujours.</string>
 	<key>premium.restore</key>
 	<string>Restaurer les achats</string>
+	<key>premium.start</key>
+	<string>Commencer</string>
 	<key>premium.storeUnavailable</key>
 	<string>La boutique n’est pas disponible pour le moment. Réessaie plus tard.</string>
 	<key>premium.unlock</key>
 	<string>Débloquer Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Débloquer Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Débloquer avec des trophées</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Débloqué avec Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>Tu as Premium !</string>
 	<key>settings.character</key>

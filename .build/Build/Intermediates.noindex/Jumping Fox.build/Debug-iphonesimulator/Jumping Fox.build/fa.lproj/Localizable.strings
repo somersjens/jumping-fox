@@ -352,6 +352,42 @@
 	<string>نام تو</string>
 	<key>name.whatsYourName</key>
 	<string>اسمت چیست؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: برای باز کردن قفل این حیوان چند تروفی دیگر به دست آورید! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>فقط %lld جام باقی مانده است! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>حیوانات شما منتظر هستند. برای بازی برگردید و به جمع آوری غنائم ادامه دهید!</string>
+	<key>notif.comeback.title</key>
+	<string>دلمون برات تنگ شده! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>یک جلسه بازی %lld دقیقه ای را شروع کنید و بازی روزانه خود را افزایش دهید.</string>
+	<key>notif.day3.title</key>
+	<string>اجازه دهید روز 3 اتفاق بیفتد! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>با استفاده از پد پرش پاسخ اشتباه را رد کنید و به صعود ادامه دهید!</string>
+	<key>notif.jumppad.title</key>
+	<string>از پاسخ های اشتباه عبور کنید! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium شامل %lld سطح برای هر موضوع و هر 10 حیوان است. ماجرا همچنان ادامه دارد!</string>
+	<key>notif.premium.title</key>
+	<string>سطوح و حیوانات بیشتر را باز کنید! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld روز گذشتبیایید چند تمرین ریاضی را حل کنیم و غنائم بیشتری کسب کنیم!</string>
+	<key>notif.reactivate.title</key>
+	<string>برای بازی دوباره آماده اید؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld دقیقه بازی کنید و بازی های روزانه خود را ادامه دهید!</string>
+	<key>notif.streak.title %lld</key>
+	<string>بازی روزانه شما به %lld روز رسیده است! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>کار عالی! بیایید %lld دقیقه بازی کنیم و حتی بیشتر جمع کنیم.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>شما %lld جام به دست آورده اید! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>که مجموع جام شما را به %lld می رساند. کار شگفت انگیز!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>شما در این هفته %lld جام به دست آوردید! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>تمرین‌های ترکیبی مختلف با هم.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>تعداد ضربه‌ها: %1$lld از %2$lld</string>
 	<key>parentGate.title</key>
 	<string>تأیید بزرگسال لازم است</string>
+	<key>premium.availableAt %lld</key>
+	<string>از %lld جام در دسترس است</string>
+	<key>premium.availableFromStart</key>
+	<string>از ابتدا در دسترس است</string>
+	<key>premium.characterUnlocked</key>
+	<string>شخصیت جدید باز شد</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ باز شد</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>%lld جام به دست آوردی</string>
+	<key>premium.exclusiveBadge</key>
+	<string>ویژهٔ Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>ویژهٔ Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>با نسخهٔ ویژه، آزادانه با هر ۱۰ حیوان بازی می‌کنی.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>یک‌بار بخر، برای همیشه مال تو.</string>
 	<key>premium.restore</key>
 	<string>بازیابی خریدها</string>
+	<key>premium.start</key>
+	<string>شروع</string>
 	<key>premium.storeUnavailable</key>
 	<string>فروشگاه فعلاً در دسترس نیست. بعداً دوباره تلاش کنید.</string>
 	<key>premium.unlock</key>
 	<string>باز کردن نسخهٔ ویژه</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>باز کردن نسخهٔ ویژه · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>باز کردن با جام‌ها</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>با Premium باز شد</string>
 	<key>premium.youHavePremium</key>
 	<string>نسخهٔ ویژه را داری!</string>
 	<key>settings.character</key>

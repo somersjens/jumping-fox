@@ -352,6 +352,42 @@
 	<string>Атың</string>
 	<key>name.whatsYourName</key>
 	<string>Атың кім?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Осы жануардың құлпын ашу үшін тағы бірнеше жүлде ұтып алыңыз! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Бар болғаны %lld жүлде қалды! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Сіздің жануарларыңыз күтіп тұр. Ойынға оралыңыз және жүлделерді жинауды жалғастырыңыз!</string>
+	<key>notif.comeback.title</key>
+	<string>Біз сені сағындық! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минуттық ойын сеансын бастаңыз және күнделікті ойын сериясын ұзартыңыз.</string>
+	<key>notif.day3.title</key>
+	<string>3-ші күнді орындайық! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Қате жауапты өткізіп жіберу және өрмелеуді жалғастыру үшін Jump Pad пайдаланыңыз!</string>
+	<key>notif.jumppad.title</key>
+	<string>Қате жауаптардан өтіп кетіңіз! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium әр тақырыпқа және барлық 10 жануарға арналған %lld деңгейді қамтиды. Шытырман оқиға жалғасуда!</string>
+	<key>notif.premium.title</key>
+	<string>Көбірек деңгейлер мен жануарлардың құлпын ашыңыз! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld күн болды. Математикалық жаттығуларды шешіп, көбірек жүлде ұтып алайық!</string>
+	<key>notif.reactivate.title</key>
+	<string>Қайта ойнауға дайынсыз ба? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут ойнаңыз және күнделікті ойын серияңызды жалғастырыңыз!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Сіздің күнделікті ойнау серияңыз %lld күнге жетті! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Керемет жұмыс!%lld минут ойнап, одан да көп жинаймыз.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Сіз %lld жүлде алдыңыз! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Бұл сіздің жалпы жүлделеріңізді %lld-ге жеткізеді. Керемет жұмыс!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Осы аптада %lld жүлде алдыңыз! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Әртүрлі аралас есептер.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Түртулер: %1$lld / %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Ересек адамның рұқсаты қажет</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld жүлдеден бастап қолжетімді</string>
+	<key>premium.availableFromStart</key>
+	<string>Басынан бастап қолжетімді</string>
+	<key>premium.characterUnlocked</key>
+	<string>ЖАҢА КЕЙІПКЕР АШЫЛДЫ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ашылды</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Сен %lld жүлде жинадың</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Тек Premium арқылы</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Тек Premium арқылы</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>Premium арқылы барлық 10 жануармен еркін ойнайсың.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Бір рет сатып аласың. Мәңгі сенікі.</string>
 	<key>premium.restore</key>
 	<string>Сатып алуларды қалпына келтіру</string>
+	<key>premium.start</key>
+	<string>Бастау</string>
 	<key>premium.storeUnavailable</key>
 	<string>Дүкен қазір қолжетімсіз. Кейінірек қайталап көр.</string>
 	<key>premium.unlock</key>
 	<string>Premium-ды ашу</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Premium-ды ашу · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Жүлделермен аш</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium арқылы ашылды</string>
 	<key>premium.youHavePremium</key>
 	<string>Сенде Premium бар!</string>
 	<key>settings.character</key>

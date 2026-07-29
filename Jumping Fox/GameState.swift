@@ -78,7 +78,9 @@ enum GameSettings {
                 return mode
             }
             let legacyEnabled = UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true
-            return legacyEnabled ? .all : .off
+            // First download defaults to music + effects (the music-note icon),
+            // with spoken sums off until the child opts into them.
+            return legacyEnabled ? .musicAndEffects : .off
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: audioModeKey)

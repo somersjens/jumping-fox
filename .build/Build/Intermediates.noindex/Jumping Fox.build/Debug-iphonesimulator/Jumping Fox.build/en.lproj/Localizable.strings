@@ -352,6 +352,42 @@
 	<string>Your name</string>
 	<key>name.whatsYourName</key>
 	<string>What's your name?</string>
+	<key>notif.animal.body %@</key>
+	<string>Earn a few more trophies to unlock %@! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Only %lld trophies to go! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Your animals are waiting. Jump back in and keep collecting trophies!</string>
+	<key>notif.comeback.title</key>
+	<string>We miss you! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Start a %lld-minute session and grow your streak.</string>
+	<key>notif.day3.title</key>
+	<string>Let’s make day 3 happen! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Use the Jump Pad to skip a wrong answer and keep climbing!</string>
+	<key>notif.jumppad.title</key>
+	<string>Jump past wrong answers! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Get Premium for %lld levels per topic and all 10 animals — the adventure keeps going.</string>
+	<key>notif.premium.title</key>
+	<string>Unlock more levels and animals! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>It’s been %lld days. Let’s solve some sums and earn more trophies!</string>
+	<key>notif.reactivate.title</key>
+	<string>Ready to play again? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Play for %lld minutes and keep it going!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Your %lld-day streak is on fire! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Great job! Let’s play for %lld minutes and collect even more.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>You’ve earned %lld trophies! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>That brings your total to %lld trophies. Amazing work!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>You earned %lld trophies this week! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Different mixed sums together.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -429,6 +465,20 @@ never been this fun!</string>
 	<string>Taps: %1$lld of %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Adult approval required</string>
+	<key>premium.availableAt %lld</key>
+	<string>Available from %lld trophies</string>
+	<key>premium.availableFromStart</key>
+	<string>Available from the start</string>
+	<key>premium.characterUnlocked</key>
+	<string>NEW CHARACTER UNLOCKED</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ unlocked</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>You’ve earned %lld trophies</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exclusive with Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exclusive with Premium</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>With premium you play freely with all 10 animals.</string>
 	<key>premium.feature.animals.title</key>
@@ -445,12 +495,18 @@ never been this fun!</string>
 	<string>One-time purchase. Yours forever.</string>
 	<key>premium.restore</key>
 	<string>Restore purchases</string>
+	<key>premium.start</key>
+	<string>Start</string>
 	<key>premium.storeUnavailable</key>
 	<string>The store is not available right now. Please try again later.</string>
 	<key>premium.unlock</key>
 	<string>Unlock Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Unlock Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Unlock with trophies</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Unlocked with Premium</string>
 	<key>premium.youHavePremium</key>
 	<string>You have Premium!</string>
 	<key>settings.character</key>

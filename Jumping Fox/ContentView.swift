@@ -606,16 +606,31 @@ struct ContentView: View {
                 ZStack(alignment: .top) {
                     Color.black.opacity(0.06).ignoresSafeArea()
                     Text("tutorial.scoreHint")
-                        .font(.headline.weight(.heavy))
+                        .font(isPad
+                              ? .system(size: 28, weight: .heavy, design: .rounded)
+                              : .headline.weight(.heavy))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 14)
+                        .padding(.horizontal, isPad ? 32 : 20)
+                        .padding(.vertical, isPad ? 20 : 14)
+                        .frame(maxWidth: isPad ? 620 : nil)
                         .background(character.deepColor.opacity(0.96), in: Capsule())
-                        .overlay(Capsule().stroke(.white.opacity(0.9), lineWidth: 2))
-                        .shadow(color: .black.opacity(0.28), radius: 8, y: 3)
-                        .padding(.horizontal, 22)
-                        .padding(.top, 112)
+                        .overlay(
+                            Capsule().stroke(
+                                .white.opacity(0.9),
+                                lineWidth: isPad ? 3 : 2
+                            )
+                        )
+                        .shadow(
+                            color: .black.opacity(0.28),
+                            radius: isPad ? 13 : 8,
+                            y: isPad ? 5 : 3
+                        )
+                        .padding(.horizontal, isPad ? 36 : 22)
+                        // Match the iPhone placement proportionally to the
+                        // menu's 1.64× iPad scale instead of pinning the larger
+                        // prompt to the old 112-point phone offset.
+                        .padding(.top, isPad ? 184 : 112)
                         .allowsHitTesting(false)
                 }
                 .contentShape(Rectangle())
@@ -2023,8 +2038,9 @@ struct ContentView: View {
                                   scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                       ? scoreCelebration?.levelStart : nil,
                                   isCelebratingNewScore: isCelebratingScore(for: level),
+                                  showsTutorialScoreFocus: showTutorialScoreHint
+                                      && scoreHintLevelID == level.id,
                                   returnFocusStartedAt: scoreCelebration?.levelID == level.id
-                                      && scoreCelebration?.scoreDidIncrease == true
                                       ? scoreCelebration?.startedAt : nil,
                                   maximumCount: maximumCount(for: level),
                                   maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
@@ -2110,8 +2126,9 @@ struct ContentView: View {
                                       scoreCelebrationStart: scoreCelebration?.levelID == level.id
                                           ? scoreCelebration?.levelStart : nil,
                                       isCelebratingNewScore: isCelebratingScore(for: level),
+                                      showsTutorialScoreFocus: showTutorialScoreHint
+                                          && scoreHintLevelID == level.id,
                                       returnFocusStartedAt: scoreCelebration?.levelID == level.id
-                                          && scoreCelebration?.scoreDidIncrease == true
                                           ? scoreCelebration?.startedAt : nil,
                                       maximumCount: maximumCount(for: level),
                                       maximumCountCelebrationStart: scoreCelebration?.levelID == level.id
@@ -2923,6 +2940,10 @@ struct LevelCardView: View {
     let isPaused: Bool
     var scoreCelebrationStart: Int?
     var isCelebratingNewScore = false
+    /// Keeps the level card visibly outlined while the one-time score
+    /// explanation is on screen. This is separate from the timed return glow:
+    /// the score celebration deliberately starts only after the hint closes.
+    var showsTutorialScoreFocus = false
     /// A timestamp drives the focus glow directly, so no SwiftUI change event
     /// can be coalesced or missed while the full-screen game is dismissed.
     var returnFocusStartedAt: Date?
@@ -3153,12 +3174,24 @@ struct LevelCardView: View {
             .opacity(isLocked ? 0.55 : 1)
             .scaleEffect((status == .recommended ? 1.02 : 1) * (trophyPulse ? 1.04 : 1))
             .overlay {
-                // Every improved card gets the theme focus glow first, guiding
-                // the eye to it while the number counts up. On a first-max card
-                // the glow fades as the gold border traces itself in (below);
-                // an already-completed card that only repeats keeps its existing
-                // gold-border path and skips this glow.
-                if let returnFocusStartedAt, !isCompleted || isCelebratingFirstMax {
+                if showsTutorialScoreFocus {
+                    // The tutorial hint lasts longer than the ordinary return
+                    // glow, so its outline is state-driven and remains fully
+                    // visible until the hint is dismissed.
+                    RoundedRectangle(cornerRadius: 18 * cardScale)
+                        .strokeBorder(.white.opacity(0.96), lineWidth: 7 * cardScale)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 18 * cardScale)
+                                .strokeBorder(theme.deepColor, lineWidth: 4 * cardScale)
+                        }
+                        .shadow(color: theme.color.opacity(0.95), radius: 11 * cardScale)
+                        .allowsHitTesting(false)
+                        .accessibilityHidden(true)
+                } else if let returnFocusStartedAt {
+                    // Always identify the level the player just returned from.
+                    // This stays useful when its score was already maxed: the
+                    // completion border is permanent, while this themed focus
+                    // glow briefly singles out the card from the other levels.
                     LevelReturnFocusGlow(
                         startedAt: returnFocusStartedAt,
                         cornerRadius: 18 * cardScale,

@@ -352,6 +352,42 @@
 	<string>Tvoje ime</string>
 	<key>name.whatsYourName</key>
 	<string>Kako ti je ime?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zaslužite še nekaj trofej, da odklenete to žival! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Samo še %lld trofej! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vaše živali čakajo. Vrnite se igrat in še naprej zbirajte trofeje!</string>
+	<key>notif.comeback.title</key>
+	<string>Pogrešamo te! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Začnite %lld-minutno sejo igranja in podaljšajte svoj dnevni niz igranja.</string>
+	<key>notif.day3.title</key>
+	<string>Naj se zgodi 3. dan! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Uporabite Jump Pad, da preskočite napačen odgovor in nadaljujte s plezanjem!</string>
+	<key>notif.jumppad.title</key>
+	<string>Skoči mimo napačnih odgovorov! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium vključuje %lld stopenj za vsako temo in vseh 10 živali. Pustolovščina se nadaljuje!</string>
+	<key>notif.premium.title</key>
+	<string>Odkleni več stopenj in živali! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Minilo je %lld dni. Rešimo nekaj matematičnih vaj in zaslužimo več trofej!</string>
+	<key>notif.reactivate.title</key>
+	<string>Ste pripravljeni znova igrati? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Igrajte %lld minut in nadaljujte s svojim dnevnim nizom igranja!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Vaš dnevni niz igranja je dosegel %lld dni! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Odlično delo! Igrajmo se %lld minut in zberimo še več.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Prislužili ste si %lld trofej! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>S tem dosežete skupno %lld trofej. Čudovito delo!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ta teden ste osvojili %lld trofej! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Različne mešane naloge skupaj.</string>
 	<key>onboarding.level.advanced.title</key>
@@ -428,6 +464,20 @@
 	<string>Dotiki: %1$lld od %2$lld</string>
 	<key>parentGate.title</key>
 	<string>Potrebna je odobritev odrasle osebe</string>
+	<key>premium.availableAt %lld</key>
+	<string>Na voljo od %lld pokalov</string>
+	<key>premium.availableFromStart</key>
+	<string>Na voljo od začetka</string>
+	<key>premium.characterUnlocked</key>
+	<string>ODKLENJEN NOV LIK</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ odklenjen</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Imaš %lld pokalov</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Ekskluzivno s Premiumom</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Ekskluzivno s Premiumom</string>
 	<key>premium.feature.animals.subtitle</key>
 	<string>S Premiumom se lahko prosto igraš z vsemi 10 živalmi.</string>
 	<key>premium.feature.animals.title</key>
@@ -444,12 +494,18 @@
 	<string>Enkratni nakup. Za vedno tvoje.</string>
 	<key>premium.restore</key>
 	<string>Obnovi nakupe</string>
+	<key>premium.start</key>
+	<string>Začni</string>
 	<key>premium.storeUnavailable</key>
 	<string>Trgovina trenutno ni na voljo. Poskusi znova pozneje.</string>
 	<key>premium.unlock</key>
 	<string>Odkleni Premium</string>
 	<key>premium.unlockWithPrice %@</key>
 	<string>Odkleni Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Odkleni s pokali</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Odklenjeno s Premiumom</string>
 	<key>premium.youHavePremium</key>
 	<string>Imaš Premium!</string>
 	<key>settings.character</key>
