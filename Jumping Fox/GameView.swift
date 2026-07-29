@@ -376,7 +376,8 @@ struct GameView: View {
         // or when leaving the screen.
         .onChange(of: showingIntro) { _ in updateGameplayAudio() }
         .onChange(of: state.isGameOver) { _ in updateGameplayAudio() }
-        // Read each new sum aloud as it appears (English only; handled inside).
+        // Read each new sum aloud when the selected audio mode and language
+        // support it; AppAudio handles both checks.
         .onChange(of: state.question.prompt) { newPrompt in
             guard !showingIntro, !state.isGameOver else { return }
             AppAudio.shared.speakQuestion(newPrompt)
@@ -600,24 +601,41 @@ struct GameView: View {
             )
     }
 
-    /// Master sound switch, sitting beside the title at its height. On by
-    /// default; a tap turns it off and the speaker gains the familiar diagonal
-    /// slash. Controls the music, the spoken sums and every other sound.
+    /// Audio mode control beside the title. With spoken math available it
+    /// cycles all audio → music/effects → muted; otherwise it is a two-state
+    /// switch.
     private var musicToggleButton: some View {
         Button {
-            withAnimation(.snappy(duration: 0.2)) { audio.isEnabled.toggle() }
+            withAnimation(.snappy(duration: 0.2)) { audio.cycleMode() }
         } label: {
-            Image(systemName: audio.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+            Image(systemName: audioModeIcon)
                 .font(.system(size: 19 * gameTextScale, weight: .heavy))
                 .foregroundStyle(theme.deepColor.opacity(audio.isEnabled ? 1 : 0.55))
                 .frame(width: 44 * gameScale, height: 44 * gameScale)
                 .background(theme.skyColor.opacity(audio.isEnabled ? 1 : 0.5),
                             in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(Text(verbatim: audio.isEnabled ? "Sound on" : "Sound off"))
+        .accessibilityLabel(Text(verbatim: audioModeAccessibilityLabel))
+    }
+
+    private var audioModeIcon: String {
+        if audio.mode == .off { return "speaker.slash.fill" }
+        if audio.mode == .musicAndEffects && audio.isSpokenMathAvailable {
+            return "music.note"
+        }
+        return "speaker.wave.2.fill"
+    }
+
+    private var audioModeAccessibilityLabel: String {
+        switch audio.mode {
+        case .all:
+            return audio.isSpokenMathAvailable ? "Sound and spoken sums on" : "Sound on"
+        case .musicAndEffects:
+            return "Sound on, spoken sums off"
+        case .off:
+            return "Sound off"
+        }
     }
 
     private func introStatusLabel(icon: String, text: String) -> some View {
@@ -633,6 +651,7 @@ struct GameView: View {
             .allowsTightening(true)
             .padding(.horizontal, 8 * gameScale)
             .padding(.vertical, 5 * gameScale)
+            .frame(maxWidth: 118 * gameScale)
             .background(theme.skyColor.opacity(0.72), in: Capsule())
             .overlay(Capsule().stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
     }

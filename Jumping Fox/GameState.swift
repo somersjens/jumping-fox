@@ -67,13 +67,30 @@ enum GameSettings {
         set { UserDefaults.standard.set(newValue, forKey: capTrophiesKey) }
     }
 
-    /// Master audio switch. Controls background music, the correct/wrong sound
-    /// effects, the spoken sums (English only) and the little menu tap sounds.
-    /// On by default — the player turns it off from the start/pause card.
+    /// Three-level audio preference. Existing installs migrate their old
+    /// boolean switch to either all audio or fully muted.
+    static let audioModeKey = "settings.audioMode"
     static let soundEnabledKey = "settings.soundEnabled"
+    static var audioMode: AppAudioMode {
+        get {
+            if let raw = UserDefaults.standard.string(forKey: audioModeKey),
+               let mode = AppAudioMode(rawValue: raw) {
+                return mode
+            }
+            let legacyEnabled = UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true
+            return legacyEnabled ? .all : .off
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: audioModeKey)
+            UserDefaults.standard.set(newValue != .off, forKey: soundEnabledKey)
+        }
+    }
+
+    /// Compatibility view for code that only needs to know whether any sound
+    /// is active.
     static var soundEnabled: Bool {
-        get { UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true }
-        set { UserDefaults.standard.set(newValue, forKey: soundEnabledKey) }
+        get { audioMode != .off }
+        set { audioMode = newValue ? .all : .off }
     }
 
     /// Selected character id ("fox" by default).

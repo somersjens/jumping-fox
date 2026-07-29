@@ -75,6 +75,73 @@ final class Jumping_FoxTests: XCTestCase {
         }
     }
 
+    func testSpokenMathStaysCompactAndLocalized() {
+        XCTAssertEqual(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "nl"),
+                       "3 plus 4")
+        XCTAssertEqual(AppAudio.spokenText(for: "12 − 5 = ?", languageCode: "de"),
+                       "12 minus 5")
+        XCTAssertEqual(AppAudio.spokenText(for: "6 × 7 = ?", languageCode: "fr"),
+                       "6 fois 7")
+        XCTAssertEqual(AppAudio.spokenText(for: "3/4 × 8 = ?", languageCode: "en"),
+                       "3 of 4 parts times 8")
+        XCTAssertEqual(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "eu"),
+                       "3 gehi 4")
+        XCTAssertEqual(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "fa"),
+                       "3 به‌علاوه 4")
+        XCTAssertEqual(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "gl"),
+                       "3 máis 4")
+        XCTAssertEqual(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "mr"),
+                       "3 अधिक 4")
+    }
+
+    func testSpokenPercentagesUseNaturalLanguageOrder() {
+        XCTAssertEqual(AppAudio.spokenText(for: "25% × 40 = ?", languageCode: "nl"),
+                       "25 procent van 40")
+        XCTAssertEqual(AppAudio.spokenText(for: "25% × 40 = ?", languageCode: "hi"),
+                       "40 का 25 प्रतिशत")
+        XCTAssertEqual(AppAudio.spokenText(for: "25% × 40 = ?", languageCode: "zh"),
+                       "40 的百分之 25")
+    }
+
+    func testSpokenEquivalentFractionsNameTheUnknown() {
+        XCTAssertEqual(AppAudio.spokenText(for: "1/2 = ?/4", languageCode: "en"),
+                       "1 of 2 parts is how many of 4 parts")
+        XCTAssertEqual(AppAudio.spokenText(for: "1/2 = ?/4", languageCode: "nl"),
+                       "1 2de is hoeveel 4den")
+        XCTAssertNil(AppAudio.spokenText(for: "3 + 4 = ?", languageCode: "af"))
+    }
+
+    func testDutchFractionsUseSchoolOrdinalsRatherThanDivision() {
+        XCTAssertEqual(AppAudio.spokenText(for: "1/20 × 20 = ?", languageCode: "nl"),
+                       "1 20ste keer 20")
+        XCTAssertEqual(AppAudio.spokenText(for: "3/8 + 2/8 = ?", languageCode: "nl"),
+                       "3 8ste plus 2 8ste")
+        XCTAssertEqual(AppAudio.spokenText(for: "1/128 × 256 = ?", languageCode: "nl"),
+                       "1 128ste keer 256")
+    }
+
+    func testEverySpokenLanguageCoversEveryGeneratedQuestionShape() {
+        let prompts = [
+            "3 + 4 = ?", "9 − 2 = ?", "6 × 7 = ?", "8 ÷ 2 = ?",
+            "1/20 × 20 = ?", "3/8 + 2/8 = ?", "3/8 − 1/8 = ?",
+            "1/2 = ?/4", "25% × 40 = ?", "50% = ?/2", "1/2 = ?"
+        ]
+
+        for languageCode in SpokenMath.lexicons.keys {
+            for prompt in prompts {
+                let spoken = AppAudio.spokenText(for: prompt, languageCode: languageCode)
+                XCTAssertNotNil(spoken, "\(languageCode) did not handle \(prompt)")
+                XCTAssertFalse(spoken?.isEmpty ?? true, "\(languageCode) produced empty speech")
+                XCTAssertFalse(spoken?.contains("/") ?? true,
+                               "\(languageCode) left a fraction symbol in \(prompt)")
+                XCTAssertFalse(spoken?.contains("%") ?? true,
+                               "\(languageCode) left a percent symbol in \(prompt)")
+            }
+        }
+        XCTAssertEqual(Set(SpokenMath.lexicons.keys).subtracting(["nl"]),
+                       Set(SpokenMath.fractionPatternLanguageCodes))
+    }
+
     func testMaximumScoreStagesCompletionBeforePresentingGameOver() {
         let level = LevelConfig(category: .addition, index: 1, cardNumber: "1")
         let state = GameState(level: level)

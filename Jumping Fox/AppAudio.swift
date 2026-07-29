@@ -5,13 +5,12 @@
 //  All of the app's sound in one place:
 //   - looping background music while a game is being played,
 //   - the correct / wrong answer sound effects,
-//   - the sums read aloud (English only), and
+//   - the sums read aloud in every app language with a system voice, and
 //   - small Apple-native tap sounds for the menus.
 //
-//  Everything is behind a single master switch (`isEnabled`), on by default,
-//  toggled from the start/pause card. When it is off the app is completely
-//  silent. The spoken sums are a bonus that only ever run in English; every
-//  other language still gets music and the two answer sounds.
+//  The start/pause card cycles through all audio, music/effects without spoken
+//  sums, and fully muted. The middle option is offered only when the device has
+//  a spoken-math voice for the language selected inside the app.
 //
 
 import Foundation
@@ -21,22 +20,48 @@ import AVFoundation
 import UIKit
 #endif
 
+enum AppAudioMode: String {
+    case all
+    case musicAndEffects
+    case off
+}
+
 final class AppAudio: NSObject, ObservableObject {
     static let shared = AppAudio()
 
-    /// Master switch for every sound in the app. Persisted, and mirrored here
-    /// as `@Published` so the toggle button can bind to it directly.
-    @Published var isEnabled: Bool {
+    /// Persisted audio level. Publishing the mode also refreshes the icon on the
+    /// start/pause card.
+    @Published private(set) var mode: AppAudioMode {
         didSet {
-            guard oldValue != isEnabled else { return }
-            GameSettings.soundEnabled = isEnabled
-            if isEnabled {
-                startMusic()   // resume the loop wherever the player is
-            } else {
+            guard oldValue != mode else { return }
+            GameSettings.audioMode = mode
+            if mode == .off {
                 synthesizer.stopSpeaking(at: .immediate)
                 stopMusic()
+            } else if oldValue == .off {
+                startMusic()   // resume the loop wherever the player is
+            } else if mode == .musicAndEffects {
+                synthesizer.stopSpeaking(at: .immediate)
+            }
+            if mode == .all {
+                prewarmSpeechIfNeeded()
             }
         }
+    }
+
+    /// Music and effects remain active in both audible modes.
+    var isEnabled: Bool { mode != .off }
+
+    /// True only when both localized math wording and a matching installed
+    /// system voice exist for the language currently selected in the app.
+    var isSpokenMathAvailable: Bool {
+        let languageCode = LanguageManager.shared.effective.code
+        return SpokenMath.lexicons[languageCode] != nil
+            && voicesByLanguage[languageCode] != nil
+    }
+
+    var areSpokenSumsEnabled: Bool {
+        mode == .all && isSpokenMathAvailable
     }
 
     // MARK: Players
@@ -108,16 +133,31 @@ final class AppAudio: NSObject, ObservableObject {
     private var didPrewarmSpeech = false
     private let prepareQueue = DispatchQueue(label: "com.jumpingfox.audio.prepare", qos: .userInitiated)
 
-    // MARK: Voice (English sums)
+    // MARK: Voices
 
-    /// The friendliest, clearest installed English voice, resolved once.
-    private lazy var englishVoice: AVSpeechSynthesisVoice? = Self.bestEnglishVoice()
+    /// Best installed voice per spoken-math language, resolved once. Voice
+    /// availability differs by OS version and by voices downloaded in Settings.
+    private lazy var voicesByLanguage: [String: AVSpeechSynthesisVoice] = Self.bestVoicesByLanguage()
 
     private override init() {
-        self.isEnabled = GameSettings.soundEnabled
+        self.mode = GameSettings.audioMode
         super.init()
         synthesizer.delegate = self
         registerForInterruptions()
+    }
+
+    /// Advances the intro-card button. Languages without spoken math skip the
+    /// middle state, so the same control behaves as a normal two-state switch.
+    func cycleMode() {
+        if isSpokenMathAvailable {
+            switch mode {
+            case .all:             mode = .musicAndEffects
+            case .musicAndEffects: mode = .off
+            case .off:             mode = .all
+            }
+        } else {
+            mode = isEnabled ? .off : .all
+        }
     }
 
     // MARK: - Preparation (called once, up front)
@@ -167,9 +207,11 @@ final class AppAudio: NSObject, ObservableObject {
     /// Speaks a silent utterance so the very first real sum doesn't pay the
     /// one-off cost of spinning up the speech engine and loading the voice.
     private func prewarmSpeechIfNeeded() {
-        guard !didPrewarmSpeech,
-              LanguageManager.shared.effective.code == "en",
-              let voice = englishVoice else { return }
+        let languageCode = LanguageManager.shared.effective.code
+        guard mode == .all,
+              !didPrewarmSpeech,
+              SpokenMath.lexicons[languageCode] != nil,
+              let voice = voicesByLanguage[languageCode] else { return }
         didPrewarmSpeech = true
         let warmup = AVSpeechUtterance(string: " ")
         warmup.voice = voice
@@ -315,7 +357,7 @@ final class AppAudio: NSObject, ObservableObject {
         player.play()
     }
 
-    // MARK: - Spoken sums (English only)
+    // MARK: - Spoken sums
 
     /// Bumped on every request so a superseded (debounced) one can bow out.
     private var speechRequestToken = 0
@@ -325,27 +367,26 @@ final class AppAudio: NSObject, ObservableObject {
     /// the game stutter — and debounces fast consecutive answers to the latest.
     private let speechStartDelay: TimeInterval = 0.3
 
-    /// Requests that a sum such as "3 + 4 = ?" be read aloud in English
-    /// ("three plus four"). No-op unless sound is on, a game is being played and
-    /// the interface language is English — other languages get no spoken
-    /// fallback. The actual speech is deferred (see `speechStartDelay`).
+    /// Requests that a sum such as "3 + 4 = ?" be read in the interface
+    /// language. No-op unless that language has both localized math wording and
+    /// an installed system voice. Speech is deferred (see `speechStartDelay`).
     func speakQuestion(_ prompt: String) {
-        guard isEnabled, isGameplayActive else { return }
-        guard LanguageManager.shared.effective.code == "en" else { return }
-        guard englishVoice != nil else { return }
-        let text = Self.spokenText(for: prompt)
+        guard mode == .all, isGameplayActive else { return }
+        let languageCode = LanguageManager.shared.effective.code
+        guard let voice = voicesByLanguage[languageCode] else { return }
+        guard let text = Self.spokenText(for: prompt, languageCode: languageCode) else { return }
         guard !text.isEmpty else { return }
 
         speechRequestToken += 1
         let token = speechRequestToken
         DispatchQueue.main.asyncAfter(deadline: .now() + speechStartDelay) { [weak self] in
             guard let self, token == self.speechRequestToken else { return } // superseded
-            self.performSpeak(text)
+            self.performSpeak(text, voice: voice)
         }
     }
 
-    private func performSpeak(_ text: String) {
-        guard isEnabled, isGameplayActive, let voice = englishVoice else { return }
+    private func performSpeak(_ text: String, voice: AVSpeechSynthesisVoice) {
+        guard mode == .all, isGameplayActive else { return }
         // Never interrupt/reset the synthesizer in the hot path — stopSpeaking
         // is a documented source of hitches. If a previous sum is still being
         // read (the child answered very fast), just let it finish and skip this
@@ -364,9 +405,9 @@ final class AppAudio: NSObject, ObservableObject {
         synthesizer.speak(utterance)
     }
 
-    /// Turns a written sum into spoken English — just the sum itself, no "what
-    /// is" wrapper. The numbers are left as numerals: the speech engine already
-    /// says them correctly in English, at any size.
+    /// Turns a written sum into speech — just the essential sum, without a
+    /// sentence such as “what is”. Kept as an English-compatible overload for
+    /// existing callers and focused unit tests.
     ///
     /// Handles every sum the game produces:
     ///   "3 + 4 = ?"        -> "3 plus 4"
@@ -378,78 +419,27 @@ final class AppAudio: NSObject, ObservableObject {
     ///   "1/2 = ?"          -> "1 over 2"
     ///   "1/2 = ?/4"        -> "1 over 2 is how many over 4"  (unknown on right)
     static func spokenText(for prompt: String) -> String {
-        let sides = prompt.components(separatedBy: "=")
-        if sides.count == 2 {
-            let lhs = spokenExpression(sides[0], unknownWord: "how many")
-            let rhs = sides[1].trimmingCharacters(in: .whitespaces)
-            if rhs == "?" {
-                // The unknown is simply the answer: read the sum on its own.
-                return lhs
-            }
-            // The unknown sits on the right (equivalent fractions "1/2 = ?/4"):
-            // this one needs spelling out to make sense.
-            return "\(lhs) is \(spokenExpression(rhs, unknownWord: "how many"))"
-        }
-        return spokenExpression(prompt, unknownWord: "what")
+        SpokenMath.text(for: prompt, languageCode: "en") ?? ""
     }
 
-    /// Speaks one side of a sum: numbers stay as numerals, symbols become words.
-    private static func spokenExpression(_ expression: String, unknownWord: String) -> String {
-        let tokens = expression.split(separator: " ").map(String.init)
-        var words: [String] = []
-        for (index, token) in tokens.enumerated() {
-            switch token {
-            case "+": words.append("plus")
-            case "−", "-": words.append("minus")   // U+2212 is the game's minus
-            case "÷": words.append("divided by")
-            case "×":
-                // A percentage or fraction "of" a whole reads more naturally
-                // than "times"; between two plain numbers it stays "times".
-                let previous = index > 0 ? tokens[index - 1] : ""
-                words.append(previous.contains("%") ? "of" : "times")
-            case "=": words.append("equals")
-            case "?": words.append(unknownWord)
-            default: words.append(spokenTerm(token, unknownWord: unknownWord))
-            }
-        }
-        return words.joined(separator: " ")
+    static func spokenText(for prompt: String, languageCode: String) -> String? {
+        SpokenMath.text(for: prompt, languageCode: languageCode)
     }
 
-    /// A single number, percentage ("25%") or fraction ("3/4", "?/4").
-    private static func spokenTerm(_ token: String, unknownWord: String) -> String {
-        if token.hasSuffix("%") {
-            return "\(numberWord(String(token.dropLast()), unknownWord)) percent"
-        }
-        if token.contains("/") {
-            let parts = token.components(separatedBy: "/")
-            if parts.count == 2 {
-                return "\(numberWord(parts[0], unknownWord)) over \(numberWord(parts[1], unknownWord))"
-            }
-        }
-        return numberWord(token, unknownWord)
-    }
-
-    private static func numberWord(_ text: String, _ unknownWord: String) -> String {
-        text == "?" ? unknownWord : text
-    }
-
-    /// Picks the nicest English voice actually installed on the device.
-    /// Prefers higher-quality (downloaded premium/enhanced) voices and a short
-    /// list of clear, friendly voices, and skips the novelty/character voices.
+    /// Retained for callers that specifically need the legacy English choice.
     static func bestEnglishVoice() -> AVSpeechSynthesisVoice? {
+        bestVoicesByLanguage()["en"] ?? AVSpeechSynthesisVoice(language: "en-US")
+    }
+
+    /// Picks the clearest installed voice for each supported language. Apple
+    /// identifies Norwegian Bokmål as `nb`, while the app uses the broader
+    /// language code `no`, so that one is mapped explicitly. Dutch is pinned
+    /// to the Netherlands locale so a higher-quality Belgian voice cannot win.
+    private static func bestVoicesByLanguage() -> [String: AVSpeechSynthesisVoice] {
         let novelty: Set<String> = ["Albert", "Bad News", "Bahh", "Bells", "Boing",
                                     "Bubbles", "Cellos", "Wobble", "Fred", "Good News",
                                     "Jester", "Organ", "Superstar", "Trinoids",
                                     "Whisper", "Zarvox", "Junior", "Ralph", "Kathy"]
-        // Warmer, clear voices that suit a young audience, best first.
-        let preferred = ["Ava", "Samantha", "Allison", "Susan", "Nicky",
-                         "Serena", "Karen", "Catherine", "Moira", "Tessa"]
-
-        let voices = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.hasPrefix("en") && !novelty.contains($0.name) }
-        guard !voices.isEmpty else {
-            return AVSpeechSynthesisVoice(language: "en-US")
-        }
 
         func score(_ v: AVSpeechSynthesisVoice) -> Int {
             var s = 0
@@ -458,15 +448,28 @@ final class AppAudio: NSObject, ObservableObject {
             case .enhanced: s += 200
             default:        s += 100
             }
-            if let rank = preferred.firstIndex(of: v.name) {
-                s += (preferred.count - rank) * 5
-            }
-            if v.language == "en-US" { s += 3 }        // most familiar accent
-            else if v.language == "en-GB" { s += 2 }
             return s
         }
 
-        return voices.max { score($0) < score($1) } ?? voices.first
+        let installed = AVSpeechSynthesisVoice.speechVoices()
+            .filter { !novelty.contains($0.name) }
+        var result: [String: AVSpeechSynthesisVoice] = [:]
+        for languageCode in SpokenMath.lexicons.keys {
+            let voiceCode = languageCode == "no" ? "nb" : languageCode
+            let candidates = installed.filter {
+                $0.language.split(separator: "-").first.map(String.init) == voiceCode
+            }
+            let localeCandidates: [AVSpeechSynthesisVoice]
+            if languageCode == "nl" {
+                localeCandidates = candidates.filter { $0.language == "nl-NL" }
+            } else {
+                localeCandidates = candidates
+            }
+            if let best = localeCandidates.max(by: { score($0) < score($1) }) {
+                result[languageCode] = best
+            }
+        }
+        return result
     }
 
     // MARK: - Interruptions & backgrounding
