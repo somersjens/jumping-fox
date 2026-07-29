@@ -1345,8 +1345,6 @@ struct ContentView: View {
         premiumInitialCharacterID = milestone.characterID
         celebratedCharacterUnlock = milestone
         isCharacterUnlockPreview = isPreview
-        // Only celebrate a real unlock with sound, not a preview browse.
-        if !isPreview { AppAudio.shared.playCharacterUnlock() }
         showPremium = true
     }
 

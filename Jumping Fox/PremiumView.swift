@@ -539,6 +539,10 @@ struct PremiumView: View {
         unlockCharacterFloating = false
 
         withAnimation(.easeIn(duration: 0.18)) { showsUnlockCelebration = true }
+        // Keep audio owned by the celebration itself. This covers trophy
+        // unlocks, every character unlocked by Premium, and the hidden
+        // long-press preview without duplicate or prematurely timed playback.
+        AppAudio.shared.playCharacterUnlock()
 #if canImport(UIKit)
         UINotificationFeedbackGenerator().notificationOccurred(.success)
 #endif

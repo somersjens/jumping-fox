@@ -8,9 +8,9 @@
 //   - the sums read aloud in every app language with a system voice, and
 //   - small Apple-native tap sounds for the menus.
 //
-//  The start/pause card cycles through all audio, music/effects without spoken
-//  sums, and fully muted. The middle option is offered only when the device has
-//  a spoken-math voice for the language selected inside the app.
+//  The start/pause card exposes music/effects and spoken sums as two independent
+//  controls. Speech is offered only when the device has a matching system voice
+//  for the language selected inside the app.
 //
 
 import Foundation
@@ -23,50 +23,67 @@ import UIKit
 enum AppAudioMode: String {
     case all
     case musicAndEffects
+    case speechOnly
     case off
 }
 
 final class AppAudio: NSObject, ObservableObject {
     static let shared = AppAudio()
 
-    /// Persisted audio level. Publishing the mode also refreshes the icon on the
-    /// start/pause card.
-    @Published private(set) var mode: AppAudioMode {
+    /// Music/effects and spoken sums deliberately have separate preferences.
+    /// Speech remains usable as reading support when the game sounds are muted.
+    @Published private(set) var gameSoundsEnabled: Bool {
         didSet {
-            guard oldValue != mode else { return }
-            GameSettings.audioMode = mode
-            if mode == .off {
-                synthesizer.stopSpeaking(at: .immediate)
+            guard oldValue != gameSoundsEnabled else { return }
+            GameSettings.gameSoundsEnabled = gameSoundsEnabled
+            if gameSoundsEnabled {
+                startMusic()
+            } else {
                 stopMusic()
-            } else if oldValue == .off {
-                startMusic()   // resume the loop wherever the player is
-            } else if mode == .musicAndEffects {
-                synthesizer.stopSpeaking(at: .immediate)
-            }
-            if mode == .all {
-                prewarmSpeechIfNeeded()
+                stopEngine()
+                deactivateSessionIfUnused()
             }
         }
     }
 
-    /// Music and effects remain active in both audible modes.
-    var isEnabled: Bool { mode != .off }
+    @Published private(set) var spokenSumsEnabled: Bool {
+        didSet {
+            guard oldValue != spokenSumsEnabled else { return }
+            GameSettings.spokenSumsEnabled = spokenSumsEnabled
+            if spokenSumsEnabled {
+                prepare()
+                activateSession()
+            } else {
+                cancelPendingSpeech()
+                stopSpeechPlayback()
+                deactivateSessionIfUnused()
+            }
+        }
+    }
+
+    var hasAnyAudioEnabled: Bool { gameSoundsEnabled || spokenSumsEnabled }
 
     /// True only when both localized math wording and a matching installed
     /// system voice exist for the language currently selected in the app.
     var isSpokenMathAvailable: Bool {
         let languageCode = LanguageManager.shared.effective.code
-        return SpokenMath.lexicons[languageCode] != nil
-            && voicesByLanguage[languageCode] != nil
+        guard SpokenMath.lexicons[languageCode] != nil else { return false }
+        // Voice discovery is deliberately asynchronous. Until it completes,
+        // keep the three-state audio control available; resolving the installed
+        // voices must never happen inside a SwiftUI render or button tap.
+        return !speechVoicesResolved || voicesByLanguage[languageCode] != nil
     }
 
     var areSpokenSumsEnabled: Bool {
-        mode == .all && isSpokenMathAvailable
+        let languageCode = LanguageManager.shared.effective.code
+        return spokenSumsEnabled && voicesByLanguage[languageCode] != nil
     }
 
     // MARK: Players
 
     private var musicPlayer: AVAudioPlayer?
+    private var speechPlayer: AVAudioPlayer?
+    private var speechFileURL: URL?
     private let synthesizer = AVSpeechSynthesizer()
 
     /// Sound effects play through one long-lived `AVAudioEngine` instead of a
@@ -104,6 +121,7 @@ final class AppAudio: NSObject, ObservableObject {
     private static let effects: [Effect] = [
         Effect(key: "correct",       file: "sfx_correct",        ext: "caf", volume: 0.16, lead: 0.0),
         Effect(key: "wrong",         file: "sfx_wrong",          ext: "caf", volume: 0.11, lead: 0.065),
+        Effect(key: "answerInfo",    file: "sfx_answer_info",    ext: "caf", volume: 0.19, lead: 0.010),
         Effect(key: "triplerPickup", file: "sfx_tripler_pickup", ext: "caf", volume: 0.18, lead: 0.0),
         Effect(key: "triplerUsed",   file: "sfx_tripler_used",   ext: "caf", volume: 0.15, lead: 0.0),
         Effect(key: "life",          file: "sfx_life",           ext: "caf", volume: 0.15, lead: 0.155),
@@ -115,7 +133,7 @@ final class AppAudio: NSObject, ObservableObject {
         Effect(key: "streak",        file: "sfx_streak",         ext: "caf", volume: 0.16, lead: 0.225),
         Effect(key: "levelComplete", file: "sfx_level_complete", ext: "caf", volume: 0.10, lead: 0.010),
         Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "caf", volume: 0.12, lead: 0.050),
-        Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.20, lead: 0.015),
+        Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.10, lead: 0.015),
         Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "caf", volume: 1.0,  lead: 0.065),
         Effect(key: "trophyTotal",   file: "sfx_trophy_total",   ext: "wav", volume: 0.08, lead: 0.015),
         Effect(key: "select",        file: "sfx_select",         ext: "wav", volume: 0.17, lead: 0.0),
@@ -144,50 +162,55 @@ final class AppAudio: NSObject, ObservableObject {
     /// One-time, off-the-main-thread setup so nothing has to be allocated,
     /// decoded or session-activated during play — that first-touch work was
     /// what stuttered the game the first time a sound played.
-    private var isPrepared = false
-    private var didPrewarmSpeech = false
+    private var preparationStarted = false
+    private var audioResourcesReady = false
+    private var wantsMusicPlayback = false
+    /// Audio output waits very briefly after activating the hardware session.
+    /// Starting the engine and MP3 decoder in the same instant as that hardware
+    /// transition is what can produce a one-off crack on a cold app launch.
+    private var sessionOutputReady = false
+    private var musicOutputReady = false
+    private var sessionStartupToken = 0
+    private let sessionSettleDelay: TimeInterval = 0.15
+    private let engineToMusicDelay: TimeInterval = 0.10
     private let prepareQueue = DispatchQueue(label: "com.jumpingfox.audio.prepare", qos: .userInitiated)
+    /// Speech is rendered to PCM here. The synthesizer never touches the live
+    /// audio output, so enabling spoken sums cannot reconfigure the game route.
+    private let speechQueue = DispatchQueue(label: "com.jumpingfox.audio.speech", qos: .utility)
 
     // MARK: Voices
 
     /// Best installed voice per spoken-math language, resolved once. Voice
     /// availability differs by OS version and by voices downloaded in Settings.
-    private lazy var voicesByLanguage: [String: AVSpeechSynthesisVoice] = Self.bestVoicesByLanguage()
+    private var voicesByLanguage: [String: AVSpeechSynthesisVoice] = [:]
+    @Published private(set) var speechVoicesResolved = false
+    private var speechRenderInProgress = false
 
     private override init() {
-        self.mode = GameSettings.audioMode
+        self.gameSoundsEnabled = GameSettings.gameSoundsEnabled
+        self.spokenSumsEnabled = GameSettings.spokenSumsEnabled
         super.init()
-        synthesizer.delegate = self
-        // Speak through the app's own (already-active) audio session rather than
-        // letting the synthesizer manage a private one — that private-session
-        // churn is what let a spoken sum disturb the effects' audio route.
-        synthesizer.usesApplicationAudioSession = true
         registerForInterruptions()
     }
 
-    /// Advances the intro-card button. Languages without spoken math skip the
-    /// middle state, so the same control behaves as a normal two-state switch.
-    func cycleMode() {
-        if isSpokenMathAvailable {
-            switch mode {
-            case .all:             mode = .musicAndEffects
-            case .musicAndEffects: mode = .off
-            case .off:             mode = .all
-            }
-        } else {
-            mode = isEnabled ? .off : .all
-        }
+    func toggleGameSounds() {
+        gameSoundsEnabled.toggle()
+    }
+
+    func toggleSpokenSums() {
+        guard isSpokenMathAvailable else { return }
+        spokenSumsEnabled.toggle()
     }
 
     // MARK: - Preparation (called once, up front)
 
-    /// Loads and prepares every player (and warms the speech engine) on a
-    /// background queue. Cheap to call repeatedly; only the first call works.
+    /// Loads every player and resolves installed voices on a background queue.
+    /// Cheap to call repeatedly; only the first call works.
     /// The heavy, blocking bits — file decode, `prepareToPlay`, session
     /// activation — happen here, at a calm moment, not mid-game.
     func prepare() {
-        guard !isPrepared else { return }
-        isPrepared = true
+        guard !preparationStarted else { return }
+        preparationStarted = true
         prepareQueue.async { [weak self] in
             guard let self else { return }
             let music = Self.makePlayer(named: "music_background", loops: -1, volume: 0)
@@ -198,14 +221,21 @@ final class AppAudio: NSObject, ObservableObject {
                 buffers[effect.key] = Self.makeBuffer(named: effect.file, ext: effect.ext,
                                                       trimLeading: effect.lead)
             }
+            // `speechVoices()` can load system voice metadata and take long
+            // enough to freeze a live game. Resolve it alongside file decoding.
+            let voices = Self.bestVoicesByLanguage()
             DispatchQueue.main.async {
                 if self.musicPlayer == nil { self.musicPlayer = music }
                 self.installEffectBuffers(buffers)
-                // Only touch the audio session (and warm speech) when sound is
-                // on, so a muted app never interrupts the user's own audio.
-                if self.isEnabled {
+                self.voicesByLanguage = voices
+                self.speechVoicesResolved = true
+                self.audioResourcesReady = true
+                self.renderPendingSpeechIfPossible()
+                // Only touch the audio session when sound is on, so a muted app
+                // never interrupts the user's own audio.
+                if self.hasAnyAudioEnabled {
                     self.activateSession()
-                    self.prewarmSpeechIfNeeded()
+                    self.startMusicIfReady()
                 }
             }
         }
@@ -232,7 +262,7 @@ final class AppAudio: NSObject, ObservableObject {
         // `activateSession()` short-circuits and never retries, so the engine
         // would stay down and every effect would be silent. Now that the nodes
         // exist, bring the engine up here.
-        if sessionActive { startEngineIfNeeded() }
+        if sessionOutputReady { startEngineIfNeeded() }
     }
 
     /// Builds a fully prepared player. Runs the decode/`prepareToPlay` cost on
@@ -271,7 +301,8 @@ final class AppAudio: NSObject, ObservableObject {
     /// with nothing to spin up. Requires the session active; a no-op when sound
     /// is off, the engine is already running, or the nodes aren't attached yet.
     private func startEngineIfNeeded() {
-        guard isEnabled, !engine.isRunning, !effectNodes.isEmpty else { return }
+        guard gameSoundsEnabled, sessionOutputReady,
+              !engine.isRunning, !effectNodes.isEmpty else { return }
         engine.prepare()
         guard (try? engine.start()) != nil else { return }
         for node in effectNodes.values { node.play() }
@@ -283,21 +314,6 @@ final class AppAudio: NSObject, ObservableObject {
         guard engine.isRunning else { return }
         for node in effectNodes.values { node.stop() }
         engine.stop()
-    }
-
-    /// Speaks a silent utterance so the very first real sum doesn't pay the
-    /// one-off cost of spinning up the speech engine and loading the voice.
-    private func prewarmSpeechIfNeeded() {
-        let languageCode = LanguageManager.shared.effective.code
-        guard mode == .all,
-              !didPrewarmSpeech,
-              SpokenMath.lexicons[languageCode] != nil,
-              let voice = voicesByLanguage[languageCode] else { return }
-        didPrewarmSpeech = true
-        let warmup = AVSpeechUtterance(string: " ")
-        warmup.voice = voice
-        warmup.volume = 0
-        synthesizer.speak(warmup)
     }
 
     // MARK: - Audio session
@@ -313,19 +329,57 @@ final class AppAudio: NSObject, ObservableObject {
     }
 
     private func activateSession() {
-        guard !sessionActive else { return }   // syscall only once, never mid-game
+        guard hasAnyAudioEnabled else { return }
+        guard audioResourcesReady else {
+            prepare()
+            return
+        }
+        guard !sessionActive else {
+            if sessionOutputReady {
+                startEngineIfNeeded()
+                startMusicIfReady()
+                playPreparedSpeechIfPossible()
+            }
+            return
+        }
         configureSessionIfNeeded()
         try? AVAudioSession.sharedInstance().setActive(true)
         sessionActive = true
-        startEngineIfNeeded()                  // bring the effects graph up with it
+        sessionOutputReady = false
+        musicOutputReady = false
+        sessionStartupToken += 1
+        let token = sessionStartupToken
+        DispatchQueue.main.asyncAfter(deadline: .now() + sessionSettleDelay) { [weak self] in
+            guard let self, token == self.sessionStartupToken,
+                  self.sessionActive, self.hasAnyAudioEnabled else { return }
+            self.sessionOutputReady = true
+            self.startEngineIfNeeded()
+            // Stagger the MP3 decoder behind the now-silent effects engine.
+            // This avoids piling two cold output paths onto the first render.
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.engineToMusicDelay) {
+                guard token == self.sessionStartupToken,
+                      self.sessionActive, self.hasAnyAudioEnabled else { return }
+                self.musicOutputReady = true
+                self.startMusicIfReady()
+                self.playPreparedSpeechIfPossible()
+            }
+        }
     }
 
     private func deactivateSession() {
         guard sessionActive else { return }
+        sessionStartupToken += 1
+        sessionOutputReady = false
+        musicOutputReady = false
         stopEngine()
         // Let any paused apps (music, podcasts) resume once we go quiet.
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         sessionActive = false
+    }
+
+    private func deactivateSessionIfUnused() {
+        guard !hasAnyAudioEnabled else { return }
+        deactivateSession()
     }
 
     // MARK: - Gameplay lifecycle
@@ -338,13 +392,18 @@ final class AppAudio: NSObject, ObservableObject {
         let wasActive = isGameplayActive
         isGameplayActive = active
         if active {
-            guard isEnabled else { return }
-            startMusic()
-            setMusicVolume(gameMusicVolume)
+            if gameSoundsEnabled {
+                startMusic()
+                setMusicVolume(gameMusicVolume)
+            } else if spokenSumsEnabled {
+                prepare()
+                activateSession()
+            }
             // Read the sum the player is looking at the moment play begins.
             if !wasActive, let questionText { speakQuestion(questionText) }
         } else {
-            synthesizer.stopSpeaking(at: .immediate)
+            cancelPendingSpeech()
+            stopSpeechPlayback()
             setMusicVolume(menuMusicVolume) // keep the loop, just soften it
         }
     }
@@ -354,13 +413,18 @@ final class AppAudio: NSObject, ObservableObject {
     /// Starts (or resumes) the endless background loop at the volume that suits
     /// the current screen. Safe to call repeatedly.
     func startMusic() {
-        guard isEnabled else { return }
+        guard gameSoundsEnabled else { return }
+        wantsMusicPlayback = true
+        prepare()
         activateSession()
-        // Normally already loaded by `prepare()`; fall back to a synchronous
-        // load only if music is somehow needed before preparation finished.
-        if musicPlayer == nil {
-            musicPlayer = Self.makePlayer(named: "music_background", loops: -1, volume: 0)
-        }
+        startMusicIfReady()
+    }
+
+    /// Starts only after background decoding and the short session-settle
+    /// window. There is intentionally no synchronous cold-load fallback here.
+    private func startMusicIfReady() {
+        guard gameSoundsEnabled, wantsMusicPlayback,
+              audioResourcesReady, musicOutputReady else { return }
         guard let player = musicPlayer else { return }
         if !player.isPlaying {
             player.volume = 0
@@ -378,17 +442,18 @@ final class AppAudio: NSObject, ObservableObject {
     /// Fades the music out and stops it — used only when sound is switched off
     /// (or paused for backgrounding, via `pause`).
     private func stopMusic() {
+        wantsMusicPlayback = false
         guard let player = musicPlayer, player.isPlaying else {
             musicPlayer?.stop()
-            deactivateSession()
+            deactivateSessionIfUnused()
             return
         }
         player.setVolume(0, fadeDuration: 0.35)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
-            guard let self, !self.isEnabled else { return }
+            guard let self, !self.gameSoundsEnabled else { return }
             self.musicPlayer?.stop()
             self.musicPlayer?.currentTime = 0
-            self.deactivateSession()
+            self.deactivateSessionIfUnused()
         }
     }
 
@@ -404,6 +469,7 @@ final class AppAudio: NSObject, ObservableObject {
     // Answers.
     func playCorrect()       { playEffect("correct") }
     func playWrong()         { playEffect("wrong") }
+    func playAnswerInfo()    { playEffect("answerInfo") }     // half-heart reaches the revealed answer
     func playJump()          { playEffect("jump") }          // bounce off a plain stone
     // Pickups.
     func playTriplerPickup() { playEffect("triplerPickup") } // ×3 coin collected
@@ -425,12 +491,14 @@ final class AppAudio: NSObject, ObservableObject {
     func playSwitch(on: Bool)  { playEffect(on ? "switchOn" : "switchOff") }
 
     private func playEffect(_ key: String) {
-        guard isEnabled else { return }
+        guard gameSoundsEnabled else { return }
+        prepare()
         activateSession()
         // Preloaded by `prepare()`. If a sound is somehow needed before that
         // finished (rare — play happens well after launch) it's simply skipped;
         // no synchronous file work is ever done on this hot path.
-        guard let node = effectNodes[key], let buffer = effectBuffers[key] else { return }
+        guard sessionOutputReady,
+              let node = effectNodes[key], let buffer = effectBuffers[key] else { return }
         // The node is already running (see `startEngineIfNeeded`); `.interrupts`
         // restarts it from the top with nothing to allocate — the whole trigger
         // is one buffer schedule on the audio render thread, invisible to the
@@ -443,6 +511,19 @@ final class AppAudio: NSObject, ObservableObject {
 
     /// Bumped on every request so a superseded (debounced) one can bow out.
     private var speechRequestToken = 0
+    private struct PendingSpeech {
+        let token: Int
+        let text: String
+        let voice: AVSpeechSynthesisVoice?
+        let languageCode: String
+    }
+    private struct PreparedSpeech {
+        let request: PendingSpeech
+        let player: AVAudioPlayer
+        let fileURL: URL
+    }
+    private var pendingSpeech: PendingSpeech?
+    private var preparedSpeech: PreparedSpeech?
     /// How long to wait after a new sum appears before speaking it. This keeps
     /// the synthesizer's start-up work out of the exact frames where the jump
     /// lands and SpriteKit rebuilds the answer board — the collision that made
@@ -453,38 +534,183 @@ final class AppAudio: NSObject, ObservableObject {
     /// language. No-op unless that language has both localized math wording and
     /// an installed system voice. Speech is deferred (see `speechStartDelay`).
     func speakQuestion(_ prompt: String) {
-        guard mode == .all, isGameplayActive else { return }
+        guard spokenSumsEnabled, isGameplayActive else { return }
         let languageCode = LanguageManager.shared.effective.code
-        guard let voice = voicesByLanguage[languageCode] else { return }
         guard let text = Self.spokenText(for: prompt, languageCode: languageCode) else { return }
         guard !text.isEmpty else { return }
 
         speechRequestToken += 1
         let token = speechRequestToken
+        let request = PendingSpeech(token: token, text: text,
+                                    voice: voicesByLanguage[languageCode],
+                                    languageCode: languageCode)
+        // Preparation may still be resolving installed voices. Preserve the
+        // latest visible sum until its voice metadata becomes available.
+        guard request.voice != nil else {
+            if !speechVoicesResolved {
+                pendingSpeech = request
+                prepare()
+            }
+            return
+        }
+        pendingSpeech = request
+        scheduleSpeechRender(request)
+    }
+
+    private func scheduleSpeechRender(_ request: PendingSpeech) {
         DispatchQueue.main.asyncAfter(deadline: .now() + speechStartDelay) { [weak self] in
-            guard let self, token == self.speechRequestToken else { return } // superseded
-            self.performSpeak(text, voice: voice)
+            guard let self, request.token == self.speechRequestToken else { return }
+            self.renderPendingSpeechIfPossible()
         }
     }
 
-    private func performSpeak(_ text: String, voice: AVSpeechSynthesisVoice) {
-        guard mode == .all, isGameplayActive else { return }
-        // Never interrupt/reset the synthesizer in the hot path — stopSpeaking
-        // is a documented source of hitches. If a previous sum is still being
-        // read (the child answered very fast), just let it finish and skip this
-        // one rather than cutting it off.
-        guard !synthesizer.isSpeaking else { return }
+    /// Renders the latest sum to a temporary linear-PCM CAF without using an
+    /// audio session. Only the prepared AVAudioPlayer later touches the already
+    /// stable game output.
+    private func renderPendingSpeechIfPossible() {
+        guard spokenSumsEnabled, isGameplayActive,
+              !speechRenderInProgress,
+              speechPlayer?.isPlaying != true,
+              preparedSpeech == nil,
+              let pending = pendingSpeech else { return }
 
-        let utterance = AVSpeechUtterance(string: text)
+        let voice = pending.voice ?? voicesByLanguage[pending.languageCode]
+        guard let voice else {
+            if speechVoicesResolved { pendingSpeech = nil }
+            return
+        }
+
+        let request = PendingSpeech(token: pending.token, text: pending.text,
+                                    voice: voice, languageCode: pending.languageCode)
+        pendingSpeech = request
+        speechRenderInProgress = true
+        let utterance = AVSpeechUtterance(string: request.text)
         utterance.voice = voice
-        // Keep the rate near the natural default — stretching a compact voice
-        // out slowly makes it sound *more* robotic, not less. A hair under
-        // default with a slightly brighter pitch stays clear and friendly.
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.95
         utterance.pitchMultiplier = 1.05
         utterance.postUtteranceDelay = 0.05
+
+        speechQueue.async { [weak self] in
+            self?.renderSpeech(utterance, for: request)
+        }
+    }
+
+    private func renderSpeech(_ utterance: AVSpeechUtterance, for request: PendingSpeech) {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("jumping-fox-speech-\(UUID().uuidString)")
+            .appendingPathExtension("caf")
+        var outputFile: AVAudioFile?
+        var renderFailed = false
+        var renderCompleted = false
+
+        synthesizer.write(utterance) { [weak self] buffer in
+            guard let self else { return }
+            guard !renderCompleted else { return }
+            guard let pcm = buffer as? AVAudioPCMBuffer else {
+                renderFailed = true
+                return
+            }
+            if pcm.frameLength > 0 {
+                do {
+                    if outputFile == nil {
+                        outputFile = try AVAudioFile(forWriting: url,
+                                                     settings: pcm.format.settings)
+                    }
+                    try outputFile?.write(from: pcm)
+                } catch {
+                    renderFailed = true
+                }
+                return
+            }
+
+            // A zero-frame buffer marks completion. Close the file before the
+            // player opens it, then pay decode/prepare costs on this queue too.
+            renderCompleted = true
+            outputFile = nil
+            let player: AVAudioPlayer?
+            if renderFailed {
+                player = nil
+            } else {
+                player = try? AVAudioPlayer(contentsOf: url)
+                player?.prepareToPlay()
+            }
+            DispatchQueue.main.async {
+                self.finishSpeechRender(player: player, fileURL: url, request: request)
+            }
+        }
+    }
+
+    private func finishSpeechRender(player: AVAudioPlayer?, fileURL: URL,
+                                    request: PendingSpeech) {
+        speechRenderInProgress = false
+        guard request.token == speechRequestToken,
+              spokenSumsEnabled, isGameplayActive,
+              let player else {
+            removeSpeechFile(fileURL)
+            renderPendingSpeechIfPossible()
+            return
+        }
+        preparedSpeech = PreparedSpeech(request: request, player: player, fileURL: fileURL)
+        playPreparedSpeechIfPossible()
+    }
+
+    private func playPreparedSpeechIfPossible() {
+        guard musicOutputReady, spokenSumsEnabled, isGameplayActive,
+              speechPlayer?.isPlaying != true,
+              let prepared = preparedSpeech else { return }
+        guard prepared.request.token == speechRequestToken else {
+            preparedSpeech = nil
+            removeSpeechFile(prepared.fileURL)
+            renderPendingSpeechIfPossible()
+            return
+        }
+
+        preparedSpeech = nil
+        pendingSpeech = nil
+        speechPlayer = prepared.player
+        speechFileURL = prepared.fileURL
+        prepared.player.delegate = self
+        // A synthesized CAF can begin with a non-zero waveform. Opening that
+        // directly at full scale creates the very audible click that occurred
+        // both on the first sum and whenever speech was enabled mid-game.
+        // Start at digital silence and ramp across the first few milliseconds.
+        prepared.player.volume = 0
         duckMusic(true)
-        synthesizer.speak(utterance)
+        if prepared.player.play() {
+            prepared.player.setVolume(1, fadeDuration: 0.045)
+        } else {
+            duckMusic(false)
+            cleanupSpeechPlayback()
+        }
+    }
+
+    private func cancelPendingSpeech() {
+        speechRequestToken += 1
+        pendingSpeech = nil
+        if let prepared = preparedSpeech {
+            preparedSpeech = nil
+            removeSpeechFile(prepared.fileURL)
+        }
+    }
+
+    private func stopSpeechPlayback() {
+        speechPlayer?.stop()
+        duckMusic(false)
+        cleanupSpeechPlayback()
+    }
+
+    private func cleanupSpeechPlayback() {
+        speechPlayer = nil
+        if let url = speechFileURL {
+            speechFileURL = nil
+            removeSpeechFile(url)
+        }
+    }
+
+    private func removeSpeechFile(_ url: URL) {
+        speechQueue.async {
+            try? FileManager.default.removeItem(at: url)
+        }
     }
 
     /// Turns a written sum into speech — just the essential sum, without a
@@ -579,14 +805,19 @@ final class AppAudio: NSObject, ObservableObject {
         switch type {
         case .began:
             musicPlayer?.pause()
-            synthesizer.stopSpeaking(at: .immediate)
+            stopSpeechPlayback()
             // The system deactivates our session and stops the engine; mirror
             // that so `ended` can cleanly reactivate and bring the effects back.
+            sessionStartupToken += 1
+            sessionOutputReady = false
+            musicOutputReady = false
+            sessionActive = false
             stopEngine()
         case .ended:
             if let optionsRaw = info[AVAudioSessionInterruptionOptionKey] as? UInt,
                AVAudioSession.InterruptionOptions(rawValue: optionsRaw).contains(.shouldResume) {
-                sessionActive = false   // force a real reactivation of session + engine
+                prepare()
+                activateSession()
                 startMusic()
             }
         @unknown default:
@@ -601,28 +832,42 @@ final class AppAudio: NSObject, ObservableObject {
 
     @objc private func appWillResignActive() {
         musicPlayer?.pause()
-        synthesizer.stopSpeaking(at: .immediate)
+        stopSpeechPlayback()
+        sessionStartupToken += 1
+        sessionOutputReady = false
+        musicOutputReady = false
+        sessionActive = false
         stopEngine()
     }
 
     @objc private func appDidBecomeActive() {
-        // The loop plays app-wide, so resume it wherever the player is, and
-        // bring the effects engine back up (it was stopped on resigning active).
+        // Restore the shared output even in speech-only mode. Music/effects
+        // remain independently governed by `gameSoundsEnabled`.
+        prepare()
+        activateSession()
         startMusic()
         startEngineIfNeeded()
     }
 }
 
-// MARK: - Speech delegate (music ducking)
+// MARK: - Rendered speech playback delegate
 
-extension AppAudio: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-                           didFinish utterance: AVSpeechUtterance) {
-        duckMusic(false)
+extension AppAudio: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        DispatchQueue.main.async { [weak self, weak player] in
+            guard let self, let player, player === self.speechPlayer else { return }
+            self.duckMusic(false)
+            self.cleanupSpeechPlayback()
+            self.renderPendingSpeechIfPossible()
+        }
     }
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-                           didCancel utterance: AVSpeechUtterance) {
-        duckMusic(false)
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        DispatchQueue.main.async { [weak self, weak player] in
+            guard let self, let player, player === self.speechPlayer else { return }
+            self.duckMusic(false)
+            self.cleanupSpeechPlayback()
+            self.renderPendingSpeechIfPossible()
+        }
     }
 }

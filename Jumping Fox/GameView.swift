@@ -73,6 +73,8 @@ struct GameView: View {
     @ObservedObject private var tutorial = TutorialProgress.shared
     @ObservedObject private var audio = AppAudio.shared
     @Environment(\.layoutDirection) private var layoutDirection
+    @AppStorage(GameSettings.lifeModeKey) private var selectedLifeModeRaw = LifeMode.three.rawValue
+    @AppStorage(GameSettings.answerHelperKey) private var selectedAnswerHelper = false
 
     // Pre-game mode intro card. The field is frozen until the player starts.
     @State private var showingIntro: Bool
@@ -147,46 +149,6 @@ struct GameView: View {
             SpriteView(scene: scene,
                        options: [.shouldCullNonVisibleNodes, .ignoresSiblingOrder])
                 .ignoresSafeArea()
-
-            // Warm up the SF Symbols that first appear mid-run, so none of them
-            // pays a one-off glyph-rasterisation hitch on first use: the
-            // status-banner symbols (trophy warning / MIX MODE), the tutorial
-            // prompt and cue icons, and the heart flown by the answer hint.
-            //
-            // Symbol glyph textures are cached per (symbol, point-size, weight),
-            // so each symbol must be warmed at the SAME font it is actually
-            // shown at — warming the tutorial cue at a smaller size does NOT
-            // prevent its hitch. Rendered near-invisibly (a fully transparent
-            // view is not guaranteed to rasterise, so 0.001 rather than 0).
-            ZStack {
-                // Status-banner and general symbols, shown at caption size.
-                ZStack {
-                    Image(systemName: "trophy.fill")
-                    Image(systemName: "shuffle")
-                    Image(systemName: "heart.fill")
-                    Image(systemName: "checkmark.circle.fill")
-                    Text(verbatim: "🏆")
-                    Text(verbatim: "✦")
-                }
-                .font(.caption.weight(.bold))
-
-                // The tutorial prompt icons (see `tutorialIcon`), always shown
-                // at title2 / black.
-                ZStack {
-                    Image(systemName: "arrow.left.arrow.right")
-                    Image(systemName: "hand.tap.fill")
-                    Image(systemName: "heart.fill")
-                    Image(systemName: "star.fill")
-                    Image(systemName: "arrow.up.circle.fill")
-                }
-                .font(.title2.weight(.black))
-
-                // The step-6 "tap the question" cue arrow, shown at title / black.
-                Image(systemName: "arrow.down.left.circle")
-                    .font(.title.weight(.black))
-            }
-            .opacity(0.001)
-            .allowsHitTesting(false)
 
             VStack(spacing: 0) {
                 topBar
@@ -396,6 +358,13 @@ struct GameView: View {
             guard !showingIntro, !state.isGameOver else { return }
             AppAudio.shared.speakQuestion(newPrompt)
         }
+        // Turning spoken sums on during a level renders the visible sum away
+        // from the gameplay and audio-output threads before playback begins.
+        .onChange(of: audio.spokenSumsEnabled) { enabled in
+            guard enabled, !showingIntro, !state.isGameOver,
+                  !tutorialEquationHidden else { return }
+            AppAudio.shared.speakQuestion(state.questionText)
+        }
     }
 
     /// Turns the game's music and spoken sums on or off to match the play
@@ -529,16 +498,25 @@ struct GameView: View {
                                 // Status labels sit on their own row, sharing the
                                 // title's width and stopping short of the toggle.
                                 HStack(spacing: 7) {
-                                    introStatusLabel(icon: state.lifeMode == .unlimited ? "infinity" : "heart.fill",
-                                                     text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
-                                    introStatusLabel(icon: "lightbulb.fill", text: state.isAnswerHelperEnabled ? L("game.intro.helperOn") : L("game.intro.helperOff"))
+                                    introSettingButton(
+                                        icon: selectedLifeMode == .unlimited ? "infinity" : "heart.fill",
+                                        text: selectedLifeMode == .unlimited
+                                            ? L("game.intro.livesOff") : L("game.intro.livesOn"),
+                                        action: toggleIntroLifeMode
+                                    )
+                                    introSettingButton(
+                                        icon: "lightbulb.fill",
+                                        text: selectedAnswerHelper
+                                            ? L("game.intro.helperOn") : L("game.intro.helperOff"),
+                                        action: toggleIntroAnswerHelper
+                                    )
                                     Spacer(minLength: 0)
                                 }
                             }
                             .frame(height: introPortraitSize)
-                            // Sound toggle to the right of the title/labels
-                            // column, its top aligned with the title.
-                            musicToggleButton
+                            // Both audio choices share one outlined column with
+                            // exactly the same height as the character portrait.
+                            audioControlColumn
                         }
                         DashedDivider(color: theme.color.opacity(0.45))
                             .padding(.vertical, 4)
@@ -627,51 +605,91 @@ struct GameView: View {
             )
     }
 
-    /// Audio mode control beside the title. With spoken math available it
-    /// cycles all audio → music/effects → muted; otherwise it is a two-state
-    /// switch.
-    private var musicToggleButton: some View {
-        Button {
-            withAnimation(.snappy(duration: 0.2)) { audio.cycleMode() }
-        } label: {
-            Image(systemName: audioModeIcon)
-                .font(.system(size: 19 * gameTextScale, weight: .heavy))
-                .foregroundStyle(theme.deepColor.opacity(audio.isEnabled ? 1 : 0.55))
-                .frame(width: 44 * gameScale, height: 44 * gameScale)
-                .background(theme.skyColor.opacity(audio.isEnabled ? 1 : 0.5),
-                            in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+    private var audioControlColumn: some View {
+        VStack(spacing: 0) {
+            introAudioButton(
+                icon: "music.note",
+                isOn: audio.gameSoundsEnabled,
+                isAvailable: true,
+                accessibilityLabel: audio.gameSoundsEnabled
+                    ? "Music and effects on" : "Music and effects off"
+            ) {
+                withAnimation(.snappy(duration: 0.2)) { audio.toggleGameSounds() }
+            }
+
+            Rectangle()
+                .fill(theme.deepColor.opacity(0.15))
+                .frame(height: 1)
+                .padding(.horizontal, 7 * gameScale)
+
+            introAudioButton(
+                icon: "text.bubble.fill",
+                isOn: audio.spokenSumsEnabled && audio.isSpokenMathAvailable,
+                isAvailable: audio.isSpokenMathAvailable,
+                accessibilityLabel: audio.spokenSumsEnabled
+                    ? "Spoken sums on" : "Spoken sums off"
+            ) {
+                withAnimation(.snappy(duration: 0.2)) { audio.toggleSpokenSums() }
+            }
+        }
+        .frame(width: 44 * gameScale, height: introPortraitSize)
+        .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+            .stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+    }
+
+    private func introAudioButton(icon: String, isOn: Bool, isAvailable: Bool,
+                                  accessibilityLabel: String,
+                                  action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            ZStack {
+                Image(systemName: icon)
+                    .font(.system(size: 17 * gameTextScale, weight: .heavy))
+                if !isOn {
+                    Capsule()
+                        .fill(theme.deepColor)
+                        .frame(width: 23 * gameScale, height: 2.3 * gameScale)
+                        .rotationEffect(.degrees(-45))
+                }
+            }
+            .foregroundStyle(theme.deepColor.opacity(isAvailable ? (isOn ? 1 : 0.55) : 0.28))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(Text(verbatim: audioModeAccessibilityLabel))
+        .disabled(!isAvailable)
+        .accessibilityLabel(Text(verbatim: accessibilityLabel))
     }
 
-    private var audioModeIcon: String {
-        if audio.mode == .off { return "speaker.slash.fill" }
-        if audio.mode == .musicAndEffects && audio.isSpokenMathAvailable {
-            return "music.note"
-        }
-        return "speaker.wave.2.fill"
+    private var selectedLifeMode: LifeMode {
+        LifeMode(rawValue: selectedLifeModeRaw) ?? .three
     }
 
-    private var audioModeAccessibilityLabel: String {
-        switch audio.mode {
-        case .all:
-            return audio.isSpokenMathAvailable ? "Sound and spoken sums on" : "Sound on"
-        case .musicAndEffects:
-            return "Sound on, spoken sums off"
-        case .off:
-            return "Sound off"
-        }
+    private func toggleIntroLifeMode() {
+        let newMode: LifeMode = selectedLifeMode == .three ? .unlimited : .three
+        selectedLifeModeRaw = newMode.rawValue
+        AppAudio.shared.playSwitch(on: newMode == .unlimited)
+        guard !isPausedIntro else { return }
+        scene.applyPreGameSettings(lifeMode: newMode,
+                                   answerHelperEnabled: selectedAnswerHelper)
     }
 
-    private func introStatusLabel(icon: String, text: String) -> some View {
-        HStack(spacing: 5) {
-            Image(systemName: icon)
-                .font(.system(size: (icon == "infinity" ? 12 : 10) * gameTextScale, weight: .heavy, design: .rounded))
-            Text(text)
-        }
+    private func toggleIntroAnswerHelper() {
+        selectedAnswerHelper.toggle()
+        AppAudio.shared.playSwitch(on: selectedAnswerHelper)
+        guard !isPausedIntro else { return }
+        scene.applyPreGameSettings(lifeMode: selectedLifeMode,
+                                   answerHelperEnabled: selectedAnswerHelper)
+    }
+
+    private func introSettingButton(icon: String, text: String,
+                                    action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 5) {
+                Image(systemName: icon)
+                    .font(.system(size: (icon == "infinity" ? 12 : 10) * gameTextScale,
+                                  weight: .heavy, design: .rounded))
+                Text(text)
+            }
             .font(.system(size: 10 * gameTextScale, weight: .bold))
             .foregroundStyle(theme.deepColor.opacity(0.82))
             .lineLimit(1)
@@ -682,6 +700,9 @@ struct GameView: View {
             .frame(maxWidth: 118 * gameScale)
             .background(theme.skyColor.opacity(0.72), in: Capsule())
             .overlay(Capsule().stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+            .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
     }
 
     private var pausedIntroMessage: some View {
@@ -1052,6 +1073,7 @@ struct GameView: View {
     private func finishAnswerHintFlight() {
         guard isAnswerHintFlying else { return }
         isAnswerHintFlying = false
+        AppAudio.shared.playAnswerInfo()
         _ = state.revealAnswer()
     }
 

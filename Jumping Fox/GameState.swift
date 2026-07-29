@@ -67,32 +67,68 @@ enum GameSettings {
         set { UserDefaults.standard.set(newValue, forKey: capTrophiesKey) }
     }
 
-    /// Three-level audio preference. Existing installs migrate their old
-    /// boolean switch to either all audio or fully muted.
+    /// Music/effects and spoken sums are separate preferences. The old
+    /// three-level value remains readable so existing installs keep exactly
+    /// the combination they selected before these two switches were split.
     static let audioModeKey = "settings.audioMode"
     static let soundEnabledKey = "settings.soundEnabled"
-    static var audioMode: AppAudioMode {
+    static let gameSoundsEnabledKey = "settings.gameSoundsEnabled"
+    static let spokenSumsEnabledKey = "settings.spokenSumsEnabled"
+
+    static var gameSoundsEnabled: Bool {
         get {
+            if let stored = UserDefaults.standard.object(forKey: gameSoundsEnabledKey) as? Bool {
+                return stored
+            }
             if let raw = UserDefaults.standard.string(forKey: audioModeKey),
                let mode = AppAudioMode(rawValue: raw) {
-                return mode
+                return mode == .all || mode == .musicAndEffects
             }
-            let legacyEnabled = UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true
-            // First download defaults to music + effects (the music-note icon),
-            // with spoken sums off until the child opts into them.
-            return legacyEnabled ? .musicAndEffects : .off
+            return UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: audioModeKey)
-            UserDefaults.standard.set(newValue != .off, forKey: soundEnabledKey)
+            UserDefaults.standard.set(newValue, forKey: gameSoundsEnabledKey)
+            UserDefaults.standard.set(newValue, forKey: soundEnabledKey)
         }
     }
 
-    /// Compatibility view for code that only needs to know whether any sound
-    /// is active.
+    static var spokenSumsEnabled: Bool {
+        get {
+            if let stored = UserDefaults.standard.object(forKey: spokenSumsEnabledKey) as? Bool {
+                return stored
+            }
+            if let raw = UserDefaults.standard.string(forKey: audioModeKey),
+               let mode = AppAudioMode(rawValue: raw) {
+                return mode == .all || mode == .speechOnly
+            }
+            // Spoken sums are the default on a new install. AppAudio silently
+            // ignores this preference when the selected language has no voice.
+            return true
+        }
+        set { UserDefaults.standard.set(newValue, forKey: spokenSumsEnabledKey) }
+    }
+
+    /// Compatibility representation for previously persisted builds.
+    static var audioMode: AppAudioMode {
+        get {
+            switch (gameSoundsEnabled, spokenSumsEnabled) {
+            case (true, true): return .all
+            case (true, false): return .musicAndEffects
+            case (false, true): return .speechOnly
+            case (false, false): return .off
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: audioModeKey)
+            gameSoundsEnabled = newValue == .all || newValue == .musicAndEffects
+            spokenSumsEnabled = newValue == .all || newValue == .speechOnly
+        }
+    }
+
+    /// Compatibility view for code that controls music and effects.
     static var soundEnabled: Bool {
-        get { audioMode != .off }
-        set { audioMode = newValue ? .all : .off }
+        get { gameSoundsEnabled }
+        set { gameSoundsEnabled = newValue }
     }
 
     /// Selected character id ("fox" by default).
@@ -136,8 +172,8 @@ final class GameState: ObservableObject {
     }
 
     let level: LevelConfig
-    let lifeMode: LifeMode
-    let isAnswerHelperEnabled: Bool
+    @Published private(set) var lifeMode: LifeMode
+    @Published private(set) var isAnswerHelperEnabled: Bool
     private let engine: QuestionEngine
 
     @Published private(set) var question: Question
@@ -180,13 +216,15 @@ final class GameState: ObservableObject {
     init(level: LevelConfig) {
         self.level = level
         let mode = GameSettings.lifeMode
+        let helperEnabled = GameSettings.answerHelperEnabled
         self.lifeMode = mode
-        self.isAnswerHelperEnabled = GameSettings.answerHelperEnabled
+        self.isAnswerHelperEnabled = helperEnabled
         self.livesHalves = mode.startingLives.map { $0 * 2 }
         let engine = QuestionEngine(level: level)
         self.engine = engine
         self.question = engine.next()
-        self.highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
+        self.highScore = ProgressStore.bestScore(levelID: level.id,
+                                                 helperEnabled: helperEnabled)
     }
 
     /// Recreates an unfinished run after the app was terminated. The engine
@@ -221,6 +259,18 @@ final class GameState: ObservableObject {
 
     /// Lives left as a fraction, for the HUD (e.g. 2.5).
     var livesRemaining: Double? { livesHalves.map { Double($0) / 2 } }
+
+    /// Applies choices made on a fresh level's start card before physics are
+    /// released. A paused run keeps the rules it started with; its card can
+    /// still save preferences for the next new run.
+    func applyPreGameSettings(lifeMode: LifeMode, answerHelperEnabled: Bool) {
+        guard score == 0, !isGameOver, !isCompletingLevel else { return }
+        self.lifeMode = lifeMode
+        self.isAnswerHelperEnabled = answerHelperEnabled
+        livesHalves = lifeMode.startingLives.map { $0 * 2 }
+        highScore = ProgressStore.bestScore(levelID: level.id,
+                                            helperEnabled: answerHelperEnabled)
+    }
 
     /// In unlimited mode, trophies stop counting once the three lives are gone.
     var isScoreLocked: Bool { isEndless }

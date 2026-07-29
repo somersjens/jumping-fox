@@ -736,7 +736,10 @@ final class GameScene: SKScene {
     private var tutorialHeartCount = 0
     private var tutorialNextPickupAt: TimeInterval = 0
     private var tutorialAwaitingQuestionTap = false
-    private var preserveAnswerAppearanceAfterTutorialReveal = false
+    /// Step 7 may start while the answer tapped in step 6 is still on screen.
+    /// Keep that answer fully active until it is landed on; the heart lesson
+    /// must not turn it into an inert platform.
+    private var tutorialRevealedAnswerIsActive = false
     /// After the tutorial star clears the wrong answers, the remaining good
     /// answer is intentionally the only answer until it is collected.
     private var awaitingCorrectAfterTutorialStar = false
@@ -747,7 +750,8 @@ final class GameScene: SKScene {
     private var tutorialSuppressesAnswerTiles: Bool {
         guard tutorial.isActive else { return false }
         if tutorial.currentStep == 8 { return !tutorial.triplerAnswerPending }
-        return [1, 2, 7, 9, 10].contains(tutorial.currentStep)
+        if tutorial.currentStep == 7 { return !tutorialRevealedAnswerIsActive }
+        return [1, 2, 9, 10].contains(tutorial.currentStep)
     }
 
     // Permanent bottom springboard: separate platform type, own height,
@@ -811,119 +815,148 @@ final class GameScene: SKScene {
         startIfNeeded()
         startMotionUpdates()
 #if os(iOS)
-        // Warm the Taptic Engine before the first correct landing so the
-        // first success haptic doesn't cause a frame hitch.
+        // Spread the three Taptic preparations out as well: none of them is
+        // urgent in the opening frame, and the first tutorial landing happens
+        // well after this short sequence.
         feedbackGenerator.prepare()
-        // Same warm-up for the heart-pickup and answer-hint taps, so neither
-        // cold-starts the Taptic Engine on first use. The hint tap is also
-        // re-primed right before tutorial step 6 (see prepareHintHaptic), since
-        // a prepare() here has worn off by the time that step is reached.
-        heartFeedbackGenerator.prepare()
-        hintFeedbackGenerator.prepare()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in
+            self?.heartFeedbackGenerator.prepare()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.30) { [weak self] in
+            self?.hintFeedbackGenerator.prepare()
+        }
 #endif
-        prewarmCheckmarkGlyph()
     }
 
-    /// The FIRST render of each effect type compiles SpriteKit's shape
-    /// shaders, builds crop-node masks and rasterises label glyphs — a
-    /// one-off cost that used to hitch the game the first time a powerup,
-    /// flight or pop appeared. Render one invisible instance of everything
-    /// at start-up so every later first use is warm.
+    /// The first render of each effect type compiles SpriteKit shaders, crop
+    /// masks and glyph textures. Doing all of that in one first gameplay frame
+    /// could starve audio long enough to produce a crack. The old 0.001-alpha
+    /// stash could also leak a one-frame half-heart flash.
+    ///
+    /// Warm one resource at a time over several frames. An opaque scene-colour
+    /// node is drawn after the warm-up host, so every resource is genuinely
+    /// rendered (and therefore cached) while remaining completely invisible.
     private func prewarmEffects() {
-        // IMPORTANT: the view renders with shouldCullNonVisibleNodes, so
-        // the stash must sit INSIDE the viewport — off-screen nodes would
-        // be culled and nothing would compile. Practically invisible via
-        // near-zero alpha, tucked behind everything.
-        let stash = SKNode()
-        stash.alpha = 0.001
-        stash.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        stash.zPosition = -100
-        addChild(stash)
+        let host = SKNode()
+        host.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        host.zPosition = -1_000
+        addChild(host)
 
-        // Hearts (full + cropped half), star icon, ×3 bubble & badge text, and
-        // the −1 hazard bubble so its glyph is rasterised ahead of first use.
-        stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: false, fillsRightHalf: false))
-        stash.addChild(GamePlatform.makeHeartIcon(theme: theme, half: true, fillsRightHalf: true))
-        stash.addChild(GamePlatform.makeStarIcon(theme: theme, radius: 12))
-        stash.addChild(makeTriplerBubble(radius: 16))
-        stash.addChild(makeBubbleIcon(text: "−1", fill: GameColors.wrongRed))
-        stash.addChild(GamePlatform.makePowerupIcon(.tripler, theme: theme, fillsRightHalf: false))
-        stash.addChild(GamePlatform.makePowerupIcon(.minusOne, theme: theme, fillsRightHalf: false))
+        // SpriteView culls off-screen nodes, so the host stays in the viewport.
+        // This cover sits far behind the real background pattern (-50), but
+        // safely in front of every warm-up child, including their local z values.
+        let cover = SKShapeNode(rectOf: CGSize(width: size.width + 4,
+                                               height: size.height + 4))
+        cover.position = host.position
+        cover.zPosition = -900
+        cover.fillColor = backgroundColor
+        cover.strokeColor = .clear
+        addChild(cover)
 
-        // The tutorial's first correct answer flies a rasterised trophy to the
-        // HUD. Build its texture now (cached) and submit one draw so the GPU
-        // upload is done before that reward moment, never during it.
-        stash.addChild(makeTutorialTrophyIcon())
-
-        // Answer labels are created repeatedly during play and use several
-        // font sizes plus a separate stacked-fraction path. Warm representative
-        // glyphs while the scene is first settling instead of on a fast jump.
-        for value in ["012", "1234", "12345", "12/34"] {
-            let answer = GamePlatform(role: .answer, value: value, size: tileSize)
-            answer.styleAsActiveAnswer(theme: theme, isCorrect: false, helperEnabled: false)
-            stash.addChild(answer)
+        let answer: (String) -> SKNode = { [unowned self] value in
+            let node = GamePlatform(role: .answer, value: value, size: tileSize)
+            node.styleAsActiveAnswer(theme: theme, isCorrect: false, helperEnabled: false)
+            return node
         }
 
-        // Stroked shapes used by the animations: ping ring, arc streak,
-        // burst dot, aura glow.
-        let ring = SKShapeNode(circleOfRadius: 10)
-        ring.strokeColor = theme.skPrimary
-        ring.lineWidth = 3
-        ring.fillColor = .clear
-        stash.addChild(ring)
+        let builders: [() -> SKNode] = [
+            { [unowned self] in
+                GamePlatform.makeHeartIcon(theme: theme, half: false, fillsRightHalf: false)
+            },
+            { [unowned self] in
+                GamePlatform.makeHeartIcon(theme: theme, half: true, fillsRightHalf: true)
+            },
+            { [unowned self] in GamePlatform.makeStarIcon(theme: theme, radius: 12) },
+            { [unowned self] in makeTriplerBubble(radius: 16) },
+            { [unowned self] in makeBubbleIcon(text: "−1", fill: GameColors.wrongRed) },
+            { [unowned self] in
+                GamePlatform.makePowerupIcon(.tripler, theme: theme, fillsRightHalf: false)
+            },
+            { [unowned self] in
+                GamePlatform.makePowerupIcon(.minusOne, theme: theme, fillsRightHalf: false)
+            },
+            // This also builds and caches the reusable SF Symbol texture.
+            { [unowned self] in makeTutorialTrophyIcon() },
+            { answer("012") },
+            { answer("1234") },
+            { answer("12345") },
+            { answer("12/34") },
+            { [unowned self] in
+                let node = SKShapeNode(circleOfRadius: 10)
+                node.strokeColor = theme.skPrimary
+                node.lineWidth = 3
+                node.fillColor = .clear
+                return node
+            },
+            { [unowned self] in
+                let arc = CGMutablePath()
+                arc.move(to: .zero)
+                arc.addQuadCurve(to: CGPoint(x: 40, y: 40),
+                                 control: CGPoint(x: 8, y: 32))
+                let node = SKShapeNode(path: arc)
+                node.strokeColor = theme.skPrimary
+                node.lineWidth = 3
+                node.lineCap = .round
+                return node
+            },
+            { [unowned self] in
+                let node = SKShapeNode(circleOfRadius: 3)
+                node.fillColor = theme.skPrimary
+                return node
+            },
+            { [unowned self] in
+                let node = SKShapeNode(circleOfRadius: 46)
+                node.fillColor = theme.skPrimary.withAlphaComponent(0.2)
+                node.strokeColor = theme.skPrimary.withAlphaComponent(0.55)
+                node.lineWidth = 2
+                return node
+            },
+            {
+                let path = CGMutablePath()
+                path.move(to: CGPoint(x: -14, y: -6))
+                path.addLine(to: CGPoint(x: 14, y: 6))
+                path.move(to: CGPoint(x: -14, y: 6))
+                path.addLine(to: CGPoint(x: 14, y: -6))
+                let node = SKShapeNode(path: path)
+                node.strokeColor = GameColors.wrongRed
+                node.lineWidth = 3
+                node.lineCap = .round
+                return node
+            },
+            // The checkmark used on the first correct answer now shares the
+            // same covered, staged path instead of rendering separately.
+            { [unowned self] in
+                let node = SKLabelNode(fontNamed: "AvenirNext-Heavy")
+                node.text = "✓"
+                node.fontSize = 20 * tileScale
+                return node
+            }
+        ]
 
-        let arc = CGMutablePath()
-        arc.move(to: .zero)
-        arc.addQuadCurve(to: CGPoint(x: 40, y: 40), control: CGPoint(x: 8, y: 32))
-        let line = SKShapeNode(path: arc)
-        line.strokeColor = theme.skPrimary
-        line.lineWidth = 3
-        line.lineCap = .round
-        stash.addChild(line)
-
-        let dot = SKShapeNode(circleOfRadius: 3)
-        dot.fillColor = theme.skPrimary
-        stash.addChild(dot)
-
-        let glow = SKShapeNode(circleOfRadius: 46)
-        glow.fillColor = theme.skPrimary.withAlphaComponent(0.2)
-        glow.strokeColor = theme.skPrimary.withAlphaComponent(0.55)
-        glow.lineWidth = 2
-        stash.addChild(glow)
-
-        // The wrong-answer cross stays hidden on every answer block until the
-        // first wrong landing, so its stroked path is never rendered during
-        // normal play. Warm a matching one (same style as GamePlatform's
-        // wrongMark) so that first cross doesn't hitch.
-        let crossPath = CGMutablePath()
-        crossPath.move(to: CGPoint(x: -14, y: -6))
-        crossPath.addLine(to: CGPoint(x: 14, y: 6))
-        crossPath.move(to: CGPoint(x: -14, y: 6))
-        crossPath.addLine(to: CGPoint(x: 14, y: -6))
-        let cross = SKShapeNode(path: crossPath)
-        cross.strokeColor = GameColors.wrongRed
-        cross.lineWidth = 3
-        cross.lineCap = .round
-        stash.addChild(cross)
-
-        // One frame is enough to build everything; then clean up.
-        stash.run(.sequence([.wait(forDuration: 0.5), .removeFromParent()]))
+        prewarmNextEffect(in: builders, at: 0, host: host, cover: cover)
     }
 
-    /// The first time an SKLabelNode renders the "✓" glyph, SpriteKit builds
-    /// its font texture — a one-off cost that used to land on the first
-    /// correct answer. Keep it just visible enough and inside the viewport:
-    /// the SpriteView culls off-screen nodes, and a fully transparent node is
-    /// not guaranteed to submit a draw at all.
-    private func prewarmCheckmarkGlyph() {
-        let warmUp = SKLabelNode(fontNamed: "AvenirNext-Heavy")
-        warmUp.text = "✓"
-        warmUp.fontSize = 20 * tileScale
-        warmUp.alpha = 0.001
-        warmUp.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        warmUp.zPosition = -100
-        addChild(warmUp)
-        warmUp.run(.sequence([.wait(forDuration: 0.1), .removeFromParent()]))
+    private func prewarmNextEffect(in builders: [() -> SKNode], at index: Int,
+                                   host: SKNode, cover: SKNode) {
+        guard host.parent === self else { return }
+        host.removeAllChildren()
+        guard index < builders.count else {
+            host.removeFromParent()
+            cover.removeFromParent()
+            return
+        }
+
+        host.addChild(builders[index]())
+        // About three 60 Hz frames: enough to guarantee one submitted render,
+        // while keeping each cold compile isolated from the following one.
+        host.run(.sequence([
+            .wait(forDuration: 0.05),
+            .run { [weak self, weak host, weak cover] in
+                guard let self, let host, let cover else { return }
+                self.prewarmNextEffect(in: builders, at: index + 1,
+                                       host: host, cover: cover)
+            }
+        ]))
     }
 
     override func willMove(from view: SKView) {
@@ -1114,8 +1147,8 @@ final class GameScene: SKScene {
         tutorialMovementConfirmedAt = nil
         tutorialHeartCount = 0
         tutorialNextPickupAt = 0
-        tutorialAwaitingQuestionTap = false
-        preserveAnswerAppearanceAfterTutorialReveal = false
+        tutorialAwaitingQuestionTap = tutorial.isActive && tutorial.currentStep == 6
+        tutorialRevealedAnswerIsActive = false
         awaitingCorrectAfterTutorialStar = false
         setTriplerVisual(false)
 
@@ -1136,6 +1169,21 @@ final class GameScene: SKScene {
     func resetGame() {
         state.reset()
         layoutNewGame()
+    }
+
+    /// Keeps the frozen field behind a fresh start card in sync when its
+    /// helper/lives pills are used as controls.
+    func applyPreGameSettings(lifeMode: LifeMode, answerHelperEnabled: Bool) {
+        state.applyPreGameSettings(lifeMode: lifeMode,
+                                   answerHelperEnabled: answerHelperEnabled)
+        helperEnabled = answerHelperEnabled
+        for platform in platforms where platform.isActiveAnswer {
+            platform.styleAsActiveAnswer(
+                theme: theme,
+                isCorrect: platform.value == state.correctAnswer,
+                helperEnabled: answerHelperEnabled
+            )
+        }
     }
 
     // MARK: Themed background pattern
@@ -1403,13 +1451,23 @@ final class GameScene: SKScene {
     /// blocks outside the route corridor → overlap/margins/reachability
     /// already guaranteed per placement → activate everything at once.
     private func buildAnswerSet() {
-        // Tapping the equation only reveals its result. During that tutorial
-        // transition the answer tiles remain in their existing colours; they
-        // are made inert, not greyed out like an obsolete question set.
+        // Tapping the equation advances to the heart lesson, but the revealed
+        // correct answer must remain a real, scoreable answer. Usually it is
+        // already present. If the tap happened during the short confirmation
+        // after an earlier correct landing, build its replacement here once
+        // the next question becomes active.
         if tutorial.isActive, tutorial.currentStep == 7,
-           preserveAnswerAppearanceAfterTutorialReveal {
-            for platform in platforms where platform.isActiveAnswer {
-                platform.deactivateKeepingAppearance()
+           tutorialRevealedAnswerIsActive {
+            if let correct = platforms.first(where: {
+                $0.isActiveAnswer && $0.value == state.correctAnswer
+            }) {
+                correct.styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
+            } else {
+                for platform in platforms where platform.isActiveAnswer {
+                    platform.markSuperseded(theme: theme)
+                }
+                answerSetPrompt = state.questionText
+                activateTutorialAnswers(correct: true, wrongCount: 1, showCorrect: true)
             }
             return
         }
@@ -1471,7 +1529,6 @@ final class GameScene: SKScene {
                 activateTutorialAnswers(correct: true, wrongCount: 3, showCorrect: true)
                 return
             case 6:
-                if tutorialAwaitingQuestionTap { return }
                 activateTutorialAnswers(correct: true, wrongCount: 1, showCorrect: false)
                 return
             case 8 where tutorial.triplerAnswerPending:
@@ -1867,11 +1924,15 @@ final class GameScene: SKScene {
             activateAnswerSet(correct: (state.correctAnswer, position), wrongs: [])
             return
         }
-        // Step 4 deliberately contains only the required wrong answer, and
-        // step 6 stops tiles after a correct answer until the question is
-        // tapped. The watchdog must not inject a normal answer group there.
-        if tutorial.isActive,
-           tutorial.currentStep == 4 || (tutorial.currentStep == 6 && tutorialAwaitingQuestionTap) {
+        // The answer revealed immediately before the heart lesson remains
+        // available even if the player initially jumps past it.
+        if tutorial.isActive, tutorial.currentStep == 7,
+           tutorialRevealedAnswerIsActive {
+            activateTutorialAnswers(correct: true, wrongCount: 1, showCorrect: true)
+            return
+        }
+        // Step 4 deliberately contains only the required wrong answer.
+        if tutorial.isActive, tutorial.currentStep == 4 {
             return
         }
         if let pos = findCorrectPosition(), routeExists(toPosition: pos) {
@@ -2419,12 +2480,15 @@ final class GameScene: SKScene {
         }
         if tutorial.isActive {
             switch tutorial.currentStep {
-            // Step 6 teaches the reveal aid, then finishes like any other answer
-            // step: landing on the correct block scores it and moves on. Tapping
-            // the question only reveals which block is correct (see
-            // `tutorialQuestionWasTapped`); it no longer ends the step, so the
-            // revealed answer stays a live block the child can actually jump on.
-            case 3, 5, 6: completeTutorialStep(tutorial.currentStep, viaCorrectAnswer: true)
+            case 3, 5: completeTutorialStep(tutorial.currentStep, viaCorrectAnswer: true)
+            // During the reveal lesson, correct answers still score and roll
+            // fresh questions, but only the requested tap may dismiss the
+            // instruction.
+            case 6: break
+            // The answer revealed in step 6 stays live during the heart lesson
+            // until the child actually uses it.
+            case 7 where tutorialRevealedAnswerIsActive:
+                tutorialRevealedAnswerIsActive = false
             case 8 where tutorial.triplerAnswerPending: completeTutorialStep(8, viaCorrectAnswer: true)
             default: break
             }
@@ -2570,19 +2634,17 @@ final class GameScene: SKScene {
         }
     }
 
-    /// Called by the SwiftUI equation badge on tapping the question during the
-    /// reveal lesson (step 6). It reveals the answer (the SwiftUI side spends the
-    /// half-life and shows the number) and marks the correct block green so the
-    /// child can see which one to jump on. It deliberately does NOT finish the
-    /// step: the tiles stay live, and landing on the now-known correct block is
-    /// what completes step 6 (see `landedCorrect`). Finishing here — as it did
-    /// before — jumped straight to step 7 and made the tiles inert, so the
-    /// visible correct answer could no longer be jumped on.
+    /// Called by the SwiftUI equation badge during the reveal lesson (step 6).
+    /// Only this real tap dismisses the instruction. The revealed correct tile
+    /// stays active while the heart lesson starts, so it can still be landed on.
     func tutorialQuestionWasTapped() {
-        guard tutorial.isActive, tutorial.currentStep == 6 else { return }
+        guard tutorial.isActive, tutorial.currentStep == 6,
+              tutorialAwaitingQuestionTap else { return }
         tutorialAwaitingQuestionTap = false
+        tutorialRevealedAnswerIsActive = true
         platforms.first { $0.isActiveAnswer && $0.value == state.correctAnswer }?
             .styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
+        completeTutorialStep(6, viaCorrectAnswer: true)
     }
 
     private func completeTutorialStep(_ step: Int, viaCorrectAnswer: Bool = false) {
@@ -2594,6 +2656,12 @@ final class GameScene: SKScene {
         if step == 9 && tutorial.currentStep == 10 {
             // The old recovery-heart lesson was intentionally removed.
             tutorial.complete(step: 10, helperEnabled: helperEnabled)
+        }
+        if tutorial.currentStep == 6 {
+            tutorialAwaitingQuestionTap = true
+        }
+        if step == 7 {
+            tutorialRevealedAnswerIsActive = false
         }
         tutorialHeartCount = 0
         tutorialNextPickupAt = 0
