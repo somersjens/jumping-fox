@@ -111,9 +111,11 @@ struct GameView: View {
     /// their explanatory text retains the established readable size.
     private var introTitleScale: CGFloat { 1.2 }
     private var introFeatureIconScale: CGFloat { 0.8 }
-    /// The three explanatory lines are intentionally one step quieter than
-    /// before on both phone and iPad; their tiles and icons retain their size.
-    private var introFeatureTextScale: CGFloat { (isPad ? 1.1 : 0.88) * 0.9 }
+    /// Keep the established iPad copy size, while giving the three explanatory
+    /// lines a 10% readability lift on the more compact iPhone card.
+    private var introFeatureTextScale: CGFloat {
+        isPad ? (1.1 * 0.9) : (0.88 * 0.9 * 1.1)
+    }
 
     init(level: LevelConfig) {
         // A maxed card also shows its paused score, so an in-progress run can

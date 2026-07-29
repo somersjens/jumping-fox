@@ -156,11 +156,23 @@ private struct HomeCharacterArtwork: View {
     let box: CGFloat
     @ObservedObject var jump: CharacterJumpCoordinator
 
+    /// The lion's mane and the penguin's wide head fill more of their source
+    /// canvases than the other home-screen characters. Compensate only here:
+    /// the collection and gameplay deliberately keep their existing sizing.
+    private var artworkScale: CGFloat {
+        switch character.id {
+        case "lion": 0.88
+        case "penguin": 0.85
+        default: 1
+        }
+    }
+
     var body: some View {
         character.artwork
             .resizable()
             .scaledToFill()
             .frame(width: box, height: box)
+            .scaleEffect(artworkScale)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .scaleEffect(x: 1, y: jump.squash, anchor: .bottom)
             .modifier(CharacterSaltoGeometryEffect(
