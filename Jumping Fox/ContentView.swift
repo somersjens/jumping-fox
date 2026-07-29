@@ -32,7 +32,13 @@ private struct ScoreCelebration: Identifiable {
     /// re-reading a cache that may be reconciling while the menu appears.
     let scoreDidIncrease: Bool
     let id = UUID()
-    let startedAt = Date()
+    /// When the celebration actually becomes visible on the menu. This is
+    /// re-stamped the moment it is installed, not when it was constructed: the
+    /// tutorial return holds the celebration back until its score hint has been
+    /// read, and a stale timestamp made every time-driven view (the count-up and
+    /// the return outline) compute a huge elapsed time and skip straight to the
+    /// finished state — no count from old to new, no outline.
+    var startedAt = Date()
 }
 
 /// Read-once progress used by the home menu. ProgressStore intentionally
@@ -1181,6 +1187,15 @@ struct ContentView: View {
             return
         }
 
+        // Re-stamp the celebration to *now*: on the tutorial return this method
+        // runs only after the score hint has been read, so the timestamp taken
+        // when the game cover dismissed is already stale. Every time-driven view
+        // keys off this value, so stamping it here makes the count-up and the
+        // return outline start from zero elapsed for every return, tutorial or
+        // not. The subsequent card sequence also derives its delay from it.
+        var celebration = celebration
+        celebration.startedAt = Date()
+
         // The card's own animations start from an already-live hierarchy,
         // without recreating the entire menu via refreshID.
         withTransaction(Transaction(animation: nil)) {
@@ -1402,10 +1417,16 @@ struct ContentView: View {
         // header incorrectly replaced real launch points on tall screens.
         let fallbackSource = CGRect(x: destination.midX - 8,
                                     y: destination.maxY + 420, width: 16, height: 16)
-        let source = cardTrophyAnchors[celebration.levelID].flatMap { candidate in
-            homeViewportFrame.isEmpty || homeViewportFrame.intersects(candidate)
-                ? candidate
-                : nil
+        // Only launch from the real card glyph when it is both visible and
+        // genuinely below the header trophy: the trophy always travels upward
+        // to the subcategory total. If the earning card scrolled off, or sits at
+        // or above the header (e.g. the player was scrolled deep into the level
+        // list before the header was brought back on-screen), start from the
+        // fallback point below the header so the arc still reads as "up".
+        let source = cardTrophyAnchors[celebration.levelID].flatMap { candidate -> CGRect? in
+            let visible = homeViewportFrame.isEmpty || homeViewportFrame.intersects(candidate)
+            let belowHeader = candidate.midY > destination.midY + 24
+            return visible && belowHeader ? candidate : nil
         } ?? fallbackSource
         let cardScale = levelCardHeight / 96
         withTransaction(Transaction(animation: nil)) {
@@ -1421,6 +1442,10 @@ struct ContentView: View {
                 duration: duration
             )
         }
+        // The whoosh accompanies the trophy for the duration of its flight; the
+        // existing arrival sound (`playTrophyTotal`) still fires when it lands
+        // and the header totals begin to count up.
+        AppAudio.shared.playTrophyFlight()
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             if flyingTrophy?.celebrationID == celebration.id { flyingTrophy = nil }
             landHeaderTrophies(for: celebration)
@@ -1449,9 +1474,15 @@ struct ContentView: View {
         totalTrophies(in: homeProgress)
     }
 
+    // Premium levels count toward both totals exactly like the free ones: a
+    // trophy earned on e.g. level 23 is a real increase, so its card must launch
+    // the flying trophy and the header must count up. Only premium owners can
+    // reach these levels (they are locked otherwise, so they contribute 0 for
+    // everyone else), and owners can already use every character, so folding
+    // them in never changes a locked player's total nor spuriously fires a
+    // character-unlock milestone.
     private func totalTrophies(in snapshot: HomeProgressSnapshot) -> Int {
         LevelCatalog.byCategory.values.flatMap { $0 }
-            .filter { !$0.requiresPremium }
             .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1, snapshot: snapshot) }
     }
 
@@ -1460,7 +1491,6 @@ struct ContentView: View {
             ? ChallengeCategory.supermixMenu.flatMap { LevelCatalog.levels(for: $0) }
             : LevelCatalog.levels(for: category)
         return levels
-            .filter { !$0.requiresPremium }
             .reduce(0) { $0 + trophiesAcrossPracticeModes(for: $1) }
     }
 

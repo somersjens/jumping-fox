@@ -46,6 +46,15 @@ private enum GameHUDAnchor: Hashable {
     case heart(Int)
 }
 
+/// Frame of the read-aloud toggle on the start/pause card, so the
+/// "not available in your language" pop-out can anchor its caret to it.
+private struct SpokenBubbleAnchorKey: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? = nil
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
+    }
+}
+
 private struct AnswerHintAnchors: PreferenceKey {
     static var defaultValue: [AnswerHintAnchor: Anchor<CGRect>] = [:]
 
@@ -89,6 +98,9 @@ struct GameView: View {
     @State private var heartHintNudge: CGFloat = 0
     @State private var isAnswerHintFlying = false
     @State private var suppressIntroTap = false
+    /// Shown when the read-aloud toggle on the start/pause card is tapped while
+    /// spoken sums are unavailable in the current language.
+    @State private var showSpokenUnavailablePopup = false
     @State private var isTutorialArrowBouncing = false
     @State private var showsTutorialCompletion = false
     /// The tutorial keeps one stable sum, and its equation is hidden during the
@@ -427,11 +439,30 @@ struct GameView: View {
     }
 
     private func dismissIntroFromTap() {
+        // While the read-aloud explanation is up, a tap anywhere just closes it
+        // — it must not fall through and start/continue the game.
+        if showSpokenUnavailablePopup {
+            dismissSpokenUnavailable()
+            return
+        }
         guard !suppressIntroTap else {
             suppressIntroTap = false
             return
         }
         dismissIntro()
+    }
+
+    private func showSpokenUnavailable() {
+#if canImport(UIKit)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+#endif
+        withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) {
+            showSpokenUnavailablePopup = true
+        }
+    }
+
+    private func dismissSpokenUnavailable() {
+        withAnimation(.easeOut(duration: 0.16)) { showSpokenUnavailablePopup = false }
     }
 
     /// Hidden developer entry point: it belongs to the character on the
@@ -577,9 +608,40 @@ struct GameView: View {
                 .scrollBounceBehavior(.basedOnSize)
             }
         }
+        .overlayPreferenceValue(SpokenBubbleAnchorKey.self) { anchor in
+            spokenUnavailableOverlay(anchor)
+        }
         .contentShape(Rectangle())
         .onTapGesture(perform: dismissIntroFromTap)
         .transition(.opacity)
+    }
+
+    /// The caret-topped card explaining that read-aloud is not available in the
+    /// current language, anchored beneath the tapped toggle. Styled like the
+    /// home-menu info pop-out, without a header.
+    @ViewBuilder
+    private func spokenUnavailableOverlay(_ anchor: Anchor<CGRect>?) -> some View {
+        GeometryReader { geo in
+            if showSpokenUnavailablePopup, let anchor {
+                let rect = geo[anchor]
+                let cardWidth = min(240 * gameScale, geo.size.width - 24)
+                let anchorMidX = rect.midX
+                let rawX = anchorMidX - cardWidth / 2
+                let x = min(max(12, rawX), max(12, geo.size.width - cardWidth - 12))
+                let caretLimit = cardWidth / 2 - 18
+                let caret = min(max(anchorMidX - (x + cardWidth / 2), -caretLimit), caretLimit)
+                let y = rect.maxY + 6
+
+                SpokenUnavailableCard(message: L("game.intro.spokenUnavailable"),
+                                      caretOffset: caret,
+                                      theme: theme,
+                                      isPad: isPad)
+                    .frame(width: cardWidth)
+                    .offset(x: x, y: y)
+                    .onTapGesture(perform: dismissSpokenUnavailable)
+                    .transition(.opacity.combined(with: .scale(scale: 0.9, anchor: .top)))
+            }
+        }
     }
 
     /// Size of the character portrait on the start/pause card. The title and
@@ -629,10 +691,15 @@ struct GameView: View {
                 isOn: audio.spokenSumsEnabled && audio.isSpokenMathAvailable,
                 isAvailable: audio.isSpokenMathAvailable,
                 accessibilityLabel: audio.spokenSumsEnabled
-                    ? "Spoken sums on" : "Spoken sums off"
+                    ? "Spoken sums on" : "Spoken sums off",
+                // Tapping it while spoken sums are unavailable explains why,
+                // rather than doing nothing.
+                unavailableAction: showSpokenUnavailable
             ) {
                 withAnimation(.snappy(duration: 0.2)) { audio.toggleSpokenSums() }
             }
+            .anchorPreference(key: SpokenBubbleAnchorKey.self,
+                              value: .bounds) { $0 }
         }
         .frame(width: 44 * gameScale, height: introPortraitSize)
         .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -642,8 +709,12 @@ struct GameView: View {
 
     private func introAudioButton(icon: String, isOn: Bool, isAvailable: Bool,
                                   accessibilityLabel: String,
+                                  unavailableAction: (() -> Void)? = nil,
                                   action: @escaping () -> Void) -> some View {
-        Button(action: action) {
+        // When unavailable but given an explanation to show, the button stays
+        // tappable so the pop-out can appear; otherwise it is truly disabled.
+        let handlesUnavailableTap = !isAvailable && unavailableAction != nil
+        return Button(action: isAvailable ? action : (unavailableAction ?? {})) {
             ZStack {
                 Image(systemName: icon)
                     .font(.system(size: 17 * gameTextScale, weight: .heavy))
@@ -658,7 +729,7 @@ struct GameView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .buttonStyle(.plain)
-        .disabled(!isAvailable)
+        .disabled(!isAvailable && !handlesUnavailableTap)
         .accessibilityLabel(Text(verbatim: accessibilityLabel))
     }
 
@@ -1860,6 +1931,56 @@ private struct ConfettiView: View {
                 fallen = true
             }
         }
+    }
+}
+
+/// A small caret-topped card matching the home-menu info pop-out styling — a
+/// white fill, a hairline theme stroke and a soft shadow — but headerless. The
+/// message is kept to two lines and shrinks to fit when a translation is long.
+private struct SpokenUnavailableCard: View {
+    let message: String
+    let caretOffset: CGFloat
+    let theme: AnimalCharacter
+    let isPad: Bool
+
+    var body: some View {
+        VStack(spacing: 0) {
+            SpokenCaretTriangle()
+                .fill(.white)
+                .frame(width: 18, height: 9)
+                .overlay(alignment: .bottom) {
+                    // Hide the seam where the caret meets the card body.
+                    Rectangle().fill(.white).frame(height: 1).padding(.horizontal, 2)
+                }
+                .offset(x: caretOffset)
+
+            Text(message)
+                .font(.system(size: isPad ? 18 : 15, weight: .bold))
+                .foregroundStyle(theme.deepColor)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, isPad ? 18 : 14)
+                .padding(.vertical, isPad ? 14 : 11)
+                .background(.white, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(theme.deepColor.opacity(0.18), lineWidth: 1))
+        }
+        .shadow(color: theme.deepColor.opacity(0.22), radius: 14, y: 6)
+    }
+}
+
+/// An upward-pointing triangle for the pop-out caret.
+private struct SpokenCaretTriangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+        return path
     }
 }
 

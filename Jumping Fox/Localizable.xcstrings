@@ -24752,6 +24752,473 @@
         }
       }
     },
+    "game.intro.spokenUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "af": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jammer! Die voorleesfunksie is nog nie in jou taal beskikbaar nie."
+          }
+        },
+        "am": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ይቅርታ! የድምፅ ንባብ ባህሪው በቋንቋዎ ገና አይገኝም።"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عذرًا! ميزة القراءة بصوت عالٍ غير متاحة بلغتك حتى الآن."
+          }
+        },
+        "as": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "দুঃখিত! উচ্চস্বরে পড়ার সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağışlayın! Səslə oxuma funksiyası hələ sizin dilinizdə mövcud deyil."
+          }
+        },
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На жаль! Функцыя чытання ўслых пакуль недаступная на тваёй мове."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Съжаляваме! Функцията за четене на глас все още не е налична на твоя език."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "দুঃখিত! জোরে পড়ে শোনানোর সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।"
+          }
+        },
+        "bo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "དགོངས་དག སྒྲ་བཏོན་ནས་ཀློག་པའི་བྱེད་ནུས་ད་དུང་ཁྱེད་ཀྱི་སྐད་ཡིག་ནང་མེད།"
+          }
+        },
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žao nam je! Funkcija čitanja naglas još nije dostupna na tvom jeziku."
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ho sentim! La funció de lectura en veu alta encara no està disponible en el teu idioma."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promiň! Funkce předčítání zatím není ve tvém jazyce dostupná."
+          }
+        },
+        "cy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mae’n ddrwg gennym! Nid yw’r nodwedd darllen yn uchel ar gael yn dy iaith eto."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beklager! Oplæsningsfunktionen er endnu ikke tilgængelig på dit sprog."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entschuldigung! Die Vorlesefunktion ist in deiner Sprache noch nicht verfügbar."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Συγγνώμη! Η λειτουργία εκφώνησης δεν είναι ακόμη διαθέσιμη στη γλώσσα σου."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sorry! The read-aloud feature is not available in your language yet."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo sentimos. La función de lectura en voz alta todavía no está disponible en tu idioma."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vabandust! Ettelugemise funktsioon ei ole sinu keeles veel saadaval."
+          }
+        },
+        "eu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Barkatu! Ozen irakurtzeko funtzioa oraindik ez dago erabilgarri zure hizkuntzan."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متأسفیم! قابلیت بلندخوانی هنوز به زبان شما در دسترس نیست."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anteeksi! Ääneenlukutoiminto ei ole vielä saatavilla omalla kielelläsi."
+          }
+        },
+        "fo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orsaka! Upplestrarfunksjónin er ikki tøk á tínum máli enn."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Désolé ! La fonction de lecture à voix haute n’est pas encore disponible dans ta langue."
+          }
+        },
+        "ga": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tá brón orainn! Níl an ghné léitheoireachta os ard ar fáil i do theanga fós."
+          }
+        },
+        "gl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sentímolo! A función de lectura en voz alta aínda non está dispoñible no teu idioma."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "માફ કરશો! મોટેથી વાંચવાની સુવિધા હજી તમારી ભાષામાં ઉપલબ્ધ નથી."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "מצטערים! תכונת ההקראה עדיין לא זמינה בשפה שלך."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माफ़ कीजिए! ज़ोर से पढ़ने की सुविधा अभी आपकी भाषा में उपलब्ध नहीं है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žao nam je! Funkcija čitanja naglas još nije dostupna na tvom jeziku."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sajnáljuk! A felolvasási funkció még nem érhető el a nyelveden."
+          }
+        },
+        "hy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ներողություն։ Բարձրաձայն կարդալու գործառույթը դեռ հասանելի չէ քո լեզվով։"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maaf! Fitur baca nyaring belum tersedia dalam bahasamu."
+          }
+        },
+        "is": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fyrirgefðu! Upplestraraðgerðin er ekki enn í boði á þínu tungumáli."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ci dispiace! La funzione di lettura ad alta voce non è ancora disponibile nella tua lingua."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ごめんなさい！読み上げ機能はまだあなたの言語では利用できません。"
+          }
+        },
+        "ka": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ბოდიში! ხმამაღლა წაკითხვის ფუნქცია შენს ენაზე ჯერ არ არის ხელმისაწვდომი."
+          }
+        },
+        "kk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кешіріңіз! Дауыстап оқу мүмкіндігі сіздің тіліңізде әлі қолжетімді емес."
+          }
+        },
+        "km": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "សូមទោស! មុខងារអានឮៗមិនទាន់មានជាភាសារបស់អ្នកទេ។"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಕ್ಷಮಿಸಿ! ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಸೌಲಭ್ಯವು ಇನ್ನೂ ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "죄송해요! 소리 내어 읽기 기능은 아직 내 언어로 제공되지 않아요."
+          }
+        },
+        "lo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ຂໍອະໄພ! ຟັງຊັນອ່ານອອກສຽງຍັງບໍ່ຮອງຮັບພາສາຂອງເຈົ້າ."
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atsiprašome! Skaitymo balsu funkcija tavo kalba dar nepasiekiama."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atvaino! Priekšā lasīšanas funkcija tavā valodā vēl nav pieejama."
+          }
+        },
+        "mk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Извини! Функцијата за читање на глас сè уште не е достапна на твојот јазик."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ക്ഷമിക്കണം! ഉറക്കെ വായിക്കുന്ന സൗകര്യം നിങ്ങളുടെ ഭാഷയിൽ ഇതുവരെ ലഭ്യമല്ല."
+          }
+        },
+        "mn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уучлаарай! Чангаар унших функц таны хэл дээр хараахан боломжгүй байна."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माफ करा! मोठ्याने वाचण्याचे वैशिष्ट्य अजून तुमच्या भाषेत उपलब्ध नाही."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maaf! Ciri baca kuat masih belum tersedia dalam bahasa anda."
+          }
+        },
+        "my": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ဝမ်းနည်းပါတယ်။ အသံဖြင့်ဖတ်ပြသည့်လုပ်ဆောင်ချက်ကို သင့်ဘာသာစကားဖြင့် မရရှိနိုင်သေးပါ။"
+          }
+        },
+        "ne": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माफ गर्नुहोस्! ठूलो स्वरमा पढ्ने सुविधा तपाईंको भाषामा अझै उपलब्ध छैन।"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sorry! De voorleesfunctie is nog niet beschikbaar in jouw taal."
+          }
+        },
+        "no": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beklager! Opplesingsfunksjonen er ennå ikke tilgjengelig på språket ditt."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଦୁଃଖିତ! ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ସୁବିଧାଟି ଏପର୍ଯ୍ୟନ୍ତ ଆପଣଙ୍କ ଭାଷାରେ ଉପଲବ୍ଧ ନାହିଁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮਾਫ਼ ਕਰਨਾ! ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਦੀ ਸਹੂਲਤ ਹਾਲੇ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przepraszamy! Funkcja czytania na głos nie jest jeszcze dostępna w twoim języku."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lamentamos! A funcionalidade de leitura em voz alta ainda não está disponível no teu idioma."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne pare rău! Funcția de citire cu voce tare nu este încă disponibilă în limba ta."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Извини! Функция чтения вслух пока недоступна на твоём языке."
+          }
+        },
+        "si": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "සමාවන්න! ශබ්ද නඟා කියවීමේ පහසුකම තවමත් ඔබේ භාෂාවෙන් ලබා ගත නොහැක."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepáč! Funkcia čítania nahlas ešte nie je dostupná v tvojom jazyku."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oprosti! Funkcija glasnega branja še ni na voljo v tvojem jeziku."
+          }
+        },
+        "sq": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na vjen keq! Funksioni i leximit me zë nuk është ende i disponueshëm në gjuhën tënde."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žao nam je! Funkcija čitanja naglas još uvek nije dostupna na tvom jeziku."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Förlåt! Uppläsningsfunktionen är ännu inte tillgänglig på ditt språk."
+          }
+        },
+        "sw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Samahani! Kipengele cha kusoma kwa sauti bado hakipatikani katika lugha yako."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மன்னிக்கவும்! உரக்கப் படிக்கும் வசதி இன்னும் உங்கள் மொழியில் கிடைக்கவில்லை."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "క్షమించండి! బిగ్గరగా చదివే సదుపాయం ఇంకా మీ భాషలో అందుబాటులో లేదు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขออภัย! ฟีเจอร์อ่านออกเสียงยังไม่รองรับภาษาของคุณ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzgünüz! Sesli okuma özelliği henüz senin dilinde kullanılamıyor."
+          }
+        },
+        "ug": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كەچۈرۈڭ! ئاۋازلىق ئوقۇش ئىقتىدارى تېخى سىزنىڭ تىلىڭىزدا يوق."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибач! Функція читання вголос ще недоступна твоєю мовою."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "معذرت! بلند آواز میں پڑھنے کی سہولت ابھی آپ کی زبان میں دستیاب نہیں ہے۔"
+          }
+        },
+        "uz": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kechirasiz! Ovoz chiqarib o‘qish funksiyasi hali sizning tilingizda mavjud emas."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xin lỗi! Tính năng đọc thành tiếng chưa hỗ trợ ngôn ngữ của bạn."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抱歉！朗读功能暂不支持你的语言。"
+          }
+        },
+        "zu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siyaxolisa! Isici sokufunda ngokuzwakalayo asikatholakali ngolimi lwakho."
+          }
+        }
+      }
+    },
     "game.intro.start": {
       "extractionState": "manual",
       "localizations": {

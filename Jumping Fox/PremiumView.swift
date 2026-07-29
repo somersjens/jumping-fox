@@ -471,6 +471,10 @@ struct PremiumView: View {
                                     .foregroundStyle(
                                         index.isMultiple(of: 4) ? animal.deepColor : animal.color
                                     )
+                                    // Cancel the ring's rotation on each glyph so
+                                    // trophies and sparkles keep orbiting but stay
+                                    // upright rather than tumbling.
+                                    .rotationEffect(.degrees(-unlockBurstRotation))
                                     .offset(
                                         x: CGFloat(cos(angle)) * particleRadius * radiusVariation,
                                         y: CGFloat(sin(angle)) * particleRadius * radiusVariation
@@ -511,7 +515,7 @@ struct PremiumView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 32, style: .continuous)
-                        .stroke(animal.color.opacity(0.5), lineWidth: 2)
+                        .stroke(animal.color.opacity(0.6), lineWidth: 4)
                 )
                 .shadow(color: animal.deepColor.opacity(0.28), radius: 28, y: 12)
             }

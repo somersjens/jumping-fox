@@ -119,15 +119,16 @@ final class AppAudio: NSObject, ObservableObject {
     // The four `wav` files were already PCM. `volume`/`lead` are unchanged: the
     // conversion preserved each file's sample rate, channels and timing exactly.
     private static let effects: [Effect] = [
-        Effect(key: "correct",       file: "sfx_correct",        ext: "caf", volume: 0.16, lead: 0.0),
+        Effect(key: "correct",       file: "sfx_correct",        ext: "caf", volume: 0.14, lead: 0.0),
         Effect(key: "wrong",         file: "sfx_wrong",          ext: "caf", volume: 0.11, lead: 0.065),
         Effect(key: "answerInfo",    file: "sfx_answer_info",    ext: "caf", volume: 0.19, lead: 0.010),
         Effect(key: "triplerPickup", file: "sfx_tripler_pickup", ext: "caf", volume: 0.18, lead: 0.0),
         Effect(key: "triplerUsed",   file: "sfx_tripler_used",   ext: "caf", volume: 0.15, lead: 0.0),
         Effect(key: "life",          file: "sfx_life",           ext: "caf", volume: 0.15, lead: 0.155),
-        // Deliberately louder than the rest — the source is boosted and it plays
-        // above the pack, because at the matched level it was barely audible.
-        Effect(key: "heartArrive",   file: "sfx_heart_arrive",   ext: "wav", volume: 0.50, lead: 0.0),
+        // Levelled to the pack like the others (measured active-region RMS
+        // ~-15 dBFS). It was previously boosted to 0.50, which put it ~15 dB
+        // above everything else and made it stick out.
+        Effect(key: "heartArrive",   file: "sfx_heart_arrive",   ext: "wav", volume: 0.12, lead: 0.0),
         Effect(key: "minus",         file: "sfx_minus_coin",     ext: "caf", volume: 0.24, lead: 0.045),
         Effect(key: "shootingStar",  file: "sfx_shooting_star",  ext: "caf", volume: 0.31, lead: 0.045),
         Effect(key: "streak",        file: "sfx_streak",         ext: "caf", volume: 0.16, lead: 0.225),
@@ -135,6 +136,11 @@ final class AppAudio: NSObject, ObservableObject {
         Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "caf", volume: 0.12, lead: 0.050),
         Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.10, lead: 0.015),
         Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "caf", volume: 1.0,  lead: 0.065),
+        // Whoosh under the trophy's flight up to the header. `volume`/`lead` are
+        // measured from the converted CAF (see conversion notes) so it lands at
+        // the same ~-38 dBFS as the rest of the pack, a touch under so it never
+        // masks the arrival sound that follows immediately.
+        Effect(key: "trophyFlight",  file: "sfx_trophy_flight",  ext: "caf", volume: 0.812, lead: 0.35),
         Effect(key: "trophyTotal",   file: "sfx_trophy_total",   ext: "wav", volume: 0.08, lead: 0.015),
         Effect(key: "select",        file: "sfx_select",         ext: "wav", volume: 0.17, lead: 0.0),
         // Toggle switches in the menu (helper mode, etc.).
@@ -483,6 +489,7 @@ final class AppAudio: NSObject, ObservableObject {
     func playLevelComplete()   { playEffect("levelComplete") }   // level finished
     func playCharacterUnlock() { playEffect("characterUnlock") } // new character earned
     func playTrophyMenu()      { playEffect("trophyMenu") }      // card counts up on return to menu
+    func playTrophyFlight()    { playEffect("trophyFlight") }    // whoosh while the trophy flies to the header
     func playTrophyTotal()     { playEffect("trophyTotal") }     // grand total ticks up at the top
     // Menu controls.
     /// Small select sound for menu navigation (the supplied `select.wav`).
