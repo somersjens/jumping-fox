@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Urso</string>
+	<key>character.bunny</key>
+	<string>Coelho</string>
+	<key>character.crab</key>
+	<string>Caranguejo</string>
+	<key>character.dog</key>
+	<string>Cão</string>
+	<key>character.elephant</key>
+	<string>Elefante</string>
+	<key>character.fox</key>
+	<string>Raposa</string>
+	<key>character.frog</key>
+	<string>Sapo</string>
+	<key>character.lion</key>
+	<string>Leão</string>
+	<key>character.octopus</key>
+	<string>Polvo</string>
+	<key>character.penguin</key>
+	<string>Pinguim</string>
+	<key>character.pickerTitle</key>
+	<string>Escolhe a tua personagem</string>
+	<key>common.back</key>
+	<string>Voltar</string>
+	<key>common.cancel</key>
+	<string>Cancelar</string>
+	<key>common.continue</key>
+	<string>Continuar</string>
+	<key>common.done</key>
+	<string>Pronto</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Guardar</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Mantém premido durante 2 segundos para abrir o modo de programador.</string>
+	<key>developerMode.title</key>
+	<string>Modo de programador</string>
+	<key>filter.addition</key>
+	<string>Adição</string>
+	<key>filter.fractions</key>
+	<string>Frações</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Percentagens</string>
+	<key>filter.subtraction</key>
+	<string>Subtração</string>
+	<key>filter.tables</key>
+	<string>Tabuadas</string>
+	<key>game.accessibility.mix</key>
+	<string>Mistura</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld de %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Boa tentativa</string>
+	<key>game.encouragement.1</key>
+	<string>É um começo</string>
+	<key>game.encouragement.2</key>
+	<string>Continua a praticar</string>
+	<key>game.encouragement.3</key>
+	<string>Nada mal</string>
+	<key>game.encouragement.4</key>
+	<string>Muito bem</string>
+	<key>game.encouragement.5</key>
+	<string>Belo resultado</string>
+	<key>game.encouragement.6</key>
+	<string>Muito bem</string>
+	<key>game.encouragement.7</key>
+	<string>Jogaste muito bem</string>
+	<key>game.encouragement.8</key>
+	<string>A meta está à vista</string>
+	<key>game.encouragement.9</key>
+	<string>Estás quase lá</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Ganhaste todos os pontos.</string>
+	<key>game.end.completionSuffix</key>
+	<string>concluído!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Fim do jogo</string>
+	<key>game.end.mainMenu</key>
+	<string>Menu principal</string>
+	<key>game.end.playAgain</key>
+	<string>Jogar de novo</string>
+	<key>game.highScore</key>
+	<string>Recorde</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Voltar ao menu principal</string>
+	<key>game.intro.continue</key>
+	<string>Continuar</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Vais continuar a partir de %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>A resposta certa fica destacada a verde porque a ajuda está ligada. Por isso, os troféus são contados à parte com *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Ajuda desligada</string>
+	<key>game.intro.helperOn</key>
+	<string>Ajuda ligada</string>
+	<key>game.intro.howItWorks</key>
+	<string>Como funciona este nível</string>
+	<key>game.intro.livesOff</key>
+	<string>Vidas desligadas</string>
+	<key>game.intro.livesOn</key>
+	<string>Vidas ligadas</string>
+	<key>game.intro.scorePaused</key>
+	<string>A tua pontuação atual ficará em pausa.</string>
+	<key>game.intro.start</key>
+	<string>Começar nível</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Multiplica %@%@ por um número de 1 a 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ou menos</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Toca em qualquer lugar para continuar</string>
+	<key>game.intro.tapToStart</key>
+	<string>Toca em qualquer lugar para começar</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Ganha |1| troféu por resposta certa, até ao máximo de |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Quando as vidas acabam, já não podes ganhar troféus.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Atingiste o máximo de troféus para a classificação</string>
+	<key>game.status.mixMode</key>
+	<string>MODO MISTURA</string>
+	<key>game.status.scoreLocked</key>
+	<string>Os troféus deixam de contar quando as vidas acabam</string>
+	<key>game.streak.subtitle</key>
+	<string>Troféus ×2</string>
+	<key>game.streak.title</key>
+	<string>5 seguidas!</string>
+	<key>goal.period</key>
+	<string>Período da meta</string>
+	<key>goal.promptDaily</key>
+	<string>Quantos minutos queres jogar por dia?</string>
+	<key>goal.promptWeekly</key>
+	<string>Quantos minutos queres jogar por semana?</string>
+	<key>goal.title</key>
+	<string>Meta de jogo</string>
+	<key>goalPeriod.daily</key>
+	<string>Diária</string>
+	<key>goalPeriod.weekly</key>
+	<string>Semanal</string>
+	<key>info.filter.addition</key>
+	<string>Só adição</string>
+	<key>info.filter.fractions</key>
+	<string>Só divisão</string>
+	<key>info.filter.header</key>
+	<string>Tipos de contas</string>
+	<key>info.filter.mixed</key>
+	<string>Operações misturadas</string>
+	<key>info.filter.percentages</key>
+	<string>Só percentagens</string>
+	<key>info.filter.subtraction</key>
+	<string>Só subtração</string>
+	<key>info.filter.tables</key>
+	<string>Só multiplicação</string>
+	<key>info.mode.fractions.header</key>
+	<string>Partes</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Uma ou várias partes</string>
+	<key>info.mode.fractions.single</key>
+	<string>Sempre uma parte</string>
+	<key>info.mode.header</key>
+	<string>Ordem</string>
+	<key>info.mode.mixed</key>
+	<string>Misturado com níveis anteriores</string>
+	<key>info.mode.order</key>
+	<string>Ordem fixa</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Com números decimais</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tipo</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Sem números decimais</string>
+	<key>info.mode.random</key>
+	<string>Ordem aleatória</string>
+	<key>info.super.all</key>
+	<string>Adição, subtração, multiplicação, divisão e percentagens</string>
+	<key>info.super.basic</key>
+	<string>Adição e subtração</string>
+	<key>info.super.fraction</key>
+	<string>Adição, subtração, multiplicação e divisão</string>
+	<key>info.super.times</key>
+	<string>Adição, subtração e multiplicação</string>
+	<key>language.select</key>
+	<string>Escolher idioma</string>
+	<key>lives.three</key>
+	<string>3 vidas</string>
+	<key>lives.unlimited</key>
+	<string>Ilimitado</string>
+	<key>menu.accessibility.character</key>
+	<string>Personagem</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Toca para mudar de personagem; mantém premido durante dois segundos para recomeçar no ecrã de boas-vindas.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Escolhe %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MÁX.</string>
+	<key>menu.maximumCount</key>
+	<string>MÁX.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Máximo atingido %lld vezes</string>
+	<key>menu.moreLevels</key>
+	<string>Mais níveis</string>
+	<key>menu.options</key>
+	<string>Opções de jogo</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Tabuadas Premium</string>
+	<key>menu.startHere</key>
+	<string>Começa aqui</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Desbloqueia mais com Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Várias</string>
+	<key>mode.fractions.single</key>
+	<string>Uma</string>
+	<key>mode.mix</key>
+	<string>Mistura</string>
+	<key>mode.mixed</key>
+	<string>Misturado</string>
+	<key>mode.order</key>
+	<string>Ordem</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimal</string>
+	<key>mode.percentages.whole</key>
+	<string>Inteiro</string>
+	<key>mode.random</key>
+	<string>Aleatório</string>
+	<key>mode.standard</key>
+	<string>Padrão</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Só vais receber contas de |adição|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Somas %lld |ou menos| a outro número.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Somas sempre %lld por ordem |crescente|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Somas sempre %lld a um número |aleatório|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Adição · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Continua a somar dois números.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>A resposta é, no máximo, %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Somar até %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Só vais receber contas com |frações|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Recebes frações deste nível e de |níveis anteriores|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Tiras sempre |1 parte| de %lld partes iguais.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Calcula frações de números redondos do nível %lld e dos níveis anteriores.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Os números continuam redondos, por isso as respostas são sempre inteiras.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Frações até %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Tiras uma ou |várias partes| de %lld partes iguais.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Frações · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Calcula uma parte de um todo e cria frações equivalentes.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Soma e subtrai frações com o mesmo denominador.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Frações misturadas</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Só vais receber contas com |percentagens|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Recebes percentagens deste nível e de |níveis anteriores|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Calculas sempre %@, e a resposta é um |número inteiro|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Calcula percentagens de números redondos até %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Os valores continuam redondos, por isso as respostas são sempre inteiras.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Percentagens até %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Calculas sempre %@, e a resposta também pode ser um |decimal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Calcular %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Calcula uma percentagem de um número.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Converte percentagens em frações e frações em percentagens.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Percentagens misturadas</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Só vais receber contas de |subtração|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Subtrais %lld |ou menos| de outro número.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Subtrais sempre %lld por ordem |decrescente|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Subtrais sempre %lld de um número |aleatório|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Subtração · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>O primeiro número é, no máximo, %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>A resposta pode ficar abaixo de zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Abaixo de zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Subtrair até %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Continua a subtrair dois números.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>A dificuldade pode aumentar até ao |nível %lld| em cada categoria escolhida.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Pratica adição, subtração, tabuadas, frações e percentagens, tudo misturado.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Pratica adição e subtração, tudo misturado.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Pratica adição, subtração, tabuadas e frações, tudo misturado.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Pratica adição, subtração e tabuadas, tudo misturado.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Só vais receber contas de |multiplicação|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Recebes todas as tabuadas |até %lld|, misturadas.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Cada tabuada vezes um número de |1 a 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Recebes a tabuada do %lld por ordem |crescente|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Recebes a tabuada do %lld por ordem |aleatória|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tabuada do %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Pratica as tabuadas do %lld ao %lld, todas misturadas.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tabuadas %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>O teu nome</string>
+	<key>name.whatsYourName</key>
+	<string>Como te chamas?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Várias contas misturadas.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Já és bastante bom</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Pratica contas por ordem.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Acabaste de começar</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Contas por ordem aleatória.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Já praticaste um pouco</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Escolhe onde começar em %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>este tema</string>
+	<key>onboarding.level.title</key>
+	<string>Quão bom já és nisto?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Vamos começar. Como te chamas?</string>
+	<key>onboarding.name.title</key>
+	<string>Fazer contas nunca foi tão divertido!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Escolhe um tema para começar.</string>
+	<key>onboarding.subject.title</key>
+	<string>O que queres aprender?</string>
+	<key>options.capAt30.info</key>
+	<string>Cada nível tem uma meta de até 50 troféus. Com esta opção ligada, o jogo termina automaticamente quando a atinges.</string>
+	<key>options.capAt30.title</key>
+	<string>Terminar na meta</string>
+	<key>options.helperMode.info</key>
+	<string>No modo de ajuda, a resposta certa aparece sempre a verde. Os troféus ganhos neste modo são contados à parte e marcados com uma estrela.</string>
+	<key>options.helperMode.title</key>
+	<string>Modo de ajuda</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Começas sempre com 3 vidas. O jogo termina quando ficares sem vidas. Liga esta opção para continuares a jogar e a praticar depois de as vidas acabarem.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Vidas ilimitadas</string>
+	<key>parentGate.approved</key>
+	<string>Aprovado</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Tentativas: %1$lld de %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Mantém %@ premido durante %lld segundos.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Premir: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Mantém %@ premido durante %lld segundos. Depois, toca em %@ %lld vezes.</string>
+	<key>parentGate.shape.circle</key>
+	<string>círculo</string>
+	<key>parentGate.shape.diamond</key>
+	<string>losango</string>
+	<key>parentGate.shape.heart</key>
+	<string>coração</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hexágono</string>
+	<key>parentGate.shape.plus</key>
+	<string>sinal de mais</string>
+	<key>parentGate.shape.square</key>
+	<string>quadrado</string>
+	<key>parentGate.shape.star</key>
+	<string>estrela</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triângulo</string>
+	<key>parentGate.stepOne</key>
+	<string>Passo 1 de 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Passo 2 de 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Para proteger os jogadores mais novos, um adulto tem de concluir esta verificação antes de continuar para a compra.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Agora toca em %2$@ %1$lld vezes.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Toques: %1$lld de %2$lld</string>
+	<key>parentGate.title</key>
+	<string>É necessária a aprovação de um adulto</string>
+	<key>premium.availableAt %lld</key>
+	<string>Disponível a partir de %lld troféus</string>
+	<key>premium.availableFromStart</key>
+	<string>Disponível desde o início</string>
+	<key>premium.characterUnlocked</key>
+	<string>NOVA PERSONAGEM DESBLOQUEADA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ desbloqueado</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Ganhaste %lld troféus</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exclusivo com Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exclusivo com Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Com Premium, podes jogar livremente com os 10 animais.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Acesso a todos os animais</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Sempre novas contas para praticar.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 níveis por tema</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Joga sem interrupções.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Sem anúncios</string>
+	<key>premium.oneTime</key>
+	<string>Compra única. Teu para sempre.</string>
+	<key>premium.restore</key>
+	<string>Restaurar compras</string>
+	<key>premium.start</key>
+	<string>Começar</string>
+	<key>premium.storeUnavailable</key>
+	<string>A loja não está disponível agora. Tenta novamente mais tarde.</string>
+	<key>premium.unlock</key>
+	<string>Desbloquear Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Desbloquear Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Desbloquear com troféus</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Desbloqueado com Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Tens Premium!</string>
+	<key>settings.character</key>
+	<string>Personagem</string>
+	<key>settings.characterInfo</key>
+	<string>Cada animal dá ao jogo inteiro o seu próprio tema de cores.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Personalizado: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Meta diária</string>
+	<key>settings.goalInfo</key>
+	<string>A meta da sequência começa nos 5 minutos por dia. Só conta o tempo de jogo ativo.</string>
+	<key>settings.lives</key>
+	<string>Vidas</string>
+	<key>settings.livesInfo</key>
+	<string>Com três vidas, o jogo termina depois do último coração. No modo ilimitado, os troféus só contam enquanto ainda tens vidas; depois, podes continuar a jogar.</string>
+	<key>settings.playGoals</key>
+	<string>Metas de jogo</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium desbloqueado. Obrigado!</string>
+	<key>settings.title</key>
+	<string>Definições</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Escolhe uma meta diária</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Escolhe uma meta diária ou semanal</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld de %3$lld minutos, %4$lld dias seguidos</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Sequência diária, %lld de %lld minutos</string>
+	<key>streak.daily</key>
+	<string>Sequência diária</string>
+	<key>streak.dayOne</key>
+	<string>Dia 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Não sabes a resposta? Toca na conta para a veres.</string>
+	<key>tutorial.complete</key>
+	<string>Muito bem! O tutorial terminou. Agora tenta bater o recorde!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Salta para a resposta certa para apanhar um troféu.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>A resposta certa aparece a verde. Agora salta para a resposta certa.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Agora salta para a resposta certa para ganhar três vezes mais troféus.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Apanha a moeda ×3 para ganhares uma vez três vezes mais troféus.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Podes encontrar meia vida ou uma vida inteira para recuperar vidas.</string>
+	<key>tutorial.minusOne</key>
+	<string>Evita o −1. Custa-te um troféu.</string>
+	<key>tutorial.move</key>
+	<string>Move o dispositivo para ires para a esquerda e para a direita. Também podes passar pelos lados do ecrã.</string>
+	<key>tutorial.platforms</key>
+	<string>Salta nas plataformas para subires.</string>
+	<key>tutorial.scoreHint</key>
+	<string>A tua pontuação neste nível aparece aqui.</string>
+	<key>tutorial.star</key>
+	<string>Salta para a estrela para eliminar as respostas erradas.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Se escolheres uma resposta errada, perdes uma das tuas três vidas. Experimenta agora.</string>
+</dict>
+</plist>

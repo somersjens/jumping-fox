@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ድብ</string>
+	<key>character.bunny</key>
+	<string>ጥንቸል</string>
+	<key>character.crab</key>
+	<string>ሸርጣን</string>
+	<key>character.dog</key>
+	<string>ውሻ</string>
+	<key>character.elephant</key>
+	<string>ዝሆን</string>
+	<key>character.fox</key>
+	<string>ቀበሮ</string>
+	<key>character.frog</key>
+	<string>እንቁራሪት</string>
+	<key>character.lion</key>
+	<string>አንበሳ</string>
+	<key>character.octopus</key>
+	<string>ኦክቶፐስ</string>
+	<key>character.penguin</key>
+	<string>ፔንግዊን</string>
+	<key>character.pickerTitle</key>
+	<string>ገጸ ባሕሪህን ምረጥ</string>
+	<key>common.back</key>
+	<string>ተመለስ</string>
+	<key>common.cancel</key>
+	<string>ሰርዝ</string>
+	<key>common.continue</key>
+	<string>ቀጥል</string>
+	<key>common.done</key>
+	<string>ጨርሷል</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld ደቂቃ</string>
+	<key>common.save</key>
+	<string>አስቀምጥ</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>የገንቢ ሁነታን ለመክፈት ለ2 ሰከንድ ተጭነህ ያዝ።</string>
+	<key>developerMode.title</key>
+	<string>የገንቢ ሁነታ</string>
+	<key>filter.addition</key>
+	<string>መደመር</string>
+	<key>filter.fractions</key>
+	<string>ክፍልፋዮች</string>
+	<key>filter.mixed</key>
+	<string>ሱፐርሚክስ</string>
+	<key>filter.percentages</key>
+	<string>መቶኛ</string>
+	<key>filter.subtraction</key>
+	<string>መቀነስ</string>
+	<key>filter.tables</key>
+	<string>የማባዛት ሰንጠረዦች</string>
+	<key>game.accessibility.mix</key>
+	<string>ድብልቅ</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>ከ%lld ውስጥ %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ጥሩ ሙከራ</string>
+	<key>game.encouragement.1</key>
+	<string>ጥሩ ጅምር</string>
+	<key>game.encouragement.2</key>
+	<string>ልምምድህን ቀጥል</string>
+	<key>game.encouragement.3</key>
+	<string>መጥፎ አይደለም</string>
+	<key>game.encouragement.4</key>
+	<string>ጥሩ እየሠራህ ነው</string>
+	<key>game.encouragement.5</key>
+	<string>ጥሩ ውጤት</string>
+	<key>game.encouragement.6</key>
+	<string>ጎበዝ</string>
+	<key>game.encouragement.7</key>
+	<string>በጣም ጥሩ</string>
+	<key>game.encouragement.8</key>
+	<string>መጨረሻው ቀርቧል</string>
+	<key>game.encouragement.9</key>
+	<string>ልትደርስ ነው</string>
+	<key>game.end.completionSubtitle</key>
+	<string>እያንዳንዱን ነጥብ አግኝተሃል።</string>
+	<key>game.end.completionSuffix</key>
+	<string>ተጠናቋል!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ጨዋታው አልቋል</string>
+	<key>game.end.mainMenu</key>
+	<string>ዋና ምናሌ</string>
+	<key>game.end.playAgain</key>
+	<string>እንደገና ተጫወት</string>
+	<key>game.highScore</key>
+	<string>ከፍተኛ ውጤት</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ወደ ዋና ምናሌ ተመለስ</string>
+	<key>game.intro.continue</key>
+	<string>መጫወትህን ቀጥል</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ከ%lld ትቀጥላለህ</string>
+	<key>game.intro.helperBullet</key>
+	<string>ረዳቱ ስለበራ ትክክለኛው መልስ በአረንጓዴ ይታያል። ስለዚህ ዋንጫዎች በ* ለብቻቸው ይቆጠራሉ።</string>
+	<key>game.intro.helperOff</key>
+	<string>ረዳት ጠፍቷል</string>
+	<key>game.intro.helperOn</key>
+	<string>ረዳት በርቷል</string>
+	<key>game.intro.howItWorks</key>
+	<string>ይህ ደረጃ እንዴት ይሠራል</string>
+	<key>game.intro.livesOff</key>
+	<string>ሕይወቶች ጠፍተዋል</string>
+	<key>game.intro.livesOn</key>
+	<string>ሕይወቶች በርተዋል</string>
+	<key>game.intro.scorePaused</key>
+	<string>የአሁኑ ውጤትህ ለጊዜው ይቆማል።</string>
+	<key>game.intro.start</key>
+	<string>ደረጃውን ጀምር</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ን ከ1 እስከ 12 ባለ ቁጥር አባዛ።</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ወይም ያነሰ</string>
+	<key>game.intro.tapToContinue</key>
+	<string>ለመቀጠል የትም ንካ</string>
+	<key>game.intro.tapToStart</key>
+	<string>ለመጀመር የትም ንካ</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ለእያንዳንዱ ትክክለኛ መልስ |1| ዋንጫ አግኝ፣ እስከ |%lld| ድረስ።</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ሕይወቶችህ ካለቁ በኋላ ዋንጫዎችን ማግኘት አትችልም።</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ለውጤት ሰሌዳው ከፍተኛው የዋንጫ ብዛት ተደርሷል</string>
+	<key>game.status.mixMode</key>
+	<string>ድብልቅ ሁነታ</string>
+	<key>game.status.scoreLocked</key>
+	<string>ሕይወቶችህ ካለቁ በኋላ ዋንጫዎች አይቆጠሩም</string>
+	<key>game.streak.subtitle</key>
+	<string>ዋንጫዎች ×2</string>
+	<key>game.streak.title</key>
+	<string>5 በተከታታይ!</string>
+	<key>goal.period</key>
+	<string>የግብ ጊዜ</string>
+	<key>goal.promptDaily</key>
+	<string>በቀን ስንት ደቂቃ መጫወት ትፈልጋለህ?</string>
+	<key>goal.promptWeekly</key>
+	<string>በሳምንት ስንት ደቂቃ መጫወት ትፈልጋለህ?</string>
+	<key>goal.title</key>
+	<string>የጨዋታ ግብ</string>
+	<key>goalPeriod.daily</key>
+	<string>በየቀኑ</string>
+	<key>goalPeriod.weekly</key>
+	<string>በየሳምንቱ</string>
+	<key>info.filter.addition</key>
+	<string>መደመር ብቻ</string>
+	<key>info.filter.fractions</key>
+	<string>ማካፈል ብቻ</string>
+	<key>info.filter.header</key>
+	<string>የጥያቄ ዓይነቶች</string>
+	<key>info.filter.mixed</key>
+	<string>ድብልቅ ስሌቶች</string>
+	<key>info.filter.percentages</key>
+	<string>መቶኛ ብቻ</string>
+	<key>info.filter.subtraction</key>
+	<string>መቀነስ ብቻ</string>
+	<key>info.filter.tables</key>
+	<string>ማባዛት ብቻ</string>
+	<key>info.mode.fractions.header</key>
+	<string>ክፍሎች</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>አንድ እና ብዙ ክፍሎች</string>
+	<key>info.mode.fractions.single</key>
+	<string>ሁልጊዜ አንድ ክፍል</string>
+	<key>info.mode.header</key>
+	<string>ቅደም ተከተል</string>
+	<key>info.mode.mixed</key>
+	<string>ከዝቅተኛ ደረጃዎች ጋር ድብልቅ</string>
+	<key>info.mode.order</key>
+	<string>ቋሚ ቅደም ተከተል</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>የአስርዮሽ ቁጥሮችን ጨምሮ</string>
+	<key>info.mode.percentages.header</key>
+	<string>ዓይነት</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ያለ አስርዮሽ ቁጥሮች</string>
+	<key>info.mode.random</key>
+	<string>የዘፈቀደ ቅደም ተከተል</string>
+	<key>info.super.all</key>
+	<string>መደመር፣ መቀነስ፣ ማባዛት፣ ማካፈል እና መቶኛ</string>
+	<key>info.super.basic</key>
+	<string>መደመር እና መቀነስ</string>
+	<key>info.super.fraction</key>
+	<string>መደመር፣ መቀነስ፣ ማባዛት እና ማካፈል</string>
+	<key>info.super.times</key>
+	<string>መደመር፣ መቀነስ እና ማባዛት</string>
+	<key>language.select</key>
+	<string>ቋንቋ ምረጥ</string>
+	<key>lives.three</key>
+	<string>3 ሕይወቶች</string>
+	<key>lives.unlimited</key>
+	<string>ያልተገደበ</string>
+	<key>menu.accessibility.character</key>
+	<string>ገጸ ባሕሪ</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>ገጸ ባሕሪህን ለመቀየር ንካ፤ ከመቀበያ ማያው እንደገና ለመጀመር ለሁለት ሰከንድ ተጭነህ ያዝ።</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ ምረጥ</string>
+	<key>menu.maxScore</key>
+	<string>30 ከፍተኛ</string>
+	<key>menu.maximumCount</key>
+	<string>ከፍተኛ</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>ከፍተኛው ውጤት %lld ጊዜ ተገኝቷል</string>
+	<key>menu.moreLevels</key>
+	<string>ተጨማሪ ደረጃዎች</string>
+	<key>menu.options</key>
+	<string>የጨዋታ አማራጮች</string>
+	<key>menu.premium</key>
+	<string>ፕሪሚየም</string>
+	<key>menu.premiumTables</key>
+	<string>ፕሪሚየም ሰንጠረዦች</string>
+	<key>menu.startHere</key>
+	<string>ከዚህ ጀምር</string>
+	<key>menu.unlockWithPremium</key>
+	<string>በፕሪሚየም ተጨማሪ ክፈት</string>
+	<key>mode.fractions.multiple</key>
+	<string>ብዙ</string>
+	<key>mode.fractions.single</key>
+	<string>አንድ</string>
+	<key>mode.mix</key>
+	<string>ድብልቅ</string>
+	<key>mode.mixed</key>
+	<string>የተደባለቀ</string>
+	<key>mode.order</key>
+	<string>ቅደም ተከተል</string>
+	<key>mode.percentages.decimal</key>
+	<string>አስርዮሽ</string>
+	<key>mode.percentages.whole</key>
+	<string>ሙሉ</string>
+	<key>mode.random</key>
+	<string>የዘፈቀደ</string>
+	<key>mode.standard</key>
+	<string>መደበኛ</string>
+	<key>modeIntro.addition.intro</key>
+	<string>የምታገኘው የ|መደመር| ጥያቄዎችን ብቻ ነው።</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>በሌላ ቁጥር ላይ %lld |ወይም ያነሰ| ትደምራለህ።</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ሁልጊዜ %lldን በ|እየጨመረ| ቅደም ተከተል ትደምራለህ።</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ሁልጊዜ %lldን በ|ዘፈቀደ| ቁጥር ላይ ትደምራለህ።</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>መደመር · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ሁለት ቁጥሮችን መደመርህን ቀጥል።</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>መልሱ ከ%lld አይበልጥም።</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>እስከ %lld ደምር</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>የምታገኘው የ|ክፍልፋይ| ጥያቄዎችን ብቻ ነው።</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ከዚህ ደረጃ እና ከ|ቀደሙ ደረጃዎች| ክፍልፋዮች ይመጣሉ።</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>ከ%lld እኩል ክፍሎች ውስጥ ሁልጊዜ |1 ክፍል| ትወስዳለህ።</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>ከደረጃ %lld እና ከቀደሙ ደረጃዎች ያሉ የክብ ቁጥሮችን ክፍልፋይ አስላ።</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>ቁጥሮቹ ክብ ስለሆኑ መልሶቹ ሁልጊዜ ሙሉ ቁጥር ናቸው።</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>ክፍልፋዮች እስከ %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>ከ%lld እኩል ክፍሎች ውስጥ አንድ ወይም |ብዙ ክፍሎች| ትወስዳለህ።</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ክፍልፋዮች · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>የሙሉ ነገርን ክፍል አስላ እና እኩል ክፍልፋዮችን ፍጠር።</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>አንድ ዓይነት ታችኛው ቁጥር ያላቸውን ክፍልፋዮች ደምር እና ቀንስ።</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ድብልቅ ክፍልፋዮች</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>የምታገኘው የ|መቶኛ| ጥያቄዎችን ብቻ ነው።</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ከዚህ ደረጃ እና ከ|ቀደሙ ደረጃዎች| መቶኛዎች ይመጣሉ።</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ሁልጊዜ %@ን ታሰላለህ፣ መልሱም |ሙሉ ቁጥር| ነው።</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>እስከ %lld ያሉ ክብ ቁጥሮችን መቶኛ አስላ።</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>መጠኖቹ ክብ ስለሆኑ መልሶቹ ሁልጊዜ ሙሉ ቁጥር ናቸው።</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>መቶኛ እስከ %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ሁልጊዜ %@ን ታሰላለህ፣ መልሱም |አስርዮሽ| ሊሆን ይችላል።</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ን አስላ</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>የአንድን ቁጥር መቶኛ አስላ።</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>መቶኛን ወደ ክፍልፋይ፣ ክፍልፋይንም ወደ መቶኛ ቀይር።</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ድብልቅ መቶኛዎች</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>የምታገኘው የ|መቀነስ| ጥያቄዎችን ብቻ ነው።</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>ከሌላ ቁጥር %lld |ወይም ያነሰ| ትቀንሳለህ።</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ሁልጊዜ %lldን በ|እየቀነሰ| ቅደም ተከተል ትቀንሳለህ።</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ሁልጊዜ %lldን ከ|ዘፈቀደ| ቁጥር ትቀንሳለህ።</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>መቀነስ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>የመጀመሪያው ቁጥር ከ%lld አይበልጥም።</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>መልሱ ከዜሮ በታች ሊሆን ይችላል።</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>ከዜሮ በታች</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>እስከ %lld ቀንስ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ሁለት ቁጥሮችን መቀነስህን ቀጥል።</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ለእያንዳንዱ የተመረጠ ዓይነት አስቸጋሪነቱ እስከ |ደረጃ %lld| ሊጨምር ይችላል።</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>መደመር፣ መቀነስ፣ የማባዛት ሰንጠረዦች፣ ክፍልፋዮች እና መቶኛዎችን ደባልቀህ ተለማመድ።</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>ሱፐርሚክስ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>መደመርና መቀነስን ደባልቀህ ተለማመድ።</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>ሱፐርሚክስ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>መደመር፣ መቀነስ፣ የማባዛት ሰንጠረዦች እና ክፍልፋዮችን ደባልቀህ ተለማመድ።</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>ሱፐርሚክስ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>መደመር፣ መቀነስ እና የማባዛት ሰንጠረዦችን ደባልቀህ ተለማመድ።</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>ሱፐርሚክስ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>የምታገኘው የ|ማባዛት| ጥያቄዎችን ብቻ ነው።</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>እስከ |%lld| ያሉ ሁሉም የማባዛት ሰንጠረዦች ተደባልቀው ይመጣሉ።</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>እያንዳንዱ ሰንጠረዥ ከ|1 እስከ 12| ባለ ቁጥር ይባዛል።</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>የ%lld ማባዛት ሰንጠረዥ በ|እየጨመረ| ቅደም ተከተል ይመጣል።</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>የ%lld ማባዛት ሰንጠረዥ በ|ዘፈቀደ| ቅደም ተከተል ይመጣል።</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>የ%lld ሰንጠረዥ</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>ከ%lld እስከ %lld ያሉ ሰንጠረዦችን ደባልቀህ ተለማመድ።</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ሰንጠረዦች %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ስምህ</string>
+	<key>name.whatsYourName</key>
+	<string>ስምህ ማን ነው?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>የተለያዩ ድብልቅ ስሌቶች።</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>አስቀድመህ ጥሩ ነህ</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ስሌቶችን በቅደም ተከተል ተለማመድ።</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>አሁን ጀምረሃል</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ስሌቶች በዘፈቀደ ቅደም ተከተል።</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ትንሽ ተለማምደሃል</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>ለ%@ መጀመሪያ ነጥብ ምረጥ።</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ይህ ርዕስ</string>
+	<key>onboarding.level.title</key>
+	<string>ቀድሞውኑ ምን ያህል ጥሩ ነህ?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>እንጀምር። ስምህ ማን ነው?</string>
+	<key>onboarding.name.title</key>
+	<string>ስሌት መሥራት ይህን ያህል አስደሳች ሆኖ አያውቅም!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>ለመጀመር ርዕስ ምረጥ።</string>
+	<key>onboarding.subject.title</key>
+	<string>ምን መማር ትፈልጋለህ?</string>
+	<key>options.capAt30.info</key>
+	<string>እያንዳንዱ ደረጃ እስከ 50 የሚደርስ የዋንጫ ግብ አለው። ይህ አማራጭ ከበራ፣ ግቡን ስትደርስ ጨዋታው በራሱ ይጠናቀቃል።</string>
+	<key>options.capAt30.title</key>
+	<string>ግቡ ላይ ጨርስ</string>
+	<key>options.helperMode.info</key>
+	<string>በረዳት ሁነታ ትክክለኛው መልስ ሁልጊዜ በአረንጓዴ ይታያል። በዚህ ሁነታ የሚገኙ ዋንጫዎች ለብቻቸው ተቆጥረው በኮከብ ይለያሉ።</string>
+	<key>options.helperMode.title</key>
+	<string>ረዳት ሁነታ</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ሁልጊዜ በ3 ሕይወቶች ትጀምራለህ። ሕይወቶችህ ሲያልቁ ጨዋታው ይጠናቀቃል። ሕይወቶችህ ካለቁ በኋላም ለመጫወትና ለመለማመድ ይህን አማራጭ አብራ።</string>
+	<key>options.unlimitedLives.title</key>
+	<string>ያልተገደቡ ሕይወቶች</string>
+	<key>parentGate.approved</key>
+	<string>ጸድቋል</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ሙከራዎች፦ %1$lld ከ%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ን ለ%lld ሰከንድ ተጭነው ይያዙ።</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ይያዙ፦ %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ን ለ%lld ሰከንድ ተጭነው ይያዙ። ከዚያ %@ን %lld ጊዜ ይንኩ።</string>
+	<key>parentGate.shape.circle</key>
+	<string>ክብ</string>
+	<key>parentGate.shape.diamond</key>
+	<string>አልማዝ</string>
+	<key>parentGate.shape.heart</key>
+	<string>ልብ</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ባለስድስት ጎን</string>
+	<key>parentGate.shape.plus</key>
+	<string>መደመር</string>
+	<key>parentGate.shape.square</key>
+	<string>ካሬ</string>
+	<key>parentGate.shape.star</key>
+	<string>ኮከብ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ሦስት ማዕዘን</string>
+	<key>parentGate.stepOne</key>
+	<string>ደረጃ 1 ከ2</string>
+	<key>parentGate.stepTwo</key>
+	<string>ደረጃ 2 ከ2</string>
+	<key>parentGate.subtitle</key>
+	<string>ትንንሽ ተጫዋቾችን ለመጠበቅ፣ ወደ ግዢው ከመቀጠል በፊት አንድ አዋቂ ይህን ማረጋገጫ ማጠናቀቅ አለበት።</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>አሁን %2$@ን %1$lld ጊዜ ይንኩ።</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>ንክኪዎች፦ %1$lld ከ%2$lld</string>
+	<key>parentGate.title</key>
+	<string>የአዋቂ ፈቃድ ያስፈልጋል</string>
+	<key>premium.availableAt %lld</key>
+	<string>ከ%lld ዋንጫዎች ጀምሮ ይገኛል</string>
+	<key>premium.availableFromStart</key>
+	<string>ከመጀመሪያው ይገኛል</string>
+	<key>premium.characterUnlocked</key>
+	<string>አዲስ ገጸ ባህሪ ተከፍቷል</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ተከፍቷል</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>%lld ዋንጫዎችን አግኝተሃል</string>
+	<key>premium.exclusiveBadge</key>
+	<string>ለPremium ብቻ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>ለPremium ብቻ</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>በፕሪሚየም ከ10ቱም እንስሳት ጋር ያለገደብ ትጫወታለህ።</string>
+	<key>premium.feature.animals.title</key>
+	<string>ሁሉንም እንስሳት ተጠቀም</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>ለመለማመድ ሁልጊዜ በቂ አዳዲስ ስሌቶች አሉ።</string>
+	<key>premium.feature.levels.title</key>
+	<string>በእያንዳንዱ ርዕስ 99 ደረጃዎች</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ያለምንም መቋረጥ ተጫወት።</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ማስታወቂያ የለም</string>
+	<key>premium.oneTime</key>
+	<string>የአንድ ጊዜ ግዢ። ለዘላለም ያንተ።</string>
+	<key>premium.restore</key>
+	<string>ግዢዎችን መልስ</string>
+	<key>premium.start</key>
+	<string>ጀምር</string>
+	<key>premium.storeUnavailable</key>
+	<string>መደብሩ አሁን አይገኝም። እባክዎ ቆይተው እንደገና ይሞክሩ።</string>
+	<key>premium.unlock</key>
+	<string>ፕሪሚየምን ክፈት</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>ፕሪሚየምን ክፈት · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>በዋንጫዎች ክፈት</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>በPremium ተከፍቷል</string>
+	<key>premium.youHavePremium</key>
+	<string>ፕሪሚየም አለህ!</string>
+	<key>settings.character</key>
+	<string>ገጸ ባሕሪ</string>
+	<key>settings.characterInfo</key>
+	<string>እያንዳንዱ እንስሳ ለጨዋታው በሙሉ የራሱን የቀለም ገጽታ ያመጣል።</string>
+	<key>settings.customMinutes %lld</key>
+	<string>ብጁ፦ %lld ደቂቃ</string>
+	<key>settings.dailyGoal</key>
+	<string>የቀን ግብ</string>
+	<key>settings.goalInfo</key>
+	<string>የተከታታይ ቀን ግብ በቀን ከ5 ደቂቃ ይጀምራል። የሚቆጠረው ንቁ የጨዋታ ጊዜ ብቻ ነው።</string>
+	<key>settings.lives</key>
+	<string>ሕይወቶች</string>
+	<key>settings.livesInfo</key>
+	<string>በሦስት ሕይወቶች ሁነታ ከመጨረሻው ልብህ በኋላ ጨዋታው ያበቃል። ባልተገደበ ሁነታ ዋንጫዎች የሚቆጠሩት ሕይወት እስካለህ ብቻ ነው፤ ከዚያም መጫወትህን መቀጠል ትችላለህ።</string>
+	<key>settings.playGoals</key>
+	<string>የጨዋታ ግቦች</string>
+	<key>settings.premiumUnlocked</key>
+	<string>ፕሪሚየም ተከፍቷል። እናመሰግናለን!</string>
+	<key>settings.title</key>
+	<string>ቅንብሮች</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>የቀን ግብ ምረጥ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>የቀን ወይም የሳምንት ግብ ምረጥ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@፣ ከ%3$lld ደቂቃ %2$lld፣ %4$lld ቀናት በተከታታይ</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>የቀን ተከታታይነት፣ ከ%lld ደቂቃ %lld</string>
+	<key>streak.daily</key>
+	<string>የቀን ተከታታይነት</string>
+	<key>streak.dayOne</key>
+	<string>ቀን 1</string>
+	<key>tutorial.answerHint</key>
+	<string>መልሱን አታውቅም? ለማየት ጥያቄውን ንካ።</string>
+	<key>tutorial.complete</key>
+	<string>ጎበዝ! መማሪያውን ጨርሰሃል። አሁን ከፍተኛ ውጤት አምጣ!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ዋንጫ ለመሰብሰብ ትክክለኛው መልስ ላይ ዝለል።</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>ትክክለኛው መልስ በአረንጓዴ ታይቷል። አሁን ትክክለኛው መልስ ላይ ዝለል።</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ሦስት እጥፍ ዋንጫ ለማግኘት አሁን ትክክለኛው መልስ ላይ ዝለል።</string>
+	<key>tutorial.doubler.collect</key>
+	<string>አንድ ጊዜ ሦስት እጥፍ ዋንጫ ለማግኘት የ×3 ሳንቲምን ውሰድ።</string>
+	<key>tutorial.lifePickup</key>
+	<string>ሕይወቶችን ለመመለስ ግማሽ ወይም ሙሉ ሕይወት ማግኘት ትችላለህ።</string>
+	<key>tutorial.minusOne</key>
+	<string>−1ን ራቅ። አንድ ዋንጫ ያሳጣሃል።</string>
+	<key>tutorial.move</key>
+	<string>ወደ ግራና ቀኝ ለመሄድ መሣሪያህን አንቀሳቅስ። ከማያው ጎኖች አልፈህም መሄድ ትችላለህ።</string>
+	<key>tutorial.platforms</key>
+	<string>ወደ ላይ ለመውጣት መድረኮቹ ላይ ዝለል።</string>
+	<key>tutorial.scoreHint</key>
+	<string>የዚህ ደረጃ ውጤትህ እዚህ ይታያል።</string>
+	<key>tutorial.star</key>
+	<string>የተሳሳቱ መልሶችን ለመተኮስ ወደ ኮከቡ ዝለል።</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>የተሳሳተ መልስ ከመረጥክ፣ ከሦስቱ ሕይወቶችህ አንዱን ታጣለህ። አሁን ሞክረው።</string>
+</dict>
+</plist>

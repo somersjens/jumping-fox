@@ -864,7 +864,13 @@ struct ContentView: View {
 
                 // Streak lives to the right, capped to about a third of the row.
                 CompactStreakView(accent: character.deepColor) {
-                    showGoalPicker = true
+                    // The first tap on the streak is a natural, low-pressure
+                    // moment to ask about reminders. The goal picker opens only
+                    // after the prompt is answered, so they never fight for the
+                    // screen; every later tap opens it immediately.
+                    NotificationManager.shared.requestAuthorizationOnStreakTap {
+                        showGoalPicker = true
+                    }
                 }
                 // Fixed width per idiom; the module centres itself vertically in
                 // the row (which is `.center`-aligned), so its height no longer

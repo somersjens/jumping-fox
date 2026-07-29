@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>වලහා</string>
+	<key>character.bunny</key>
+	<string>හාවා</string>
+	<key>character.crab</key>
+	<string>කකුළුවා</string>
+	<key>character.dog</key>
+	<string>බල්ලා</string>
+	<key>character.elephant</key>
+	<string>අලියා</string>
+	<key>character.fox</key>
+	<string>නරියා</string>
+	<key>character.frog</key>
+	<string>ගෙම්බා</string>
+	<key>character.lion</key>
+	<string>සිංහයා</string>
+	<key>character.octopus</key>
+	<string>බූවල්ලා</string>
+	<key>character.penguin</key>
+	<string>පෙන්ගුවියා</string>
+	<key>character.pickerTitle</key>
+	<string>ඔබේ චරිතය තෝරන්න</string>
+	<key>common.back</key>
+	<string>ආපසු</string>
+	<key>common.cancel</key>
+	<string>අවලංගු</string>
+	<key>common.continue</key>
+	<string>ඉදිරියට</string>
+	<key>common.done</key>
+	<string>හරි</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld මිනි</string>
+	<key>common.save</key>
+	<string>සුරකින්න</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>සංවර්ධක මාදිලිය විවෘත කිරීමට තත්පර 2ක් ඔබාගෙන සිටින්න.</string>
+	<key>developerMode.title</key>
+	<string>සංවර්ධක මාදිලිය</string>
+	<key>filter.addition</key>
+	<string>එකතු කිරීම</string>
+	<key>filter.fractions</key>
+	<string>භාග</string>
+	<key>filter.mixed</key>
+	<string>සුපිරි මිශ්‍රණය</string>
+	<key>filter.percentages</key>
+	<string>ප්‍රතිශත</string>
+	<key>filter.subtraction</key>
+	<string>අඩු කිරීම</string>
+	<key>filter.tables</key>
+	<string>ගුණන වගු</string>
+	<key>game.accessibility.mix</key>
+	<string>මිශ්‍රණය</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld න් %lld</string>
+	<key>game.encouragement.0</key>
+	<string>හොඳ උත්සාහයක්</string>
+	<key>game.encouragement.1</key>
+	<string>හොඳ ආරම්භයක්</string>
+	<key>game.encouragement.2</key>
+	<string>දිගටම පුහුණු වන්න</string>
+	<key>game.encouragement.3</key>
+	<string>නරකම නැහැ</string>
+	<key>game.encouragement.4</key>
+	<string>හොඳට කරනවා</string>
+	<key>game.encouragement.5</key>
+	<string>ලස්සන දක්ෂතාවක්</string>
+	<key>game.encouragement.6</key>
+	<string>හොඳට කළා</string>
+	<key>game.encouragement.7</key>
+	<string>ඉතා හොඳට කළා</string>
+	<key>game.encouragement.8</key>
+	<string>අවසානය පේනවා</string>
+	<key>game.encouragement.9</key>
+	<string>තව ටිකයි</string>
+	<key>game.end.completionSubtitle</key>
+	<string>හැම ලකුණක්ම ඔබ උපයාගත්තා.</string>
+	<key>game.end.completionSuffix</key>
+	<string>සම්පූර්ණයි!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ක්‍රීඩාව අවසන්</string>
+	<key>game.end.mainMenu</key>
+	<string>ප්‍රධාන මෙනුව</string>
+	<key>game.end.playAgain</key>
+	<string>නැවත ක්‍රීඩා කරන්න</string>
+	<key>game.highScore</key>
+	<string>ඉහළම ලකුණු</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ප්‍රධාන මෙනුවට ආපසු</string>
+	<key>game.intro.continue</key>
+	<string>දිගටම ක්‍රීඩා කරන්න</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ඔබ %lld සිට ඉදිරියට යයි</string>
+	<key>game.intro.helperBullet</key>
+	<string>උදව්ව ක්‍රියාත්මක නිසා නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. ඒ නිසා කුසලාන * සමඟ වෙනම ගණන් කරයි.</string>
+	<key>game.intro.helperOff</key>
+	<string>උදව්ව අක්‍රියයි</string>
+	<key>game.intro.helperOn</key>
+	<string>උදව්ව ක්‍රියාත්මකයි</string>
+	<key>game.intro.howItWorks</key>
+	<string>මේ මට්ටම ක්‍රියා කරන හැටි</string>
+	<key>game.intro.livesOff</key>
+	<string>ජීවිත අක්‍රියයි</string>
+	<key>game.intro.livesOn</key>
+	<string>ජීවිත ක්‍රියාත්මකයි</string>
+	<key>game.intro.scorePaused</key>
+	<string>ඔබේ දැන් ලකුණු නවතයි.</string>
+	<key>game.intro.start</key>
+	<string>මට්ටම අරඹන්න</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ 1 සිට 12 දක්වා අංකයකින් ගුණ කරන්න.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>හෝ අඩු</string>
+	<key>game.intro.tapToContinue</key>
+	<string>ඉදිරියට යන්න ඕනෑම තැනක් තට්ටු කරන්න</string>
+	<key>game.intro.tapToStart</key>
+	<string>අරඹන්න ඕනෑම තැනක් තට්ටු කරන්න</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>නිවැරදි පිළිතුරකට |1| කුසලානයක් උපයන්න, වැඩිම |%lld| දක්වා.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ජීවිත ඉවර වූ පසු තවත් කුසලාන උපයන්න බැහැ.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ලකුණු පුවරුවේ උපරිම කුසලාන ගණන ලැබුණා</string>
+	<key>game.status.mixMode</key>
+	<string>මිශ්‍ර මාදිලිය</string>
+	<key>game.status.scoreLocked</key>
+	<string>ජීවිත ඉවර වූ පසු කුසලාන ගණන් නොවේ</string>
+	<key>game.streak.subtitle</key>
+	<string>කුසලාන ×2</string>
+	<key>game.streak.title</key>
+	<string>පේළියට 5ක්!</string>
+	<key>goal.period</key>
+	<string>ඉලක්ක කාලය</string>
+	<key>goal.promptDaily</key>
+	<string>දිනකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?</string>
+	<key>goal.promptWeekly</key>
+	<string>සතියකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?</string>
+	<key>goal.title</key>
+	<string>ක්‍රීඩා ඉලක්කය</string>
+	<key>goalPeriod.daily</key>
+	<string>දිනපතා</string>
+	<key>goalPeriod.weekly</key>
+	<string>සතිපතා</string>
+	<key>info.filter.addition</key>
+	<string>එකතු කිරීම පමණයි</string>
+	<key>info.filter.fractions</key>
+	<string>බෙදීම පමණයි</string>
+	<key>info.filter.header</key>
+	<string>ගණන් වර්ග</string>
+	<key>info.filter.mixed</key>
+	<string>මිශ්‍ර ගණන්</string>
+	<key>info.filter.percentages</key>
+	<string>ප්‍රතිශත පමණයි</string>
+	<key>info.filter.subtraction</key>
+	<string>අඩු කිරීම පමණයි</string>
+	<key>info.filter.tables</key>
+	<string>ගුණ කිරීම පමණයි</string>
+	<key>info.mode.fractions.header</key>
+	<string>කොටස්</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>එකක් සහ කොටස් කිහිපයක්</string>
+	<key>info.mode.fractions.single</key>
+	<string>හැමවිටම එක කොටසක්</string>
+	<key>info.mode.header</key>
+	<string>පිළිවෙළ</string>
+	<key>info.mode.mixed</key>
+	<string>පහළ මට්ටම් සමඟ මිශ්‍ර</string>
+	<key>info.mode.order</key>
+	<string>නියමිත පිළිවෙළ</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>දශම අංක සමඟ</string>
+	<key>info.mode.percentages.header</key>
+	<string>වර්ගය</string>
+	<key>info.mode.percentages.whole</key>
+	<string>දශම අංක නැතිව</string>
+	<key>info.mode.random</key>
+	<string>අහඹු පිළිවෙළ</string>
+	<key>info.super.all</key>
+	<string>එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම, බෙදීම සහ ප්‍රතිශත</string>
+	<key>info.super.basic</key>
+	<string>එකතු කිරීම සහ අඩු කිරීම</string>
+	<key>info.super.fraction</key>
+	<string>එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම සහ බෙදීම</string>
+	<key>info.super.times</key>
+	<string>එකතු කිරීම, අඩු කිරීම සහ ගුණ කිරීම</string>
+	<key>language.select</key>
+	<string>භාෂාව තෝරන්න</string>
+	<key>lives.three</key>
+	<string>ජීවිත 3ක්</string>
+	<key>lives.unlimited</key>
+	<string>අසීමිත</string>
+	<key>menu.accessibility.character</key>
+	<string>චරිතය</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>ඔබේ චරිතය වෙනස් කිරීමට තට්ටු කරන්න; පිළිගැනීමේ තිරයෙන් නැවත අරඹන්න තත්පර දෙකක් ඔබාගෙන සිටින්න.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ තෝරන්න</string>
+	<key>menu.maxScore</key>
+	<string>උපරිම 30</string>
+	<key>menu.maximumCount</key>
+	<string>උපරිම</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>උපරිමයට %lld වරක් ළඟා වුණා</string>
+	<key>menu.moreLevels</key>
+	<string>තවත් මට්ටම්</string>
+	<key>menu.options</key>
+	<string>ක්‍රීඩා විකල්ප</string>
+	<key>menu.premium</key>
+	<string>ප්‍රීමියම්</string>
+	<key>menu.premiumTables</key>
+	<string>ප්‍රීමියම් ගුණන වගු</string>
+	<key>menu.startHere</key>
+	<string>මෙතැනින් අරඹන්න</string>
+	<key>menu.unlockWithPremium</key>
+	<string>ප්‍රීමියම් සමඟ තවත් විවෘත කරන්න</string>
+	<key>mode.fractions.multiple</key>
+	<string>කිහිපයක්</string>
+	<key>mode.fractions.single</key>
+	<string>එකක්</string>
+	<key>mode.mix</key>
+	<string>මිශ්‍ර</string>
+	<key>mode.mixed</key>
+	<string>මිශ්‍රිත</string>
+	<key>mode.order</key>
+	<string>පිළිවෙළ</string>
+	<key>mode.percentages.decimal</key>
+	<string>දශම</string>
+	<key>mode.percentages.whole</key>
+	<string>පූර්ණ</string>
+	<key>mode.random</key>
+	<string>අහඹු</string>
+	<key>mode.standard</key>
+	<string>සාමාන්‍ය</string>
+	<key>modeIntro.addition.intro</key>
+	<string>ඔබට ලැබෙන්නේ |එකතු කිරීමේ| ගණන් පමණයි.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>ඔබ වෙනත් අංකයකට %lld |හෝ අඩු| එකතු කරයි.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ඔබ හැමවිටම %lld |ආරෝහණ| පිළිවෙළට එකතු කරයි.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ඔබ හැමවිටම |අහඹු| අංකයකට %lld එකතු කරයි.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>එකතු කිරීම · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>අංක දෙක බැගින් එකතු කරන්න.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>පිළිතුර වැඩිම %lldයි.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld දක්වා එකතු කරන්න</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>ඔබට ලැබෙන්නේ |භාග| ගණන් පමණයි.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>මේ මට්ටමේ සහ |පෙර මට්ටම්වල| භාග ලැබේ.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>සමාන කොටස් %lldකින් හැමවිටම |1 කොටසක්| ගන්න.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld සහ පෙර මට්ටම්වල වටකුරු අංකවල භාග ගණනය කරන්න.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>අංක වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld දක්වා භාග</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>සමාන කොටස් %lldකින් එකක් හෝ |කොටස් කිහිපයක්| ගන්න.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>භාග · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>පූර්ණයක කොටසක් ගණනය කර භාග සමාන කරන්න.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>එකම හරය ඇති භාග එකතු කර අඩු කරන්න.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>මිශ්‍ර භාග</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>ඔබට ලැබෙන්නේ |ප්‍රතිශත| ගණන් පමණයි.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>මේ මට්ටමේ සහ |පෙර මට්ටම්වල| ප්‍රතිශත ලැබේ.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |පූර්ණ අංකයක්| වේ.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld දක්වා වටකුරු අංකවල ප්‍රතිශත ගණනය කරන්න.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>ප්‍රමාණ වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld දක්වා ප්‍රතිශත</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |දශමයක්| විය හැක.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ ගණනය කරන්න</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>අංකයක ප්‍රතිශතයක් ගණනය කරන්න.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>ප්‍රතිශත සහ භාග එකිනෙකට හරවන්න.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>මිශ්‍ර ප්‍රතිශත</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>ඔබට ලැබෙන්නේ |අඩු කිරීමේ| ගණන් පමණයි.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>ඔබ වෙනත් අංකයකින් %lld |හෝ අඩු| අඩු කරයි.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ඔබ හැමවිටම %lld |අවරෝහණ| පිළිවෙළට අඩු කරයි.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ඔබ හැමවිටම |අහඹු| අංකයකින් %lld අඩු කරයි.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>අඩු කිරීම · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>පළමු අංකය වැඩිම %lldයි.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>පිළිතුර බිංදුවට වඩා අඩු විය හැක.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>බිංදුවට පහළ</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld දක්වා අඩු කරන්න</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>අංක දෙක බැගින් අඩු කරන්න.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>තෝරාගත් එක් එක් වර්ගයේ අපහසුතාව |මට්ටම %lld| දක්වා වැඩි විය හැක.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>එකතු කිරීම, අඩු කිරීම, ගුණන වගු, භාග සහ ප්‍රතිශත මිශ්‍රව පුහුණු වන්න.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>එකතු කිරීම සහ අඩු කිරීම මිශ්‍රව පුහුණු වන්න.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>එකතු කිරීම, අඩු කිරීම, ගුණන වගු සහ භාග මිශ්‍රව පුහුණු වන්න.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>එකතු කිරීම, අඩු කිරීම සහ ගුණන වගු මිශ්‍රව පුහුණු වන්න.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>ඔබට ලැබෙන්නේ |ගුණ කිරීමේ| ගණන් පමණයි.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld දක්වා| සියලු ගුණන වගු මිශ්‍රව ලැබේ.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>එක් එක් වගුව |1 සිට 12| දක්වා අංකයකින් ගුණ කරන්න.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld ගුණන වගුව |ආරෝහණ| පිළිවෙළට ලැබේ.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld ගුණන වගුව |අහඹු| පිළිවෙළට ලැබේ.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld ගුණන වගුව</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld සිට %lld දක්වා ගුණන වගු මිශ්‍රව පුහුණු වන්න.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ගුණන වගු %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ඔබේ නම</string>
+	<key>name.whatsYourName</key>
+	<string>ඔබේ නම මොකක්ද?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>විවිධ මිශ්‍ර ගණන් එකට.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>දැනටමත් හොඳයි</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>පිළිවෙළට ගණන් පුහුණු වන්න.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>දැන් පටන් ගත්තා</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>අහඹු පිළිවෙළේ ගණන්.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ටිකක් පුහුණු වෙලා</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ සඳහා ආරම්භක තැනක් තෝරන්න.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>මේ මාතෘකාව</string>
+	<key>onboarding.level.title</key>
+	<string>මේක දැනටමත් කොච්චර හොඳට පුළුවන්ද?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>අපි පටන් ගමු. ඔබේ නම මොකක්ද?</string>
+	<key>onboarding.name.title</key>
+	<string>ගණන් හදන එක මෙතරම් විනෝද වෙලා නැහැ!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>පටන් ගන්න මාතෘකාවක් තෝරන්න.</string>
+	<key>onboarding.subject.title</key>
+	<string>ඔබ ඉගෙනගන්න කැමති මොනවාද?</string>
+	<key>options.capAt30.info</key>
+	<string>එක් එක් මට්ටමේ කුසලාන ඉලක්කය 50 දක්වා වේ. මෙය ක්‍රියාත්මක නම් ඉලක්කයට ළඟා වූ විට ක්‍රීඩාව ස්වයංක්‍රීයව අවසන් වේ.</string>
+	<key>options.capAt30.title</key>
+	<string>ඉලක්කයේදී අවසන් කරන්න</string>
+	<key>options.helperMode.info</key>
+	<string>උදව් මාදිලියේ නිවැරදි පිළිතුර හැමවිටම කොළ පාටින් පෙන්වයි. මෙහි උපයන කුසලාන වෙනම ගණන් කර තරුවකින් සලකුණු කරයි.</string>
+	<key>options.helperMode.title</key>
+	<string>උදව් මාදිලිය</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ඔබ හැමවිටම ජීවිත 3කින් පටන් ගනී. ජීවිත ඉවර වූ විට ක්‍රීඩාව අවසන් වේ. ජීවිත ඉවර වූ පසුත් ක්‍රීඩා කර පුහුණු වීමට මෙය ක්‍රියාත්මක කරන්න.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>අසීමිත ජීවිත</string>
+	<key>parentGate.approved</key>
+	<string>අනුමතයි</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>උත්සාහ: %1$lld න් %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ තත්පර %lldක් ඔබාගෙන සිටින්න.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ඔබාගෙන සිටින්න: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ තත්පර %lldක් ඔබාගෙන සිටින්න. ඉන්පසු %@ %lld වරක් තට්ටු කරන්න.</string>
+	<key>parentGate.shape.circle</key>
+	<string>වෘත්තය</string>
+	<key>parentGate.shape.diamond</key>
+	<string>දියමන්තිය</string>
+	<key>parentGate.shape.heart</key>
+	<string>හදවත</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ෂඩාස්‍රය</string>
+	<key>parentGate.shape.plus</key>
+	<string>එකතු ලකුණ</string>
+	<key>parentGate.shape.square</key>
+	<string>චතුරස්‍රය</string>
+	<key>parentGate.shape.star</key>
+	<string>තරුව</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ත්‍රිකෝණය</string>
+	<key>parentGate.stepOne</key>
+	<string>පියවර 1 / 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>පියවර 2 / 2</string>
+	<key>parentGate.subtitle</key>
+	<string>කුඩා ක්‍රීඩකයන් ආරක්ෂා කිරීමට, මිලදී ගැනීමට පෙර වැඩිහිටියෙකු මේ පරීක්ෂාව සම්පූර්ණ කළ යුතුය.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>දැන් %2$@ %1$lld වරක් තට්ටු කරන්න.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>තට්ටු: %1$lld න් %2$lld</string>
+	<key>parentGate.title</key>
+	<string>වැඩිහිටි අනුමැතිය අවශ්‍යයි</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>ප්‍රීමියම් සමඟ සතුන් 10 දෙනාම නිදහසේ භාවිතා කළ හැක.</string>
+	<key>premium.feature.animals.title</key>
+	<string>සියලු සතුන්ට ප්‍රවේශය</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>පුහුණු වීමට හැමවිටම අලුත් ගණන් ඇති තරම්.</string>
+	<key>premium.feature.levels.title</key>
+	<string>මාතෘකාවකට මට්ටම් 99ක්</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>කිසිදු බාධාවක් නැතිව ක්‍රීඩා කරන්න.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>දැන්වීම් නැහැ</string>
+	<key>premium.oneTime</key>
+	<string>එක් වරක් ගන්න. සදහටම ඔබේ.</string>
+	<key>premium.restore</key>
+	<string>මිලදී ගැනීම් ප්‍රතිස්ථාපනය කරන්න</string>
+	<key>premium.storeUnavailable</key>
+	<string>වෙළඳසැල දැන් ලබාගත නොහැක. පසුව නැවත උත්සාහ කරන්න.</string>
+	<key>premium.unlock</key>
+	<string>ප්‍රීමියම් විවෘත කරන්න</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>ප්‍රීමියම් විවෘත කරන්න · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>ඔබට ප්‍රීමියම් තියෙනවා!</string>
+	<key>settings.character</key>
+	<string>චරිතය</string>
+	<key>settings.characterInfo</key>
+	<string>සෑම සතෙකුම මුළු ක්‍රීඩාවටම තමන්ගේම වර්ණ තේමාවක් දෙයි.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>අභිරුචි: මිනි %lld</string>
+	<key>settings.dailyGoal</key>
+	<string>දිනපතා ඉලක්කය</string>
+	<key>settings.goalInfo</key>
+	<string>අඛණ්ඩ ඉලක්කය දිනකට මිනිත්තු 5කින් පටන් ගනී. ක්‍රියාකාරී ක්‍රීඩා කාලය පමණක් ගණන් වේ.</string>
+	<key>settings.lives</key>
+	<string>ජීවිත</string>
+	<key>settings.livesInfo</key>
+	<string>ජීවිත තුනක් තිබේ නම් අවසාන හදවතෙන් පසු ක්‍රීඩාව අවසන් වේ. අසීමිත මාදිලියේ ජීවිත තිබෙන තුරු පමණක් කුසලාන ගණන් වේ; ඉන්පසුත් ක්‍රීඩා කළ හැක.</string>
+	<key>settings.playGoals</key>
+	<string>ක්‍රීඩා ඉලක්ක</string>
+	<key>settings.premiumUnlocked</key>
+	<string>ප්‍රීමියම් විවෘතයි. ස්තුතියි!</string>
+	<key>settings.title</key>
+	<string>සැකසුම්</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>දිනපතා ඉලක්කයක් තෝරන්න</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>දිනපතා හෝ සතිපතා ඉලක්කයක් තෝරන්න</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, මිනිත්තු %2$lld / %3$lld, දින %4$lldක් පේළියට</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>දිනපතා අඛණ්ඩය, මිනිත්තු %lld / %lld</string>
+	<key>streak.daily</key>
+	<string>දිනපතා අඛණ්ඩය</string>
+	<key>streak.dayOne</key>
+	<string>දින 1</string>
+	<key>tutorial.answerHint</key>
+	<string>පිළිතුර දන්නේ නැද්ද? බලන්න ගණන තට්ටු කරන්න.</string>
+	<key>tutorial.complete</key>
+	<string>හොඳට කළා! පුහුණු පාඩම ඉවරයි. දැන් ඉහළම ලකුණු ගන්න!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>කුසලානයක් ගන්න නිවැරදි පිළිතුර මතට පනින්න.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. දැන් එය මතට පනින්න.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>තුන් ගුණයක කුසලාන ගන්න නිවැරදි පිළිතුර මතට පනින්න.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>එක් වරක් තුන් ගුණයක කුසලාන ගන්න ×3 කාසිය අරගන්න.</string>
+	<key>tutorial.lifePickup</key>
+	<string>ජීවිත නැවත ගන්න අර්ධ ජීවිතයක් හෝ පූර්ණ ජීවිතයක් සොයාගත හැක.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 එකෙන් වළකින්න. එය කුසලානයක් අඩු කරයි.</string>
+	<key>tutorial.move</key>
+	<string>වමට හා දකුණට යන්න උපාංගය හලවන්න. තිරයේ පැති හරහාත් යන්න පුළුවන්.</string>
+	<key>tutorial.platforms</key>
+	<string>ඉහළට යන්න වේදිකා මතට පනින්න.</string>
+	<key>tutorial.scoreHint</key>
+	<string>මේ මට්ටමේ ඔබේ ලකුණු මෙතැන පෙන්වයි.</string>
+	<key>tutorial.star</key>
+	<string>වැරදි පිළිතුරු ඉවත් කරන්න තරුව තුළට පනින්න.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>වැරදි පිළිතුරක් තෝරන විට ජීවිත තුනෙන් එකක් අහිමි වේ. දැන් උත්සාහ කරන්න.</string>
+</dict>
+</plist>

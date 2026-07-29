@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Medve</string>
+	<key>character.bunny</key>
+	<string>Nyuszi</string>
+	<key>character.crab</key>
+	<string>Rák</string>
+	<key>character.dog</key>
+	<string>Kutya</string>
+	<key>character.elephant</key>
+	<string>Elefánt</string>
+	<key>character.fox</key>
+	<string>Róka</string>
+	<key>character.frog</key>
+	<string>Béka</string>
+	<key>character.lion</key>
+	<string>Oroszlán</string>
+	<key>character.octopus</key>
+	<string>Polip</string>
+	<key>character.penguin</key>
+	<string>Pingvin</string>
+	<key>character.pickerTitle</key>
+	<string>Válassz figurát</string>
+	<key>common.back</key>
+	<string>Vissza</string>
+	<key>common.cancel</key>
+	<string>Mégse</string>
+	<key>common.continue</key>
+	<string>Tovább</string>
+	<key>common.done</key>
+	<string>Kész</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld perc</string>
+	<key>common.save</key>
+	<string>Mentés</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Tartsd nyomva 2 másodpercig a fejlesztői mód megnyitásához.</string>
+	<key>developerMode.title</key>
+	<string>Fejlesztői mód</string>
+	<key>filter.addition</key>
+	<string>Összeadás</string>
+	<key>filter.fractions</key>
+	<string>Törtek</string>
+	<key>filter.mixed</key>
+	<string>Szupermix</string>
+	<key>filter.percentages</key>
+	<string>Százalékok</string>
+	<key>filter.subtraction</key>
+	<string>Kivonás</string>
+	<key>filter.tables</key>
+	<string>Szorzótáblák</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld / %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Szép próbálkozás</string>
+	<key>game.encouragement.1</key>
+	<string>Ez már valami</string>
+	<key>game.encouragement.2</key>
+	<string>Gyakorolj tovább</string>
+	<key>game.encouragement.3</key>
+	<string>Egyáltalán nem rossz</string>
+	<key>game.encouragement.4</key>
+	<string>Jól haladsz</string>
+	<key>game.encouragement.5</key>
+	<string>Szép teljesítmény</string>
+	<key>game.encouragement.6</key>
+	<string>Ügyes voltál</string>
+	<key>game.encouragement.7</key>
+	<string>Nagyon ügyes voltál</string>
+	<key>game.encouragement.8</key>
+	<string>Már látszik a cél</string>
+	<key>game.encouragement.9</key>
+	<string>Mindjárt megvagy</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Minden pontot megszereztél.</string>
+	<key>game.end.completionSuffix</key>
+	<string>kész!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Játék vége</string>
+	<key>game.end.mainMenu</key>
+	<string>Főmenü</string>
+	<key>game.end.playAgain</key>
+	<string>Újra</string>
+	<key>game.highScore</key>
+	<string>Rekord</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Vissza a főmenübe</string>
+	<key>game.intro.continue</key>
+	<string>Folytatás</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Innen folytatod: %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>A helyes válasz zöld, mert a segítség be van kapcsolva. A trófeákat ezért külön, * jellel számoljuk.</string>
+	<key>game.intro.helperOff</key>
+	<string>Segítség ki</string>
+	<key>game.intro.helperOn</key>
+	<string>Segítség be</string>
+	<key>game.intro.howItWorks</key>
+	<string>Így működik ez a szint</string>
+	<key>game.intro.livesOff</key>
+	<string>Életek ki</string>
+	<key>game.intro.livesOn</key>
+	<string>Életek be</string>
+	<key>game.intro.scorePaused</key>
+	<string>A jelenlegi pontszámod megmarad.</string>
+	<key>game.intro.start</key>
+	<string>Szint indítása</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Szorozd meg a(z) %@%@ értéket egy 1 és 12 közötti számmal.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>vagy kisebb</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Koppints bárhová a folytatáshoz</string>
+	<key>game.intro.tapToStart</key>
+	<string>Koppints bárhová a kezdéshez</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Minden helyes válaszért |1| trófeát kapsz, legfeljebb |%lld|-et.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Ha elfogynak az életeid, több trófeát már nem szerezhetsz.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Elérted a ranglistán számító trófeák maximumát</string>
+	<key>game.status.mixMode</key>
+	<string>MIX MÓD</string>
+	<key>game.status.scoreLocked</key>
+	<string>Ha elfogynak az életeid, a trófeák már nem számítanak</string>
+	<key>game.streak.subtitle</key>
+	<string>Trófeák ×2</string>
+	<key>game.streak.title</key>
+	<string>5 egymás után!</string>
+	<key>goal.period</key>
+	<string>Cél időszaka</string>
+	<key>goal.promptDaily</key>
+	<string>Hány percet szeretnél játszani naponta?</string>
+	<key>goal.promptWeekly</key>
+	<string>Hány percet szeretnél játszani hetente?</string>
+	<key>goal.title</key>
+	<string>Játékcél</string>
+	<key>goalPeriod.daily</key>
+	<string>Naponta</string>
+	<key>goalPeriod.weekly</key>
+	<string>Hetente</string>
+	<key>info.filter.addition</key>
+	<string>Csak összeadás</string>
+	<key>info.filter.fractions</key>
+	<string>Csak osztás</string>
+	<key>info.filter.header</key>
+	<string>Feladattípusok</string>
+	<key>info.filter.mixed</key>
+	<string>Vegyes műveletek</string>
+	<key>info.filter.percentages</key>
+	<string>Csak százalékok</string>
+	<key>info.filter.subtraction</key>
+	<string>Csak kivonás</string>
+	<key>info.filter.tables</key>
+	<string>Csak szorzás</string>
+	<key>info.mode.fractions.header</key>
+	<string>Részek</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Egy vagy több rész</string>
+	<key>info.mode.fractions.single</key>
+	<string>Mindig egy rész</string>
+	<key>info.mode.header</key>
+	<string>Sorrend</string>
+	<key>info.mode.mixed</key>
+	<string>Alsóbb szintekkel vegyesen</string>
+	<key>info.mode.order</key>
+	<string>Rögzített sorrend</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Tizedes számokkal</string>
+	<key>info.mode.percentages.header</key>
+	<string>Típus</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Tizedes számok nélkül</string>
+	<key>info.mode.random</key>
+	<string>Véletlen sorrend</string>
+	<key>info.super.all</key>
+	<string>Összeadás, kivonás, szorzás, osztás és százalékok</string>
+	<key>info.super.basic</key>
+	<string>Összeadás és kivonás</string>
+	<key>info.super.fraction</key>
+	<string>Összeadás, kivonás, szorzás és osztás</string>
+	<key>info.super.times</key>
+	<string>Összeadás, kivonás és szorzás</string>
+	<key>language.select</key>
+	<string>Válassz nyelvet</string>
+	<key>lives.three</key>
+	<string>3 élet</string>
+	<key>lives.unlimited</key>
+	<string>Korlátlan</string>
+	<key>menu.accessibility.character</key>
+	<string>Figura</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Koppints a figurád megváltoztatásához; tartsd nyomva két másodpercig, hogy újrakezdd az üdvözlőképernyőn.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Válaszd ezt: %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>A maximumot %lld alkalommal érted el</string>
+	<key>menu.moreLevels</key>
+	<string>További szintek</string>
+	<key>menu.options</key>
+	<string>Játékbeállítások</string>
+	<key>menu.premium</key>
+	<string>Prémium</string>
+	<key>menu.premiumTables</key>
+	<string>Prémium táblák</string>
+	<key>menu.startHere</key>
+	<string>Kezdd itt</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Nyiss meg többet Prémiummal</string>
+	<key>mode.fractions.multiple</key>
+	<string>Több</string>
+	<key>mode.fractions.single</key>
+	<string>Egy</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Vegyes</string>
+	<key>mode.order</key>
+	<string>Sorrend</string>
+	<key>mode.percentages.decimal</key>
+	<string>Tizedes</string>
+	<key>mode.percentages.whole</key>
+	<string>Egész</string>
+	<key>mode.random</key>
+	<string>Véletlen</string>
+	<key>mode.standard</key>
+	<string>Normál</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Csak |összeadási| feladatokat kapsz.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Egy másik számhoz %lld-et |vagy kevesebbet| adsz.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Mindig %lld-et adsz hozzá |növekvő| sorrendben.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Mindig %lld-et adsz egy |véletlen| számhoz.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Összeadás · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Mindig két számot adj össze.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Az eredmény legfeljebb %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Összeadás %lld-ig</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Csak |törtes| feladatokat kapsz.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Erről és a |korábbi szintekről| kapsz törteket.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Mindig |1 részt| veszel %lld egyenlő részből.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Számold ki kerek számok törtrészét a(z) %lld. és korábbi szintekről.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>A számok kerekek maradnak, így az eredmények mindig egészek.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Törtek %lld-ig</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Egy vagy |több részt| veszel %lld egyenlő részből.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Törtek · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Számold ki egy egész részét, és alakíts egyenlővé törteket.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Add össze és vond ki az azonos nevezőjű törteket.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Vegyes törtek</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Csak |százalékos| feladatokat kapsz.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Erről és a |korábbi szintekről| kapsz százalékokat.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Mindig %@ értékét számolod ki, az eredmény pedig |egész szám|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Számold ki kerek számok százalékát %lld-ig.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>A mennyiségek kerekek maradnak, így az eredmények mindig egészek.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Százalékok %lld-ig</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Mindig %@ értékét számolod ki, az eredmény pedig |tizedes szám| is lehet.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Számold ki: %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Számold ki egy szám százalékát.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Válts át százalékok és törtek között.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Vegyes százalékok</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Csak |kivonási| feladatokat kapsz.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Egy másik számból %lld-et |vagy kevesebbet| vonsz ki.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Mindig %lld-et vonsz ki |csökkenő| sorrendben.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Mindig %lld-et vonsz ki egy |véletlen| számból.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Kivonás · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Az első szám legfeljebb %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Az eredmény nulla alá is mehet.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Nulla alatt</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Kivonás %lld-ig</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Mindig két számot vonj ki egymásból.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>A nehézség minden kiválasztott témában legfeljebb a(z) |%lld. szintig| nőhet.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Gyakorold vegyesen az összeadást, kivonást, szorzótáblákat, törteket és százalékokat.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Szupermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Gyakorold vegyesen az összeadást és a kivonást.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Szupermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Gyakorold vegyesen az összeadást, kivonást, szorzótáblákat és törteket.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Szupermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Gyakorold vegyesen az összeadást, kivonást és a szorzótáblákat.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Szupermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Csak |szorzási| feladatokat kapsz.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Az összes szorzótáblát |%lld-ig| vegyesen kapod.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Minden szorzótábla egy |1 és 12 közötti| számmal.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>A(z) %lld-es szorzótáblát |növekvő| sorrendben kapod.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>A(z) %lld-es szorzótáblát |véletlen| sorrendben kapod.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-es szorzótábla</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Gyakorold vegyesen a szorzótáblákat %lld-től %lld-ig.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Szorzótáblák %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>A neved</string>
+	<key>name.whatsYourName</key>
+	<string>Hogy hívnak?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Különböző vegyes feladatok együtt.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Már egész ügyes</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Gyakorlás sorrendben jövő feladatokkal.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Most kezdtem</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Feladatok véletlen sorrendben.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Már gyakoroltam</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Válassz kezdőpontot ehhez: %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ez a téma</string>
+	<key>onboarding.level.title</key>
+	<string>Mennyire vagy már ügyes ebben?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Kezdjünk hozzá! Hogy hívnak?</string>
+	<key>onboarding.name.title</key>
+	<string>A számolás még sosem volt ilyen jó móka!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Válassz egy témát a kezdéshez.</string>
+	<key>onboarding.subject.title</key>
+	<string>Mit szeretnél megtanulni?</string>
+	<key>options.capAt30.info</key>
+	<string>Minden szinten legfeljebb 50 trófea a cél. Ha ezt bekapcsolod, a játék automatikusan véget ér, amikor eléred.</string>
+	<key>options.capAt30.title</key>
+	<string>Befejezés a célnál</string>
+	<key>options.helperMode.info</key>
+	<string>Segítő módban a helyes válasz mindig zöld. Az itt szerzett trófeákat külön számoljuk, és csillaggal jelöljük.</string>
+	<key>options.helperMode.title</key>
+	<string>Segítő mód</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Mindig 3 élettel kezdesz. A játék véget ér, ha elfogynak az életeid. Kapcsold be, hogy utána is játszhass és gyakorolhass.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Korlátlan életek</string>
+	<key>parentGate.approved</key>
+	<string>Jóváhagyva</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Próbálkozások: %1$lld / %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Tartsd nyomva a(z) %@ jelet %lld másodpercig.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Nyomva: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Tartsd nyomva a(z) %@ jelet %lld másodpercig. Ezután koppints %4$lld-szer a(z) %3$@ jelre.</string>
+	<key>parentGate.shape.circle</key>
+	<string>kör</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombusz</string>
+	<key>parentGate.shape.heart</key>
+	<string>szív</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hatszög</string>
+	<key>parentGate.shape.plus</key>
+	<string>plusz</string>
+	<key>parentGate.shape.square</key>
+	<string>négyzet</string>
+	<key>parentGate.shape.star</key>
+	<string>csillag</string>
+	<key>parentGate.shape.triangle</key>
+	<string>háromszög</string>
+	<key>parentGate.stepOne</key>
+	<string>1. lépés a 2-ből</string>
+	<key>parentGate.stepTwo</key>
+	<string>2. lépés a 2-ből</string>
+	<key>parentGate.subtitle</key>
+	<string>A fiatal játékosok védelmében egy felnőttnek el kell végeznie ezt az ellenőrzést a vásárlás előtt.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Most koppints %1$lld-szer a(z) %2$@ jelre.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Koppintások: %1$lld / %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Felnőtt jóváhagyása szükséges</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld trófeától elérhető</string>
+	<key>premium.availableFromStart</key>
+	<string>Kezdettől elérhető</string>
+	<key>premium.characterUnlocked</key>
+	<string>ÚJ KARAKTER FELOLDVA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ feloldva</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Már %lld trófeád van</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Kizárólag Premiummal</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Kizárólag Premiummal</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Prémiummal mind a 10 állattal szabadon játszhatsz.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Minden állat elérhető</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Mindig van elég új feladat a gyakorláshoz.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 szint témánként</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Játssz teljesen megszakítás nélkül.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Nincsenek reklámok</string>
+	<key>premium.oneTime</key>
+	<string>Egyszeri vásárlás. Örökre a tiéd.</string>
+	<key>premium.restore</key>
+	<string>Vásárlások visszaállítása</string>
+	<key>premium.start</key>
+	<string>Kezdés</string>
+	<key>premium.storeUnavailable</key>
+	<string>Az áruház most nem érhető el. Próbáld újra később.</string>
+	<key>premium.unlock</key>
+	<string>Prémium feloldása</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Prémium feloldása · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Feloldás trófeákkal</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premiummal feloldva</string>
+	<key>premium.youHavePremium</key>
+	<string>Prémiumod van!</string>
+	<key>settings.character</key>
+	<string>Figura</string>
+	<key>settings.characterInfo</key>
+	<string>Minden állat saját színvilágot ad az egész játéknak.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Egyéni: %lld perc</string>
+	<key>settings.dailyGoal</key>
+	<string>Napi cél</string>
+	<key>settings.goalInfo</key>
+	<string>A sorozat célja napi 5 perccel indul. Csak az aktív játékidő számít.</string>
+	<key>settings.lives</key>
+	<string>Életek</string>
+	<key>settings.livesInfo</key>
+	<string>Három élettel a játék az utolsó szíved után véget ér. Korlátlan módban a trófeák csak addig számítanak, amíg van életed; utána tovább játszhatsz.</string>
+	<key>settings.playGoals</key>
+	<string>Játékcélok</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Prémium feloldva. Köszönjük!</string>
+	<key>settings.title</key>
+	<string>Beállítások</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Válassz napi célt</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Válassz napi vagy heti célt</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld / %3$lld perc, %4$lld nap egymás után</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Napi sorozat, %lld / %lld perc</string>
+	<key>streak.daily</key>
+	<string>Napi sorozat</string>
+	<key>streak.dayOne</key>
+	<string>1. nap</string>
+	<key>tutorial.answerHint</key>
+	<string>Nem tudod a választ? Koppints a feladatra, és megmutatjuk.</string>
+	<key>tutorial.complete</key>
+	<string>Ügyes voltál! Az oktatórész véget ért. Most döntsd meg a rekordot!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Ugorj a helyes válaszra egy trófeáért.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>A helyes válasz zöld. Most ugorj rá.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Most ugorj a helyes válaszra háromszoros trófeákért.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Szerezd meg a ×3 érmét, hogy egyszer háromszoros trófeát kapj.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Találhatsz fél vagy egész életet, hogy visszakapj életeket.</string>
+	<key>tutorial.minusOne</key>
+	<string>Kerüld el a −1-et. Egy trófeádba kerül.</string>
+	<key>tutorial.move</key>
+	<string>Mozgasd az eszközöd balra és jobbra. A képernyő szélein át is közlekedhetsz.</string>
+	<key>tutorial.platforms</key>
+	<string>Ugrálj a platformokra, hogy feljebb juss.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Itt láthatod a pontszámod ezen a szinten.</string>
+	<key>tutorial.star</key>
+	<string>Ugorj a csillagba, hogy kilődd a rossz válaszokat.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ha rossz választ választasz, elveszíted egyik életedet a háromból. Próbáld ki most.</string>
+</dict>
+</plist>

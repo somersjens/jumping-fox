@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Beer</string>
+	<key>character.bunny</key>
+	<string>Hasie</string>
+	<key>character.crab</key>
+	<string>Krap</string>
+	<key>character.dog</key>
+	<string>Hond</string>
+	<key>character.elephant</key>
+	<string>Olifant</string>
+	<key>character.fox</key>
+	<string>Jakkals</string>
+	<key>character.frog</key>
+	<string>Padda</string>
+	<key>character.lion</key>
+	<string>Leeu</string>
+	<key>character.octopus</key>
+	<string>Seekat</string>
+	<key>character.penguin</key>
+	<string>Pikkewyn</string>
+	<key>character.pickerTitle</key>
+	<string>Kies jou karakter</string>
+	<key>common.back</key>
+	<string>Terug</string>
+	<key>common.cancel</key>
+	<string>Kanselleer</string>
+	<key>common.continue</key>
+	<string>Gaan voort</string>
+	<key>common.done</key>
+	<string>Klaar</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Stoor</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Druk en hou vir 2 sekondes om ontwikkelaarmodus oop te maak.</string>
+	<key>developerMode.title</key>
+	<string>Ontwikkelaarmodus</string>
+	<key>filter.addition</key>
+	<string>Optel</string>
+	<key>filter.fractions</key>
+	<string>Breuke</string>
+	<key>filter.mixed</key>
+	<string>Supermengsel</string>
+	<key>filter.percentages</key>
+	<string>Persentasies</string>
+	<key>filter.subtraction</key>
+	<string>Aftrek</string>
+	<key>filter.tables</key>
+	<string>Maaltafels</string>
+	<key>game.accessibility.mix</key>
+	<string>Mengsel</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld uit %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Mooi probeer</string>
+	<key>game.encouragement.1</key>
+	<string>Dis ’n begin</string>
+	<key>game.encouragement.2</key>
+	<string>Hou aan oefen</string>
+	<key>game.encouragement.3</key>
+	<string>Glad nie sleg nie</string>
+	<key>game.encouragement.4</key>
+	<string>Jy doen goed</string>
+	<key>game.encouragement.5</key>
+	<string>Mooi gedoen</string>
+	<key>game.encouragement.6</key>
+	<string>Goed gedoen</string>
+	<key>game.encouragement.7</key>
+	<string>Baie goed gespeel</string>
+	<key>game.encouragement.8</key>
+	<string>Die einde is in sig</string>
+	<key>game.encouragement.9</key>
+	<string>Jy is amper daar</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Jy het elke punt verdien.</string>
+	<key>game.end.completionSuffix</key>
+	<string>voltooi!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Spel verby</string>
+	<key>game.end.mainMenu</key>
+	<string>Hoofkieslys</string>
+	<key>game.end.playAgain</key>
+	<string>Speel weer</string>
+	<key>game.highScore</key>
+	<string>Toptelling</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Terug na hoofkieslys</string>
+	<key>game.intro.continue</key>
+	<string>Speel verder</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Jy gaan voort van %lld af</string>
+	<key>game.intro.helperBullet</key>
+	<string>Die regte antwoord is groen gemerk omdat die helper aan is. Trofeë word daarom apart met * getel.</string>
+	<key>game.intro.helperOff</key>
+	<string>Helper af</string>
+	<key>game.intro.helperOn</key>
+	<string>Helper aan</string>
+	<key>game.intro.howItWorks</key>
+	<string>Hoe dié vlak werk</string>
+	<key>game.intro.livesOff</key>
+	<string>Lewens af</string>
+	<key>game.intro.livesOn</key>
+	<string>Lewens aan</string>
+	<key>game.intro.scorePaused</key>
+	<string>Jou huidige telling word gestop.</string>
+	<key>game.intro.start</key>
+	<string>Begin vlak</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Vermenigvuldig %@%@ met ’n getal van 1 tot 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>of minder</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Tik enige plek om voort te gaan</string>
+	<key>game.intro.tapToStart</key>
+	<string>Tik enige plek om te begin</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Verdien |1| trofee per regte antwoord, tot ’n maksimum van |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Wanneer jou lewens op is, kan jy nie meer trofeë verdien nie.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Maksimum trofeë vir die ranglys bereik</string>
+	<key>game.status.mixMode</key>
+	<string>MENGMODUS</string>
+	<key>game.status.scoreLocked</key>
+	<string>Trofeë tel nie meer wanneer jou lewens op is nie</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofeë ×2</string>
+	<key>game.streak.title</key>
+	<string>5 in ’n ry!</string>
+	<key>goal.period</key>
+	<string>Doeltydperk</string>
+	<key>goal.promptDaily</key>
+	<string>Hoeveel minute wil jy elke dag speel?</string>
+	<key>goal.promptWeekly</key>
+	<string>Hoeveel minute wil jy elke week speel?</string>
+	<key>goal.title</key>
+	<string>Speeldoel</string>
+	<key>goalPeriod.daily</key>
+	<string>Daagliks</string>
+	<key>goalPeriod.weekly</key>
+	<string>Weekliks</string>
+	<key>info.filter.addition</key>
+	<string>Net optel</string>
+	<key>info.filter.fractions</key>
+	<string>Net deel</string>
+	<key>info.filter.header</key>
+	<string>Soorte somme</string>
+	<key>info.filter.mixed</key>
+	<string>Gemengde somme</string>
+	<key>info.filter.percentages</key>
+	<string>Net persentasies</string>
+	<key>info.filter.subtraction</key>
+	<string>Net aftrek</string>
+	<key>info.filter.tables</key>
+	<string>Net vermenigvuldig</string>
+	<key>info.mode.fractions.header</key>
+	<string>Dele</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Een en meer dele</string>
+	<key>info.mode.fractions.single</key>
+	<string>Altyd een deel</string>
+	<key>info.mode.header</key>
+	<string>Volgorde</string>
+	<key>info.mode.mixed</key>
+	<string>Gemeng met laer vlakke</string>
+	<key>info.mode.order</key>
+	<string>Vaste volgorde</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Met desimale getalle</string>
+	<key>info.mode.percentages.header</key>
+	<string>Soort</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Sonder desimale getalle</string>
+	<key>info.mode.random</key>
+	<string>Lukrake volgorde</string>
+	<key>info.super.all</key>
+	<string>Optel, aftrek, vermenigvuldig, deel en persentasies</string>
+	<key>info.super.basic</key>
+	<string>Optel en aftrek</string>
+	<key>info.super.fraction</key>
+	<string>Optel, aftrek, vermenigvuldig en deel</string>
+	<key>info.super.times</key>
+	<string>Optel, aftrek en vermenigvuldig</string>
+	<key>language.select</key>
+	<string>Kies taal</string>
+	<key>lives.three</key>
+	<string>3 lewens</string>
+	<key>lives.unlimited</key>
+	<string>Onbeperk</string>
+	<key>menu.accessibility.character</key>
+	<string>Karakter</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Tik om jou karakter te verander; druk en hou twee sekondes om weer by die welkomskerm te begin.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Kies %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimum %lld keer bereik</string>
+	<key>menu.moreLevels</key>
+	<string>Meer vlakke</string>
+	<key>menu.options</key>
+	<string>Spelopsies</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium-tafels</string>
+	<key>menu.startHere</key>
+	<string>Begin hier</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Ontsluit meer met Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Verskeie</string>
+	<key>mode.fractions.single</key>
+	<string>Een deel</string>
+	<key>mode.mix</key>
+	<string>Meng</string>
+	<key>mode.mixed</key>
+	<string>Gemeng</string>
+	<key>mode.order</key>
+	<string>Reeks</string>
+	<key>mode.percentages.decimal</key>
+	<string>Desimaal</string>
+	<key>mode.percentages.whole</key>
+	<string>Heel</string>
+	<key>mode.random</key>
+	<string>Lukraak</string>
+	<key>mode.standard</key>
+	<string>Standaard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Jy kry net |optel|-somme.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Jy tel %lld |of minder| by ’n ander getal.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Jy tel altyd %lld in |stygende| volgorde by.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Jy tel altyd %lld by ’n |lukrake| getal.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Optel · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Tel elke keer twee getalle bymekaar.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Die antwoord is hoogstens %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Optel tot %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Jy kry net somme met |breuke|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Jy kry breuke uit dié vlak en |vroeëre vlakke|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Jy neem altyd |1 deel| uit %lld gelyke dele.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Bereken breuke van ronde getalle uit vlak %lld en vorige vlakke.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Die getalle bly rond, dus die antwoorde is altyd heelgetalle.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Breuke tot %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Jy neem een of |meer dele| uit %lld gelyke dele.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Breuke · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Bereken ’n deel van ’n geheel en maak breuke gelyk.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Tel breuke met dieselfde noemer op en trek hulle af.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Breuke gemeng</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Jy kry net somme met |persentasies|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Jy kry persentasies uit dié vlak en |vroeëre vlakke|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Jy bereken altyd %@, en die antwoord is ’n |heelgetal|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Bereken persentasies van ronde getalle tot %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Die hoeveelhede bly rond, dus die antwoorde is altyd heelgetalle.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Persentasies tot %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Jy bereken altyd %@, en die antwoord kan ook ’n |desimaal| wees.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Bereken %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Bereken ’n persentasie van ’n getal.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Skakel persentasies en breuke na mekaar om.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Persentasies gemeng</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Jy kry net |aftrek|-somme.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Jy trek %lld |of minder| van ’n ander getal af.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Jy trek altyd %lld in |dalende| volgorde af.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Jy trek altyd %lld van ’n |lukrake| getal af.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Aftrek · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Die eerste getal is hoogstens %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Die antwoord mag onder nul wees.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Onder nul</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Trek af tot %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Trek elke keer twee getalle van mekaar af.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Die moeilikheid kan tot |vlak %lld| vir elke gekose afdeling styg.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Oefen optel, aftrek, maaltafels, breuke en persentasies deurmekaar.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermengsel %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Oefen optel en aftrek deurmekaar.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermengsel %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Oefen optel, aftrek, maaltafels en breuke deurmekaar.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermengsel %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Oefen optel, aftrek en maaltafels deurmekaar.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermengsel %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Jy kry net |vermenigvuldig|-somme.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Jy kry al die maaltafels |tot en met %lld| deurmekaar.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Elke tafel maal ’n getal van |1 tot 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Jy kry die %lld-maaltafel in |stygende| volgorde.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Jy kry die %lld-maaltafel in |lukrake| volgorde.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tafel van %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Oefen die tafels van %lld tot en met %lld deurmekaar.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tafels %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Jou naam</string>
+	<key>name.whatsYourName</key>
+	<string>Wat is jou naam?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Verskillende somme deurmekaar.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Reeds baie goed</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Oefen somme in volgorde.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Pas begin</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Somme in lukrake volgorde.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Al ’n bietjie geoefen</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Kies ’n beginpunt vir %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>hierdie onderwerp</string>
+	<key>onboarding.level.title</key>
+	<string>Hoe goed is jy al hiermee?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Kom ons begin. Wat is jou naam?</string>
+	<key>onboarding.name.title</key>
+	<string>Somme maak was nog nooit so lekker nie!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Kies ’n onderwerp om mee te begin.</string>
+	<key>onboarding.subject.title</key>
+	<string>Wat wil jy leer?</string>
+	<key>options.capAt30.info</key>
+	<string>Elke vlak het ’n trofeedoel van hoogstens 50. As hierdie opsie aan is, eindig die spel vanself wanneer jy dit bereik.</string>
+	<key>options.capAt30.title</key>
+	<string>Eindig by doel</string>
+	<key>options.helperMode.info</key>
+	<string>In Helpermodus word die regte antwoord altyd groen gewys. Trofeë wat jy in dié modus verdien, word apart getel en met ’n ster gemerk.</string>
+	<key>options.helperMode.title</key>
+	<string>Helpermodus</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Jy begin altyd met 3 lewens. Die spel eindig wanneer jy geen lewens oor het nie. Skakel dié opsie aan om aan te hou speel en oefen nadat jou lewens op is.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Onbeperkte lewens</string>
+	<key>parentGate.approved</key>
+	<string>Goedgekeur</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Pogings: %1$lld van %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Druk en hou die %@ vir %lld sekondes.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Hou: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Druk en hou die %@ vir %lld sekondes. Tik dan %4$lld keer op die %3$@.</string>
+	<key>parentGate.shape.circle</key>
+	<string>sirkel</string>
+	<key>parentGate.shape.diamond</key>
+	<string>diamant</string>
+	<key>parentGate.shape.heart</key>
+	<string>hart</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>seshoek</string>
+	<key>parentGate.shape.plus</key>
+	<string>plusteken</string>
+	<key>parentGate.shape.square</key>
+	<string>vierkant</string>
+	<key>parentGate.shape.star</key>
+	<string>ster</string>
+	<key>parentGate.shape.triangle</key>
+	<string>driehoek</string>
+	<key>parentGate.stepOne</key>
+	<string>Stap 1 van 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Stap 2 van 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Om jong spelers te beskerm, moet ’n volwassene dié toets voltooi voordat die aankoop kan voortgaan.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Tik nou %1$lld keer op die %2$@.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Tikke: %1$lld van %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Volwassene moet goedkeur</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Met Premium speel jy vrylik met al 10 diere.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Toegang tot alle diere</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Altyd genoeg nuwe somme om te oefen.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 vlakke per onderwerp</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Speel heeltemal sonder onderbrekings.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Geen advertensies</string>
+	<key>premium.oneTime</key>
+	<string>Eenmalige aankoop. Vir altyd joune.</string>
+	<key>premium.restore</key>
+	<string>Herstel aankope</string>
+	<key>premium.storeUnavailable</key>
+	<string>Die winkel is nie nou beskikbaar nie. Probeer asseblief later weer.</string>
+	<key>premium.unlock</key>
+	<string>Ontsluit Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Ontsluit Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Jy het Premium!</string>
+	<key>settings.character</key>
+	<string>Karakter</string>
+	<key>settings.characterInfo</key>
+	<string>Elke dier gee die hele spel sy eie kleurtema.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Pasgemaak: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Daaglikse doel</string>
+	<key>settings.goalInfo</key>
+	<string>Die reeksdoel begin by 5 minute per dag. Net aktiewe speeltyd tel.</string>
+	<key>settings.lives</key>
+	<string>Lewens</string>
+	<key>settings.livesInfo</key>
+	<string>Met drie lewens eindig die spel ná jou laaste hartjie. In onbeperkte modus tel trofeë net terwyl jy nog lewens het; daarna kan jy aanhou speel.</string>
+	<key>settings.playGoals</key>
+	<string>Speeldoelwitte</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ontsluit. Dankie!</string>
+	<key>settings.title</key>
+	<string>Instellings</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Kies ’n daaglikse doel</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Kies ’n daaglikse of weeklikse doel</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld van %3$lld minute, %4$lld dae in ’n ry</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Daaglikse reeks, %lld van %lld minute</string>
+	<key>streak.daily</key>
+	<string>Daaglikse reeks</string>
+	<key>streak.dayOne</key>
+	<string>Dag 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Ken jy nie die antwoord nie? Tik op die som om dit te sien.</string>
+	<key>tutorial.complete</key>
+	<string>Goed gedoen! Die oefenles is klaar. Mik nou vir die toptelling!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Spring op die regte antwoord om ’n trofee te kry.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Die regte antwoord word groen gewys. Spring nou daarop.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Spring nou op die regte antwoord om drie keer soveel trofeë te kry.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Kry die ×3-munt om een keer drie keer soveel trofeë te verdien.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Jy kan ’n halwe of volle lewe kry om lewens terug te wen.</string>
+	<key>tutorial.minusOne</key>
+	<string>Vermy die −1. Dit kos jou een trofee.</string>
+	<key>tutorial.move</key>
+	<string>Beweeg jou toestel om links en regs te gaan. Jy kan ook deur die kante van die skerm beweeg.</string>
+	<key>tutorial.platforms</key>
+	<string>Spring op die platforms om op te beweeg.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Jou telling vir dié vlak word hier gewys.</string>
+	<key>tutorial.star</key>
+	<string>Spring teen die ster om verkeerde antwoorde weg te skiet.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>As jy ’n verkeerde antwoord kies, verloor jy een van jou drie lewens. Probeer dit nou.</string>
+</dict>
+</plist>

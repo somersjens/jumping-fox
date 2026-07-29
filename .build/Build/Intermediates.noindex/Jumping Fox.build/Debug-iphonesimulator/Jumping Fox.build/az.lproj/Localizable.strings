@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ayı</string>
+	<key>character.bunny</key>
+	<string>Dovşan</string>
+	<key>character.crab</key>
+	<string>Krab</string>
+	<key>character.dog</key>
+	<string>İt</string>
+	<key>character.elephant</key>
+	<string>Fil</string>
+	<key>character.fox</key>
+	<string>Tülkü</string>
+	<key>character.frog</key>
+	<string>Qurbağa</string>
+	<key>character.lion</key>
+	<string>Şir</string>
+	<key>character.octopus</key>
+	<string>Ahtapot</string>
+	<key>character.penguin</key>
+	<string>Pinqvin</string>
+	<key>character.pickerTitle</key>
+	<string>Personajını seç</string>
+	<key>common.back</key>
+	<string>Geri</string>
+	<key>common.cancel</key>
+	<string>Ləğv et</string>
+	<key>common.continue</key>
+	<string>Davam et</string>
+	<key>common.done</key>
+	<string>Hazır</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld dəq</string>
+	<key>common.save</key>
+	<string>Yadda saxla</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Tərtibatçı rejimini açmaq üçün 2 saniyə basıb saxla.</string>
+	<key>developerMode.title</key>
+	<string>Tərtibatçı rejimi</string>
+	<key>filter.addition</key>
+	<string>Toplama</string>
+	<key>filter.fractions</key>
+	<string>Kəsrlər</string>
+	<key>filter.mixed</key>
+	<string>Superqarışıq</string>
+	<key>filter.percentages</key>
+	<string>Faizlər</string>
+	<key>filter.subtraction</key>
+	<string>Çıxma</string>
+	<key>filter.tables</key>
+	<string>Vurma cədvəlləri</string>
+	<key>game.accessibility.mix</key>
+	<string>Qarışıq</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld-dən %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Yaxşı cəhd</string>
+	<key>game.encouragement.1</key>
+	<string>Başlanğıcdır</string>
+	<key>game.encouragement.2</key>
+	<string>Məşqə davam et</string>
+	<key>game.encouragement.3</key>
+	<string>Heç də pis deyil</string>
+	<key>game.encouragement.4</key>
+	<string>Əla gedirsən</string>
+	<key>game.encouragement.5</key>
+	<string>Gözəl nəticə</string>
+	<key>game.encouragement.6</key>
+	<string>Afərin</string>
+	<key>game.encouragement.7</key>
+	<string>Çox yaxşı oynadın</string>
+	<key>game.encouragement.8</key>
+	<string>Finiş yaxındır</string>
+	<key>game.encouragement.9</key>
+	<string>Az qalıb</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Bütün xalları qazandın.</string>
+	<key>game.end.completionSuffix</key>
+	<string>tamamlandı!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Oyun bitdi</string>
+	<key>game.end.mainMenu</key>
+	<string>Əsas menyu</string>
+	<key>game.end.playAgain</key>
+	<string>Yenidən oyna</string>
+	<key>game.highScore</key>
+	<string>Rekord</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Əsas menyuya qayıt</string>
+	<key>game.intro.continue</key>
+	<string>Davam et</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld-dən davam edəcəksən</string>
+	<key>game.intro.helperBullet</key>
+	<string>Köməkçi aktiv olduğu üçün düzgün cavab yaşıl göstərilir. Buna görə kuboklar * ilə ayrıca sayılır.</string>
+	<key>game.intro.helperOff</key>
+	<string>Köməkçi sönülü</string>
+	<key>game.intro.helperOn</key>
+	<string>Köməkçi aktiv</string>
+	<key>game.intro.howItWorks</key>
+	<string>Bu səviyyə necə işləyir</string>
+	<key>game.intro.livesOff</key>
+	<string>Canlar sönülü</string>
+	<key>game.intro.livesOn</key>
+	<string>Canlar aktiv</string>
+	<key>game.intro.scorePaused</key>
+	<string>Hazırkı xalın dayandırılacaq.</string>
+	<key>game.intro.start</key>
+	<string>Səviyyəyə başla</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@-ı 1-dən 12-yə qədər bir ədədə vur.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>və ya az</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Davam etmək üçün istənilən yerə toxun</string>
+	<key>game.intro.tapToStart</key>
+	<string>Başlamaq üçün istənilən yerə toxun</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Hər düzgün cavaba |1| kubok qazan, ən çox |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Canların bitəndən sonra kubok qazana bilməzsən.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Liderlər cədvəli üçün maksimum kuboka çatdın</string>
+	<key>game.status.mixMode</key>
+	<string>QARIŞIQ REJİM</string>
+	<key>game.status.scoreLocked</key>
+	<string>Canların bitəndən sonra kuboklar sayılmır</string>
+	<key>game.streak.subtitle</key>
+	<string>Kuboklar ×2</string>
+	<key>game.streak.title</key>
+	<string>Ardıcıl 5!</string>
+	<key>goal.period</key>
+	<string>Hədəf müddəti</string>
+	<key>goal.promptDaily</key>
+	<string>Gündə neçə dəqiqə oynamaq istəyirsən?</string>
+	<key>goal.promptWeekly</key>
+	<string>Həftədə neçə dəqiqə oynamaq istəyirsən?</string>
+	<key>goal.title</key>
+	<string>Oyun hədəfi</string>
+	<key>goalPeriod.daily</key>
+	<string>Gündəlik</string>
+	<key>goalPeriod.weekly</key>
+	<string>Həftəlik</string>
+	<key>info.filter.addition</key>
+	<string>Yalnız toplama</string>
+	<key>info.filter.fractions</key>
+	<string>Yalnız bölmə</string>
+	<key>info.filter.header</key>
+	<string>Misal növləri</string>
+	<key>info.filter.mixed</key>
+	<string>Qarışıq əməllər</string>
+	<key>info.filter.percentages</key>
+	<string>Yalnız faizlər</string>
+	<key>info.filter.subtraction</key>
+	<string>Yalnız çıxma</string>
+	<key>info.filter.tables</key>
+	<string>Yalnız vurma</string>
+	<key>info.mode.fractions.header</key>
+	<string>Hissələr</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Bir və bir neçə hissə</string>
+	<key>info.mode.fractions.single</key>
+	<string>Həmişə bir hissə</string>
+	<key>info.mode.header</key>
+	<string>Ardıcıllıq</string>
+	<key>info.mode.mixed</key>
+	<string>Aşağı səviyyələrlə qarışıq</string>
+	<key>info.mode.order</key>
+	<string>Sabit ardıcıllıq</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Onluq ədədlərlə</string>
+	<key>info.mode.percentages.header</key>
+	<string>Növ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Onluq ədədlərsiz</string>
+	<key>info.mode.random</key>
+	<string>Təsadüfi ardıcıllıq</string>
+	<key>info.super.all</key>
+	<string>Toplama, çıxma, vurma, bölmə və faizlər</string>
+	<key>info.super.basic</key>
+	<string>Toplama və çıxma</string>
+	<key>info.super.fraction</key>
+	<string>Toplama, çıxma, vurma və bölmə</string>
+	<key>info.super.times</key>
+	<string>Toplama, çıxma və vurma</string>
+	<key>language.select</key>
+	<string>Dil seç</string>
+	<key>lives.three</key>
+	<string>3 can</string>
+	<key>lives.unlimited</key>
+	<string>Sonsuz</string>
+	<key>menu.accessibility.character</key>
+	<string>Personaj</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Personajını dəyişmək üçün toxun; qarşılama ekranından yenidən başlamaq üçün iki saniyə basıb saxla.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ seç</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimuma %lld dəfə çatılıb</string>
+	<key>menu.moreLevels</key>
+	<string>Daha çox səviyyə</string>
+	<key>menu.options</key>
+	<string>Oyun seçimləri</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium cədvəllər</string>
+	<key>menu.startHere</key>
+	<string>Buradan başla</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium ilə daha çoxunu aç</string>
+	<key>mode.fractions.multiple</key>
+	<string>Bir neçə</string>
+	<key>mode.fractions.single</key>
+	<string>Bir hissə</string>
+	<key>mode.mix</key>
+	<string>Qarışıq</string>
+	<key>mode.mixed</key>
+	<string>Qarışıq</string>
+	<key>mode.order</key>
+	<string>Ardıcıllıq</string>
+	<key>mode.percentages.decimal</key>
+	<string>Onluq</string>
+	<key>mode.percentages.whole</key>
+	<string>Tam</string>
+	<key>mode.random</key>
+	<string>Təsadüfi</string>
+	<key>mode.standard</key>
+	<string>Standart</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Yalnız |toplama| misalları gəlir.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Başqa ədədə %lld |və ya az| əlavə edirsən.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Həmişə %lld-i |artan| sıra ilə əlavə edirsən.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Həmişə %lld-i |təsadüfi| ədədə əlavə edirsən.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Toplama · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>İki ədədi bir-birinə əlavə et.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Cavab ən çox %lld-dir.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld-ə qədər topla</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Yalnız |kəsr| misalları gəlir.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Bu və |əvvəlki səviyyələrdən| kəsrlər gəlir.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld bərabər hissədən həmişə |1 hissə| götürürsən.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld və əvvəlki səviyyələrdəki yuvarlaq ədədlərin kəsrlərini hesabla.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Ədədlər yuvarlaq qalır, buna görə cavablar həmişə tamdır.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld-ə qədər kəsrlər</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld bərabər hissədən bir və ya |bir neçə hissə| götürürsən.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Kəsrlər · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Tamın bir hissəsini hesabla və kəsrləri bərabərləşdir.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Məxrəci eyni olan kəsrləri topla və çıx.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Qarışıq kəsrlər</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Yalnız |faiz| misalları gəlir.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Bu və |əvvəlki səviyyələrdən| faizlər gəlir.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Həmişə %@ hesablayırsan və cavab |tam ədəd| olur.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld-ə qədər yuvarlaq ədədlərin faizini hesabla.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Miqdarlar yuvarlaq qalır, buna görə cavablar həmişə tamdır.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld-ə qədər faizlər</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Həmişə %@ hesablayırsan və cavab |onluq ədəd| də ola bilər.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ hesabla</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Bir ədədin faizini hesabla.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Faizləri kəsrlərə, kəsrləri faizlərə çevir.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Qarışıq faizlər</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Yalnız |çıxma| misalları gəlir.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Başqa ədəddən %lld |və ya az| çıxırsan.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Həmişə %lld-i |azalan| sıra ilə çıxırsan.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Həmişə %lld-i |təsadüfi| ədəddən çıxırsan.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Çıxma · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Birinci ədəd ən çox %lld-dir.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Cavab sıfırdan kiçik ola bilər.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Sıfırdan aşağı</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld-ə qədər çıx</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>İki ədədi bir-birindən çıx.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Hər seçilmiş bölmədə çətinlik |%lld-ci səviyyəyə| qədər arta bilər.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Toplama, çıxma, vurma cədvəlləri, kəsrlər və faizləri qarışıq məşq et.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Superqarışıq %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Toplama və çıxmanı qarışıq məşq et.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Superqarışıq %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Toplama, çıxma, vurma cədvəlləri və kəsrləri qarışıq məşq et.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Superqarışıq %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Toplama, çıxma və vurma cədvəllərini qarışıq məşq et.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Superqarışıq %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Yalnız |vurma| misalları gəlir.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld-ə qədər| bütün vurma cədvəlləri qarışıq gəlir.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Hər cədvəl |1-dən 12-yə| qədər bir ədədə vurulur.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld vurma cədvəli |artan| sıra ilə gəlir.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld vurma cədvəli |təsadüfi| sıra ilə gəlir.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld vurma cədvəli</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld-dən %lld-ə qədər cədvəlləri qarışıq məşq et.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Cədvəllər %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Adın</string>
+	<key>name.whatsYourName</key>
+	<string>Adın nədir?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Müxtəlif qarışıq misallar.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Artıq yaxşısan</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Misalları sıra ilə məşq et.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Yeni başlamısan</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Misallar təsadüfi sıra ilə.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Bir az məşq etmisən</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ üçün başlanğıc seç.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>bu mövzu</string>
+	<key>onboarding.level.title</key>
+	<string>Bunu artıq nə qədər yaxşı bilirsən?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Başlayaq. Adın nədir?</string>
+	<key>onboarding.name.title</key>
+	<string>Misal həll etmək heç belə əyləncəli olmayıb!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Başlamaq üçün mövzu seç.</string>
+	<key>onboarding.subject.title</key>
+	<string>Nə öyrənmək istəyirsən?</string>
+	<key>options.capAt30.info</key>
+	<string>Hər səviyyənin ən çox 50 kuboklu hədəfi var. Bu seçim aktivdirsə, hədəfə çatanda oyun avtomatik bitir.</string>
+	<key>options.capAt30.title</key>
+	<string>Hədəfdə bitir</string>
+	<key>options.helperMode.info</key>
+	<string>Köməkçi rejimdə düzgün cavab həmişə yaşıl göstərilir. Bu rejimdə qazanılan kuboklar ayrıca sayılır və ulduzla işarələnir.</string>
+	<key>options.helperMode.title</key>
+	<string>Köməkçi rejim</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Həmişə 3 canla başlayırsan. Canların bitəndə oyun başa çatır. Canların bitəndən sonra da oynayıb məşq etmək üçün bu seçimi aktiv et.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Sonsuz can</string>
+	<key>parentGate.approved</key>
+	<string>Təsdiqləndi</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Cəhdlər: %1$lld-dən %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ üzərində %lld saniyə basıb saxla.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Basılı saxla: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ üzərində %lld saniyə basıb saxla. Sonra %@ üzərinə %lld dəfə toxun.</string>
+	<key>parentGate.shape.circle</key>
+	<string>dairə</string>
+	<key>parentGate.shape.diamond</key>
+	<string>romb</string>
+	<key>parentGate.shape.heart</key>
+	<string>ürək</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>altıbucaq</string>
+	<key>parentGate.shape.plus</key>
+	<string>üstəgəl</string>
+	<key>parentGate.shape.square</key>
+	<string>kvadrat</string>
+	<key>parentGate.shape.star</key>
+	<string>ulduz</string>
+	<key>parentGate.shape.triangle</key>
+	<string>üçbucaq</string>
+	<key>parentGate.stepOne</key>
+	<string>2 addımdan 1-ci</string>
+	<key>parentGate.stepTwo</key>
+	<string>2 addımdan 2-ci</string>
+	<key>parentGate.subtitle</key>
+	<string>Balaca oyunçuları qorumaq üçün alışa davam etməzdən əvvəl bir böyük bu yoxlamanı tamamlamalıdır.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>İndi %2$@ üzərinə %1$lld dəfə toxun.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Toxunuşlar: %1$lld-dən %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Böyük təsdiqi lazımdır</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium ilə 10 heyvanın hamısı ilə sərbəst oyna.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Bütün heyvanlara giriş</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Məşq üçün həmişə yeni misallar var.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Hər mövzuya 99 səviyyə</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Tamamilə fasiləsiz oyna.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Reklamsız</string>
+	<key>premium.oneTime</key>
+	<string>Birdəfəlik alış. Həmişə sənindir.</string>
+	<key>premium.restore</key>
+	<string>Alışları bərpa et</string>
+	<key>premium.storeUnavailable</key>
+	<string>Mağaza hazırda əlçatan deyil. Sonra yenidən cəhd et.</string>
+	<key>premium.unlock</key>
+	<string>Premium-u aç</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium-u aç · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Premium-un var!</string>
+	<key>settings.character</key>
+	<string>Personaj</string>
+	<key>settings.characterInfo</key>
+	<string>Hər heyvan bütün oyuna öz rəng mövzusunu gətirir.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Fərdi: %lld dəq</string>
+	<key>settings.dailyGoal</key>
+	<string>Gündəlik hədəf</string>
+	<key>settings.goalInfo</key>
+	<string>Ardıcıl gün hədəfi gündə 5 dəqiqədən başlayır. Yalnız aktiv oyun vaxtı sayılır.</string>
+	<key>settings.lives</key>
+	<string>Canlar</string>
+	<key>settings.livesInfo</key>
+	<string>Üç can rejimində son ürəyindən sonra oyun bitir. Sonsuz rejimdə kuboklar yalnız canın olduğu müddətdə sayılır; sonra oynamağa davam edə bilərsən.</string>
+	<key>settings.playGoals</key>
+	<string>Oyun hədəfləri</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium açıldı. Təşəkkürlər!</string>
+	<key>settings.title</key>
+	<string>Ayarlar</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Gündəlik hədəf seç</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Gündəlik və ya həftəlik hədəf seç</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld dəqiqədən %2$lld, ardıcıl %4$lld gün</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Gündəlik ardıcıllıq, %lld dəqiqədən %lld</string>
+	<key>streak.daily</key>
+	<string>Gündəlik ardıcıllıq</string>
+	<key>streak.dayOne</key>
+	<string>1-ci gün</string>
+	<key>tutorial.answerHint</key>
+	<string>Cavabı bilmirsən? Görmək üçün misala toxun.</string>
+	<key>tutorial.complete</key>
+	<string>Afərin! Təlim bitdi. İndi rekord vur!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Kubok toplamaq üçün düzgün cavabın üstünə tullan.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Düzgün cavab yaşıl göstərilir. İndi onun üstünə tullan.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Üçqat kubok toplamaq üçün düzgün cavabın üstünə tullan.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Bir dəfə üçqat kubok qazanmaq üçün ×3 sikkəsini götür.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Canlarını qaytarmaq üçün yarım və ya tam can tapa bilərsən.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1-dən uzaq dur. O, bir kubokunu aparır.</string>
+	<key>tutorial.move</key>
+	<string>Sola və sağa getmək üçün cihazını hərəkət etdir. Ekranın kənarlarından da keçə bilərsən.</string>
+	<key>tutorial.platforms</key>
+	<string>Yuxarı qalxmaq üçün platformaların üstünə tullan.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Bu səviyyədəki xalın burada göstərilir.</string>
+	<key>tutorial.star</key>
+	<string>Səhv cavabları vurub uzaqlaşdırmaq üçün ulduza tullan.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Səhv cavab seçsən, üç canından birini itirəcəksən. İndi sına.</string>
+</dict>
+</plist>

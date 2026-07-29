@@ -1,0 +1,96 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PremiumView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "premium.feature.levels.title",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.feature.levels.subtitle",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.feature.animals.title",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 144
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.feature.animals.subtitle",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 145
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.feature.noAds.title",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.feature.noAds.subtitle",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.done",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.oneTime",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 235
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.restore",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 239
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.unlockWithPrice %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 257
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.unlock",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 259
+        }
+      }
+    ]
+  },
+  "version": 1
+}

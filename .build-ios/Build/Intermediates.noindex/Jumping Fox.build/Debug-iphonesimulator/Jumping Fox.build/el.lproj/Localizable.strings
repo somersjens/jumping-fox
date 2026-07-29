@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Αρκούδα</string>
+	<key>character.bunny</key>
+	<string>Λαγός</string>
+	<key>character.crab</key>
+	<string>Καβούρι</string>
+	<key>character.dog</key>
+	<string>Σκύλος</string>
+	<key>character.elephant</key>
+	<string>Ελέφαντας</string>
+	<key>character.fox</key>
+	<string>Αλεπού</string>
+	<key>character.frog</key>
+	<string>Βάτραχος</string>
+	<key>character.lion</key>
+	<string>Λιοντάρι</string>
+	<key>character.octopus</key>
+	<string>Χταπόδι</string>
+	<key>character.penguin</key>
+	<string>Πιγκουίνος</string>
+	<key>character.pickerTitle</key>
+	<string>Διάλεξε χαρακτήρα</string>
+	<key>common.back</key>
+	<string>Πίσω</string>
+	<key>common.cancel</key>
+	<string>Ακύρωση</string>
+	<key>common.continue</key>
+	<string>Συνέχεια</string>
+	<key>common.done</key>
+	<string>Έτοιμο</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld λεπ.</string>
+	<key>common.save</key>
+	<string>Αποθήκευση</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Κράτησέ το πατημένο για 2 δευτερόλεπτα για να ανοίξεις τη λειτουργία προγραμματιστή.</string>
+	<key>developerMode.title</key>
+	<string>Λειτουργία προγραμματιστή</string>
+	<key>filter.addition</key>
+	<string>Πρόσθεση</string>
+	<key>filter.fractions</key>
+	<string>Κλάσματα</string>
+	<key>filter.mixed</key>
+	<string>Σούπερ μίξη</string>
+	<key>filter.percentages</key>
+	<string>Ποσοστά</string>
+	<key>filter.subtraction</key>
+	<string>Αφαίρεση</string>
+	<key>filter.tables</key>
+	<string>Προπαίδεια</string>
+	<key>game.accessibility.mix</key>
+	<string>Μίξη</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld από %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Καλή προσπάθεια</string>
+	<key>game.encouragement.1</key>
+	<string>Μια καλή αρχή</string>
+	<key>game.encouragement.2</key>
+	<string>Συνέχισε την εξάσκηση</string>
+	<key>game.encouragement.3</key>
+	<string>Καθόλου άσχημα</string>
+	<key>game.encouragement.4</key>
+	<string>Τα πας καλά</string>
+	<key>game.encouragement.5</key>
+	<string>Ωραία επίδοση</string>
+	<key>game.encouragement.6</key>
+	<string>Μπράβο</string>
+	<key>game.encouragement.7</key>
+	<string>Έπαιξες πολύ καλά</string>
+	<key>game.encouragement.8</key>
+	<string>Το τέλος πλησιάζει</string>
+	<key>game.encouragement.9</key>
+	<string>Σχεδόν έφτασες</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Κέρδισες κάθε πόντο.</string>
+	<key>game.end.completionSuffix</key>
+	<string>ολοκληρώθηκε!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Τέλος παιχνιδιού</string>
+	<key>game.end.mainMenu</key>
+	<string>Κύριο μενού</string>
+	<key>game.end.playAgain</key>
+	<string>Παίξε ξανά</string>
+	<key>game.highScore</key>
+	<string>Ρεκόρ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Πίσω στο κύριο μενού</string>
+	<key>game.intro.continue</key>
+	<string>Συνέχεια</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Θα συνεχίσεις από το %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Η σωστή απάντηση φαίνεται με πράσινο επειδή είναι ενεργή η βοήθεια. Γι’ αυτό τα τρόπαια μετριούνται χωριστά με *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Βοήθεια ανενεργή</string>
+	<key>game.intro.helperOn</key>
+	<string>Βοήθεια ενεργή</string>
+	<key>game.intro.howItWorks</key>
+	<string>Πώς παίζεται αυτό το επίπεδο</string>
+	<key>game.intro.livesOff</key>
+	<string>Ζωές ανενεργές</string>
+	<key>game.intro.livesOn</key>
+	<string>Ζωές ενεργές</string>
+	<key>game.intro.scorePaused</key>
+	<string>Η τωρινή βαθμολογία σου θα παγώσει.</string>
+	<key>game.intro.start</key>
+	<string>Έναρξη επιπέδου</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Πολλαπλασίασε το %@%@ με έναν αριθμό από το 1 έως το 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ή μικρότερο</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Πάτησε οπουδήποτε για συνέχεια</string>
+	<key>game.intro.tapToStart</key>
+	<string>Πάτησε οπουδήποτε για αρχή</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Κέρδισε |1| τρόπαιο για κάθε σωστή απάντηση, έως |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Όταν τελειώσουν οι ζωές σου, δεν μπορείς πια να κερδίζεις τρόπαια.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Έφτασες τα μέγιστα τρόπαια για τον πίνακα κατάταξης</string>
+	<key>game.status.mixMode</key>
+	<string>ΛΕΙΤΟΥΡΓΙΑ ΜΙΞΗΣ</string>
+	<key>game.status.scoreLocked</key>
+	<string>Τα τρόπαια δεν μετρούν πια όταν τελειώσουν οι ζωές σου</string>
+	<key>game.streak.subtitle</key>
+	<string>Τρόπαια ×2</string>
+	<key>game.streak.title</key>
+	<string>5 στη σειρά!</string>
+	<key>goal.period</key>
+	<string>Περίοδος στόχου</string>
+	<key>goal.promptDaily</key>
+	<string>Πόσα λεπτά θέλεις να παίζεις κάθε μέρα;</string>
+	<key>goal.promptWeekly</key>
+	<string>Πόσα λεπτά θέλεις να παίζεις κάθε εβδομάδα;</string>
+	<key>goal.title</key>
+	<string>Στόχος παιχνιδιού</string>
+	<key>goalPeriod.daily</key>
+	<string>Καθημερινά</string>
+	<key>goalPeriod.weekly</key>
+	<string>Εβδομαδιαία</string>
+	<key>info.filter.addition</key>
+	<string>Μόνο πρόσθεση</string>
+	<key>info.filter.fractions</key>
+	<string>Μόνο διαίρεση</string>
+	<key>info.filter.header</key>
+	<string>Είδη ασκήσεων</string>
+	<key>info.filter.mixed</key>
+	<string>Μικτές πράξεις</string>
+	<key>info.filter.percentages</key>
+	<string>Μόνο ποσοστά</string>
+	<key>info.filter.subtraction</key>
+	<string>Μόνο αφαίρεση</string>
+	<key>info.filter.tables</key>
+	<string>Μόνο πολλαπλασιασμός</string>
+	<key>info.mode.fractions.header</key>
+	<string>Μέρη</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Ένα ή περισσότερα μέρη</string>
+	<key>info.mode.fractions.single</key>
+	<string>Πάντα ένα μέρος</string>
+	<key>info.mode.header</key>
+	<string>Σειρά</string>
+	<key>info.mode.mixed</key>
+	<string>Μίξη με προηγούμενα επίπεδα</string>
+	<key>info.mode.order</key>
+	<string>Σταθερή σειρά</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Με δεκαδικούς αριθμούς</string>
+	<key>info.mode.percentages.header</key>
+	<string>Τύπος</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Χωρίς δεκαδικούς αριθμούς</string>
+	<key>info.mode.random</key>
+	<string>Τυχαία σειρά</string>
+	<key>info.super.all</key>
+	<string>Πρόσθεση, αφαίρεση, πολλαπλασιασμός, διαίρεση και ποσοστά</string>
+	<key>info.super.basic</key>
+	<string>Πρόσθεση και αφαίρεση</string>
+	<key>info.super.fraction</key>
+	<string>Πρόσθεση, αφαίρεση, πολλαπλασιασμός και διαίρεση</string>
+	<key>info.super.times</key>
+	<string>Πρόσθεση, αφαίρεση και πολλαπλασιασμός</string>
+	<key>language.select</key>
+	<string>Διάλεξε γλώσσα</string>
+	<key>lives.three</key>
+	<string>3 ζωές</string>
+	<key>lives.unlimited</key>
+	<string>Απεριόριστες</string>
+	<key>menu.accessibility.character</key>
+	<string>Χαρακτήρας</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Πάτησε για να αλλάξεις χαρακτήρα. Κράτησε πατημένο για δύο δευτερόλεπτα για να ξεκινήσεις ξανά από την οθόνη καλωσορίσματος.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Διάλεξε %@</string>
+	<key>menu.maxScore</key>
+	<string>30 ΜΕΓ.</string>
+	<key>menu.maximumCount</key>
+	<string>ΜΕΓ.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Έφτασες το μέγιστο %lld φορές</string>
+	<key>menu.moreLevels</key>
+	<string>Περισσότερα επίπεδα</string>
+	<key>menu.options</key>
+	<string>Επιλογές παιχνιδιού</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium προπαίδεια</string>
+	<key>menu.startHere</key>
+	<string>Ξεκίνα εδώ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Ξεκλείδωσε περισσότερα με Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Πολλά</string>
+	<key>mode.fractions.single</key>
+	<string>Ένα</string>
+	<key>mode.mix</key>
+	<string>Μίξη</string>
+	<key>mode.mixed</key>
+	<string>Μικτά</string>
+	<key>mode.order</key>
+	<string>Σειρά</string>
+	<key>mode.percentages.decimal</key>
+	<string>Δεκαδικοί</string>
+	<key>mode.percentages.whole</key>
+	<string>Ακέραιοι</string>
+	<key>mode.random</key>
+	<string>Τυχαία</string>
+	<key>mode.standard</key>
+	<string>Βασικό</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Θα έχεις μόνο ασκήσεις |πρόσθεσης|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Προσθέτεις %lld |ή λιγότερο| σε έναν άλλο αριθμό.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Προσθέτεις πάντα %lld σε |αύξουσα| σειρά.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Προσθέτεις πάντα %lld σε έναν |τυχαίο| αριθμό.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Πρόσθεση · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Πρόσθεσε ξανά και ξανά δύο αριθμούς.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Η απάντηση είναι έως %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Πρόσθεση έως %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Θα έχεις μόνο ασκήσεις με |κλάσματα|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Θα έχεις κλάσματα από αυτό και |προηγούμενα επίπεδα|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Παίρνεις πάντα |1 μέρος| από %lld ίσα μέρη.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Υπολόγισε κλάσματα στρογγυλών αριθμών από το επίπεδο %lld και τα προηγούμενα.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Οι αριθμοί μένουν στρογγυλοί, άρα οι απαντήσεις είναι πάντα ακέραιες.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Κλάσματα έως %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Παίρνεις ένα ή |περισσότερα μέρη| από %lld ίσα μέρη.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Κλάσματα · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Βρες ένα μέρος του όλου και φτιάξε ισοδύναμα κλάσματα.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Πρόσθεσε και αφαίρεσε κλάσματα με ίδιο παρονομαστή.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Μικτά κλάσματα</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Θα έχεις μόνο ασκήσεις με |ποσοστά|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Θα έχεις ποσοστά από αυτό και |προηγούμενα επίπεδα|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Υπολογίζεις πάντα %@ και η απάντηση είναι |ακέραιος αριθμός|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Υπολόγισε ποσοστά στρογγυλών αριθμών έως %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Οι ποσότητες μένουν στρογγυλές, άρα οι απαντήσεις είναι πάντα ακέραιες.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Ποσοστά έως %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Υπολογίζεις πάντα %@ και η απάντηση μπορεί να είναι |δεκαδικός|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Υπολόγισε %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Υπολόγισε ένα ποσοστό ενός αριθμού.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Μετέτρεψε ποσοστά σε κλάσματα και το αντίστροφο.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Μικτά ποσοστά</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Θα έχεις μόνο ασκήσεις |αφαίρεσης|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Αφαιρείς %lld |ή λιγότερο| από έναν άλλο αριθμό.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Αφαιρείς πάντα %lld σε |φθίνουσα| σειρά.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Αφαιρείς πάντα %lld από έναν |τυχαίο| αριθμό.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Αφαίρεση · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Ο πρώτος αριθμός είναι έως %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Η απάντηση μπορεί να είναι κάτω από το μηδέν.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Κάτω από το μηδέν</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Αφαίρεση έως %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Αφαίρεσε ξανά και ξανά δύο αριθμούς.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Η δυσκολία μπορεί να φτάσει έως το |επίπεδο %lld| για κάθε επιλεγμένη κατηγορία.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Εξασκήσου σε πρόσθεση, αφαίρεση, προπαίδεια, κλάσματα και ποσοστά, όλα μαζί.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Σούπερ μίξη %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Εξασκήσου σε πρόσθεση και αφαίρεση, όλα μαζί.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Σούπερ μίξη %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Εξασκήσου σε πρόσθεση, αφαίρεση, προπαίδεια και κλάσματα, όλα μαζί.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Σούπερ μίξη %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Εξασκήσου σε πρόσθεση, αφαίρεση και προπαίδεια, όλα μαζί.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Σούπερ μίξη %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Θα έχεις μόνο ασκήσεις |πολλαπλασιασμού|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Θα έχεις όλες τις προπαίδειες |έως το %lld| ανακατεμένες.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Κάθε προπαίδεια επί έναν αριθμό από |1 έως 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Θα έχεις την προπαίδεια του %lld σε |αύξουσα| σειρά.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Θα έχεις την προπαίδεια του %lld σε |τυχαία| σειρά.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Προπαίδεια του %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Εξασκήσου στις προπαίδειες από %lld έως %lld, ανακατεμένες.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Προπαίδειες %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Το όνομά σου</string>
+	<key>name.whatsYourName</key>
+	<string>Πώς σε λένε;</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Διαφορετικές μικτές ασκήσεις μαζί.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Ήδη αρκετά καλός</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Εξάσκηση με ασκήσεις στη σειρά.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Μόλις ξεκίνησα</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Ασκήσεις σε τυχαία σειρά.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Έχω κάνει λίγη εξάσκηση</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Διάλεξε από πού θα ξεκινήσεις στο %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>αυτό το θέμα</string>
+	<key>onboarding.level.title</key>
+	<string>Πόσο καλός είσαι ήδη σε αυτό;</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Ας ξεκινήσουμε. Πώς σε λένε;</string>
+	<key>onboarding.name.title</key>
+	<string>Οι ασκήσεις δεν ήταν ποτέ τόσο διασκεδαστικές!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Διάλεξε ένα θέμα για να ξεκινήσεις.</string>
+	<key>onboarding.subject.title</key>
+	<string>Τι θέλεις να μάθεις;</string>
+	<key>options.capAt30.info</key>
+	<string>Κάθε επίπεδο έχει στόχο έως 50 τρόπαια. Αν αυτή η επιλογή είναι ενεργή, το παιχνίδι τελειώνει αυτόματα όταν τον φτάσεις.</string>
+	<key>options.capAt30.title</key>
+	<string>Τέλος στον στόχο</string>
+	<key>options.helperMode.info</key>
+	<string>Στη λειτουργία βοήθειας, η σωστή απάντηση φαίνεται πάντα με πράσινο. Τα τρόπαια που κερδίζεις εδώ μετριούνται χωριστά και έχουν ένα αστέρι.</string>
+	<key>options.helperMode.title</key>
+	<string>Λειτουργία βοήθειας</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Ξεκινάς πάντα με 3 ζωές. Το παιχνίδι τελειώνει όταν δεν σου μείνει καμία. Ενεργοποίησε αυτή την επιλογή για να συνεχίσεις να παίζεις και να εξασκείσαι μετά.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Απεριόριστες ζωές</string>
+	<key>parentGate.approved</key>
+	<string>Εγκρίθηκε</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Προσπάθειες: %1$lld από %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Κράτησε πατημένο το %@ για %lld δευτερόλεπτα.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Κράτημα: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Κράτησε πατημένο το %@ για %lld δευτερόλεπτα. Μετά πάτησε το %@ %lld φορές.</string>
+	<key>parentGate.shape.circle</key>
+	<string>κύκλο</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ρόμβο</string>
+	<key>parentGate.shape.heart</key>
+	<string>καρδιά</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>εξάγωνο</string>
+	<key>parentGate.shape.plus</key>
+	<string>συν</string>
+	<key>parentGate.shape.square</key>
+	<string>τετράγωνο</string>
+	<key>parentGate.shape.star</key>
+	<string>αστέρι</string>
+	<key>parentGate.shape.triangle</key>
+	<string>τρίγωνο</string>
+	<key>parentGate.stepOne</key>
+	<string>Βήμα 1 από 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Βήμα 2 από 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Για την προστασία των μικρών παικτών, ένας ενήλικας πρέπει να ολοκληρώσει αυτόν τον έλεγχο πριν από την αγορά.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Τώρα πάτησε το %2$@ %1$lld φορές.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Πατήματα: %1$lld από %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Χρειάζεται έγκριση ενήλικα</string>
+	<key>premium.availableAt %lld</key>
+	<string>Διαθέσιμο από %lld τρόπαια</string>
+	<key>premium.availableFromStart</key>
+	<string>Διαθέσιμο από την αρχή</string>
+	<key>premium.characterUnlocked</key>
+	<string>ΞΕΚΛΕΙΔΩΘΗΚΕ ΝΕΟΣ ΧΑΡΑΚΤΗΡΑΣ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>Ξεκλειδώθηκε: %@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Κέρδισες %lld τρόπαια</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Αποκλειστικά με Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Αποκλειστικά με Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Με το Premium παίζεις ελεύθερα και με τα 10 ζωάκια.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Όλα τα ζωάκια</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Πάντα νέες ασκήσεις για εξάσκηση.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 επίπεδα ανά θέμα</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Παίξε χωρίς καμία διακοπή.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Χωρίς διαφημίσεις</string>
+	<key>premium.oneTime</key>
+	<string>Μία αγορά. Δικό σου για πάντα.</string>
+	<key>premium.restore</key>
+	<string>Επαναφορά αγορών</string>
+	<key>premium.start</key>
+	<string>Έναρξη</string>
+	<key>premium.storeUnavailable</key>
+	<string>Το κατάστημα δεν είναι διαθέσιμο τώρα. Δοκίμασε ξανά αργότερα.</string>
+	<key>premium.unlock</key>
+	<string>Ξεκλείδωσε το Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Ξεκλείδωσε το Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Ξεκλείδωσε με τρόπαια</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Ξεκλειδώθηκε με Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Έχεις Premium!</string>
+	<key>settings.character</key>
+	<string>Χαρακτήρας</string>
+	<key>settings.characterInfo</key>
+	<string>Κάθε ζωάκι δίνει στο παιχνίδι το δικό του χρωματικό θέμα.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Προσαρμογή: %lld λεπ.</string>
+	<key>settings.dailyGoal</key>
+	<string>Καθημερινός στόχος</string>
+	<key>settings.goalInfo</key>
+	<string>Ο στόχος σερί ξεκινά από 5 λεπτά τη μέρα. Μετρά μόνο ο ενεργός χρόνος παιχνιδιού.</string>
+	<key>settings.lives</key>
+	<string>Ζωές</string>
+	<key>settings.livesInfo</key>
+	<string>Με τρεις ζωές, το παιχνίδι τελειώνει μετά την τελευταία καρδιά. Στην απεριόριστη λειτουργία, τα τρόπαια μετρούν μόνο όσο έχεις ζωές. Μετά μπορείς να συνεχίσεις.</string>
+	<key>settings.playGoals</key>
+	<string>Στόχοι παιχνιδιού</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Το Premium ξεκλειδώθηκε. Ευχαριστούμε!</string>
+	<key>settings.title</key>
+	<string>Ρυθμίσεις</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Διάλεξε καθημερινό στόχο</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Διάλεξε καθημερινό ή εβδομαδιαίο στόχο</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld από %3$lld λεπτά, %4$lld μέρες στη σειρά</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Καθημερινό σερί, %lld από %lld λεπτά</string>
+	<key>streak.daily</key>
+	<string>Καθημερινό σερί</string>
+	<key>streak.dayOne</key>
+	<string>Ημέρα 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Δεν ξέρεις την απάντηση; Πάτησε την άσκηση για να τη δεις.</string>
+	<key>tutorial.complete</key>
+	<string>Μπράβο! Το μάθημα τελείωσε. Τώρα κυνήγησε το ρεκόρ!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Πήδα στη σωστή απάντηση για να πάρεις ένα τρόπαιο.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Η σωστή απάντηση φαίνεται με πράσινο. Τώρα πήδα πάνω της.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Τώρα πήδα στη σωστή απάντηση για να πάρεις τριπλά τρόπαια.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Πάρε το νόμισμα ×3 για να κερδίσεις μία φορά τριπλά τρόπαια.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Μπορείς να βρεις μισή ή ολόκληρη ζωή για να πάρεις πίσω ζωές.</string>
+	<key>tutorial.minusOne</key>
+	<string>Απόφυγε το −1. Σου κοστίζει ένα τρόπαιο.</string>
+	<key>tutorial.move</key>
+	<string>Κούνησε τη συσκευή σου για να πας αριστερά και δεξιά. Μπορείς επίσης να περνάς από τις άκρες της οθόνης.</string>
+	<key>tutorial.platforms</key>
+	<string>Πήδα στις πλατφόρμες για να ανέβεις.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Εδώ φαίνεται η βαθμολογία σου για αυτό το επίπεδο.</string>
+	<key>tutorial.star</key>
+	<string>Πήδα στο αστέρι για να διώξεις τις λάθος απαντήσεις.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Αν διαλέξεις λάθος απάντηση, χάνεις μία από τις τρεις ζωές σου. Δοκίμασέ το τώρα.</string>
+</dict>
+</plist>

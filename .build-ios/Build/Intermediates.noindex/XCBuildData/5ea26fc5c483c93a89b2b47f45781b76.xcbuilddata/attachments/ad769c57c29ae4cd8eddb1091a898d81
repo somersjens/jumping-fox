@@ -1,0 +1,239 @@
+{
+  "" : {
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping Fox-primary.dia",
+    "emit-module-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping Fox-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping Fox-primary-emit-module.dia",
+    "pch" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping Fox-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping Fox-primary.swiftdeps"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/DerivedSources/GeneratedStringSymbols_Localizable.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GeneratedStringSymbols_Localizable~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Challenges.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Challenges~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ContentView.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameScene.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameState.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameState~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameView.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameView~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Jumping_FoxApp.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Jumping_FoxApp~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Localization.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Localization~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ModeIntro.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ModeIntro~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Notifications.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Notifications~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/OnboardingView.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/OnboardingView~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ParentApprovalGate.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ParentApprovalGate~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PausedGameStore.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PausedGameStore~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PlaytimeTracker.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PlaytimeTracker~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PremiumStore.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumStore~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PremiumView.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ProgressSync.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PromotedPurchaseCoordinator.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PromotedPurchaseCoordinator~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ReviewRequestCoordinator.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ReviewRequestCoordinator~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/SettingsView.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Theme.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Theme~partial.swiftmodule"
+  },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/TutorialProgress.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/TutorialProgress~partial.swiftmodule"
+  }
+}

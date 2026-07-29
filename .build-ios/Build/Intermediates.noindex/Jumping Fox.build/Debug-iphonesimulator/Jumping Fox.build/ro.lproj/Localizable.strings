@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Urs</string>
+	<key>character.bunny</key>
+	<string>Iepuraș</string>
+	<key>character.crab</key>
+	<string>Crab</string>
+	<key>character.dog</key>
+	<string>Câine</string>
+	<key>character.elephant</key>
+	<string>Elefant</string>
+	<key>character.fox</key>
+	<string>Vulpe</string>
+	<key>character.frog</key>
+	<string>Broască</string>
+	<key>character.lion</key>
+	<string>Leu</string>
+	<key>character.octopus</key>
+	<string>Caracatiță</string>
+	<key>character.penguin</key>
+	<string>Pinguin</string>
+	<key>character.pickerTitle</key>
+	<string>Alege personajul</string>
+	<key>common.back</key>
+	<string>Înapoi</string>
+	<key>common.cancel</key>
+	<string>Anulează</string>
+	<key>common.continue</key>
+	<string>Continuă</string>
+	<key>common.done</key>
+	<string>Gata</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Salvează</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Ține apăsat 2 secunde pentru a deschide modul dezvoltator.</string>
+	<key>developerMode.title</key>
+	<string>Mod dezvoltator</string>
+	<key>filter.addition</key>
+	<string>Adunare</string>
+	<key>filter.fractions</key>
+	<string>Fracții</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Procente</string>
+	<key>filter.subtraction</key>
+	<string>Scădere</string>
+	<key>filter.tables</key>
+	<string>Tabla înmulțirii</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld din %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Bună încercare</string>
+	<key>game.encouragement.1</key>
+	<string>E un început</string>
+	<key>game.encouragement.2</key>
+	<string>Continuă să exersezi</string>
+	<key>game.encouragement.3</key>
+	<string>Nu e rău deloc</string>
+	<key>game.encouragement.4</key>
+	<string>Te descurci bine</string>
+	<key>game.encouragement.5</key>
+	<string>Rezultat frumos</string>
+	<key>game.encouragement.6</key>
+	<string>Bravo</string>
+	<key>game.encouragement.7</key>
+	<string>Foarte bine</string>
+	<key>game.encouragement.8</key>
+	<string>Finalul e aproape</string>
+	<key>game.encouragement.9</key>
+	<string>Aproape ai reușit</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Ai câștigat fiecare punct.</string>
+	<key>game.end.completionSuffix</key>
+	<string>complet!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Joc încheiat</string>
+	<key>game.end.mainMenu</key>
+	<string>Meniu principal</string>
+	<key>game.end.playAgain</key>
+	<string>Joacă din nou</string>
+	<key>game.highScore</key>
+	<string>Record</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Înapoi la meniul principal</string>
+	<key>game.intro.continue</key>
+	<string>Continuă</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Vei continua de la %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Răspunsul corect este marcat cu verde deoarece ajutorul este activ. Trofeele sunt numărate separat cu *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Ajutor oprit</string>
+	<key>game.intro.helperOn</key>
+	<string>Ajutor pornit</string>
+	<key>game.intro.howItWorks</key>
+	<string>Cum funcționează nivelul</string>
+	<key>game.intro.livesOff</key>
+	<string>Vieți oprite</string>
+	<key>game.intro.livesOn</key>
+	<string>Vieți pornite</string>
+	<key>game.intro.scorePaused</key>
+	<string>Scorul actual va fi pus pe pauză.</string>
+	<key>game.intro.start</key>
+	<string>Începe nivelul</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Înmulțește %@%@ cu un număr de la 1 la 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>sau mai mic</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Atinge oriunde pentru a continua</string>
+	<key>game.intro.tapToStart</key>
+	<string>Atinge oriunde pentru a începe</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Câștigă |1| trofeu pentru fiecare răspuns corect, până la maximum |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>După ce rămâi fără vieți, nu mai poți câștiga trofee.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Ai atins numărul maxim de trofee pentru clasament</string>
+	<key>game.status.mixMode</key>
+	<string>MOD MIX</string>
+	<key>game.status.scoreLocked</key>
+	<string>Trofeele nu mai contează după ce rămâi fără vieți</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofee ×2</string>
+	<key>game.streak.title</key>
+	<string>5 la rând!</string>
+	<key>goal.period</key>
+	<string>Perioada obiectivului</string>
+	<key>goal.promptDaily</key>
+	<string>Câte minute vrei să te joci pe zi?</string>
+	<key>goal.promptWeekly</key>
+	<string>Câte minute vrei să te joci pe săptămână?</string>
+	<key>goal.title</key>
+	<string>Obiectiv de joc</string>
+	<key>goalPeriod.daily</key>
+	<string>Zilnic</string>
+	<key>goalPeriod.weekly</key>
+	<string>Săptămânal</string>
+	<key>info.filter.addition</key>
+	<string>Doar adunări</string>
+	<key>info.filter.fractions</key>
+	<string>Doar împărțiri</string>
+	<key>info.filter.header</key>
+	<string>Tipuri de exerciții</string>
+	<key>info.filter.mixed</key>
+	<string>Operații amestecate</string>
+	<key>info.filter.percentages</key>
+	<string>Doar procente</string>
+	<key>info.filter.subtraction</key>
+	<string>Doar scăderi</string>
+	<key>info.filter.tables</key>
+	<string>Doar înmulțiri</string>
+	<key>info.mode.fractions.header</key>
+	<string>Părți</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Una sau mai multe părți</string>
+	<key>info.mode.fractions.single</key>
+	<string>Mereu o singură parte</string>
+	<key>info.mode.header</key>
+	<string>Ordine</string>
+	<key>info.mode.mixed</key>
+	<string>Amestecat cu niveluri mai ușoare</string>
+	<key>info.mode.order</key>
+	<string>Ordine fixă</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Cu numere zecimale</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tip</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Fără numere zecimale</string>
+	<key>info.mode.random</key>
+	<string>Ordine aleatorie</string>
+	<key>info.super.all</key>
+	<string>Adunare, scădere, înmulțire, împărțire și procente</string>
+	<key>info.super.basic</key>
+	<string>Adunare și scădere</string>
+	<key>info.super.fraction</key>
+	<string>Adunare, scădere, înmulțire și împărțire</string>
+	<key>info.super.times</key>
+	<string>Adunare, scădere și înmulțire</string>
+	<key>language.select</key>
+	<string>Alege limba</string>
+	<key>lives.three</key>
+	<string>3 vieți</string>
+	<key>lives.unlimited</key>
+	<string>Nelimitat</string>
+	<key>menu.accessibility.character</key>
+	<string>Personaj</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Atinge pentru a schimba personajul; ține apăsat două secunde pentru a reveni la ecranul de bun venit.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Alege %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maximul a fost atins de %lld ori</string>
+	<key>menu.moreLevels</key>
+	<string>Mai multe niveluri</string>
+	<key>menu.options</key>
+	<string>Opțiuni de joc</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Table Premium</string>
+	<key>menu.startHere</key>
+	<string>Începe aici</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Deblochează mai mult cu Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Mai multe</string>
+	<key>mode.fractions.single</key>
+	<string>Una</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Amestecat</string>
+	<key>mode.order</key>
+	<string>Ordine</string>
+	<key>mode.percentages.decimal</key>
+	<string>Zecimal</string>
+	<key>mode.percentages.whole</key>
+	<string>Întreg</string>
+	<key>mode.random</key>
+	<string>Aleatoriu</string>
+	<key>mode.standard</key>
+	<string>Standard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Primești doar exerciții de |adunare|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Aduni %lld |sau mai puțin| la un alt număr.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Aduni mereu %lld în ordine |crescătoare|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Aduni mereu %lld la un număr |aleatoriu|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Adunare · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Adună mereu două numere.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Răspunsul este cel mult %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Adunări până la %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Primești doar exerciții cu |fracții|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Primești fracții din acest nivel și din |nivelurile anterioare|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Iei mereu |1 parte| din %lld părți egale.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Calculează fracții din numere rotunde de la nivelul %lld și din nivelurile anterioare.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Numerele rămân rotunde, așa că răspunsurile sunt mereu întregi.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Fracții până la %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Iei una sau |mai multe părți| din %lld părți egale.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Fracții · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Calculează o parte dintr-un întreg și găsește fracții egale.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Adună și scade fracții cu același numitor.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Fracții amestecate</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Primești doar exerciții cu |procente|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Primești procente din acest nivel și din |nivelurile anterioare|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Calculezi mereu %@, iar răspunsul este un |număr întreg|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Calculează procente din numere rotunde până la %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Valorile rămân rotunde, așa că răspunsurile sunt mereu întregi.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Procente până la %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Calculezi mereu %@, iar răspunsul poate fi și |zecimal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Calculează %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Calculează un procent dintr-un număr.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Transformă procentele în fracții și invers.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Procente amestecate</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Primești doar exerciții de |scădere|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Scazi %lld |sau mai puțin| dintr-un alt număr.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Scazi mereu %lld în ordine |descrescătoare|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Scazi mereu %lld dintr-un număr |aleatoriu|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Scădere · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Primul număr este cel mult %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Răspunsul poate fi mai mic decât zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Sub zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Scăderi până la %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Scade mereu două numere.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Dificultatea poate crește până la |nivelul %lld| pentru fiecare categorie aleasă.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Exersează adunări, scăderi, înmulțiri, fracții și procente, toate amestecate.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Exersează adunări și scăderi amestecate.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Exersează adunări, scăderi, înmulțiri și fracții amestecate.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Exersează adunări, scăderi și înmulțiri amestecate.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Primești doar exerciții de |înmulțire|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Primești toate tablele înmulțirii |până la %lld|, amestecate.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Fiecare număr se înmulțește cu un număr de la |1 la 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Primești tabla lui %lld în ordine |crescătoare|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Primești tabla lui %lld în ordine |aleatorie|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tabla lui %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Exersează amestecat tablele de la %lld la %lld.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tablele %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Numele tău</string>
+	<key>name.whatsYourName</key>
+	<string>Cum te cheamă?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Exerciții mixte diferite, toate împreună.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Te descurci deja bine</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Exersează cu exerciții în ordine.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Abia ai început</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Exerciții în ordine aleatorie.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Ai exersat deja puțin</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Alege un punct de pornire pentru %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>acest subiect</string>
+	<key>onboarding.level.title</key>
+	<string>Cât de bine te descurci deja?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Să începem. Cum te cheamă?</string>
+	<key>onboarding.name.title</key>
+	<string>Calculele nu au fost niciodată atât de distractive!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Alege un subiect cu care să începi.</string>
+	<key>onboarding.subject.title</key>
+	<string>Ce vrei să înveți?</string>
+	<key>options.capAt30.info</key>
+	<string>Fiecare nivel are un obiectiv de până la 50 de trofee. Dacă această opțiune este activă, jocul se încheie automat când îl atingi.</string>
+	<key>options.capAt30.title</key>
+	<string>Oprește la obiectiv</string>
+	<key>options.helperMode.info</key>
+	<string>În modul Ajutor, răspunsul corect este mereu verde. Trofeele câștigate astfel sunt numărate separat și marcate cu o stea.</string>
+	<key>options.helperMode.title</key>
+	<string>Mod Ajutor</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Începi mereu cu 3 vieți. Jocul se încheie când nu mai ai vieți. Activează această opțiune ca să continui să te joci și să exersezi.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Vieți nelimitate</string>
+	<key>parentGate.approved</key>
+	<string>Aprobat</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Încercări: %1$lld din %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Ține apăsat %@ timp de %lld secunde.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Ține apăsat: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Ține apăsat %@ timp de %lld secunde. Apoi atinge %@ de %lld ori.</string>
+	<key>parentGate.shape.circle</key>
+	<string>cerc</string>
+	<key>parentGate.shape.diamond</key>
+	<string>romb</string>
+	<key>parentGate.shape.heart</key>
+	<string>inimă</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hexagon</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>pătrat</string>
+	<key>parentGate.shape.star</key>
+	<string>stea</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triunghi</string>
+	<key>parentGate.stepOne</key>
+	<string>Pasul 1 din 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Pasul 2 din 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Pentru a proteja copiii, un adult trebuie să treacă această verificare înainte de cumpărare.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Acum atinge %2$@ de %1$lld ori.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Atingeri: %1$lld din %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Este necesară aprobarea unui adult</string>
+	<key>premium.availableAt %lld</key>
+	<string>Disponibil de la %lld trofee</string>
+	<key>premium.availableFromStart</key>
+	<string>Disponibil de la început</string>
+	<key>premium.characterUnlocked</key>
+	<string>PERSONAJ NOU DEBLOCAT</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ deblocat</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Ai câștigat %lld trofee</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exclusiv cu Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exclusiv cu Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Cu Premium te joci liber cu toate cele 10 animale.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Acces la toate animalele</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Mereu exerciții noi pentru exersat.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 de niveluri pe subiect</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Joacă-te fără întreruperi.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Fără reclame</string>
+	<key>premium.oneTime</key>
+	<string>O singură plată. Al tău pentru totdeauna.</string>
+	<key>premium.restore</key>
+	<string>Restaurează achizițiile</string>
+	<key>premium.start</key>
+	<string>Începe</string>
+	<key>premium.storeUnavailable</key>
+	<string>Magazinul nu este disponibil acum. Încearcă din nou mai târziu.</string>
+	<key>premium.unlock</key>
+	<string>Deblochează Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Deblochează Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Deblochează cu trofee</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Deblocat cu Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Ai Premium!</string>
+	<key>settings.character</key>
+	<string>Personaj</string>
+	<key>settings.characterInfo</key>
+	<string>Fiecare animal aduce propria temă de culori în tot jocul.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Personalizat: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Obiectiv zilnic</string>
+	<key>settings.goalInfo</key>
+	<string>Seria începe cu 5 minute pe zi. Contează doar timpul în care te joci.</string>
+	<key>settings.lives</key>
+	<string>Vieți</string>
+	<key>settings.livesInfo</key>
+	<string>Cu trei vieți, jocul se termină după ultima inimă. În modul nelimitat, trofeele contează doar cât timp mai ai vieți; apoi poți continua să te joci.</string>
+	<key>settings.playGoals</key>
+	<string>Obiective de joc</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium deblocat. Mulțumim!</string>
+	<key>settings.title</key>
+	<string>Setări</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Alege un obiectiv zilnic</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Alege un obiectiv zilnic sau săptămânal</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld din %3$lld minute, %4$lld zile la rând</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Serie zilnică, %lld din %lld minute</string>
+	<key>streak.daily</key>
+	<string>Serie zilnică</string>
+	<key>streak.dayOne</key>
+	<string>Ziua 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Nu știi răspunsul? Atinge exercițiul ca să-l vezi.</string>
+	<key>tutorial.complete</key>
+	<string>Bravo! Ai terminat tutorialul. Acum încearcă să bați recordul!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Sari pe răspunsul corect ca să iei un trofeu.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Răspunsul corect este verde. Acum sari pe el.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Acum sari pe răspunsul corect ca să câștigi de trei ori mai multe trofee.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Ia moneda ×3 ca să câștigi o dată de trei ori mai multe trofee.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Poți găsi o jumătate de viață sau o viață întreagă ca să-ți refaci viețile.</string>
+	<key>tutorial.minusOne</key>
+	<string>Evită −1. Te costă un trofeu.</string>
+	<key>tutorial.move</key>
+	<string>Mișcă dispozitivul spre stânga și dreapta. Poți trece și prin marginile ecranului.</string>
+	<key>tutorial.platforms</key>
+	<string>Sari pe platforme ca să urci.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Scorul tău pentru acest nivel apare aici.</string>
+	<key>tutorial.star</key>
+	<string>Sari în stea ca să elimini răspunsurile greșite.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Dacă alegi un răspuns greșit, pierzi una dintre cele trei vieți. Încearcă acum.</string>
+</dict>
+</plist>

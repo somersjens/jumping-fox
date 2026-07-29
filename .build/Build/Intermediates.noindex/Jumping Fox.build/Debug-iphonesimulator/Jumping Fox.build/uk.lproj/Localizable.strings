@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ведмідь</string>
+	<key>character.bunny</key>
+	<string>Зайчик</string>
+	<key>character.crab</key>
+	<string>Краб</string>
+	<key>character.dog</key>
+	<string>Пес</string>
+	<key>character.elephant</key>
+	<string>Слон</string>
+	<key>character.fox</key>
+	<string>Лис</string>
+	<key>character.frog</key>
+	<string>Жаба</string>
+	<key>character.lion</key>
+	<string>Лев</string>
+	<key>character.octopus</key>
+	<string>Восьминіг</string>
+	<key>character.penguin</key>
+	<string>Пінгвін</string>
+	<key>character.pickerTitle</key>
+	<string>Обери героя</string>
+	<key>common.back</key>
+	<string>Назад</string>
+	<key>common.cancel</key>
+	<string>Скасувати</string>
+	<key>common.continue</key>
+	<string>Далі</string>
+	<key>common.done</key>
+	<string>Готово</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld хв</string>
+	<key>common.save</key>
+	<string>Зберегти</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Натисни й утримуй 2 секунди, щоб відкрити режим розробника.</string>
+	<key>developerMode.title</key>
+	<string>Режим розробника</string>
+	<key>filter.addition</key>
+	<string>Додавання</string>
+	<key>filter.fractions</key>
+	<string>Дроби</string>
+	<key>filter.mixed</key>
+	<string>Супермікс</string>
+	<key>filter.percentages</key>
+	<string>Відсотки</string>
+	<key>filter.subtraction</key>
+	<string>Віднімання</string>
+	<key>filter.tables</key>
+	<string>Таблиці</string>
+	<key>game.accessibility.mix</key>
+	<string>Мікс</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld з %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Гарна спроба</string>
+	<key>game.encouragement.1</key>
+	<string>Це вже початок</string>
+	<key>game.encouragement.2</key>
+	<string>Тренуйся далі</string>
+	<key>game.encouragement.3</key>
+	<string>Зовсім непогано</string>
+	<key>game.encouragement.4</key>
+	<string>Добре виходить</string>
+	<key>game.encouragement.5</key>
+	<string>Чудовий результат</string>
+	<key>game.encouragement.6</key>
+	<string>Молодець</string>
+	<key>game.encouragement.7</key>
+	<string>Дуже добре зіграно</string>
+	<key>game.encouragement.8</key>
+	<string>Фініш уже близько</string>
+	<key>game.encouragement.9</key>
+	<string>Ти майже там</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Ти здобув усі бали.</string>
+	<key>game.end.completionSuffix</key>
+	<string>завершено!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Гру завершено</string>
+	<key>game.end.mainMenu</key>
+	<string>Головне меню</string>
+	<key>game.end.playAgain</key>
+	<string>Ще раз</string>
+	<key>game.highScore</key>
+	<string>Рекорд</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Назад до меню</string>
+	<key>game.intro.continue</key>
+	<string>Продовжити</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Ти продовжиш із %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Правильну відповідь виділено зеленим, бо помічник увімкнений. Тому трофеї рахуються окремо зі *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Помічник вимк.</string>
+	<key>game.intro.helperOn</key>
+	<string>Помічник увімк.</string>
+	<key>game.intro.howItWorks</key>
+	<string>Як працює цей рівень</string>
+	<key>game.intro.livesOff</key>
+	<string>Життя вимк.</string>
+	<key>game.intro.livesOn</key>
+	<string>Життя увімк.</string>
+	<key>game.intro.scorePaused</key>
+	<string>Твій поточний рахунок буде призупинено.</string>
+	<key>game.intro.start</key>
+	<string>Почати рівень</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Помнож %@%@ на число від 1 до 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>або менше</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Торкнися будь-де, щоб продовжити</string>
+	<key>game.intro.tapToStart</key>
+	<string>Торкнися будь-де, щоб почати</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Отримуй |1| трофей за кожну правильну відповідь, максимум |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Коли життя закінчаться, трофеї більше не нараховуються.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Досягнуто максимуму трофеїв для таблиці лідерів</string>
+	<key>game.status.mixMode</key>
+	<string>РЕЖИМ МІКС</string>
+	<key>game.status.scoreLocked</key>
+	<string>Коли життя закінчаться, трофеї більше не рахуються</string>
+	<key>game.streak.subtitle</key>
+	<string>Трофеї ×2</string>
+	<key>game.streak.title</key>
+	<string>5 поспіль!</string>
+	<key>goal.period</key>
+	<string>Період цілі</string>
+	<key>goal.promptDaily</key>
+	<string>Скільки хвилин на день ти хочеш грати?</string>
+	<key>goal.promptWeekly</key>
+	<string>Скільки хвилин на тиждень ти хочеш грати?</string>
+	<key>goal.title</key>
+	<string>Ігрова ціль</string>
+	<key>goalPeriod.daily</key>
+	<string>Щодня</string>
+	<key>goalPeriod.weekly</key>
+	<string>Щотижня</string>
+	<key>info.filter.addition</key>
+	<string>Лише додавання</string>
+	<key>info.filter.fractions</key>
+	<string>Лише ділення</string>
+	<key>info.filter.header</key>
+	<string>Види завдань</string>
+	<key>info.filter.mixed</key>
+	<string>Змішані дії</string>
+	<key>info.filter.percentages</key>
+	<string>Лише відсотки</string>
+	<key>info.filter.subtraction</key>
+	<string>Лише віднімання</string>
+	<key>info.filter.tables</key>
+	<string>Лише множення</string>
+	<key>info.mode.fractions.header</key>
+	<string>Частини</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Одна або кілька частин</string>
+	<key>info.mode.fractions.single</key>
+	<string>Завжди одна частина</string>
+	<key>info.mode.header</key>
+	<string>Порядок</string>
+	<key>info.mode.mixed</key>
+	<string>Разом із нижчими рівнями</string>
+	<key>info.mode.order</key>
+	<string>Фіксований порядок</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>З десятковими числами</string>
+	<key>info.mode.percentages.header</key>
+	<string>Тип</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Без десяткових чисел</string>
+	<key>info.mode.random</key>
+	<string>Випадковий порядок</string>
+	<key>info.super.all</key>
+	<string>Додавання, віднімання, множення, ділення й відсотки</string>
+	<key>info.super.basic</key>
+	<string>Додавання й віднімання</string>
+	<key>info.super.fraction</key>
+	<string>Додавання, віднімання, множення й ділення</string>
+	<key>info.super.times</key>
+	<string>Додавання, віднімання й множення</string>
+	<key>language.select</key>
+	<string>Обери мову</string>
+	<key>lives.three</key>
+	<string>3 життя</string>
+	<key>lives.unlimited</key>
+	<string>Без обмежень</string>
+	<key>menu.accessibility.character</key>
+	<string>Персонаж</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Торкнися, щоб змінити персонажа; натисни й утримуй дві секунди, щоб почати спочатку з екрана привітання.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Обери %@</string>
+	<key>menu.maxScore</key>
+	<string>30 МАКС</string>
+	<key>menu.maximumCount</key>
+	<string>МАКС</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Максимум досягнуто %lld разів</string>
+	<key>menu.moreLevels</key>
+	<string>Більше рівнів</string>
+	<key>menu.options</key>
+	<string>Параметри гри</string>
+	<key>menu.premium</key>
+	<string>Преміум</string>
+	<key>menu.premiumTables</key>
+	<string>Преміум-таблиці</string>
+	<key>menu.startHere</key>
+	<string>Почни тут</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Відкрий більше з Преміум</string>
+	<key>mode.fractions.multiple</key>
+	<string>Кілька</string>
+	<key>mode.fractions.single</key>
+	<string>Одна</string>
+	<key>mode.mix</key>
+	<string>Мікс</string>
+	<key>mode.mixed</key>
+	<string>Змішано</string>
+	<key>mode.order</key>
+	<string>Порядок</string>
+	<key>mode.percentages.decimal</key>
+	<string>Десяткові</string>
+	<key>mode.percentages.whole</key>
+	<string>Цілі</string>
+	<key>mode.random</key>
+	<string>Випадково</string>
+	<key>mode.standard</key>
+	<string>Стандарт</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Тут будуть лише завдання на |додавання|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Ти додаєш %lld |або менше| до іншого числа.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Ти завжди додаєш %lld у |зростаючому| порядку.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Ти завжди додаєш %lld до |випадкового| числа.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Додавання · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Додавай два числа.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Відповідь не більша за %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Додавання до %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Тут будуть лише завдання на |дроби|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Тут будуть дроби з цього й |попередніх рівнів|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Ти береш |1 частину| з %lld рівних частин.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Обчислюй дроби від круглих чисел із рівня %lld та попередніх рівнів.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Числа залишаються круглими, тому відповіді завжди цілі.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Дроби до %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Ти береш одну або |кілька частин| із %lld рівних частин.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Дроби · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Знайди частину цілого та зроби дроби рівними.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Додавай і віднімай дроби з однаковими знаменниками.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Дроби впереміш</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Тут будуть лише завдання на |відсотки|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Тут будуть відсотки з цього й |попередніх рівнів|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Ти завжди обчислюєш %@, а відповідь — |ціле число|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Обчислюй відсотки від круглих чисел до %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Значення залишаються круглими, тому відповіді завжди цілі.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Відсотки до %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Ти завжди обчислюєш %@, а відповідь може бути й |десятковим числом|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Обчислити %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Обчисли відсоток від числа.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Перетворюй відсотки на дроби й навпаки.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Відсотки впереміш</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Тут будуть лише завдання на |віднімання|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Ти віднімаєш %lld |або менше| від іншого числа.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Ти завжди віднімаєш %lld у |спадному| порядку.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Ти завжди віднімаєш %lld від |випадкового| числа.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Віднімання · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Перше число не більше за %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Відповідь може бути меншою за нуль.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Нижче нуля</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Віднімання до %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Віднімай одне число від іншого.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Складність може зростати до |рівня %lld| для кожної вибраної категорії.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Тренуй додавання, віднімання, таблиці, дроби й відсотки впереміш.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Супермікс %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Тренуй додавання й віднімання впереміш.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Супермікс %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Тренуй додавання, віднімання, таблиці й дроби впереміш.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Супермікс %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Тренуй додавання, віднімання й таблиці впереміш.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Супермікс %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Тут будуть лише завдання на |множення|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Усі таблиці |до %lld| будуть упереміш.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Кожна таблиця множиться на число від |1 до 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Таблиця множення на %lld у |зростаючому| порядку.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Таблиця множення на %lld у |випадковому| порядку.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Таблиця на %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Тренуй таблиці від %lld до %lld впереміш.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Таблиці %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Твоє ім’я</string>
+	<key>name.whatsYourName</key>
+	<string>Як тебе звати?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Різні змішані завдання впереміш.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Уже досить добре</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Тренуй завдання по порядку.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Щойно почав</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Завдання у випадковому порядку.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Уже трохи тренувався</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Обери початковий рівень для %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ця тема</string>
+	<key>onboarding.level.title</key>
+	<string>Наскільки добре ти це вже вмієш?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Почнімо! Як тебе звати?</string>
+	<key>onboarding.name.title</key>
+	<string>Рахувати ще ніколи не було так весело!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Обери тему для початку.</string>
+	<key>onboarding.subject.title</key>
+	<string>Що ти хочеш вивчати?</string>
+	<key>options.capAt30.info</key>
+	<string>На кожному рівні можна здобути до 50 трофеїв. Якщо цю опцію ввімкнено, гра автоматично завершиться, коли ти досягнеш цілі.</string>
+	<key>options.capAt30.title</key>
+	<string>Завершити за ціллю</string>
+	<key>options.helperMode.info</key>
+	<string>У режимі помічника правильна відповідь завжди зелена. Трофеї з цього режиму рахуються окремо й позначаються зірочкою.</string>
+	<key>options.helperMode.title</key>
+	<string>Режим помічника</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Ти завжди починаєш із 3 життями. Гра завершиться, коли життя закінчаться. Увімкни цю опцію, щоб далі грати й тренуватися без життів.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Безлімітні життя</string>
+	<key>parentGate.approved</key>
+	<string>Підтверджено</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Спроби: %1$lld з %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Утримуй %@ %lld секунд.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Утримувати: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Утримуй %@ %lld секунд. Потім торкнися %@ %lld разів.</string>
+	<key>parentGate.shape.circle</key>
+	<string>коло</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ромб</string>
+	<key>parentGate.shape.heart</key>
+	<string>серце</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>шестикутник</string>
+	<key>parentGate.shape.plus</key>
+	<string>плюс</string>
+	<key>parentGate.shape.square</key>
+	<string>квадрат</string>
+	<key>parentGate.shape.star</key>
+	<string>зірка</string>
+	<key>parentGate.shape.triangle</key>
+	<string>трикутник</string>
+	<key>parentGate.stepOne</key>
+	<string>Крок 1 із 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Крок 2 із 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Щоб захистити маленьких гравців, дорослий має пройти цю перевірку перед покупкою.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Тепер торкнися %2$@ %1$lld разів.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Дотики: %1$lld з %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Потрібне схвалення дорослого</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>З Преміум можна вільно грати всіма 10 тваринами.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Усі тварини доступні</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Завжди багато нових завдань для тренування.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 рівнів у кожній темі</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Грай без жодних перерв.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Без реклами</string>
+	<key>premium.oneTime</key>
+	<string>Одна покупка. Назавжди твоє.</string>
+	<key>premium.restore</key>
+	<string>Відновити покупки</string>
+	<key>premium.storeUnavailable</key>
+	<string>Магазин зараз недоступний. Спробуй пізніше.</string>
+	<key>premium.unlock</key>
+	<string>Відкрити Преміум</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Відкрити Преміум · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>У тебе є Преміум!</string>
+	<key>settings.character</key>
+	<string>Персонаж</string>
+	<key>settings.characterInfo</key>
+	<string>Кожна тварина додає грі власну кольорову тему.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Власна ціль: %lld хв</string>
+	<key>settings.dailyGoal</key>
+	<string>Щоденна ціль</string>
+	<key>settings.goalInfo</key>
+	<string>Серія починається з 5 хвилин на день. Рахується лише активний час гри.</string>
+	<key>settings.lives</key>
+	<string>Життя</string>
+	<key>settings.livesInfo</key>
+	<string>З трьома життями гра закінчується після останнього серця. У безлімітному режимі трофеї рахуються, лише поки є життя; потім можна грати далі.</string>
+	<key>settings.playGoals</key>
+	<string>Ігрові цілі</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Преміум відкрито. Дякуємо!</string>
+	<key>settings.title</key>
+	<string>Налаштування</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Обери щоденну ціль</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Обери щоденну або щотижневу ціль</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld із %3$lld хвилин, %4$lld днів поспіль</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Щоденна серія: %lld із %lld хвилин</string>
+	<key>streak.daily</key>
+	<string>Щоденна серія</string>
+	<key>streak.dayOne</key>
+	<string>День 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Не знаєш відповіді? Торкнися завдання, щоб її побачити.</string>
+	<key>tutorial.complete</key>
+	<string>Молодець! Навчання завершено. Тепер спробуй встановити рекорд!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Стрибни на правильну відповідь і забери трофей.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Правильну відповідь показано зеленим. Тепер стрибни на неї.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Стрибни на правильну відповідь і отримай утричі більше трофеїв.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Збери монету ×3, щоб один раз отримати втричі більше трофеїв.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Можна знайти половину або ціле життя й повернути собі життя.</string>
+	<key>tutorial.minusOne</key>
+	<string>Уникай −1. Він забирає один трофей.</string>
+	<key>tutorial.move</key>
+	<string>Нахиляй пристрій, щоб рухатися ліворуч і праворуч. Також можна переходити крізь краї екрана.</string>
+	<key>tutorial.platforms</key>
+	<string>Стрибай по платформах, щоб підніматися.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Твій рахунок за цей рівень показано тут.</string>
+	<key>tutorial.star</key>
+	<string>Стрибни в зірку, щоб прибрати неправильні відповіді.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Якщо обереш неправильну відповідь, втратиш одне з трьох життів. Спробуй зараз.</string>
+</dict>
+</plist>

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Bjørn</string>
+	<key>character.bunny</key>
+	<string>Kanina</string>
+	<key>character.crab</key>
+	<string>Krabbi</string>
+	<key>character.dog</key>
+	<string>Hundur</string>
+	<key>character.elephant</key>
+	<string>Fílur</string>
+	<key>character.fox</key>
+	<string>Revur</string>
+	<key>character.frog</key>
+	<string>Froskur</string>
+	<key>character.lion</key>
+	<string>Leyva</string>
+	<key>character.octopus</key>
+	<string>Høgguslokkur</string>
+	<key>character.penguin</key>
+	<string>Pingvinur</string>
+	<key>character.pickerTitle</key>
+	<string>Vel tína figur</string>
+	<key>common.back</key>
+	<string>Aftur</string>
+	<key>common.cancel</key>
+	<string>Angra</string>
+	<key>common.continue</key>
+	<string>Víðari</string>
+	<key>common.done</key>
+	<string>Liðugt</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Goym</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Halt inni í 2 sekund fyri at lata menningarstøðu upp.</string>
+	<key>developerMode.title</key>
+	<string>Menningarstøða</string>
+	<key>filter.addition</key>
+	<string>Samlegging</string>
+	<key>filter.fractions</key>
+	<string>Brot</string>
+	<key>filter.mixed</key>
+	<string>Superbland</string>
+	<key>filter.percentages</key>
+	<string>Prosent</string>
+	<key>filter.subtraction</key>
+	<string>Frádráttur</string>
+	<key>filter.tables</key>
+	<string>Tabellir</string>
+	<key>game.accessibility.mix</key>
+	<string>Bland</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld av %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Gott roynt</string>
+	<key>game.encouragement.1</key>
+	<string>Ein góð byrjan</string>
+	<key>game.encouragement.2</key>
+	<string>Halt fram at venja</string>
+	<key>game.encouragement.3</key>
+	<string>Ikki so galið</string>
+	<key>game.encouragement.4</key>
+	<string>Tað gongur væl</string>
+	<key>game.encouragement.5</key>
+	<string>Flott avrik</string>
+	<key>game.encouragement.6</key>
+	<string>Væl gjørt</string>
+	<key>game.encouragement.7</key>
+	<string>Sera væl spælt</string>
+	<key>game.encouragement.8</key>
+	<string>Málið er í eygsjón</string>
+	<key>game.encouragement.9</key>
+	<string>Tú ert næstan komin</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Tú vann hvørt einasta stig.</string>
+	<key>game.end.completionSuffix</key>
+	<string>liðugt!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Spælið er liðugt</string>
+	<key>game.end.mainMenu</key>
+	<string>Høvuðsvalmynd</string>
+	<key>game.end.playAgain</key>
+	<string>Spæl aftur</string>
+	<key>game.highScore</key>
+	<string>Met</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Aftur til høvuðsvalmynd</string>
+	<key>game.intro.continue</key>
+	<string>Halt fram</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Tú heldur fram frá %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Rætta svarið er grønt, tí hjálpin er tendrað. Steyp verða tí tald fyri seg við *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Hjálp sløkt</string>
+	<key>game.intro.helperOn</key>
+	<string>Hjálp tendrað</string>
+	<key>game.intro.howItWorks</key>
+	<string>Soleiðis riggar stigið</string>
+	<key>game.intro.livesOff</key>
+	<string>Lív sløkt</string>
+	<key>game.intro.livesOn</key>
+	<string>Lív tendrað</string>
+	<key>game.intro.scorePaused</key>
+	<string>Núverandi stigatal verður sett á steðg.</string>
+	<key>game.intro.start</key>
+	<string>Byrja stig</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Falda %@%@ við einum tali frá 1 til 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ella lægri</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Trýst hvar sum helst fyri at halda fram</string>
+	<key>game.intro.tapToStart</key>
+	<string>Trýst hvar sum helst fyri at byrja</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Vinn |1| steyp fyri hvørt rætt svar, í mesta lagi |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Tá lívini eru uppi, kanst tú ikki vinna fleiri steyp.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Hámarkið av steypum á stigatalvuni er rokkið</string>
+	<key>game.status.mixMode</key>
+	<string>BLANDSTØÐA</string>
+	<key>game.status.scoreLocked</key>
+	<string>Steyp telja ikki longur, tá lívini eru uppi</string>
+	<key>game.streak.subtitle</key>
+	<string>Steyp ×2</string>
+	<key>game.streak.title</key>
+	<string>5 á rað!</string>
+	<key>goal.period</key>
+	<string>Málskeið</string>
+	<key>goal.promptDaily</key>
+	<string>Hvussu nógvar minuttir vilt tú spæla um dagin?</string>
+	<key>goal.promptWeekly</key>
+	<string>Hvussu nógvar minuttir vilt tú spæla um vikuna?</string>
+	<key>goal.title</key>
+	<string>Spælimál</string>
+	<key>goalPeriod.daily</key>
+	<string>Dagliga</string>
+	<key>goalPeriod.weekly</key>
+	<string>Vikuliga</string>
+	<key>info.filter.addition</key>
+	<string>Bara samlegging</string>
+	<key>info.filter.fractions</key>
+	<string>Bara býting</string>
+	<key>info.filter.header</key>
+	<string>Sløg av roknistykkjum</string>
+	<key>info.filter.mixed</key>
+	<string>Blandaðir roknihættir</string>
+	<key>info.filter.percentages</key>
+	<string>Bara prosent</string>
+	<key>info.filter.subtraction</key>
+	<string>Bara frádráttur</string>
+	<key>info.filter.tables</key>
+	<string>Bara falding</string>
+	<key>info.mode.fractions.header</key>
+	<string>Partar</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Ein og fleiri partar</string>
+	<key>info.mode.fractions.single</key>
+	<string>Altíð ein partur</string>
+	<key>info.mode.header</key>
+	<string>Raðfylgja</string>
+	<key>info.mode.mixed</key>
+	<string>Blandað við lægri stigum</string>
+	<key>info.mode.order</key>
+	<string>Føst raðfylgja</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Við desimaltølum</string>
+	<key>info.mode.percentages.header</key>
+	<string>Slag</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Uttan desimaltøl</string>
+	<key>info.mode.random</key>
+	<string>Tilvildarlig raðfylgja</string>
+	<key>info.super.all</key>
+	<string>Samlegging, frádráttur, falding, býting og prosent</string>
+	<key>info.super.basic</key>
+	<string>Samlegging og frádráttur</string>
+	<key>info.super.fraction</key>
+	<string>Samlegging, frádráttur, falding og býting</string>
+	<key>info.super.times</key>
+	<string>Samlegging, frádráttur og falding</string>
+	<key>language.select</key>
+	<string>Vel mál</string>
+	<key>lives.three</key>
+	<string>3 lív</string>
+	<key>lives.unlimited</key>
+	<string>Óavmarkað</string>
+	<key>menu.accessibility.character</key>
+	<string>Figurur</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Trýst fyri at skifta figur; halt inni í tvey sekund fyri at byrja av nýggjum á vælkomstskíggjanum.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Vel %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Hámark rokkið %lld ferðir</string>
+	<key>menu.moreLevels</key>
+	<string>Fleiri stig</string>
+	<key>menu.options</key>
+	<string>Spælistillingar</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium-tabellir</string>
+	<key>menu.startHere</key>
+	<string>Byrja her</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Lat meira upp við Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Fleiri</string>
+	<key>mode.fractions.single</key>
+	<string>Ein</string>
+	<key>mode.mix</key>
+	<string>Bland</string>
+	<key>mode.mixed</key>
+	<string>Blandað</string>
+	<key>mode.order</key>
+	<string>Rað</string>
+	<key>mode.percentages.decimal</key>
+	<string>Desimaltal</string>
+	<key>mode.percentages.whole</key>
+	<string>Heilt</string>
+	<key>mode.random</key>
+	<string>Tilvild</string>
+	<key>mode.standard</key>
+	<string>Vanligt</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Tú fært bara uppgávur við |samlegging|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Tú leggur %lld |ella minni| afturat einum øðrum tali.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Tú leggur altíð %lld afturat í |vaksandi| raðfylgju.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Tú leggur altíð %lld afturat einum |tilvildarligum| tali.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Samlegging · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Legg tvey tøl saman hvørja ferð.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Svarið er í mesta lagi %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Legg saman upp í %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Tú fært bara uppgávur við |brotum|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Tú fært brot úr hesum stigi og |fyrru stigum|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Tú tekur altíð |1 part| av %lld eins stórum pørtum.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Rokna brot av rundum tølum úr stigi %lld og fyrru stigum.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Tølini eru rund, so svarini eru altíð heil.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Brot upp í %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Tú tekur ein ella |fleiri partar| av %lld eins stórum pørtum.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Brot · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Rokna ein part av einum heilum og ger brot javnstór.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Legg saman og drag frá brotum við sama nevnara.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Blandað brot</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Tú fært bara uppgávur við |prosentum|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Tú fært prosent úr hesum stigi og |fyrru stigum|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Tú roknar altíð %@, og svarið er eitt |heilt tal|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Rokna prosent av rundum tølum upp í %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Upphæddirnar eru rundar, so svarini eru altíð heil.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Prosent upp í %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Tú roknar altíð %@, og svarið kann eisini vera eitt |desimaltal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Rokna %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Rokna eitt prosent av einum tali.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Broyt millum prosent og brot.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Blandað prosent</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Tú fært bara uppgávur við |frádrátti|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Tú dregur %lld |ella minni| frá einum øðrum tali.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Tú dregur altíð %lld frá í |minkandi| raðfylgju.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Tú dregur altíð %lld frá einum |tilvildarligum| tali.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Frádráttur · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Fyrsta talið er í mesta lagi %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Svarið kann fara niður um null.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Undir null</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Drag frá upp í %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Drag tvey tøl frá hvørjum øðrum.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Torleikastøðið kann vaksa upp í |stig %lld| fyri hvønn valdan bólk.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Ven samlegging, frádrátt, tabellir, brot og prosent hvørt um annað.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Superbland %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Ven samlegging og frádrátt hvørt um annað.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Superbland %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Ven samlegging, frádrátt, tabellir og brot hvørt um annað.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Superbland %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Ven samlegging, frádrátt og tabellir hvørt um annað.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Superbland %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Tú fært bara uppgávur við |falding|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Tú fært allar tabellir |upp í %lld| blandaðar.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Hvør tabell verður faldað við einum tali frá |1 til 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Tú fært %lld-tabellina í |vaksandi| raðfylgju.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Tú fært %lld-tabellina í |tilvildarligari| raðfylgju.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-tabellin</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Ven tabellirnar frá %lld til %lld hvørt um annað.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tabellir %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Títt navn</string>
+	<key>name.whatsYourName</key>
+	<string>Hvat eitur tú?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Ymisk blandingsstykki hvørt um annað.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Longu rættiliga dugnalig/ur</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Ven roknistykki í raðfylgju.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Júst byrjað</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Roknistykki í tilvildarligari raðfylgju.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Hevur vant eitt sindur</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Vel eitt byrjanarstig fyri %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>hetta evnið</string>
+	<key>onboarding.level.title</key>
+	<string>Hvussu dugnalig/ur ert tú longu?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Latið okkum byrja. Hvat eitur tú?</string>
+	<key>onboarding.name.title</key>
+	<string>Tað hevur ongantíð verið so stuttligt at rokna!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Vel eitt evni at byrja við.</string>
+	<key>onboarding.subject.title</key>
+	<string>Hvat vilt tú læra?</string>
+	<key>options.capAt30.info</key>
+	<string>Hvørt stig hevur eitt steypamál upp í 50. Er hetta tendrað, endar spælið sjálvt, tá tú røkkur málinum.</string>
+	<key>options.capAt30.title</key>
+	<string>Enda við málið</string>
+	<key>options.helperMode.info</key>
+	<string>Í hjálparstøðu verður rætta svarið altíð víst grønt. Steyp, sum tú vinnur her, verða tald fyri seg og merkt við stjørnu.</string>
+	<key>options.helperMode.title</key>
+	<string>Hjálparstøða</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Tú byrjar altíð við 3 lívum. Spælið endar, tá tú einki lív hevur eftir. Tendr hetta fyri at halda fram at spæla og venja, tá lívini eru uppi.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Óavmarkað lív</string>
+	<key>parentGate.approved</key>
+	<string>Góðkent</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Royndir: %1$lld av %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Halt %@ inni í %lld sekund.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Halt inni: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Halt %@ inni í %lld sekund. Trýst síðan %4$lld ferðir á %3$@.</string>
+	<key>parentGate.shape.circle</key>
+	<string>sirkul</string>
+	<key>parentGate.shape.diamond</key>
+	<string>diamantur</string>
+	<key>parentGate.shape.heart</key>
+	<string>hjarta</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>sekskantur</string>
+	<key>parentGate.shape.plus</key>
+	<string>pluss</string>
+	<key>parentGate.shape.square</key>
+	<string>fýrkantur</string>
+	<key>parentGate.shape.star</key>
+	<string>stjørna</string>
+	<key>parentGate.shape.triangle</key>
+	<string>tríkantur</string>
+	<key>parentGate.stepOne</key>
+	<string>Stig 1 av 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Stig 2 av 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Fyri at verja ung spælandi má ein vaksin gera hesa kanningina, áðrenn keypið kann halda fram.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Trýst nú %1$lld ferðir á %2$@.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Trýst: %1$lld av %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Góðkenning frá vaksnum krevst</string>
+	<key>premium.availableAt %lld</key>
+	<string>Tøkt frá %lld steypum</string>
+	<key>premium.availableFromStart</key>
+	<string>Tøkt frá byrjan</string>
+	<key>premium.characterUnlocked</key>
+	<string>NÝGGJUR PERSÓNUR LATIN UPP</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ latin upp</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tú hevur vunnið %lld steyp</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Bert við Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Bert við Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Við Premium kanst tú spæla frítt við øllum 10 dýrunum.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Atgongd til øll dýr</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Altíð nóg nógv nýggj roknistykki at venja.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 stig í hvørjum evni</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Spæl heilt uttan órógv.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Eingar lýsingar</string>
+	<key>premium.oneTime</key>
+	<string>Eitt eingangsk keyp. Títt í allar ævir.</string>
+	<key>premium.restore</key>
+	<string>Endurheimta keyp</string>
+	<key>premium.start</key>
+	<string>Byrja</string>
+	<key>premium.storeUnavailable</key>
+	<string>Handilin er ikki tøkur beint nú. Royn aftur seinni.</string>
+	<key>premium.unlock</key>
+	<string>Lat Premium upp</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Lat Premium upp · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Lat upp við steypum</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Latið upp við Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Tú hevur Premium!</string>
+	<key>settings.character</key>
+	<string>Figurur</string>
+	<key>settings.characterInfo</key>
+	<string>Hvørt dýr gevur øllum spælinum sítt egna litaevni.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Sersniðið: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Dagligt mál</string>
+	<key>settings.goalInfo</key>
+	<string>Raðmálið byrjar við 5 minuttum um dagin. Bara virkin spælitíð telur.</string>
+	<key>settings.lives</key>
+	<string>Lív</string>
+	<key>settings.livesInfo</key>
+	<string>Við trimum lívum endar spælið eftir títt seinasta hjarta. Í óavmarkaðari støðu telja steyp bara, meðan tú enn hevur lív; síðan kanst tú halda fram at spæla.</string>
+	<key>settings.playGoals</key>
+	<string>Spælimál</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium er latið upp. Takk!</string>
+	<key>settings.title</key>
+	<string>Stillingar</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Vel eitt dagligt mál</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Vel eitt dagligt ella vikuligt mál</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld av %3$lld minuttum, %4$lld dagar á rað</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Dagligt rað, %lld av %lld minuttum</string>
+	<key>streak.daily</key>
+	<string>Dagligt rað</string>
+	<key>streak.dayOne</key>
+	<string>Dagur 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Veitst tú ikki svarið? Trýst á roknistykkið fyri at síggja tað.</string>
+	<key>tutorial.complete</key>
+	<string>Væl gjørt! Vegleiðingin er liðug. Far nú eftir metinum!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Leyp á rætta svarið fyri at savna eitt steyp.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Rætta svarið verður víst grønt. Leyp nú á rætta svarið.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Leyp nú á rætta svarið fyri at vinna trýfalt so nógv steyp.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Tak ×3-myntina fyri at vinna trýfalt so nógv steyp eina ferð.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Tú kanst finna eitt hálvt ella heilt lív og fáa lív aftur.</string>
+	<key>tutorial.minusOne</key>
+	<string>Halt teg frá −1. Tað kostar tær eitt steyp.</string>
+	<key>tutorial.move</key>
+	<string>Flyt tólið fyri at fara til vinstru og høgru. Tú kanst eisini fara gjøgnum síðurnar á skíggjanum.</string>
+	<key>tutorial.platforms</key>
+	<string>Leyp á pallarnar fyri at koma uppeftir.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Stigatalið hjá tær á hesum stigi sæst her.</string>
+	<key>tutorial.star</key>
+	<string>Leyp á stjørnuna fyri at skjóta skeiv svar burtur.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Velur tú eitt skeivt svar, missir tú eitt av teimum trimum lívunum. Royn tað nú.</string>
+</dict>
+</plist>

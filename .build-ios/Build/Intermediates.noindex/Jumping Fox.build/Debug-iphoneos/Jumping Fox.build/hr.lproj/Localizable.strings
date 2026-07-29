@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Medvjed</string>
+	<key>character.bunny</key>
+	<string>Zeko</string>
+	<key>character.crab</key>
+	<string>Rak</string>
+	<key>character.dog</key>
+	<string>Pas</string>
+	<key>character.elephant</key>
+	<string>Slon</string>
+	<key>character.fox</key>
+	<string>Lisica</string>
+	<key>character.frog</key>
+	<string>Žaba</string>
+	<key>character.lion</key>
+	<string>Lav</string>
+	<key>character.octopus</key>
+	<string>Hobotnica</string>
+	<key>character.penguin</key>
+	<string>Pingvin</string>
+	<key>character.pickerTitle</key>
+	<string>Odaberi svog lika</string>
+	<key>common.back</key>
+	<string>Natrag</string>
+	<key>common.cancel</key>
+	<string>Odustani</string>
+	<key>common.continue</key>
+	<string>Nastavi</string>
+	<key>common.done</key>
+	<string>Gotovo</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Spremi</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Pritisni i drži 2 sekunde za otvaranje razvojnog načina.</string>
+	<key>developerMode.title</key>
+	<string>Razvojni način</string>
+	<key>filter.addition</key>
+	<string>Zbrajanje</string>
+	<key>filter.fractions</key>
+	<string>Razlomci</string>
+	<key>filter.mixed</key>
+	<string>Supermiks</string>
+	<key>filter.percentages</key>
+	<string>Postoci</string>
+	<key>filter.subtraction</key>
+	<string>Oduzimanje</string>
+	<key>filter.tables</key>
+	<string>Tablica množenja</string>
+	<key>game.accessibility.mix</key>
+	<string>Miks</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld od %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Dobar pokušaj</string>
+	<key>game.encouragement.1</key>
+	<string>To je početak</string>
+	<key>game.encouragement.2</key>
+	<string>Nastavi vježbati</string>
+	<key>game.encouragement.3</key>
+	<string>Uopće nije loše</string>
+	<key>game.encouragement.4</key>
+	<string>Dobro ti ide</string>
+	<key>game.encouragement.5</key>
+	<string>Lijep rezultat</string>
+	<key>game.encouragement.6</key>
+	<string>Bravo</string>
+	<key>game.encouragement.7</key>
+	<string>Odlično odigrano</string>
+	<key>game.encouragement.8</key>
+	<string>Cilj je na vidiku</string>
+	<key>game.encouragement.9</key>
+	<string>Još malo</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Svaki bod je tvoj.</string>
+	<key>game.end.completionSuffix</key>
+	<string>završeno!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Kraj igre</string>
+	<key>game.end.mainMenu</key>
+	<string>Glavni izbornik</string>
+	<key>game.end.playAgain</key>
+	<string>Igraj ponovno</string>
+	<key>game.highScore</key>
+	<string>Najbolji rezultat</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Natrag na glavni izbornik</string>
+	<key>game.intro.continue</key>
+	<string>Nastavi</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Nastavljaš od %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Točan je odgovor označen zeleno jer je pomoć uključena. Zato se pehari sa * broje odvojeno.</string>
+	<key>game.intro.helperOff</key>
+	<string>Pomoć isključena</string>
+	<key>game.intro.helperOn</key>
+	<string>Pomoć uključena</string>
+	<key>game.intro.howItWorks</key>
+	<string>Kako radi ova razina</string>
+	<key>game.intro.livesOff</key>
+	<string>Životi isključeni</string>
+	<key>game.intro.livesOn</key>
+	<string>Životi uključeni</string>
+	<key>game.intro.scorePaused</key>
+	<string>Tvoj trenutačni rezultat bit će pauziran.</string>
+	<key>game.intro.start</key>
+	<string>Pokreni razinu</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Pomnoži %@%@ brojem od 1 do 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ili manje</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Dodirni bilo gdje za nastavak</string>
+	<key>game.intro.tapToStart</key>
+	<string>Dodirni bilo gdje za početak</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Osvoji |1| pehar za svaki točan odgovor, najviše |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Kad izgubiš sve živote, više ne možeš osvajati pehare.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Dosegnut je najveći broj pehara za ljestvicu</string>
+	<key>game.status.mixMode</key>
+	<string>NAČIN MIKS</string>
+	<key>game.status.scoreLocked</key>
+	<string>Pehari se više ne broje kad izgubiš sve živote</string>
+	<key>game.streak.subtitle</key>
+	<string>Pehari ×2</string>
+	<key>game.streak.title</key>
+	<string>5 zaredom!</string>
+	<key>goal.period</key>
+	<string>Razdoblje cilja</string>
+	<key>goal.promptDaily</key>
+	<string>Koliko minuta želiš igrati svaki dan?</string>
+	<key>goal.promptWeekly</key>
+	<string>Koliko minuta želiš igrati svaki tjedan?</string>
+	<key>goal.title</key>
+	<string>Cilj igranja</string>
+	<key>goalPeriod.daily</key>
+	<string>Dnevno</string>
+	<key>goalPeriod.weekly</key>
+	<string>Tjedno</string>
+	<key>info.filter.addition</key>
+	<string>Samo zbrajanje</string>
+	<key>info.filter.fractions</key>
+	<string>Samo dijeljenje</string>
+	<key>info.filter.header</key>
+	<string>Vrste zadataka</string>
+	<key>info.filter.mixed</key>
+	<string>Miješane računske radnje</string>
+	<key>info.filter.percentages</key>
+	<string>Samo postoci</string>
+	<key>info.filter.subtraction</key>
+	<string>Samo oduzimanje</string>
+	<key>info.filter.tables</key>
+	<string>Samo množenje</string>
+	<key>info.mode.fractions.header</key>
+	<string>Dijelovi</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Jedan ili više dijelova</string>
+	<key>info.mode.fractions.single</key>
+	<string>Uvijek jedan dio</string>
+	<key>info.mode.header</key>
+	<string>Redoslijed</string>
+	<key>info.mode.mixed</key>
+	<string>Miješano s nižim razinama</string>
+	<key>info.mode.order</key>
+	<string>Fiksni redoslijed</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Uključujući decimalne brojeve</string>
+	<key>info.mode.percentages.header</key>
+	<string>Vrsta</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Bez decimalnih brojeva</string>
+	<key>info.mode.random</key>
+	<string>Nasumični redoslijed</string>
+	<key>info.super.all</key>
+	<string>Zbrajanje, oduzimanje, množenje, dijeljenje i postoci</string>
+	<key>info.super.basic</key>
+	<string>Zbrajanje i oduzimanje</string>
+	<key>info.super.fraction</key>
+	<string>Zbrajanje, oduzimanje, množenje i dijeljenje</string>
+	<key>info.super.times</key>
+	<string>Zbrajanje, oduzimanje i množenje</string>
+	<key>language.select</key>
+	<string>Odaberi jezik</string>
+	<key>lives.three</key>
+	<string>3 života</string>
+	<key>lives.unlimited</key>
+	<string>Neograničeno</string>
+	<key>menu.accessibility.character</key>
+	<string>Lik</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Dodirni za promjenu lika; pritisni i drži dvije sekunde za povratak na zaslon dobrodošlice.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Odaberi %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimum dosegnut %lld puta</string>
+	<key>menu.moreLevels</key>
+	<string>Više razina</string>
+	<key>menu.options</key>
+	<string>Opcije igre</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium tablice</string>
+	<key>menu.startHere</key>
+	<string>Počni ovdje</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Otključaj više uz Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Više</string>
+	<key>mode.fractions.single</key>
+	<string>Jedan</string>
+	<key>mode.mix</key>
+	<string>Miks</string>
+	<key>mode.mixed</key>
+	<string>Miješano</string>
+	<key>mode.order</key>
+	<string>Redoslijed</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimalno</string>
+	<key>mode.percentages.whole</key>
+	<string>Cijelo</string>
+	<key>mode.random</key>
+	<string>Nasumično</string>
+	<key>mode.standard</key>
+	<string>Standardno</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Dobivaš samo zadatke sa |zbrajanjem|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Broju dodaješ %lld |ili manje|.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Uvijek zbrajaš %lld |uzlaznim| redom.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Uvijek dodaješ %lld |nasumičnom| broju.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Zbrajanje · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Stalno zbrajaj dva broja.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Rezultat je najviše %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Zbrajanje do %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Dobivaš samo zadatke s |razlomcima|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Dobivaš razlomke s ove i |ranijih razina|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Uvijek uzimaš |1 dio| od %lld jednakih dijelova.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Izračunaj razlomke okruglih brojeva s razine %lld i ranijih razina.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Brojevi ostaju okrugli pa su rezultati uvijek cijeli.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Razlomci do %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Uzimaš jedan ili |više dijelova| od %lld jednakih dijelova.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Razlomci · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Izračunaj dio cjeline i načini jednake razlomke.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Zbroji i oduzmi razlomke s istim nazivnikom.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Miješani razlomci</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Dobivaš samo zadatke s |postocima|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Dobivaš postotke s ove i |ranijih razina|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Uvijek računaš %@, a rezultat je |cijeli broj|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Izračunaj postotke okruglih brojeva do %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Iznosi ostaju okrugli pa su rezultati uvijek cijeli.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Postoci do %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Uvijek računaš %@, a rezultat može biti i |decimalni broj|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Izračunaj %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Izračunaj postotak broja.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Pretvaraj postotke u razlomke i obrnuto.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Miješani postoci</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Dobivaš samo zadatke s |oduzimanjem|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Od broja oduzimaš %lld |ili manje|.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Uvijek oduzimaš %lld |silaznim| redom.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Uvijek oduzimaš %lld od |nasumičnog| broja.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Oduzimanje · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Prvi broj je najviše %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Rezultat može biti manji od nule.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Ispod nule</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Oduzimanje do %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Stalno oduzimaj dva broja.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Težina može rasti do |razine %lld| za svaku odabranu kategoriju.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Vježbaj zbrajanje, oduzimanje, tablice, razlomke i postotke, sve pomiješano.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermiks %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Vježbaj zbrajanje i oduzimanje, sve pomiješano.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermiks %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Vježbaj zbrajanje, oduzimanje, tablice i razlomke, sve pomiješano.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermiks %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Vježbaj zbrajanje, oduzimanje i tablice, sve pomiješano.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermiks %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Dobivaš samo zadatke s |množenjem|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Dobivaš pomiješane sve tablice |do %lld|.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Svaka tablica puta broj od |1 do 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Dobivaš tablicu broja %lld |uzlaznim| redom.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Dobivaš tablicu broja %lld |nasumičnim| redom.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tablica broja %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Vježbaj pomiješane tablice od %lld do %lld.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tablice %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Tvoje ime</string>
+	<key>name.whatsYourName</key>
+	<string>Kako se zoveš?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Različiti miješani zadaci.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Već ti dobro ide</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Vježbaj zadatke po redu.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Tek počinješ</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Zadaci nasumičnim redom.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Već imaš nešto vježbe</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Odaberi početnu razinu za %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ovu temu</string>
+	<key>onboarding.level.title</key>
+	<string>Koliko ti ovo već dobro ide?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Krenimo. Kako se zoveš?</string>
+	<key>onboarding.name.title</key>
+	<string>Računanje nikad nije bilo zabavnije!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Odaberi temu za početak.</string>
+	<key>onboarding.subject.title</key>
+	<string>Što želiš naučiti?</string>
+	<key>options.capAt30.info</key>
+	<string>Svaka razina ima cilj do 50 pehara. Ako je ova opcija uključena, igra automatski završava kad ga dosegneš.</string>
+	<key>options.capAt30.title</key>
+	<string>Završi na cilju</string>
+	<key>options.helperMode.info</key>
+	<string>U načinu pomoći točan je odgovor uvijek zelen. Pehari osvojeni u tom načinu broje se odvojeno i označeni su zvjezdicom.</string>
+	<key>options.helperMode.title</key>
+	<string>Način pomoći</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Uvijek počinješ s 3 života. Igra završava kad ih izgubiš. Uključi ovu opciju za nastavak igre i vježbanje bez života.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Neograničeni životi</string>
+	<key>parentGate.approved</key>
+	<string>Odobreno</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Pokušaji: %1$lld od %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Drži %@ %lld sekundi.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Drži: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Drži %@ %lld sekundi. Zatim dodirni %@ %lld puta.</string>
+	<key>parentGate.shape.circle</key>
+	<string>krug</string>
+	<key>parentGate.shape.diamond</key>
+	<string>romb</string>
+	<key>parentGate.shape.heart</key>
+	<string>srce</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>šesterokut</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>kvadrat</string>
+	<key>parentGate.shape.star</key>
+	<string>zvijezda</string>
+	<key>parentGate.shape.triangle</key>
+	<string>trokut</string>
+	<key>parentGate.stepOne</key>
+	<string>Korak 1 od 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Korak 2 od 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Radi zaštite mladih igrača odrasla osoba mora dovršiti ovu provjeru prije nastavka kupnje.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Sada dodirni %2$@ %1$lld puta.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Dodiri: %1$lld od %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Potrebno odobrenje odrasle osobe</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Uz Premium slobodno igraš sa svih 10 životinja.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Pristup svim životinjama</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Uvijek dovoljno novih zadataka za vježbu.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 razina po temi</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Igraj bez ikakvih prekida.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Bez oglasa</string>
+	<key>premium.oneTime</key>
+	<string>Jednokratna kupnja. Zauvijek tvoje.</string>
+	<key>premium.restore</key>
+	<string>Obnovi kupnje</string>
+	<key>premium.storeUnavailable</key>
+	<string>Trgovina trenutačno nije dostupna. Pokušaj ponovno poslije.</string>
+	<key>premium.unlock</key>
+	<string>Otključaj Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Otključaj Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Imaš Premium!</string>
+	<key>settings.character</key>
+	<string>Lik</string>
+	<key>settings.characterInfo</key>
+	<string>Svaka životinja cijeloj igri daje svoju temu boja.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Prilagođeno: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Dnevni cilj</string>
+	<key>settings.goalInfo</key>
+	<string>Cilj niza počinje s 5 minuta dnevno. Broji se samo aktivno vrijeme igranja.</string>
+	<key>settings.lives</key>
+	<string>Životi</string>
+	<key>settings.livesInfo</key>
+	<string>S tri života igra završava nakon zadnjeg srca. U neograničenom načinu pehari se broje samo dok imaš života; nakon toga možeš nastaviti igrati.</string>
+	<key>settings.playGoals</key>
+	<string>Ciljevi igranja</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium je otključan. Hvala!</string>
+	<key>settings.title</key>
+	<string>Postavke</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Odaberi dnevni cilj</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Odaberi dnevni ili tjedni cilj</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld od %3$lld minuta, %4$lld dana zaredom</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Dnevni niz, %lld od %lld minuta</string>
+	<key>streak.daily</key>
+	<string>Dnevni niz</string>
+	<key>streak.dayOne</key>
+	<string>Dan 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Ne znaš odgovor? Dodirni zadatak da ga vidiš.</string>
+	<key>tutorial.complete</key>
+	<string>Bravo! Upute su završene. Sada pokušaj postići najbolji rezultat!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Skoči na točan odgovor i osvoji pehar.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Točan odgovor je zelen. Sada skoči na njega.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Sada skoči na točan odgovor i osvoji trostruko više pehara.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Pokupi novčić ×3 i jednom osvoji trostruko više pehara.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Možeš pronaći pola ili cijeli život i vratiti izgubljene živote.</string>
+	<key>tutorial.minusOne</key>
+	<string>Izbjegni −1. Oduzima ti jedan pehar.</string>
+	<key>tutorial.move</key>
+	<string>Pomiči uređaj za kretanje lijevo i desno. Možeš proći i kroz rubove zaslona.</string>
+	<key>tutorial.platforms</key>
+	<string>Skači po platformama da se popneš.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Ovdje je prikazan tvoj rezultat za ovu razinu.</string>
+	<key>tutorial.star</key>
+	<string>Skoči u zvijezdu da ukloniš pogrešne odgovore.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ako odabereš pogrešan odgovor, gubiš jedan od tri života. Pokušaj sada.</string>
+</dict>
+</plist>

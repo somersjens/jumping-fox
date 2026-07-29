@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ਭਾਲੂ</string>
+	<key>character.bunny</key>
+	<string>ਖਰਗੋਸ਼</string>
+	<key>character.crab</key>
+	<string>ਕੇਕੜਾ</string>
+	<key>character.dog</key>
+	<string>ਕੁੱਤਾ</string>
+	<key>character.elephant</key>
+	<string>ਹਾਥੀ</string>
+	<key>character.fox</key>
+	<string>ਲੂੰਬੜੀ</string>
+	<key>character.frog</key>
+	<string>ਡੱਡੂ</string>
+	<key>character.lion</key>
+	<string>ਸ਼ੇਰ</string>
+	<key>character.octopus</key>
+	<string>ਆਕਟੋਪਸ</string>
+	<key>character.penguin</key>
+	<string>ਪੇਂਗੁਇਨ</string>
+	<key>character.pickerTitle</key>
+	<string>ਆਪਣਾ ਕਿਰਦਾਰ ਚੁਣੋ</string>
+	<key>common.back</key>
+	<string>ਪਿੱਛੇ</string>
+	<key>common.cancel</key>
+	<string>ਰੱਦ ਕਰੋ</string>
+	<key>common.continue</key>
+	<string>ਅੱਗੇ</string>
+	<key>common.done</key>
+	<string>ਹੋ ਗਿਆ</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld ਮਿੰਟ</string>
+	<key>common.save</key>
+	<string>ਸੰਭਾਲੋ</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ਡਿਵੈਲਪਰ ਮੋਡ ਖੋਲ੍ਹਣ ਲਈ 2 ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ।</string>
+	<key>developerMode.title</key>
+	<string>ਡਿਵੈਲਪਰ ਮੋਡ</string>
+	<key>filter.addition</key>
+	<string>ਜੋੜ</string>
+	<key>filter.fractions</key>
+	<string>ਭਿੰਨਾਂ</string>
+	<key>filter.mixed</key>
+	<string>ਸੁਪਰਮਿਕਸ</string>
+	<key>filter.percentages</key>
+	<string>ਪ੍ਰਤੀਸ਼ਤ</string>
+	<key>filter.subtraction</key>
+	<string>ਘਟਾਓ</string>
+	<key>filter.tables</key>
+	<string>ਪਹਾੜੇ</string>
+	<key>game.accessibility.mix</key>
+	<string>ਮਿਕਸ</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld ਵਿੱਚੋਂ %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ਵਧੀਆ ਕੋਸ਼ਿਸ਼</string>
+	<key>game.encouragement.1</key>
+	<string>ਸ਼ੁਰੂਆਤ ਹੋ ਗਈ</string>
+	<key>game.encouragement.2</key>
+	<string>ਅਭਿਆਸ ਕਰਦੇ ਰਹੋ</string>
+	<key>game.encouragement.3</key>
+	<string>ਬਿਲਕੁਲ ਮਾੜਾ ਨਹੀਂ</string>
+	<key>game.encouragement.4</key>
+	<string>ਵਧੀਆ ਕਰ ਰਹੇ ਹੋ</string>
+	<key>game.encouragement.5</key>
+	<string>ਵਧੀਆ ਪ੍ਰਦਰਸ਼ਨ</string>
+	<key>game.encouragement.6</key>
+	<string>ਸ਼ਾਬਾਸ਼</string>
+	<key>game.encouragement.7</key>
+	<string>ਬਹੁਤ ਵਧੀਆ ਖੇਡੇ</string>
+	<key>game.encouragement.8</key>
+	<string>ਅੰਤ ਨੇੜੇ ਹੈ</string>
+	<key>game.encouragement.9</key>
+	<string>ਤੁਸੀਂ ਲਗਭਗ ਪਹੁੰਚ ਗਏ</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ਤੁਸੀਂ ਹਰ ਅੰਕ ਕਮਾਇਆ।</string>
+	<key>game.end.completionSuffix</key>
+	<string>ਪੂਰਾ!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ਖੇਡ ਖਤਮ</string>
+	<key>game.end.mainMenu</key>
+	<string>ਮੁੱਖ ਮੀਨੂ</string>
+	<key>game.end.playAgain</key>
+	<string>ਫਿਰ ਖੇਡੋ</string>
+	<key>game.highScore</key>
+	<string>ਸਭ ਤੋਂ ਵੱਧ ਸਕੋਰ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ਮੁੱਖ ਮੀਨੂ ਵੱਲ</string>
+	<key>game.intro.continue</key>
+	<string>ਅੱਗੇ ਖੇਡੋ</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ਤੁਸੀਂ %lld ਤੋਂ ਅੱਗੇ ਖੇਡੋਗੇ</string>
+	<key>game.intro.helperBullet</key>
+	<string>ਸਹਾਇਕ ਚਾਲੂ ਹੈ, ਇਸ ਲਈ ਸਹੀ ਜਵਾਬ ਹਰੇ ਰੰਗ ਵਿੱਚ ਦਿਖਦਾ ਹੈ। ਇਸ ਕਰਕੇ ਟ੍ਰਾਫੀਆਂ * ਨਾਲ ਵੱਖ ਗਿਣੀਆਂ ਜਾਂਦੀਆਂ ਹਨ।</string>
+	<key>game.intro.helperOff</key>
+	<string>ਸਹਾਇਕ ਬੰਦ</string>
+	<key>game.intro.helperOn</key>
+	<string>ਸਹਾਇਕ ਚਾਲੂ</string>
+	<key>game.intro.howItWorks</key>
+	<string>ਇਹ ਲੈਵਲ ਕਿਵੇਂ ਚੱਲਦਾ ਹੈ</string>
+	<key>game.intro.livesOff</key>
+	<string>ਜਾਨਾਂ ਬੰਦ</string>
+	<key>game.intro.livesOn</key>
+	<string>ਜਾਨਾਂ ਚਾਲੂ</string>
+	<key>game.intro.scorePaused</key>
+	<string>ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਸਕੋਰ ਰੁਕ ਜਾਵੇਗਾ।</string>
+	<key>game.intro.start</key>
+	<string>ਲੈਵਲ ਸ਼ੁਰੂ ਕਰੋ</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ਨੂੰ 1 ਤੋਂ 12 ਤੱਕ ਕਿਸੇ ਗਿਣਤੀ ਨਾਲ ਗੁਣਾ ਕਰੋ।</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ਜਾਂ ਘੱਟ</string>
+	<key>game.intro.tapToContinue</key>
+	<string>ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਤੇ ਵੀ ਟੈਪ ਕਰੋ</string>
+	<key>game.intro.tapToStart</key>
+	<string>ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਿਤੇ ਵੀ ਟੈਪ ਕਰੋ</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ਹਰ ਸਹੀ ਜਵਾਬ ਲਈ |1| ਟ੍ਰਾਫੀ ਕਮਾਓ, ਵੱਧ ਤੋਂ ਵੱਧ |%lld|।</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ਜਾਨਾਂ ਮੁੱਕਣ ਤੋਂ ਬਾਅਦ ਤੁਸੀਂ ਹੋਰ ਟ੍ਰਾਫੀਆਂ ਨਹੀਂ ਕਮਾ ਸਕਦੇ।</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ਲੀਡਰਬੋਰਡ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ ਟ੍ਰਾਫੀਆਂ ਮਿਲ ਗਈਆਂ</string>
+	<key>game.status.mixMode</key>
+	<string>ਮਿਕਸ ਮੋਡ</string>
+	<key>game.status.scoreLocked</key>
+	<string>ਜਾਨਾਂ ਮੁੱਕਣ ਤੋਂ ਬਾਅਦ ਟ੍ਰਾਫੀਆਂ ਨਹੀਂ ਗਿਣੀਆਂ ਜਾਂਦੀਆਂ</string>
+	<key>game.streak.subtitle</key>
+	<string>ਟ੍ਰਾਫੀਆਂ ×2</string>
+	<key>game.streak.title</key>
+	<string>ਲਗਾਤਾਰ 5!</string>
+	<key>goal.period</key>
+	<string>ਟੀਚੇ ਦੀ ਮਿਆਦ</string>
+	<key>goal.promptDaily</key>
+	<string>ਤੁਸੀਂ ਹਰ ਰੋਜ਼ ਕਿੰਨੇ ਮਿੰਟ ਖੇਡਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+	<key>goal.promptWeekly</key>
+	<string>ਤੁਸੀਂ ਹਰ ਹਫ਼ਤੇ ਕਿੰਨੇ ਮਿੰਟ ਖੇਡਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+	<key>goal.title</key>
+	<string>ਖੇਡਣ ਦਾ ਟੀਚਾ</string>
+	<key>goalPeriod.daily</key>
+	<string>ਰੋਜ਼ਾਨਾ</string>
+	<key>goalPeriod.weekly</key>
+	<string>ਹਫ਼ਤਾਵਾਰੀ</string>
+	<key>info.filter.addition</key>
+	<string>ਸਿਰਫ਼ ਜੋੜ</string>
+	<key>info.filter.fractions</key>
+	<string>ਸਿਰਫ਼ ਭਾਗ</string>
+	<key>info.filter.header</key>
+	<string>ਸਵਾਲਾਂ ਦੀਆਂ ਕਿਸਮਾਂ</string>
+	<key>info.filter.mixed</key>
+	<string>ਮਿਲੇ-ਜੁਲੇ ਹਿਸਾਬ</string>
+	<key>info.filter.percentages</key>
+	<string>ਸਿਰਫ਼ ਪ੍ਰਤੀਸ਼ਤ</string>
+	<key>info.filter.subtraction</key>
+	<string>ਸਿਰਫ਼ ਘਟਾਓ</string>
+	<key>info.filter.tables</key>
+	<string>ਸਿਰਫ਼ ਗੁਣਾ</string>
+	<key>info.mode.fractions.header</key>
+	<string>ਹਿੱਸੇ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ਇੱਕ ਜਾਂ ਕਈ ਹਿੱਸੇ</string>
+	<key>info.mode.fractions.single</key>
+	<string>ਹਮੇਸ਼ਾ ਇੱਕ ਹਿੱਸਾ</string>
+	<key>info.mode.header</key>
+	<string>ਕ੍ਰਮ</string>
+	<key>info.mode.mixed</key>
+	<string>ਹੇਠਲੇ ਲੈਵਲਾਂ ਨਾਲ ਮਿਲੇ-ਜੁਲੇ</string>
+	<key>info.mode.order</key>
+	<string>ਪੱਕਾ ਕ੍ਰਮ</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ਦਸ਼ਮਲਵ ਗਿਣਤੀਆਂ ਸਮੇਤ</string>
+	<key>info.mode.percentages.header</key>
+	<string>ਕਿਸਮ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ਦਸ਼ਮਲਵ ਤੋਂ ਬਿਨਾਂ</string>
+	<key>info.mode.random</key>
+	<string>ਬੇਤਰਤੀਬ ਕ੍ਰਮ</string>
+	<key>info.super.all</key>
+	<string>ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ, ਭਾਗ ਅਤੇ ਪ੍ਰਤੀਸ਼ਤ</string>
+	<key>info.super.basic</key>
+	<string>ਜੋੜ ਅਤੇ ਘਟਾਓ</string>
+	<key>info.super.fraction</key>
+	<string>ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ ਅਤੇ ਭਾਗ</string>
+	<key>info.super.times</key>
+	<string>ਜੋੜ, ਘਟਾਓ ਅਤੇ ਗੁਣਾ</string>
+	<key>language.select</key>
+	<string>ਭਾਸ਼ਾ ਚੁਣੋ</string>
+	<key>lives.three</key>
+	<string>3 ਜਾਨਾਂ</string>
+	<key>lives.unlimited</key>
+	<string>ਬੇਅੰਤ</string>
+	<key>menu.accessibility.character</key>
+	<string>ਕਿਰਦਾਰ</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>ਕਿਰਦਾਰ ਬਦਲਣ ਲਈ ਟੈਪ ਕਰੋ; ਸਵਾਗਤ ਸਕ੍ਰੀਨ ਤੋਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੋ ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ।</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ ਚੁਣੋ</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>ਵੱਧ ਤੋਂ ਵੱਧ %lld ਵਾਰ ਪਹੁੰਚੇ</string>
+	<key>menu.moreLevels</key>
+	<string>ਹੋਰ ਲੈਵਲ</string>
+	<key>menu.options</key>
+	<string>ਖੇਡ ਚੋਣਾਂ</string>
+	<key>menu.premium</key>
+	<string>ਪ੍ਰੀਮੀਅਮ</string>
+	<key>menu.premiumTables</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਪਹਾੜੇ</string>
+	<key>menu.startHere</key>
+	<string>ਇੱਥੋਂ ਸ਼ੁਰੂ ਕਰੋ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਨਾਲ ਹੋਰ ਖੋਲ੍ਹੋ</string>
+	<key>mode.fractions.multiple</key>
+	<string>ਕਈ</string>
+	<key>mode.fractions.single</key>
+	<string>ਇੱਕ</string>
+	<key>mode.mix</key>
+	<string>ਮਿਕਸ</string>
+	<key>mode.mixed</key>
+	<string>ਮਿਲਿਆ-ਜੁਲਿਆ</string>
+	<key>mode.order</key>
+	<string>ਕ੍ਰਮ</string>
+	<key>mode.percentages.decimal</key>
+	<string>ਦਸ਼ਮਲਵ</string>
+	<key>mode.percentages.whole</key>
+	<string>ਪੂਰੀ ਗਿਣਤੀ</string>
+	<key>mode.random</key>
+	<string>ਬੇਤਰਤੀਬ</string>
+	<key>mode.standard</key>
+	<string>ਮਿਆਰੀ</string>
+	<key>modeIntro.addition.intro</key>
+	<string>ਤੁਹਾਨੂੰ ਸਿਰਫ਼ |ਜੋੜ| ਦੇ ਸਵਾਲ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>ਤੁਸੀਂ ਕਿਸੇ ਹੋਰ ਗਿਣਤੀ ਵਿੱਚ %lld |ਜਾਂ ਘੱਟ| ਜੋੜੋਗੇ।</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ %lld ਨੂੰ |ਵੱਧਦੇ| ਕ੍ਰਮ ਵਿੱਚ ਜੋੜੋਗੇ।</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ ਇੱਕ |ਬੇਤਰਤੀਬ| ਗਿਣਤੀ ਵਿੱਚ %lld ਜੋੜੋਗੇ।</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>ਜੋੜ · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ਦੋ ਗਿਣਤੀਆਂ ਨੂੰ ਜੋੜਦੇ ਰਹੋ।</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>ਜਵਾਬ ਵੱਧ ਤੋਂ ਵੱਧ %lld ਹੈ।</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld ਤੱਕ ਜੋੜ</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>ਤੁਹਾਨੂੰ ਸਿਰਫ਼ |ਭਿੰਨਾਂ| ਦੇ ਸਵਾਲ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ਤੁਹਾਨੂੰ ਇਸ ਅਤੇ |ਪਿਛਲੇ ਲੈਵਲਾਂ| ਦੀਆਂ ਭਿੰਨਾਂ ਮਿਲਣਗੀਆਂ।</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>ਤੁਸੀਂ %lld ਬਰਾਬਰ ਹਿੱਸਿਆਂ ਵਿੱਚੋਂ ਹਮੇਸ਼ਾ |1 ਹਿੱਸਾ| ਲਵੋਗੇ।</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld ਅਤੇ ਪਿਛਲੇ ਲੈਵਲਾਂ ਦੀਆਂ ਗੋਲ ਗਿਣਤੀਆਂ ਦੀਆਂ ਭਿੰਨਾਂ ਕੱਢੋ।</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>ਗਿਣਤੀਆਂ ਗੋਲ ਰਹਿੰਦੀਆਂ ਹਨ, ਇਸ ਲਈ ਜਵਾਬ ਹਮੇਸ਼ਾ ਪੂਰੇ ਹੁੰਦੇ ਹਨ।</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld ਤੱਕ ਭਿੰਨਾਂ</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>ਤੁਸੀਂ %lld ਬਰਾਬਰ ਹਿੱਸਿਆਂ ਵਿੱਚੋਂ ਇੱਕ ਜਾਂ |ਕਈ ਹਿੱਸੇ| ਲਵੋਗੇ।</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ਭਿੰਨਾਂ · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>ਪੂਰੇ ਦਾ ਇੱਕ ਹਿੱਸਾ ਕੱਢੋ ਅਤੇ ਭਿੰਨਾਂ ਨੂੰ ਬਰਾਬਰ ਬਣਾਓ।</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ਇੱਕੋ ਹਰ ਵਾਲੀਆਂ ਭਿੰਨਾਂ ਨੂੰ ਜੋੜੋ ਅਤੇ ਘਟਾਓ।</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ਮਿਲੀਆਂ-ਜੁਲੀਆਂ ਭਿੰਨਾਂ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>ਤੁਹਾਨੂੰ ਸਿਰਫ਼ |ਪ੍ਰਤੀਸ਼ਤ| ਦੇ ਸਵਾਲ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ਤੁਹਾਨੂੰ ਇਸ ਅਤੇ |ਪਿਛਲੇ ਲੈਵਲਾਂ| ਦੇ ਪ੍ਰਤੀਸ਼ਤ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ %@ ਕੱਢੋਗੇ ਅਤੇ ਜਵਾਬ ਇੱਕ |ਪੂਰੀ ਗਿਣਤੀ| ਹੋਵੇਗਾ।</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld ਤੱਕ ਦੀਆਂ ਗੋਲ ਗਿਣਤੀਆਂ ਦੇ ਪ੍ਰਤੀਸ਼ਤ ਕੱਢੋ।</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>ਮਾਤਰਾਂ ਗੋਲ ਰਹਿੰਦੀਆਂ ਹਨ, ਇਸ ਲਈ ਜਵਾਬ ਹਮੇਸ਼ਾ ਪੂਰੇ ਹੁੰਦੇ ਹਨ।</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld ਤੱਕ ਪ੍ਰਤੀਸ਼ਤ</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ %@ ਕੱਢੋਗੇ ਅਤੇ ਜਵਾਬ |ਦਸ਼ਮਲਵ| ਵੀ ਹੋ ਸਕਦਾ ਹੈ।</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ ਕੱਢੋ</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ਕਿਸੇ ਗਿਣਤੀ ਦਾ ਪ੍ਰਤੀਸ਼ਤ ਕੱਢੋ।</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>ਪ੍ਰਤੀਸ਼ਤ ਅਤੇ ਭਿੰਨਾਂ ਨੂੰ ਇੱਕ-ਦੂਜੇ ਵਿੱਚ ਬਦਲੋ।</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ਮਿਲੇ-ਜੁਲੇ ਪ੍ਰਤੀਸ਼ਤ</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>ਤੁਹਾਨੂੰ ਸਿਰਫ਼ |ਘਟਾਓ| ਦੇ ਸਵਾਲ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>ਤੁਸੀਂ ਕਿਸੇ ਹੋਰ ਗਿਣਤੀ ਵਿੱਚੋਂ %lld |ਜਾਂ ਘੱਟ| ਘਟਾਓਗੇ।</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ %lld ਨੂੰ |ਘਟਦੇ| ਕ੍ਰਮ ਵਿੱਚ ਘਟਾਓਗੇ।</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ ਇੱਕ |ਬੇਤਰਤੀਬ| ਗਿਣਤੀ ਵਿੱਚੋਂ %lld ਘਟਾਓਗੇ।</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>ਘਟਾਓ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>ਪਹਿਲੀ ਗਿਣਤੀ ਵੱਧ ਤੋਂ ਵੱਧ %lld ਹੈ।</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>ਜਵਾਬ ਸਿਫ਼ਰ ਤੋਂ ਹੇਠਾਂ ਜਾ ਸਕਦਾ ਹੈ।</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>ਸਿਫ਼ਰ ਤੋਂ ਹੇਠਾਂ</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld ਤੱਕ ਘਟਾਓ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ਦੋ ਗਿਣਤੀਆਂ ਨੂੰ ਘਟਾਉਂਦੇ ਰਹੋ।</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ਹਰ ਚੁਣੀ ਸ਼੍ਰੇਣੀ ਦੀ ਔਖਾਈ |ਲੈਵਲ %lld| ਤੱਕ ਵੱਧ ਸਕਦੀ ਹੈ।</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>ਜੋੜ, ਘਟਾਓ, ਪਹਾੜੇ, ਭਿੰਨਾਂ ਅਤੇ ਪ੍ਰਤੀਸ਼ਤ ਸਭ ਮਿਲਾ ਕੇ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>ਸੁਪਰਮਿਕਸ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>ਜੋੜ ਅਤੇ ਘਟਾਓ ਮਿਲਾ ਕੇ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>ਸੁਪਰਮਿਕਸ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>ਜੋੜ, ਘਟਾਓ, ਪਹਾੜੇ ਅਤੇ ਭਿੰਨਾਂ ਮਿਲਾ ਕੇ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>ਸੁਪਰਮਿਕਸ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>ਜੋੜ, ਘਟਾਓ ਅਤੇ ਪਹਾੜੇ ਮਿਲਾ ਕੇ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>ਸੁਪਰਮਿਕਸ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>ਤੁਹਾਨੂੰ ਸਿਰਫ਼ |ਗੁਣਾ| ਦੇ ਸਵਾਲ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>ਤੁਹਾਨੂੰ |%lld ਤੱਕ| ਦੇ ਸਾਰੇ ਪਹਾੜੇ ਮਿਲੇ-ਜੁਲੇ ਮਿਲਣਗੇ।</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ਹਰ ਪਹਾੜੇ ਨੂੰ |1 ਤੋਂ 12| ਤੱਕ ਦੀ ਗਿਣਤੀ ਨਾਲ ਗੁਣਾ ਕਰੋ।</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>ਤੁਹਾਨੂੰ %lld ਦਾ ਪਹਾੜਾ |ਵੱਧਦੇ| ਕ੍ਰਮ ਵਿੱਚ ਮਿਲੇਗਾ।</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>ਤੁਹਾਨੂੰ %lld ਦਾ ਪਹਾੜਾ |ਬੇਤਰਤੀਬ| ਕ੍ਰਮ ਵਿੱਚ ਮਿਲੇਗਾ।</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld ਦਾ ਪਹਾੜਾ</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld ਤੋਂ %lld ਤੱਕ ਦੇ ਪਹਾੜੇ ਮਿਲਾ ਕੇ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ਪਹਾੜੇ %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ਤੁਹਾਡਾ ਨਾਮ</string>
+	<key>name.whatsYourName</key>
+	<string>ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>ਵੱਖ-ਵੱਖ ਮਿਲੇ-ਜੁਲੇ ਹਿਸਾਬ ਇਕੱਠੇ।</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ਪਹਿਲਾਂ ਹੀ ਕਾਫ਼ੀ ਵਧੀਆ</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ਕ੍ਰਮਵਾਰ ਹਿਸਾਬਾਂ ਦਾ ਅਭਿਆਸ ਕਰੋ।</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ਹੁਣੇ ਸ਼ੁਰੂ ਕੀਤਾ</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ਬੇਤਰਤੀਬ ਕ੍ਰਮ ਵਿੱਚ ਹਿਸਾਬ।</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ਥੋੜ੍ਹਾ ਅਭਿਆਸ ਹੋ ਚੁੱਕਾ</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ ਲਈ ਸ਼ੁਰੂਆਤੀ ਥਾਂ ਚੁਣੋ।</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ਇਹ ਵਿਸ਼ਾ</string>
+	<key>onboarding.level.title</key>
+	<string>ਤੁਸੀਂ ਇਸ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਕਿੰਨੇ ਚੰਗੇ ਹੋ?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>ਆਓ ਸ਼ੁਰੂ ਕਰੀਏ। ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?</string>
+	<key>onboarding.name.title</key>
+	<string>ਹਿਸਾਬ ਕਰਨਾ ਕਦੇ ਇੰਨਾ ਮਜ਼ੇਦਾਰ ਨਹੀਂ ਸੀ!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਵਿਸ਼ਾ ਚੁਣੋ।</string>
+	<key>onboarding.subject.title</key>
+	<string>ਤੁਸੀਂ ਕੀ ਸਿੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+	<key>options.capAt30.info</key>
+	<string>ਹਰ ਲੈਵਲ ਵਿੱਚ ਵੱਧ ਤੋਂ ਵੱਧ 50 ਟ੍ਰਾਫੀਆਂ ਦਾ ਟੀਚਾ ਹੈ। ਇਹ ਚੋਣ ਚਾਲੂ ਹੋਵੇ ਤਾਂ ਟੀਚਾ ਪੂਰਾ ਹੁੰਦੇ ਹੀ ਖੇਡ ਆਪਣੇ ਆਪ ਮੁੱਕ ਜਾਂਦੀ ਹੈ।</string>
+	<key>options.capAt30.title</key>
+	<string>ਟੀਚੇ 'ਤੇ ਖਤਮ</string>
+	<key>options.helperMode.info</key>
+	<string>ਸਹਾਇਕ ਮੋਡ ਵਿੱਚ ਸਹੀ ਜਵਾਬ ਹਮੇਸ਼ਾ ਹਰੇ ਰੰਗ ਵਿੱਚ ਦਿਖਦਾ ਹੈ। ਇਸ ਮੋਡ ਦੀਆਂ ਟ੍ਰਾਫੀਆਂ ਵੱਖ ਗਿਣੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਅਤੇ ਤਾਰੇ ਨਾਲ ਨਿਸ਼ਾਨ ਲੱਗਦਾ ਹੈ।</string>
+	<key>options.helperMode.title</key>
+	<string>ਸਹਾਇਕ ਮੋਡ</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ਤੁਸੀਂ ਹਮੇਸ਼ਾ 3 ਜਾਨਾਂ ਨਾਲ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ। ਜਾਨਾਂ ਮੁੱਕਣ 'ਤੇ ਖੇਡ ਖਤਮ ਹੋ ਜਾਂਦੀ ਹੈ। ਬਾਅਦ ਵਿੱਚ ਵੀ ਖੇਡਣ ਅਤੇ ਅਭਿਆਸ ਲਈ ਇਹ ਚੋਣ ਚਾਲੂ ਕਰੋ।</string>
+	<key>options.unlimitedLives.title</key>
+	<string>ਬੇਅੰਤ ਜਾਨਾਂ</string>
+	<key>parentGate.approved</key>
+	<string>ਮਨਜ਼ੂਰ</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ਕੋਸ਼ਿਸ਼ਾਂ: %1$lld ਵਿੱਚੋਂ %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ ਨੂੰ %lld ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ।</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ਦਬਾ ਕੇ ਰੱਖੋ: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ ਨੂੰ %lld ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ। ਫਿਰ %@ ਨੂੰ %lld ਵਾਰ ਟੈਪ ਕਰੋ।</string>
+	<key>parentGate.shape.circle</key>
+	<string>ਗੋਲ</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ਹੀਰਾ</string>
+	<key>parentGate.shape.heart</key>
+	<string>ਦਿਲ</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ਛੇਕੋਣ</string>
+	<key>parentGate.shape.plus</key>
+	<string>ਜੋੜ ਦਾ ਨਿਸ਼ਾਨ</string>
+	<key>parentGate.shape.square</key>
+	<string>ਵਰਗ</string>
+	<key>parentGate.shape.star</key>
+	<string>ਤਾਰਾ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ਤਿਕੋਣ</string>
+	<key>parentGate.stepOne</key>
+	<string>2 ਵਿੱਚੋਂ ਕਦਮ 1</string>
+	<key>parentGate.stepTwo</key>
+	<string>2 ਵਿੱਚੋਂ ਕਦਮ 2</string>
+	<key>parentGate.subtitle</key>
+	<string>ਨੰਨੇ ਖਿਡਾਰੀਆਂ ਦੀ ਸੁਰੱਖਿਆ ਲਈ, ਖਰੀਦ ਅੱਗੇ ਵਧਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਕਿਸੇ ਵੱਡੇ ਨੂੰ ਇਹ ਜਾਂਚ ਪੂਰੀ ਕਰਨੀ ਪਵੇਗੀ।</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ਹੁਣ %2$@ ਨੂੰ %1$lld ਵਾਰ ਟੈਪ ਕਰੋ।</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>ਟੈਪ: %1$lld ਵਿੱਚੋਂ %2$lld</string>
+	<key>parentGate.title</key>
+	<string>ਵੱਡੇ ਦੀ ਮਨਜ਼ੂਰੀ ਲੋੜੀਂਦੀ</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਨਾਲ ਸਾਰੇ 10 ਜਾਨਵਰਾਂ ਨਾਲ ਖੁੱਲ੍ਹ ਕੇ ਖੇਡੋ।</string>
+	<key>premium.feature.animals.title</key>
+	<string>ਸਾਰੇ ਜਾਨਵਰ ਖੋਲ੍ਹੋ</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>ਅਭਿਆਸ ਲਈ ਹਮੇਸ਼ਾ ਕਾਫ਼ੀ ਨਵੇਂ ਹਿਸਾਬ।</string>
+	<key>premium.feature.levels.title</key>
+	<string>ਹਰ ਵਿਸ਼ੇ ਦੇ 99 ਲੈਵਲ</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ਬਿਨਾਂ ਰੁਕਾਵਟ ਦੇ ਖੇਡੋ।</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ</string>
+	<key>premium.oneTime</key>
+	<string>ਇੱਕ ਵਾਰ ਖਰੀਦੋ। ਹਮੇਸ਼ਾ ਤੁਹਾਡਾ।</string>
+	<key>premium.restore</key>
+	<string>ਖਰੀਦਾਂ ਮੁੜ ਲਵੋ</string>
+	<key>premium.storeUnavailable</key>
+	<string>ਸਟੋਰ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ। ਬਾਅਦ ਵਿੱਚ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+	<key>premium.unlock</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਖੋਲ੍ਹੋ</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਖੋਲ੍ਹੋ · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>ਤੁਹਾਡੇ ਕੋਲ ਪ੍ਰੀਮੀਅਮ ਹੈ!</string>
+	<key>settings.character</key>
+	<string>ਕਿਰਦਾਰ</string>
+	<key>settings.characterInfo</key>
+	<string>ਹਰ ਜਾਨਵਰ ਪੂਰੀ ਖੇਡ ਲਈ ਆਪਣਾ ਰੰਗੀਨ ਥੀਮ ਲਿਆਉਂਦਾ ਹੈ।</string>
+	<key>settings.customMinutes %lld</key>
+	<string>ਆਪਣਾ: %lld ਮਿੰਟ</string>
+	<key>settings.dailyGoal</key>
+	<string>ਰੋਜ਼ਾਨਾ ਟੀਚਾ</string>
+	<key>settings.goalInfo</key>
+	<string>ਲਗਾਤਾਰ ਖੇਡਣ ਦਾ ਟੀਚਾ ਹਰ ਰੋਜ਼ 5 ਮਿੰਟ ਤੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। ਸਿਰਫ਼ ਸਰਗਰਮ ਖੇਡ ਸਮਾਂ ਗਿਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
+	<key>settings.lives</key>
+	<string>ਜਾਨਾਂ</string>
+	<key>settings.livesInfo</key>
+	<string>3 ਜਾਨਾਂ ਨਾਲ ਆਖਰੀ ਦਿਲ ਤੋਂ ਬਾਅਦ ਖੇਡ ਮੁੱਕਦੀ ਹੈ। ਬੇਅੰਤ ਮੋਡ ਵਿੱਚ ਟ੍ਰਾਫੀਆਂ ਸਿਰਫ਼ ਜਾਨਾਂ ਰਹਿਣ ਤੱਕ ਗਿਣੀਆਂ ਜਾਂਦੀਆਂ ਹਨ; ਫਿਰ ਵੀ ਤੁਸੀਂ ਖੇਡ ਸਕਦੇ ਹੋ।</string>
+	<key>settings.playGoals</key>
+	<string>ਖੇਡਣ ਦੇ ਟੀਚੇ</string>
+	<key>settings.premiumUnlocked</key>
+	<string>ਪ੍ਰੀਮੀਅਮ ਖੁੱਲ੍ਹ ਗਿਆ। ਧੰਨਵਾਦ!</string>
+	<key>settings.title</key>
+	<string>ਸੈਟਿੰਗਾਂ</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>ਰੋਜ਼ਾਨਾ ਟੀਚਾ ਚੁਣੋ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>ਰੋਜ਼ਾਨਾ ਜਾਂ ਹਫ਼ਤਾਵਾਰੀ ਟੀਚਾ ਚੁਣੋ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld ਵਿੱਚੋਂ %2$lld ਮਿੰਟ, ਲਗਾਤਾਰ %4$lld ਦਿਨ</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>ਰੋਜ਼ਾਨਾ ਲੜੀ, %lld ਵਿੱਚੋਂ %lld ਮਿੰਟ</string>
+	<key>streak.daily</key>
+	<string>ਰੋਜ਼ਾਨਾ ਲੜੀ</string>
+	<key>streak.dayOne</key>
+	<string>ਦਿਨ 1</string>
+	<key>tutorial.answerHint</key>
+	<string>ਜਵਾਬ ਨਹੀਂ ਪਤਾ? ਵੇਖਣ ਲਈ ਸਵਾਲ 'ਤੇ ਟੈਪ ਕਰੋ।</string>
+	<key>tutorial.complete</key>
+	<string>ਸ਼ਾਬਾਸ਼! ਸਿਖਲਾਈ ਪੂਰੀ ਹੋਈ। ਹੁਣ ਸਭ ਤੋਂ ਵੱਧ ਸਕੋਰ ਬਣਾਓ!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ਟ੍ਰਾਫੀ ਲੈਣ ਲਈ ਸਹੀ ਜਵਾਬ 'ਤੇ ਛਾਲ ਮਾਰੋ।</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>ਸਹੀ ਜਵਾਬ ਹਰੇ ਰੰਗ ਵਿੱਚ ਹੈ। ਹੁਣ ਉਸ 'ਤੇ ਛਾਲ ਮਾਰੋ।</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ਤਿੰਨ ਗੁਣਾ ਟ੍ਰਾਫੀਆਂ ਲਈ ਹੁਣ ਸਹੀ ਜਵਾਬ 'ਤੇ ਛਾਲ ਮਾਰੋ।</string>
+	<key>tutorial.doubler.collect</key>
+	<string>ਇੱਕ ਵਾਰ ਤਿੰਨ ਗੁਣਾ ਟ੍ਰਾਫੀਆਂ ਲਈ ×3 ਸਿੱਕਾ ਲਵੋ।</string>
+	<key>tutorial.lifePickup</key>
+	<string>ਜਾਨਾਂ ਵਾਪਸ ਲੈਣ ਲਈ ਅੱਧੀ ਜਾਂ ਪੂਰੀ ਜਾਨ ਲੱਭ ਸਕਦੇ ਹੋ।</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 ਤੋਂ ਬਚੋ। ਇਹ ਇੱਕ ਟ੍ਰਾਫੀ ਘਟਾਉਂਦਾ ਹੈ।</string>
+	<key>tutorial.move</key>
+	<string>ਖੱਬੇ-ਸੱਜੇ ਜਾਣ ਲਈ ਆਪਣਾ ਡਿਵਾਈਸ ਹਿਲਾਓ। ਤੁਸੀਂ ਸਕ੍ਰੀਨ ਦੇ ਪਾਸਿਆਂ ਰਾਹੀਂ ਵੀ ਲੰਘ ਸਕਦੇ ਹੋ।</string>
+	<key>tutorial.platforms</key>
+	<string>ਉੱਪਰ ਜਾਣ ਲਈ ਪਲੇਟਫਾਰਮਾਂ 'ਤੇ ਛਾਲ ਮਾਰੋ।</string>
+	<key>tutorial.scoreHint</key>
+	<string>ਇਸ ਲੈਵਲ ਦਾ ਤੁਹਾਡਾ ਸਕੋਰ ਇੱਥੇ ਹੈ।</string>
+	<key>tutorial.star</key>
+	<string>ਗਲਤ ਜਵਾਬ ਉਡਾਉਣ ਲਈ ਤਾਰੇ ਵਿੱਚ ਛਾਲ ਮਾਰੋ।</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>ਗਲਤ ਜਵਾਬ ਚੁਣਿਆਂ ਤੁਹਾਡੀਆਂ 3 ਜਾਨਾਂ ਵਿੱਚੋਂ ਇੱਕ ਘਟੇਗੀ। ਹੁਣ ਅਜ਼ਮਾਓ।</string>
+</dict>
+</plist>

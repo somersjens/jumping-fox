@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Béar</string>
+	<key>character.bunny</key>
+	<string>Coinín</string>
+	<key>character.crab</key>
+	<string>Portán</string>
+	<key>character.dog</key>
+	<string>Madra</string>
+	<key>character.elephant</key>
+	<string>Eilifint</string>
+	<key>character.fox</key>
+	<string>Sionnach</string>
+	<key>character.frog</key>
+	<string>Frog</string>
+	<key>character.lion</key>
+	<string>Leon</string>
+	<key>character.octopus</key>
+	<string>Ochtapas</string>
+	<key>character.penguin</key>
+	<string>Piongain</string>
+	<key>character.pickerTitle</key>
+	<string>Roghnaigh do charachtar</string>
+	<key>common.back</key>
+	<string>Siar</string>
+	<key>common.cancel</key>
+	<string>Cealaigh</string>
+	<key>common.continue</key>
+	<string>Ar aghaidh</string>
+	<key>common.done</key>
+	<string>Déanta</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld nóim</string>
+	<key>common.save</key>
+	<string>Sábháil</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Brúigh agus coinnigh ar feadh 2 shoicind chun mód an fhorbróra a oscailt.</string>
+	<key>developerMode.title</key>
+	<string>Mód forbróra</string>
+	<key>filter.addition</key>
+	<string>Suimiú</string>
+	<key>filter.fractions</key>
+	<string>Codáin</string>
+	<key>filter.mixed</key>
+	<string>Sármheascán</string>
+	<key>filter.percentages</key>
+	<string>Céatadáin</string>
+	<key>filter.subtraction</key>
+	<string>Dealú</string>
+	<key>filter.tables</key>
+	<string>Táblaí</string>
+	<key>game.accessibility.mix</key>
+	<string>Meascán</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld as %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Iarracht mhaith</string>
+	<key>game.encouragement.1</key>
+	<string>Sin tús maith</string>
+	<key>game.encouragement.2</key>
+	<string>Lean ort ag cleachtadh</string>
+	<key>game.encouragement.3</key>
+	<string>Ní dona ar chor ar bith</string>
+	<key>game.encouragement.4</key>
+	<string>Ag éirí go maith leat</string>
+	<key>game.encouragement.5</key>
+	<string>Sár-obair</string>
+	<key>game.encouragement.6</key>
+	<string>Maith thú</string>
+	<key>game.encouragement.7</key>
+	<string>Ar fheabhas ar fad</string>
+	<key>game.encouragement.8</key>
+	<string>Tá an deireadh le feiceáil</string>
+	<key>game.encouragement.9</key>
+	<string>Tá tú beagnach ann</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Thuill tú gach pointe.</string>
+	<key>game.end.completionSuffix</key>
+	<string>críochnaithe!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Cluiche thart</string>
+	<key>game.end.mainMenu</key>
+	<string>Príomh-roghchlár</string>
+	<key>game.end.playAgain</key>
+	<string>Imir arís</string>
+	<key>game.highScore</key>
+	<string>Scór is airde</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Ar ais chuig an bpríomh-roghchlár</string>
+	<key>game.intro.continue</key>
+	<string>Lean ar aghaidh</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Leanfaidh tú ar aghaidh ó %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Tá an freagra ceart glas mar tá an cúntóir ar siúl. Déantar trófaithe a chomhaireamh ar leithligh le * dá bharr.</string>
+	<key>game.intro.helperOff</key>
+	<string>Cúntóir as</string>
+	<key>game.intro.helperOn</key>
+	<string>Cúntóir ar</string>
+	<key>game.intro.howItWorks</key>
+	<string>Conas a oibríonn an leibhéal</string>
+	<key>game.intro.livesOff</key>
+	<string>Beathaí as</string>
+	<key>game.intro.livesOn</key>
+	<string>Beathaí ar</string>
+	<key>game.intro.scorePaused</key>
+	<string>Cuirfear do scór reatha ar sos.</string>
+	<key>game.intro.start</key>
+	<string>Tosaigh an leibhéal</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Méadaigh %@%@ faoi uimhir ó 1 go 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>nó níos lú</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Tapáil áit ar bith le leanúint</string>
+	<key>game.intro.tapToStart</key>
+	<string>Tapáil áit ar bith le tosú</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Faigh |1| trófaí as gach freagra ceart, suas le |%lld| ar a mhéad.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Nuair a bheidh do bheathaí caillte, ní féidir leat tuilleadh trófaithe a fháil.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Tá uaslíon na dtrófaithe don chlár ceannais bainte amach</string>
+	<key>game.status.mixMode</key>
+	<string>MÓD MEASCÁIN</string>
+	<key>game.status.scoreLocked</key>
+	<string>Ní áirítear trófaithe a thuilleadh nuair atá do bheathaí caillte</string>
+	<key>game.streak.subtitle</key>
+	<string>Trófaithe ×2</string>
+	<key>game.streak.title</key>
+	<string>5 as a chéile!</string>
+	<key>goal.period</key>
+	<string>Tréimhse sprice</string>
+	<key>goal.promptDaily</key>
+	<string>Cé mhéad nóiméad ar mhaith leat imirt gach lá?</string>
+	<key>goal.promptWeekly</key>
+	<string>Cé mhéad nóiméad ar mhaith leat imirt gach seachtain?</string>
+	<key>goal.title</key>
+	<string>Sprioc imeartha</string>
+	<key>goalPeriod.daily</key>
+	<string>Gach lá</string>
+	<key>goalPeriod.weekly</key>
+	<string>Gach seachtain</string>
+	<key>info.filter.addition</key>
+	<string>Suimiú amháin</string>
+	<key>info.filter.fractions</key>
+	<string>Roinnt amháin</string>
+	<key>info.filter.header</key>
+	<string>Cineálacha ceisteanna</string>
+	<key>info.filter.mixed</key>
+	<string>Oibríochtaí measctha</string>
+	<key>info.filter.percentages</key>
+	<string>Céatadáin amháin</string>
+	<key>info.filter.subtraction</key>
+	<string>Dealú amháin</string>
+	<key>info.filter.tables</key>
+	<string>Iolrú amháin</string>
+	<key>info.mode.fractions.header</key>
+	<string>Codanna</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Cuid amháin nó níos mó</string>
+	<key>info.mode.fractions.single</key>
+	<string>Cuid amháin i gcónaí</string>
+	<key>info.mode.header</key>
+	<string>Ord</string>
+	<key>info.mode.mixed</key>
+	<string>Measctha le leibhéil níos ísle</string>
+	<key>info.mode.order</key>
+	<string>Ord socraithe</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Le huimhreacha deachúlacha</string>
+	<key>info.mode.percentages.header</key>
+	<string>Cineál</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Gan uimhreacha deachúlacha</string>
+	<key>info.mode.random</key>
+	<string>Ord randamach</string>
+	<key>info.super.all</key>
+	<string>Suimiú, dealú, iolrú, roinnt agus céatadáin</string>
+	<key>info.super.basic</key>
+	<string>Suimiú agus dealú</string>
+	<key>info.super.fraction</key>
+	<string>Suimiú, dealú, iolrú agus roinnt</string>
+	<key>info.super.times</key>
+	<string>Suimiú, dealú agus iolrú</string>
+	<key>language.select</key>
+	<string>Roghnaigh teanga</string>
+	<key>lives.three</key>
+	<string>3 bheatha</string>
+	<key>lives.unlimited</key>
+	<string>Gan teorainn</string>
+	<key>menu.accessibility.character</key>
+	<string>Carachtar</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Tapáil chun do charachtar a athrú; brúigh agus coinnigh ar feadh dhá shoicind chun tosú arís ag an scáileán fáilte.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Roghnaigh %@</string>
+	<key>menu.maxScore</key>
+	<string>30 AR A MHÉAD</string>
+	<key>menu.maximumCount</key>
+	<string>UAS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Baineadh an t-uasmhéid amach %lld uair</string>
+	<key>menu.moreLevels</key>
+	<string>Tuilleadh leibhéal</string>
+	<key>menu.options</key>
+	<string>Roghanna cluiche</string>
+	<key>menu.premium</key>
+	<string>Préimh</string>
+	<key>menu.premiumTables</key>
+	<string>Táblaí Préimhe</string>
+	<key>menu.startHere</key>
+	<string>Tosaigh anseo</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Díghlasáil tuilleadh le Préimh</string>
+	<key>mode.fractions.multiple</key>
+	<string>Iolrach</string>
+	<key>mode.fractions.single</key>
+	<string>Aon chuid</string>
+	<key>mode.mix</key>
+	<string>Meascán</string>
+	<key>mode.mixed</key>
+	<string>Measctha</string>
+	<key>mode.order</key>
+	<string>Ord</string>
+	<key>mode.percentages.decimal</key>
+	<string>Deachúlach</string>
+	<key>mode.percentages.whole</key>
+	<string>Slánuimhir</string>
+	<key>mode.random</key>
+	<string>Randamach</string>
+	<key>mode.standard</key>
+	<string>Caighdeánach</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Ní fhaigheann tú ach ceisteanna |suimithe|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Cuireann tú %lld |nó níos lú| le huimhir eile.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Cuireann tú %lld leis i gcónaí in ord |ardaitheach|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Cuireann tú %lld le huimhir |randamach| i gcónaí.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Suimiú · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Lean ort ag suimiú dhá uimhir.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Is é %lld an freagra is mó.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Suimiú go %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Ní fhaigheann tú ach ceisteanna |codán|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Faigheann tú codáin ón leibhéal seo agus ó |leibhéil níos luaithe|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Tógann tú |1 chuid| as %lld cuid chothroma i gcónaí.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Ríomh codáin d’uimhreacha cruinne ó leibhéal %lld agus ó leibhéil níos luaithe.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Fanann na huimhreacha cruinn, mar sin is slánuimhreacha iad na freagraí i gcónaí.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Codáin go %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Tógann tú cuid amháin nó |níos mó codanna| as %lld cuid chothroma.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Codáin · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Ríomh cuid d’iomlán agus déan codáin cothrom.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Suimigh agus dealaigh codáin a bhfuil an t-ainmneoir céanna acu.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Codáin mheasctha</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Ní fhaigheann tú ach ceisteanna |céatadáin|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Faigheann tú céatadáin ón leibhéal seo agus ó |leibhéil níos luaithe|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Ríomhann tú %@ i gcónaí, agus is |slánuimhir| an freagra.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Ríomh céatadáin d’uimhreacha cruinne suas go %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Fanann na méideanna cruinn, mar sin is slánuimhreacha iad na freagraí i gcónaí.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Céatadáin go %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Ríomhann tú %@ i gcónaí, agus féadfaidh an freagra a bheith ina |dheachúil| freisin.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Ríomh %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Ríomh céatadán d’uimhir.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Tiontaigh idir céatadáin agus codáin.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Céatadáin mheasctha</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Ní fhaigheann tú ach ceisteanna |dealaithe|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Baineann tú %lld |nó níos lú| ó uimhir eile.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Baineann tú %lld i gcónaí in ord |íslitheach|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Baineann tú %lld ó uimhir |randamach| i gcónaí.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Dealú · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Is é %lld an chéad uimhir is mó.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Féadfaidh an freagra dul faoi bhun náid.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Faoi bhun náid</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Dealú go %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Lean ort ag baint uimhir amháin ó uimhir eile.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Féadfaidh an deacracht ardú go |leibhéal %lld| i ngach catagóir roghnaithe.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Cleachtaigh suimiú, dealú, táblaí, codáin agus céatadáin measctha le chéile.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Sármheascán %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Cleachtaigh suimiú agus dealú measctha le chéile.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Sármheascán %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Cleachtaigh suimiú, dealú, táblaí agus codáin measctha le chéile.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Sármheascán %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Cleachtaigh suimiú, dealú agus táblaí measctha le chéile.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Sármheascán %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Ní fhaigheann tú ach ceisteanna |iolraithe|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Faigheann tú na táblaí go léir |suas go %lld| measctha le chéile.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Gach tábla faoi uimhir ó |1 go 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Faigheann tú tábla %lld in ord |ardaitheach|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Faigheann tú tábla %lld in ord |randamach|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tábla %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Cleachtaigh na táblaí ó %lld go %lld measctha le chéile.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Táblaí %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>D’ainm</string>
+	<key>name.whatsYourName</key>
+	<string>Cad is ainm duit?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Suimeanna éagsúla measctha le chéile.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Maith go leor cheana</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Cleachtaigh suimeanna in ord.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Díreach tosaithe</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Suimeanna in ord randamach.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Roinnt cleachtaidh déanta</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Roghnaigh pointe tosaithe do %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>an t-ábhar seo</string>
+	<key>onboarding.level.title</key>
+	<string>Cé chomh maith is atá tú air seo?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Tosaímis. Cad is ainm duit?</string>
+	<key>onboarding.name.title</key>
+	<string>Ní raibh suimeanna chomh spraíúil riamh!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Roghnaigh ábhar le tosú.</string>
+	<key>onboarding.subject.title</key>
+	<string>Cad ba mhaith leat a fhoghlaim?</string>
+	<key>options.capAt30.info</key>
+	<string>Tá sprioc suas le 50 trófaí ag gach leibhéal. Má tá an rogha seo ar siúl, críochnaíonn an cluiche go huathoibríoch nuair a bhaineann tú amach í.</string>
+	<key>options.capAt30.title</key>
+	<string>Críochnaigh ag an sprioc</string>
+	<key>options.helperMode.info</key>
+	<string>Sa Mhód Cúntóra, taispeántar an freagra ceart i nglas i gcónaí. Déantar na trófaithe a fhaightear sa mhód seo a chomhaireamh ar leithligh agus marcáiltear iad le réalta.</string>
+	<key>options.helperMode.title</key>
+	<string>Mód Cúntóra</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Tosaíonn tú le 3 bheatha i gcónaí. Críochnaíonn an cluiche nuair nach mbíonn aon bheatha fágtha agat. Cuir an rogha seo ar siúl chun leanúint ag imirt agus ag cleachtadh tar éis do bheathaí a bheith caillte.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Beathaí gan teorainn</string>
+	<key>parentGate.approved</key>
+	<string>Ceadaithe</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Iarrachtaí: %1$lld as %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Coinnigh an %@ síos ar feadh %lld soicind.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Coinnigh: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Coinnigh an %@ síos ar feadh %lld soicind. Ansin tapáil an %@ %lld uair.</string>
+	<key>parentGate.shape.circle</key>
+	<string>ciorcal</string>
+	<key>parentGate.shape.diamond</key>
+	<string>muileata</string>
+	<key>parentGate.shape.heart</key>
+	<string>croí</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>heicseagán</string>
+	<key>parentGate.shape.plus</key>
+	<string>móide</string>
+	<key>parentGate.shape.square</key>
+	<string>cearnóg</string>
+	<key>parentGate.shape.star</key>
+	<string>réalta</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triantán</string>
+	<key>parentGate.stepOne</key>
+	<string>Céim 1 de 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Céim 2 de 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Chun imreoirí óga a chosaint, caithfidh duine fásta an tseiceáil seo a dhéanamh sula leanfar leis an gceannach.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Anois tapáil an %2$@ %1$lld uair.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Tapálacha: %1$lld as %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Cead duine fásta de dhíth</string>
+	<key>premium.availableAt %lld</key>
+	<string>Ar fáil ó %lld trófaí</string>
+	<key>premium.availableFromStart</key>
+	<string>Ar fáil ón tús</string>
+	<key>premium.characterUnlocked</key>
+	<string>CARACHTAR NUA DÍGHLASÁILTE</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ díghlasáilte</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tá %lld trófaí tuillte agat</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Eisiach le Préimh</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Eisiach le Préimh</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Le Préimh, is féidir leat imirt gan srian leis na 10 n-ainmhí.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Na hainmhithe go léir</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Neart suimeanna nua le cleachtadh i gcónaí.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 leibhéal in aghaidh an ábhair</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Imir gan aon bhriseadh.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Gan fógraí</string>
+	<key>premium.oneTime</key>
+	<string>Ceannach aonuaire. Is leatsa go deo é.</string>
+	<key>premium.restore</key>
+	<string>Athchóirigh ceannacháin</string>
+	<key>premium.start</key>
+	<string>Tosaigh</string>
+	<key>premium.storeUnavailable</key>
+	<string>Níl an siopa ar fáil anois. Bain triail eile as ar ball.</string>
+	<key>premium.unlock</key>
+	<string>Díghlasáil Préimh</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Díghlasáil Préimh · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Díghlasáil le trófaithe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Díghlasáilte le Préimh</string>
+	<key>premium.youHavePremium</key>
+	<string>Tá Préimh agat!</string>
+	<key>settings.character</key>
+	<string>Carachtar</string>
+	<key>settings.characterInfo</key>
+	<string>Tugann gach ainmhí a théama dathanna féin don chluiche ar fad.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Saincheaptha: %lld nóim</string>
+	<key>settings.dailyGoal</key>
+	<string>Sprioc laethúil</string>
+	<key>settings.goalInfo</key>
+	<string>Tosaíonn sprioc na sraithe ag 5 nóiméad sa lá. Ní áirítear ach am imeartha gníomhach.</string>
+	<key>settings.lives</key>
+	<string>Beathaí</string>
+	<key>settings.livesInfo</key>
+	<string>Le trí bheatha, críochnaíonn an cluiche tar éis do chroí deiridh. Sa mhód gan teorainn, ní áirítear trófaithe ach fad atá beathaí agat; ina dhiaidh sin is féidir leat leanúint ag imirt.</string>
+	<key>settings.playGoals</key>
+	<string>Spriocanna imeartha</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Préimh díghlasáilte. Go raibh maith agat!</string>
+	<key>settings.title</key>
+	<string>Socruithe</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Roghnaigh sprioc laethúil</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Roghnaigh sprioc laethúil nó sheachtainiúil</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld as %3$lld nóiméad, %4$lld lá as a chéile</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Sraith laethúil, %lld as %lld nóiméad</string>
+	<key>streak.daily</key>
+	<string>Sraith laethúil</string>
+	<key>streak.dayOne</key>
+	<string>Lá 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Níl an freagra ar eolas agat? Tapáil an cheist chun é a fheiceáil.</string>
+	<key>tutorial.complete</key>
+	<string>Maith thú! Tá an rang teagaisc críochnaithe. Anois bain amach an scór is airde!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Léim ar an bhfreagra ceart chun trófaí a bhailiú.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Tá an freagra ceart glas. Anois léim ar an bhfreagra ceart.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Anois léim ar an bhfreagra ceart chun trí oiread trófaithe a bhailiú.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Bailigh an bonn ×3 chun trí oiread trófaithe a fháil uair amháin.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Is féidir leat leathbheatha nó beatha iomlán a aimsiú chun beathaí a fháil ar ais.</string>
+	<key>tutorial.minusOne</key>
+	<string>Seachain an −1. Cosnaíonn sé trófaí amháin ort.</string>
+	<key>tutorial.move</key>
+	<string>Bog do ghléas chun dul ar chlé agus ar dheis. Is féidir leat dul trí thaobhanna an scáileáin freisin.</string>
+	<key>tutorial.platforms</key>
+	<string>Léim ar na hardáin chun dul suas.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Taispeántar do scór don leibhéal seo anseo.</string>
+	<key>tutorial.star</key>
+	<string>Léim isteach sa réalta chun freagraí míchearta a scaoileadh amach.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Má roghnaíonn tú freagra mícheart, caillfidh tú ceann de do thrí bheatha. Bain triail as anois.</string>
+</dict>
+</plist>

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Hartza</string>
+	<key>character.bunny</key>
+	<string>Untxia</string>
+	<key>character.crab</key>
+	<string>Karramarroa</string>
+	<key>character.dog</key>
+	<string>Txakurra</string>
+	<key>character.elephant</key>
+	<string>Elefantea</string>
+	<key>character.fox</key>
+	<string>Azeria</string>
+	<key>character.frog</key>
+	<string>Igela</string>
+	<key>character.lion</key>
+	<string>Lehoia</string>
+	<key>character.octopus</key>
+	<string>Olagarroa</string>
+	<key>character.penguin</key>
+	<string>Pinguinoa</string>
+	<key>character.pickerTitle</key>
+	<string>Aukeratu pertsonaia</string>
+	<key>common.back</key>
+	<string>Atzera</string>
+	<key>common.cancel</key>
+	<string>Utzi</string>
+	<key>common.continue</key>
+	<string>Jarraitu</string>
+	<key>common.done</key>
+	<string>Eginda</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Gorde</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Eduki sakatuta 2 segundoz garatzaile-modua irekitzeko.</string>
+	<key>developerMode.title</key>
+	<string>Garatzaile-modua</string>
+	<key>filter.addition</key>
+	<string>Batuketa</string>
+	<key>filter.fractions</key>
+	<string>Zatikiak</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Ehunekoak</string>
+	<key>filter.subtraction</key>
+	<string>Kenketa</string>
+	<key>filter.tables</key>
+	<string>Taulak</string>
+	<key>game.accessibility.mix</key>
+	<string>Nahasketa</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld / %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Saiakera ona</string>
+	<key>game.encouragement.1</key>
+	<string>Hasiera bat da</string>
+	<key>game.encouragement.2</key>
+	<string>Jarraitu praktikatzen</string>
+	<key>game.encouragement.3</key>
+	<string>Ez dago batere gaizki</string>
+	<key>game.encouragement.4</key>
+	<string>Oso ondo</string>
+	<key>game.encouragement.5</key>
+	<string>Emaitza polita</string>
+	<key>game.encouragement.6</key>
+	<string>Ongi egina</string>
+	<key>game.encouragement.7</key>
+	<string>Bikain jokatu duzu</string>
+	<key>game.encouragement.8</key>
+	<string>Amaiera gertu dago</string>
+	<key>game.encouragement.9</key>
+	<string>Ia iritsi zara</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Puntu guztiak irabazi dituzu.</string>
+	<key>game.end.completionSuffix</key>
+	<string>osatuta!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Jokoa amaitu da</string>
+	<key>game.end.mainMenu</key>
+	<string>Menu nagusia</string>
+	<key>game.end.playAgain</key>
+	<string>Jokatu berriro</string>
+	<key>game.highScore</key>
+	<string>Puntuazio onena</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Menu nagusira</string>
+	<key>game.intro.continue</key>
+	<string>Jarraitu</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld puntutik jarraituko duzu</string>
+	<key>game.intro.helperBullet</key>
+	<string>Erantzun zuzena berdez nabarmenduta dago laguntzailea aktibatuta dagoelako. Horregatik, garaikurrak aparte zenbatzen dira * ikurrarekin.</string>
+	<key>game.intro.helperOff</key>
+	<string>Laguntzailea itzalita</string>
+	<key>game.intro.helperOn</key>
+	<string>Laguntzailea piztuta</string>
+	<key>game.intro.howItWorks</key>
+	<string>Nola dabil maila hau</string>
+	<key>game.intro.livesOff</key>
+	<string>Bizitzak itzalita</string>
+	<key>game.intro.livesOn</key>
+	<string>Bizitzak piztuta</string>
+	<key>game.intro.scorePaused</key>
+	<string>Uneko puntuazioa pausatuko da.</string>
+	<key>game.intro.start</key>
+	<string>Hasi maila</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Biderkatu %@%@ 1etik 12ra bitarteko zenbaki batez.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>edo txikiagoa</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Sakatu edonon jarraitzeko</string>
+	<key>game.intro.tapToStart</key>
+	<string>Sakatu edonon hasteko</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Irabazi |1| garaikur erantzun zuzen bakoitzeko, gehienez |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Bizitzak amaitzean, ezin duzu garaikur gehiago irabazi.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Sailkapenerako gehieneko garaikur kopurura iritsi zara</string>
+	<key>game.status.mixMode</key>
+	<string>NAHASKETA MODUA</string>
+	<key>game.status.scoreLocked</key>
+	<string>Bizitzak amaitzean, garaikurrek ez dute gehiago balio</string>
+	<key>game.streak.subtitle</key>
+	<string>Garaikurrak ×2</string>
+	<key>game.streak.title</key>
+	<string>5 jarraian!</string>
+	<key>goal.period</key>
+	<string>Helburu-epea</string>
+	<key>goal.promptDaily</key>
+	<string>Zenbat minutuz jokatu nahi duzu egunean?</string>
+	<key>goal.promptWeekly</key>
+	<string>Zenbat minutuz jokatu nahi duzu astean?</string>
+	<key>goal.title</key>
+	<string>Jolas-helburua</string>
+	<key>goalPeriod.daily</key>
+	<string>Egunero</string>
+	<key>goalPeriod.weekly</key>
+	<string>Astero</string>
+	<key>info.filter.addition</key>
+	<string>Batuketak bakarrik</string>
+	<key>info.filter.fractions</key>
+	<string>Zatiketak bakarrik</string>
+	<key>info.filter.header</key>
+	<string>Ariketa motak</string>
+	<key>info.filter.mixed</key>
+	<string>Eragiketa nahasiak</string>
+	<key>info.filter.percentages</key>
+	<string>Ehunekoak bakarrik</string>
+	<key>info.filter.subtraction</key>
+	<string>Kenketak bakarrik</string>
+	<key>info.filter.tables</key>
+	<string>Biderketak bakarrik</string>
+	<key>info.mode.fractions.header</key>
+	<string>Zatiak</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Zati bat eta hainbat zati</string>
+	<key>info.mode.fractions.single</key>
+	<string>Beti zati bakarra</string>
+	<key>info.mode.header</key>
+	<string>Ordena</string>
+	<key>info.mode.mixed</key>
+	<string>Beheko mailekin nahasita</string>
+	<key>info.mode.order</key>
+	<string>Ordena finkoa</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Zenbaki hamartarrak barne</string>
+	<key>info.mode.percentages.header</key>
+	<string>Mota</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Zenbaki hamartarrik gabe</string>
+	<key>info.mode.random</key>
+	<string>Ausazko ordena</string>
+	<key>info.super.all</key>
+	<string>Batuketa, kenketa, biderketa, zatiketa eta ehunekoak</string>
+	<key>info.super.basic</key>
+	<string>Batuketa eta kenketa</string>
+	<key>info.super.fraction</key>
+	<string>Batuketa, kenketa, biderketa eta zatiketa</string>
+	<key>info.super.times</key>
+	<string>Batuketa, kenketa eta biderketa</string>
+	<key>language.select</key>
+	<string>Aukeratu hizkuntza</string>
+	<key>lives.three</key>
+	<string>3 bizitza</string>
+	<key>lives.unlimited</key>
+	<string>Mugagabea</string>
+	<key>menu.accessibility.character</key>
+	<string>Pertsonaia</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Sakatu pertsonaia aldatzeko; eduki sakatuta bi segundoz ongietorri-pantailatik berriro hasteko.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Aukeratu %@</string>
+	<key>menu.maxScore</key>
+	<string>30 GEH.</string>
+	<key>menu.maximumCount</key>
+	<string>GEH.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Gehienekora %lld aldiz iritsi zara</string>
+	<key>menu.moreLevels</key>
+	<string>Maila gehiago</string>
+	<key>menu.options</key>
+	<string>Joko-aukerak</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium taulak</string>
+	<key>menu.startHere</key>
+	<string>Hasi hemen</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Desblokeatu gehiago Premium-ekin</string>
+	<key>mode.fractions.multiple</key>
+	<string>Hainbat</string>
+	<key>mode.fractions.single</key>
+	<string>Bakarra</string>
+	<key>mode.mix</key>
+	<string>Nahasketa</string>
+	<key>mode.mixed</key>
+	<string>Nahasia</string>
+	<key>mode.order</key>
+	<string>Ordena</string>
+	<key>mode.percentages.decimal</key>
+	<string>Hamartarra</string>
+	<key>mode.percentages.whole</key>
+	<string>Osoa</string>
+	<key>mode.random</key>
+	<string>Ausaz</string>
+	<key>mode.standard</key>
+	<string>Estandarra</string>
+	<key>modeIntro.addition.intro</key>
+	<string>|Batuketa| ariketak bakarrik izango dituzu.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>%lld |edo gutxiago| gehituko diozu beste zenbaki bati.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Beti %lld gehituko duzu |goranzko| ordenan.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Beti %lld gehituko diozu |ausazko| zenbaki bati.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Batuketa · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Bi zenbaki batzen jarraitu.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Emaitza gehienez %lld da.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Batu %lld arte</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>|Zatiki| ariketak bakarrik izango dituzu.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Maila honetako eta |aurreko mailetako| zatikiak izango dituzu.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Beti |zati 1| hartuko duzu %lld zati berdinetatik.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Kalkulatu %lld. mailako eta aurreko mailetako zenbaki biribilen zatikiak.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Zenbakiak biribilak dira; beraz, erantzunak osoak dira beti.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Zatikiak %lld arte</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Zati bat edo |hainbat zati| hartuko dituzu %lld zati berdinetatik.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Zatikiak · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Kalkulatu osotasun baten zati bat eta egin zatiki baliokideak.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Batu eta kendu izendatzaile bera duten zatikiak.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Zatiki nahasiak</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>|Ehuneko| ariketak bakarrik izango dituzu.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Maila honetako eta |aurreko mailetako| ehunekoak izango dituzu.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Beti %@ kalkulatuko duzu, eta erantzuna |zenbaki osoa| izango da.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Kalkulatu zenbaki biribilen ehunekoak %lld arte.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Kopuruak biribilak dira; beraz, erantzunak osoak dira beti.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Ehunekoak %lld arte</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Beti %@ kalkulatuko duzu, eta erantzuna |hamartarra| ere izan daiteke.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Kalkulatu %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Kalkulatu zenbaki baten ehunekoa.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Bihurtu ehunekoak zatiki eta zatikiak ehuneko.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Ehuneko nahasiak</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>|Kenketa| ariketak bakarrik izango dituzu.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>%lld |edo gutxiago| kenduko diozu beste zenbaki bati.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Beti %lld kenduko duzu |beheranzko| ordenan.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Beti %lld kenduko diozu |ausazko| zenbaki bati.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Kenketa · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Lehen zenbakia gehienez %lld da.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Emaitza zero azpitik joan daiteke.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Zero azpitik</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Kendu %lld arte</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Bi zenbaki kentzen jarraitu.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Zailtasuna hautatutako atal bakoitzeko |%lld. mailara| igo daiteke.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Praktikatu batuketak, kenketak, taulak, zatikiak eta ehunekoak nahasita.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Praktikatu batuketak eta kenketak nahasita.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Praktikatu batuketak, kenketak, taulak eta zatikiak nahasita.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Praktikatu batuketak, kenketak eta taulak nahasita.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>|Biderketa| ariketak bakarrik izango dituzu.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld arteko| taula guztiak nahasita izango dituzu.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Taula bakoitza |1etik 12ra| bitarteko zenbaki batez.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldko taula |goranzko| ordenan izango duzu.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldko taula |ausazko| ordenan izango duzu.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldko taula</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Praktikatu %lldtik %lldra bitarteko taulak nahasita.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>%lld-%lld taulak</string>
+	<key>name.placeholder</key>
+	<string>Zure izena</string>
+	<key>name.whatsYourName</key>
+	<string>Nola duzu izena?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Nahasketa-ariketa desberdinak batera.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Dagoeneko nahiko ondo</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Praktikatu ariketak ordenan.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Hasi berria</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Ariketak ausazko ordenan.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Dagoeneko praktikatu duzu</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Aukeratu %@-rako abiapuntua.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>gai hau</string>
+	<key>onboarding.level.title</key>
+	<string>Zenbateraino moldatzen zara honekin?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Has gaitezen. Nola duzu izena?</string>
+	<key>onboarding.name.title</key>
+	<string>Kalkuluak egitea ez da inoiz hain dibertigarria izan!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Aukeratu hasteko gai bat.</string>
+	<key>onboarding.subject.title</key>
+	<string>Zer ikasi nahi duzu?</string>
+	<key>options.capAt30.info</key>
+	<string>Maila bakoitzak gehienez 50 garaikurreko helburua du. Aukera hau piztuta badago, jokoa automatikoki amaituko da helburura iristean.</string>
+	<key>options.capAt30.title</key>
+	<string>Amaitu helburuan</string>
+	<key>options.helperMode.info</key>
+	<string>Laguntzaile moduan, erantzun zuzena beti berdez agertzen da. Modu honetan lortutako garaikurrak aparte zenbatzen dira eta izar batekin markatzen dira.</string>
+	<key>options.helperMode.title</key>
+	<string>Laguntzaile modua</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Beti 3 bizitzarekin hasten zara. Bizitzarik gabe geratzean, jokoa amaituko da. Piztu aukera hau bizitzak amaitu ondoren jolasten eta praktikatzen jarraitzeko.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Bizitza mugagabeak</string>
+	<key>parentGate.approved</key>
+	<string>Onartuta</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Saiakerak: %1$lld / %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Eduki %@ sakatuta %lld segundoz.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Eduki sakatuta: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Eduki %@ sakatuta %lld segundoz. Gero, sakatu %@ %lld aldiz.</string>
+	<key>parentGate.shape.circle</key>
+	<string>zirkulua</string>
+	<key>parentGate.shape.diamond</key>
+	<string>erronboa</string>
+	<key>parentGate.shape.heart</key>
+	<string>bihotza</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hexagonoa</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus ikurra</string>
+	<key>parentGate.shape.square</key>
+	<string>karratua</string>
+	<key>parentGate.shape.star</key>
+	<string>izarra</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triangelua</string>
+	<key>parentGate.stepOne</key>
+	<string>2tik 1. urratsa</string>
+	<key>parentGate.stepTwo</key>
+	<string>2tik 2. urratsa</string>
+	<key>parentGate.subtitle</key>
+	<string>Jokalari gazteak babesteko, heldu batek egiaztapen hau osatu behar du erosketarekin jarraitu aurretik.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Orain, sakatu %2$@ %1$lld aldiz.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Sakatzeak: %1$lld / %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Heldu baten baimena behar da</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium-ekin, libre jokatu dezakezu 10 animaliekin.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Animalia guztiak erabilgarri</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Beti ariketa berri nahikoa praktikatzeko.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 maila gai bakoitzeko</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Jokatu etenik gabe.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Iragarkirik gabe</string>
+	<key>premium.oneTime</key>
+	<string>Ordainketa bakarra. Betiko zurea.</string>
+	<key>premium.restore</key>
+	<string>Berrezarri erosketak</string>
+	<key>premium.storeUnavailable</key>
+	<string>Denda ez dago erabilgarri orain. Saiatu berriro geroago.</string>
+	<key>premium.unlock</key>
+	<string>Desblokeatu Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Desblokeatu Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Premium duzu!</string>
+	<key>settings.character</key>
+	<string>Pertsonaia</string>
+	<key>settings.characterInfo</key>
+	<string>Animalia bakoitzak bere kolore-gaia ematen dio joko osoari.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Pertsonalizatua: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Eguneko helburua</string>
+	<key>settings.goalInfo</key>
+	<string>Segidaren helburua eguneko 5 minututan hasten da. Jolas-denbora aktiboa bakarrik zenbatzen da.</string>
+	<key>settings.lives</key>
+	<string>Bizitzak</string>
+	<key>settings.livesInfo</key>
+	<string>Hiru bizitzarekin, jokoa azken bihotza galtzean amaitzen da. Modu mugagabean, garaikurrek bizitzak dituzun bitartean bakarrik balio dute; gero jolasten jarrai dezakezu.</string>
+	<key>settings.playGoals</key>
+	<string>Jolas-helburuak</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium desblokeatuta. Eskerrik asko!</string>
+	<key>settings.title</key>
+	<string>Ezarpenak</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Aukeratu eguneko helburua</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Aukeratu eguneko edo asteko helburua</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld minututik %2$lld, %4$lld egun jarraian</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Eguneko segida, %lld / %lld minutu</string>
+	<key>streak.daily</key>
+	<string>Eguneko segida</string>
+	<key>streak.dayOne</key>
+	<string>1. eguna</string>
+	<key>tutorial.answerHint</key>
+	<string>Ez dakizu erantzuna? Sakatu ariketa ikusteko.</string>
+	<key>tutorial.complete</key>
+	<string>Oso ondo! Tutoriala amaitu duzu. Orain, lortu puntuazio onena!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Jauzi erantzun zuzenaren gainera garaikur bat hartzeko.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Erantzun zuzena berdez agertzen da. Orain, jauzi erantzun zuzenaren gainera.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Orain, jauzi erantzun zuzenaren gainera hirukoitza garaikur lortzeko.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Hartu ×3 txanpona behin garaikur hirukoitzak lortzeko.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Bizitza erdia edo bizitza osoa aurki dezakezu bizitzak berreskuratzeko.</string>
+	<key>tutorial.minusOne</key>
+	<string>Saihestu −1. Garaikur bat kentzen dizu.</string>
+	<key>tutorial.move</key>
+	<string>Mugitu gailua ezkerrera eta eskuinera joateko. Pantailaren alboetatik ere pasa zaitezke.</string>
+	<key>tutorial.platforms</key>
+	<string>Jauzi plataformen gainera gora egiteko.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Maila honetako zure puntuazioa hemen agertzen da.</string>
+	<key>tutorial.star</key>
+	<string>Jauzi izarrera erantzun okerrak urruntzeko.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Erantzun okerra aukeratzen baduzu, hiru bizitzetako bat galduko duzu. Probatu orain.</string>
+</dict>
+</plist>

@@ -1,0 +1,288 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "tutorial.complete",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 233
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.trophyBullet %lld",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 662
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.livesOff",
+        "location": {
+          "startingColumn": 93,
+          "startingLine": 478
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.livesOn",
+        "location": {
+          "startingColumn": 120,
+          "startingLine": 478
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.helperOn",
+        "location": {
+          "startingColumn": 116,
+          "startingLine": 479
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.helperOff",
+        "location": {
+          "startingColumn": 143,
+          "startingLine": 479
+        }
+      },
+      {
+        "comment": "",
+        "key": "developerMode.title",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 495
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.continue",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 497
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.start",
+        "location": {
+          "startingColumn": 86,
+          "startingLine": 497
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.backToMainMenu",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 509
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.scorePaused",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 586
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.intro.continueFrom %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 589
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.streak.title",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 786
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.streak.subtitle",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 786
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.move",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 992
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.platforms",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 993
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.correctAnswer",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 994
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.wrongAnswer",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 995
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.correctAnswerGreen",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 996
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.answerHint",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 997
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.lifePickup",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 998
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.doubler.answer",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 1001
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.doubler.collect",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 1002
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.minusOne",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1003
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.star",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 1004
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.status.leaderboardMaxed",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 1147
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.status.scoreLocked",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 1157
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.end.gameOverTitle",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 1695
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.end.completionSubtitle",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 1693
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.accessibility.scoreOutOf %lld %lld",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 1327
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.highScore",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 1405
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.end.playAgain",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1696
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.end.mainMenu",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1697
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.highScore",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 1390
+        }
+      },
+      {
+        "comment": "",
+        "key": "game.end.completionSuffix",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1694
+        }
+      }
+    ]
+  },
+  "version": 1
+}

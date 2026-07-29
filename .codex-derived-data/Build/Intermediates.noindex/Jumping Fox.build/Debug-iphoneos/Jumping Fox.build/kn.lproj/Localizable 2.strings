@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ಕರಡಿ</string>
+	<key>character.bunny</key>
+	<string>ಮೊಲ</string>
+	<key>character.crab</key>
+	<string>ಏಡಿ</string>
+	<key>character.dog</key>
+	<string>ನಾಯಿ</string>
+	<key>character.elephant</key>
+	<string>ಆನೆ</string>
+	<key>character.fox</key>
+	<string>ನರಿ</string>
+	<key>character.frog</key>
+	<string>ಕಪ್ಪೆ</string>
+	<key>character.lion</key>
+	<string>ಸಿಂಹ</string>
+	<key>character.octopus</key>
+	<string>ಆಕ್ಟೋಪಸ್</string>
+	<key>character.penguin</key>
+	<string>ಪೆಂಗ್ವಿನ್</string>
+	<key>character.pickerTitle</key>
+	<string>ನಿನ್ನ ಪಾತ್ರವನ್ನು ಆರಿಸು</string>
+	<key>common.back</key>
+	<string>ಹಿಂದೆ</string>
+	<key>common.cancel</key>
+	<string>ರದ್ದು</string>
+	<key>common.continue</key>
+	<string>ಮುಂದೆ</string>
+	<key>common.done</key>
+	<string>ಆಯಿತು</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld ನಿಮಿ</string>
+	<key>common.save</key>
+	<string>ಉಳಿಸು</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ಡೆವಲಪರ್ ಮೋಡ್ ತೆರೆಯಲು 2 ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ.</string>
+	<key>developerMode.title</key>
+	<string>ಡೆವಲಪರ್ ಮೋಡ್</string>
+	<key>filter.addition</key>
+	<string>ಕೂಡಿಸುವಿಕೆ</string>
+	<key>filter.fractions</key>
+	<string>ಭಿನ್ನರಾಶಿಗಳು</string>
+	<key>filter.mixed</key>
+	<string>ಸೂಪರ್‌ಮಿಕ್ಸ್</string>
+	<key>filter.percentages</key>
+	<string>ಶೇಕಡಾವಾರು</string>
+	<key>filter.subtraction</key>
+	<string>ಕಳೆಯುವಿಕೆ</string>
+	<key>filter.tables</key>
+	<string>ಗುಣಾಕಾರ ಪಟ್ಟಿಗಳು</string>
+	<key>game.accessibility.mix</key>
+	<string>ಮಿಕ್ಸ್</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld/%lld</string>
+	<key>game.encouragement.0</key>
+	<string>ಒಳ್ಳೆಯ ಪ್ರಯತ್ನ</string>
+	<key>game.encouragement.1</key>
+	<string>ಇದು ಒಳ್ಳೆಯ ಆರಂಭ</string>
+	<key>game.encouragement.2</key>
+	<string>ಅಭ್ಯಾಸ ಮುಂದುವರಿಸು</string>
+	<key>game.encouragement.3</key>
+	<string>ತುಂಬಾ ಕೆಟ್ಟಿಲ್ಲ</string>
+	<key>game.encouragement.4</key>
+	<string>ಚೆನ್ನಾಗಿ ಮಾಡುತ್ತಿದ್ದೀಯ</string>
+	<key>game.encouragement.5</key>
+	<string>ಚೆನ್ನಾದ ಸಾಧನೆ</string>
+	<key>game.encouragement.6</key>
+	<string>ಚೆನ್ನಾಗಿ ಮಾಡಿದೆ</string>
+	<key>game.encouragement.7</key>
+	<string>ತುಂಬಾ ಚೆನ್ನಾಗಿ ಆಡಿದೆ</string>
+	<key>game.encouragement.8</key>
+	<string>ಅಂತ್ಯ ಹತ್ತಿರದಲ್ಲಿದೆ</string>
+	<key>game.encouragement.9</key>
+	<string>ಇನ್ನೇನು ತಲುಪುತ್ತೀಯ</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ಪ್ರತಿ ಅಂಕವನ್ನೂ ಗಳಿಸಿದ್ದೀಯ.</string>
+	<key>game.end.completionSuffix</key>
+	<string>ಪೂರ್ಣ!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ಆಟ ಮುಗಿತು</string>
+	<key>game.end.mainMenu</key>
+	<string>ಮುಖ್ಯ ಮೆನು</string>
+	<key>game.end.playAgain</key>
+	<string>ಮತ್ತೆ ಆಡು</string>
+	<key>game.highScore</key>
+	<string>ಅತ್ಯುತ್ತಮ ಅಂಕ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ಮುಖ್ಯ ಮೆನುಗೆ ಹಿಂತಿರುಗು</string>
+	<key>game.intro.continue</key>
+	<string>ಮುಂದುವರಿಸು</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ನೀನು %lldರಿಂದ ಮುಂದುವರಿಸುತ್ತೀಯ</string>
+	<key>game.intro.helperBullet</key>
+	<string>ಸಹಾಯಕ ಆನ್ ಇರುವುದರಿಂದ ಸರಿಯಾದ ಉತ್ತರ ಹಸಿರಿನಲ್ಲಿ ಕಾಣುತ್ತದೆ. ಆದ್ದರಿಂದ ಟ್ರೋಫಿಗಳನ್ನು * ಗುರುತಿನಿಂದ ಬೇರೆ ಎಣಿಸಲಾಗುತ್ತದೆ.</string>
+	<key>game.intro.helperOff</key>
+	<string>ಸಹಾಯಕ ಆಫ್</string>
+	<key>game.intro.helperOn</key>
+	<string>ಸಹಾಯಕ ಆನ್</string>
+	<key>game.intro.howItWorks</key>
+	<string>ಈ ಹಂತ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ</string>
+	<key>game.intro.livesOff</key>
+	<string>ಜೀವಗಳು ಆಫ್</string>
+	<key>game.intro.livesOn</key>
+	<string>ಜೀವಗಳು ಆನ್</string>
+	<key>game.intro.scorePaused</key>
+	<string>ನಿನ್ನ ಈಗಿನ ಅಂಕವನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗುತ್ತದೆ.</string>
+	<key>game.intro.start</key>
+	<string>ಹಂತ ಆರಂಭಿಸು</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ಅನ್ನು 1ರಿಂದ 12ರವರೆಗಿನ ಸಂಖ್ಯೆಯಿಂದ ಗುಣಿಸು.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ಅಥವಾ ಕಡಿಮೆ</string>
+	<key>game.intro.tapToContinue</key>
+	<string>ಮುಂದುವರಿಸಲು ಎಲ್ಲಾದರೂ ತಟ್ಟು</string>
+	<key>game.intro.tapToStart</key>
+	<string>ಆರಂಭಿಸಲು ಎಲ್ಲಾದರೂ ತಟ್ಟು</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ಪ್ರತಿ ಸರಿಯಾದ ಉತ್ತರಕ್ಕೆ |1| ಟ್ರೋಫಿ ಗಳಿಸು, ಗರಿಷ್ಠ |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ಜೀವಗಳು ಮುಗಿದ ನಂತರ ಟ್ರೋಫಿಗಳನ್ನು ಗಳಿಸಲು ಆಗುವುದಿಲ್ಲ.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ಅಂಕಪಟ್ಟಿಗೆ ಗರಿಷ್ಠ ಟ್ರೋಫಿಗಳು ತಲುಪಿವೆ</string>
+	<key>game.status.mixMode</key>
+	<string>ಮಿಕ್ಸ್ ಮೋಡ್</string>
+	<key>game.status.scoreLocked</key>
+	<string>ಜೀವಗಳು ಮುಗಿದ ನಂತರ ಟ್ರೋಫಿಗಳು ಲೆಕ್ಕಕ್ಕೆ ಸೇರುವುದಿಲ್ಲ</string>
+	<key>game.streak.subtitle</key>
+	<string>ಟ್ರೋಫಿಗಳು ×2</string>
+	<key>game.streak.title</key>
+	<string>ಸತತ 5!</string>
+	<key>goal.period</key>
+	<string>ಗುರಿಯ ಅವಧಿ</string>
+	<key>goal.promptDaily</key>
+	<string>ದಿನಕ್ಕೆ ಎಷ್ಟು ನಿಮಿಷ ಆಡಲು ಬಯಸುತ್ತೀಯ?</string>
+	<key>goal.promptWeekly</key>
+	<string>ವಾರಕ್ಕೆ ಎಷ್ಟು ನಿಮಿಷ ಆಡಲು ಬಯಸುತ್ತೀಯ?</string>
+	<key>goal.title</key>
+	<string>ಆಟದ ಗುರಿ</string>
+	<key>goalPeriod.daily</key>
+	<string>ಪ್ರತಿದಿನ</string>
+	<key>goalPeriod.weekly</key>
+	<string>ಪ್ರತಿವಾರ</string>
+	<key>info.filter.addition</key>
+	<string>ಕೂಡಿಸುವಿಕೆ ಮಾತ್ರ</string>
+	<key>info.filter.fractions</key>
+	<string>ಭಾಗಾಕಾರ ಮಾತ್ರ</string>
+	<key>info.filter.header</key>
+	<string>ಲೆಕ್ಕಗಳ ವಿಧಗಳು</string>
+	<key>info.filter.mixed</key>
+	<string>ಮಿಶ್ರ ಲೆಕ್ಕಗಳು</string>
+	<key>info.filter.percentages</key>
+	<string>ಶೇಕಡಾವಾರು ಮಾತ್ರ</string>
+	<key>info.filter.subtraction</key>
+	<string>ಕಳೆಯುವಿಕೆ ಮಾತ್ರ</string>
+	<key>info.filter.tables</key>
+	<string>ಗುಣಾಕಾರ ಮಾತ್ರ</string>
+	<key>info.mode.fractions.header</key>
+	<string>ಭಾಗಗಳು</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ಒಂದು ಮತ್ತು ಹಲವು ಭಾಗಗಳು</string>
+	<key>info.mode.fractions.single</key>
+	<string>ಯಾವಾಗಲೂ ಒಂದು ಭಾಗ</string>
+	<key>info.mode.header</key>
+	<string>ಕ್ರಮ</string>
+	<key>info.mode.mixed</key>
+	<string>ಕೆಳ ಹಂತಗಳೊಂದಿಗೆ ಮಿಶ್ರ</string>
+	<key>info.mode.order</key>
+	<string>ನಿಗದಿತ ಕ್ರಮ</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ದಶಮಾಂಶಗಳೊಂದಿಗೆ</string>
+	<key>info.mode.percentages.header</key>
+	<string>ವಿಧ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ದಶಮಾಂಶಗಳಿಲ್ಲದೆ</string>
+	<key>info.mode.random</key>
+	<string>ಯಾದೃಚ್ಛಿಕ ಕ್ರಮ</string>
+	<key>info.super.all</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ, ಗುಣಾಕಾರ, ಭಾಗಾಕಾರ ಮತ್ತು ಶೇಕಡಾವಾರು</string>
+	<key>info.super.basic</key>
+	<string>ಕೂಡಿಸುವಿಕೆ ಮತ್ತು ಕಳೆಯುವಿಕೆ</string>
+	<key>info.super.fraction</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ, ಗುಣಾಕಾರ ಮತ್ತು ಭಾಗಾಕಾರ</string>
+	<key>info.super.times</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ ಮತ್ತು ಗುಣಾಕಾರ</string>
+	<key>language.select</key>
+	<string>ಭಾಷೆ ಆರಿಸು</string>
+	<key>lives.three</key>
+	<string>3 ಜೀವಗಳು</string>
+	<key>lives.unlimited</key>
+	<string>ಮಿತಿ ಇಲ್ಲ</string>
+	<key>menu.accessibility.character</key>
+	<string>ಪಾತ್ರ</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>ಪಾತ್ರ ಬದಲಿಸಲು ತಟ್ಟು; ಸ್ವಾಗತ ಪರದೆಯಿಂದ ಮತ್ತೆ ಆರಂಭಿಸಲು ಎರಡು ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ ಆರಿಸು</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>ಗರಿಷ್ಠವನ್ನು %lld ಬಾರಿ ತಲುಪಿದೆ</string>
+	<key>menu.moreLevels</key>
+	<string>ಇನ್ನಷ್ಟು ಹಂತಗಳು</string>
+	<key>menu.options</key>
+	<string>ಆಟದ ಆಯ್ಕೆಗಳು</string>
+	<key>menu.premium</key>
+	<string>ಪ್ರೀಮಿಯಂ</string>
+	<key>menu.premiumTables</key>
+	<string>ಪ್ರೀಮಿಯಂ ಪಟ್ಟಿಗಳು</string>
+	<key>menu.startHere</key>
+	<string>ಇಲ್ಲಿಂದ ಆರಂಭಿಸು</string>
+	<key>menu.unlockWithPremium</key>
+	<string>ಪ್ರೀಮಿಯಂ ಮೂಲಕ ಇನ್ನಷ್ಟು ತೆರೆಯಿರಿ</string>
+	<key>mode.fractions.multiple</key>
+	<string>ಹಲವು</string>
+	<key>mode.fractions.single</key>
+	<string>ಒಂದು</string>
+	<key>mode.mix</key>
+	<string>ಮಿಕ್ಸ್</string>
+	<key>mode.mixed</key>
+	<string>ಮಿಶ್ರ</string>
+	<key>mode.order</key>
+	<string>ಕ್ರಮ</string>
+	<key>mode.percentages.decimal</key>
+	<string>ದಶಮಾಂಶ</string>
+	<key>mode.percentages.whole</key>
+	<string>ಪೂರ್ಣ</string>
+	<key>mode.random</key>
+	<string>ಯಾದೃಚ್ಛಿಕ</string>
+	<key>mode.standard</key>
+	<string>ಸಾಮಾನ್ಯ</string>
+	<key>modeIntro.addition.intro</key>
+	<string>ನಿನಗೆ |ಕೂಡಿಸುವಿಕೆ| ಲೆಕ್ಕಗಳು ಮಾತ್ರ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>ಇನ್ನೊಂದು ಸಂಖ್ಯೆಗೆ %lld |ಅಥವಾ ಕಡಿಮೆ| ಸೇರಿಸು.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ಯಾವಾಗಲೂ %lld ಅನ್ನು |ಏರಿಕೆ| ಕ್ರಮದಲ್ಲಿ ಸೇರಿಸು.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ಯಾವಾಗಲೂ %lld ಅನ್ನು |ಯಾದೃಚ್ಛಿಕ| ಸಂಖ್ಯೆಗೆ ಸೇರಿಸು.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>ಕೂಡಿಸುವಿಕೆ · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ಎರಡು ಸಂಖ್ಯೆಗಳನ್ನು ಮತ್ತೆ ಮತ್ತೆ ಕೂಡಿಸು.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>ಉತ್ತರ ಗರಿಷ್ಠ %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lldರವರೆಗೆ ಕೂಡಿಸು</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>ನಿನಗೆ |ಭಿನ್ನರಾಶಿ| ಲೆಕ್ಕಗಳು ಮಾತ್ರ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ಈ ಹಂತ ಮತ್ತು |ಹಿಂದಿನ ಹಂತಗಳ| ಭಿನ್ನರಾಶಿಗಳು ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld ಸಮಭಾಗಗಳಲ್ಲಿ ಯಾವಾಗಲೂ |1 ಭಾಗ| ತೆಗೆದುಕೋ.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld ಮತ್ತು ಹಿಂದಿನ ಹಂತಗಳ ಪೂರ್ಣ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಭಿನ್ನರಾಶಿ ಲೆಕ್ಕ ಹಾಕು.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>ಸಂಖ್ಯೆಗಳು ಪೂರ್ಣವಾಗಿರುತ್ತವೆ, ಆದ್ದರಿಂದ ಉತ್ತರಗಳೂ ಪೂರ್ಣ ಸಂಖ್ಯೆಗಳೇ.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lldರವರೆಗೆ ಭಿನ್ನರಾಶಿಗಳು</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld ಸಮಭಾಗಗಳಲ್ಲಿ ಒಂದು ಅಥವಾ |ಹಲವು ಭಾಗಗಳನ್ನು| ತೆಗೆದುಕೋ.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ಭಿನ್ನರಾಶಿಗಳು · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>ಪೂರ್ಣದ ಒಂದು ಭಾಗ ಕಂಡುಹಿಡಿದು ಭಿನ್ನರಾಶಿಗಳನ್ನು ಸಮಮಾಡು.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ಒಂದೇ ಛೇದವಿರುವ ಭಿನ್ನರಾಶಿಗಳನ್ನು ಕೂಡು ಮತ್ತು ಕಳೆ.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ಮಿಶ್ರ ಭಿನ್ನರಾಶಿಗಳು</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>ನಿನಗೆ |ಶೇಕಡಾವಾರು| ಲೆಕ್ಕಗಳು ಮಾತ್ರ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ಈ ಹಂತ ಮತ್ತು |ಹಿಂದಿನ ಹಂತಗಳ| ಶೇಕಡಾವಾರುಗಳು ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ಯಾವಾಗಲೂ %@ ಲೆಕ್ಕ ಹಾಕು, ಉತ್ತರವು |ಪೂರ್ಣ ಸಂಖ್ಯೆ|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lldರವರೆಗಿನ ಪೂರ್ಣ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಶೇಕಡಾವಾರು ಲೆಕ್ಕ ಹಾಕು.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>ಮೊತ್ತಗಳು ಪೂರ್ಣವಾಗಿರುತ್ತವೆ, ಆದ್ದರಿಂದ ಉತ್ತರಗಳೂ ಪೂರ್ಣ ಸಂಖ್ಯೆಗಳೇ.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lldರವರೆಗೆ ಶೇಕಡಾವಾರು</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ಯಾವಾಗಲೂ %@ ಲೆಕ್ಕ ಹಾಕು, ಉತ್ತರವು |ದಶಮಾಂಶ| ಕೂಡ ಆಗಬಹುದು.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ ಲೆಕ್ಕ ಹಾಕು</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ಒಂದು ಸಂಖ್ಯೆಯ ಶೇಕಡಾವಾರು ಲೆಕ್ಕ ಹಾಕು.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>ಶೇಕಡಾವಾರು ಮತ್ತು ಭಿನ್ನರಾಶಿಗಳನ್ನು ಪರಸ್ಪರ ಬದಲಿಸು.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ಮಿಶ್ರ ಶೇಕಡಾವಾರು</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>ನಿನಗೆ |ಕಳೆಯುವಿಕೆ| ಲೆಕ್ಕಗಳು ಮಾತ್ರ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>ಇನ್ನೊಂದು ಸಂಖ್ಯೆಯಿಂದ %lld |ಅಥವಾ ಕಡಿಮೆ| ಕಳೆ.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ಯಾವಾಗಲೂ %lld ಅನ್ನು |ಇಳಿಕೆ| ಕ್ರಮದಲ್ಲಿ ಕಳೆ.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ಯಾವಾಗಲೂ |ಯಾದೃಚ್ಛಿಕ| ಸಂಖ್ಯೆಯಿಂದ %lld ಕಳೆ.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>ಕಳೆಯುವಿಕೆ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>ಮೊದಲ ಸಂಖ್ಯೆ ಗರಿಷ್ಠ %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>ಉತ್ತರ ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆಯಾಗಬಹುದು.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆ</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lldರವರೆಗೆ ಕಳೆ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ಎರಡು ಸಂಖ್ಯೆಗಳನ್ನು ಮತ್ತೆ ಮತ್ತೆ ಕಳೆ.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ಆಯ್ದ ಪ್ರತಿ ವಿಷಯದ ಕಷ್ಟವು |ಹಂತ %lld|ರವರೆಗೆ ಹೆಚ್ಚಬಹುದು.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ, ಪಟ್ಟಿಗಳು, ಭಿನ್ನರಾಶಿಗಳು ಮತ್ತು ಶೇಕಡಾವಾರನ್ನು ಮಿಶ್ರವಾಗಿ ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>ಸೂಪರ್‌ಮಿಕ್ಸ್ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>ಕೂಡಿಸುವಿಕೆ ಮತ್ತು ಕಳೆಯುವಿಕೆಯನ್ನು ಮಿಶ್ರವಾಗಿ ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>ಸೂಪರ್‌ಮಿಕ್ಸ್ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ, ಪಟ್ಟಿಗಳು ಮತ್ತು ಭಿನ್ನರಾಶಿಗಳನ್ನು ಮಿಶ್ರವಾಗಿ ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>ಸೂಪರ್‌ಮಿಕ್ಸ್ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>ಕೂಡಿಸುವಿಕೆ, ಕಳೆಯುವಿಕೆ ಮತ್ತು ಪಟ್ಟಿಗಳನ್ನು ಮಿಶ್ರವಾಗಿ ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>ಸೂಪರ್‌ಮಿಕ್ಸ್ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>ನಿನಗೆ |ಗುಣಾಕಾರ| ಲೆಕ್ಕಗಳು ಮಾತ್ರ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lldರವರೆಗೆ| ಎಲ್ಲಾ ಗುಣಾಕಾರ ಪಟ್ಟಿಗಳು ಮಿಶ್ರವಾಗಿ ಬರುತ್ತವೆ.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ಪ್ರತಿ ಪಟ್ಟಿಯನ್ನು |1ರಿಂದ 12|ರವರೆಗಿನ ಸಂಖ್ಯೆಯಿಂದ ಗುಣಿಸು.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldರ ಪಟ್ಟಿಯು |ಏರಿಕೆ| ಕ್ರಮದಲ್ಲಿ ಬರುತ್ತದೆ.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldರ ಪಟ್ಟಿಯು |ಯಾದೃಚ್ಛಿಕ| ಕ್ರಮದಲ್ಲಿ ಬರುತ್ತದೆ.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldರ ಪಟ್ಟಿ</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lldರಿಂದ %lldರವರೆಗಿನ ಪಟ್ಟಿಗಳನ್ನು ಮಿಶ್ರವಾಗಿ ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ಪಟ್ಟಿಗಳು %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ನಿನ್ನ ಹೆಸರು</string>
+	<key>name.whatsYourName</key>
+	<string>ನಿನ್ನ ಹೆಸರೇನು?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>ಬೇರೆ ಬೇರೆ ಮಿಶ್ರ ಲೆಕ್ಕಗಳು.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ಈಗಲೇ ಚೆನ್ನಾಗಿದ್ದೀಯ</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ಕ್ರಮದ ಲೆಕ್ಕಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡು.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ಈಗಷ್ಟೇ ಆರಂಭಿಸಿದೆ</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ಯಾದೃಚ್ಛಿಕ ಕ್ರಮದ ಲೆಕ್ಕಗಳು.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ಸ್ವಲ್ಪ ಅಭ್ಯಾಸವಾಗಿದೆ</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ಗೆ ಆರಂಭದ ಹಂತ ಆರಿಸು.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ಈ ವಿಷಯ</string>
+	<key>onboarding.level.title</key>
+	<string>ಇದರಲ್ಲಿ ಈಗಾಗಲೇ ಎಷ್ಟು ಚೆನ್ನಾಗಿದ್ದೀಯ?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>ಆರಂಭಿಸೋಣ. ನಿನ್ನ ಹೆಸರೇನು?</string>
+	<key>onboarding.name.title</key>
+	<string>ಲೆಕ್ಕ ಮಾಡುವುದು ಇಷ್ಟು ಮಜವಾಗಿರಲಿಲ್ಲ!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>ಆರಂಭಿಸಲು ಒಂದು ವಿಷಯ ಆರಿಸು.</string>
+	<key>onboarding.subject.title</key>
+	<string>ನೀನು ಏನು ಕಲಿಯಲು ಬಯಸುತ್ತೀಯ?</string>
+	<key>options.capAt30.info</key>
+	<string>ಪ್ರತಿ ಹಂತದ ಟ್ರೋಫಿ ಗುರಿ ಗರಿಷ್ಠ 50. ಈ ಆಯ್ಕೆ ಆನ್ ಇದ್ದರೆ, ಗುರಿ ತಲುಪಿದಾಗ ಆಟ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮುಗಿಯುತ್ತದೆ.</string>
+	<key>options.capAt30.title</key>
+	<string>ಗುರಿಯಲ್ಲಿ ಮುಗಿಸು</string>
+	<key>options.helperMode.info</key>
+	<string>ಸಹಾಯಕ ಮೋಡ್‌ನಲ್ಲಿ ಸರಿಯಾದ ಉತ್ತರ ಯಾವಾಗಲೂ ಹಸಿರಿನಲ್ಲಿ ಕಾಣುತ್ತದೆ. ಈ ಮೋಡ್‌ನಲ್ಲಿ ಗಳಿಸಿದ ಟ್ರೋಫಿಗಳನ್ನು ಬೇರೆ ಎಣಿಸಿ ನಕ್ಷತ್ರ ಗುರುತು ಹಾಕಲಾಗುತ್ತದೆ.</string>
+	<key>options.helperMode.title</key>
+	<string>ಸಹಾಯಕ ಮೋಡ್</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ನೀನು ಯಾವಾಗಲೂ 3 ಜೀವಗಳಿಂದ ಆರಂಭಿಸುತ್ತೀಯ. ಜೀವಗಳು ಮುಗಿದಾಗ ಆಟ ಮುಗಿಯುತ್ತದೆ. ಜೀವಗಳು ಮುಗಿದ ಮೇಲೂ ಆಡಲು ಮತ್ತು ಅಭ್ಯಾಸ ಮಾಡಲು ಈ ಆಯ್ಕೆಯನ್ನು ಆನ್ ಮಾಡು.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>ಅಮಿತ ಜೀವಗಳು</string>
+	<key>parentGate.approved</key>
+	<string>ಅನುಮೋದಿಸಲಾಗಿದೆ</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ಪ್ರಯತ್ನಗಳು: %2$lldರಲ್ಲಿ %1$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ ಅನ್ನು %lld ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ಒತ್ತಿಹಿಡಿ: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ ಅನ್ನು %lld ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ. ನಂತರ %@ ಅನ್ನು %lld ಬಾರಿ ತಟ್ಟು.</string>
+	<key>parentGate.shape.circle</key>
+	<string>ವೃತ್ತ</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ವಜ್ರ</string>
+	<key>parentGate.shape.heart</key>
+	<string>ಹೃದಯ</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ಷಟ್ಕೋನ</string>
+	<key>parentGate.shape.plus</key>
+	<string>ಪ್ಲಸ್</string>
+	<key>parentGate.shape.square</key>
+	<string>ಚೌಕ</string>
+	<key>parentGate.shape.star</key>
+	<string>ನಕ್ಷತ್ರ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ತ್ರಿಕೋನ</string>
+	<key>parentGate.stepOne</key>
+	<string>2ರಲ್ಲಿ ಹಂತ 1</string>
+	<key>parentGate.stepTwo</key>
+	<string>2ರಲ್ಲಿ ಹಂತ 2</string>
+	<key>parentGate.subtitle</key>
+	<string>ಚಿಕ್ಕ ಆಟಗಾರರನ್ನು ರಕ್ಷಿಸಲು, ಖರೀದಿಗೆ ಮುಂದುವರಿಯುವ ಮೊದಲು ವಯಸ್ಕರು ಈ ಪರಿಶೀಲನೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಬೇಕು.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ಈಗ %2$@ ಅನ್ನು %1$lld ಬಾರಿ ತಟ್ಟು.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>ತಟ್ಟುಗಳು: %2$lldರಲ್ಲಿ %1$lld</string>
+	<key>parentGate.title</key>
+	<string>ವಯಸ್ಕರ ಅನುಮತಿ ಅಗತ್ಯ</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>ಪ್ರೀಮಿಯಂನಲ್ಲಿ ಎಲ್ಲಾ 10 ಪ್ರಾಣಿಗಳೊಂದಿಗೆ ಮುಕ್ತವಾಗಿ ಆಡು.</string>
+	<key>premium.feature.animals.title</key>
+	<string>ಎಲ್ಲಾ ಪ್ರಾಣಿಗಳಿಗೆ ಪ್ರವೇಶ</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>ಅಭ್ಯಾಸಕ್ಕೆ ಯಾವಾಗಲೂ ಸಾಕಷ್ಟು ಹೊಸ ಲೆಕ್ಕಗಳು.</string>
+	<key>premium.feature.levels.title</key>
+	<string>ಪ್ರತಿ ವಿಷಯಕ್ಕೆ 99 ಹಂತಗಳು</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ಯಾವುದೇ ಅಡ್ಡಿಯಿಲ್ಲದೆ ಆಡು.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ಜಾಹೀರಾತುಗಳಿಲ್ಲ</string>
+	<key>premium.oneTime</key>
+	<string>ಒಮ್ಮೆ ಖರೀದಿ. ಸದಾಕಾಲ ನಿನ್ನದು.</string>
+	<key>premium.restore</key>
+	<string>ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸು</string>
+	<key>premium.storeUnavailable</key>
+	<string>ಅಂಗಡಿ ಈಗ ಲಭ್ಯವಿಲ್ಲ. ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+	<key>premium.unlock</key>
+	<string>ಪ್ರೀಮಿಯಂ ತೆರೆಯಿರಿ</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>ಪ್ರೀಮಿಯಂ ತೆರೆಯಿರಿ · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>ನಿನಗೆ ಪ್ರೀಮಿಯಂ ಇದೆ!</string>
+	<key>settings.character</key>
+	<string>ಪಾತ್ರ</string>
+	<key>settings.characterInfo</key>
+	<string>ಪ್ರತಿ ಪ್ರಾಣಿಯೂ ಇಡೀ ಆಟಕ್ಕೆ ತನ್ನದೇ ಬಣ್ಣದ ಥೀಮ್ ನೀಡುತ್ತದೆ.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>ಕಸ್ಟಮ್: %lld ನಿಮಿ</string>
+	<key>settings.dailyGoal</key>
+	<string>ದೈನಂದಿನ ಗುರಿ</string>
+	<key>settings.goalInfo</key>
+	<string>ಸತತ ಆಟದ ಗುರಿ ದಿನಕ್ಕೆ 5 ನಿಮಿಷದಿಂದ ಆರಂಭವಾಗುತ್ತದೆ. ಸಕ್ರಿಯವಾಗಿ ಆಡಿದ ಸಮಯ ಮಾತ್ರ ಲೆಕ್ಕಕ್ಕೆ ಸೇರುತ್ತದೆ.</string>
+	<key>settings.lives</key>
+	<string>ಜೀವಗಳು</string>
+	<key>settings.livesInfo</key>
+	<string>ಮೂರು ಜೀವಗಳಲ್ಲಿ ಕೊನೆಯ ಹೃದಯ ಕಳೆದುಕೊಂಡಾಗ ಆಟ ಮುಗಿಯುತ್ತದೆ. ಅಮಿತ ಮೋಡ್‌ನಲ್ಲಿ ಜೀವಗಳು ಇರುವವರೆಗೆ ಮಾತ್ರ ಟ್ರೋಫಿಗಳು ಲೆಕ್ಕಕ್ಕೆ ಸೇರುತ್ತವೆ; ನಂತರವೂ ಆಡಬಹುದು.</string>
+	<key>settings.playGoals</key>
+	<string>ಆಟದ ಗುರಿಗಳು</string>
+	<key>settings.premiumUnlocked</key>
+	<string>ಪ್ರೀಮಿಯಂ ತೆರೆಯಿತು. ಧನ್ಯವಾದಗಳು!</string>
+	<key>settings.title</key>
+	<string>ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>ದೈನಂದಿನ ಗುರಿ ಆರಿಸು</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>ದೈನಂದಿನ ಅಥವಾ ವಾರದ ಗುರಿ ಆರಿಸು</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld ನಿಮಿಷಗಳಲ್ಲಿ %2$lld, ಸತತ %4$lld ದಿನಗಳು</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>ದೈನಂದಿನ ಸರಣಿ, %lld/%lld ನಿಮಿಷ</string>
+	<key>streak.daily</key>
+	<string>ದೈನಂದಿನ ಸರಣಿ</string>
+	<key>streak.dayOne</key>
+	<string>ದಿನ 1</string>
+	<key>tutorial.answerHint</key>
+	<string>ಉತ್ತರ ಗೊತ್ತಿಲ್ಲವೇ? ನೋಡಲು ಪ್ರಶ್ನೆಯನ್ನು ತಟ್ಟು.</string>
+	<key>tutorial.complete</key>
+	<string>ಚೆನ್ನಾಗಿ ಮಾಡಿದೆ! ಪಾಠ ಮುಗಿದಿದೆ. ಈಗ ಅತ್ಯುತ್ತಮ ಅಂಕಕ್ಕಾಗಿ ಆಡು!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ಟ್ರೋಫಿ ಪಡೆಯಲು ಸರಿಯಾದ ಉತ್ತರದ ಮೇಲೆ ಜಿಗಿ.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>ಸರಿಯಾದ ಉತ್ತರ ಹಸಿರಿನಲ್ಲಿ ಕಾಣುತ್ತದೆ. ಈಗ ಅದರ ಮೇಲೆ ಜಿಗಿ.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ಮೂರು ಪಟ್ಟು ಟ್ರೋಫಿಗಳಿಗೆ ಸರಿಯಾದ ಉತ್ತರದ ಮೇಲೆ ಈಗ ಜಿಗಿ.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>ಒಮ್ಮೆ ಮೂರು ಪಟ್ಟು ಟ್ರೋಫಿ ಪಡೆಯಲು ×3 ನಾಣ್ಯವನ್ನು ಹಿಡಿ.</string>
+	<key>tutorial.lifePickup</key>
+	<string>ಜೀವಗಳನ್ನು ಮರಳಿ ಪಡೆಯಲು ಅರ್ಧ ಜೀವ ಅಥವಾ ಪೂರ್ಣ ಜೀವ ಸಿಗಬಹುದು.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 ಅನ್ನು ತಪ್ಪಿಸು. ಅದು ಒಂದು ಟ್ರೋಫಿ ಕಳೆಯುತ್ತದೆ.</string>
+	<key>tutorial.move</key>
+	<string>ಎಡಬಲ ಹೋಗಲು ಸಾಧನವನ್ನು ಚಲಿಸು. ಪರದೆಯ ಬದಿಗಳ ಮೂಲಕವೂ ಹೋಗಬಹುದು.</string>
+	<key>tutorial.platforms</key>
+	<string>ಮೇಲೆ ಹೋಗಲು ವೇದಿಕೆಗಳ ಮೇಲೆ ಜಿಗಿ.</string>
+	<key>tutorial.scoreHint</key>
+	<string>ಈ ಹಂತದ ನಿನ್ನ ಅಂಕ ಇಲ್ಲಿ ಕಾಣುತ್ತದೆ.</string>
+	<key>tutorial.star</key>
+	<string>ತಪ್ಪು ಉತ್ತರಗಳನ್ನು ಹೊಡೆದುಹಾಕಲು ನಕ್ಷತ್ರದೊಳಗೆ ಜಿಗಿ.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>ತಪ್ಪು ಉತ್ತರ ಆರಿಸಿದರೆ, ನಿನ್ನ ಮೂರು ಜೀವಗಳಲ್ಲಿ ಒಂದು ಕಳೆದುಕೊಳ್ಳುತ್ತೀಯ. ಈಗ ಪ್ರಯತ್ನಿಸು.</string>
+</dict>
+</plist>

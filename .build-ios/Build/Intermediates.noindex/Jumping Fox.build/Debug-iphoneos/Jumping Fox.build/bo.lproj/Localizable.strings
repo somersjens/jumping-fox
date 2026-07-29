@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>དོམ</string>
+	<key>character.bunny</key>
+	<string>རི་བོང</string>
+	<key>character.crab</key>
+	<string>སྡིག་སྲིན</string>
+	<key>character.dog</key>
+	<string>ཁྱི</string>
+	<key>character.elephant</key>
+	<string>གླང་ཆེན</string>
+	<key>character.fox</key>
+	<string>ཝ</string>
+	<key>character.frog</key>
+	<string>སྦལ་པ</string>
+	<key>character.lion</key>
+	<string>སེང་གེ</string>
+	<key>character.octopus</key>
+	<string>ཉ་ལག་བརྒྱད</string>
+	<key>character.penguin</key>
+	<string>པེང་གུན</string>
+	<key>character.pickerTitle</key>
+	<string>ཁྱེད་ཀྱི་མི་སྣ་འདེམས།</string>
+	<key>common.back</key>
+	<string>ཕྱིར་ལོག</string>
+	<key>common.cancel</key>
+	<string>ཕྱིར་འཐེན</string>
+	<key>common.continue</key>
+	<string>མུ་མཐུད</string>
+	<key>common.done</key>
+	<string>ཚར</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld སྐར་མ</string>
+	<key>common.save</key>
+	<string>ཉར</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>བཟོ་མཁན་རྣམ་པ་ཁ་ཕྱེ་བར་སྐར་ཆ་2 མནན་ནས་སྡོད།</string>
+	<key>developerMode.title</key>
+	<string>བཟོ་མཁན་རྣམ་པ</string>
+	<key>filter.addition</key>
+	<string>སྣོན་རྩིས</string>
+	<key>filter.fractions</key>
+	<string>ཆ་ཤས</string>
+	<key>filter.mixed</key>
+	<string>རྩིས་རིགས་འདྲེས་མ</string>
+	<key>filter.percentages</key>
+	<string>བརྒྱ་ཆ</string>
+	<key>filter.subtraction</key>
+	<string>འཐེན་རྩིས</string>
+	<key>filter.tables</key>
+	<string>སྒྱུར་རྩིས</string>
+	<key>game.accessibility.mix</key>
+	<string>འདྲེས་མ</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld ནས་ %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ཚོད་ལྟ་ཡག་པོ།</string>
+	<key>game.encouragement.1</key>
+	<string>འགོ་ཚུགས་སོང་།</string>
+	<key>game.encouragement.2</key>
+	<string>མུ་མཐུད་སྦྱོངས།</string>
+	<key>game.encouragement.3</key>
+	<string>དེ་ཙམ་ངན་པ་མ་རེད།</string>
+	<key>game.encouragement.4</key>
+	<string>ཡག་པོ་འགྲོ་གི་འདུག</string>
+	<key>game.encouragement.5</key>
+	<string>ཡག་པོ་བྱས་སོང་།</string>
+	<key>game.encouragement.6</key>
+	<string>ཧ་ཅང་ལེགས།</string>
+	<key>game.encouragement.7</key>
+	<string>ཧ་ཅང་ཡག་པོ་རྩེད་སོང་།</string>
+	<key>game.encouragement.8</key>
+	<string>མཇུག་མཐོང་གི་འདུག</string>
+	<key>game.encouragement.9</key>
+	<string>ཁྱེད་རང་ཕལ་ཆེར་སླེབས་སོང་།</string>
+	<key>game.end.completionSubtitle</key>
+	<string>སྐར་མ་ཚང་མ་ཁྱེད་ཀྱིས་ཐོབ་སོང་།</string>
+	<key>game.end.completionSuffix</key>
+	<string>ཚར་སོང་!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>རྩེད་མོ་ཚར་སོང་།</string>
+	<key>game.end.mainMenu</key>
+	<string>གཙོ་ངོས</string>
+	<key>game.end.playAgain</key>
+	<string>ཡང་བསྐྱར་རྩེ</string>
+	<key>game.highScore</key>
+	<string>སྐར་མ་མཐོ་ཤོས</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>གཙོ་ངོས་སུ་ཕྱིར་ལོག</string>
+	<key>game.intro.continue</key>
+	<string>མུ་མཐུད་རྩེ</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld ནས་མུ་མཐུད་རྩེ།</string>
+	<key>game.intro.helperBullet</key>
+	<string>རོགས་རམ་ཁ་ཕྱེ་ཡོད་པས་ལན་འགྲིག་པ་ལྗང་ཁུས་མཚོན་ཡོད། དེས་ན་བྱ་དགའ་ * ཡིས་ལོགས་སུ་བརྩི།</string>
+	<key>game.intro.helperOff</key>
+	<string>རོགས་རམ་སྒོ་རྒྱག</string>
+	<key>game.intro.helperOn</key>
+	<string>རོགས་རམ་ཁ་ཕྱེ</string>
+	<key>game.intro.howItWorks</key>
+	<string>རིམ་པ་འདི་ཇི་ལྟར་རྩེ་དགོས།</string>
+	<key>game.intro.livesOff</key>
+	<string>སྲོག་སྒོ་རྒྱག</string>
+	<key>game.intro.livesOn</key>
+	<string>སྲོག་ཁ་ཕྱེ</string>
+	<key>game.intro.scorePaused</key>
+	<string>ད་ལྟའི་སྐར་མ་མཚམས་འཇོག་བྱེད།</string>
+	<key>game.intro.start</key>
+	<string>རིམ་པ་འགོ་འཛུགས</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ལ་ 1 ནས་ 12 བར་གྱི་གྲངས་ཤིག་སྒྱུར།</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ཡང་ན་དེ་ལས་ཆུང་།</string>
+	<key>game.intro.tapToContinue</key>
+	<string>མུ་མཐུད་རྩེ་བར་གང་སར་རེག</string>
+	<key>game.intro.tapToStart</key>
+	<string>འགོ་འཛུགས་པར་གང་སར་རེག</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ལན་འགྲིག་པ་རེར་བྱ་དགའ་ |1| ཐོབ། མང་ཤོས་ |%lld| ཡིན།</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>སྲོག་ཚར་རྗེས་བྱ་དགའ་སླར་ཡང་ཐོབ་མི་ཐུབ།</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ཨང་རིམ་གྱི་བྱ་དགའ་མང་ཤོས་ཐོབ་ཟིན།</string>
+	<key>game.status.mixMode</key>
+	<string>འདྲེས་མའི་རྣམ་པ</string>
+	<key>game.status.scoreLocked</key>
+	<string>སྲོག་ཚར་རྗེས་བྱ་དགའ་བརྩི་མཚམས་འཇོག</string>
+	<key>game.streak.subtitle</key>
+	<string>བྱ་དགའ ×2</string>
+	<key>game.streak.title</key>
+	<string>ལན་5 བསྟུད་མར་!</string>
+	<key>goal.period</key>
+	<string>དམིགས་ཡུན</string>
+	<key>goal.promptDaily</key>
+	<string>ཉིན་རེར་སྐར་མ་ག་ཚོད་རྩེ་འདོད་དམ།</string>
+	<key>goal.promptWeekly</key>
+	<string>བདུན་རེར་སྐར་མ་ག་ཚོད་རྩེ་འདོད་དམ།</string>
+	<key>goal.title</key>
+	<string>རྩེད་མོའི་དམིགས་ཡུལ</string>
+	<key>goalPeriod.daily</key>
+	<string>ཉིན་རེ</string>
+	<key>goalPeriod.weekly</key>
+	<string>བདུན་རེ</string>
+	<key>info.filter.addition</key>
+	<string>སྣོན་རྩིས་ཁོ་ན</string>
+	<key>info.filter.fractions</key>
+	<string>བགོ་རྩིས་ཁོ་ན</string>
+	<key>info.filter.header</key>
+	<string>རྩིས་ཀྱི་རིགས</string>
+	<key>info.filter.mixed</key>
+	<string>རྩིས་འདྲེས་མ</string>
+	<key>info.filter.percentages</key>
+	<string>བརྒྱ་ཆ་ཁོ་ན</string>
+	<key>info.filter.subtraction</key>
+	<string>འཐེན་རྩིས་ཁོ་ན</string>
+	<key>info.filter.tables</key>
+	<string>སྒྱུར་རྩིས་ཁོ་ན</string>
+	<key>info.mode.fractions.header</key>
+	<string>ཆ་ཤས</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ཆ་ཤས་གཅིག་དང་མང་པོ</string>
+	<key>info.mode.fractions.single</key>
+	<string>རྟག་ཏུ་ཆ་ཤས་གཅིག</string>
+	<key>info.mode.header</key>
+	<string>གོ་རིམ</string>
+	<key>info.mode.mixed</key>
+	<string>རིམ་པ་དམའ་བ་དང་འདྲེས་པ</string>
+	<key>info.mode.order</key>
+	<string>གོ་རིམ་གཏན་འཁེལ</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>གྲངས་ཆུང་ཚུད་པ</string>
+	<key>info.mode.percentages.header</key>
+	<string>རིགས</string>
+	<key>info.mode.percentages.whole</key>
+	<string>གྲངས་ཆུང་མེད་པ</string>
+	<key>info.mode.random</key>
+	<string>གོ་རིམ་གང་བྱུང</string>
+	<key>info.super.all</key>
+	<string>སྣོན་རྩིས། འཐེན་རྩིས། སྒྱུར་རྩིས། བགོ་རྩིས་དང་བརྒྱ་ཆ།</string>
+	<key>info.super.basic</key>
+	<string>སྣོན་རྩིས་དང་འཐེན་རྩིས</string>
+	<key>info.super.fraction</key>
+	<string>སྣོན་རྩིས། འཐེན་རྩིས། སྒྱུར་རྩིས་དང་བགོ་རྩིས།</string>
+	<key>info.super.times</key>
+	<string>སྣོན་རྩིས། འཐེན་རྩིས་དང་སྒྱུར་རྩིས།</string>
+	<key>language.select</key>
+	<string>སྐད་ཡིག་འདེམས</string>
+	<key>lives.three</key>
+	<string>སྲོག་3</string>
+	<key>lives.unlimited</key>
+	<string>ཚད་མེད</string>
+	<key>menu.accessibility.character</key>
+	<string>མི་སྣ</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>མི་སྣ་བརྗེ་བར་རེག དགའ་བསུའི་ངོས་ནས་བསྐྱར་དུ་འགོ་འཛུགས་པར་སྐར་ཆ་གཉིས་མནན་ནས་སྡོད།</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ འདེམས</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>ཚད་མང་ཤོས་ཐེངས་ %lld ཐོབ།</string>
+	<key>menu.moreLevels</key>
+	<string>རིམ་པ་མང་བ</string>
+	<key>menu.options</key>
+	<string>རྩེད་མོའི་འདེམས་སྒྲིག</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium སྒྱུར་རྩིས</string>
+	<key>menu.startHere</key>
+	<string>འདི་ནས་འགོ་འཛུགས</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium གྱིས་མང་བ་ཁ་ཕྱེ།</string>
+	<key>mode.fractions.multiple</key>
+	<string>མང་པོ</string>
+	<key>mode.fractions.single</key>
+	<string>གཅིག</string>
+	<key>mode.mix</key>
+	<string>འདྲེས་མ</string>
+	<key>mode.mixed</key>
+	<string>བསྲེས་པ</string>
+	<key>mode.order</key>
+	<string>གོ་རིམ</string>
+	<key>mode.percentages.decimal</key>
+	<string>གྲངས་ཆུང</string>
+	<key>mode.percentages.whole</key>
+	<string>ཧྲིལ་གྲངས</string>
+	<key>mode.random</key>
+	<string>གང་བྱུང</string>
+	<key>mode.standard</key>
+	<string>ཚད་ལྡན</string>
+	<key>modeIntro.addition.intro</key>
+	<string>ཁྱེད་ལ་ |སྣོན་རྩིས| ཁོ་ན་ཡོང་།</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>ཁྱེད་ཀྱིས་གྲངས་གཞན་ཞིག་ལ་ %lld |ཡང་ན་དེ་ལས་ཆུང་| སྣོན།</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ %lld གྱེན་འཕེལ་གྱི་ |གོ་རིམ| ནང་སྣོན།</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ |གང་བྱུང་| གྲངས་ཤིག་ལ་ %lld སྣོན།</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>སྣོན་རྩིས · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>གྲངས་གཉིས་མཉམ་དུ་སྣོན།</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>ལན་མང་ཤོས་ %lld ཡིན།</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld བར་སྣོན།</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>ཁྱེད་ལ་ |ཆ་ཤས| ཀྱི་རྩིས་ཁོ་ན་ཡོང་།</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>རིམ་པ་འདི་དང་ |རིམ་པ་སྔོན་མ| ནས་ཆ་ཤས་ཡོང་།</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld ཆ་ཤས་མཉམ་པའི་ནང་ནས་ |ཆ་ཤས་1| ལེན།</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>རིམ་པ་ %lld དང་སྔོན་མའི་ཧྲིལ་གྲངས་ཀྱི་ཆ་ཤས་རྩིས།</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>གྲངས་རྣམས་ཧྲིལ་གྲངས་ཡིན་པས་ལན་ཡང་ཧྲིལ་གྲངས་ཡིན།</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld བར་གྱི་ཆ་ཤས</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld ཆ་ཤས་མཉམ་པའི་ནང་ནས་གཅིག་ཡང་ན་ |ཆ་ཤས་མང་པོ| ལེན།</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ཆ་ཤས · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>ཧྲིལ་པོའི་ཆ་ཤས་རྩིས་ནས་ཆ་ཤས་མཉམ་པར་བཟོ།</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>གཞི་གྲངས་མཚུངས་པའི་ཆ་ཤས་སྣོན་འཐེན་བྱེད།</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ཆ་ཤས་འདྲེས་མ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>ཁྱེད་ལ་ |བརྒྱ་ཆ| ཡི་རྩིས་ཁོ་ན་ཡོང་།</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>རིམ་པ་འདི་དང་ |རིམ་པ་སྔོན་མ| ནས་བརྒྱ་ཆ་ཡོང་།</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ %@ རྩིས་ཤིང་། ལན་ |ཧྲིལ་གྲངས| ཡིན།</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld བར་གྱི་ཧྲིལ་གྲངས་ཀྱི་བརྒྱ་ཆ་རྩིས།</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>གྲངས་རྣམས་ཧྲིལ་གྲངས་ཡིན་པས་ལན་ཡང་ཧྲིལ་གྲངས་ཡིན།</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld བར་གྱི་བརྒྱ་ཆ</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ %@ རྩིས་ཤིང་། ལན་ |གྲངས་ཆུང་| ཡང་ཡིན་ཆོག</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ རྩིས</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>གྲངས་ཤིག་གི་བརྒྱ་ཆ་རྩིས།</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>བརྒྱ་ཆ་དང་ཆ་ཤས་ཕན་ཚུན་བསྒྱུར།</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>བརྒྱ་ཆ་འདྲེས་མ</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>ཁྱེད་ལ་ |འཐེན་རྩིས| ཁོ་ན་ཡོང་།</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>གྲངས་གཞན་ཞིག་ནས་ %lld |ཡང་ན་དེ་ལས་ཆུང་| འཐེན།</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ %lld མར་འབབ་ཀྱི་ |གོ་རིམ| ནང་འཐེན།</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ཁྱེད་ཀྱིས་རྟག་ཏུ་ |གང་བྱུང་| གྲངས་ཤིག་ནས་ %lld འཐེན།</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>འཐེན་རྩིས · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>གྲངས་དང་པོ་མང་ཤོས་ %lld ཡིན།</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>ལན་ཀླད་ཀོར་ལས་ཆུང་ཆོག</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>ཀླད་ཀོར་ལས་ཆུང་།</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld བར་འཐེན།</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>གྲངས་གཉིས་ཕན་ཚུན་འཐེན།</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>བདམས་པའི་རིགས་རེའི་དཀའ་ཚད་ |རིམ་པ་ %lld| བར་འཕར་ཆོག</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>སྣོན། འཐེན། སྒྱུར། ཆ་ཤས་དང་བརྒྱ་ཆ་ཚང་མ་འདྲེས་ནས་སྦྱོངས།</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>རྩིས་འདྲེས་ཆེན་མོ་ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>སྣོན་རྩིས་དང་འཐེན་རྩིས་འདྲེས་ནས་སྦྱོངས།</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>རྩིས་འདྲེས་ཆེན་མོ་ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>སྣོན། འཐེན། སྒྱུར་དང་ཆ་ཤས་འདྲེས་ནས་སྦྱོངས།</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>རྩིས་འདྲེས་ཆེན་མོ་ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>སྣོན། འཐེན་དང་སྒྱུར་རྩིས་འདྲེས་ནས་སྦྱོངས།</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>རྩིས་འདྲེས་ཆེན་མོ་ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>ཁྱེད་ལ་ |སྒྱུར་རྩིས| ཁོ་ན་ཡོང་།</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld བར་གྱི་| སྒྱུར་རྩིས་ཚང་མ་འདྲེས་ནས་ཡོང་།</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>སྒྱུར་རྩིས་རེར་ |1 ནས་ 12| བར་གྱི་གྲངས་ཤིག་སྒྱུར།</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld གི་སྒྱུར་རྩིས་ |གྱེན་འཕེལ| གོ་རིམ་ནང་ཡོང་།</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld གི་སྒྱུར་རྩིས་ |གང་བྱུང་| གོ་རིམ་ནང་ཡོང་།</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld གི་སྒྱུར་རྩིས</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld ནས་ %lld བར་གྱི་སྒྱུར་རྩིས་འདྲེས་ནས་སྦྱོངས།</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>སྒྱུར་རྩིས་ %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ཁྱེད་ཀྱི་མིང་།</string>
+	<key>name.whatsYourName</key>
+	<string>ཁྱེད་ཀྱི་མིང་ལ་ག་རེ་ཟེར།</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>རྩིས་འདྲེས་མ་མི་འདྲ་བ་མཉམ་དུ།</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ད་ལྟ་ཡག་ཐག་ཆོད།</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>གོ་རིམ་ལྟར་གྱི་རྩིས་སྦྱོངས།</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ད་ག་རང་འགོ་ཚུགས།</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>གོ་རིམ་གང་བྱུང་གི་རྩིས།</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ཅུང་ཙམ་སྦྱངས་ཟིན།</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ ལ་འགོ་འཛུགས་ས་འདེམས།</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>བརྗོད་གཞི་འདི།</string>
+	<key>onboarding.level.title</key>
+	<string>ཁྱེད་རང་འདི་ལ་ད་ལྟ་ག་ཚོད་མཁས་པོ་ཡོད།</string>
+	<key>onboarding.name.subtitle</key>
+	<string>ད་འགོ་འཛུགས། ཁྱེད་ཀྱི་མིང་ལ་ག་རེ་ཟེར།</string>
+	<key>onboarding.name.title</key>
+	<string>རྩིས་རྒྱག་པ་དེ་འདྲ་སྤྲོ་པོ་ནམ་ཡང་མ་བྱུང་!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>འགོ་འཛུགས་སའི་བརྗོད་གཞི་འདེམས།</string>
+	<key>onboarding.subject.title</key>
+	<string>ཁྱེད་ཀྱིས་ག་རེ་སྦྱོང་འདོད་དམ།</string>
+	<key>options.capAt30.info</key>
+	<string>རིམ་པ་རེར་བྱ་དགའི་དམིགས་ཡུལ་50 བར་ཡོད། འདེམས་སྒྲིག་འདི་ཁ་ཕྱེ་ན། དམིགས་ཡུལ་སླེབས་མ་ཐག་རྩེད་མོ་རང་འགུལ་གྱིས་མཇུག་སྒྲིལ།</string>
+	<key>options.capAt30.title</key>
+	<string>དམིགས་ཡུལ་སླེབས་ན་ཚར།</string>
+	<key>options.helperMode.info</key>
+	<string>རོགས་རམ་རྣམ་པའི་ནང་ལན་འགྲིག་པ་རྟག་ཏུ་ལྗང་ཁུས་མཚོན། རྣམ་པ་འདིར་ཐོབ་པའི་བྱ་དགའ་ལོགས་སུ་བརྩི་ཞིང་སྐར་མས་རྟགས་བཀོད།</string>
+	<key>options.helperMode.title</key>
+	<string>རོགས་རམ་རྣམ་པ</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ཁྱེད་ལ་རྟག་ཏུ་སྲོག་3 ཡོད། སྲོག་ཚར་ན་རྩེད་མོ་མཇུག་སྒྲིལ། སྲོག་ཚར་རྗེས་ཀྱང་མུ་མཐུད་རྩེ་ཞིང་སྦྱོང་བར་འདེམས་སྒྲིག་འདི་ཁ་ཕྱེ།</string>
+	<key>options.unlimitedLives.title</key>
+	<string>སྲོག་ཚད་མེད</string>
+	<key>parentGate.approved</key>
+	<string>ཆོག་མཆན་ཐོབ།</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ཚོད་ལྟ། %1$lld ནས་ %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ ལ་སྐར་ཆ་ %lld མནན་ནས་སྡོད།</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>མནན་ནས་སྡོད། %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ ལ་སྐར་ཆ་ %lld མནན་ནས་སྡོད། དེ་རྗེས་ %3$@ ལ་ %4$lld ཐེངས་རེག</string>
+	<key>parentGate.shape.circle</key>
+	<string>སྒོར་སྒོར</string>
+	<key>parentGate.shape.diamond</key>
+	<string>རྡོ་རྗེ</string>
+	<key>parentGate.shape.heart</key>
+	<string>སྙིང་།</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ཟུར་དྲུག</string>
+	<key>parentGate.shape.plus</key>
+	<string>སྣོན་རྟགས</string>
+	<key>parentGate.shape.square</key>
+	<string>གྲུ་བཞི</string>
+	<key>parentGate.shape.star</key>
+	<string>སྐར་མ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ཟུར་གསུམ</string>
+	<key>parentGate.stepOne</key>
+	<string>གོམ་པ་1/2</string>
+	<key>parentGate.stepTwo</key>
+	<string>གོམ་པ་2/2</string>
+	<key>parentGate.subtitle</key>
+	<string>རྩེད་མཁན་ཆུང་ཆུང་སྲུང་བར། ཉོ་བར་མུ་མཐུད་པའི་སྔོན་ལ་མི་རྒན་པ་ཞིག་གིས་ཞིབ་བཤེར་འདི་ཚར་དགོས།</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ད་ལྟ་ %2$@ ལ་ %1$lld ཐེངས་རེག</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>རེག་པ། %1$lld ནས་ %2$lld</string>
+	<key>parentGate.title</key>
+	<string>མི་རྒན་པའི་ཆོག་མཆན་དགོས།</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium ཡོད་ན་སྲོག་ཆགས་10 ཚང་མས་རང་དབང་ངང་རྩེ་ཐུབ།</string>
+	<key>premium.feature.animals.title</key>
+	<string>སྲོག་ཆགས་ཚང་མ་སྤྱོད་ཐུབ།</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>སྦྱོང་རྒྱུའི་རྩིས་གསར་པ་རྟག་ཏུ་འདང་ངེས་ཡོད།</string>
+	<key>premium.feature.levels.title</key>
+	<string>བརྗོད་གཞི་རེར་རིམ་པ་99</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>བར་ཆད་མེད་པར་རྩེ།</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ཁྱབ་བསྒྲགས་མེད།</string>
+	<key>premium.oneTime</key>
+	<string>ཐེངས་གཅིག་ཉོས། གཏན་དུ་ཁྱེད་ཀྱི་ཡིན།</string>
+	<key>premium.restore</key>
+	<string>ཉོས་པ་སླར་གསོ</string>
+	<key>premium.storeUnavailable</key>
+	<string>ད་ལྟ་ཚོང་ཁང་སྤྱོད་མི་ཐུབ། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།</string>
+	<key>premium.unlock</key>
+	<string>Premium ཁ་ཕྱེ</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium ཁ་ཕྱེ · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>ཁྱེད་ལ་ Premium ཡོད་!</string>
+	<key>settings.character</key>
+	<string>མི་སྣ</string>
+	<key>settings.characterInfo</key>
+	<string>སྲོག་ཆགས་རེས་རྩེད་མོ་ཧྲིལ་པོར་རང་གི་ཁ་དོག་གི་བཟོ་ལྟ་སྟེར།</string>
+	<key>settings.customMinutes %lld</key>
+	<string>རང་སྒྲིག %lld སྐར་མ</string>
+	<key>settings.dailyGoal</key>
+	<string>ཉིན་རེའི་དམིགས་ཡུལ</string>
+	<key>settings.goalInfo</key>
+	<string>བསྟུད་མར་རྩེ་བའི་དམིགས་ཡུལ་ཉིན་རེར་སྐར་མ་5 ནས་འགོ་འཛུགས། དངོས་སུ་རྩེ་བའི་དུས་ཚོད་ཁོ་ན་བརྩི།</string>
+	<key>settings.lives</key>
+	<string>སྲོག</string>
+	<key>settings.livesInfo</key>
+	<string>སྲོག་གསུམ་ཡོད་ན་སྙིང་མཐའ་མ་ཤོར་རྗེས་རྩེད་མོ་ཚར། ཚད་མེད་རྣམ་པའི་ནང་སྲོག་ཡོད་རིང་ཁོ་ན་བྱ་དགའ་བརྩི། དེ་རྗེས་ཀྱང་མུ་མཐུད་རྩེ་ཆོག</string>
+	<key>settings.playGoals</key>
+	<string>རྩེད་མོའི་དམིགས་ཡུལ</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ཁ་ཕྱེ་ཟིན། ཐུགས་རྗེ་ཆེ།</string>
+	<key>settings.title</key>
+	<string>སྒྲིག་འགོད</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>ཉིན་རེའི་དམིགས་ཡུལ་འདེམས།</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>ཉིན་རེའམ་བདུན་རེའི་དམིགས་ཡུལ་འདེམས།</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, སྐར་མ་ %2$lld ནས་ %3$lld, ཉིན་ %4$lld བསྟུད་མར།</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>ཉིན་རེའི་བསྟུད་མ། སྐར་མ་ %lld ནས་ %lld</string>
+	<key>streak.daily</key>
+	<string>ཉིན་རེའི་བསྟུད་མ</string>
+	<key>streak.dayOne</key>
+	<string>ཉིན་1</string>
+	<key>tutorial.answerHint</key>
+	<string>ལན་མི་ཤེས་སམ། ལན་མཐོང་བར་རྩིས་ལ་རེག</string>
+	<key>tutorial.complete</key>
+	<string>ཡག་པོ་བྱས་སོང་! སློབ་སྟོན་ཚར་སོང་། ད་སྐར་མ་མཐོ་ཤོས་ལ་འགྲན་རྩོད་བྱོས།</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ལན་འགྲིག་པའི་སྟེང་མཆོངས་ནས་བྱ་དགའ་ལོངས།</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>ལན་འགྲིག་པ་ལྗང་ཁུས་མཚོན་ཡོད། ད་ལན་འགྲིག་པའི་སྟེང་མཆོངས།</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ད་ལན་འགྲིག་པའི་སྟེང་མཆོངས་ནས་བྱ་དགའ་ལྡབ་གསུམ་ལོངས།</string>
+	<key>tutorial.doubler.collect</key>
+	<string>×3 ཊམ་ཀ་ལོངས་ནས་ཐེངས་གཅིག་བྱ་དགའ་ལྡབ་གསུམ་ཐོབ།</string>
+	<key>tutorial.lifePickup</key>
+	<string>སྲོག་ཕྱེད་ཀའམ་སྲོག་གཅིག་རྙེད་ནས་སྲོག་ཕྱིར་ལེན་ཐུབ།</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 ལ་གཡོལ། དེས་བྱ་དགའ་གཅིག་འཕྲོག</string>
+	<key>tutorial.move</key>
+	<string>གཡོན་དང་གཡས་སུ་འགྲོ་བར་ཁྱེད་ཀྱི་ཡོ་བྱད་སྒུལ། བརྙན་ཡོལ་གྱི་ཟུར་ནས་ཀྱང་བརྒྱུད་ཆོག</string>
+	<key>tutorial.platforms</key>
+	<string>ཡར་འགྲོ་བར་སྟེགས་བུའི་སྟེང་མཆོངས།</string>
+	<key>tutorial.scoreHint</key>
+	<string>རིམ་པ་འདིའི་ཁྱེད་ཀྱི་སྐར་མ་འདིར་སྟོན།</string>
+	<key>tutorial.star</key>
+	<string>ལན་ནོར་བ་ཕར་འཕེན་པར་སྐར་མའི་ནང་མཆོངས།</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>ལན་ནོར་བ་འདེམས་ན་སྲོག་གསུམ་ནས་གཅིག་ཤོར། ད་ཚོད་ལྟ་བྱོས།</string>
+</dict>
+</plist>

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Beruang</string>
+	<key>character.bunny</key>
+	<string>Arnab</string>
+	<key>character.crab</key>
+	<string>Ketam</string>
+	<key>character.dog</key>
+	<string>Anjing</string>
+	<key>character.elephant</key>
+	<string>Gajah</string>
+	<key>character.fox</key>
+	<string>Rubah</string>
+	<key>character.frog</key>
+	<string>Katak</string>
+	<key>character.lion</key>
+	<string>Singa</string>
+	<key>character.octopus</key>
+	<string>Kurita</string>
+	<key>character.penguin</key>
+	<string>Penguin</string>
+	<key>character.pickerTitle</key>
+	<string>Pilih watak</string>
+	<key>common.back</key>
+	<string>Kembali</string>
+	<key>common.cancel</key>
+	<string>Batal</string>
+	<key>common.continue</key>
+	<string>Teruskan</string>
+	<key>common.done</key>
+	<string>Selesai</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Simpan</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Tekan dan tahan selama 2 saat untuk membuka mod pembangun.</string>
+	<key>developerMode.title</key>
+	<string>Mod pembangun</string>
+	<key>filter.addition</key>
+	<string>Tambah</string>
+	<key>filter.fractions</key>
+	<string>Pecahan</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Peratus</string>
+	<key>filter.subtraction</key>
+	<string>Tolak</string>
+	<key>filter.tables</key>
+	<string>Sifir</string>
+	<key>game.accessibility.mix</key>
+	<string>Campur</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld daripada %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Cubaan bagus</string>
+	<key>game.encouragement.1</key>
+	<string>Baru bermula</string>
+	<key>game.encouragement.2</key>
+	<string>Terus berlatih</string>
+	<key>game.encouragement.3</key>
+	<string>Boleh tahan</string>
+	<key>game.encouragement.4</key>
+	<string>Bagus</string>
+	<key>game.encouragement.5</key>
+	<string>Prestasi bagus</string>
+	<key>game.encouragement.6</key>
+	<string>Syabas</string>
+	<key>game.encouragement.7</key>
+	<string>Sangat bagus</string>
+	<key>game.encouragement.8</key>
+	<string>Garisan penamat dah dekat</string>
+	<key>game.encouragement.9</key>
+	<string>Hampir sampai</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Kamu berjaya dapat semua mata.</string>
+	<key>game.end.completionSuffix</key>
+	<string>selesai!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Permainan tamat</string>
+	<key>game.end.mainMenu</key>
+	<string>Menu utama</string>
+	<key>game.end.playAgain</key>
+	<string>Main lagi</string>
+	<key>game.highScore</key>
+	<string>Skor tertinggi</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Kembali ke menu utama</string>
+	<key>game.intro.continue</key>
+	<string>Teruskan</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Kamu akan sambung dari %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Jawapan betul ditanda hijau kerana pembantu dihidupkan. Trofi dikira berasingan dengan *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Pembantu mati</string>
+	<key>game.intro.helperOn</key>
+	<string>Pembantu hidup</string>
+	<key>game.intro.howItWorks</key>
+	<string>Cara tahap ini berfungsi</string>
+	<key>game.intro.livesOff</key>
+	<string>Nyawa mati</string>
+	<key>game.intro.livesOn</key>
+	<string>Nyawa hidup</string>
+	<key>game.intro.scorePaused</key>
+	<string>Skor semasa kamu akan dijeda.</string>
+	<key>game.intro.start</key>
+	<string>Mula tahap</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Darab %@%@ dengan nombor dari 1 hingga 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>atau kurang</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Ketik di mana-mana untuk teruskan</string>
+	<key>game.intro.tapToStart</key>
+	<string>Ketik di mana-mana untuk mula</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Dapat |1| trofi bagi setiap jawapan betul, hingga maksimum |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Bila nyawa habis, kamu tak boleh dapat trofi lagi.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Had maksimum trofi papan kedudukan dicapai</string>
+	<key>game.status.mixMode</key>
+	<string>MOD CAMPUR</string>
+	<key>game.status.scoreLocked</key>
+	<string>Trofi tak lagi dikira bila nyawa habis</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofi ×2</string>
+	<key>game.streak.title</key>
+	<string>5 berturut-turut!</string>
+	<key>goal.period</key>
+	<string>Tempoh sasaran</string>
+	<key>goal.promptDaily</key>
+	<string>Berapa minit kamu mahu bermain setiap hari?</string>
+	<key>goal.promptWeekly</key>
+	<string>Berapa minit kamu mahu bermain setiap minggu?</string>
+	<key>goal.title</key>
+	<string>Sasaran main</string>
+	<key>goalPeriod.daily</key>
+	<string>Harian</string>
+	<key>goalPeriod.weekly</key>
+	<string>Mingguan</string>
+	<key>info.filter.addition</key>
+	<string>Tambah sahaja</string>
+	<key>info.filter.fractions</key>
+	<string>Bahagi sahaja</string>
+	<key>info.filter.header</key>
+	<string>Jenis soalan</string>
+	<key>info.filter.mixed</key>
+	<string>Operasi campur</string>
+	<key>info.filter.percentages</key>
+	<string>Peratus sahaja</string>
+	<key>info.filter.subtraction</key>
+	<string>Tolak sahaja</string>
+	<key>info.filter.tables</key>
+	<string>Darab sahaja</string>
+	<key>info.mode.fractions.header</key>
+	<string>Bahagian</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Satu atau banyak bahagian</string>
+	<key>info.mode.fractions.single</key>
+	<string>Sentiasa satu bahagian</string>
+	<key>info.mode.header</key>
+	<string>Urutan</string>
+	<key>info.mode.mixed</key>
+	<string>Campur dengan tahap lebih rendah</string>
+	<key>info.mode.order</key>
+	<string>Urutan tetap</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Termasuk nombor perpuluhan</string>
+	<key>info.mode.percentages.header</key>
+	<string>Jenis</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Tanpa nombor perpuluhan</string>
+	<key>info.mode.random</key>
+	<string>Urutan rawak</string>
+	<key>info.super.all</key>
+	<string>Tambah, tolak, darab, bahagi dan peratus</string>
+	<key>info.super.basic</key>
+	<string>Tambah dan tolak</string>
+	<key>info.super.fraction</key>
+	<string>Tambah, tolak, darab dan bahagi</string>
+	<key>info.super.times</key>
+	<string>Tambah, tolak dan darab</string>
+	<key>language.select</key>
+	<string>Pilih bahasa</string>
+	<key>lives.three</key>
+	<string>3 nyawa</string>
+	<key>lives.unlimited</key>
+	<string>Tanpa had</string>
+	<key>menu.accessibility.character</key>
+	<string>Watak</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Ketik untuk tukar watak; tekan dan tahan dua saat untuk mula semula di skrin selamat datang.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Pilih %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimum dicapai %lld kali</string>
+	<key>menu.moreLevels</key>
+	<string>Lagi tahap</string>
+	<key>menu.options</key>
+	<string>Pilihan permainan</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Sifir premium</string>
+	<key>menu.startHere</key>
+	<string>Mula di sini</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Buka lebih banyak dengan Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Banyak</string>
+	<key>mode.fractions.single</key>
+	<string>Satu</string>
+	<key>mode.mix</key>
+	<string>Campur</string>
+	<key>mode.mixed</key>
+	<string>Bercampur</string>
+	<key>mode.order</key>
+	<string>Urutan</string>
+	<key>mode.percentages.decimal</key>
+	<string>Perpuluhan</string>
+	<key>mode.percentages.whole</key>
+	<string>Bulat</string>
+	<key>mode.random</key>
+	<string>Rawak</string>
+	<key>mode.standard</key>
+	<string>Standard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Kamu hanya dapat soalan |tambah|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Kamu tambah %lld |atau kurang| pada nombor lain.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Kamu sentiasa tambah %lld dalam urutan |menaik|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Kamu sentiasa tambah %lld pada nombor |rawak|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Tambah · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Terus tambah dua nombor.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Jawapannya paling banyak %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Tambah hingga %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Kamu hanya dapat soalan |pecahan|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Kamu dapat pecahan dari tahap ini dan |tahap sebelumnya|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Kamu sentiasa ambil |1 bahagian| daripada %lld bahagian sama.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Kira pecahan nombor bulat dari tahap %lld dan tahap sebelumnya.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Nombornya kekal bulat, jadi jawapan sentiasa nombor bulat.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Pecahan hingga %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Kamu ambil satu atau |beberapa bahagian| daripada %lld bahagian sama.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Pecahan · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Kira satu bahagian daripada keseluruhan dan samakan pecahan.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Tambah dan tolak pecahan dengan penyebut yang sama.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Pecahan bercampur</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Kamu hanya dapat soalan |peratus|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Kamu dapat peratus dari tahap ini dan |tahap sebelumnya|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Kamu sentiasa kira %@, dan jawapannya ialah |nombor bulat|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Kira peratus nombor bulat hingga %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Nilainya kekal bulat, jadi jawapan sentiasa nombor bulat.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Peratus hingga %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Kamu sentiasa kira %@, dan jawapannya juga boleh jadi |perpuluhan|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Kira %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Kira peratus daripada satu nombor.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Tukar antara peratus dan pecahan.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Peratus bercampur</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Kamu hanya dapat soalan |tolak|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Kamu tolak %lld |atau kurang| daripada nombor lain.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Kamu sentiasa tolak %lld dalam urutan |menurun|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Kamu sentiasa tolak %lld daripada nombor |rawak|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Tolak · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Nombor pertama paling banyak %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Jawapan boleh kurang daripada sifar.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Bawah sifar</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Tolak hingga %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Terus tolak dua nombor.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Kesukaran boleh meningkat hingga |tahap %lld| bagi setiap kategori dipilih.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Latih tambah, tolak, sifir, pecahan dan peratus secara campur.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Latih tambah dan tolak secara campur.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Latih tambah, tolak, sifir dan pecahan secara campur.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Latih tambah, tolak dan sifir secara campur.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Kamu hanya dapat soalan |darab|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Kamu dapat semua sifir |hingga %lld| secara campur.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Setiap sifir didarab dengan nombor dari |1 hingga 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Kamu dapat sifir %lld dalam urutan |menaik|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Kamu dapat sifir %lld dalam urutan |rawak|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Sifir %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Latih sifir dari %lld hingga %lld secara campur.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Sifir %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Nama kamu</string>
+	<key>name.whatsYourName</key>
+	<string>Siapa nama kamu?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Soalan campur yang berbeza.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Dah agak bagus</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Berlatih dengan soalan ikut urutan.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Baru mula</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Soalan dalam urutan rawak.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Dah pernah berlatih</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Pilih titik mula untuk %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>topik ini</string>
+	<key>onboarding.level.title</key>
+	<string>Sejauh mana kamu dah pandai?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Mari mula. Siapa nama kamu?</string>
+	<key>onboarding.name.title</key>
+	<string>Mengira tak pernah seseronok ini!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Pilih topik untuk mula.</string>
+	<key>onboarding.subject.title</key>
+	<string>Apa yang kamu mahu belajar?</string>
+	<key>options.capAt30.info</key>
+	<string>Setiap tahap ada sasaran hingga 50 trofi. Jika pilihan ini hidup, permainan tamat automatik bila sasaran dicapai.</string>
+	<key>options.capAt30.title</key>
+	<string>Tamat pada sasaran</string>
+	<key>options.helperMode.info</key>
+	<string>Dalam Mod Pembantu, jawapan betul sentiasa ditunjukkan hijau. Trofi dalam mod ini dikira berasingan dan ditanda bintang.</string>
+	<key>options.helperMode.title</key>
+	<string>Mod pembantu</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Kamu sentiasa bermula dengan 3 nyawa. Permainan tamat bila nyawa habis. Hidupkan pilihan ini untuk terus bermain dan berlatih selepas nyawa habis.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Nyawa tanpa had</string>
+	<key>parentGate.approved</key>
+	<string>Diluluskan</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Cubaan: %1$lld daripada %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Tekan dan tahan %@ selama %lld saat.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Tahan: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Tekan dan tahan %@ selama %lld saat. Kemudian ketik %@ sebanyak %lld kali.</string>
+	<key>parentGate.shape.circle</key>
+	<string>bulatan</string>
+	<key>parentGate.shape.diamond</key>
+	<string>berlian</string>
+	<key>parentGate.shape.heart</key>
+	<string>hati</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>heksagon</string>
+	<key>parentGate.shape.plus</key>
+	<string>tambah</string>
+	<key>parentGate.shape.square</key>
+	<string>segi empat</string>
+	<key>parentGate.shape.star</key>
+	<string>bintang</string>
+	<key>parentGate.shape.triangle</key>
+	<string>segi tiga</string>
+	<key>parentGate.stepOne</key>
+	<string>Langkah 1 daripada 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Langkah 2 daripada 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Untuk melindungi pemain muda, orang dewasa mesti selesaikan semakan ini sebelum meneruskan pembelian.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Sekarang ketik %2$@ sebanyak %1$lld kali.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Ketikan: %1$lld daripada %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Kelulusan orang dewasa diperlukan</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Dengan premium, kamu bebas bermain dengan semua 10 haiwan.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Akses semua haiwan</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Sentiasa ada soalan baharu untuk dilatih.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 tahap setiap topik</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Main tanpa gangguan.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Tiada iklan</string>
+	<key>premium.oneTime</key>
+	<string>Beli sekali. Milik kamu selamanya.</string>
+	<key>premium.restore</key>
+	<string>Pulihkan pembelian</string>
+	<key>premium.storeUnavailable</key>
+	<string>Kedai tidak tersedia sekarang. Cuba lagi nanti.</string>
+	<key>premium.unlock</key>
+	<string>Buka Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Buka Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Kamu ada Premium!</string>
+	<key>settings.character</key>
+	<string>Watak</string>
+	<key>settings.characterInfo</key>
+	<string>Setiap haiwan membawa tema warnanya sendiri ke seluruh permainan.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Tersuai: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Sasaran harian</string>
+	<key>settings.goalInfo</key>
+	<string>Sasaran rentetan bermula pada 5 minit sehari. Hanya masa bermain aktif dikira.</string>
+	<key>settings.lives</key>
+	<string>Nyawa</string>
+	<key>settings.livesInfo</key>
+	<string>Dengan tiga nyawa, permainan tamat selepas hati terakhir. Dalam mod tanpa had, trofi hanya dikira selagi kamu masih ada nyawa; selepas itu kamu boleh terus bermain.</string>
+	<key>settings.playGoals</key>
+	<string>Sasaran main</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium dibuka. Terima kasih!</string>
+	<key>settings.title</key>
+	<string>Tetapan</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Pilih sasaran harian</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Pilih sasaran harian atau mingguan</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld daripada %3$lld minit, %4$lld hari berturut-turut</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Rentetan harian, %lld daripada %lld minit</string>
+	<key>streak.daily</key>
+	<string>Rentetan harian</string>
+	<key>streak.dayOne</key>
+	<string>Hari 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Tak tahu jawapan? Ketik soalan untuk melihatnya.</string>
+	<key>tutorial.complete</key>
+	<string>Syabas! Tutorial selesai. Sekarang cuba dapatkan skor tertinggi!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Lompat pada jawapan betul untuk kutip trofi.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Jawapan betul ditunjukkan hijau. Sekarang lompat pada jawapan betul.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Sekarang lompat pada jawapan betul untuk dapat trofi tiga kali ganda.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Kutip syiling ×3 untuk dapat trofi tiga kali ganda sekali.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Kamu boleh jumpa separuh nyawa atau satu nyawa penuh untuk dapatkan nyawa semula.</string>
+	<key>tutorial.minusOne</key>
+	<string>Elakkan −1. Ia menyebabkan kamu hilang satu trofi.</string>
+	<key>tutorial.move</key>
+	<string>Gerakkan peranti ke kiri dan kanan. Kamu juga boleh bergerak melalui sisi skrin.</string>
+	<key>tutorial.platforms</key>
+	<string>Lompat pada platform untuk naik.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Skor kamu untuk tahap ini ditunjukkan di sini.</string>
+	<key>tutorial.star</key>
+	<string>Lompat ke bintang untuk menembak jawapan salah.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Jika pilih jawapan salah, kamu hilang satu daripada tiga nyawa. Cuba sekarang.</string>
+</dict>
+</plist>

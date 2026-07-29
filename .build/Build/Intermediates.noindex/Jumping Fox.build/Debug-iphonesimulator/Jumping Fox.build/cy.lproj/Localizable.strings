@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Arth</string>
+	<key>character.bunny</key>
+	<string>Cwningen</string>
+	<key>character.crab</key>
+	<string>Cranc</string>
+	<key>character.dog</key>
+	<string>Ci</string>
+	<key>character.elephant</key>
+	<string>Eliffant</string>
+	<key>character.fox</key>
+	<string>Llwynog</string>
+	<key>character.frog</key>
+	<string>Broga</string>
+	<key>character.lion</key>
+	<string>Llew</string>
+	<key>character.octopus</key>
+	<string>Octopws</string>
+	<key>character.penguin</key>
+	<string>Pengwin</string>
+	<key>character.pickerTitle</key>
+	<string>Dewis dy gymeriad</string>
+	<key>common.back</key>
+	<string>Nôl</string>
+	<key>common.cancel</key>
+	<string>Canslo</string>
+	<key>common.continue</key>
+	<string>Parhau</string>
+	<key>common.done</key>
+	<string>Wedi gorffen</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld mun</string>
+	<key>common.save</key>
+	<string>Cadw</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Pwysa a dal am 2 eiliad i agor modd datblygwr.</string>
+	<key>developerMode.title</key>
+	<string>Modd datblygwr</string>
+	<key>filter.addition</key>
+	<string>Adio</string>
+	<key>filter.fractions</key>
+	<string>Ffracsiynau</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Canrannau</string>
+	<key>filter.subtraction</key>
+	<string>Tynnu</string>
+	<key>filter.tables</key>
+	<string>Tablau</string>
+	<key>game.accessibility.mix</key>
+	<string>Cymysgedd</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld allan o %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Cais da</string>
+	<key>game.encouragement.1</key>
+	<string>Mae'n ddechrau</string>
+	<key>game.encouragement.2</key>
+	<string>Dalia ati i ymarfer</string>
+	<key>game.encouragement.3</key>
+	<string>Ddim yn ddrwg o gwbl</string>
+	<key>game.encouragement.4</key>
+	<string>Da iawn</string>
+	<key>game.encouragement.5</key>
+	<string>Perfformiad gwych</string>
+	<key>game.encouragement.6</key>
+	<string>Da iawn ti</string>
+	<key>game.encouragement.7</key>
+	<string>Chwarae gwych</string>
+	<key>game.encouragement.8</key>
+	<string>Mae'r diwedd yn y golwg</string>
+	<key>game.encouragement.9</key>
+	<string>Rwyt ti bron yno</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Enillaist ti bob pwynt.</string>
+	<key>game.end.completionSuffix</key>
+	<string>wedi'i gwblhau!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Diwedd y gêm</string>
+	<key>game.end.mainMenu</key>
+	<string>Prif ddewislen</string>
+	<key>game.end.playAgain</key>
+	<string>Chwarae eto</string>
+	<key>game.highScore</key>
+	<string>Sgôr uchaf</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Nôl i'r brif ddewislen</string>
+	<key>game.intro.continue</key>
+	<string>Parhau</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Byddet ti'n parhau o %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Mae'r ateb cywir wedi'i amlygu'n wyrdd am fod y cynorthwyydd ymlaen. Felly caiff tlysau eu cyfrif ar wahân gyda *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Cynorthwyydd i ffwrdd</string>
+	<key>game.intro.helperOn</key>
+	<string>Cynorthwyydd ymlaen</string>
+	<key>game.intro.howItWorks</key>
+	<string>Sut mae'r lefel hon yn gweithio</string>
+	<key>game.intro.livesOff</key>
+	<string>Bywydau i ffwrdd</string>
+	<key>game.intro.livesOn</key>
+	<string>Bywydau ymlaen</string>
+	<key>game.intro.scorePaused</key>
+	<string>Bydd dy sgôr bresennol yn cael ei seibio.</string>
+	<key>game.intro.start</key>
+	<string>Dechrau'r lefel</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Lluosa %@%@ â rhif o 1 i 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>neu lai</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Tapia unrhyw le i barhau</string>
+	<key>game.intro.tapToStart</key>
+	<string>Tapia unrhyw le i ddechrau</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Enilla |1| tlws am bob ateb cywir, hyd at |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Pan fydd dy fywydau wedi darfod, chei di ddim mwy o dlysau.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Wedi cyrraedd uchafswm y tlysau ar gyfer y bwrdd sgorio</string>
+	<key>game.status.mixMode</key>
+	<string>MODD CYMYSGU</string>
+	<key>game.status.scoreLocked</key>
+	<string>Ni fydd tlysau'n cyfrif ar ôl i dy fywydau ddod i ben</string>
+	<key>game.streak.subtitle</key>
+	<string>Tlysau ×2</string>
+	<key>game.streak.title</key>
+	<string>5 yn olynol!</string>
+	<key>goal.period</key>
+	<string>Cyfnod y nod</string>
+	<key>goal.promptDaily</key>
+	<string>Sawl munud wyt ti eisiau chwarae bob dydd?</string>
+	<key>goal.promptWeekly</key>
+	<string>Sawl munud wyt ti eisiau chwarae bob wythnos?</string>
+	<key>goal.title</key>
+	<string>Nod chwarae</string>
+	<key>goalPeriod.daily</key>
+	<string>Bob dydd</string>
+	<key>goalPeriod.weekly</key>
+	<string>Bob wythnos</string>
+	<key>info.filter.addition</key>
+	<string>Adio yn unig</string>
+	<key>info.filter.fractions</key>
+	<string>Rhannu yn unig</string>
+	<key>info.filter.header</key>
+	<string>Mathau o symiau</string>
+	<key>info.filter.mixed</key>
+	<string>Gweithrediadau cymysg</string>
+	<key>info.filter.percentages</key>
+	<string>Canrannau yn unig</string>
+	<key>info.filter.subtraction</key>
+	<string>Tynnu yn unig</string>
+	<key>info.filter.tables</key>
+	<string>Lluosi yn unig</string>
+	<key>info.mode.fractions.header</key>
+	<string>Rhannau</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Un rhan neu sawl rhan</string>
+	<key>info.mode.fractions.single</key>
+	<string>Un rhan bob tro</string>
+	<key>info.mode.header</key>
+	<string>Trefn</string>
+	<key>info.mode.mixed</key>
+	<string>Cymysg â lefelau is</string>
+	<key>info.mode.order</key>
+	<string>Trefn benodol</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Gan gynnwys rhifau degol</string>
+	<key>info.mode.percentages.header</key>
+	<string>Math</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Heb rifau degol</string>
+	<key>info.mode.random</key>
+	<string>Trefn ar hap</string>
+	<key>info.super.all</key>
+	<string>Adio, tynnu, lluosi, rhannu a chanrannau</string>
+	<key>info.super.basic</key>
+	<string>Adio a thynnu</string>
+	<key>info.super.fraction</key>
+	<string>Adio, tynnu, lluosi a rhannu</string>
+	<key>info.super.times</key>
+	<string>Adio, tynnu a lluosi</string>
+	<key>language.select</key>
+	<string>Dewis iaith</string>
+	<key>lives.three</key>
+	<string>3 bywyd</string>
+	<key>lives.unlimited</key>
+	<string>Heb derfyn</string>
+	<key>menu.accessibility.character</key>
+	<string>Cymeriad</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Tapia i newid dy gymeriad; pwysa a dal am ddwy eiliad i ddechrau eto ar y sgrin groeso.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Dewis %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MWYAF</string>
+	<key>menu.maximumCount</key>
+	<string>MWYAF</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Wedi cyrraedd yr uchafswm %lld gwaith</string>
+	<key>menu.moreLevels</key>
+	<string>Mwy o lefelau</string>
+	<key>menu.options</key>
+	<string>Dewisiadau gêm</string>
+	<key>menu.premium</key>
+	<string>Premiwm</string>
+	<key>menu.premiumTables</key>
+	<string>Tablau premiwm</string>
+	<key>menu.startHere</key>
+	<string>Dechrau yma</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Datgloi mwy gyda Premiwm</string>
+	<key>mode.fractions.multiple</key>
+	<string>Sawl un</string>
+	<key>mode.fractions.single</key>
+	<string>Un rhan</string>
+	<key>mode.mix</key>
+	<string>Cymysgu</string>
+	<key>mode.mixed</key>
+	<string>Cymysg</string>
+	<key>mode.order</key>
+	<string>Trefn</string>
+	<key>mode.percentages.decimal</key>
+	<string>Degol</string>
+	<key>mode.percentages.whole</key>
+	<string>Cyfan</string>
+	<key>mode.random</key>
+	<string>Ar hap</string>
+	<key>mode.standard</key>
+	<string>Safonol</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Dim ond symiau |adio| gei di.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Rwyt ti'n adio %lld |neu lai| at rif arall.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Rwyt ti bob amser yn adio %lld mewn trefn |esgynnol|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Rwyt ti bob amser yn adio %lld at rif |ar hap|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Adio · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Dalia ati i adio dau rif.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Yr ateb yw %lld ar y mwyaf.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Adio hyd at %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Dim ond symiau |ffracsiynau| gei di.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Gei di ffracsiynau o'r lefel hon a |lefelau cynharach|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Rwyt ti bob amser yn cymryd |1 rhan| o %lld rhan gyfartal.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Cyfrifa ffracsiynau o rifau crwn o lefel %lld a lefelau cynharach.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Mae'r rhifau'n aros yn grwn, felly mae'r atebion bob amser yn gyfan.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Ffracsiynau hyd at %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Rwyt ti'n cymryd un neu |sawl rhan| o %lld rhan gyfartal.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Ffracsiynau · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Cyfrifa ran o gyfanwaith a gwna ffracsiynau'n hafal.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Adia a thynna ffracsiynau sydd â'r un enwadur.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Ffracsiynau cymysg</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Dim ond symiau |canrannau| gei di.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Gei di ganrannau o'r lefel hon a |lefelau cynharach|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Rwyt ti bob amser yn cyfrifo %@, ac mae'r ateb yn |rhif cyfan|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Cyfrifa ganrannau o rifau crwn hyd at %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Mae'r symiau'n aros yn grwn, felly mae'r atebion bob amser yn gyfan.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Canrannau hyd at %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Rwyt ti bob amser yn cyfrifo %@, a gall yr ateb fod yn |rhif degol| hefyd.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Cyfrifo %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Cyfrifa ganran o rif.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Trosi rhwng canrannau a ffracsiynau.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Canrannau cymysg</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Dim ond symiau |tynnu| gei di.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Rwyt ti'n tynnu %lld |neu lai| o rif arall.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Rwyt ti bob amser yn tynnu %lld mewn trefn |ddisgynnol|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Rwyt ti bob amser yn tynnu %lld o rif |ar hap|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Tynnu · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Y rhif cyntaf yw %lld ar y mwyaf.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Gall yr ateb fynd yn is na sero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Is na sero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Tynnu hyd at %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Dalia ati i dynnu un rhif o'r llall.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Gall yr anhawster gynyddu hyd at |lefel %lld| ar gyfer pob categori a ddewiswyd.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Ymarfer adio, tynnu, tablau, ffracsiynau a chanrannau i gyd yn gymysg.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Ymarfer adio a thynnu yn gymysg.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Ymarfer adio, tynnu, tablau a ffracsiynau yn gymysg.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Ymarfer adio, tynnu a thablau yn gymysg.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Dim ond symiau |lluosi| gei di.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Gei di'r holl dablau |hyd at %lld| yn gymysg.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Pob tabl wedi'i luosi â rhif o |1 i 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Gei di dabl %lld mewn trefn |esgynnol|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Gei di dabl %lld mewn trefn |ar hap|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tabl %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Ymarfer y tablau o %lld i %lld yn gymysg.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tablau %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Dy enw</string>
+	<key>name.whatsYourName</key>
+	<string>Beth yw dy enw?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Gwahanol symiau cymysg gyda'i gilydd.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Eitha da'n barod</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Ymarfer gyda symiau mewn trefn.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Newydd ddechrau</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Symiau mewn trefn ar hap.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Wedi ymarfer tipyn</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Dewis fan cychwyn ar gyfer %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>y pwnc hwn</string>
+	<key>onboarding.level.title</key>
+	<string>Pa mor dda wyt ti ar hyn yn barod?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Dewch i ddechrau. Beth yw dy enw?</string>
+	<key>onboarding.name.title</key>
+	<string>Fu gwneud symiau erioed mor hwyl!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Dewis bwnc i ddechrau.</string>
+	<key>onboarding.subject.title</key>
+	<string>Beth wyt ti eisiau ei ddysgu?</string>
+	<key>options.capAt30.info</key>
+	<string>Mae gan bob lefel nod o hyd at 50 tlws. Os yw'r dewis hwn ymlaen, bydd y gêm yn gorffen yn awtomatig pan gyrhaeddi di'r nod.</string>
+	<key>options.capAt30.title</key>
+	<string>Gorffen wrth y nod</string>
+	<key>options.helperMode.info</key>
+	<string>Yn y Modd Cynorthwyydd, mae'r ateb cywir bob amser yn wyrdd. Caiff tlysau a enillir yn y modd hwn eu cyfrif ar wahân a'u marcio â seren.</string>
+	<key>options.helperMode.title</key>
+	<string>Modd Cynorthwyydd</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Rwyt ti bob amser yn dechrau gyda 3 bywyd. Bydd y gêm yn gorffen pan nad oes bywydau ar ôl. Tro'r dewis hwn ymlaen i barhau i chwarae ac ymarfer ar ôl i'r bywydau ddod i ben.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Bywydau diderfyn</string>
+	<key>parentGate.approved</key>
+	<string>Cymeradwywyd</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Ceisiadau: %1$lld o %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Dalia'r %@ am %lld eiliad.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Dal: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Dalia'r %@ am %lld eiliad. Yna tapia'r %@ %lld gwaith.</string>
+	<key>parentGate.shape.circle</key>
+	<string>cylch</string>
+	<key>parentGate.shape.diamond</key>
+	<string>diemwnt</string>
+	<key>parentGate.shape.heart</key>
+	<string>calon</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hecsagon</string>
+	<key>parentGate.shape.plus</key>
+	<string>plws</string>
+	<key>parentGate.shape.square</key>
+	<string>sgwâr</string>
+	<key>parentGate.shape.star</key>
+	<string>seren</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triongl</string>
+	<key>parentGate.stepOne</key>
+	<string>Cam 1 o 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Cam 2 o 2</string>
+	<key>parentGate.subtitle</key>
+	<string>I amddiffyn chwaraewyr ifanc, rhaid i oedolyn gwblhau'r gwiriad hwn cyn parhau at y pryniant.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Nawr tapia'r %2$@ %1$lld gwaith.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Tapiau: %1$lld o %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Angen cymeradwyaeth oedolyn</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Gyda Premiwm, gelli di chwarae'n rhydd gyda'r 10 anifail.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Mynediad at bob anifail</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Digon o symiau newydd i'w hymarfer bob amser.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 lefel i bob pwnc</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Chwarae heb unrhyw darfu.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Dim hysbysebion</string>
+	<key>premium.oneTime</key>
+	<string>Pryniant unwaith. Yn eiddo i ti am byth.</string>
+	<key>premium.restore</key>
+	<string>Adfer pryniannau</string>
+	<key>premium.storeUnavailable</key>
+	<string>Nid yw'r siop ar gael ar hyn o bryd. Rho gynnig arall arni nes ymlaen.</string>
+	<key>premium.unlock</key>
+	<string>Datgloi Premiwm</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Datgloi Premiwm · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Mae Premiwm gen ti!</string>
+	<key>settings.character</key>
+	<string>Cymeriad</string>
+	<key>settings.characterInfo</key>
+	<string>Mae pob anifail yn rhoi ei thema liw ei hun i'r gêm gyfan.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Personol: %lld mun</string>
+	<key>settings.dailyGoal</key>
+	<string>Nod dyddiol</string>
+	<key>settings.goalInfo</key>
+	<string>Mae nod y gyfres yn dechrau ar 5 munud y dydd. Dim ond amser chwarae gweithredol sy'n cyfrif.</string>
+	<key>settings.lives</key>
+	<string>Bywydau</string>
+	<key>settings.livesInfo</key>
+	<string>Gyda thri bywyd, mae'r gêm yn gorffen ar ôl dy galon olaf. Yn y modd diderfyn, dim ond tra bod bywydau gen ti y mae tlysau'n cyfrif; wedyn gelli di barhau i chwarae.</string>
+	<key>settings.playGoals</key>
+	<string>Nodau chwarae</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premiwm wedi'i ddatgloi. Diolch!</string>
+	<key>settings.title</key>
+	<string>Gosodiadau</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Dewis nod dyddiol</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Dewis nod dyddiol neu wythnosol</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld o %3$lld munud, %4$lld diwrnod yn olynol</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Cyfres ddyddiol, %lld o %lld munud</string>
+	<key>streak.daily</key>
+	<string>Cyfres ddyddiol</string>
+	<key>streak.dayOne</key>
+	<string>Diwrnod 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Ddim yn gwybod yr ateb? Tapia'r cwestiwn i'w weld.</string>
+	<key>tutorial.complete</key>
+	<string>Da iawn! Mae'r tiwtorial wedi'i gwblhau. Nawr dos am y sgôr uchaf!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Neidia ar yr ateb cywir i gasglu tlws.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Mae'r ateb cywir yn wyrdd. Nawr neidia ar yr ateb cywir.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Nawr neidia ar yr ateb cywir i gasglu tair gwaith y tlysau.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Casgla'r darn ×3 i ennill tair gwaith y tlysau unwaith.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Gelli di ddod o hyd i hanner bywyd neu fywyd cyfan i gael bywydau'n ôl.</string>
+	<key>tutorial.minusOne</key>
+	<string>Osgoia'r −1. Mae'n costio un tlws i ti.</string>
+	<key>tutorial.move</key>
+	<string>Symuda dy ddyfais i fynd i'r chwith a'r dde. Gelli di hefyd symud drwy ochrau'r sgrin.</string>
+	<key>tutorial.platforms</key>
+	<string>Neidia ar y platfformau i symud i fyny.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Mae dy sgôr ar gyfer y lefel hon yma.</string>
+	<key>tutorial.star</key>
+	<string>Neidia i mewn i'r seren i saethu'r atebion anghywir i ffwrdd.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Os dewisi di ateb anghywir, byddi di'n colli un o dy dri bywyd. Rho gynnig arni nawr.</string>
+</dict>
+</plist>

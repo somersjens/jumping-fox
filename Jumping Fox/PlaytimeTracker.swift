@@ -178,6 +178,35 @@ final class PlaytimeTracker: ObservableObject {
         recomputeDisplay()
     }
 
+    // MARK: Activity queries (for the notification scheduler)
+
+    /// The most recent calendar day on which any active playtime was recorded,
+    /// or nil if the player has never actually played. Used to anchor the
+    /// re-engagement notification ladder.
+    var lastActiveDate: Date? {
+        days.values
+            .filter { $0.seconds > 0 }
+            .map(\.date)
+            .max()
+            .flatMap { dayFormatter.date(from: $0) }
+    }
+
+    /// True when the player has recorded any playtime today.
+    var hasPlayedToday: Bool {
+        (days[dayFormatter.string(from: Date())]?.seconds ?? 0) > 0
+    }
+
+    /// Whole calendar days since the player last played, as of `reference`.
+    /// Returns nil if they have never played; 0 means they played today.
+    func daysInactive(asOf reference: Date = Date()) -> Int? {
+        guard let last = lastActiveDate else { return nil }
+        let calendar = Calendar.current
+        let lastDay = calendar.startOfDay(for: last)
+        let today = calendar.startOfDay(for: reference)
+        let days = calendar.dateComponents([.day], from: lastDay, to: today).day ?? 0
+        return max(0, days)
+    }
+
     // MARK: Derived values
 
     private func recomputeDisplay() {

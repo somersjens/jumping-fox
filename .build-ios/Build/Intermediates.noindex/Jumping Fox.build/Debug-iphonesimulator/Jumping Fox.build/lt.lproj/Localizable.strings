@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Lokys</string>
+	<key>character.bunny</key>
+	<string>Zuikutis</string>
+	<key>character.crab</key>
+	<string>Krabas</string>
+	<key>character.dog</key>
+	<string>Šuo</string>
+	<key>character.elephant</key>
+	<string>Dramblys</string>
+	<key>character.fox</key>
+	<string>Lapė</string>
+	<key>character.frog</key>
+	<string>Varlė</string>
+	<key>character.lion</key>
+	<string>Liūtas</string>
+	<key>character.octopus</key>
+	<string>Aštuonkojis</string>
+	<key>character.penguin</key>
+	<string>Pingvinas</string>
+	<key>character.pickerTitle</key>
+	<string>Pasirink veikėją</string>
+	<key>common.back</key>
+	<string>Atgal</string>
+	<key>common.cancel</key>
+	<string>Atšaukti</string>
+	<key>common.continue</key>
+	<string>Tęsti</string>
+	<key>common.done</key>
+	<string>Baigta</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Išsaugoti</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Palaikyk nuspaudęs 2 sekundes, kad atidarytum kūrėjo režimą.</string>
+	<key>developerMode.title</key>
+	<string>Kūrėjo režimas</string>
+	<key>filter.addition</key>
+	<string>Sudėtis</string>
+	<key>filter.fractions</key>
+	<string>Trupmenos</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Procentai</string>
+	<key>filter.subtraction</key>
+	<string>Atimtis</string>
+	<key>filter.tables</key>
+	<string>Daugybos lentelės</string>
+	<key>game.accessibility.mix</key>
+	<string>Mišinys</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld iš %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Geras bandymas</string>
+	<key>game.encouragement.1</key>
+	<string>Tai jau pradžia</string>
+	<key>game.encouragement.2</key>
+	<string>Mokykis toliau</string>
+	<key>game.encouragement.3</key>
+	<string>Visai neblogai</string>
+	<key>game.encouragement.4</key>
+	<string>Puikiai sekasi</string>
+	<key>game.encouragement.5</key>
+	<string>Puikus rezultatas</string>
+	<key>game.encouragement.6</key>
+	<string>Šaunuolis</string>
+	<key>game.encouragement.7</key>
+	<string>Labai gerai sužaista</string>
+	<key>game.encouragement.8</key>
+	<string>Finišas jau arti</string>
+	<key>game.encouragement.9</key>
+	<string>Beveik pasiekei</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Uždirbai kiekvieną tašką.</string>
+	<key>game.end.completionSuffix</key>
+	<string>baigta!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Žaidimas baigtas</string>
+	<key>game.end.mainMenu</key>
+	<string>Pagrindinis meniu</string>
+	<key>game.end.playAgain</key>
+	<string>Žaisti dar kartą</string>
+	<key>game.highScore</key>
+	<string>Rekordas</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Grįžti į pagrindinį meniu</string>
+	<key>game.intro.continue</key>
+	<string>Tęsti</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Tęsi nuo %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Teisingas atsakymas pažymėtas žaliai, nes įjungta pagalba. Todėl trofėjai su * skaičiuojami atskirai.</string>
+	<key>game.intro.helperOff</key>
+	<string>Pagalba išjungta</string>
+	<key>game.intro.helperOn</key>
+	<string>Pagalba įjungta</string>
+	<key>game.intro.howItWorks</key>
+	<string>Kaip veikia šis lygis</string>
+	<key>game.intro.livesOff</key>
+	<string>Gyvybės išjungtos</string>
+	<key>game.intro.livesOn</key>
+	<string>Gyvybės įjungtos</string>
+	<key>game.intro.scorePaused</key>
+	<string>Dabartinis rezultatas bus pristabdytas.</string>
+	<key>game.intro.start</key>
+	<string>Pradėti lygį</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Padaugink %@%@ iš skaičiaus nuo 1 iki 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ar mažiau</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Bakstelėk bet kur, kad tęstum</string>
+	<key>game.intro.tapToStart</key>
+	<string>Bakstelėk bet kur, kad pradėtum</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Už kiekvieną teisingą atsakymą gauk |1| trofėjų, daugiausia |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Kai baigsis gyvybės, trofėjų pelnyti nebegalėsi.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Pasiektas didžiausias trofėjų skaičius reitinge</string>
+	<key>game.status.mixMode</key>
+	<string>MIŠRUS REŽIMAS</string>
+	<key>game.status.scoreLocked</key>
+	<string>Kai baigiasi gyvybės, trofėjai nebeskaičiuojami</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofėjai ×2</string>
+	<key>game.streak.title</key>
+	<string>5 iš eilės!</string>
+	<key>goal.period</key>
+	<string>Tikslo laikotarpis</string>
+	<key>goal.promptDaily</key>
+	<string>Kiek minučių per dieną nori žaisti?</string>
+	<key>goal.promptWeekly</key>
+	<string>Kiek minučių per savaitę nori žaisti?</string>
+	<key>goal.title</key>
+	<string>Žaidimo tikslas</string>
+	<key>goalPeriod.daily</key>
+	<string>Kasdien</string>
+	<key>goalPeriod.weekly</key>
+	<string>Kas savaitę</string>
+	<key>info.filter.addition</key>
+	<string>Tik sudėtis</string>
+	<key>info.filter.fractions</key>
+	<string>Tik dalyba</string>
+	<key>info.filter.header</key>
+	<string>Užduočių rūšys</string>
+	<key>info.filter.mixed</key>
+	<string>Mišrūs veiksmai</string>
+	<key>info.filter.percentages</key>
+	<string>Tik procentai</string>
+	<key>info.filter.subtraction</key>
+	<string>Tik atimtis</string>
+	<key>info.filter.tables</key>
+	<string>Tik daugyba</string>
+	<key>info.mode.fractions.header</key>
+	<string>Dalys</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Viena ir kelios dalys</string>
+	<key>info.mode.fractions.single</key>
+	<string>Visada viena dalis</string>
+	<key>info.mode.header</key>
+	<string>Tvarka</string>
+	<key>info.mode.mixed</key>
+	<string>Kartu su žemesniais lygiais</string>
+	<key>info.mode.order</key>
+	<string>Fiksuota tvarka</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Su dešimtainiais skaičiais</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tipas</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Be dešimtainių skaičių</string>
+	<key>info.mode.random</key>
+	<string>Atsitiktinė tvarka</string>
+	<key>info.super.all</key>
+	<string>Sudėtis, atimtis, daugyba, dalyba ir procentai</string>
+	<key>info.super.basic</key>
+	<string>Sudėtis ir atimtis</string>
+	<key>info.super.fraction</key>
+	<string>Sudėtis, atimtis, daugyba ir dalyba</string>
+	<key>info.super.times</key>
+	<string>Sudėtis, atimtis ir daugyba</string>
+	<key>language.select</key>
+	<string>Pasirink kalbą</string>
+	<key>lives.three</key>
+	<string>3 gyvybės</string>
+	<key>lives.unlimited</key>
+	<string>Neribota</string>
+	<key>menu.accessibility.character</key>
+	<string>Veikėjas</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Bakstelėk, kad pakeistum veikėją; palaikyk dvi sekundes, kad grįžtum į pasisveikinimo ekraną.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Pasirink %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimumas pasiektas %lld kartų</string>
+	<key>menu.moreLevels</key>
+	<string>Daugiau lygių</string>
+	<key>menu.options</key>
+	<string>Žaidimo parinktys</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium lentelės</string>
+	<key>menu.startHere</key>
+	<string>Pradėk čia</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Atrakink daugiau su Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Kelios</string>
+	<key>mode.fractions.single</key>
+	<string>Viena</string>
+	<key>mode.mix</key>
+	<string>Mišinys</string>
+	<key>mode.mixed</key>
+	<string>Mišru</string>
+	<key>mode.order</key>
+	<string>Tvarka</string>
+	<key>mode.percentages.decimal</key>
+	<string>Dešimtainiai</string>
+	<key>mode.percentages.whole</key>
+	<string>Sveikieji</string>
+	<key>mode.random</key>
+	<string>Atsitiktinai</string>
+	<key>mode.standard</key>
+	<string>Standartinis</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Gausi tik |sudėties| užduotis.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Prie kito skaičiaus pridėsi %lld |ar mažiau|.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Visada pridėsi %lld |didėjančia| tvarka.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Visada pridėsi %lld prie |atsitiktinio| skaičiaus.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Sudėtis · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Vis sudėk du skaičius.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Atsakymas bus ne didesnis nei %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Sudėtis iki %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Gausi tik |trupmenų| užduotis.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Gausi šio ir |ankstesnių lygių| trupmenas.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Visada imsi |1 dalį| iš %lld lygių dalių.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Apskaičiuok apvalių skaičių trupmenas iš %lld ir ankstesnių lygių.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Skaičiai lieka apvalūs, todėl atsakymai visada sveikieji.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Trupmenos iki %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Imsi vieną arba |kelias dalis| iš %lld lygių dalių.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Trupmenos · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Apskaičiuok visumos dalį ir rask lygiavertes trupmenas.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Sudėk ir atimk trupmenas su vienodais vardikliais.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Mišrios trupmenos</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Gausi tik |procentų| užduotis.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Gausi šio ir |ankstesnių lygių| procentus.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Visada skaičiuosi %@, o atsakymas bus |sveikasis skaičius|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Apskaičiuok apvalių skaičių procentus iki %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Skaičiai lieka apvalūs, todėl atsakymai visada sveikieji.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Procentai iki %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Visada skaičiuosi %@, o atsakymas gali būti ir |dešimtainis|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Skaičiuok %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Apskaičiuok skaičiaus procentą.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Keisk procentus į trupmenas ir atvirkščiai.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Mišrūs procentai</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Gausi tik |atimties| užduotis.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Iš kito skaičiaus atimsi %lld |ar mažiau|.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Visada atimsi %lld |mažėjančia| tvarka.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Visada atimsi %lld iš |atsitiktinio| skaičiaus.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Atimtis · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Pirmasis skaičius bus ne didesnis nei %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Atsakymas gali būti mažesnis už nulį.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Žemiau nulio</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Atimtis iki %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Vis atimk vieną skaičių iš kito.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Kiekvienos pasirinktos temos sunkumas gali kilti iki |%lld lygio|.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Treniruok sudėtį, atimtį, daugybos lenteles, trupmenas ir procentus – viską kartu.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Treniruok sudėtį ir atimtį kartu.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Treniruok sudėtį, atimtį, daugybos lenteles ir trupmenas kartu.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Treniruok sudėtį, atimtį ir daugybos lenteles kartu.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Gausi tik |daugybos| užduotis.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Gausi visas daugybos lenteles |iki %lld| sumaišytas.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Kiekvieną lentelę dauginsi iš skaičiaus nuo |1 iki 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Gausi %lld daugybos lentelę |didėjančia| tvarka.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Gausi %lld daugybos lentelę |atsitiktine| tvarka.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld daugybos lentelė</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Treniruok daugybos lenteles nuo %lld iki %lld sumaišytas.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Lentelės %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Tavo vardas</string>
+	<key>name.whatsYourName</key>
+	<string>Koks tavo vardas?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Įvairios mišrios užduotys kartu.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Jau visai gerai</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Treniruokis su užduotimis iš eilės.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Ką tik pradėjau</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Užduotys atsitiktine tvarka.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Jau šiek tiek mokiausi</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Pasirink, nuo ko pradėti %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>šią temą</string>
+	<key>onboarding.level.title</key>
+	<string>Kaip gerai tai jau moki?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Pradėkime. Koks tavo vardas?</string>
+	<key>onboarding.name.title</key>
+	<string>Skaičiuoti dar niekada nebuvo taip smagu!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Pasirink temą, nuo kurios pradėsi.</string>
+	<key>onboarding.subject.title</key>
+	<string>Ko nori išmokti?</string>
+	<key>options.capAt30.info</key>
+	<string>Kiekviename lygyje galima siekti iki 50 trofėjų. Įjungus šią parinktį, pasiekus tikslą žaidimas baigsis automatiškai.</string>
+	<key>options.capAt30.title</key>
+	<string>Baigti pasiekus tikslą</string>
+	<key>options.helperMode.info</key>
+	<string>Pagalbos režimu teisingas atsakymas visada rodomas žaliai. Šiuo režimu gauti trofėjai skaičiuojami atskirai ir žymimi žvaigždute.</string>
+	<key>options.helperMode.title</key>
+	<string>Pagalbos režimas</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Visada pradedi su 3 gyvybėmis. Kai jos baigiasi, žaidimas baigiamas. Įjunk šią parinktį, kad galėtum toliau žaisti ir mokytis.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Neribotos gyvybės</string>
+	<key>parentGate.approved</key>
+	<string>Patvirtinta</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Bandymai: %1$lld iš %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Palaikyk %@ %lld sekundes.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Laikyti: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Palaikyk %@ %lld sekundes. Tada bakstelėk %@ %lld kartus.</string>
+	<key>parentGate.shape.circle</key>
+	<string>apskritimas</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombas</string>
+	<key>parentGate.shape.heart</key>
+	<string>širdis</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>šešiakampis</string>
+	<key>parentGate.shape.plus</key>
+	<string>pliusas</string>
+	<key>parentGate.shape.square</key>
+	<string>kvadratas</string>
+	<key>parentGate.shape.star</key>
+	<string>žvaigždė</string>
+	<key>parentGate.shape.triangle</key>
+	<string>trikampis</string>
+	<key>parentGate.stepOne</key>
+	<string>1 veiksmas iš 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>2 veiksmas iš 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Kad apsaugotume mažuosius žaidėjus, prieš tęsiant pirkimą šį patikrinimą turi atlikti suaugusysis.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Dabar bakstelėk %2$@ %1$lld kartus.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Bakstelėjimai: %1$lld iš %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Reikia suaugusiojo patvirtinimo</string>
+	<key>premium.availableAt %lld</key>
+	<string>Pasiekiama nuo %lld trofėjų</string>
+	<key>premium.availableFromStart</key>
+	<string>Pasiekiama nuo pradžių</string>
+	<key>premium.characterUnlocked</key>
+	<string>ATRAKINTAS NAUJAS VEIKĖJAS</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ atrakintas</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Turi %lld trofėjų</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Tik su Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Tik su Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Su Premium gali laisvai žaisti su visais 10 gyvūnų.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Visi gyvūnai</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Visada užteks naujų užduočių mokytis.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 lygiai kiekvienai temai</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Žaisk be jokių trukdžių.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Be reklamų</string>
+	<key>premium.oneTime</key>
+	<string>Vienkartinis pirkinys. Tavo visam laikui.</string>
+	<key>premium.restore</key>
+	<string>Atkurti pirkinius</string>
+	<key>premium.start</key>
+	<string>Pradėti</string>
+	<key>premium.storeUnavailable</key>
+	<string>Parduotuvė dabar nepasiekiama. Bandyk dar kartą vėliau.</string>
+	<key>premium.unlock</key>
+	<string>Atrakinti Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Atrakinti Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Atrakink trofėjais</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Atrakinta su Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Turi Premium!</string>
+	<key>settings.character</key>
+	<string>Veikėjas</string>
+	<key>settings.characterInfo</key>
+	<string>Kiekvienas gyvūnas visam žaidimui suteikia savo spalvų temą.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Pasirinkta: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Dienos tikslas</string>
+	<key>settings.goalInfo</key>
+	<string>Dienos serijos tikslas prasideda nuo 5 minučių per dieną. Skaičiuojamas tik aktyvus žaidimo laikas.</string>
+	<key>settings.lives</key>
+	<string>Gyvybės</string>
+	<key>settings.livesInfo</key>
+	<string>Su trimis gyvybėmis žaidimas baigiasi praradus paskutinę širdelę. Neribotu režimu trofėjai skaičiuojami tik kol turi gyvybių, o vėliau gali žaisti toliau.</string>
+	<key>settings.playGoals</key>
+	<string>Žaidimo tikslai</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium atrakinta. Ačiū!</string>
+	<key>settings.title</key>
+	<string>Nustatymai</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Pasirink dienos tikslą</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Pasirink dienos arba savaitės tikslą</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld iš %3$lld minučių, %4$lld dienas iš eilės</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Dienos serija, %lld iš %lld minučių</string>
+	<key>streak.daily</key>
+	<string>Dienos serija</string>
+	<key>streak.dayOne</key>
+	<string>1 diena</string>
+	<key>tutorial.answerHint</key>
+	<string>Nežinai atsakymo? Bakstelėk užduotį ir jį pamatysi.</string>
+	<key>tutorial.complete</key>
+	<string>Šaunu! Pamoka baigta. Dabar siek rekordo!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Užšok ant teisingo atsakymo ir gauk trofėjų.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Teisingas atsakymas rodomas žaliai. Dabar užšok ant jo.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Dabar užšok ant teisingo atsakymo ir gauk trigubai daugiau trofėjų.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Surink ×3 monetą ir vieną kartą gauk trigubai daugiau trofėjų.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Gali rasti pusę arba visą gyvybę ir susigrąžinti gyvybių.</string>
+	<key>tutorial.minusOne</key>
+	<string>Venk −1. Jis kainuoja vieną trofėjų.</string>
+	<key>tutorial.move</key>
+	<string>Judink įrenginį į kairę ir dešinę. Gali pereiti ir per ekrano kraštus.</string>
+	<key>tutorial.platforms</key>
+	<string>Šokinėk ant platformų, kad kiltum aukštyn.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Čia rodomas tavo šio lygio rezultatas.</string>
+	<key>tutorial.star</key>
+	<string>Užšok ant žvaigždės, kad nušautum neteisingus atsakymus.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Pasirinkęs neteisingą atsakymą prarasi vieną iš trijų gyvybių. Pabandyk dabar.</string>
+</dict>
+</plist>

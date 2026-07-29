@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Björn</string>
+	<key>character.bunny</key>
+	<string>Kanin</string>
+	<key>character.crab</key>
+	<string>Krabba</string>
+	<key>character.dog</key>
+	<string>Hund</string>
+	<key>character.elephant</key>
+	<string>Elefant</string>
+	<key>character.fox</key>
+	<string>Räv</string>
+	<key>character.frog</key>
+	<string>Groda</string>
+	<key>character.lion</key>
+	<string>Lejon</string>
+	<key>character.octopus</key>
+	<string>Bläckfisk</string>
+	<key>character.penguin</key>
+	<string>Pingvin</string>
+	<key>character.pickerTitle</key>
+	<string>Välj figur</string>
+	<key>common.back</key>
+	<string>Tillbaka</string>
+	<key>common.cancel</key>
+	<string>Avbryt</string>
+	<key>common.continue</key>
+	<string>Fortsätt</string>
+	<key>common.done</key>
+	<string>Klar</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Spara</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Håll intryckt i 2 sekunder för att öppna utvecklarläget.</string>
+	<key>developerMode.title</key>
+	<string>Utvecklarläge</string>
+	<key>filter.addition</key>
+	<string>Addition</string>
+	<key>filter.fractions</key>
+	<string>Bråk</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Procent</string>
+	<key>filter.subtraction</key>
+	<string>Subtraktion</string>
+	<key>filter.tables</key>
+	<string>Tabeller</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld av %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Bra försök</string>
+	<key>game.encouragement.1</key>
+	<string>En bra början</string>
+	<key>game.encouragement.2</key>
+	<string>Fortsätt öva</string>
+	<key>game.encouragement.3</key>
+	<string>Inte alls illa</string>
+	<key>game.encouragement.4</key>
+	<string>Bra jobbat</string>
+	<key>game.encouragement.5</key>
+	<string>Snyggt jobbat</string>
+	<key>game.encouragement.6</key>
+	<string>Toppen!</string>
+	<key>game.encouragement.7</key>
+	<string>Riktigt bra spelat</string>
+	<key>game.encouragement.8</key>
+	<string>Målet är nära</string>
+	<key>game.encouragement.9</key>
+	<string>Du är nästan framme</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Du fick alla poäng.</string>
+	<key>game.end.completionSuffix</key>
+	<string>klart!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Spelet är slut</string>
+	<key>game.end.mainMenu</key>
+	<string>Huvudmeny</string>
+	<key>game.end.playAgain</key>
+	<string>Spela igen</string>
+	<key>game.highScore</key>
+	<string>Rekord</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Till huvudmenyn</string>
+	<key>game.intro.continue</key>
+	<string>Fortsätt</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Du fortsätter från %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Rätt svar markeras med grönt eftersom hjälpen är på. Pokaler räknas därför separat med *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Hjälp av</string>
+	<key>game.intro.helperOn</key>
+	<string>Hjälp på</string>
+	<key>game.intro.howItWorks</key>
+	<string>Så funkar nivån</string>
+	<key>game.intro.livesOff</key>
+	<string>Liv av</string>
+	<key>game.intro.livesOn</key>
+	<string>Liv på</string>
+	<key>game.intro.scorePaused</key>
+	<string>Din nuvarande poäng pausas.</string>
+	<key>game.intro.start</key>
+	<string>Starta nivån</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Multiplicera %@%@ med ett tal från 1 till 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>eller lägre</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Tryck var som helst för att fortsätta</string>
+	<key>game.intro.tapToStart</key>
+	<string>Tryck var som helst för att börja</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Få |1| pokal per rätt svar, upp till |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>När dina liv är slut kan du inte längre få pokaler.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Max antal pokaler för topplistan uppnått</string>
+	<key>game.status.mixMode</key>
+	<string>MIXLÄGE</string>
+	<key>game.status.scoreLocked</key>
+	<string>Pokaler räknas inte längre när dina liv är slut</string>
+	<key>game.streak.subtitle</key>
+	<string>Pokaler ×2</string>
+	<key>game.streak.title</key>
+	<string>5 i rad!</string>
+	<key>goal.period</key>
+	<string>Målperiod</string>
+	<key>goal.promptDaily</key>
+	<string>Hur många minuter vill du spela per dag?</string>
+	<key>goal.promptWeekly</key>
+	<string>Hur många minuter vill du spela per vecka?</string>
+	<key>goal.title</key>
+	<string>Spelmål</string>
+	<key>goalPeriod.daily</key>
+	<string>Dagligen</string>
+	<key>goalPeriod.weekly</key>
+	<string>Varje vecka</string>
+	<key>info.filter.addition</key>
+	<string>Bara addition</string>
+	<key>info.filter.fractions</key>
+	<string>Bara division</string>
+	<key>info.filter.header</key>
+	<string>Typer av tal</string>
+	<key>info.filter.mixed</key>
+	<string>Blandade räknesätt</string>
+	<key>info.filter.percentages</key>
+	<string>Bara procent</string>
+	<key>info.filter.subtraction</key>
+	<string>Bara subtraktion</string>
+	<key>info.filter.tables</key>
+	<string>Bara multiplikation</string>
+	<key>info.mode.fractions.header</key>
+	<string>Delar</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>En eller flera delar</string>
+	<key>info.mode.fractions.single</key>
+	<string>Alltid en del</string>
+	<key>info.mode.header</key>
+	<string>Ordning</string>
+	<key>info.mode.mixed</key>
+	<string>Blandat med lägre nivåer</string>
+	<key>info.mode.order</key>
+	<string>Fast ordning</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Med decimaltal</string>
+	<key>info.mode.percentages.header</key>
+	<string>Typ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Utan decimaltal</string>
+	<key>info.mode.random</key>
+	<string>Slumpmässig ordning</string>
+	<key>info.super.all</key>
+	<string>Addition, subtraktion, multiplikation, division och procent</string>
+	<key>info.super.basic</key>
+	<string>Addition och subtraktion</string>
+	<key>info.super.fraction</key>
+	<string>Addition, subtraktion, multiplikation och division</string>
+	<key>info.super.times</key>
+	<string>Addition, subtraktion och multiplikation</string>
+	<key>language.select</key>
+	<string>Välj språk</string>
+	<key>lives.three</key>
+	<string>3 liv</string>
+	<key>lives.unlimited</key>
+	<string>Obegränsat</string>
+	<key>menu.accessibility.character</key>
+	<string>Figur</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Tryck för att byta figur. Håll intryckt i två sekunder för att börja om från välkomstskärmen.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Välj %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Max uppnått %lld gånger</string>
+	<key>menu.moreLevels</key>
+	<string>Fler nivåer</string>
+	<key>menu.options</key>
+	<string>Spelalternativ</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premiumtabeller</string>
+	<key>menu.startHere</key>
+	<string>Börja här</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Lås upp mer med Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Flera</string>
+	<key>mode.fractions.single</key>
+	<string>En</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Blandat</string>
+	<key>mode.order</key>
+	<string>Ordning</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimal</string>
+	<key>mode.percentages.whole</key>
+	<string>Heltal</string>
+	<key>mode.random</key>
+	<string>Slump</string>
+	<key>mode.standard</key>
+	<string>Standard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Du får bara tal med |addition|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Du lägger till %lld |eller mindre| till ett annat tal.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Du lägger alltid till %lld i |stigande| ordning.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Du lägger alltid till %lld till ett |slumpmässigt| tal.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Addition · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Lägg ihop två tal.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Svaret är högst %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Addera upp till %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Du får bara tal med |bråk|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Du får bråk från den här nivån och |tidigare nivåer|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Du tar alltid |1 del| av %lld lika delar.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Räkna ut bråk av jämna tal från nivå %lld och tidigare nivåer.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Talen är jämna, så svaren är alltid heltal.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Bråk till %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Du tar en eller |flera delar| av %lld lika delar.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Bråk · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Räkna ut en del av en helhet och gör bråk likvärdiga.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Addera och subtrahera bråk med samma nämnare.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Blandade bråk</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Du får bara tal med |procent|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Du får procent från den här nivån och |tidigare nivåer|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Du räknar alltid ut %@, och svaret är ett |heltal|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Räkna ut procent av jämna tal upp till %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Talen är jämna, så svaren är alltid heltal.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Procent till %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Du räknar alltid ut %@, och svaret kan också vara ett |decimaltal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Räkna ut %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Räkna ut en procentandel av ett tal.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Omvandla mellan procent och bråk.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Blandad procent</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Du får bara tal med |subtraktion|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Du tar bort %lld |eller mindre| från ett annat tal.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Du tar alltid bort %lld i |fallande| ordning.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Du tar alltid bort %lld från ett |slumpmässigt| tal.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Subtraktion · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Det första talet är högst %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Svaret kan bli mindre än noll.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Under noll</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Subtrahera upp till %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Subtrahera två tal.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Svårigheten kan öka till |nivå %lld| för varje vald kategori.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Öva på addition, subtraktion, tabeller, bråk och procent blandat.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Öva på addition och subtraktion blandat.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Öva på addition, subtraktion, tabeller och bråk blandat.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Öva på addition, subtraktion och tabeller blandat.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Du får bara tal med |multiplikation|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Du får alla tabeller |upp till %lld| blandade.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Varje tabell gånger ett tal från |1 till 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Du får %lld:ans tabell i |stigande| ordning.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Du får %lld:ans tabell i |slumpmässig| ordning.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld:ans tabell</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Öva på tabellerna från %lld till %lld blandat.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tabeller %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Ditt namn</string>
+	<key>name.whatsYourName</key>
+	<string>Vad heter du?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Olika blandade tal.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Redan ganska bra</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Öva på tal i ordning.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Har just börjat</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Tal i slumpmässig ordning.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Har övat lite</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Välj en startpunkt för %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>det här ämnet</string>
+	<key>onboarding.level.title</key>
+	<string>Hur bra är du redan på det här?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Nu börjar vi. Vad heter du?</string>
+	<key>onboarding.name.title</key>
+	<string>Det har aldrig varit så kul att räkna!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Välj ett ämne att börja med.</string>
+	<key>onboarding.subject.title</key>
+	<string>Vad vill du lära dig?</string>
+	<key>options.capAt30.info</key>
+	<string>Varje nivå har ett pokalmål på högst 50. När detta är på avslutas spelet automatiskt när du når målet.</string>
+	<key>options.capAt30.title</key>
+	<string>Sluta vid målet</string>
+	<key>options.helperMode.info</key>
+	<string>I hjälpläget visas rätt svar alltid i grönt. Pokaler du får i detta läge räknas separat och markeras med en stjärna.</string>
+	<key>options.helperMode.title</key>
+	<string>Hjälpläge</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Du börjar alltid med 3 liv. Spelet slutar när dina liv är slut. Slå på detta för att fortsätta spela och öva när liven är slut.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Obegränsade liv</string>
+	<key>parentGate.approved</key>
+	<string>Godkänd</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Försök: %1$lld av %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Håll %@ intryckt i %lld sekunder.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Håll: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Håll %@ intryckt i %lld sekunder. Tryck sedan på %@ %lld gånger.</string>
+	<key>parentGate.shape.circle</key>
+	<string>cirkel</string>
+	<key>parentGate.shape.diamond</key>
+	<string>romb</string>
+	<key>parentGate.shape.heart</key>
+	<string>hjärta</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>sexhörning</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>fyrkant</string>
+	<key>parentGate.shape.star</key>
+	<string>stjärna</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triangel</string>
+	<key>parentGate.stepOne</key>
+	<string>Steg 1 av 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Steg 2 av 2</string>
+	<key>parentGate.subtitle</key>
+	<string>För att skydda unga spelare måste en vuxen klara kontrollen innan köpet kan fortsätta.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Tryck nu på %2$@ %1$lld gånger.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Tryck: %1$lld av %2$lld</string>
+	<key>parentGate.title</key>
+	<string>En vuxen måste godkänna</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Spela fritt med alla 10 djur med Premium.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Alla djur</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>99 nivåer per ämne</string>
+	<key>premium.feature.levels.title</key>
+	<string>Alltid nya tal att öva på.</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Inga annonser</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Spela helt utan avbrott.</string>
+	<key>premium.oneTime</key>
+	<string>Engångsköp. Ditt för alltid.</string>
+	<key>premium.restore</key>
+	<string>Återställ köp</string>
+	<key>premium.storeUnavailable</key>
+	<string>Butiken är inte tillgänglig just nu. Försök igen senare.</string>
+	<key>premium.unlock</key>
+	<string>Lås upp Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Lås upp Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Du har Premium!</string>
+	<key>settings.character</key>
+	<string>Figur</string>
+	<key>settings.characterInfo</key>
+	<string>Varje djur ger hela spelet sitt eget färgtema.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Anpassat: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Dagsmål</string>
+	<key>settings.goalInfo</key>
+	<string>Svitmålet börjar på 5 minuter per dag. Bara aktiv speltid räknas.</string>
+	<key>settings.lives</key>
+	<string>Liv</string>
+	<key>settings.livesInfo</key>
+	<string>Med tre liv slutar spelet efter ditt sista hjärta. I obegränsat läge räknas pokaler bara så länge du har liv kvar. Sedan kan du fortsätta spela.</string>
+	<key>settings.playGoals</key>
+	<string>Spelmål</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium upplåst. Tack!</string>
+	<key>settings.title</key>
+	<string>Inställningar</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Välj ett dagsmål</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Välj ett dags- eller veckomål</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld av %3$lld minuter, %4$lld dagar i rad</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Daglig svit, %lld av %lld minuter</string>
+	<key>streak.daily</key>
+	<string>Daglig svit</string>
+	<key>streak.dayOne</key>
+	<string>Dag 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Vet du inte svaret? Tryck på talet för att se det.</string>
+	<key>tutorial.complete</key>
+	<string>Bra jobbat! Guiden är klar. Försök nu slå rekordet!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Hoppa på rätt svar för att få en pokal.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Rätt svar visas i grönt. Hoppa nu på rätt svar.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Hoppa nu på rätt svar för att få tre gånger fler pokaler.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Ta ×3-myntet för att få tre gånger fler pokaler en gång.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Du kan hitta ett halvt eller helt liv och få tillbaka liv.</string>
+	<key>tutorial.minusOne</key>
+	<string>Undvik −1. Den kostar en pokal.</string>
+	<key>tutorial.move</key>
+	<string>Luta enheten för att gå åt vänster och höger. Du kan också gå genom skärmens kanter.</string>
+	<key>tutorial.platforms</key>
+	<string>Hoppa på plattformarna för att komma uppåt.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Här visas din poäng för nivån.</string>
+	<key>tutorial.star</key>
+	<string>Hoppa in i stjärnan för att skjuta bort fel svar.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Väljer du fel svar förlorar du ett av dina tre liv. Prova nu.</string>
+</dict>
+</plist>

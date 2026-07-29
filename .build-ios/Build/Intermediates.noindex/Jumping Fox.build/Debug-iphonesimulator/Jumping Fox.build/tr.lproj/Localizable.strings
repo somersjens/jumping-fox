@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ayı</string>
+	<key>character.bunny</key>
+	<string>Tavşan</string>
+	<key>character.crab</key>
+	<string>Yengeç</string>
+	<key>character.dog</key>
+	<string>Köpek</string>
+	<key>character.elephant</key>
+	<string>Fil</string>
+	<key>character.fox</key>
+	<string>Tilki</string>
+	<key>character.frog</key>
+	<string>Kurbağa</string>
+	<key>character.lion</key>
+	<string>Aslan</string>
+	<key>character.octopus</key>
+	<string>Ahtapot</string>
+	<key>character.penguin</key>
+	<string>Penguen</string>
+	<key>character.pickerTitle</key>
+	<string>Karakterini seç</string>
+	<key>common.back</key>
+	<string>Geri</string>
+	<key>common.cancel</key>
+	<string>İptal</string>
+	<key>common.continue</key>
+	<string>Devam</string>
+	<key>common.done</key>
+	<string>Bitti</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld dk</string>
+	<key>common.save</key>
+	<string>Kaydet</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Geliştirici modunu açmak için 2 saniye basılı tut.</string>
+	<key>developerMode.title</key>
+	<string>Geliştirici modu</string>
+	<key>filter.addition</key>
+	<string>Toplama</string>
+	<key>filter.fractions</key>
+	<string>Kesirler</string>
+	<key>filter.mixed</key>
+	<string>Süper karışım</string>
+	<key>filter.percentages</key>
+	<string>Yüzdeler</string>
+	<key>filter.subtraction</key>
+	<string>Çıkarma</string>
+	<key>filter.tables</key>
+	<string>Çarpım tabloları</string>
+	<key>game.accessibility.mix</key>
+	<string>Karışım</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld/%lld</string>
+	<key>game.encouragement.0</key>
+	<string>Güzel deneme</string>
+	<key>game.encouragement.1</key>
+	<string>İyi bir başlangıç</string>
+	<key>game.encouragement.2</key>
+	<string>Çalışmaya devam</string>
+	<key>game.encouragement.3</key>
+	<string>Hiç fena değil</string>
+	<key>game.encouragement.4</key>
+	<string>İyi gidiyorsun</string>
+	<key>game.encouragement.5</key>
+	<string>Güzel başarı</string>
+	<key>game.encouragement.6</key>
+	<string>Aferin</string>
+	<key>game.encouragement.7</key>
+	<string>Çok iyi oynadın</string>
+	<key>game.encouragement.8</key>
+	<string>Bitiş yaklaştı</string>
+	<key>game.encouragement.9</key>
+	<string>Neredeyse bitti</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Her puanı hak ettin.</string>
+	<key>game.end.completionSuffix</key>
+	<string>tamamlandı!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Oyun bitti</string>
+	<key>game.end.mainMenu</key>
+	<string>Ana menü</string>
+	<key>game.end.playAgain</key>
+	<string>Tekrar oyna</string>
+	<key>game.highScore</key>
+	<string>En yüksek puan</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Ana menüye dön</string>
+	<key>game.intro.continue</key>
+	<string>Devam et</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld noktasından devam edeceksin</string>
+	<key>game.intro.helperBullet</key>
+	<string>Yardımcı açık olduğu için doğru cevap yeşil gösterilir. Bu yüzden kupalar * ile ayrı sayılır.</string>
+	<key>game.intro.helperOff</key>
+	<string>Yardımcı kapalı</string>
+	<key>game.intro.helperOn</key>
+	<string>Yardımcı açık</string>
+	<key>game.intro.howItWorks</key>
+	<string>Bu seviye nasıl oynanır?</string>
+	<key>game.intro.livesOff</key>
+	<string>Canlar kapalı</string>
+	<key>game.intro.livesOn</key>
+	<string>Canlar açık</string>
+	<key>game.intro.scorePaused</key>
+	<string>Şu anki puanın duraklatılacak.</string>
+	<key>game.intro.start</key>
+	<string>Seviyeyi başlat</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ sayısını 1 ile 12 arasındaki bir sayıyla çarp.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>veya daha az</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Devam etmek için herhangi bir yere dokun</string>
+	<key>game.intro.tapToStart</key>
+	<string>Başlamak için herhangi bir yere dokun</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Her doğru cevapta |1| kupa kazan, en fazla |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Canların bitince artık kupa kazanamazsın.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Liderlik tablosu için en fazla kupaya ulaştın</string>
+	<key>game.status.mixMode</key>
+	<string>KARIŞIM MODU</string>
+	<key>game.status.scoreLocked</key>
+	<string>Canların bitince kupalar artık sayılmaz</string>
+	<key>game.streak.subtitle</key>
+	<string>Kupalar ×2</string>
+	<key>game.streak.title</key>
+	<string>Üst üste 5!</string>
+	<key>goal.period</key>
+	<string>Hedef dönemi</string>
+	<key>goal.promptDaily</key>
+	<string>Günde kaç dakika oynamak istiyorsun?</string>
+	<key>goal.promptWeekly</key>
+	<string>Haftada kaç dakika oynamak istiyorsun?</string>
+	<key>goal.title</key>
+	<string>Oyun hedefi</string>
+	<key>goalPeriod.daily</key>
+	<string>Günlük</string>
+	<key>goalPeriod.weekly</key>
+	<string>Haftalık</string>
+	<key>info.filter.addition</key>
+	<string>Yalnızca toplama</string>
+	<key>info.filter.fractions</key>
+	<string>Yalnızca bölme</string>
+	<key>info.filter.header</key>
+	<string>Soru türleri</string>
+	<key>info.filter.mixed</key>
+	<string>Karışık işlemler</string>
+	<key>info.filter.percentages</key>
+	<string>Yalnızca yüzdeler</string>
+	<key>info.filter.subtraction</key>
+	<string>Yalnızca çıkarma</string>
+	<key>info.filter.tables</key>
+	<string>Yalnızca çarpma</string>
+	<key>info.mode.fractions.header</key>
+	<string>Parçalar</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Tek ve birden çok parça</string>
+	<key>info.mode.fractions.single</key>
+	<string>Her zaman tek parça</string>
+	<key>info.mode.header</key>
+	<string>Sıra</string>
+	<key>info.mode.mixed</key>
+	<string>Önceki seviyelerle karışık</string>
+	<key>info.mode.order</key>
+	<string>Sabit sıra</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Ondalıklı sayılarla</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tür</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Ondalıklı sayılar olmadan</string>
+	<key>info.mode.random</key>
+	<string>Rastgele sıra</string>
+	<key>info.super.all</key>
+	<string>Toplama, çıkarma, çarpma, bölme ve yüzdeler</string>
+	<key>info.super.basic</key>
+	<string>Toplama ve çıkarma</string>
+	<key>info.super.fraction</key>
+	<string>Toplama, çıkarma, çarpma ve bölme</string>
+	<key>info.super.times</key>
+	<string>Toplama, çıkarma ve çarpma</string>
+	<key>language.select</key>
+	<string>Dil seç</string>
+	<key>lives.three</key>
+	<string>3 can</string>
+	<key>lives.unlimited</key>
+	<string>Sınırsız</string>
+	<key>menu.accessibility.character</key>
+	<string>Karakter</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Karakterini değiştirmek için dokun; karşılama ekranından yeniden başlamak için iki saniye basılı tut.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ seç</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS.</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>En yüksek değere %lld kez ulaşıldı</string>
+	<key>menu.moreLevels</key>
+	<string>Daha fazla seviye</string>
+	<key>menu.options</key>
+	<string>Oyun seçenekleri</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium tablolar</string>
+	<key>menu.startHere</key>
+	<string>Buradan başla</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium ile daha fazlasını aç</string>
+	<key>mode.fractions.multiple</key>
+	<string>Birden çok</string>
+	<key>mode.fractions.single</key>
+	<string>Tek</string>
+	<key>mode.mix</key>
+	<string>Karışım</string>
+	<key>mode.mixed</key>
+	<string>Karışık</string>
+	<key>mode.order</key>
+	<string>Sıra</string>
+	<key>mode.percentages.decimal</key>
+	<string>Ondalık</string>
+	<key>mode.percentages.whole</key>
+	<string>Tam</string>
+	<key>mode.random</key>
+	<string>Rastgele</string>
+	<key>mode.standard</key>
+	<string>Standart</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Yalnızca |toplama| soruları gelir.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Başka bir sayıya %lld |veya daha az| eklersin.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Her zaman %lld sayısını |artan| sırayla eklersin.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Her zaman %lld sayısını |rastgele| bir sayıya eklersin.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Toplama · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>İki sayıyı toplamaya devam et.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Cevap en fazla %lld olur.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld'ye kadar topla</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Yalnızca |kesir| soruları gelir.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Bu seviyeden ve |önceki seviyelerden| kesirler gelir.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld eşit parçadan her zaman |1 parça| alırsın.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld. ve önceki seviyelerdeki yuvarlak sayıların kesirlerini bul.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Sayılar yuvarlak kalır, bu yüzden cevaplar hep tam sayıdır.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld'ye kadar kesirler</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld eşit parçadan bir veya |birden çok parça| alırsın.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Kesirler · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Bir bütünün parçasını bul ve kesirleri eşitle.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Paydaları aynı olan kesirleri topla ve çıkar.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Karışık kesirler</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Yalnızca |yüzde| soruları gelir.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Bu seviyeden ve |önceki seviyelerden| yüzdeler gelir.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Her zaman %@ hesaplarsın ve cevap bir |tam sayı| olur.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld'ye kadar yuvarlak sayıların yüzdelerini bul.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Miktarlar yuvarlak kalır, bu yüzden cevaplar hep tam sayıdır.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld'ye kadar yüzdeler</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Her zaman %@ hesaplarsın ve cevap bir |ondalık sayı| da olabilir.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ hesapla</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Bir sayının yüzdesini bul.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Yüzdeleri kesirlere, kesirleri yüzdelere çevir.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Karışık yüzdeler</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Yalnızca |çıkarma| soruları gelir.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Başka bir sayıdan %lld |veya daha az| çıkarırsın.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Her zaman %lld sayısını |azalan| sırayla çıkarırsın.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Her zaman |rastgele| bir sayıdan %lld çıkarırsın.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Çıkarma · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>İlk sayı en fazla %lld olur.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Cevap sıfırın altına düşebilir.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Sıfırın altı</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld'ye kadar çıkar</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>İki sayıyı çıkarmaya devam et.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Her seçili bölümün zorluğu |%lld. seviyeye| kadar çıkabilir.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Toplama, çıkarma, çarpım tabloları, kesirler ve yüzdeleri karışık çalış.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Süper karışım %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Toplama ve çıkarmayı karışık çalış.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Süper karışım %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Toplama, çıkarma, çarpım tabloları ve kesirleri karışık çalış.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Süper karışım %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Toplama, çıkarma ve çarpım tablolarını karışık çalış.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Süper karışım %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Yalnızca |çarpma| soruları gelir.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld'ye kadar| tüm çarpım tabloları karışık gelir.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Her tablo |1 ile 12| arasındaki bir sayıyla çarpılır.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld'ler çarpım tablosu |artan| sırayla gelir.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld'ler çarpım tablosu |rastgele| sırayla gelir.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld'ler tablosu</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld ile %lld arasındaki tabloları karışık çalış.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tablolar %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Adın</string>
+	<key>name.whatsYourName</key>
+	<string>Adın ne?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Farklı karışık işlemler bir arada.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Şimdiden oldukça iyi</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Sıralı işlemlerle çalış.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Yeni başladım</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>İşlemler rastgele sırada.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Biraz çalıştım</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ için başlangıç noktası seç.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>bu konu</string>
+	<key>onboarding.level.title</key>
+	<string>Bunda ne kadar iyisin?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Haydi başlayalım. Adın ne?</string>
+	<key>onboarding.name.title</key>
+	<string>İşlem yapmak hiç bu kadar eğlenceli olmamıştı!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Başlamak için bir konu seç.</string>
+	<key>onboarding.subject.title</key>
+	<string>Ne öğrenmek istiyorsun?</string>
+	<key>options.capAt30.info</key>
+	<string>Her seviyenin en fazla 50 kupalık bir hedefi vardır. Bu seçenek açıksa hedefe ulaşınca oyun otomatik olarak biter.</string>
+	<key>options.capAt30.title</key>
+	<string>Hedefte bitir</string>
+	<key>options.helperMode.info</key>
+	<string>Yardımcı Modu'nda doğru cevap her zaman yeşil gösterilir. Bu modda kazanılan kupalar ayrı sayılır ve yıldızla işaretlenir.</string>
+	<key>options.helperMode.title</key>
+	<string>Yardımcı modu</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Her zaman 3 canla başlarsın. Canların bitince oyun sona erer. Canların bittikten sonra oynamaya ve çalışmaya devam etmek için bu seçeneği aç.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Sınırsız can</string>
+	<key>parentGate.approved</key>
+	<string>Onaylandı</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Deneme: %1$lld/%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ şekline %lld saniye basılı tut.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Basılı tut: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ şekline %lld saniye basılı tut. Ardından %3$@ şekline %4$lld kez dokun.</string>
+	<key>parentGate.shape.circle</key>
+	<string>daire</string>
+	<key>parentGate.shape.diamond</key>
+	<string>baklava</string>
+	<key>parentGate.shape.heart</key>
+	<string>kalp</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>altıgen</string>
+	<key>parentGate.shape.plus</key>
+	<string>artı</string>
+	<key>parentGate.shape.square</key>
+	<string>kare</string>
+	<key>parentGate.shape.star</key>
+	<string>yıldız</string>
+	<key>parentGate.shape.triangle</key>
+	<string>üçgen</string>
+	<key>parentGate.stepOne</key>
+	<string>1. adım/2</string>
+	<key>parentGate.stepTwo</key>
+	<string>2. adım/2</string>
+	<key>parentGate.subtitle</key>
+	<string>Küçük oyuncuları korumak için satın alma işlemine geçmeden önce bir yetişkin bu kontrolü tamamlamalıdır.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Şimdi %2$@ şekline %1$lld kez dokun.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Dokunma: %1$lld/%2$lld</string>
+	<key>parentGate.title</key>
+	<string>Yetişkin onayı gerekli</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld kupadan itibaren kullanılabilir</string>
+	<key>premium.availableFromStart</key>
+	<string>Başlangıçtan itibaren kullanılabilir</string>
+	<key>premium.characterUnlocked</key>
+	<string>YENİ KARAKTER AÇILDI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ açıldı</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>%lld kupa kazandın</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Yalnızca Premium ile</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Yalnızca Premium ile</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium ile 10 hayvanın hepsiyle özgürce oynarsın.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Tüm hayvanlara erişim</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Çalışmak için her zaman yeterince yeni soru.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Konu başına 99 seviye</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Hiç kesinti olmadan oyna.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Reklamsız</string>
+	<key>premium.oneTime</key>
+	<string>Tek seferlik satın alma. Sonsuza kadar senin.</string>
+	<key>premium.restore</key>
+	<string>Satın alımları geri yükle</string>
+	<key>premium.start</key>
+	<string>Başla</string>
+	<key>premium.storeUnavailable</key>
+	<string>Mağaza şu anda kullanılamıyor. Lütfen daha sonra tekrar dene.</string>
+	<key>premium.unlock</key>
+	<string>Premium'u aç</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium'u aç · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Kupalarla aç</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ile açıldı</string>
+	<key>premium.youHavePremium</key>
+	<string>Premium'un var!</string>
+	<key>settings.character</key>
+	<string>Karakter</string>
+	<key>settings.characterInfo</key>
+	<string>Her hayvan tüm oyuna kendi renk temasını getirir.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Özel: %lld dk</string>
+	<key>settings.dailyGoal</key>
+	<string>Günlük hedef</string>
+	<key>settings.goalInfo</key>
+	<string>Seri hedefi günde 5 dakikayla başlar. Yalnızca aktif oyun süresi sayılır.</string>
+	<key>settings.lives</key>
+	<string>Canlar</string>
+	<key>settings.livesInfo</key>
+	<string>Üç canla oynarken son kalbinden sonra oyun biter. Sınırsız modda kupalar yalnızca canın varken sayılır; sonra oynamaya devam edebilirsin.</string>
+	<key>settings.playGoals</key>
+	<string>Oyun hedefleri</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium açıldı. Teşekkürler!</string>
+	<key>settings.title</key>
+	<string>Ayarlar</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Günlük hedef seç</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Günlük veya haftalık hedef seç</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld/%3$lld dakika, üst üste %4$lld gün</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Günlük seri, %lld/%lld dakika</string>
+	<key>streak.daily</key>
+	<string>Günlük seri</string>
+	<key>streak.dayOne</key>
+	<string>1. gün</string>
+	<key>tutorial.answerHint</key>
+	<string>Cevabı bilmiyor musun? Görmek için soruya dokun.</string>
+	<key>tutorial.complete</key>
+	<string>Aferin! Öğretici tamamlandı. Şimdi en yüksek puanı yap!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Bir kupa toplamak için doğru cevabın üzerine zıpla.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Doğru cevap yeşil gösteriliyor. Şimdi doğru cevabın üzerine zıpla.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Üç kat kupa toplamak için şimdi doğru cevabın üzerine zıpla.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Bir kez üç kat kupa kazanmak için ×3 jetonunu al.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Canlarını geri kazanmak için yarım veya tam can bulabilirsin.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1'den kaçın. Bir kupanı götürür.</string>
+	<key>tutorial.move</key>
+	<string>Sola ve sağa gitmek için cihazını hareket ettir. Ekranın kenarlarından da geçebilirsin.</string>
+	<key>tutorial.platforms</key>
+	<string>Yukarı çıkmak için platformların üzerine zıpla.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Bu seviyedeki puanın burada gösterilir.</string>
+	<key>tutorial.star</key>
+	<string>Yanlış cevapları fırlatmak için yıldıza zıpla.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Yanlış cevap seçersen üç canından birini kaybedersin. Şimdi dene.</string>
+</dict>
+</plist>

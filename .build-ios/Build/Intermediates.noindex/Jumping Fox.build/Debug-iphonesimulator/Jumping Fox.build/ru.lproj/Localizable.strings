@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Медведь</string>
+	<key>character.bunny</key>
+	<string>Зайка</string>
+	<key>character.crab</key>
+	<string>Краб</string>
+	<key>character.dog</key>
+	<string>Пёс</string>
+	<key>character.elephant</key>
+	<string>Слон</string>
+	<key>character.fox</key>
+	<string>Лис</string>
+	<key>character.frog</key>
+	<string>Лягушка</string>
+	<key>character.lion</key>
+	<string>Лев</string>
+	<key>character.octopus</key>
+	<string>Осьминог</string>
+	<key>character.penguin</key>
+	<string>Пингвин</string>
+	<key>character.pickerTitle</key>
+	<string>Выбери героя</string>
+	<key>common.back</key>
+	<string>Назад</string>
+	<key>common.cancel</key>
+	<string>Отмена</string>
+	<key>common.continue</key>
+	<string>Дальше</string>
+	<key>common.done</key>
+	<string>Готово</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld мин</string>
+	<key>common.save</key>
+	<string>Сохранить</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Нажмите и удерживайте 2 секунды, чтобы открыть режим разработчика.</string>
+	<key>developerMode.title</key>
+	<string>Режим разработчика</string>
+	<key>filter.addition</key>
+	<string>Сложение</string>
+	<key>filter.fractions</key>
+	<string>Дроби</string>
+	<key>filter.mixed</key>
+	<string>Супермикс</string>
+	<key>filter.percentages</key>
+	<string>Проценты</string>
+	<key>filter.subtraction</key>
+	<string>Вычитание</string>
+	<key>filter.tables</key>
+	<string>Таблицы</string>
+	<key>game.accessibility.mix</key>
+	<string>Микс</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld из %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Хорошая попытка</string>
+	<key>game.encouragement.1</key>
+	<string>Начало положено</string>
+	<key>game.encouragement.2</key>
+	<string>Продолжай тренироваться</string>
+	<key>game.encouragement.3</key>
+	<string>Совсем неплохо</string>
+	<key>game.encouragement.4</key>
+	<string>Отлично идёт</string>
+	<key>game.encouragement.5</key>
+	<string>Хороший результат</string>
+	<key>game.encouragement.6</key>
+	<string>Молодец</string>
+	<key>game.encouragement.7</key>
+	<string>Сыграно отлично</string>
+	<key>game.encouragement.8</key>
+	<string>Финиш уже близко</string>
+	<key>game.encouragement.9</key>
+	<string>Ты почти у цели</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Каждое очко заслужено.</string>
+	<key>game.end.completionSuffix</key>
+	<string>готово!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Игра окончена</string>
+	<key>game.end.mainMenu</key>
+	<string>Главное меню</string>
+	<key>game.end.playAgain</key>
+	<string>Ещё раз</string>
+	<key>game.highScore</key>
+	<string>Рекорд</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>В главное меню</string>
+	<key>game.intro.continue</key>
+	<string>Продолжить</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Ты продолжишь с %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Правильный ответ выделен зелёным, потому что подсказка включена. Поэтому трофеи со * считаются отдельно.</string>
+	<key>game.intro.helperOff</key>
+	<string>Подсказка выкл.</string>
+	<key>game.intro.helperOn</key>
+	<string>Подсказка вкл.</string>
+	<key>game.intro.howItWorks</key>
+	<string>Как устроен уровень</string>
+	<key>game.intro.livesOff</key>
+	<string>Жизни выкл.</string>
+	<key>game.intro.livesOn</key>
+	<string>Жизни вкл.</string>
+	<key>game.intro.scorePaused</key>
+	<string>Твой текущий счёт будет сохранён.</string>
+	<key>game.intro.start</key>
+	<string>Начать уровень</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Умножь %@%@ на число от 1 до 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>или меньше</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Нажми в любом месте, чтобы продолжить</string>
+	<key>game.intro.tapToStart</key>
+	<string>Нажми в любом месте, чтобы начать</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Получай по |1| трофею за верный ответ, максимум |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Когда жизни закончатся, трофеи больше не начисляются.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Достигнут максимум трофеев для таблицы лидеров</string>
+	<key>game.status.mixMode</key>
+	<string>РЕЖИМ «МИКС»</string>
+	<key>game.status.scoreLocked</key>
+	<string>Когда жизни закончатся, трофеи больше не считаются</string>
+	<key>game.streak.subtitle</key>
+	<string>Трофеи ×2</string>
+	<key>game.streak.title</key>
+	<string>5 подряд!</string>
+	<key>goal.period</key>
+	<string>Период цели</string>
+	<key>goal.promptDaily</key>
+	<string>Сколько минут в день ты хочешь играть?</string>
+	<key>goal.promptWeekly</key>
+	<string>Сколько минут в неделю ты хочешь играть?</string>
+	<key>goal.title</key>
+	<string>Цель игры</string>
+	<key>goalPeriod.daily</key>
+	<string>Ежедневно</string>
+	<key>goalPeriod.weekly</key>
+	<string>Еженедельно</string>
+	<key>info.filter.addition</key>
+	<string>Только сложение</string>
+	<key>info.filter.fractions</key>
+	<string>Только деление</string>
+	<key>info.filter.header</key>
+	<string>Виды примеров</string>
+	<key>info.filter.mixed</key>
+	<string>Смешанные действия</string>
+	<key>info.filter.percentages</key>
+	<string>Только проценты</string>
+	<key>info.filter.subtraction</key>
+	<string>Только вычитание</string>
+	<key>info.filter.tables</key>
+	<string>Только умножение</string>
+	<key>info.mode.fractions.header</key>
+	<string>Части</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Одна или несколько частей</string>
+	<key>info.mode.fractions.single</key>
+	<string>Всегда одна часть</string>
+	<key>info.mode.header</key>
+	<string>Порядок</string>
+	<key>info.mode.mixed</key>
+	<string>Вместе с прошлыми уровнями</string>
+	<key>info.mode.order</key>
+	<string>По порядку</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>С десятичными числами</string>
+	<key>info.mode.percentages.header</key>
+	<string>Тип</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Без десятичных чисел</string>
+	<key>info.mode.random</key>
+	<string>Случайный порядок</string>
+	<key>info.super.all</key>
+	<string>Сложение, вычитание, умножение, деление и проценты</string>
+	<key>info.super.basic</key>
+	<string>Сложение и вычитание</string>
+	<key>info.super.fraction</key>
+	<string>Сложение, вычитание, умножение и деление</string>
+	<key>info.super.times</key>
+	<string>Сложение, вычитание и умножение</string>
+	<key>language.select</key>
+	<string>Выбери язык</string>
+	<key>lives.three</key>
+	<string>3 жизни</string>
+	<key>lives.unlimited</key>
+	<string>Без ограничений</string>
+	<key>menu.accessibility.character</key>
+	<string>Персонаж</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Нажми, чтобы сменить персонажа; удерживай две секунды, чтобы начать заново с экрана приветствия.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Выбери %@</string>
+	<key>menu.maxScore</key>
+	<string>30 МАКС.</string>
+	<key>menu.maximumCount</key>
+	<string>МАКС.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Максимум достигнут %lld раз</string>
+	<key>menu.moreLevels</key>
+	<string>Ещё уровни</string>
+	<key>menu.options</key>
+	<string>Настройки игры</string>
+	<key>menu.premium</key>
+	<string>Премиум</string>
+	<key>menu.premiumTables</key>
+	<string>Премиум-таблицы</string>
+	<key>menu.startHere</key>
+	<string>Начни здесь</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Открой больше с Премиум</string>
+	<key>mode.fractions.multiple</key>
+	<string>Несколько</string>
+	<key>mode.fractions.single</key>
+	<string>Одна</string>
+	<key>mode.mix</key>
+	<string>Микс</string>
+	<key>mode.mixed</key>
+	<string>Смешанный</string>
+	<key>mode.order</key>
+	<string>Порядок</string>
+	<key>mode.percentages.decimal</key>
+	<string>Десятичные</string>
+	<key>mode.percentages.whole</key>
+	<string>Целые</string>
+	<key>mode.random</key>
+	<string>Случайно</string>
+	<key>mode.standard</key>
+	<string>Обычный</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Будут только примеры на |сложение|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Ты прибавляешь %lld |или меньше| к другому числу.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Ты всегда прибавляешь %lld в |возрастающем| порядке.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Ты всегда прибавляешь %lld к |случайному| числу.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Сложение · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Складывай два числа.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Ответ не больше %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Сложение до %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Будут только примеры с |дробями|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Будут дроби этого и |предыдущих уровней|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Ты берёшь |1 часть| из %lld равных частей.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Находи дроби от круглых чисел из уровня %lld и предыдущих.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Числа остаются круглыми, поэтому ответы всегда целые.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Дроби до %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Ты берёшь одну или |несколько частей| из %lld равных частей.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Дроби · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Найди часть целого и сделай дроби равными.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Складывай и вычитай дроби с одинаковым знаменателем.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Дроби вперемешку</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Будут только примеры на |проценты|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Будут проценты этого и |предыдущих уровней|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Ты всегда находишь %@, а ответ — |целое число|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Находи проценты от круглых чисел до %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Значения остаются круглыми, поэтому ответы всегда целые.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Проценты до %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Ты всегда находишь %@, а ответ может быть |десятичным|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Вычисли %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Найди процент от числа.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Переводи проценты в дроби и обратно.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Проценты вперемешку</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Будут только примеры на |вычитание|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Ты вычитаешь %lld |или меньше| из другого числа.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Ты всегда вычитаешь %lld в |убывающем| порядке.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Ты всегда вычитаешь %lld из |случайного| числа.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Вычитание · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Первое число не больше %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Ответ может быть меньше нуля.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Ниже нуля</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Вычитание до %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Вычитай одно число из другого.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Сложность каждой выбранной темы может расти до |уровня %lld|.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Тренируй сложение, вычитание, таблицы, дроби и проценты вперемешку.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Тренируй сложение и вычитание вперемешку.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Тренируй сложение, вычитание, таблицы и дроби вперемешку.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Тренируй сложение, вычитание и таблицы вперемешку.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Будут только примеры на |умножение|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Все таблицы |до %lld| будут вперемешку.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Каждая таблица умножается на число |от 1 до 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Таблица на %lld в |возрастающем| порядке.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Таблица на %lld в |случайном| порядке.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Таблица на %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Тренируй таблицы от %lld до %lld вперемешку.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Таблицы %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Твоё имя</string>
+	<key>name.whatsYourName</key>
+	<string>Как тебя зовут?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Разные смешанные примеры.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Уже неплохо</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Примеры по порядку.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Только начал</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Примеры в случайном порядке.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Уже тренировался</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Выбери начальный уровень для %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>эта тема</string>
+	<key>onboarding.level.title</key>
+	<string>Насколько хорошо ты это умеешь?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Давай начнём. Как тебя зовут?</string>
+	<key>onboarding.name.title</key>
+	<string>Решать примеры ещё никогда не было так весело!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Выбери тему для начала.</string>
+	<key>onboarding.subject.title</key>
+	<string>Чему ты хочешь научиться?</string>
+	<key>options.capAt30.info</key>
+	<string>На каждом уровне можно получить до 50 трофеев. Если включить эту настройку, игра завершится автоматически, когда цель будет достигнута.</string>
+	<key>options.capAt30.title</key>
+	<string>Завершать у цели</string>
+	<key>options.helperMode.info</key>
+	<string>В режиме подсказки правильный ответ всегда выделен зелёным. Полученные здесь трофеи считаются отдельно и отмечаются звёздочкой.</string>
+	<key>options.helperMode.title</key>
+	<string>Режим подсказки</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Ты всегда начинаешь с 3 жизнями. Когда жизни закончатся, игра завершится. Включи эту настройку, чтобы продолжить играть и тренироваться без жизней.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Бесконечные жизни</string>
+	<key>parentGate.approved</key>
+	<string>Подтверждено</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Попытки: %1$lld из %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Удерживайте %@ %lld секунд.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Удержание: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Удерживайте %@ %lld секунд. Затем нажмите %@ %lld раз.</string>
+	<key>parentGate.shape.circle</key>
+	<string>круг</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ромб</string>
+	<key>parentGate.shape.heart</key>
+	<string>сердце</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>шестиугольник</string>
+	<key>parentGate.shape.plus</key>
+	<string>плюс</string>
+	<key>parentGate.shape.square</key>
+	<string>квадрат</string>
+	<key>parentGate.shape.star</key>
+	<string>звезда</string>
+	<key>parentGate.shape.triangle</key>
+	<string>треугольник</string>
+	<key>parentGate.stepOne</key>
+	<string>Шаг 1 из 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Шаг 2 из 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Чтобы защитить юных игроков, взрослый должен пройти эту проверку перед покупкой.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Теперь нажмите %2$@ %1$lld раз.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Нажатия: %1$lld из %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Нужно подтверждение взрослого</string>
+	<key>premium.availableAt %lld</key>
+	<string>Доступно от %lld трофеев</string>
+	<key>premium.availableFromStart</key>
+	<string>Доступно с самого начала</string>
+	<key>premium.characterUnlocked</key>
+	<string>ОТКРЫТ НОВЫЙ ПЕРСОНАЖ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>Открыто: %@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>У тебя уже %lld трофеев</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Эксклюзивно с Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Эксклюзивно с Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>С Премиумом доступны все 10 животных.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Все животные доступны</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Всегда много новых примеров для тренировки.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 уровней в каждой теме</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Играй без перерывов.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Без рекламы</string>
+	<key>premium.oneTime</key>
+	<string>Одна покупка. Навсегда твоё.</string>
+	<key>premium.restore</key>
+	<string>Восстановить покупки</string>
+	<key>premium.start</key>
+	<string>Начать</string>
+	<key>premium.storeUnavailable</key>
+	<string>Магазин сейчас недоступен. Попробуйте позже.</string>
+	<key>premium.unlock</key>
+	<string>Открыть Премиум</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Открыть Премиум · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Открыть за трофеи</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Открыто с Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>У тебя есть Премиум!</string>
+	<key>settings.character</key>
+	<string>Персонаж</string>
+	<key>settings.characterInfo</key>
+	<string>Каждое животное меняет цветовую тему всей игры.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Своё: %lld мин</string>
+	<key>settings.dailyGoal</key>
+	<string>Цель на день</string>
+	<key>settings.goalInfo</key>
+	<string>Цель серии начинается с 5 минут в день. Учитывается только активное время игры.</string>
+	<key>settings.lives</key>
+	<string>Жизни</string>
+	<key>settings.livesInfo</key>
+	<string>С тремя жизнями игра заканчивается после последнего сердечка. В бесконечном режиме трофеи считаются, пока есть жизни; затем можно продолжать играть.</string>
+	<key>settings.playGoals</key>
+	<string>Цели игры</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Премиум открыт. Спасибо!</string>
+	<key>settings.title</key>
+	<string>Настройки</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Выбери цель на день</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Выбери цель на день или неделю</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld из %3$lld минут, %4$lld дней подряд</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Серия за день: %lld из %lld минут</string>
+	<key>streak.daily</key>
+	<string>Серия за день</string>
+	<key>streak.dayOne</key>
+	<string>День 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Не знаешь ответ? Нажми на пример, чтобы увидеть его.</string>
+	<key>tutorial.complete</key>
+	<string>Молодец! Обучение пройдено. Теперь побей рекорд!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Прыгни на правильный ответ и получи трофей.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Правильный ответ выделен зелёным. Теперь прыгни на него.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Прыгни на правильный ответ и получи втрое больше трофеев.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Собери монету ×3, чтобы один раз получить втрое больше трофеев.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Можно найти половинку или целую жизнь и вернуть жизни.</string>
+	<key>tutorial.minusOne</key>
+	<string>Избегай −1: он забирает один трофей.</string>
+	<key>tutorial.move</key>
+	<string>Наклоняй устройство, чтобы двигаться влево и вправо. Можно также проходить через края экрана.</string>
+	<key>tutorial.platforms</key>
+	<string>Прыгай по платформам, чтобы подняться выше.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Здесь показан твой счёт за этот уровень.</string>
+	<key>tutorial.star</key>
+	<string>Прыгни в звезду, чтобы убрать неправильные ответы.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Выбрав неправильный ответ, ты потеряешь одну из трёх жизней. Попробуй сейчас.</string>
+</dict>
+</plist>

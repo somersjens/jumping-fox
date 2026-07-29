@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Dubu</string>
+	<key>character.bunny</key>
+	<string>Sungura</string>
+	<key>character.crab</key>
+	<string>Kaa</string>
+	<key>character.dog</key>
+	<string>Mbwa</string>
+	<key>character.elephant</key>
+	<string>Tembo</string>
+	<key>character.fox</key>
+	<string>Mbweha</string>
+	<key>character.frog</key>
+	<string>Chura</string>
+	<key>character.lion</key>
+	<string>Simba</string>
+	<key>character.octopus</key>
+	<string>Pweza</string>
+	<key>character.penguin</key>
+	<string>Pengwini</string>
+	<key>character.pickerTitle</key>
+	<string>Chagua mhusika wako</string>
+	<key>common.back</key>
+	<string>Rudi</string>
+	<key>common.cancel</key>
+	<string>Ghairi</string>
+	<key>common.continue</key>
+	<string>Endelea</string>
+	<key>common.done</key>
+	<string>Tayari</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Hifadhi</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Bonyeza na ushikilie kwa sekunde 2 kufungua hali ya msanidi.</string>
+	<key>developerMode.title</key>
+	<string>Hali ya msanidi</string>
+	<key>filter.addition</key>
+	<string>Kujumlisha</string>
+	<key>filter.fractions</key>
+	<string>Sehemu</string>
+	<key>filter.mixed</key>
+	<string>Mchanganyiko</string>
+	<key>filter.percentages</key>
+	<string>Asilimia</string>
+	<key>filter.subtraction</key>
+	<string>Kutoa</string>
+	<key>filter.tables</key>
+	<string>Majedwali</string>
+	<key>game.accessibility.mix</key>
+	<string>Mchanganyiko</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld kati ya %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Umejaribu vizuri</string>
+	<key>game.encouragement.1</key>
+	<string>Mwanzo mzuri</string>
+	<key>game.encouragement.2</key>
+	<string>Endelea kufanya mazoezi</string>
+	<key>game.encouragement.3</key>
+	<string>Si vibaya hata kidogo</string>
+	<key>game.encouragement.4</key>
+	<string>Unafanya vizuri</string>
+	<key>game.encouragement.5</key>
+	<string>Umefanya vizuri</string>
+	<key>game.encouragement.6</key>
+	<string>Hongera</string>
+	<key>game.encouragement.7</key>
+	<string>Umecheza vizuri sana</string>
+	<key>game.encouragement.8</key>
+	<string>Mwisho unakaribia</string>
+	<key>game.encouragement.9</key>
+	<string>Karibu umefika</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Umeshinda kila pointi.</string>
+	<key>game.end.completionSuffix</key>
+	<string>imekamilika!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Mchezo umeisha</string>
+	<key>game.end.mainMenu</key>
+	<string>Menyu kuu</string>
+	<key>game.end.playAgain</key>
+	<string>Cheza tena</string>
+	<key>game.highScore</key>
+	<string>Rekodi bora</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Rudi kwenye menyu kuu</string>
+	<key>game.intro.continue</key>
+	<string>Endelea</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Utaendelea kutoka %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Jibu sahihi limeangaziwa kwa kijani kwa sababu msaada umewashwa. Kwa hiyo vikombe vinahesabiwa kando kwa *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Msaada umezimwa</string>
+	<key>game.intro.helperOn</key>
+	<string>Msaada umewashwa</string>
+	<key>game.intro.howItWorks</key>
+	<string>Jinsi kiwango hiki kinavyofanya kazi</string>
+	<key>game.intro.livesOff</key>
+	<string>Maisha yamezimwa</string>
+	<key>game.intro.livesOn</key>
+	<string>Maisha yamewashwa</string>
+	<key>game.intro.scorePaused</key>
+	<string>Alama zako za sasa zitasitishwa.</string>
+	<key>game.intro.start</key>
+	<string>Anza kiwango</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Zidisha %@%@ kwa nambari kutoka 1 hadi 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>au chini</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Gusa popote kuendelea</string>
+	<key>game.intro.tapToStart</key>
+	<string>Gusa popote kuanza</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Pata kikombe |1| kwa kila jibu sahihi, hadi vikombe |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Maisha yako yakiisha, huwezi kupata vikombe tena.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Umefikia vikombe vya juu zaidi kwenye ubao wa alama</string>
+	<key>game.status.mixMode</key>
+	<string>HALI YA MCHANGANYIKO</string>
+	<key>game.status.scoreLocked</key>
+	<string>Vikombe havihesabiwi tena maisha yako yakiisha</string>
+	<key>game.streak.subtitle</key>
+	<string>Vikombe ×2</string>
+	<key>game.streak.title</key>
+	<string>5 mfululizo!</string>
+	<key>goal.period</key>
+	<string>Kipindi cha lengo</string>
+	<key>goal.promptDaily</key>
+	<string>Unataka kucheza dakika ngapi kwa siku?</string>
+	<key>goal.promptWeekly</key>
+	<string>Unataka kucheza dakika ngapi kwa wiki?</string>
+	<key>goal.title</key>
+	<string>Lengo la kucheza</string>
+	<key>goalPeriod.daily</key>
+	<string>Kila siku</string>
+	<key>goalPeriod.weekly</key>
+	<string>Kila wiki</string>
+	<key>info.filter.addition</key>
+	<string>Kujumlisha tu</string>
+	<key>info.filter.fractions</key>
+	<string>Kugawanya tu</string>
+	<key>info.filter.header</key>
+	<string>Aina za maswali</string>
+	<key>info.filter.mixed</key>
+	<string>Hesabu mchanganyiko</string>
+	<key>info.filter.percentages</key>
+	<string>Asilimia tu</string>
+	<key>info.filter.subtraction</key>
+	<string>Kutoa tu</string>
+	<key>info.filter.tables</key>
+	<string>Kuzidisha tu</string>
+	<key>info.mode.fractions.header</key>
+	<string>Sehemu</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Sehemu moja au nyingi</string>
+	<key>info.mode.fractions.single</key>
+	<string>Daima sehemu moja</string>
+	<key>info.mode.header</key>
+	<string>Mpangilio</string>
+	<key>info.mode.mixed</key>
+	<string>Imechanganywa na viwango vya chini</string>
+	<key>info.mode.order</key>
+	<string>Mpangilio maalum</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Pamoja na nambari za desimali</string>
+	<key>info.mode.percentages.header</key>
+	<string>Aina</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Bila nambari za desimali</string>
+	<key>info.mode.random</key>
+	<string>Mpangilio wa nasibu</string>
+	<key>info.super.all</key>
+	<string>Kujumlisha, kutoa, kuzidisha, kugawanya na asilimia</string>
+	<key>info.super.basic</key>
+	<string>Kujumlisha na kutoa</string>
+	<key>info.super.fraction</key>
+	<string>Kujumlisha, kutoa, kuzidisha na kugawanya</string>
+	<key>info.super.times</key>
+	<string>Kujumlisha, kutoa na kuzidisha</string>
+	<key>language.select</key>
+	<string>Chagua lugha</string>
+	<key>lives.three</key>
+	<string>Maisha 3</string>
+	<key>lives.unlimited</key>
+	<string>Bila kikomo</string>
+	<key>menu.accessibility.character</key>
+	<string>Mhusika</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Gusa kubadilisha mhusika wako; bonyeza na ushikilie kwa sekunde mbili kuanza tena kwenye skrini ya kukaribisha.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Chagua %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Kiwango cha juu kimefikiwa mara %lld</string>
+	<key>menu.moreLevels</key>
+	<string>Viwango zaidi</string>
+	<key>menu.options</key>
+	<string>Chaguo za mchezo</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Majedwali ya Premium</string>
+	<key>menu.startHere</key>
+	<string>Anza hapa</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Fungua zaidi kwa Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Nyingi</string>
+	<key>mode.fractions.single</key>
+	<string>Moja</string>
+	<key>mode.mix</key>
+	<string>Mchanganyiko</string>
+	<key>mode.mixed</key>
+	<string>Mchanganyiko</string>
+	<key>mode.order</key>
+	<string>Mpangilio</string>
+	<key>mode.percentages.decimal</key>
+	<string>Desimali</string>
+	<key>mode.percentages.whole</key>
+	<string>Nzima</string>
+	<key>mode.random</key>
+	<string>Nasibu</string>
+	<key>mode.standard</key>
+	<string>Kawaida</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Utapata maswali ya |kujumlisha| tu.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Unaongeza %lld |au chini| kwa nambari nyingine.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Daima unaongeza %lld kwa mpangilio wa |kupanda|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Daima unaongeza %lld kwa nambari ya |nasibu|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Kujumlisha · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Endelea kujumlisha nambari mbili.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Jibu ni hadi %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Jumlisha hadi %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Utapata maswali ya |sehemu| tu.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Utapata sehemu za kiwango hiki na |viwango vya awali|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Daima unachukua |sehemu 1| kati ya sehemu %lld sawa.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Hesabu sehemu za nambari kamili kutoka kiwango cha %lld na viwango vya awali.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Nambari hubaki kamili, kwa hiyo majibu huwa nambari nzima.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Sehemu hadi %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Unachukua sehemu moja au |sehemu nyingi| kati ya sehemu %lld sawa.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Sehemu · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Hesabu sehemu ya kitu kizima na ulinganishe sehemu.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Jumlisha na toa sehemu zenye kigawanyo sawa.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Sehemu mchanganyiko</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Utapata maswali ya |asilimia| tu.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Utapata asilimia za kiwango hiki na |viwango vya awali|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Daima unahesabu %@, na jibu ni |nambari nzima|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Hesabu asilimia za nambari kamili hadi %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Kiasi hubaki kamili, kwa hiyo majibu huwa nambari nzima.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Asilimia hadi %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Daima unahesabu %@, na jibu linaweza pia kuwa |desimali|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Hesabu %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Hesabu asilimia ya nambari.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Badilisha asilimia kuwa sehemu na sehemu kuwa asilimia.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Asilimia mchanganyiko</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Utapata maswali ya |kutoa| tu.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Unatoa %lld |au chini| kutoka nambari nyingine.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Daima unatoa %lld kwa mpangilio wa |kushuka|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Daima unatoa %lld kutoka nambari ya |nasibu|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Kutoa · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Nambari ya kwanza ni hadi %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Jibu linaweza kuwa chini ya sifuri.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Chini ya sifuri</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Toa hadi %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Endelea kutoa nambari mbili.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Ugumu unaweza kuongezeka hadi |kiwango cha %lld| kwa kila aina uliyochagua.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Fanya mazoezi ya kujumlisha, kutoa, majedwali, sehemu na asilimia kwa mchanganyiko.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Mchanganyiko %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Fanya mazoezi ya kujumlisha na kutoa kwa mchanganyiko.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Mchanganyiko %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Fanya mazoezi ya kujumlisha, kutoa, majedwali na sehemu kwa mchanganyiko.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Mchanganyiko %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Fanya mazoezi ya kujumlisha, kutoa na majedwali kwa mchanganyiko.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Mchanganyiko %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Utapata maswali ya |kuzidisha| tu.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Utapata majedwali yote |hadi %lld| kwa mchanganyiko.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Kila jedwali mara nambari kutoka |1 hadi 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Utapata jedwali la %lld kwa mpangilio wa |kupanda|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Utapata jedwali la %lld kwa mpangilio wa |nasibu|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Jedwali la %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Fanya mazoezi ya majedwali kutoka %lld hadi %lld kwa mchanganyiko.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Majedwali %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Jina lako</string>
+	<key>name.whatsYourName</key>
+	<string>Unaitwa nani?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Hesabu tofauti zilizochanganywa.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Tayari unafanya vizuri</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Fanya mazoezi kwa hesabu zilizopangwa.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Umeanza tu</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Hesabu kwa mpangilio wa nasibu.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Tayari umefanya mazoezi</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Chagua pa kuanzia kwa %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>mada hii</string>
+	<key>onboarding.level.title</key>
+	<string>Una ujuzi gani tayari?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Tuanze. Unaitwa nani?</string>
+	<key>onboarding.name.title</key>
+	<string>Kufanya hesabu hakujawahi kufurahisha hivi!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Chagua mada ya kuanzia.</string>
+	<key>onboarding.subject.title</key>
+	<string>Unataka kujifunza nini?</string>
+	<key>options.capAt30.info</key>
+	<string>Kila kiwango kina lengo la hadi vikombe 50. Chaguo hili likiwashwa, mchezo huisha moja kwa moja unapolifikia.</string>
+	<key>options.capAt30.title</key>
+	<string>Maliza ukifikia lengo</string>
+	<key>options.helperMode.info</key>
+	<string>Katika Hali ya Msaada, jibu sahihi huonyeshwa kwa kijani. Vikombe vya hali hii huhesabiwa kando na kutiwa nyota.</string>
+	<key>options.helperMode.title</key>
+	<string>Hali ya msaada</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Daima unaanza na maisha 3. Mchezo huisha maisha yakikwisha. Washa chaguo hili ili kuendelea kucheza na kufanya mazoezi baada ya maisha kuisha.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Maisha bila kikomo</string>
+	<key>parentGate.approved</key>
+	<string>Imeidhinishwa</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Majaribio: %1$lld kati ya %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Shikilia %@ kwa sekunde %lld.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Shikilia: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Shikilia %@ kwa sekunde %lld. Kisha gusa %@ mara %lld.</string>
+	<key>parentGate.shape.circle</key>
+	<string>duara</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombu</string>
+	<key>parentGate.shape.heart</key>
+	<string>moyo</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>pembe sita</string>
+	<key>parentGate.shape.plus</key>
+	<string>jumlisha</string>
+	<key>parentGate.shape.square</key>
+	<string>mraba</string>
+	<key>parentGate.shape.star</key>
+	<string>nyota</string>
+	<key>parentGate.shape.triangle</key>
+	<string>pembetatu</string>
+	<key>parentGate.stepOne</key>
+	<string>Hatua ya 1 kati ya 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Hatua ya 2 kati ya 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Ili kuwalinda wachezaji wadogo, mtu mzima lazima akamilishe ukaguzi huu kabla ya kuendelea na ununuzi.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Sasa gusa %2$@ mara %1$lld.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Miguso: %1$lld kati ya %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Idhini ya mtu mzima inahitajika</string>
+	<key>premium.availableAt %lld</key>
+	<string>Inapatikana kuanzia vikombe %lld</string>
+	<key>premium.availableFromStart</key>
+	<string>Inapatikana tangu mwanzo</string>
+	<key>premium.characterUnlocked</key>
+	<string>MHUSIKA MPYA AMEFUNGULIWA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ amefunguliwa</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Umepata vikombe %lld</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Kwa Premium pekee</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Kwa Premium pekee</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Ukiwa na Premium, unacheza kwa uhuru na wanyama wote 10.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Fikia wanyama wote</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Daima kuna hesabu mpya za kutosha kufanya mazoezi.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Viwango 99 kwa kila mada</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Cheza bila kukatizwa kabisa.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Hakuna matangazo</string>
+	<key>premium.oneTime</key>
+	<string>Nunua mara moja. Ni yako milele.</string>
+	<key>premium.restore</key>
+	<string>Rejesha ununuzi</string>
+	<key>premium.start</key>
+	<string>Anza</string>
+	<key>premium.storeUnavailable</key>
+	<string>Duka halipatikani sasa. Tafadhali jaribu tena baadaye.</string>
+	<key>premium.unlock</key>
+	<string>Fungua Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Fungua Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Fungua kwa vikombe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Imefunguliwa kwa Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Una Premium!</string>
+	<key>settings.character</key>
+	<string>Mhusika</string>
+	<key>settings.characterInfo</key>
+	<string>Kila mnyama huupa mchezo mzima mandhari yake ya rangi.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Maalum: dakika %lld</string>
+	<key>settings.dailyGoal</key>
+	<string>Lengo la kila siku</string>
+	<key>settings.goalInfo</key>
+	<string>Lengo la mfululizo huanza na dakika 5 kwa siku. Muda wa kucheza kwa bidii pekee ndio huhesabiwa.</string>
+	<key>settings.lives</key>
+	<string>Maisha</string>
+	<key>settings.livesInfo</key>
+	<string>Ukiwa na maisha matatu, mchezo huisha baada ya moyo wako wa mwisho. Katika hali isiyo na kikomo, vikombe huhesabiwa ukiwa bado na maisha; baada ya hapo unaweza kuendelea kucheza.</string>
+	<key>settings.playGoals</key>
+	<string>Malengo ya kucheza</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium imefunguliwa. Asante!</string>
+	<key>settings.title</key>
+	<string>Mipangilio</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Chagua lengo la kila siku</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Chagua lengo la kila siku au kila wiki</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, dakika %2$lld kati ya %3$lld, siku %4$lld mfululizo</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Mfululizo wa kila siku, dakika %lld kati ya %lld</string>
+	<key>streak.daily</key>
+	<string>Mfululizo wa kila siku</string>
+	<key>streak.dayOne</key>
+	<string>Siku ya 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Hujui jibu? Gusa swali ili kuliona.</string>
+	<key>tutorial.complete</key>
+	<string>Hongera! Mafunzo yamekamilika. Sasa lenga rekodi bora!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Rukia jibu sahihi upate kikombe.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Jibu sahihi linaonyeshwa kwa kijani. Sasa rukia jibu sahihi.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Sasa rukia jibu sahihi upate vikombe mara tatu.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Chukua sarafu ya ×3 upate vikombe mara tatu kwa mara moja.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Unaweza kupata nusu ya maisha au maisha kamili ili kurejesha maisha.</string>
+	<key>tutorial.minusOne</key>
+	<string>Epuka −1. Inakugharimu kikombe kimoja.</string>
+	<key>tutorial.move</key>
+	<string>Sogeza kifaa chako kwenda kushoto na kulia. Unaweza pia kupita kwenye pande za skrini.</string>
+	<key>tutorial.platforms</key>
+	<string>Rukia majukwaa ili kwenda juu.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Alama zako za kiwango hiki zinaonekana hapa.</string>
+	<key>tutorial.star</key>
+	<string>Rukia nyota ili kuondoa majibu yasiyo sahihi.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ukichagua jibu lisilo sahihi, unapoteza moja ya maisha yako matatu. Jaribu sasa.</string>
+</dict>
+</plist>

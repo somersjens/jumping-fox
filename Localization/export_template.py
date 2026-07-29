@@ -62,6 +62,12 @@ def context_hint(key):
     k = key.lower()
     if "accessibility" in k:
         return "VoiceOver label (not shown on screen). Favour clarity over brevity."
+    if k.startswith("notif."):
+        which = "title (heading)" if ".title" in k else "body (one short sentence)"
+        return (
+            f"Push-notification {which}. Warm, encouraging and child-friendly; "
+            "keep it short and keep any emoji exactly as-is."
+        )
     if k.startswith("common."):
         return "Small button or label. Keep it very short."
     if k.endswith(".title") or ".title " in k:

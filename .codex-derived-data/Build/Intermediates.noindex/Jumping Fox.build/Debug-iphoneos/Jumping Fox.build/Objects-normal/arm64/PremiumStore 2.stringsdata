@@ -1,0 +1,16 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PremiumStore.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "premium.storeUnavailable",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 66
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ós</string>
+	<key>character.bunny</key>
+	<string>Conill</string>
+	<key>character.crab</key>
+	<string>Cranc</string>
+	<key>character.dog</key>
+	<string>Gos</string>
+	<key>character.elephant</key>
+	<string>Elefant</string>
+	<key>character.fox</key>
+	<string>Guineu</string>
+	<key>character.frog</key>
+	<string>Granota</string>
+	<key>character.lion</key>
+	<string>Lleó</string>
+	<key>character.octopus</key>
+	<string>Pop</string>
+	<key>character.penguin</key>
+	<string>Pingüí</string>
+	<key>character.pickerTitle</key>
+	<string>Tria el teu personatge</string>
+	<key>common.back</key>
+	<string>Enrere</string>
+	<key>common.cancel</key>
+	<string>Cancel·la</string>
+	<key>common.continue</key>
+	<string>Continua</string>
+	<key>common.done</key>
+	<string>Fet</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Desa</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Mantén premut durant 2 segons per obrir el mode desenvolupador.</string>
+	<key>developerMode.title</key>
+	<string>Mode desenvolupador</string>
+	<key>filter.addition</key>
+	<string>Suma</string>
+	<key>filter.fractions</key>
+	<string>Fraccions</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Percentatges</string>
+	<key>filter.subtraction</key>
+	<string>Resta</string>
+	<key>filter.tables</key>
+	<string>Taules</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld de %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Bon intent</string>
+	<key>game.encouragement.1</key>
+	<string>És un començament</string>
+	<key>game.encouragement.2</key>
+	<string>Continua practicant</string>
+	<key>game.encouragement.3</key>
+	<string>Gens malament</string>
+	<key>game.encouragement.4</key>
+	<string>Ho fas bé</string>
+	<key>game.encouragement.5</key>
+	<string>Bona actuació</string>
+	<key>game.encouragement.6</key>
+	<string>Molt bé</string>
+	<key>game.encouragement.7</key>
+	<string>Molt ben jugat</string>
+	<key>game.encouragement.8</key>
+	<string>El final és a prop</string>
+	<key>game.encouragement.9</key>
+	<string>Ja gairebé hi ets</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Has guanyat tots els punts.</string>
+	<key>game.end.completionSuffix</key>
+	<string>completat!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Fi del joc</string>
+	<key>game.end.mainMenu</key>
+	<string>Menú principal</string>
+	<key>game.end.playAgain</key>
+	<string>Torna-hi</string>
+	<key>game.highScore</key>
+	<string>Rècord</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Torna al menú principal</string>
+	<key>game.intro.continue</key>
+	<string>Continua</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Continuaràs des de %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>La resposta correcta es destaca en verd perquè l’ajuda està activada. Per això, els trofeus es compten a part amb *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Ajuda desactivada</string>
+	<key>game.intro.helperOn</key>
+	<string>Ajuda activada</string>
+	<key>game.intro.howItWorks</key>
+	<string>Com funciona aquest nivell</string>
+	<key>game.intro.livesOff</key>
+	<string>Vides desactivades</string>
+	<key>game.intro.livesOn</key>
+	<string>Vides activades</string>
+	<key>game.intro.scorePaused</key>
+	<string>La puntuació actual quedarà en pausa.</string>
+	<key>game.intro.start</key>
+	<string>Comença el nivell</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Multiplica %@%@ per un nombre de l’1 al 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>o menys</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Toca qualsevol lloc per continuar</string>
+	<key>game.intro.tapToStart</key>
+	<string>Toca qualsevol lloc per començar</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Guanya |1| trofeu per resposta correcta, fins a un màxim de |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Quan et quedis sense vides, ja no podràs guanyar trofeus.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Has assolit el màxim de trofeus de la classificació</string>
+	<key>game.status.mixMode</key>
+	<string>MODE MIX</string>
+	<key>game.status.scoreLocked</key>
+	<string>Els trofeus ja no compten quan et quedes sense vides</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofeus ×2</string>
+	<key>game.streak.title</key>
+	<string>5 seguides!</string>
+	<key>goal.period</key>
+	<string>Període de l’objectiu</string>
+	<key>goal.promptDaily</key>
+	<string>Quants minuts vols jugar cada dia?</string>
+	<key>goal.promptWeekly</key>
+	<string>Quants minuts vols jugar cada setmana?</string>
+	<key>goal.title</key>
+	<string>Objectiu de joc</string>
+	<key>goalPeriod.daily</key>
+	<string>Diari</string>
+	<key>goalPeriod.weekly</key>
+	<string>Setmanal</string>
+	<key>info.filter.addition</key>
+	<string>Només sumes</string>
+	<key>info.filter.fractions</key>
+	<string>Només divisions</string>
+	<key>info.filter.header</key>
+	<string>Tipus d’operacions</string>
+	<key>info.filter.mixed</key>
+	<string>Operacions mixtes</string>
+	<key>info.filter.percentages</key>
+	<string>Només percentatges</string>
+	<key>info.filter.subtraction</key>
+	<string>Només restes</string>
+	<key>info.filter.tables</key>
+	<string>Només multiplicacions</string>
+	<key>info.mode.fractions.header</key>
+	<string>Parts</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Una o diverses parts</string>
+	<key>info.mode.fractions.single</key>
+	<string>Sempre una sola part</string>
+	<key>info.mode.header</key>
+	<string>Ordre</string>
+	<key>info.mode.mixed</key>
+	<string>Barrejat amb nivells anteriors</string>
+	<key>info.mode.order</key>
+	<string>Ordre fix</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Amb nombres decimals</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tipus</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Sense nombres decimals</string>
+	<key>info.mode.random</key>
+	<string>Ordre aleatori</string>
+	<key>info.super.all</key>
+	<string>Suma, resta, multiplicació, divisió i percentatges</string>
+	<key>info.super.basic</key>
+	<string>Suma i resta</string>
+	<key>info.super.fraction</key>
+	<string>Suma, resta, multiplicació i divisió</string>
+	<key>info.super.times</key>
+	<string>Suma, resta i multiplicació</string>
+	<key>language.select</key>
+	<string>Tria l’idioma</string>
+	<key>lives.three</key>
+	<string>3 vides</string>
+	<key>lives.unlimited</key>
+	<string>Sense límit</string>
+	<key>menu.accessibility.character</key>
+	<string>Personatge</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Toca per canviar de personatge; mantén premut durant dos segons per tornar a començar a la pantalla de benvinguda.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Tria %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MÀX.</string>
+	<key>menu.maximumCount</key>
+	<string>MÀX.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Màxim assolit %lld vegades</string>
+	<key>menu.moreLevels</key>
+	<string>Més nivells</string>
+	<key>menu.options</key>
+	<string>Opcions de joc</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Taules Premium</string>
+	<key>menu.startHere</key>
+	<string>Comença aquí</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Desbloqueja’n més amb Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Diverses</string>
+	<key>mode.fractions.single</key>
+	<string>Una</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Mixt</string>
+	<key>mode.order</key>
+	<string>Ordre</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimal</string>
+	<key>mode.percentages.whole</key>
+	<string>Enter</string>
+	<key>mode.random</key>
+	<string>Aleatori</string>
+	<key>mode.standard</key>
+	<string>Estàndard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Només tindràs problemes de |suma|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Sumes %lld |o menys| a un altre nombre.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Sempre sumes %lld en ordre |ascendent|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Sempre sumes %lld a un nombre |aleatori|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Suma · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Continua sumant dos nombres.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>El resultat és com a màxim %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Suma fins a %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Només tindràs problemes de |fraccions|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Tindràs fraccions d’aquest nivell i de |nivells anteriors|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Sempre agafes |1 part| de %lld parts iguals.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Calcula fraccions de nombres rodons del nivell %lld i dels anteriors.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Els nombres són rodons, així que els resultats sempre són enters.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Fraccions fins a %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Agafes una o |diverses parts| de %lld parts iguals.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Fraccions · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Calcula una part d’un tot i fes fraccions equivalents.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Suma i resta fraccions amb el mateix denominador.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Fraccions mixtes</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Només tindràs problemes de |percentatges|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Tindràs percentatges d’aquest nivell i de |nivells anteriors|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Sempre calcules %@, i el resultat és un |nombre enter|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Calcula percentatges de nombres rodons fins a %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Les quantitats són rodones, així que els resultats sempre són enters.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Percentatges fins a %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Sempre calcules %@, i el resultat també pot ser un |decimal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Calcula %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Calcula un percentatge d’un nombre.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Converteix percentatges en fraccions i a l’inrevés.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Percentatges mixtos</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Només tindràs problemes de |resta|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Restes %lld |o menys| a un altre nombre.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Sempre restes %lld en ordre |descendent|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Sempre restes %lld a un nombre |aleatori|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Resta · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>El primer nombre és com a màxim %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>El resultat pot ser inferior a zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Sota zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Resta fins a %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Continua restant dos nombres.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>La dificultat pot pujar fins al |nivell %lld| de cada categoria triada.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Practica sumes, restes, taules, fraccions i percentatges, tot barrejat.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Practica sumes i restes, tot barrejat.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Practica sumes, restes, taules i fraccions, tot barrejat.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Practica sumes, restes i taules, tot barrejat.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Només tindràs problemes de |multiplicació|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Tindràs totes les taules |fins a %lld|, barrejades.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Cada taula multiplicada per un nombre de l’|1 al 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Tindràs la taula del %lld en ordre |ascendent|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Tindràs la taula del %lld en ordre |aleatori|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Taula del %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Practica les taules del %lld al %lld, barrejades.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Taules %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>El teu nom</string>
+	<key>name.whatsYourName</key>
+	<string>Com et dius?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Diferents operacions mixtes.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Ja ho fas força bé</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Practica operacions en ordre.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Acabes de començar</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Operacions en ordre aleatori.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Ja has practicat una mica</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Tria un punt de partida per a %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>aquest tema</string>
+	<key>onboarding.level.title</key>
+	<string>Com se’t dona això?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Comencem. Com et dius?</string>
+	<key>onboarding.name.title</key>
+	<string>Fer operacions mai havia estat tan divertit!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Tria un tema per començar.</string>
+	<key>onboarding.subject.title</key>
+	<string>Què vols aprendre?</string>
+	<key>options.capAt30.info</key>
+	<string>Cada nivell té un objectiu de fins a 50 trofeus. Si actives aquesta opció, el joc s’acaba automàticament quan l’assoleixes.</string>
+	<key>options.capAt30.title</key>
+	<string>Acaba en assolir l’objectiu</string>
+	<key>options.helperMode.info</key>
+	<string>En el mode d’ajuda, la resposta correcta sempre es mostra en verd. Els trofeus guanyats en aquest mode es compten a part i es marquen amb una estrella.</string>
+	<key>options.helperMode.title</key>
+	<string>Mode d’ajuda</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Sempre comences amb 3 vides. El joc s’acaba quan et quedes sense vides. Activa aquesta opció per continuar jugant i practicant després de perdre-les.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Vides il·limitades</string>
+	<key>parentGate.approved</key>
+	<string>Aprovat</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Intents: %1$lld de %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Mantén premut el %@ durant %lld segons.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Mantén premut: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Mantén premut el %@ durant %lld segons. Després toca el %@ %lld vegades.</string>
+	<key>parentGate.shape.circle</key>
+	<string>cercle</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombe</string>
+	<key>parentGate.shape.heart</key>
+	<string>cor</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hexàgon</string>
+	<key>parentGate.shape.plus</key>
+	<string>signe més</string>
+	<key>parentGate.shape.square</key>
+	<string>quadrat</string>
+	<key>parentGate.shape.star</key>
+	<string>estrella</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triangle</string>
+	<key>parentGate.stepOne</key>
+	<string>Pas 1 de 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Pas 2 de 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Per protegir els jugadors més petits, un adult ha de completar aquesta comprovació abans de continuar amb la compra.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Ara toca el %2$@ %1$lld vegades.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Tocs: %1$lld de %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Cal l’aprovació d’un adult</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Amb Premium pots jugar lliurement amb els 10 animals.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Accés a tots els animals</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Sempre hi ha operacions noves per practicar.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 nivells per tema</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Juga sense cap interrupció.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Sense anuncis</string>
+	<key>premium.oneTime</key>
+	<string>Compra única. Per sempre teu.</string>
+	<key>premium.restore</key>
+	<string>Restaura les compres</string>
+	<key>premium.storeUnavailable</key>
+	<string>La botiga no està disponible ara mateix. Torna-ho a provar més tard.</string>
+	<key>premium.unlock</key>
+	<string>Desbloqueja Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Desbloqueja Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Tens Premium!</string>
+	<key>settings.character</key>
+	<string>Personatge</string>
+	<key>settings.characterInfo</key>
+	<string>Cada animal dona al joc el seu propi tema de colors.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Personalitzat: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Objectiu diari</string>
+	<key>settings.goalInfo</key>
+	<string>L’objectiu de ratxa comença amb 5 minuts al dia. Només compta el temps de joc actiu.</string>
+	<key>settings.lives</key>
+	<string>Vides</string>
+	<key>settings.livesInfo</key>
+	<string>Amb tres vides, el joc s’acaba després de l’últim cor. En el mode il·limitat, els trofeus només compten mentre encara tens vides; després pots continuar jugant.</string>
+	<key>settings.playGoals</key>
+	<string>Objectius de joc</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium desbloquejat. Gràcies!</string>
+	<key>settings.title</key>
+	<string>Configuració</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Tria un objectiu diari</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Tria un objectiu diari o setmanal</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld de %3$lld minuts, %4$lld dies seguits</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Ratxa diària, %lld de %lld minuts</string>
+	<key>streak.daily</key>
+	<string>Ratxa diària</string>
+	<key>streak.dayOne</key>
+	<string>Dia 1</string>
+	<key>tutorial.answerHint</key>
+	<string>No saps la resposta? Toca l’operació per veure-la.</string>
+	<key>tutorial.complete</key>
+	<string>Molt bé! Has completat el tutorial. Ara ves a buscar el rècord!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Salta sobre la resposta correcta per recollir un trofeu.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>La resposta correcta es mostra en verd. Ara salta-hi a sobre.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Ara salta sobre la resposta correcta per guanyar el triple de trofeus.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Recull la moneda ×3 per guanyar el triple de trofeus una vegada.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Pots trobar mitja vida o una vida sencera per recuperar vides.</string>
+	<key>tutorial.minusOne</key>
+	<string>Evita el −1. Et costa un trofeu.</string>
+	<key>tutorial.move</key>
+	<string>Mou el dispositiu per anar a esquerra i dreta. També pots travessar els costats de la pantalla.</string>
+	<key>tutorial.platforms</key>
+	<string>Salta sobre les plataformes per pujar.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Aquí es mostra la puntuació d’aquest nivell.</string>
+	<key>tutorial.star</key>
+	<string>Salta dins l’estrella per fer desaparèixer les respostes incorrectes.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Si tries una resposta incorrecta, perds una de les tres vides. Prova-ho ara.</string>
+</dict>
+</plist>

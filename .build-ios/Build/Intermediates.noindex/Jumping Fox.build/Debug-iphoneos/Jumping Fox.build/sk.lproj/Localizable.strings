@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Medveď</string>
+	<key>character.bunny</key>
+	<string>Zajačik</string>
+	<key>character.crab</key>
+	<string>Krab</string>
+	<key>character.dog</key>
+	<string>Pes</string>
+	<key>character.elephant</key>
+	<string>Slon</string>
+	<key>character.fox</key>
+	<string>Líška</string>
+	<key>character.frog</key>
+	<string>Žaba</string>
+	<key>character.lion</key>
+	<string>Lev</string>
+	<key>character.octopus</key>
+	<string>Chobotnica</string>
+	<key>character.penguin</key>
+	<string>Tučniak</string>
+	<key>character.pickerTitle</key>
+	<string>Vyber si postavičku</string>
+	<key>common.back</key>
+	<string>Späť</string>
+	<key>common.cancel</key>
+	<string>Zrušiť</string>
+	<key>common.continue</key>
+	<string>Ďalej</string>
+	<key>common.done</key>
+	<string>Hotovo</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Uložiť</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Podrž 2 sekundy a otvoríš režim vývojára.</string>
+	<key>developerMode.title</key>
+	<string>Režim vývojára</string>
+	<key>filter.addition</key>
+	<string>Sčítanie</string>
+	<key>filter.fractions</key>
+	<string>Zlomky</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Percentá</string>
+	<key>filter.subtraction</key>
+	<string>Odčítanie</string>
+	<key>filter.tables</key>
+	<string>Násobilka</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld z %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Dobrý pokus</string>
+	<key>game.encouragement.1</key>
+	<string>To je začiatok</string>
+	<key>game.encouragement.2</key>
+	<string>Trénuj ďalej</string>
+	<key>game.encouragement.3</key>
+	<string>Vôbec nie zlé</string>
+	<key>game.encouragement.4</key>
+	<string>Darí sa ti</string>
+	<key>game.encouragement.5</key>
+	<string>Pekný výkon</string>
+	<key>game.encouragement.6</key>
+	<string>Výborne</string>
+	<key>game.encouragement.7</key>
+	<string>Veľmi dobre</string>
+	<key>game.encouragement.8</key>
+	<string>Cieľ je na dohľad</string>
+	<key>game.encouragement.9</key>
+	<string>Už si skoro tam</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Získal si každý bod.</string>
+	<key>game.end.completionSuffix</key>
+	<string>hotovo!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Koniec hry</string>
+	<key>game.end.mainMenu</key>
+	<string>Hlavné menu</string>
+	<key>game.end.playAgain</key>
+	<string>Hrať znova</string>
+	<key>game.highScore</key>
+	<string>Najlepšie skóre</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Späť do hlavného menu</string>
+	<key>game.intro.continue</key>
+	<string>Pokračovať</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Pokračuješ od %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Správna odpoveď je označená nazeleno, pretože pomocník je zapnutý. Trofeje sa preto počítajú osobitne s *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Pomocník vyp.</string>
+	<key>game.intro.helperOn</key>
+	<string>Pomocník zap.</string>
+	<key>game.intro.howItWorks</key>
+	<string>Ako funguje táto úroveň</string>
+	<key>game.intro.livesOff</key>
+	<string>Životy vyp.</string>
+	<key>game.intro.livesOn</key>
+	<string>Životy zap.</string>
+	<key>game.intro.scorePaused</key>
+	<string>Tvoje aktuálne skóre sa pozastaví.</string>
+	<key>game.intro.start</key>
+	<string>Spustiť úroveň</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Vynásob %@%@ číslom od 1 do 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>alebo menej</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Ťukni kamkoľvek a pokračuj</string>
+	<key>game.intro.tapToStart</key>
+	<string>Ťukni kamkoľvek a začni</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Za každú správnu odpoveď získaj |1| trofej, najviac |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Keď stratíš všetky životy, ďalšie trofeje už nezískaš.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Dosiahnutý maximálny počet trofejí do rebríčka</string>
+	<key>game.status.mixMode</key>
+	<string>REŽIM MIX</string>
+	<key>game.status.scoreLocked</key>
+	<string>Po strate všetkých životov sa trofeje už nepočítajú</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofeje ×2</string>
+	<key>game.streak.title</key>
+	<string>5 za sebou!</string>
+	<key>goal.period</key>
+	<string>Obdobie cieľa</string>
+	<key>goal.promptDaily</key>
+	<string>Koľko minút chceš hrať denne?</string>
+	<key>goal.promptWeekly</key>
+	<string>Koľko minút chceš hrať týždenne?</string>
+	<key>goal.title</key>
+	<string>Herný cieľ</string>
+	<key>goalPeriod.daily</key>
+	<string>Denne</string>
+	<key>goalPeriod.weekly</key>
+	<string>Týždenne</string>
+	<key>info.filter.addition</key>
+	<string>Len sčítanie</string>
+	<key>info.filter.fractions</key>
+	<string>Len delenie</string>
+	<key>info.filter.header</key>
+	<string>Typy príkladov</string>
+	<key>info.filter.mixed</key>
+	<string>Zmiešané operácie</string>
+	<key>info.filter.percentages</key>
+	<string>Len percentá</string>
+	<key>info.filter.subtraction</key>
+	<string>Len odčítanie</string>
+	<key>info.filter.tables</key>
+	<string>Len násobenie</string>
+	<key>info.mode.fractions.header</key>
+	<string>Časti</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Jedna aj viac častí</string>
+	<key>info.mode.fractions.single</key>
+	<string>Vždy jedna časť</string>
+	<key>info.mode.header</key>
+	<string>Poradie</string>
+	<key>info.mode.mixed</key>
+	<string>Zmiešané s nižšími úrovňami</string>
+	<key>info.mode.order</key>
+	<string>Pevné poradie</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Aj desatinné čísla</string>
+	<key>info.mode.percentages.header</key>
+	<string>Typ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Bez desatinných čísel</string>
+	<key>info.mode.random</key>
+	<string>Náhodné poradie</string>
+	<key>info.super.all</key>
+	<string>Sčítanie, odčítanie, násobenie, delenie a percentá</string>
+	<key>info.super.basic</key>
+	<string>Sčítanie a odčítanie</string>
+	<key>info.super.fraction</key>
+	<string>Sčítanie, odčítanie, násobenie a delenie</string>
+	<key>info.super.times</key>
+	<string>Sčítanie, odčítanie a násobenie</string>
+	<key>language.select</key>
+	<string>Vyber jazyk</string>
+	<key>lives.three</key>
+	<string>3 životy</string>
+	<key>lives.unlimited</key>
+	<string>Neobmedzene</string>
+	<key>menu.accessibility.character</key>
+	<string>Postavička</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Ťuknutím zmeníš postavičku; podrž dve sekundy a začneš znova na uvítacej obrazovke.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Vyber %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maximum dosiahnuté %lld-krát</string>
+	<key>menu.moreLevels</key>
+	<string>Viac úrovní</string>
+	<key>menu.options</key>
+	<string>Možnosti hry</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Prémiová násobilka</string>
+	<key>menu.startHere</key>
+	<string>Začni tu</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Odomkni viac s Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Viac</string>
+	<key>mode.fractions.single</key>
+	<string>Jedna</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Zmiešané</string>
+	<key>mode.order</key>
+	<string>Poradie</string>
+	<key>mode.percentages.decimal</key>
+	<string>Desatinné</string>
+	<key>mode.percentages.whole</key>
+	<string>Celé</string>
+	<key>mode.random</key>
+	<string>Náhodne</string>
+	<key>mode.standard</key>
+	<string>Štandard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Dostaneš iba príklady na |sčítanie|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>K inému číslu pripočítaš %lld |alebo menej|.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Vždy pripočítaš %lld vo |vzostupnom| poradí.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Vždy pripočítaš %lld k |náhodnému| číslu.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Sčítanie · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Stále sčítavaj dve čísla.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Výsledok je najviac %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Sčítanie do %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Dostaneš iba príklady so |zlomkami|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Dostaneš zlomky z tejto a |predošlých úrovní|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Vždy vezmeš |1 časť| z %lld rovnakých častí.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Vypočítaj zlomky z okrúhlych čísel z úrovne %lld a predošlých úrovní.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Čísla zostávajú okrúhle, takže výsledky sú vždy celé.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Zlomky do %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Vezmeš jednu alebo |viac častí| z %lld rovnakých častí.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Zlomky · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Vypočítaj časť celku a vytvor rovnaké zlomky.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Sčítaj a odčítaj zlomky s rovnakým menovateľom.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Zlomky na mix</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Dostaneš iba príklady s |percentami|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Dostaneš percentá z tejto a |predošlých úrovní|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Vždy vypočítaš %@ a výsledok je |celé číslo|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Vypočítaj percentá z okrúhlych čísel do %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Hodnoty zostávajú okrúhle, takže výsledky sú vždy celé.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Percentá do %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Vždy vypočítaš %@ a výsledok môže byť aj |desatinné číslo|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Vypočítaj %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Vypočítaj percento z čísla.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Premeň percentá na zlomky a naopak.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Percentá na mix</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Dostaneš iba príklady na |odčítanie|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Od iného čísla odčítaš %lld |alebo menej|.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Vždy odčítaš %lld v |zostupnom| poradí.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Vždy odčítaš %lld od |náhodného| čísla.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Odčítanie · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Prvé číslo je najviac %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Výsledok môže byť menší ako nula.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Pod nulou</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Odčítanie do %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Stále odčítavaj dve čísla.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Náročnosť môže pri každej vybratej kategórii stúpnuť až na |úroveň %lld|.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Trénuj sčítanie, odčítanie, násobilku, zlomky a percentá v jednom mixe.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Trénuj sčítanie a odčítanie v jednom mixe.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Trénuj sčítanie, odčítanie, násobilku a zlomky v jednom mixe.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Trénuj sčítanie, odčítanie a násobilku v jednom mixe.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Dostaneš iba príklady na |násobenie|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Dostaneš všetky násobilky |do %lld| pomiešané.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Každá násobilka krát číslo od |1 do 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Násobilku %lld dostaneš vo |vzostupnom| poradí.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Násobilku %lld dostaneš v |náhodnom| poradí.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Násobilka %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Trénuj násobilky od %lld do %lld pomiešané.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Násobilky %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Tvoje meno</string>
+	<key>name.whatsYourName</key>
+	<string>Ako sa voláš?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Rôzne zmiešané príklady.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Už ti to celkom ide</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Trénuj príklady v poradí.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Práve začínaš</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Príklady v náhodnom poradí.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Už máš niečo natrénované</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Vyber si, kde začneš s %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>táto téma</string>
+	<key>onboarding.level.title</key>
+	<string>Ako dobre ti to už ide?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Poďme na to. Ako sa voláš?</string>
+	<key>onboarding.name.title</key>
+	<string>Počítanie ešte nikdy nebolo také zábavné!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Vyber si tému, ktorou začneš.</string>
+	<key>onboarding.subject.title</key>
+	<string>Čo sa chceš naučiť?</string>
+	<key>options.capAt30.info</key>
+	<string>Každá úroveň má cieľ najviac 50 trofejí. Ak je táto možnosť zapnutá, hra sa po jeho dosiahnutí automaticky skončí.</string>
+	<key>options.capAt30.title</key>
+	<string>Skončiť pri cieli</string>
+	<key>options.helperMode.info</key>
+	<string>V režime pomocníka je správna odpoveď vždy zelená. Trofeje získané v tomto režime sa počítajú osobitne a označujú hviezdičkou.</string>
+	<key>options.helperMode.title</key>
+	<string>Režim pomocníka</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Vždy začínaš s 3 životmi. Hra sa skončí, keď už nemáš žiadny život. Zapni túto možnosť, aby si mohol hrať a trénovať ďalej aj bez životov.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Neobmedzené životy</string>
+	<key>parentGate.approved</key>
+	<string>Schválené</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Pokusy: %1$lld z %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Podrž %@ %lld sekúnd.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Podrž: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Podrž %@ %lld sekúnd. Potom %4$lld-krát ťukni na %3$@.</string>
+	<key>parentGate.shape.circle</key>
+	<string>kruh</string>
+	<key>parentGate.shape.diamond</key>
+	<string>kosoštvorec</string>
+	<key>parentGate.shape.heart</key>
+	<string>srdce</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>šesťuholník</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>štvorec</string>
+	<key>parentGate.shape.star</key>
+	<string>hviezda</string>
+	<key>parentGate.shape.triangle</key>
+	<string>trojuholník</string>
+	<key>parentGate.stepOne</key>
+	<string>Krok 1 z 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Krok 2 z 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Na ochranu malých hráčov musí dospelý pred pokračovaním k nákupu dokončiť túto kontrolu.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Teraz %1$lld-krát ťukni na %2$@.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Ťuknutia: %1$lld z %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Potrebné schválenie dospelého</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>S Premium môžeš voľne hrať so všetkými 10 zvieratami.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Všetky zvieratá</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Vždy dosť nových príkladov na tréning.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 úrovní na tému</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Hraj úplne bez prerušení.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Bez reklám</string>
+	<key>premium.oneTime</key>
+	<string>Jednorazový nákup. Navždy tvoje.</string>
+	<key>premium.restore</key>
+	<string>Obnoviť nákupy</string>
+	<key>premium.storeUnavailable</key>
+	<string>Obchod teraz nie je dostupný. Skús to znova neskôr.</string>
+	<key>premium.unlock</key>
+	<string>Odomknúť Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Odomknúť Premium · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>Máš Premium!</string>
+	<key>settings.character</key>
+	<string>Postavička</string>
+	<key>settings.characterInfo</key>
+	<string>Každé zviera prinesie do celej hry vlastnú farebnú tému.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Vlastné: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Denný cieľ</string>
+	<key>settings.goalInfo</key>
+	<string>Cieľ série začína na 5 minútach denne. Počíta sa iba aktívny čas hrania.</string>
+	<key>settings.lives</key>
+	<string>Životy</string>
+	<key>settings.livesInfo</key>
+	<string>S tromi životmi sa hra skončí po poslednom srdiečku. V neobmedzenom režime sa trofeje počítajú iba dovtedy, kým máš životy; potom môžeš hrať ďalej.</string>
+	<key>settings.playGoals</key>
+	<string>Herné ciele</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium odomknuté. Ďakujeme!</string>
+	<key>settings.title</key>
+	<string>Nastavenia</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Vyber denný cieľ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Vyber denný alebo týždenný cieľ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld z %3$lld minút, %4$lld dní za sebou</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Denná séria, %lld z %lld minút</string>
+	<key>streak.daily</key>
+	<string>Denná séria</string>
+	<key>streak.dayOne</key>
+	<string>1. deň</string>
+	<key>tutorial.answerHint</key>
+	<string>Nevieš odpoveď? Ťukni na príklad a zobrazí sa.</string>
+	<key>tutorial.complete</key>
+	<string>Výborne! Návod je hotový. Teraz skús prekonať najlepšie skóre!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Skoč na správnu odpoveď a získaj trofej.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Správna odpoveď je zelená. Teraz na ňu skoč.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Teraz skoč na správnu odpoveď a získaj trojnásobok trofejí.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Zober mincu ×3 a raz získaj trojnásobok trofejí.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Môžeš nájsť polovicu alebo celý život a doplniť si životy.</string>
+	<key>tutorial.minusOne</key>
+	<string>Vyhni sa −1. Prídeš o jednu trofej.</string>
+	<key>tutorial.move</key>
+	<string>Nakláňaj zariadenie doľava a doprava. Môžeš prejsť aj cez okraje obrazovky.</string>
+	<key>tutorial.platforms</key>
+	<string>Skáč na plošiny a dostaň sa vyššie.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Tu vidíš svoje skóre v tejto úrovni.</string>
+	<key>tutorial.star</key>
+	<string>Skoč do hviezdy a odstreľ nesprávne odpovede.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ak vyberieš nesprávnu odpoveď, stratíš jeden z troch životov. Skús to teraz.</string>
+</dict>
+</plist>

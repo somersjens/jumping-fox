@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Bear</string>
+	<key>character.bunny</key>
+	<string>Bunny</string>
+	<key>character.crab</key>
+	<string>Crab</string>
+	<key>character.dog</key>
+	<string>Dog</string>
+	<key>character.elephant</key>
+	<string>Elephant</string>
+	<key>character.fox</key>
+	<string>Fox</string>
+	<key>character.frog</key>
+	<string>Frog</string>
+	<key>character.lion</key>
+	<string>Lion</string>
+	<key>character.octopus</key>
+	<string>Octopus</string>
+	<key>character.penguin</key>
+	<string>Penguin</string>
+	<key>character.pickerTitle</key>
+	<string>Choose your character</string>
+	<key>common.back</key>
+	<string>Back</string>
+	<key>common.cancel</key>
+	<string>Cancel</string>
+	<key>common.continue</key>
+	<string>Continue</string>
+	<key>common.done</key>
+	<string>Done</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Save</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Press and hold for 2 seconds to open developer mode.</string>
+	<key>developerMode.title</key>
+	<string>Developer mode</string>
+	<key>filter.addition</key>
+	<string>Addition</string>
+	<key>filter.fractions</key>
+	<string>Fractions</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Percentages</string>
+	<key>filter.subtraction</key>
+	<string>Subtraction</string>
+	<key>filter.tables</key>
+	<string>Tables</string>
+	<key>game.accessibility.mix</key>
+	<string>Mix</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld out of %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Good try</string>
+	<key>game.encouragement.1</key>
+	<string>It's a start</string>
+	<key>game.encouragement.2</key>
+	<string>Keep practicing</string>
+	<key>game.encouragement.3</key>
+	<string>Not bad at all</string>
+	<key>game.encouragement.4</key>
+	<string>Doing well</string>
+	<key>game.encouragement.5</key>
+	<string>Nice performance</string>
+	<key>game.encouragement.6</key>
+	<string>Well done</string>
+	<key>game.encouragement.7</key>
+	<string>Very well played</string>
+	<key>game.encouragement.8</key>
+	<string>The finish is in sight</string>
+	<key>game.encouragement.9</key>
+	<string>You're almost there</string>
+	<key>game.end.completionSubtitle</key>
+	<string>You earned every point.</string>
+	<key>game.end.completionSuffix</key>
+	<string>complete!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Game over</string>
+	<key>game.end.mainMenu</key>
+	<string>Main menu</string>
+	<key>game.end.playAgain</key>
+	<string>Play again</string>
+	<key>game.highScore</key>
+	<string>High score</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Back to main menu</string>
+	<key>game.intro.continue</key>
+	<string>Continue</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>You’ll continue from %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>The correct answer is highlighted in green because the helper is on. Trophies are therefore counted separately with *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Helper off</string>
+	<key>game.intro.helperOn</key>
+	<string>Helper on</string>
+	<key>game.intro.howItWorks</key>
+	<string>How this level works</string>
+	<key>game.intro.livesOff</key>
+	<string>Lives off</string>
+	<key>game.intro.livesOn</key>
+	<string>Lives on</string>
+	<key>game.intro.scorePaused</key>
+	<string>Your current score will be paused.</string>
+	<key>game.intro.start</key>
+	<string>Start level</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Multiply %@%@ by a number from 1 to 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string> or lower</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Tap anywhere to continue</string>
+	<key>game.intro.tapToStart</key>
+	<string>Tap anywhere to start</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Earn |1| trophy per correct answer, up to a maximum of |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Once your lives are gone you can no longer earn trophies.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Maximum trophies for the leaderboard reached</string>
+	<key>game.status.mixMode</key>
+	<string>MIX MODE</string>
+	<key>game.status.scoreLocked</key>
+	<string>Trophies no longer count once your lives are gone</string>
+	<key>game.streak.subtitle</key>
+	<string>Trophies ×2</string>
+	<key>game.streak.title</key>
+	<string>5 in a row!</string>
+	<key>goal.period</key>
+	<string>Goal period</string>
+	<key>goal.promptDaily</key>
+	<string>How many minutes do you want to play per day?</string>
+	<key>goal.promptWeekly</key>
+	<string>How many minutes do you want to play per week?</string>
+	<key>goal.title</key>
+	<string>Play goal</string>
+	<key>goalPeriod.daily</key>
+	<string>Daily</string>
+	<key>goalPeriod.weekly</key>
+	<string>Weekly</string>
+	<key>info.filter.addition</key>
+	<string>Addition only</string>
+	<key>info.filter.fractions</key>
+	<string>Division only</string>
+	<key>info.filter.header</key>
+	<string>Types of problems</string>
+	<key>info.filter.mixed</key>
+	<string>Mixed operations</string>
+	<key>info.filter.percentages</key>
+	<string>Percentages only</string>
+	<key>info.filter.subtraction</key>
+	<string>Subtraction only</string>
+	<key>info.filter.tables</key>
+	<string>Multiplication only</string>
+	<key>info.mode.fractions.header</key>
+	<string>Parts</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Single and multiple parts</string>
+	<key>info.mode.fractions.single</key>
+	<string>Always a single part</string>
+	<key>info.mode.header</key>
+	<string>Order</string>
+	<key>info.mode.mixed</key>
+	<string>Mixed with lower levels</string>
+	<key>info.mode.order</key>
+	<string>Fixed order</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Including decimal numbers</string>
+	<key>info.mode.percentages.header</key>
+	<string>Type</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Without decimal numbers</string>
+	<key>info.mode.random</key>
+	<string>Random order</string>
+	<key>info.super.all</key>
+	<string>Addition, subtraction, multiplication, division, and percentages</string>
+	<key>info.super.basic</key>
+	<string>Addition and subtraction</string>
+	<key>info.super.fraction</key>
+	<string>Addition, subtraction, multiplication, and division</string>
+	<key>info.super.times</key>
+	<string>Addition, subtraction, and multiplication</string>
+	<key>language.select</key>
+	<string>Choose language</string>
+	<key>lives.three</key>
+	<string>3 lives</string>
+	<key>lives.unlimited</key>
+	<string>Unlimited</string>
+	<key>menu.accessibility.character</key>
+	<string>Character</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Tap to change your character; press and hold for two seconds to start over at the welcome screen.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Choose %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maximum reached %lld times</string>
+	<key>menu.moreLevels</key>
+	<string>More levels</string>
+	<key>menu.options</key>
+	<string>Game options</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium tables</string>
+	<key>menu.startHere</key>
+	<string>Start here</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Unlock more with Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Multiple</string>
+	<key>mode.fractions.single</key>
+	<string>Single</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Mixed</string>
+	<key>mode.order</key>
+	<string>Order</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimal</string>
+	<key>mode.percentages.whole</key>
+	<string>Whole</string>
+	<key>mode.random</key>
+	<string>Random</string>
+	<key>mode.standard</key>
+	<string>Standard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>You only get |addition| problems.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>You add %lld |or less| to another number.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>You always add %lld in |ascending order|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>You always add %lld to a |random number|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Addition · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Keep adding two numbers together.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>The answer is at most %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Add up to %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>You only get |fraction| problems.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>You get fractions from this level and |earlier levels|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>You always take |1 part| out of %lld equal parts.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Work out fractions of round numbers from %lld and previous levels.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>The numbers stay round, so the answers are always whole.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Fractions to %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>You take |one or more parts| out of %lld equal parts.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Fractions · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Work out a part of a whole and make fractions equal.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Add and subtract fractions with the same denominator.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Fractions mixed</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>You only get |percentage| problems.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>You get percentages from this level and |earlier levels|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>You always calculate %@, and the answer is a |whole number|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Work out percentages of round numbers up to %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>The amounts stay round, so the answers are always whole.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Percentages to %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>You always calculate %@, and the answer can also be a |decimal|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Calculate %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Work out a percentage of a number.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Convert between percentages and fractions.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Percentages mixed</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>You only get |subtraction| problems.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>You subtract %lld |or less| from another number.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>You always subtract %lld in |descending order|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>You always subtract %lld from a |random number|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Subtraction · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>The first number is at most %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>The answer may go below zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Below zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Subtract up to %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Keep subtracting two numbers.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>The difficulty can increase up to |level %lld| for each selected category.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Practice adding, subtracting, tables, fractions and percentages all mixed up.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Practice adding and subtracting all mixed up.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Practice adding, subtracting, tables and fractions all mixed up.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Practice adding, subtracting and tables all mixed up.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>You only get |multiplication| problems.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>You get all times tables |up to %lld| mixed together.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Each table times a number from |1 to 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>You get the %lld times table in |ascending order|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>You get the %lld times table in |random order|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Table of %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Practice the tables from %lld to %lld mixed up.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tables %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Your name</string>
+	<key>name.whatsYourName</key>
+	<string>What's your name?</string>
+	<key>notif.animal.body %@</key>
+	<string>Earn a few more trophies to unlock %@! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Only %lld trophies to go! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Your animals are waiting. Jump back in and keep collecting trophies!</string>
+	<key>notif.comeback.title</key>
+	<string>We miss you! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Start a %lld-minute session and grow your streak.</string>
+	<key>notif.day3.title</key>
+	<string>Let’s make day 3 happen! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Use the Jump Pad to skip a wrong answer and keep climbing!</string>
+	<key>notif.jumppad.title</key>
+	<string>Jump past wrong answers! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Get Premium for %lld levels per topic and all 10 animals — the adventure keeps going.</string>
+	<key>notif.premium.title</key>
+	<string>Unlock more levels and animals! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>It’s been %lld days. Let’s solve some sums and earn more trophies!</string>
+	<key>notif.reactivate.title</key>
+	<string>Ready to play again? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Play for %lld minutes and keep it going!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Your %lld-day streak is on fire! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Great job! Let’s play for %lld minutes and collect even more.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>You’ve earned %lld trophies! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>That brings your total to %lld trophies. Amazing work!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>You earned %lld trophies this week! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Different mixed sums together.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Pretty good already</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Practice with sums in order.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Just started</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Sums in random order.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Some practice already</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Choose a starting point for %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>this topic</string>
+	<key>onboarding.level.title</key>
+	<string>How good are you at this already?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Let's get started. What's your name?</string>
+	<key>onboarding.name.title</key>
+	<string>Doing sums has
+never been this fun!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Choose a topic to start with.</string>
+	<key>onboarding.subject.title</key>
+	<string>What do you want to learn?</string>
+	<key>options.capAt30.info</key>
+	<string>Each level has a trophy goal of up to 50. If this option is on, the game finishes automatically when you reach it.</string>
+	<key>options.capAt30.title</key>
+	<string>Finish at goal</string>
+	<key>options.helperMode.info</key>
+	<string>In Helper Mode the correct answer is always shown in green. Trophies earned in this mode are counted separately and marked with a star.</string>
+	<key>options.helperMode.title</key>
+	<string>Helper mode</string>
+	<key>options.unlimitedLives.info</key>
+	<string>You always start with 3 lives. The game will finish when you have no lives left. Turn this option on to keep playing and practice after your lives are gone.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Unlimited lives</string>
+	<key>parentGate.approved</key>
+	<string>Approved</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Attempts: %1$lld of %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Hold the %@ for %lld seconds.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Hold: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Hold the %@ for %lld seconds. Then tap the %@ %lld times.</string>
+	<key>parentGate.shape.circle</key>
+	<string>circle</string>
+	<key>parentGate.shape.diamond</key>
+	<string>diamond</string>
+	<key>parentGate.shape.heart</key>
+	<string>heart</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>hexagon</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>square</string>
+	<key>parentGate.shape.star</key>
+	<string>star</string>
+	<key>parentGate.shape.triangle</key>
+	<string>triangle</string>
+	<key>parentGate.stepOne</key>
+	<string>Step 1 of 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Step 2 of 2</string>
+	<key>parentGate.subtitle</key>
+	<string>To protect young players, an adult must complete this check before continuing to the purchase.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Now tap the %2$@ %1$lld times.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Taps: %1$lld of %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Adult approval required</string>
+	<key>premium.availableAt %lld</key>
+	<string>Available from %lld trophies</string>
+	<key>premium.availableFromStart</key>
+	<string>Available from the start</string>
+	<key>premium.characterUnlocked</key>
+	<string>NEW CHARACTER UNLOCKED</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ unlocked</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>You’ve earned %lld trophies</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Exclusive with Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Exclusive with Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>With premium you play freely with all 10 animals.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Access to all animals</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Always enough new sums to practice.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 levels per topic</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Play completely without interruptions.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>No ads</string>
+	<key>premium.oneTime</key>
+	<string>One-time purchase. Yours forever.</string>
+	<key>premium.restore</key>
+	<string>Restore purchases</string>
+	<key>premium.start</key>
+	<string>Start</string>
+	<key>premium.storeUnavailable</key>
+	<string>The store is not available right now. Please try again later.</string>
+	<key>premium.unlock</key>
+	<string>Unlock Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Unlock Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Unlock with trophies</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Unlocked with Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>You have Premium!</string>
+	<key>settings.character</key>
+	<string>Character</string>
+	<key>settings.characterInfo</key>
+	<string>Every animal brings its own color theme to the whole game.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Custom: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Daily goal</string>
+	<key>settings.goalInfo</key>
+	<string>The streak goal starts at 5 minutes per day. Only active playtime counts.</string>
+	<key>settings.lives</key>
+	<string>Lives</string>
+	<key>settings.livesInfo</key>
+	<string>With three lives the game ends after your last heart. In unlimited mode trophies only count while you still have lives; after that you can keep playing.</string>
+	<key>settings.playGoals</key>
+	<string>Play goals</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium unlocked. Thank you!</string>
+	<key>settings.title</key>
+	<string>Settings</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Choose a daily goal</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Choose a daily or weekly goal</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld of %3$lld minutes, %4$lld days in a row</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Daily streak, %lld of %lld minutes</string>
+	<key>streak.daily</key>
+	<string>Daily streak</string>
+	<key>streak.dayOne</key>
+	<string>Day 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Don’t know the answer? Tap the question to see it.</string>
+	<key>tutorial.complete</key>
+	<string>Well done! The tutorial is complete. Now go for the high score!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Jump on the correct answer to collect a trophy.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>The correct answer is shown in green. Now jump on the correct answer.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Now jump on the correct answer to collect triple trophies.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Collect the ×3 coin to earn triple trophies once.</string>
+	<key>tutorial.lifePickup</key>
+	<string>You can find half a life or a full life to get lives back.</string>
+	<key>tutorial.minusOne</key>
+	<string>Avoid the −1. It costs you one trophy.</string>
+	<key>tutorial.move</key>
+	<string>Move your device to go left and right. You can also move through the sides of the screen.</string>
+	<key>tutorial.platforms</key>
+	<string>Jump on the platforms to move up.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Your score for this level is shown here.</string>
+	<key>tutorial.star</key>
+	<string>Jump into the star to shoot away wrong answers.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>If you choose a wrong answer, you lose one of your three lives. Try it now.</string>
+</dict>
+</plist>

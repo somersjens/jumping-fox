@@ -23,6 +23,9 @@ struct Jumping_FoxApp: App {
         // With it, the restore runs and @AppStorage fills the field the moment
         // iCloud delivers the name.
         _ = ProgressSync.shared
+        // Install the notification delegate and rebuild the reminder schedule
+        // for players who granted permission in an earlier session.
+        NotificationManager.shared.start()
     }
 
     var body: some Scene {

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>דוב</string>
+	<key>character.bunny</key>
+	<string>ארנב</string>
+	<key>character.crab</key>
+	<string>סרטן</string>
+	<key>character.dog</key>
+	<string>כלב</string>
+	<key>character.elephant</key>
+	<string>פיל</string>
+	<key>character.fox</key>
+	<string>שועל</string>
+	<key>character.frog</key>
+	<string>צפרדע</string>
+	<key>character.lion</key>
+	<string>אריה</string>
+	<key>character.octopus</key>
+	<string>תמנון</string>
+	<key>character.penguin</key>
+	<string>פינגווין</string>
+	<key>character.pickerTitle</key>
+	<string>בחרו דמות</string>
+	<key>common.back</key>
+	<string>חזרה</string>
+	<key>common.cancel</key>
+	<string>ביטול</string>
+	<key>common.continue</key>
+	<string>המשך</string>
+	<key>common.done</key>
+	<string>סיום</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld דק׳</string>
+	<key>common.save</key>
+	<string>שמירה</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>לחצו לחיצה ארוכה במשך 2 שניות כדי לפתוח מצב מפתחים.</string>
+	<key>developerMode.title</key>
+	<string>מצב מפתחים</string>
+	<key>filter.addition</key>
+	<string>חיבור</string>
+	<key>filter.fractions</key>
+	<string>שברים</string>
+	<key>filter.mixed</key>
+	<string>סופרמיקס</string>
+	<key>filter.percentages</key>
+	<string>אחוזים</string>
+	<key>filter.subtraction</key>
+	<string>חיסור</string>
+	<key>filter.tables</key>
+	<string>לוח הכפל</string>
+	<key>game.accessibility.mix</key>
+	<string>ערבוב</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld מתוך %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ניסיון יפה</string>
+	<key>game.encouragement.1</key>
+	<string>זו התחלה</string>
+	<key>game.encouragement.2</key>
+	<string>המשיכו להתאמן</string>
+	<key>game.encouragement.3</key>
+	<string>לא רע בכלל</string>
+	<key>game.encouragement.4</key>
+	<string>כל הכבוד</string>
+	<key>game.encouragement.5</key>
+	<string>ביצוע יפה</string>
+	<key>game.encouragement.6</key>
+	<string>עבודה מצוינת</string>
+	<key>game.encouragement.7</key>
+	<string>משחק מעולה</string>
+	<key>game.encouragement.8</key>
+	<string>הסוף כבר קרוב</string>
+	<key>game.encouragement.9</key>
+	<string>כמעט הגעתם</string>
+	<key>game.end.completionSubtitle</key>
+	<string>הרווחתם כל נקודה.</string>
+	<key>game.end.completionSuffix</key>
+	<string>הושלם!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>המשחק נגמר</string>
+	<key>game.end.mainMenu</key>
+	<string>תפריט ראשי</string>
+	<key>game.end.playAgain</key>
+	<string>לשחק שוב</string>
+	<key>game.highScore</key>
+	<string>שיא</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>חזרה לתפריט הראשי</string>
+	<key>game.intro.continue</key>
+	<string>המשך</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ממשיכים מ־%lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>התשובה הנכונה מסומנת בירוק כי העזרה פועלת. לכן גביעים נספרים בנפרד עם *.</string>
+	<key>game.intro.helperOff</key>
+	<string>עזרה כבויה</string>
+	<key>game.intro.helperOn</key>
+	<string>עזרה פועלת</string>
+	<key>game.intro.howItWorks</key>
+	<string>איך השלב עובד</string>
+	<key>game.intro.livesOff</key>
+	<string>חיים כבויים</string>
+	<key>game.intro.livesOn</key>
+	<string>חיים פעילים</string>
+	<key>game.intro.scorePaused</key>
+	<string>הניקוד הנוכחי יושהה.</string>
+	<key>game.intro.start</key>
+	<string>התחלת שלב</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>כפלו את %@%@ במספר מ־1 עד 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>או פחות</string>
+	<key>game.intro.tapToContinue</key>
+	<string>הקישו בכל מקום כדי להמשיך</string>
+	<key>game.intro.tapToStart</key>
+	<string>הקישו בכל מקום כדי להתחיל</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>קבלו |1| גביע על כל תשובה נכונה, עד |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>כשנגמרים החיים, אי אפשר עוד לזכות בגביעים.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>הגעתם למספר הגביעים המרבי בטבלת השיאים</string>
+	<key>game.status.mixMode</key>
+	<string>מצב ערבוב</string>
+	<key>game.status.scoreLocked</key>
+	<string>אחרי שנגמרים החיים, הגביעים כבר לא נספרים</string>
+	<key>game.streak.subtitle</key>
+	<string>גביעים ×2</string>
+	<key>game.streak.title</key>
+	<string>5 ברצף!</string>
+	<key>goal.period</key>
+	<string>תקופת היעד</string>
+	<key>goal.promptDaily</key>
+	<string>כמה דקות תרצו לשחק בכל יום?</string>
+	<key>goal.promptWeekly</key>
+	<string>כמה דקות תרצו לשחק בכל שבוע?</string>
+	<key>goal.title</key>
+	<string>יעד משחק</string>
+	<key>goalPeriod.daily</key>
+	<string>יומי</string>
+	<key>goalPeriod.weekly</key>
+	<string>שבועי</string>
+	<key>info.filter.addition</key>
+	<string>חיבור בלבד</string>
+	<key>info.filter.fractions</key>
+	<string>חילוק בלבד</string>
+	<key>info.filter.header</key>
+	<string>סוגי תרגילים</string>
+	<key>info.filter.mixed</key>
+	<string>פעולות מעורבות</string>
+	<key>info.filter.percentages</key>
+	<string>אחוזים בלבד</string>
+	<key>info.filter.subtraction</key>
+	<string>חיסור בלבד</string>
+	<key>info.filter.tables</key>
+	<string>כפל בלבד</string>
+	<key>info.mode.fractions.header</key>
+	<string>חלקים</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>חלק אחד או כמה חלקים</string>
+	<key>info.mode.fractions.single</key>
+	<string>תמיד חלק אחד</string>
+	<key>info.mode.header</key>
+	<string>סדר</string>
+	<key>info.mode.mixed</key>
+	<string>מעורבב עם שלבים קודמים</string>
+	<key>info.mode.order</key>
+	<string>סדר קבוע</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>כולל מספרים עשרוניים</string>
+	<key>info.mode.percentages.header</key>
+	<string>סוג</string>
+	<key>info.mode.percentages.whole</key>
+	<string>בלי מספרים עשרוניים</string>
+	<key>info.mode.random</key>
+	<string>סדר אקראי</string>
+	<key>info.super.all</key>
+	<string>חיבור, חיסור, כפל, חילוק ואחוזים</string>
+	<key>info.super.basic</key>
+	<string>חיבור וחיסור</string>
+	<key>info.super.fraction</key>
+	<string>חיבור, חיסור, כפל וחילוק</string>
+	<key>info.super.times</key>
+	<string>חיבור, חיסור וכפל</string>
+	<key>language.select</key>
+	<string>בחירת שפה</string>
+	<key>lives.three</key>
+	<string>3 חיים</string>
+	<key>lives.unlimited</key>
+	<string>ללא הגבלה</string>
+	<key>menu.accessibility.character</key>
+	<string>דמות</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>הקישו כדי לשנות דמות; לחצו לחיצה ארוכה במשך שתי שניות כדי להתחיל מחדש במסך הפתיחה.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>בחרו %@</string>
+	<key>menu.maxScore</key>
+	<string>30 מקס׳</string>
+	<key>menu.maximumCount</key>
+	<string>מקס׳</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>הגעתם למקסימום %lld פעמים</string>
+	<key>menu.moreLevels</key>
+	<string>שלבים נוספים</string>
+	<key>menu.options</key>
+	<string>אפשרויות משחק</string>
+	<key>menu.premium</key>
+	<string>פרימיום</string>
+	<key>menu.premiumTables</key>
+	<string>לוחות פרימיום</string>
+	<key>menu.startHere</key>
+	<string>מתחילים כאן</string>
+	<key>menu.unlockWithPremium</key>
+	<string>פתחו עוד עם פרימיום</string>
+	<key>mode.fractions.multiple</key>
+	<string>כמה חלקים</string>
+	<key>mode.fractions.single</key>
+	<string>חלק אחד</string>
+	<key>mode.mix</key>
+	<string>ערבוב</string>
+	<key>mode.mixed</key>
+	<string>מעורב</string>
+	<key>mode.order</key>
+	<string>סדר</string>
+	<key>mode.percentages.decimal</key>
+	<string>עשרוני</string>
+	<key>mode.percentages.whole</key>
+	<string>שלם</string>
+	<key>mode.random</key>
+	<string>אקראי</string>
+	<key>mode.standard</key>
+	<string>רגיל</string>
+	<key>modeIntro.addition.intro</key>
+	<string>תקבלו רק תרגילי |חיבור|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>מוסיפים %lld |או פחות| למספר אחר.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>תמיד מוסיפים %lld בסדר |עולה|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>תמיד מוסיפים %lld למספר |אקראי|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>חיבור · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>חברו בכל פעם שני מספרים.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>התשובה היא לכל היותר %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>חיבור עד %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>תקבלו רק תרגילי |שברים|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>תקבלו שברים מהשלב הזה ומ|שלבים קודמים|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>לוקחים תמיד |חלק 1| מתוך %lld חלקים שווים.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>חשבו שברים ממספרים עגולים משלב %lld ומשלבים קודמים.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>המספרים נשארים עגולים, לכן התשובות תמיד שלמות.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>שברים עד %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>לוקחים חלק אחד או |כמה חלקים| מתוך %lld חלקים שווים.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>שברים · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>חשבו חלק מתוך שלם וצרו שברים שווים.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>חברו וחסרו שברים עם אותו מכנה.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>שברים מעורבים</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>תקבלו רק תרגילי |אחוזים|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>תקבלו אחוזים מהשלב הזה ומ|שלבים קודמים|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>תמיד מחשבים %@, והתשובה היא |מספר שלם|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>חשבו אחוזים ממספרים עגולים עד %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>הכמויות נשארות עגולות, לכן התשובות תמיד שלמות.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>אחוזים עד %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>תמיד מחשבים %@, והתשובה יכולה להיות גם |עשרונית|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>חישוב %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>חשבו אחוז מתוך מספר.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>המירו בין אחוזים לשברים.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>אחוזים מעורבים</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>תקבלו רק תרגילי |חיסור|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>מחסרים %lld |או פחות| ממספר אחר.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>תמיד מחסרים %lld בסדר |יורד|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>תמיד מחסרים %lld ממספר |אקראי|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>חיסור · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>המספר הראשון הוא לכל היותר %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>התשובה יכולה להיות מתחת לאפס.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>מתחת לאפס</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>חיסור עד %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>חסרו בכל פעם שני מספרים.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>רמת הקושי יכולה לעלות עד |שלב %lld| בכל נושא שנבחר.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>תרגלו חיבור, חיסור, לוחות כפל, שברים ואחוזים בערבוביה.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>סופרמיקס %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>תרגלו חיבור וחיסור בערבוביה.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>סופרמיקס %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>תרגלו חיבור, חיסור, לוחות כפל ושברים בערבוביה.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>סופרמיקס %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>תרגלו חיבור, חיסור ולוחות כפל בערבוביה.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>סופרמיקס %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>תקבלו רק תרגילי |כפל|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>תקבלו את כל לוחות הכפל |עד %lld| בערבוביה.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>כל לוח כפול מספר מ־|1 עד 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>תקבלו את לוח הכפל של %lld בסדר |עולה|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>תקבלו את לוח הכפל של %lld בסדר |אקראי|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>לוח הכפל של %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>תרגלו את לוחות הכפל מ־%lld עד %lld בערבוביה.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>לוחות %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>השם שלך</string>
+	<key>name.whatsYourName</key>
+	<string>איך קוראים לך?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>תרגילים מעורבים מסוגים שונים.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>כבר די טוב</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>מתאמנים על תרגילים לפי הסדר.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>רק התחלתי</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>תרגילים בסדר אקראי.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>כבר התאמנתי קצת</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>בחרו נקודת התחלה עבור %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>הנושא הזה</string>
+	<key>onboarding.level.title</key>
+	<string>עד כמה אתם כבר טובים בזה?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>בואו נתחיל. איך קוראים לך?</string>
+	<key>onboarding.name.title</key>
+	<string>לפתור תרגילים מעולם לא היה כיף כל כך!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>בחרו נושא להתחיל בו.</string>
+	<key>onboarding.subject.title</key>
+	<string>מה תרצו ללמוד?</string>
+	<key>options.capAt30.info</key>
+	<string>בכל שלב יש יעד של עד 50 גביעים. כשהאפשרות הזו פועלת, המשחק מסתיים אוטומטית כשמגיעים ליעד.</string>
+	<key>options.capAt30.title</key>
+	<string>סיום ביעד</string>
+	<key>options.helperMode.info</key>
+	<string>במצב עזרה התשובה הנכונה תמיד מוצגת בירוק. גביעים שמרוויחים במצב הזה נספרים בנפרד ומסומנים בכוכבית.</string>
+	<key>options.helperMode.title</key>
+	<string>מצב עזרה</string>
+	<key>options.unlimitedLives.info</key>
+	<string>תמיד מתחילים עם 3 חיים. המשחק מסתיים כשלא נשארים חיים. הפעילו אפשרות זו כדי להמשיך לשחק ולהתאמן גם אחרי שהחיים נגמרים.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>חיים ללא הגבלה</string>
+	<key>parentGate.approved</key>
+	<string>אושר</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ניסיונות: %1$lld מתוך %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>החזיקו את ה־%@ במשך %lld שניות.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>החזקה: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>החזיקו את ה־%@ במשך %lld שניות. לאחר מכן הקישו על ה־%@ ‏%lld פעמים.</string>
+	<key>parentGate.shape.circle</key>
+	<string>עיגול</string>
+	<key>parentGate.shape.diamond</key>
+	<string>מעוין</string>
+	<key>parentGate.shape.heart</key>
+	<string>לב</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>משושה</string>
+	<key>parentGate.shape.plus</key>
+	<string>פלוס</string>
+	<key>parentGate.shape.square</key>
+	<string>ריבוע</string>
+	<key>parentGate.shape.star</key>
+	<string>כוכב</string>
+	<key>parentGate.shape.triangle</key>
+	<string>משולש</string>
+	<key>parentGate.stepOne</key>
+	<string>שלב 1 מתוך 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>שלב 2 מתוך 2</string>
+	<key>parentGate.subtitle</key>
+	<string>כדי להגן על שחקנים צעירים, מבוגר חייב להשלים את הבדיקה לפני המשך הרכישה.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>עכשיו הקישו על ה־%2$@ ‏%1$lld פעמים.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>הקשות: %1$lld מתוך %2$lld</string>
+	<key>parentGate.title</key>
+	<string>נדרש אישור מבוגר</string>
+	<key>premium.availableAt %lld</key>
+	<string>זמין החל מ־%lld גביעים</string>
+	<key>premium.availableFromStart</key>
+	<string>זמין מההתחלה</string>
+	<key>premium.characterUnlocked</key>
+	<string>דמות חדשה נפתחה</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ נפתח</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>השגת %lld גביעים</string>
+	<key>premium.exclusiveBadge</key>
+	<string>בלעדי עם Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>בלעדי עם Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>עם פרימיום אפשר לשחק בחופשיות עם כל 10 החיות.</string>
+	<key>premium.feature.animals.title</key>
+	<string>גישה לכל החיות</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>תמיד יש מספיק תרגילים חדשים.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 שלבים בכל נושא</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>שחקו בלי הפרעות.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ללא פרסומות</string>
+	<key>premium.oneTime</key>
+	<string>רכישה חד־פעמית. שלכם לתמיד.</string>
+	<key>premium.restore</key>
+	<string>שחזור רכישות</string>
+	<key>premium.start</key>
+	<string>התחלה</string>
+	<key>premium.storeUnavailable</key>
+	<string>החנות אינה זמינה כרגע. נסו שוב מאוחר יותר.</string>
+	<key>premium.unlock</key>
+	<string>פתיחת פרימיום</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>פתיחת פרימיום · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>פתיחה באמצעות גביעים</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>נפתח עם Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>יש לכם פרימיום!</string>
+	<key>settings.character</key>
+	<string>דמות</string>
+	<key>settings.characterInfo</key>
+	<string>כל חיה מעניקה למשחק כולו ערכת צבעים משלה.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>מותאם: %lld דק׳</string>
+	<key>settings.dailyGoal</key>
+	<string>יעד יומי</string>
+	<key>settings.goalInfo</key>
+	<string>יעד הרצף מתחיל ב־5 דקות ביום. רק זמן משחק פעיל נחשב.</string>
+	<key>settings.lives</key>
+	<string>חיים</string>
+	<key>settings.livesInfo</key>
+	<string>עם שלושה חיים המשחק מסתיים אחרי הלב האחרון. במצב ללא הגבלה, גביעים נספרים רק כל עוד נשארו חיים; לאחר מכן אפשר להמשיך לשחק.</string>
+	<key>settings.playGoals</key>
+	<string>יעדי משחק</string>
+	<key>settings.premiumUnlocked</key>
+	<string>הפרימיום נפתח. תודה!</string>
+	<key>settings.title</key>
+	<string>הגדרות</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>בחרו יעד יומי</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>בחרו יעד יומי או שבועי</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, ‏%2$lld מתוך %3$lld דקות, %4$lld ימים ברצף</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>רצף יומי, %lld מתוך %lld דקות</string>
+	<key>streak.daily</key>
+	<string>רצף יומי</string>
+	<key>streak.dayOne</key>
+	<string>יום 1</string>
+	<key>tutorial.answerHint</key>
+	<string>לא יודעים את התשובה? הקישו על התרגיל כדי לראות אותה.</string>
+	<key>tutorial.complete</key>
+	<string>כל הכבוד! סיימתם את ההדרכה. עכשיו נסו לשבור את השיא!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>קפצו על התשובה הנכונה כדי לאסוף גביע.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>התשובה הנכונה מוצגת בירוק. עכשיו קפצו עליה.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>עכשיו קפצו על התשובה הנכונה כדי לקבל פי שלושה גביעים.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>אספו את מטבע ה־×3 כדי לקבל פעם אחת פי שלושה גביעים.</string>
+	<key>tutorial.lifePickup</key>
+	<string>אפשר למצוא חצי חיים או חיים שלמים כדי להחזיר חיים.</string>
+	<key>tutorial.minusOne</key>
+	<string>היזהרו מ־−1. הוא עולה לכם בגביע אחד.</string>
+	<key>tutorial.move</key>
+	<string>הזיזו את המכשיר כדי לנוע ימינה ושמאלה. אפשר גם לעבור דרך צדי המסך.</string>
+	<key>tutorial.platforms</key>
+	<string>קפצו על המשטחים כדי לעלות.</string>
+	<key>tutorial.scoreHint</key>
+	<string>הניקוד שלכם בשלב הזה מופיע כאן.</string>
+	<key>tutorial.star</key>
+	<string>קפצו אל הכוכב כדי להעיף תשובות שגויות.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>אם בוחרים תשובה שגויה, מאבדים אחד משלושת החיים. נסו עכשיו.</string>
+</dict>
+</plist>

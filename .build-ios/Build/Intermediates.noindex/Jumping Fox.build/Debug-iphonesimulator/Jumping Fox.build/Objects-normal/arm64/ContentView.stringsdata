@@ -1,0 +1,432 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "filter.addition",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 251
+        }
+      },
+      {
+        "comment": "",
+        "key": "filter.subtraction",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 252
+        }
+      },
+      {
+        "comment": "",
+        "key": "filter.tables",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 253
+        }
+      },
+      {
+        "comment": "",
+        "key": "filter.fractions",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 254
+        }
+      },
+      {
+        "comment": "",
+        "key": "filter.percentages",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 255
+        }
+      },
+      {
+        "comment": "",
+        "key": "filter.mixed",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 256
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.addition",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 293
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.subtraction",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 294
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.tables",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 295
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.fractions",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 296
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.percentages",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 297
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.mixed",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 298
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.premiumTables",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 395
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.premium",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 395
+        }
+      },
+      {
+        "comment": "",
+        "key": "tutorial.scoreHint",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 594
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.accessibility.character",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 817
+        }
+      },
+      {
+        "comment": "",
+        "key": "developerMode.accessibilityHint",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 818
+        }
+      },
+      {
+        "comment": "",
+        "key": "developerMode.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 822
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.filter.header",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 2153
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.accessibility.chooseMode %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 1729
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.accessibility.chooseMode %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 1763
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.options",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 1828
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.capAt30.title",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1852
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.capAt30.info",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1853
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.unlimitedLives.title",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1854
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.unlimitedLives.info",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1855
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.helperMode.title",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1856
+        }
+      },
+      {
+        "comment": "",
+        "key": "options.helperMode.info",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1857
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.moreLevels",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 2099
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.unlockWithPremium",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 2102
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.accessibility.daily %lld %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 2378
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.accessibility.chooseDailyGoal",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 2379
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.daysInARow %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 2363
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.daily",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 2353
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.minutesShort %lld %lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 2356
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.accessibility.compact %@ %lld %lld %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 2453
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.accessibility.choosePeriod",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 2454
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.minutesShort %lld %lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 2443
+        }
+      },
+      {
+        "comment": "",
+        "key": "goalPeriod.daily",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 2599
+        }
+      },
+      {
+        "comment": "",
+        "key": "goalPeriod.weekly",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 2600
+        }
+      },
+      {
+        "comment": "",
+        "key": "streak.dayOne",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 2465
+        }
+      },
+      {
+        "comment": "",
+        "key": "name.placeholder",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 2529
+        }
+      },
+      {
+        "comment": "",
+        "key": "name.whatsYourName",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 2524
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.cancel",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 2548
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.save",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 2561
+        }
+      },
+      {
+        "comment": "",
+        "key": "goal.title",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 2614
+        }
+      },
+      {
+        "comment": "",
+        "key": "goal.period",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 2616
+        }
+      },
+      {
+        "comment": "",
+        "key": "goal.promptWeekly",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 2623
+        }
+      },
+      {
+        "comment": "",
+        "key": "goal.promptDaily",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 2623
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.startHere",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 3192
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.maximumCount",
+        "location": {
+          "startingColumn": 78,
+          "startingLine": 3654
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.maximumCount",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 3675
+        }
+      },
+      {
+        "comment": "",
+        "key": "menu.maximumCount.accessibility %lld",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 3675
+        }
+      }
+    ]
+  },
+  "version": 1
+}

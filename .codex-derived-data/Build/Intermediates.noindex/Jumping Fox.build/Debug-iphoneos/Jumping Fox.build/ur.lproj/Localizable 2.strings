@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ریچھ</string>
+	<key>character.bunny</key>
+	<string>خرگوش</string>
+	<key>character.crab</key>
+	<string>کیکڑا</string>
+	<key>character.dog</key>
+	<string>کتا</string>
+	<key>character.elephant</key>
+	<string>ہاتھی</string>
+	<key>character.fox</key>
+	<string>لومڑی</string>
+	<key>character.frog</key>
+	<string>مینڈک</string>
+	<key>character.lion</key>
+	<string>شیر</string>
+	<key>character.octopus</key>
+	<string>آکٹوپس</string>
+	<key>character.penguin</key>
+	<string>پینگوئن</string>
+	<key>character.pickerTitle</key>
+	<string>اپنا کردار چنیں</string>
+	<key>common.back</key>
+	<string>واپس</string>
+	<key>common.cancel</key>
+	<string>منسوخ</string>
+	<key>common.continue</key>
+	<string>جاری</string>
+	<key>common.done</key>
+	<string>ہو گیا</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld منٹ</string>
+	<key>common.save</key>
+	<string>محفوظ کریں</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ڈیولپر موڈ کھولنے کے لیے 2 سیکنڈ دبائے رکھیں۔</string>
+	<key>developerMode.title</key>
+	<string>ڈیولپر موڈ</string>
+	<key>filter.addition</key>
+	<string>جمع</string>
+	<key>filter.fractions</key>
+	<string>کسر</string>
+	<key>filter.mixed</key>
+	<string>سپر مکس</string>
+	<key>filter.percentages</key>
+	<string>فی صد</string>
+	<key>filter.subtraction</key>
+	<string>تفریق</string>
+	<key>filter.tables</key>
+	<string>پہاڑے</string>
+	<key>game.accessibility.mix</key>
+	<string>مکس</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld میں سے %lld</string>
+	<key>game.encouragement.0</key>
+	<string>اچھی کوشش</string>
+	<key>game.encouragement.1</key>
+	<string>اچھی شروعات</string>
+	<key>game.encouragement.2</key>
+	<string>مشق جاری رکھیں</string>
+	<key>game.encouragement.3</key>
+	<string>بالکل برا نہیں</string>
+	<key>game.encouragement.4</key>
+	<string>بہت خوب</string>
+	<key>game.encouragement.5</key>
+	<string>اچھی کارکردگی</string>
+	<key>game.encouragement.6</key>
+	<string>شاباش</string>
+	<key>game.encouragement.7</key>
+	<string>بہت خوب کھیلے</string>
+	<key>game.encouragement.8</key>
+	<string>منزل قریب ہے</string>
+	<key>game.encouragement.9</key>
+	<string>آپ تقریباً پہنچ گئے</string>
+	<key>game.end.completionSubtitle</key>
+	<string>آپ نے ہر پوائنٹ کمایا۔</string>
+	<key>game.end.completionSuffix</key>
+	<string>مکمل!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>کھیل ختم</string>
+	<key>game.end.mainMenu</key>
+	<string>مرکزی مینو</string>
+	<key>game.end.playAgain</key>
+	<string>پھر کھیلیں</string>
+	<key>game.highScore</key>
+	<string>بہترین اسکور</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>مرکزی مینو پر واپس</string>
+	<key>game.intro.continue</key>
+	<string>جاری رکھیں</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>آپ %lld سے جاری رکھیں گے</string>
+	<key>game.intro.helperBullet</key>
+	<string>مددگار آن ہے، اس لیے درست جواب سبز ہے۔ ٹرافیاں * کے ساتھ الگ گنی جائیں گی۔</string>
+	<key>game.intro.helperOff</key>
+	<string>مددگار بند</string>
+	<key>game.intro.helperOn</key>
+	<string>مددگار آن</string>
+	<key>game.intro.howItWorks</key>
+	<string>یہ لیول کیسے چلتا ہے</string>
+	<key>game.intro.livesOff</key>
+	<string>جانیں بند</string>
+	<key>game.intro.livesOn</key>
+	<string>جانیں آن</string>
+	<key>game.intro.scorePaused</key>
+	<string>آپ کا موجودہ اسکور روک دیا جائے گا۔</string>
+	<key>game.intro.start</key>
+	<string>لیول شروع کریں</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ کو 1 سے 12 تک کسی عدد سے ضرب دیں۔</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>یا کم</string>
+	<key>game.intro.tapToContinue</key>
+	<string>جاری رکھنے کے لیے کہیں بھی ٹیپ کریں</string>
+	<key>game.intro.tapToStart</key>
+	<string>شروع کرنے کے لیے کہیں بھی ٹیپ کریں</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ہر درست جواب پر |1| ٹرافی پائیں، زیادہ سے زیادہ |%lld|۔</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>جانیں ختم ہونے کے بعد آپ مزید ٹرافیاں نہیں کما سکتے۔</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>لیڈر بورڈ کی زیادہ سے زیادہ ٹرافیاں مل گئیں</string>
+	<key>game.status.mixMode</key>
+	<string>مکس موڈ</string>
+	<key>game.status.scoreLocked</key>
+	<string>جانیں ختم ہونے کے بعد ٹرافیاں شمار نہیں ہوتیں</string>
+	<key>game.streak.subtitle</key>
+	<string>ٹرافیاں ×2</string>
+	<key>game.streak.title</key>
+	<string>لگاتار 5!</string>
+	<key>goal.period</key>
+	<string>ہدف کی مدت</string>
+	<key>goal.promptDaily</key>
+	<string>روز کتنے منٹ کھیلنا چاہتے ہیں؟</string>
+	<key>goal.promptWeekly</key>
+	<string>ہفتے میں کتنے منٹ کھیلنا چاہتے ہیں؟</string>
+	<key>goal.title</key>
+	<string>کھیل کا ہدف</string>
+	<key>goalPeriod.daily</key>
+	<string>روزانہ</string>
+	<key>goalPeriod.weekly</key>
+	<string>ہفتہ وار</string>
+	<key>info.filter.addition</key>
+	<string>صرف جمع</string>
+	<key>info.filter.fractions</key>
+	<string>صرف تقسیم</string>
+	<key>info.filter.header</key>
+	<string>سوالوں کی قسمیں</string>
+	<key>info.filter.mixed</key>
+	<string>ملے جلے سوال</string>
+	<key>info.filter.percentages</key>
+	<string>صرف فی صد</string>
+	<key>info.filter.subtraction</key>
+	<string>صرف تفریق</string>
+	<key>info.filter.tables</key>
+	<string>صرف ضرب</string>
+	<key>info.mode.fractions.header</key>
+	<string>حصے</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ایک اور کئی حصے</string>
+	<key>info.mode.fractions.single</key>
+	<string>ہمیشہ ایک حصہ</string>
+	<key>info.mode.header</key>
+	<string>ترتیب</string>
+	<key>info.mode.mixed</key>
+	<string>پچھلے لیولز کے ساتھ مکس</string>
+	<key>info.mode.order</key>
+	<string>مقررہ ترتیب</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>اعشاری اعداد سمیت</string>
+	<key>info.mode.percentages.header</key>
+	<string>قسم</string>
+	<key>info.mode.percentages.whole</key>
+	<string>اعشاری اعداد کے بغیر</string>
+	<key>info.mode.random</key>
+	<string>بے ترتیب</string>
+	<key>info.super.all</key>
+	<string>جمع، تفریق، ضرب، تقسیم اور فی صد</string>
+	<key>info.super.basic</key>
+	<string>جمع اور تفریق</string>
+	<key>info.super.fraction</key>
+	<string>جمع، تفریق، ضرب اور تقسیم</string>
+	<key>info.super.times</key>
+	<string>جمع، تفریق اور ضرب</string>
+	<key>language.select</key>
+	<string>زبان چنیں</string>
+	<key>lives.three</key>
+	<string>3 جانیں</string>
+	<key>lives.unlimited</key>
+	<string>لامحدود</string>
+	<key>menu.accessibility.character</key>
+	<string>کردار</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>کردار بدلنے کے لیے ٹیپ کریں؛ خیرمقدمی اسکرین سے دوبارہ شروع کرنے کے لیے دو سیکنڈ دبائے رکھیں۔</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ چنیں</string>
+	<key>menu.maxScore</key>
+	<string>30 زیادہ سے زیادہ</string>
+	<key>menu.maximumCount</key>
+	<string>زیادہ سے زیادہ</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>زیادہ سے زیادہ حد %lld بار حاصل ہوئی</string>
+	<key>menu.moreLevels</key>
+	<string>مزید لیولز</string>
+	<key>menu.options</key>
+	<string>کھیل کے اختیارات</string>
+	<key>menu.premium</key>
+	<string>پریمیم</string>
+	<key>menu.premiumTables</key>
+	<string>پریمیم پہاڑے</string>
+	<key>menu.startHere</key>
+	<string>یہاں سے شروع کریں</string>
+	<key>menu.unlockWithPremium</key>
+	<string>پریمیم سے مزید کھولیں</string>
+	<key>mode.fractions.multiple</key>
+	<string>کئی</string>
+	<key>mode.fractions.single</key>
+	<string>ایک</string>
+	<key>mode.mix</key>
+	<string>مکس</string>
+	<key>mode.mixed</key>
+	<string>ملا جلا</string>
+	<key>mode.order</key>
+	<string>ترتیب</string>
+	<key>mode.percentages.decimal</key>
+	<string>اعشاری</string>
+	<key>mode.percentages.whole</key>
+	<string>صحیح</string>
+	<key>mode.random</key>
+	<string>بے ترتیب</string>
+	<key>mode.standard</key>
+	<string>معیاری</string>
+	<key>modeIntro.addition.intro</key>
+	<string>آپ کو صرف |جمع| کے سوال ملیں گے۔</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>آپ کسی عدد میں %lld |یا کم| جمع کریں گے۔</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>آپ ہمیشہ %lld کو |بڑھتی| ترتیب میں جمع کریں گے۔</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>آپ ہمیشہ کسی |بے ترتیب| عدد میں %lld جمع کریں گے۔</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>جمع · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>دو اعداد کو جمع کرتے رہیں۔</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>جواب زیادہ سے زیادہ %lld ہوگا۔</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld تک جمع</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>آپ کو صرف |کسر| کے سوال ملیں گے۔</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>آپ کو اس اور |پچھلے لیولز| کی کسریں ملیں گی۔</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>آپ %lld برابر حصوں میں سے ہمیشہ |1 حصہ| لیں گے۔</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld اور پچھلے لیولز کے گول اعداد کی کسریں نکالیں۔</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>اعداد گول رہیں گے، اس لیے جواب ہمیشہ صحیح عدد ہوگا۔</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld تک کسریں</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>آپ %lld برابر حصوں میں سے ایک یا |کئی حصے| لیں گے۔</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>کسریں · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>کل کا ایک حصہ نکالیں اور کسروں کو برابر بنائیں۔</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ایک ہی مخرج والی کسروں کو جمع اور تفریق کریں۔</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ملی جلی کسریں</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>آپ کو صرف |فی صد| کے سوال ملیں گے۔</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>آپ کو اس اور |پچھلے لیولز| کے فی صد ملیں گے۔</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>آپ ہمیشہ %@ نکالیں گے، اور جواب |صحیح عدد| ہوگا۔</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld تک گول اعداد کے فی صد نکالیں۔</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>مقداریں گول رہیں گی، اس لیے جواب ہمیشہ صحیح عدد ہوگا۔</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld تک فی صد</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>آپ ہمیشہ %@ نکالیں گے، اور جواب |اعشاری| بھی ہو سکتا ہے۔</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ نکالیں</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>کسی عدد کا فی صد نکالیں۔</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>فی صد اور کسروں کو ایک دوسرے میں بدلیں۔</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ملے جلے فی صد</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>آپ کو صرف |تفریق| کے سوال ملیں گے۔</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>آپ کسی عدد میں سے %lld |یا کم| منفی کریں گے۔</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>آپ ہمیشہ %lld کو |گھٹتی| ترتیب میں منفی کریں گے۔</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>آپ ہمیشہ کسی |بے ترتیب| عدد میں سے %lld منفی کریں گے۔</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>تفریق · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>پہلا عدد زیادہ سے زیادہ %lld ہوگا۔</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>جواب صفر سے کم ہو سکتا ہے۔</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>صفر سے کم</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld تک تفریق</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>دو اعداد کو منفی کرتے رہیں۔</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ہر منتخب قسم میں مشکل |لیول %lld| تک بڑھ سکتی ہے۔</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>جمع، تفریق، پہاڑے، کسریں اور فی صد ملا کر مشق کریں۔</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>سپر مکس %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>جمع اور تفریق ملا کر مشق کریں۔</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>سپر مکس %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>جمع، تفریق، پہاڑے اور کسریں ملا کر مشق کریں۔</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>سپر مکس %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>جمع، تفریق اور پہاڑے ملا کر مشق کریں۔</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>سپر مکس %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>آپ کو صرف |ضرب| کے سوال ملیں گے۔</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>آپ کو |%lld تک| تمام پہاڑے ملا کر ملیں گے۔</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ہر پہاڑے کو |1 سے 12| تک کسی عدد سے ضرب دیں۔</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>آپ کو %lld کا پہاڑا |بڑھتی| ترتیب میں ملے گا۔</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>آپ کو %lld کا پہاڑا |بے ترتیب| ملے گا۔</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld کا پہاڑا</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld سے %lld تک پہاڑوں کی ملی جلی مشق کریں۔</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>پہاڑے %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>آپ کا نام</string>
+	<key>name.whatsYourName</key>
+	<string>آپ کا نام کیا ہے؟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>مختلف ملے جلے سوال۔</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>کافی اچھے ہیں</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ترتیب وار سوالوں کی مشق کریں۔</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ابھی شروع کیا</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>بے ترتیب سوال۔</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>کچھ مشق ہو چکی</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ کے لیے شروعاتی جگہ چنیں۔</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>یہ موضوع</string>
+	<key>onboarding.level.title</key>
+	<string>آپ اس میں پہلے سے کتنے اچھے ہیں؟</string>
+	<key>onboarding.name.subtitle</key>
+	<string>آئیں شروع کریں۔ آپ کا نام کیا ہے؟</string>
+	<key>onboarding.name.title</key>
+	<string>حساب کبھی اتنا مزے دار نہیں تھا!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>شروع کرنے کے لیے موضوع چنیں۔</string>
+	<key>onboarding.subject.title</key>
+	<string>آپ کیا سیکھنا چاہتے ہیں؟</string>
+	<key>options.capAt30.info</key>
+	<string>ہر لیول میں زیادہ سے زیادہ 50 ٹرافیوں کا ہدف ہے۔ یہ اختیار آن ہو تو ہدف پورا ہوتے ہی کھیل خود ختم ہو جاتا ہے۔</string>
+	<key>options.capAt30.title</key>
+	<string>ہدف پر ختم کریں</string>
+	<key>options.helperMode.info</key>
+	<string>مددگار موڈ میں درست جواب ہمیشہ سبز دکھتا ہے۔ اس موڈ کی ٹرافیاں الگ گنی جاتی ہیں اور ستارے سے نشان زد ہوتی ہیں۔</string>
+	<key>options.helperMode.title</key>
+	<string>مددگار موڈ</string>
+	<key>options.unlimitedLives.info</key>
+	<string>آپ ہمیشہ 3 جانوں سے شروع کرتے ہیں۔ جانیں ختم ہوں تو کھیل ختم ہو جاتا ہے۔ جانیں ختم ہونے کے بعد بھی کھیلنے اور مشق کے لیے یہ اختیار آن کریں۔</string>
+	<key>options.unlimitedLives.title</key>
+	<string>لامحدود جانیں</string>
+	<key>parentGate.approved</key>
+	<string>منظور</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>کوششیں: %1$lld از %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ کو %lld سیکنڈ دبائے رکھیں۔</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>دبائے رکھیں: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ کو %lld سیکنڈ دبائے رکھیں۔ پھر %@ کو %lld بار ٹیپ کریں۔</string>
+	<key>parentGate.shape.circle</key>
+	<string>دائرہ</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ہیرا</string>
+	<key>parentGate.shape.heart</key>
+	<string>دل</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>شش پہلو</string>
+	<key>parentGate.shape.plus</key>
+	<string>جمع</string>
+	<key>parentGate.shape.square</key>
+	<string>مربع</string>
+	<key>parentGate.shape.star</key>
+	<string>ستارہ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>مثلث</string>
+	<key>parentGate.stepOne</key>
+	<string>مرحلہ 1 از 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>مرحلہ 2 از 2</string>
+	<key>parentGate.subtitle</key>
+	<string>چھوٹے کھلاڑیوں کی حفاظت کے لیے خریداری جاری رکھنے سے پہلے کسی بالغ کو یہ جانچ مکمل کرنا ہوگی۔</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>اب %2$@ کو %1$lld بار ٹیپ کریں۔</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>ٹیپس: %1$lld از %2$lld</string>
+	<key>parentGate.title</key>
+	<string>بالغ کی منظوری ضروری</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>پریمیم کے ساتھ تمام 10 جانوروں سے آزادانہ کھیلیں۔</string>
+	<key>premium.feature.animals.title</key>
+	<string>تمام جانور دستیاب</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>مشق کے لیے ہمیشہ نئے سوال۔</string>
+	<key>premium.feature.levels.title</key>
+	<string>بہ موضوع 99 لیولز</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>بغیر رکاوٹ کھیلیں۔</string>
+	<key>premium.feature.noAds.title</key>
+	<string>اشتہارات نہیں</string>
+	<key>premium.oneTime</key>
+	<string>ایک بار خریدیں۔ ہمیشہ آپ کا۔</string>
+	<key>premium.restore</key>
+	<string>خریداریاں بحال کریں</string>
+	<key>premium.storeUnavailable</key>
+	<string>اس وقت اسٹور دستیاب نہیں۔ بعد میں دوبارہ کوشش کریں۔</string>
+	<key>premium.unlock</key>
+	<string>پریمیم کھولیں</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>پریمیم کھولیں · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>آپ کے پاس پریمیم ہے!</string>
+	<key>settings.character</key>
+	<string>کردار</string>
+	<key>settings.characterInfo</key>
+	<string>ہر جانور پورے کھیل کو اپنا رنگین تھیم دیتا ہے۔</string>
+	<key>settings.customMinutes %lld</key>
+	<string>حسبِ مرضی: %lld منٹ</string>
+	<key>settings.dailyGoal</key>
+	<string>روزانہ ہدف</string>
+	<key>settings.goalInfo</key>
+	<string>مسلسل کھیل کا ہدف روز 5 منٹ سے شروع ہوتا ہے۔ صرف کھیلنے کا اصل وقت گنا جاتا ہے۔</string>
+	<key>settings.lives</key>
+	<string>جانیں</string>
+	<key>settings.livesInfo</key>
+	<string>تین جانوں میں آخری دل کے بعد کھیل ختم ہو جاتا ہے۔ لامحدود موڈ میں جانیں رہنے تک ہی ٹرافیاں گنی جاتی ہیں؛ پھر بھی آپ کھیل سکتے ہیں۔</string>
+	<key>settings.playGoals</key>
+	<string>کھیل کے اہداف</string>
+	<key>settings.premiumUnlocked</key>
+	<string>پریمیم کھل گیا۔ شکریہ!</string>
+	<key>settings.title</key>
+	<string>ترتیبات</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>روزانہ ہدف چنیں</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>روزانہ یا ہفتہ وار ہدف چنیں</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@، %3$lld میں سے %2$lld منٹ، لگاتار %4$lld دن</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>روزانہ سلسلہ، %lld میں سے %lld منٹ</string>
+	<key>streak.daily</key>
+	<string>روزانہ سلسلہ</string>
+	<key>streak.dayOne</key>
+	<string>دن 1</string>
+	<key>tutorial.answerHint</key>
+	<string>جواب نہیں معلوم؟ دیکھنے کے لیے سوال پر ٹیپ کریں۔</string>
+	<key>tutorial.complete</key>
+	<string>شاباش! سبق مکمل ہوا۔ اب بہترین اسکور بنائیں!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ٹرافی لینے کے لیے درست جواب پر چھلانگ لگائیں۔</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>درست جواب سبز ہے۔ اب اس پر چھلانگ لگائیں۔</string>
+	<key>tutorial.doubler.answer</key>
+	<string>تین گنا ٹرافیاں لینے کے لیے درست جواب پر چھلانگ لگائیں۔</string>
+	<key>tutorial.doubler.collect</key>
+	<string>ایک بار تین گنا ٹرافیوں کے لیے ×3 سکہ لیں۔</string>
+	<key>tutorial.lifePickup</key>
+	<string>جانیں واپس لینے کے لیے آدھی یا پوری جان مل سکتی ہے۔</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 سے بچیں۔ اس سے ایک ٹرافی کم ہوتی ہے۔</string>
+	<key>tutorial.move</key>
+	<string>دائیں بائیں جانے کے لیے آلہ ہلائیں۔ آپ اسکرین کے کناروں سے بھی گزر سکتے ہیں۔</string>
+	<key>tutorial.platforms</key>
+	<string>اوپر جانے کے لیے پلیٹ فارم پر چھلانگ لگائیں۔</string>
+	<key>tutorial.scoreHint</key>
+	<string>اس لیول کا اسکور یہاں ہے۔</string>
+	<key>tutorial.star</key>
+	<string>غلط جواب ہٹانے کے لیے ستارے میں چھلانگ لگائیں۔</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>غلط جواب چننے پر تین میں سے ایک جان کم ہوگی۔ اب آزمائیں۔</string>
+</dict>
+</plist>

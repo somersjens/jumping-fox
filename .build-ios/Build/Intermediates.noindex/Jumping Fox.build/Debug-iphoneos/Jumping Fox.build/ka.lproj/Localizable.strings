@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>დათვი</string>
+	<key>character.bunny</key>
+	<string>კურდღელი</string>
+	<key>character.crab</key>
+	<string>კიბორჩხალა</string>
+	<key>character.dog</key>
+	<string>ძაღლი</string>
+	<key>character.elephant</key>
+	<string>სპილო</string>
+	<key>character.fox</key>
+	<string>მელა</string>
+	<key>character.frog</key>
+	<string>ბაყაყი</string>
+	<key>character.lion</key>
+	<string>ლომი</string>
+	<key>character.octopus</key>
+	<string>რვაფეხა</string>
+	<key>character.penguin</key>
+	<string>პინგვინი</string>
+	<key>character.pickerTitle</key>
+	<string>აირჩიე პერსონაჟი</string>
+	<key>common.back</key>
+	<string>უკან</string>
+	<key>common.cancel</key>
+	<string>გაუქმება</string>
+	<key>common.continue</key>
+	<string>გაგრძელება</string>
+	<key>common.done</key>
+	<string>მზადაა</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld წთ</string>
+	<key>common.save</key>
+	<string>შენახვა</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>დეველოპერის რეჟიმის გასახსნელად 2 წამით დააჭირე.</string>
+	<key>developerMode.title</key>
+	<string>დეველოპერის რეჟიმი</string>
+	<key>filter.addition</key>
+	<string>მიმატება</string>
+	<key>filter.fractions</key>
+	<string>წილადები</string>
+	<key>filter.mixed</key>
+	<string>სუპერმიქსი</string>
+	<key>filter.percentages</key>
+	<string>პროცენტები</string>
+	<key>filter.subtraction</key>
+	<string>გამოკლება</string>
+	<key>filter.tables</key>
+	<string>გამრავლების ტაბულა</string>
+	<key>game.accessibility.mix</key>
+	<string>მიქსი</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld / %lld</string>
+	<key>game.encouragement.0</key>
+	<string>კარგი ცდაა</string>
+	<key>game.encouragement.1</key>
+	<string>დასაწყისი კარგია</string>
+	<key>game.encouragement.2</key>
+	<string>განაგრძე ვარჯიში</string>
+	<key>game.encouragement.3</key>
+	<string>სულაც არაა ცუდი</string>
+	<key>game.encouragement.4</key>
+	<string>კარგად მიდიხარ</string>
+	<key>game.encouragement.5</key>
+	<string>კარგი შედეგია</string>
+	<key>game.encouragement.6</key>
+	<string>ყოჩაღ</string>
+	<key>game.encouragement.7</key>
+	<string>ძალიან კარგად ითამაშე</string>
+	<key>game.encouragement.8</key>
+	<string>ფინიში უკვე ჩანს</string>
+	<key>game.encouragement.9</key>
+	<string>თითქმის მორჩი</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ყველა ქულა დაიმსახურე.</string>
+	<key>game.end.completionSuffix</key>
+	<string>დასრულებულია!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>თამაში დასრულდა</string>
+	<key>game.end.mainMenu</key>
+	<string>მთავარი მენიუ</string>
+	<key>game.end.playAgain</key>
+	<string>კიდევ ითამაშე</string>
+	<key>game.highScore</key>
+	<string>საუკეთესო ქულა</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>მთავარ მენიუში დაბრუნება</string>
+	<key>game.intro.continue</key>
+	<string>გაგრძელება</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>გააგრძელებ %lld-დან</string>
+	<key>game.intro.helperBullet</key>
+	<string>სწორი პასუხი მწვანედაა მონიშნული, რადგან დამხმარე ჩართულია. ამიტომ თასები *-ით ცალკე ითვლება.</string>
+	<key>game.intro.helperOff</key>
+	<string>დამხმარე გამორთულია</string>
+	<key>game.intro.helperOn</key>
+	<string>დამხმარე ჩართულია</string>
+	<key>game.intro.howItWorks</key>
+	<string>როგორ მუშაობს ეს დონე</string>
+	<key>game.intro.livesOff</key>
+	<string>სიცოცხლეები გამორთულია</string>
+	<key>game.intro.livesOn</key>
+	<string>სიცოცხლეები ჩართულია</string>
+	<key>game.intro.scorePaused</key>
+	<string>შენი მიმდინარე ქულა შეჩერდება.</string>
+	<key>game.intro.start</key>
+	<string>დონის დაწყება</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>გაამრავლე %@%@ 1-დან 12-მდე რიცხვზე.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ან ნაკლები</string>
+	<key>game.intro.tapToContinue</key>
+	<string>გასაგრძელებლად სადმე შეეხე</string>
+	<key>game.intro.tapToStart</key>
+	<string>დასაწყებად სადმე შეეხე</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ყოველ სწორ პასუხზე მიიღე |1| თასი, მაქსიმუმ |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>როცა სიცოცხლეები დაგიმთავრდება, თასებს ვეღარ მიიღებ.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ლიდერბორდისთვის თასების მაქსიმუმი მიღწეულია</string>
+	<key>game.status.mixMode</key>
+	<string>მიქს-რეჟიმი</string>
+	<key>game.status.scoreLocked</key>
+	<string>სიცოცხლეების ამოწურვის შემდეგ თასები აღარ ითვლება</string>
+	<key>game.streak.subtitle</key>
+	<string>თასები ×2</string>
+	<key>game.streak.title</key>
+	<string>5 ზედიზედ!</string>
+	<key>goal.period</key>
+	<string>მიზნის პერიოდი</string>
+	<key>goal.promptDaily</key>
+	<string>დღეში რამდენი წუთი გინდა ითამაშო?</string>
+	<key>goal.promptWeekly</key>
+	<string>კვირაში რამდენი წუთი გინდა ითამაშო?</string>
+	<key>goal.title</key>
+	<string>თამაშის მიზანი</string>
+	<key>goalPeriod.daily</key>
+	<string>ყოველდღე</string>
+	<key>goalPeriod.weekly</key>
+	<string>ყოველკვირა</string>
+	<key>info.filter.addition</key>
+	<string>მხოლოდ მიმატება</string>
+	<key>info.filter.fractions</key>
+	<string>მხოლოდ გაყოფა</string>
+	<key>info.filter.header</key>
+	<string>ამოცანების ტიპები</string>
+	<key>info.filter.mixed</key>
+	<string>შერეული მოქმედებები</string>
+	<key>info.filter.percentages</key>
+	<string>მხოლოდ პროცენტები</string>
+	<key>info.filter.subtraction</key>
+	<string>მხოლოდ გამოკლება</string>
+	<key>info.filter.tables</key>
+	<string>მხოლოდ გამრავლება</string>
+	<key>info.mode.fractions.header</key>
+	<string>ნაწილები</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ერთი და რამდენიმე ნაწილი</string>
+	<key>info.mode.fractions.single</key>
+	<string>ყოველთვის ერთი ნაწილი</string>
+	<key>info.mode.header</key>
+	<string>თანმიმდევრობა</string>
+	<key>info.mode.mixed</key>
+	<string>შერეული ქვედა დონეებთან</string>
+	<key>info.mode.order</key>
+	<string>ფიქსირებული რიგი</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ათწილადებით</string>
+	<key>info.mode.percentages.header</key>
+	<string>ტიპი</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ათწილადების გარეშე</string>
+	<key>info.mode.random</key>
+	<string>შემთხვევითი რიგი</string>
+	<key>info.super.all</key>
+	<string>მიმატება, გამოკლება, გამრავლება, გაყოფა და პროცენტები</string>
+	<key>info.super.basic</key>
+	<string>მიმატება და გამოკლება</string>
+	<key>info.super.fraction</key>
+	<string>მიმატება, გამოკლება, გამრავლება და გაყოფა</string>
+	<key>info.super.times</key>
+	<string>მიმატება, გამოკლება და გამრავლება</string>
+	<key>language.select</key>
+	<string>აირჩიე ენა</string>
+	<key>lives.three</key>
+	<string>3 სიცოცხლე</string>
+	<key>lives.unlimited</key>
+	<string>უსასრულო</string>
+	<key>menu.accessibility.character</key>
+	<string>პერსონაჟი</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>პერსონაჟის შესაცვლელად შეეხე; მისასალმებელი ეკრანიდან თავიდან დასაწყებად ორი წამით დააჭირე.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>აირჩიე %@</string>
+	<key>menu.maxScore</key>
+	<string>30 მაქს.</string>
+	<key>menu.maximumCount</key>
+	<string>მაქს.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>მაქსიმუმი მიღწეულია %lld-ჯერ</string>
+	<key>menu.moreLevels</key>
+	<string>მეტი დონე</string>
+	<key>menu.options</key>
+	<string>თამაშის პარამეტრები</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium ტაბულები</string>
+	<key>menu.startHere</key>
+	<string>დაიწყე აქ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium-ით მეტი გახსენი</string>
+	<key>mode.fractions.multiple</key>
+	<string>რამდენიმე</string>
+	<key>mode.fractions.single</key>
+	<string>ერთი</string>
+	<key>mode.mix</key>
+	<string>მიქსი</string>
+	<key>mode.mixed</key>
+	<string>შერეული</string>
+	<key>mode.order</key>
+	<string>რიგი</string>
+	<key>mode.percentages.decimal</key>
+	<string>ათწილადი</string>
+	<key>mode.percentages.whole</key>
+	<string>მთელი</string>
+	<key>mode.random</key>
+	<string>შემთხვევითი</string>
+	<key>mode.standard</key>
+	<string>სტანდარტული</string>
+	<key>modeIntro.addition.intro</key>
+	<string>გექნება მხოლოდ |მიმატების| ამოცანები.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>სხვა რიცხვს უმატებ %lld-ს |ან ნაკლებს|.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ყოველთვის უმატებ %lld-ს |ზრდად| რიგში.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ყოველთვის უმატებ %lld-ს |შემთხვევით| რიცხვს.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>მიმატება · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ყოველ ჯერზე ორი რიცხვი შეკრიბე.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>პასუხი მაქსიმუმ %lld-ია.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>მიმატება %lld-მდე</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>გექნება მხოლოდ |წილადების| ამოცანები.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>გექნება ამ და |წინა დონეების| წილადები.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>ყოველთვის აიღებ |1 ნაწილს| %lld თანაბარი ნაწილიდან.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>გამოთვალე მრგვალი რიცხვების წილადები %lld და წინა დონეებიდან.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>რიცხვები მრგვალი რჩება, ამიტომ პასუხები ყოველთვის მთელია.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>წილადები %lld-მდე</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>აიღებ ერთ ან |რამდენიმე ნაწილს| %lld თანაბარი ნაწილიდან.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>წილადები · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>გამოთვალე მთელის ნაწილი და გაათანაბრე წილადები.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>შეკრიბე და გამოაკელი ერთნაირი მნიშვნელის მქონე წილადები.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>შერეული წილადები</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>გექნება მხოლოდ |პროცენტების| ამოცანები.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>გექნება ამ და |წინა დონეების| პროცენტები.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ყოველთვის გამოთვლი %@-ს და პასუხი |მთელი რიცხვია|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>გამოთვალე მრგვალი რიცხვების პროცენტები %lld-მდე.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>რაოდენობები მრგვალი რჩება, ამიტომ პასუხები ყოველთვის მთელია.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>პროცენტები %lld-მდე</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ყოველთვის გამოთვლი %@-ს და პასუხი შეიძლება |ათწილადიც| იყოს.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>გამოთვალე %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>გამოთვალე რიცხვის პროცენტი.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>გადაიყვანე პროცენტები წილადებად და პირიქით.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>შერეული პროცენტები</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>გექნება მხოლოდ |გამოკლების| ამოცანები.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>სხვა რიცხვს აკლებ %lld-ს |ან ნაკლებს|.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ყოველთვის აკლებ %lld-ს |კლებად| რიგში.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ყოველთვის აკლებ %lld-ს |შემთხვევით| რიცხვს.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>გამოკლება · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>პირველი რიცხვი მაქსიმუმ %lld-ია.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>პასუხი შეიძლება ნულზე ნაკლები იყოს.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>ნულზე ნაკლები</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>გამოკლება %lld-მდე</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ყოველ ჯერზე ერთი რიცხვი მეორეს გამოაკელი.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>სირთულე თითოეულ არჩეულ კატეგორიაში შეიძლება |%lld დონემდე| გაიზარდოს.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>ივარჯიშე მიმატებაში, გამოკლებაში, ტაბულებში, წილადებსა და პროცენტებში — ყველაფერი არეულად.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>სუპერმიქსი %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>ივარჯიშე მიმატებასა და გამოკლებაში — ყველაფერი არეულად.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>სუპერმიქსი %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>ივარჯიშე მიმატებაში, გამოკლებაში, ტაბულებსა და წილადებში — ყველაფერი არეულად.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>სუპერმიქსი %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>ივარჯიშე მიმატებაში, გამოკლებასა და ტაბულებში — ყველაფერი არეულად.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>სუპერმიქსი %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>გექნება მხოლოდ |გამრავლების| ამოცანები.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>გექნება ყველა ტაბულა |%lld-მდე|, არეულად.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>თითოეული ტაბულა გამრავლებული იქნება |1-დან 12-მდე| რიცხვზე.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>გექნება %lld-ის ტაბულა |ზრდად| რიგში.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>გექნება %lld-ის ტაბულა |შემთხვევით| რიგში.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-ის ტაბულა</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>ივარჯიშე %lld-დან %lld-მდე ტაბულებში, არეულად.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ტაბულები %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>შენი სახელი</string>
+	<key>name.whatsYourName</key>
+	<string>რა გქვია?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>სხვადასხვა შერეული ამოცანა ერთად.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>უკვე საკმაოდ კარგად</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ივარჯიშე ამოცანებით თანმიმდევრობით.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ახლახან დავიწყე</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ამოცანები შემთხვევითი რიგით.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>უკვე ცოტა ვივარჯიშე</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>აირჩიე საწყისი დონე %@-ისთვის.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ეს თემა</string>
+	<key>onboarding.level.title</key>
+	<string>უკვე რამდენად კარგად იცი?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>დავიწყოთ. რა გქვია?</string>
+	<key>onboarding.name.title</key>
+	<string>ამოცანების ამოხსნა ასეთი სახალისო არასდროს ყოფილა!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>აირჩიე თემა დასაწყებად.</string>
+	<key>onboarding.subject.title</key>
+	<string>რის სწავლა გინდა?</string>
+	<key>options.capAt30.info</key>
+	<string>თითოეულ დონეზე თასების მიზანი მაქსიმუმ 50-ია. თუ ეს პარამეტრი ჩართულია, მიზნის მიღწევისას თამაში ავტომატურად დასრულდება.</string>
+	<key>options.capAt30.title</key>
+	<string>მიზანზე დასრულება</string>
+	<key>options.helperMode.info</key>
+	<string>დამხმარე რეჟიმში სწორი პასუხი ყოველთვის მწვანედ ჩანს. ამ რეჟიმში მიღებული თასები ცალკე ითვლება და ვარსკვლავით აღინიშნება.</string>
+	<key>options.helperMode.title</key>
+	<string>დამხმარე რეჟიმი</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ყოველთვის 3 სიცოცხლით იწყებ. როცა სიცოცხლე აღარ დაგრჩება, თამაში დასრულდება. ჩართე ეს პარამეტრი, რომ სიცოცხლეების ამოწურვის შემდეგაც გააგრძელო თამაში და ვარჯიში.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>უსასრულო სიცოცხლეები</string>
+	<key>parentGate.approved</key>
+	<string>დადასტურებულია</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ცდები: %1$lld / %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@-ს %lld წამით დააჭირე.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>დაჭერა: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@-ს %lld წამით დააჭირე. შემდეგ %@-ს %lld-ჯერ შეეხე.</string>
+	<key>parentGate.shape.circle</key>
+	<string>წრე</string>
+	<key>parentGate.shape.diamond</key>
+	<string>რომბი</string>
+	<key>parentGate.shape.heart</key>
+	<string>გული</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ექვსკუთხედი</string>
+	<key>parentGate.shape.plus</key>
+	<string>პლუსი</string>
+	<key>parentGate.shape.square</key>
+	<string>კვადრატი</string>
+	<key>parentGate.shape.star</key>
+	<string>ვარსკვლავი</string>
+	<key>parentGate.shape.triangle</key>
+	<string>სამკუთხედი</string>
+	<key>parentGate.stepOne</key>
+	<string>ნაბიჯი 1 / 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>ნაბიჯი 2 / 2</string>
+	<key>parentGate.subtitle</key>
+	<string>პატარა მოთამაშეების დასაცავად, ყიდვის გაგრძელებამდე ეს შემოწმება უფროსმა უნდა გაიაროს.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ახლა %2$@-ს %1$lld-ჯერ შეეხე.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>შეხებები: %1$lld / %2$lld</string>
+	<key>parentGate.title</key>
+	<string>საჭიროა უფროსის თანხმობა</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium-ით თავისუფლად ითამაშებ ათივე ცხოველით.</string>
+	<key>premium.feature.animals.title</key>
+	<string>ყველა ცხოველი ხელმისაწვდომია</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>სავარჯიშოდ ყოველთვის საკმარისი ახალი ამოცანაა.</string>
+	<key>premium.feature.levels.title</key>
+	<string>თითო თემაზე 99 დონე</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ითამაშე სრულიად შეუფერხებლად.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>რეკლამის გარეშე</string>
+	<key>premium.oneTime</key>
+	<string>ერთჯერადი შეძენა. სამუდამოდ შენია.</string>
+	<key>premium.restore</key>
+	<string>შეძენების აღდგენა</string>
+	<key>premium.storeUnavailable</key>
+	<string>მაღაზია ახლა მიუწვდომელია. მოგვიანებით სცადე.</string>
+	<key>premium.unlock</key>
+	<string>Premium-ის გახსნა</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium-ის გახსნა · %@</string>
+	<key>premium.youHavePremium</key>
+	<string>შენ გაქვს Premium!</string>
+	<key>settings.character</key>
+	<string>პერსონაჟი</string>
+	<key>settings.characterInfo</key>
+	<string>თითოეული ცხოველი მთელ თამაშს საკუთარ ფერთა თემას აძლევს.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>მორგებული: %lld წთ</string>
+	<key>settings.dailyGoal</key>
+	<string>დღიური მიზანი</string>
+	<key>settings.goalInfo</key>
+	<string>ზედიზედ დღეების მიზანი დღეში 5 წუთიდან იწყება. ითვლება მხოლოდ აქტიური თამაშის დრო.</string>
+	<key>settings.lives</key>
+	<string>სიცოცხლეები</string>
+	<key>settings.livesInfo</key>
+	<string>სამი სიცოცხლის რეჟიმში თამაში ბოლო გულის დაკარგვის შემდეგ მთავრდება. უსასრულო რეჟიმში თასები მხოლოდ სიცოცხლეების დარჩენამდე ითვლება; მერე თამაშის გაგრძელება მაინც შეგიძლია.</string>
+	<key>settings.playGoals</key>
+	<string>თამაშის მიზნები</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium გაიხსნა. გმადლობთ!</string>
+	<key>settings.title</key>
+	<string>პარამეტრები</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>აირჩიე დღიური მიზანი</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>აირჩიე დღიური ან კვირეული მიზანი</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld / %3$lld წუთი, ზედიზედ %4$lld დღე</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>დღიური სერია, %lld / %lld წუთი</string>
+	<key>streak.daily</key>
+	<string>დღიური სერია</string>
+	<key>streak.dayOne</key>
+	<string>დღე 1</string>
+	<key>tutorial.answerHint</key>
+	<string>პასუხი არ იცი? სანახავად ამოცანას შეეხე.</string>
+	<key>tutorial.complete</key>
+	<string>ყოჩაღ! სწავლება დასრულდა. ახლა საუკეთესო ქულა მოაგროვე!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>თასის ასაღებად სწორ პასუხზე ახტი.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>სწორი პასუხი მწვანედ ჩანს. ახლა სწორ პასუხზე ახტი.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ახლა სწორ პასუხზე ახტი და სამმაგი თასები მიიღე.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>აიღე ×3 მონეტა, რომ ერთხელ სამმაგი თასები მიიღო.</string>
+	<key>tutorial.lifePickup</key>
+	<string>სიცოცხლეების დასაბრუნებლად შეგიძლია ნახევარი ან მთელი სიცოცხლე იპოვო.</string>
+	<key>tutorial.minusOne</key>
+	<string>მოერიდე −1-ს. ის ერთ თასს გაკლებს.</string>
+	<key>tutorial.move</key>
+	<string>მოწყობილობა ამოძრავე მარცხნივ და მარჯვნივ გადასაადგილებლად. ეკრანის გვერდებიდანაც შეგიძლია გახვიდე.</string>
+	<key>tutorial.platforms</key>
+	<string>ზემოთ ასასვლელად პლატფორმებზე ახტი.</string>
+	<key>tutorial.scoreHint</key>
+	<string>ამ დონის შენი ქულა აქ ჩანს.</string>
+	<key>tutorial.star</key>
+	<string>ვარსკვლავს შეეხე, რომ არასწორი პასუხები გაისროლო.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>თუ არასწორ პასუხს აირჩევ, სამი სიცოცხლიდან ერთს დაკარგავ. ახლა სცადე.</string>
+</dict>
+</plist>

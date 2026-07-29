@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ayiq</string>
+	<key>character.bunny</key>
+	<string>Quyon</string>
+	<key>character.crab</key>
+	<string>Qisqichbaqa</string>
+	<key>character.dog</key>
+	<string>It</string>
+	<key>character.elephant</key>
+	<string>Fil</string>
+	<key>character.fox</key>
+	<string>Tulki</string>
+	<key>character.frog</key>
+	<string>Qurbaqa</string>
+	<key>character.lion</key>
+	<string>Arslon</string>
+	<key>character.octopus</key>
+	<string>Ahtapot</string>
+	<key>character.penguin</key>
+	<string>Pingvin</string>
+	<key>character.pickerTitle</key>
+	<string>Qahramoningni tanla</string>
+	<key>common.back</key>
+	<string>Orqaga</string>
+	<key>common.cancel</key>
+	<string>Bekor qilish</string>
+	<key>common.continue</key>
+	<string>Davom et</string>
+	<key>common.done</key>
+	<string>Tayyor</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld daq</string>
+	<key>common.save</key>
+	<string>Saqlash</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Dasturchi rejimini ochish uchun 2 soniya bosib turing.</string>
+	<key>developerMode.title</key>
+	<string>Dasturchi rejimi</string>
+	<key>filter.addition</key>
+	<string>Qo‘shish</string>
+	<key>filter.fractions</key>
+	<string>Kasrlar</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Foizlar</string>
+	<key>filter.subtraction</key>
+	<string>Ayirish</string>
+	<key>filter.tables</key>
+	<string>Ko‘paytirish jadvali</string>
+	<key>game.accessibility.mix</key>
+	<string>Aralash</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld tadan %lld ta</string>
+	<key>game.encouragement.0</key>
+	<string>Yaxshi urinish</string>
+	<key>game.encouragement.1</key>
+	<string>Boshlanishi yaxshi</string>
+	<key>game.encouragement.2</key>
+	<string>Mashq qilishda davom et</string>
+	<key>game.encouragement.3</key>
+	<string>Yomon emas</string>
+	<key>game.encouragement.4</key>
+	<string>Yaxshi ketyapti</string>
+	<key>game.encouragement.5</key>
+	<string>Zo‘r natija</string>
+	<key>game.encouragement.6</key>
+	<string>Barakalla</string>
+	<key>game.encouragement.7</key>
+	<string>Juda yaxshi o‘ynading</string>
+	<key>game.encouragement.8</key>
+	<string>Marraga oz qoldi</string>
+	<key>game.encouragement.9</key>
+	<string>Deyarli yetib kelding</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Har bir ballni qo‘lga kiritding.</string>
+	<key>game.end.completionSuffix</key>
+	<string>tugadi!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>O‘yin tugadi</string>
+	<key>game.end.mainMenu</key>
+	<string>Asosiy menyu</string>
+	<key>game.end.playAgain</key>
+	<string>Yana o‘yna</string>
+	<key>game.highScore</key>
+	<string>Eng yuqori natija</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Asosiy menyuga qaytish</string>
+	<key>game.intro.continue</key>
+	<string>Davom et</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld dan davom etasan</string>
+	<key>game.intro.helperBullet</key>
+	<string>Yordamchi yoqilgani uchun to‘g‘ri javob yashil bilan ko‘rsatiladi. Shuning uchun sovrinlar * bilan alohida sanaladi.</string>
+	<key>game.intro.helperOff</key>
+	<string>Yordamchi o‘chiq</string>
+	<key>game.intro.helperOn</key>
+	<string>Yordamchi yoqilgan</string>
+	<key>game.intro.howItWorks</key>
+	<string>Bu bosqich qanday ishlaydi</string>
+	<key>game.intro.livesOff</key>
+	<string>Jonlar o‘chiq</string>
+	<key>game.intro.livesOn</key>
+	<string>Jonlar yoqilgan</string>
+	<key>game.intro.scorePaused</key>
+	<string>Hozirgi natijang pauza qilinadi.</string>
+	<key>game.intro.start</key>
+	<string>Bosqichni boshlash</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ni 1 dan 12 gacha bo‘lgan songa ko‘paytir.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>yoki kichikroq</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Davom etish uchun istalgan joyga teg</string>
+	<key>game.intro.tapToStart</key>
+	<string>Boshlash uchun istalgan joyga teg</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Har bir to‘g‘ri javob uchun |1| ta sovrin ol, ko‘pi bilan |%lld| ta.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Jonlaring tugagach, boshqa sovrin ololmaysan.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Peshqadamlar jadvali uchun eng ko‘p sovrin olindi</string>
+	<key>game.status.mixMode</key>
+	<string>ARALASH REJIM</string>
+	<key>game.status.scoreLocked</key>
+	<string>Jonlaring tugagach, sovrinlar hisoblanmaydi</string>
+	<key>game.streak.subtitle</key>
+	<string>Sovrinlar ×2</string>
+	<key>game.streak.title</key>
+	<string>Ketma-ket 5 ta!</string>
+	<key>goal.period</key>
+	<string>Maqsad davri</string>
+	<key>goal.promptDaily</key>
+	<string>Kuniga necha daqiqa o‘ynashni xohlaysan?</string>
+	<key>goal.promptWeekly</key>
+	<string>Haftasiga necha daqiqa o‘ynashni xohlaysan?</string>
+	<key>goal.title</key>
+	<string>O‘yin maqsadi</string>
+	<key>goalPeriod.daily</key>
+	<string>Har kuni</string>
+	<key>goalPeriod.weekly</key>
+	<string>Har hafta</string>
+	<key>info.filter.addition</key>
+	<string>Faqat qo‘shish</string>
+	<key>info.filter.fractions</key>
+	<string>Faqat bo‘lish</string>
+	<key>info.filter.header</key>
+	<string>Misol turlari</string>
+	<key>info.filter.mixed</key>
+	<string>Aralash amallar</string>
+	<key>info.filter.percentages</key>
+	<string>Faqat foizlar</string>
+	<key>info.filter.subtraction</key>
+	<string>Faqat ayirish</string>
+	<key>info.filter.tables</key>
+	<string>Faqat ko‘paytirish</string>
+	<key>info.mode.fractions.header</key>
+	<string>Qismlar</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Bitta va bir nechta qism</string>
+	<key>info.mode.fractions.single</key>
+	<string>Har doim bitta qism</string>
+	<key>info.mode.header</key>
+	<string>Tartib</string>
+	<key>info.mode.mixed</key>
+	<string>Quyi bosqichlar bilan aralash</string>
+	<key>info.mode.order</key>
+	<string>O‘zgarmas tartib</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>O‘nli sonlar bilan</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tur</string>
+	<key>info.mode.percentages.whole</key>
+	<string>O‘nli sonlarsiz</string>
+	<key>info.mode.random</key>
+	<string>Tasodifiy tartib</string>
+	<key>info.super.all</key>
+	<string>Qo‘shish, ayirish, ko‘paytirish, bo‘lish va foizlar</string>
+	<key>info.super.basic</key>
+	<string>Qo‘shish va ayirish</string>
+	<key>info.super.fraction</key>
+	<string>Qo‘shish, ayirish, ko‘paytirish va bo‘lish</string>
+	<key>info.super.times</key>
+	<string>Qo‘shish, ayirish va ko‘paytirish</string>
+	<key>language.select</key>
+	<string>Tilni tanla</string>
+	<key>lives.three</key>
+	<string>3 ta jon</string>
+	<key>lives.unlimited</key>
+	<string>Cheksiz</string>
+	<key>menu.accessibility.character</key>
+	<string>Qahramon</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Qahramonni almashtirish uchun teg; salomlashuv ekranidan qayta boshlash uchun ikki soniya bosib tur.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ ni tanla</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Eng yuqori natijaga %lld marta erishildi</string>
+	<key>menu.moreLevels</key>
+	<string>Ko‘proq bosqich</string>
+	<key>menu.options</key>
+	<string>O‘yin sozlamalari</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium jadvallar</string>
+	<key>menu.startHere</key>
+	<string>Shu yerdan boshla</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium bilan ko‘prog‘ini och</string>
+	<key>mode.fractions.multiple</key>
+	<string>Bir nechta</string>
+	<key>mode.fractions.single</key>
+	<string>Bitta</string>
+	<key>mode.mix</key>
+	<string>Aralash</string>
+	<key>mode.mixed</key>
+	<string>Aralash</string>
+	<key>mode.order</key>
+	<string>Tartib</string>
+	<key>mode.percentages.decimal</key>
+	<string>O‘nli</string>
+	<key>mode.percentages.whole</key>
+	<string>Butun</string>
+	<key>mode.random</key>
+	<string>Tasodifiy</string>
+	<key>mode.standard</key>
+	<string>Standart</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Faqat |qo‘shish| misollari beriladi.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Boshqa songa %lld |yoki kamroq| qo‘shasan.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Har safar %lld ni |o‘sish| tartibida qo‘shasan.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Har safar %lld ni |tasodifiy| songa qo‘shasan.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Qo‘shish · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Ikki sonni bir-biriga qo‘sh.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Javob ko‘pi bilan %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld gacha qo‘shish</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Faqat |kasr| misollari beriladi.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Bu va |oldingi bosqichlar|dagi kasrlar beriladi.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld teng qismdan har safar |1 qism| olasan.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld-bosqich va oldingi bosqichlardagi dumaloq sonlarning kasrini top.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Sonlar dumaloq bo‘ladi, shuning uchun javoblar doim butun son.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld gacha kasrlar</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld teng qismdan bir yoki |bir nechta qism| olasan.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Kasrlar · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Butunning bir qismini top va kasrlarni tenglashtir.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Maxraji bir xil kasrlarni qo‘sh va ayir.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Aralash kasrlar</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Faqat |foiz| misollari beriladi.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Bu va |oldingi bosqichlar|dagi foizlar beriladi.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Har safar %@ ni hisoblaysan, javob esa |butun son| bo‘ladi.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld gacha bo‘lgan dumaloq sonlarning foizini top.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Miqdorlar dumaloq bo‘ladi, shuning uchun javoblar doim butun son.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld gacha foizlar</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Har safar %@ ni hisoblaysan, javob |o‘nli son| ham bo‘lishi mumkin.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ ni hisobla</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Sonning foizini top.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Foizlarni kasrlarga, kasrlarni foizlarga aylantir.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Aralash foizlar</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Faqat |ayirish| misollari beriladi.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Boshqa sondan %lld |yoki kamroq| ayirasan.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Har safar %lld ni |kamayish| tartibida ayirasan.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Har safar %lld ni |tasodifiy| sondan ayirasan.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Ayirish · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Birinchi son ko‘pi bilan %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Javob noldan kichik bo‘lishi mumkin.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Noldan past</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld gacha ayirish</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Ikki sonni bir-biridan ayir.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Har bir tanlangan bo‘limda qiyinlik |%lld-bosqich|gacha oshishi mumkin.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Qo‘shish, ayirish, ko‘paytirish jadvallari, kasrlar va foizlarni aralash mashq qil.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Qo‘shish va ayirishni aralash mashq qil.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Qo‘shish, ayirish, ko‘paytirish jadvallari va kasrlarni aralash mashq qil.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Qo‘shish, ayirish va ko‘paytirish jadvallarini aralash mashq qil.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Faqat |ko‘paytirish| misollari beriladi.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Barcha ko‘paytirish jadvallari |%lld gacha| aralash beriladi.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Har bir jadval |1 dan 12 gacha| bo‘lgan songa ko‘paytiriladi.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld lik jadval |o‘sish| tartibida beriladi.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld lik jadval |tasodifiy| tartibda beriladi.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld lik jadval</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld dan %lld gacha jadvallarni aralash mashq qil.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>%lld-%lld jadvallar</string>
+	<key>name.placeholder</key>
+	<string>Isming</string>
+	<key>name.whatsYourName</key>
+	<string>Isming nima?</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Turli aralash misollar birga.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Ancha yaxshi</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Misollarni tartib bilan mashq qil.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Endi boshlading</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Misollar tasodifiy tartibda.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Biroz mashq qilgansan</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ uchun boshlang‘ich nuqtani tanla.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>bu mavzu</string>
+	<key>onboarding.level.title</key>
+	<string>Buni qanchalik yaxshi bilasan?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Boshlaymiz. Isming nima?</string>
+	<key>onboarding.name.title</key>
+	<string>Misol yechish hech qachon bunchalik qiziq bo‘lmagan!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Boshlash uchun mavzu tanla.</string>
+	<key>onboarding.subject.title</key>
+	<string>Nimani o‘rganmoqchisan?</string>
+	<key>options.capAt30.info</key>
+	<string>Har bir bosqichda 50 tagacha sovrin maqsadi bor. Bu sozlama yoqilsa, maqsadga yetganingda o‘yin avtomatik tugaydi.</string>
+	<key>options.capAt30.title</key>
+	<string>Maqsadda tugatish</string>
+	<key>options.helperMode.info</key>
+	<string>Yordamchi rejimda to‘g‘ri javob doim yashil ko‘rsatiladi. Bu rejimda olingan sovrinlar alohida sanaladi va yulduzcha bilan belgilanadi.</string>
+	<key>options.helperMode.title</key>
+	<string>Yordamchi rejim</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Har doim 3 ta jon bilan boshlaysan. Jonlaring tugasa, o‘yin yakunlanadi. Jonlaring tugagach ham o‘ynash va mashq qilish uchun bu sozlamani yoq.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Cheksiz jonlar</string>
+	<key>parentGate.approved</key>
+	<string>Tasdiqlandi</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Urinishlar: %1$lld tadan %2$lld ta</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ ni %lld soniya bosib tur.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Bosib turish: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ ni %lld soniya bosib tur. Keyin %@ ni %lld marta bos.</string>
+	<key>parentGate.shape.circle</key>
+	<string>doira</string>
+	<key>parentGate.shape.diamond</key>
+	<string>romb</string>
+	<key>parentGate.shape.heart</key>
+	<string>yurak</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>olti burchak</string>
+	<key>parentGate.shape.plus</key>
+	<string>plyus</string>
+	<key>parentGate.shape.square</key>
+	<string>kvadrat</string>
+	<key>parentGate.shape.star</key>
+	<string>yulduz</string>
+	<key>parentGate.shape.triangle</key>
+	<string>uchburchak</string>
+	<key>parentGate.stepOne</key>
+	<string>2 dan 1-qadam</string>
+	<key>parentGate.stepTwo</key>
+	<string>2 dan 2-qadam</string>
+	<key>parentGate.subtitle</key>
+	<string>Yosh o‘yinchilarni himoya qilish uchun xaridni davom ettirishdan oldin kattalar bu tekshiruvdan o‘tishi kerak.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Endi %2$@ ni %1$lld marta bos.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Bosishlar: %1$lld tadan %2$lld ta</string>
+	<key>parentGate.title</key>
+	<string>Kattalar tasdig‘i kerak</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ta sovrindan boshlab mavjud</string>
+	<key>premium.availableFromStart</key>
+	<string>Boshidan mavjud</string>
+	<key>premium.characterUnlocked</key>
+	<string>YANGI QAHRAMON OCHILDI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ochildi</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Siz %lld ta sovrin oldingiz</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Faqat Premium bilan</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Faqat Premium bilan</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium bilan barcha 10 ta hayvon bilan erkin o‘ynaysan.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Barcha hayvonlar ochiq</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Mashq qilish uchun doim yangi misollar yetarli.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Har mavzuda 99 bosqich</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Hech qanday uzilishsiz o‘yna.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Reklamasiz</string>
+	<key>premium.oneTime</key>
+	<string>Bir martalik xarid. Abadiy seniki.</string>
+	<key>premium.restore</key>
+	<string>Xaridlarni tiklash</string>
+	<key>premium.start</key>
+	<string>Boshlash</string>
+	<key>premium.storeUnavailable</key>
+	<string>Do‘kon hozir ishlamayapti. Keyinroq yana urinib ko‘r.</string>
+	<key>premium.unlock</key>
+	<string>Premiumni ochish</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premiumni ochish · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Sovrinlar bilan ochish</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium bilan ochildi</string>
+	<key>premium.youHavePremium</key>
+	<string>Senda Premium bor!</string>
+	<key>settings.character</key>
+	<string>Qahramon</string>
+	<key>settings.characterInfo</key>
+	<string>Har bir hayvon butun o‘yinga o‘z rang mavzusini beradi.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Maxsus: %lld daq</string>
+	<key>settings.dailyGoal</key>
+	<string>Kunlik maqsad</string>
+	<key>settings.goalInfo</key>
+	<string>Ketma-ketlik maqsadi kuniga 5 daqiqadan boshlanadi. Faqat faol o‘yin vaqti hisoblanadi.</string>
+	<key>settings.lives</key>
+	<string>Jonlar</string>
+	<key>settings.livesInfo</key>
+	<string>Uchta jon rejimida oxirgi yuraging tugagach o‘yin yakunlanadi. Cheksiz rejimda sovrinlar faqat jonlaring bor paytda sanaladi; keyin ham o‘ynashda davom etishing mumkin.</string>
+	<key>settings.playGoals</key>
+	<string>O‘yin maqsadlari</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ochildi. Rahmat!</string>
+	<key>settings.title</key>
+	<string>Sozlamalar</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Kunlik maqsadni tanla</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Kunlik yoki haftalik maqsadni tanla</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld daqiqadan %2$lld daqiqa, ketma-ket %4$lld kun</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Kunlik ketma-ketlik, %lld daqiqadan %lld daqiqa</string>
+	<key>streak.daily</key>
+	<string>Kunlik ketma-ketlik</string>
+	<key>streak.dayOne</key>
+	<string>1-kun</string>
+	<key>tutorial.answerHint</key>
+	<string>Javobni bilmaysanmi? Ko‘rish uchun misolga teg.</string>
+	<key>tutorial.complete</key>
+	<string>Barakalla! Qo‘llanma tugadi. Endi eng yuqori natijaga intil!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Sovrin olish uchun to‘g‘ri javob ustiga sakra.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>To‘g‘ri javob yashil ko‘rsatilgan. Endi uning ustiga sakra.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Uch karra sovrin olish uchun to‘g‘ri javob ustiga sakra.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Bir marta uch karra sovrin olish uchun ×3 tangani ol.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Jonlarni qaytarish uchun yarim yoki butun jon topishing mumkin.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 dan qoch. U bitta sovriningni olib qo‘yadi.</string>
+	<key>tutorial.move</key>
+	<string>Chapga va o‘ngga yurish uchun qurilmangni qimirlat. Ekranning chetlaridan ham o‘tishing mumkin.</string>
+	<key>tutorial.platforms</key>
+	<string>Yuqoriga chiqish uchun platformalarga sakra.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Bu bosqichdagi natijang shu yerda ko‘rsatiladi.</string>
+	<key>tutorial.star</key>
+	<string>Noto‘g‘ri javoblarni otib yuborish uchun yulduzga sakra.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Noto‘g‘ri javobni tanlasang, uchta joningdan birini yo‘qotasan. Hozir sinab ko‘r.</string>
+</dict>
+</plist>

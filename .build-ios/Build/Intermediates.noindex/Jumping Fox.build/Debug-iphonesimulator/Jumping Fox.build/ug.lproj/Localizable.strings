@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ئېيىق</string>
+	<key>character.bunny</key>
+	<string>توشقان</string>
+	<key>character.crab</key>
+	<string>قىسقۇچپاقا</string>
+	<key>character.dog</key>
+	<string>ئىت</string>
+	<key>character.elephant</key>
+	<string>پىل</string>
+	<key>character.fox</key>
+	<string>تۈلكە</string>
+	<key>character.frog</key>
+	<string>پاقا</string>
+	<key>character.lion</key>
+	<string>شىر</string>
+	<key>character.octopus</key>
+	<string>سەككىزئاياغ</string>
+	<key>character.penguin</key>
+	<string>پىنگۋىن</string>
+	<key>character.pickerTitle</key>
+	<string>قەھرىمانىڭنى تاللا</string>
+	<key>common.back</key>
+	<string>قايت</string>
+	<key>common.cancel</key>
+	<string>بىكار قىل</string>
+	<key>common.continue</key>
+	<string>داۋاملاشتۇر</string>
+	<key>common.done</key>
+	<string>بولدى</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld مىن</string>
+	<key>common.save</key>
+	<string>ساقلا</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ئىجادكار ھالىتىنى ئېچىش ئۈچۈن 2 سېكۇنت بېسىپ تۇرۇڭ.</string>
+	<key>developerMode.title</key>
+	<string>ئىجادكار ھالىتى</string>
+	<key>filter.addition</key>
+	<string>قوشۇش</string>
+	<key>filter.fractions</key>
+	<string>كەسىرلەر</string>
+	<key>filter.mixed</key>
+	<string>دەرىجىدىن تاشقىرى ئارىلاش</string>
+	<key>filter.percentages</key>
+	<string>پىرسەنتلەر</string>
+	<key>filter.subtraction</key>
+	<string>ئېلىش</string>
+	<key>filter.tables</key>
+	<string>كۆپەيتىش جەدۋىلى</string>
+	<key>game.accessibility.mix</key>
+	<string>ئارىلاش</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld دىن %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ياخشى سىناق</string>
+	<key>game.encouragement.1</key>
+	<string>باشلىنىشى ياخشى</string>
+	<key>game.encouragement.2</key>
+	<string>داۋاملىق مەشىق قىل</string>
+	<key>game.encouragement.3</key>
+	<string>يامان ئەمەس</string>
+	<key>game.encouragement.4</key>
+	<string>ياخشى كېتىۋاتىسەن</string>
+	<key>game.encouragement.5</key>
+	<string>قالتىس نەتىجە</string>
+	<key>game.encouragement.6</key>
+	<string>يارايسەن</string>
+	<key>game.encouragement.7</key>
+	<string>بەك ياخشى ئوينىدىڭ</string>
+	<key>game.encouragement.8</key>
+	<string>ئاخىرى كۆرۈندى</string>
+	<key>game.encouragement.9</key>
+	<string>ئاز قالدى</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ھەر بىر نومۇرغا لايىق بولدۇڭ.</string>
+	<key>game.end.completionSuffix</key>
+	<string>تامام!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ئويۇن ئاخىرلاشتى</string>
+	<key>game.end.mainMenu</key>
+	<string>باش تىزىملىك</string>
+	<key>game.end.playAgain</key>
+	<string>قايتا ئوينا</string>
+	<key>game.highScore</key>
+	<string>ئەڭ يۇقىرى نومۇر</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>باش تىزىملىككە قايت</string>
+	<key>game.intro.continue</key>
+	<string>داۋاملاشتۇر</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld دىن داۋاملاشتۇرىسەن</string>
+	<key>game.intro.helperBullet</key>
+	<string>ياردەمچى ئوچۇق بولغاچقا، توغرا جاۋاب يېشىل كۆرسىتىلىدۇ. شۇڭا لوڭقىلار * بىلەن ئايرىم ھېسابلىنىدۇ.</string>
+	<key>game.intro.helperOff</key>
+	<string>ياردەمچى تاقاق</string>
+	<key>game.intro.helperOn</key>
+	<string>ياردەمچى ئوچۇق</string>
+	<key>game.intro.howItWorks</key>
+	<string>بۇ دەرىجە قانداق ئىشلەيدۇ</string>
+	<key>game.intro.livesOff</key>
+	<string>جان تاقاق</string>
+	<key>game.intro.livesOn</key>
+	<string>جان ئوچۇق</string>
+	<key>game.intro.scorePaused</key>
+	<string>ھازىرقى نومۇرۇڭ توختىتىپ قويۇلىدۇ.</string>
+	<key>game.intro.start</key>
+	<string>دەرىجىنى باشلا</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ نى 1 دىن 12 گىچە بىر سانغا كۆپەيت.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ياكى تۆۋەن</string>
+	<key>game.intro.tapToContinue</key>
+	<string>داۋاملاشتۇرۇش ئۈچۈن خالىغان يەرنى چەك</string>
+	<key>game.intro.tapToStart</key>
+	<string>باشلاش ئۈچۈن خالىغان يەرنى چەك</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ھەر بىر توغرا جاۋابقا |1| لوڭقا ئال، ئەڭ كۆپ بولغاندا |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>جانلىرىڭ تۈگىسە، لوڭقا ئالالمايسەن.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>رەت تەرتىپى ئۈچۈن ئەڭ كۆپ لوڭقا سانىغا يەتتىڭ</string>
+	<key>game.status.mixMode</key>
+	<string>ئارىلاش ھالەت</string>
+	<key>game.status.scoreLocked</key>
+	<string>جانلىرىڭ تۈگىگەندىن كېيىن لوڭقىلار ھېسابلانمايدۇ</string>
+	<key>game.streak.subtitle</key>
+	<string>لوڭقا ×2</string>
+	<key>game.streak.title</key>
+	<string>ئۇدا 5!</string>
+	<key>goal.period</key>
+	<string>نىشان مۇددىتى</string>
+	<key>goal.promptDaily</key>
+	<string>كۈنىگە قانچە مىنۇت ئوينىماقچىسەن؟</string>
+	<key>goal.promptWeekly</key>
+	<string>ھەپتىگە قانچە مىنۇت ئوينىماقچىسەن؟</string>
+	<key>goal.title</key>
+	<string>ئويۇن نىشانى</string>
+	<key>goalPeriod.daily</key>
+	<string>كۈندىلىك</string>
+	<key>goalPeriod.weekly</key>
+	<string>ھەپتىلىك</string>
+	<key>info.filter.addition</key>
+	<string>پەقەت قوشۇش</string>
+	<key>info.filter.fractions</key>
+	<string>پەقەت بۆلۈش</string>
+	<key>info.filter.header</key>
+	<string>مەسىلە تۈرلىرى</string>
+	<key>info.filter.mixed</key>
+	<string>ئارىلاش ئەمەللەر</string>
+	<key>info.filter.percentages</key>
+	<string>پەقەت پىرسەنت</string>
+	<key>info.filter.subtraction</key>
+	<string>پەقەت ئېلىش</string>
+	<key>info.filter.tables</key>
+	<string>پەقەت كۆپەيتىش</string>
+	<key>info.mode.fractions.header</key>
+	<string>بۆلەكلەر</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>بىر ۋە كۆپ بۆلەك</string>
+	<key>info.mode.fractions.single</key>
+	<string>ھەمىشە بىر بۆلەك</string>
+	<key>info.mode.header</key>
+	<string>تەرتىپ</string>
+	<key>info.mode.mixed</key>
+	<string>تۆۋەن دەرىجىلەر بىلەن ئارىلاش</string>
+	<key>info.mode.order</key>
+	<string>مۇقىم تەرتىپ</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ئونلۇق سانلار بىلەن</string>
+	<key>info.mode.percentages.header</key>
+	<string>تۈر</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ئونلۇق سانسىز</string>
+	<key>info.mode.random</key>
+	<string>ئىختىيارىي تەرتىپ</string>
+	<key>info.super.all</key>
+	<string>قوشۇش، ئېلىش، كۆپەيتىش، بۆلۈش ۋە پىرسەنت</string>
+	<key>info.super.basic</key>
+	<string>قوشۇش ۋە ئېلىش</string>
+	<key>info.super.fraction</key>
+	<string>قوشۇش، ئېلىش، كۆپەيتىش ۋە بۆلۈش</string>
+	<key>info.super.times</key>
+	<string>قوشۇش، ئېلىش ۋە كۆپەيتىش</string>
+	<key>language.select</key>
+	<string>تىل تاللا</string>
+	<key>lives.three</key>
+	<string>3 جان</string>
+	<key>lives.unlimited</key>
+	<string>چەكسىز</string>
+	<key>menu.accessibility.character</key>
+	<string>قەھرىمان</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>قەھرىمانىڭنى ئۆزگەرتىش ئۈچۈن چەك؛ قارشى ئېلىش ئېكرانىدىن قايتا باشلاش ئۈچۈن ئىككى سېكۇنت بېسىپ تۇر.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ تاللا</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>ئەڭ يۇقىرى چەككە %lld قېتىم يەتتى</string>
+	<key>menu.moreLevels</key>
+	<string>تېخىمۇ كۆپ دەرىجە</string>
+	<key>menu.options</key>
+	<string>ئويۇن تاللانمىلىرى</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium جەدۋەللىرى</string>
+	<key>menu.startHere</key>
+	<string>بۇ يەردىن باشلا</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium بىلەن تېخىمۇ كۆپنى ئاچ</string>
+	<key>mode.fractions.multiple</key>
+	<string>كۆپ بۆلەك</string>
+	<key>mode.fractions.single</key>
+	<string>بىر بۆلەك</string>
+	<key>mode.mix</key>
+	<string>ئارىلاش</string>
+	<key>mode.mixed</key>
+	<string>ئارىلاش</string>
+	<key>mode.order</key>
+	<string>تەرتىپ</string>
+	<key>mode.percentages.decimal</key>
+	<string>ئونلۇق</string>
+	<key>mode.percentages.whole</key>
+	<string>پۈتۈن</string>
+	<key>mode.random</key>
+	<string>ئىختىيارىي</string>
+	<key>mode.standard</key>
+	<string>ئۆلچەملىك</string>
+	<key>modeIntro.addition.intro</key>
+	<string>پەقەت |قوشۇش| مەسىلىلىرى كېلىدۇ.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>باشقا بىر سانغا %lld |ياكى تۆۋەن| قوشىسەن.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>ھەمىشە %lld نى |ئۆرلەش| تەرتىپىدە قوشىسەن.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ھەمىشە %lld نى |ئىختىيارىي| سانغا قوشىسەن.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>قوشۇش · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ئىككى ساننى داۋاملىق قوش.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>جاۋاب ئەڭ كۆپ %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld گىچە قوش</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>پەقەت |كەسىر| مەسىلىلىرى كېلىدۇ.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>بۇ دەرىجە ۋە |ئالدىنقى دەرىجىلەر|دىكى كەسىرلەر كېلىدۇ.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld تەڭ بۆلەكنىڭ ئىچىدىن ھەمىشە |1 بۆلەك| ئالىسەن.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld-دەرىجە ۋە ئالدىنقى دەرىجىلەردىكى يۇمىلاق سانلارنىڭ كەسىرلىرىنى ھېسابلا.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>سانلار يۇمىلاق بولىدۇ، شۇڭا جاۋابلار ھەمىشە پۈتۈن سان.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld گىچە كەسىر</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld تەڭ بۆلەكنىڭ ئىچىدىن بىر ياكى |كۆپ بۆلەك| ئالىسەن.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>كەسىر · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>بىر پۈتۈننىڭ بىر بۆلىكىنى ھېسابلا ۋە كەسىرلەرنى تەڭلە.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>مەخرەجى ئوخشاش كەسىرلەرنى قوش ۋە ئېلىش.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>ئارىلاش كەسىرلەر</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>پەقەت |پىرسەنت| مەسىلىلىرى كېلىدۇ.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>بۇ دەرىجە ۋە |ئالدىنقى دەرىجىلەر|دىكى پىرسەنتلەر كېلىدۇ.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ھەمىشە %@ نى ھېسابلايسەن، جاۋاب |پۈتۈن سان| بولىدۇ.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld گىچە يۇمىلاق سانلارنىڭ پىرسەنتىنى ھېسابلا.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>مىقدارلار يۇمىلاق بولىدۇ، شۇڭا جاۋابلار ھەمىشە پۈتۈن سان.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld گىچە پىرسەنت</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ھەمىشە %@ نى ھېسابلايسەن، جاۋاب |ئونلۇق سان| بولسىمۇ بولىدۇ.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ نى ھېسابلا</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>بىر ساننىڭ پىرسەنتىنى ھېسابلا.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>پىرسەنت بىلەن كەسىرنى ئۆزئارا ئايلاندۇر.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ئارىلاش پىرسەنتلەر</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>پەقەت |ئېلىش| مەسىلىلىرى كېلىدۇ.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>باشقا بىر ساندىن %lld |ياكى تۆۋەن| ئالىسەن.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>ھەمىشە %lld نى |تۆۋەنلەش| تەرتىپىدە ئالىسەن.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ھەمىشە |ئىختىيارىي| ساندىن %lld ئالىسەن.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>ئېلىش · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>بىرىنچى سان ئەڭ كۆپ %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>جاۋاب نۆلدىن تۆۋەن بولسىمۇ بولىدۇ.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>نۆلدىن تۆۋەن</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld گىچە ئېلىش</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ئىككى ساننى داۋاملىق بىر-بىرىدىن ئال.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ھەر بىر تاللانغان تۈردە قىيىنلىق |%lld-دەرىجە|گىچە ئۆسەلەيدۇ.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>قوشۇش، ئېلىش، كۆپەيتىش جەدۋىلى، كەسىر ۋە پىرسەنتنى ئارىلاشتۇرۇپ مەشىق قىل.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>دەرىجىدىن تاشقىرى ئارىلاش %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>قوشۇش ۋە ئېلىشنى ئارىلاشتۇرۇپ مەشىق قىل.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>دەرىجىدىن تاشقىرى ئارىلاش %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>قوشۇش، ئېلىش، كۆپەيتىش جەدۋىلى ۋە كەسىرنى ئارىلاشتۇرۇپ مەشىق قىل.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>دەرىجىدىن تاشقىرى ئارىلاش %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>قوشۇش، ئېلىش ۋە كۆپەيتىش جەدۋىلىنى ئارىلاشتۇرۇپ مەشىق قىل.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>دەرىجىدىن تاشقىرى ئارىلاش %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>پەقەت |كۆپەيتىش| مەسىلىلىرى كېلىدۇ.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld گىچە| بولغان بارلىق كۆپەيتىش جەدۋەللىرى ئارىلاش كېلىدۇ.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ھەر بىر جەدۋەل |1 دىن 12 گىچە| بىر سانغا كۆپەيتىلىدۇ.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld نىڭ كۆپەيتىش جەدۋىلى |ئۆرلەش| تەرتىپىدە كېلىدۇ.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld نىڭ كۆپەيتىش جەدۋىلى |ئىختىيارىي| تەرتىپتە كېلىدۇ.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld نىڭ جەدۋىلى</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld دىن %lld گىچە جەدۋەللەرنى ئارىلاشتۇرۇپ مەشىق قىل.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>جەدۋەللەر %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>ئىسمىڭ</string>
+	<key>name.whatsYourName</key>
+	<string>ئىسمىڭ نېمە؟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>ئوخشىمىغان ئارىلاش مەسىلىلەر.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>خېلى ياخشى</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>تەرتىپلىك مەسىلىلەرنى مەشىق قىل.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ئەمدى باشلىدىم</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>مەسىلىلەر ئىختىيارىي تەرتىپتە.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ئازراق مەشىق قىلغان</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ ئۈچۈن باشلىنىش نۇقتىسىنى تاللا.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>بۇ تېما</string>
+	<key>onboarding.level.title</key>
+	<string>بۇنى قانچىلىك بىلىسەن؟</string>
+	<key>onboarding.name.subtitle</key>
+	<string>باشلايلى. ئىسمىڭ نېمە؟</string>
+	<key>onboarding.name.title</key>
+	<string>ھېسابلاش بۇنچە قىزىقارلىق بولۇپ باقمىغان!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>باشلايدىغان تېمىنى تاللا.</string>
+	<key>onboarding.subject.title</key>
+	<string>نېمىنى ئۆگەنمەكچىسەن؟</string>
+	<key>options.capAt30.info</key>
+	<string>ھەر بىر دەرىجىنىڭ ئەڭ كۆپ 50 لوڭقىلىق نىشانى بار. بۇ تاللانما ئوچۇق بولسا، نىشانغا يەتكەندە ئويۇن ئاپتوماتىك ئاخىرلىشىدۇ.</string>
+	<key>options.capAt30.title</key>
+	<string>نىشاندا ئاخىرلاشتۇر</string>
+	<key>options.helperMode.info</key>
+	<string>ياردەمچى ھالەتتە توغرا جاۋاب ھەمىشە يېشىل كۆرسىتىلىدۇ. بۇ ھالەتتە ئېرىشكەن لوڭقىلار ئايرىم ھېسابلىنىپ، يۇلتۇز بىلەن بەلگىلىنىدۇ.</string>
+	<key>options.helperMode.title</key>
+	<string>ياردەمچى ھالەت</string>
+	<key>options.unlimitedLives.info</key>
+	<string>ھەمىشە 3 جان بىلەن باشلايسەن. جانلىرىڭ تۈگىسە ئويۇن ئاخىرلىشىدۇ. جان تۈگىگەندىن كېيىنمۇ ئويناش ۋە مەشىق قىلىش ئۈچۈن بۇ تاللانمىنى ئاچ.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>چەكسىز جان</string>
+	<key>parentGate.approved</key>
+	<string>تەستىقلاندى</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>سىناق: %1$lld / %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ نى %lld سېكۇنت بېسىپ تۇرۇڭ.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>بېسىپ تۇرۇش: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ نى %lld سېكۇنت بېسىپ تۇرۇڭ. ئاندىن %@ نى %lld قېتىم چېكىڭ.</string>
+	<key>parentGate.shape.circle</key>
+	<string>چەمبەر</string>
+	<key>parentGate.shape.diamond</key>
+	<string>رومب</string>
+	<key>parentGate.shape.heart</key>
+	<string>يۈرەك</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ئالتە بۇلۇڭ</string>
+	<key>parentGate.shape.plus</key>
+	<string>قوشۇش بەلگىسى</string>
+	<key>parentGate.shape.square</key>
+	<string>تۆت بۇلۇڭ</string>
+	<key>parentGate.shape.star</key>
+	<string>يۇلتۇز</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ئۈچ بۇلۇڭ</string>
+	<key>parentGate.stepOne</key>
+	<string>1-قەدەم / 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>2-قەدەم / 2</string>
+	<key>parentGate.subtitle</key>
+	<string>كىچىك ئوينىغۇچىلارنى قوغداش ئۈچۈن، سېتىۋېلىشنى داۋاملاشتۇرۇشتىن بۇرۇن چوڭ كىشى بۇ تەكشۈرۈشنى تاماملىشى كېرەك.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ھازىر %2$@ نى %1$lld قېتىم چېكىڭ.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>چېكىش: %1$lld / %2$lld</string>
+	<key>parentGate.title</key>
+	<string>چوڭ كىشىنىڭ تەستىقى كېرەك</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld لوڭقىدىن باشلاپ ئىشلەتكىلى بولىدۇ</string>
+	<key>premium.availableFromStart</key>
+	<string>باشتىنلا ئىشلەتكىلى بولىدۇ</string>
+	<key>premium.characterUnlocked</key>
+	<string>يېڭى پېرسوناژ ئېچىلدى</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ئېچىلدى</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>سەن %lld لوڭقا ئالدىڭ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>پەقەت Premium بىلەن</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>پەقەت Premium بىلەن</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium بىلەن 10 ھايۋاننىڭ ھەممىسىنى ئەركىن ئىشلىتەلەيسەن.</string>
+	<key>premium.feature.animals.title</key>
+	<string>بارلىق ھايۋانلار ئېچىلىدۇ</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>مەشىق قىلىدىغان يېڭى مەسىلىلەر ھەمىشە يېتەرلىك.</string>
+	<key>premium.feature.levels.title</key>
+	<string>ھەر تېمىدا 99 دەرىجە</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ئۈزۈلمەي ئوينا.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ئېلان يوق</string>
+	<key>premium.oneTime</key>
+	<string>بىر قېتىملىق سېتىۋېلىش. مەڭگۈ سىزنىڭ.</string>
+	<key>premium.restore</key>
+	<string>سېتىۋېلىشنى ئەسلىگە كەلتۈر</string>
+	<key>premium.start</key>
+	<string>باشلاش</string>
+	<key>premium.storeUnavailable</key>
+	<string>دۇكان ھازىر ئېچىلمايدۇ. كېيىن قايتا سىناڭ.</string>
+	<key>premium.unlock</key>
+	<string>Premium نى ئاچ</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium نى ئاچ · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>لوڭقا بىلەن ئاچ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium بىلەن ئېچىلدى</string>
+	<key>premium.youHavePremium</key>
+	<string>Premium بار!</string>
+	<key>settings.character</key>
+	<string>قەھرىمان</string>
+	<key>settings.characterInfo</key>
+	<string>ھەر بىر ھايۋان پۈتۈن ئويۇنغا ئۆزىنىڭ رەڭ ئۇسلۇبىنى بېرىدۇ.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>ئۆزگىچە: %lld مىن</string>
+	<key>settings.dailyGoal</key>
+	<string>كۈندىلىك نىشان</string>
+	<key>settings.goalInfo</key>
+	<string>ئۇدا داۋاملاشتۇرۇش نىشانى كۈنىگە 5 مىنۇتتىن باشلىنىدۇ. پەقەت ئاكتىپ ئوينىغان ۋاقىت ھېسابلىنىدۇ.</string>
+	<key>settings.lives</key>
+	<string>جان</string>
+	<key>settings.livesInfo</key>
+	<string>ئۈچ جان ھالىتىدە ئاخىرقى يۈرىكىڭ تۈگىگەندە ئويۇن ئاخىرلىشىدۇ. چەكسىز ھالەتتە جان بار چاغدىلا لوڭقىلار ھېسابلىنىدۇ؛ كېيىنمۇ ئويناشنى داۋاملاشتۇرالايسەن.</string>
+	<key>settings.playGoals</key>
+	<string>ئويۇن نىشانلىرى</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ئېچىلدى. رەھمەت!</string>
+	<key>settings.title</key>
+	<string>تەڭشەكلەر</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>كۈندىلىك نىشان تاللا</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>كۈندىلىك ياكى ھەپتىلىك نىشان تاللا</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@، %3$lld مىنۇتنىڭ %2$lld، ئۇدا %4$lld كۈن</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>كۈندىلىك داۋام، %lld/%lld مىنۇت</string>
+	<key>streak.daily</key>
+	<string>كۈندىلىك داۋام</string>
+	<key>streak.dayOne</key>
+	<string>1-كۈن</string>
+	<key>tutorial.answerHint</key>
+	<string>جاۋابنى بىلمىدىڭمۇ؟ كۆرۈش ئۈچۈن مەسىلىنى چەك.</string>
+	<key>tutorial.complete</key>
+	<string>يارايسەن! دەرسلىك تامام. ئەمدى ئەڭ يۇقىرى نومۇرغا ئاتلان!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>توغرا جاۋابقا سەكرەپ لوڭقا يىغ.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>توغرا جاۋاب يېشىل كۆرسىتىلدى. ئەمدى توغرا جاۋابقا سەكرە.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>توغرا جاۋابقا سەكرەپ ئۈچ ھەسسە لوڭقا يىغ.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>×3 تەڭگىسىنى ئېلىپ، بىر قېتىم ئۈچ ھەسسە لوڭقا ئال.</string>
+	<key>tutorial.lifePickup</key>
+	<string>يېرىم جان ياكى بىر پۈتۈن جان تېپىپ، جانلىرىڭنى قايتۇرالايسەن.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 دىن قاچ. ئۇ بىر لوڭقاڭنى ئالىدۇ.</string>
+	<key>tutorial.move</key>
+	<string>ئۈسكۈنىڭنى ھەرىكەتلەندۈرۈپ سولغا ۋە ئوڭغا ماڭ. ئېكراننىڭ يانلىرىدىنمۇ ئۆتەلەيسەن.</string>
+	<key>tutorial.platforms</key>
+	<string>ئۈستىگە چىقىش ئۈچۈن سۇپىلارغا سەكرە.</string>
+	<key>tutorial.scoreHint</key>
+	<string>بۇ دەرىجىدىكى نومۇرۇڭ بۇ يەردە كۆرسىتىلىدۇ.</string>
+	<key>tutorial.star</key>
+	<string>خاتا جاۋابلارنى ئېتىپ يوقىتىش ئۈچۈن يۇلتۇزغا سەكرە.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>خاتا جاۋاب تاللىساڭ، ئۈچ جېنىڭنىڭ بىرىنى يوقىتىسەن. ھازىر سىناپ باق.</string>
+</dict>
+</plist>
