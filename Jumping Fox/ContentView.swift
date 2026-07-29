@@ -376,6 +376,9 @@ struct ContentView: View {
     // earlier count-up so the numbers grow exactly as the reward arrives.
     @State private var headerTrophyArrival: Date?
     @State private var finishedCardCelebrations: Set<UUID> = []
+    // Lets the trophy celebration scroll the header total back into view when a
+    // higher level has scrolled it off the top of the menu.
+    @State private var scrollProxy: ScrollViewProxy?
     // Authoritative first-max phase owned by the persistent home view. A level
     // card may be rebuilt while its score counts up; keeping this phase here
     // prevents that rebuild from cancelling the reveal or the subsequent flight.
@@ -421,15 +424,19 @@ struct ContentView: View {
             )
             .ignoresSafeArea()
 
-            ScrollView {
-                VStack(spacing: isPad ? 26 : 18) {
-                    menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
-                    levelGrid
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: isPad ? 26 : 18) {
+                        menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
+                            .id(Self.headerScrollID)
+                        levelGrid
+                    }
+                    .padding(isPad ? 32 : 16)
+                    .frame(maxWidth: isPad ? 900 : 720)
+                    .frame(maxWidth: .infinity)
+                    .id(refreshID)
                 }
-                .padding(isPad ? 32 : 16)
-                .frame(maxWidth: isPad ? 900 : 720)
-                .frame(maxWidth: .infinity)
-                .id(refreshID)
+                .onAppear { scrollProxy = proxy }
             }
 
             if let popup = infoPopup {
@@ -583,8 +590,15 @@ struct ContentView: View {
         .onChange(of: lifeModeRaw) { _ in
             refreshHomeProgress()
         }
+        .onAppear {
+            // Preload players/voice off the main thread, then start the loop:
+            // the background music plays app-wide, softly on the menus.
+            AppAudio.shared.prepare()
+            AppAudio.shared.startMusic()
+        }
         .onChange(of: scenePhase) { phase in
             guard phase == .active else { return }
+            AppAudio.shared.startMusic()
             requestReviewAfterSettledReturn()
         }
         .overlay {
@@ -776,6 +790,7 @@ struct ContentView: View {
                         suppressCharacterTap = false
                         return
                     }
+                    AppAudio.shared.playMenuTap()
                     openCharacterCollection()
                 } label: {
                     let box: CGFloat = isPad ? 118 : 68
@@ -941,6 +956,7 @@ struct ContentView: View {
     private func menuFilterButton(_ filter: MenuFilter) -> some View {
         let isSelected = filter == selectedFilter
         return Button {
+            AppAudio.shared.playMenuTap()
             // Tapping the already-selected topic reveals its info pop-out
             // instead of re-selecting it (which did nothing before).
             if isSelected {
@@ -1167,6 +1183,10 @@ struct ContentView: View {
             return
         }
 
+        // Trophies were earned: play the home-screen trophy sound as the card
+        // begins to count them up.
+        AppAudio.shared.playTrophyMenu()
+
         // The card itself reports when its last animation has settled. Starting
         // the flight from that callback (instead of a guessed timer) keeps the
         // order deterministic even when dismissal/rendering takes longer.
@@ -1230,12 +1250,23 @@ struct ContentView: View {
         let willFly = celebration.scoreDidIncrease && categoryGrew
         let flightDuration: TimeInterval = 0.55
 
+        // On higher levels the header (grand total) has scrolled off the top of
+        // the menu, so both the flight and the count-up used to happen unseen.
+        // Bring the header back on-screen first, then let the anchors settle
+        // before launching the flight.
+        let scrollDelay: TimeInterval = willFly ? 0.42 : 0
         if willFly {
-            launchTrophyFlight(for: celebration, duration: flightDuration)
+            withAnimation(.easeInOut(duration: 0.32)) {
+                scrollProxy?.scrollTo(Self.headerScrollID, anchor: .top)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + scrollDelay) {
+                guard scoreCelebration?.id == celebration.id else { return }
+                launchTrophyFlight(for: celebration, duration: flightDuration)
+            }
         }
 
         let remainingLifetime: TimeInterval = willFly
-            ? flightDuration + 0.95 + 0.3
+            ? scrollDelay + flightDuration + 0.95 + 0.3
             : 0.3
         DispatchQueue.main.asyncAfter(deadline: .now() + remainingLifetime) {
             guard scoreCelebration?.id == celebration.id else { return }
@@ -1290,6 +1321,8 @@ struct ContentView: View {
         premiumInitialCharacterID = milestone.characterID
         celebratedCharacterUnlock = milestone
         isCharacterUnlockPreview = isPreview
+        // Only celebrate a real unlock with sound, not a preview browse.
+        if !isPreview { AppAudio.shared.playCharacterUnlock() }
         showPremium = true
     }
 
@@ -1325,11 +1358,17 @@ struct ContentView: View {
     @MainActor
     private func launchTrophyFlight(for celebration: ScoreCelebration, duration: TimeInterval) {
         guard scoreCelebration?.id == celebration.id else { return }
-        guard let source = cardTrophyAnchors[celebration.levelID],
-              let destination = controlAnchors["categoryTrophy"] else {
+        guard let destination = controlAnchors["categoryTrophy"] else {
             landHeaderTrophies(for: celebration)
             return
         }
+        // A sensible on-screen start when the earning card is scrolled far below
+        // the (now visible) header: the trophy rises up into the total from the
+        // lower part of the screen instead of not flying at all.
+        let fallbackSource = CGRect(x: destination.midX - 8,
+                                    y: destination.maxY + 420, width: 16, height: 16)
+        var source = cardTrophyAnchors[celebration.levelID] ?? fallbackSource
+        if source.minY - destination.maxY > 600 { source = fallbackSource }
         let cardScale = levelCardHeight / 96
         withTransaction(Transaction(animation: nil)) {
             flyingTrophy = FlyingTrophy(
@@ -1356,6 +1395,8 @@ struct ContentView: View {
     private func landHeaderTrophies(for celebration: ScoreCelebration) {
         guard scoreCelebration?.id == celebration.id else { return }
         headerTrophyArrival = Date()
+        // The grand total at the top starts ticking up now — its own sound.
+        AppAudio.shared.playTrophyTotal()
         withAnimation(.spring(response: 0.42, dampingFraction: 0.56)) {
             highlightsHeaderTrophies = true
         }
@@ -1557,6 +1598,8 @@ struct ContentView: View {
     /// Shared coordinate space so control anchors, level frames and the
     /// pop-out's own placement all speak in the same points.
     static let homeSpace = "home"
+    /// Scroll id of the menu header, so the trophy total can be brought on-screen.
+    static let headerScrollID = "menuHeader"
 
     /// The levels currently on screen (regular + any premium), in the exact
     /// mode the menu shows them — used to resolve a tapped level frame back to
@@ -1702,6 +1745,7 @@ struct ContentView: View {
             ForEach(PracticeMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
+                    AppAudio.shared.playMenuTap()
                     if isSelected {
                         showInfoPopup(.mode(mode, selectedFilter.standard), anchorKey: "mode.\(mode.rawValue)")
                     } else {
@@ -1738,6 +1782,7 @@ struct ContentView: View {
             ForEach(ChallengeCategory.supermixMenu) { menuCategory in
                 let isSelected = supermixCategory == menuCategory
                 Button {
+                    AppAudio.shared.playMenuTap()
                     if isSelected {
                         showInfoPopup(.superCategory(menuCategory), anchorKey: "super.\(menuCategory.rawValue)")
                     } else {
@@ -1820,6 +1865,7 @@ struct ContentView: View {
     private var helperModeRow: some View {
         VStack(alignment: .leading, spacing: 0) {
             Button {
+                AppAudio.shared.playMenuTap()
                 withAnimation(.easeInOut(duration: 0.28)) {
                     showsOptions.toggle()
                 }
@@ -1910,6 +1956,9 @@ struct ContentView: View {
                     .tint(character.deepColor)
                     .scaleEffect(isPad ? 1.3 : 0.8, anchor: .trailing)
                     .accessibilityLabel(title)
+                    .onChange(of: isOn.wrappedValue) { newValue in
+                        AppAudio.shared.playSwitch(on: newValue)
+                    }
             }
             // ~10% taller rows so the list breathes a little more.
             .frame(minHeight: isPad ? 66 : 42)
@@ -3035,16 +3084,15 @@ struct LevelCardView: View {
     }
 
     /// The completed card celebrates in two colors: a `hero` (number, score,
-    /// dots, ribbon) and a `metal` (crown, laurels, border, glow). Whichever
-    /// festive color would clash with the active theme is swapped for a violet
-    /// accent, guaranteeing strong contrast in every theme.
+    /// dots, ribbon) and a `metal` (crown, decorations, border, glow). Whichever
+    /// festive color would clash with the active theme is swapped for a
+    /// contrasting accent, guaranteeing strong contrast in every theme.
     private var completedPalette: (hero: Color, metal: Color) {
         let green = Color(red: 0.24, green: 0.60, blue: 0.28)
         let gold = Color(red: 0.87, green: 0.66, blue: 0.12)
         let violet = Color(red: 0.42, green: 0.35, blue: 0.78)
         let h = themeHue
-        if (80...175).contains(h) { return (hero: violet, metal: gold) }   // green theme
-        if (38...65).contains(h)  { return (hero: green, metal: violet) }   // gold/yellow theme
+        if (80...175).contains(h) { return (hero: violet, metal: gold) } // green theme
         return (hero: green, metal: gold)
     }
 
@@ -3090,7 +3138,10 @@ struct LevelCardView: View {
     // MARK: Body
 
     var body: some View {
-        Button(action: action) {
+        Button {
+            AppAudio.shared.playMenuTap()
+            action()
+        } label: {
             Group {
                 if showsCompletedAppearance {
                     completedCard

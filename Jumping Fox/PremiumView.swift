@@ -274,6 +274,7 @@ struct PremiumView: View {
         let isAccessible = canUse(animal)
         let artworkSlotSize = 44 * scale * 1.1
         return Button {
+            AppAudio.shared.playMenuTap()
             previewCharacterID = animal.id
             if isAccessible { characterID = animal.id }
         } label: {

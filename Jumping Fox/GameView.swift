@@ -71,6 +71,7 @@ struct GameView: View {
     // Refreshes the intro/end-menu copy when the language is switched.
     @ObservedObject private var language = LanguageManager.shared
     @ObservedObject private var tutorial = TutorialProgress.shared
+    @ObservedObject private var audio = AppAudio.shared
     @Environment(\.layoutDirection) private var layoutDirection
 
     // Pre-game mode intro card. The field is frozen until the player starts.
@@ -288,11 +289,14 @@ struct GameView: View {
             isTutorialArrowBouncing = true
             PlaytimeTracker.shared.challengeStarted()
             setScreenAwake(true)
+            AppAudio.shared.prepare()   // ensure players are loaded before play
+            updateGameplayAudio()
         }
         .onDisappear {
             if tutorial.developerMode { tutorial.leaveDeveloperMode() }
             PlaytimeTracker.shared.challengeEnded()
             setScreenAwake(false)
+            AppAudio.shared.setGameplayActive(false, questionText: nil)
         }
         .onChange(of: tutorial.currentStep) { step in
             // Warm the soft haptic the moment the "tap the question mark" step
@@ -367,6 +371,23 @@ struct GameView: View {
                 scene.isFrozen = !tutorial.isActive
             }
         }
+        // Music only plays while a level is actually being played: it starts
+        // when the start/pause card is dismissed and stops on pause, game over
+        // or when leaving the screen.
+        .onChange(of: showingIntro) { _ in updateGameplayAudio() }
+        .onChange(of: state.isGameOver) { _ in updateGameplayAudio() }
+        // Read each new sum aloud as it appears (English only; handled inside).
+        .onChange(of: state.question.prompt) { newPrompt in
+            guard !showingIntro, !state.isGameOver else { return }
+            AppAudio.shared.speakQuestion(newPrompt)
+        }
+    }
+
+    /// Turns the game's music and spoken sums on or off to match the play
+    /// state: audible only while a level is live (no intro card, not over).
+    private func updateGameplayAudio() {
+        let active = !showingIntro && !state.isGameOver
+        AppAudio.shared.setGameplayActive(active, questionText: state.questionText)
     }
 
     /// Keep the display from dimming/locking during play.
@@ -464,22 +485,35 @@ struct GameView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(alignment: .leading, spacing: 14) {
-                        HStack(alignment: .bottom, spacing: 14) {
+                        HStack(alignment: .top, spacing: 14) {
                             characterPortrait
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(info.title)
-                                    .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
-                                    .foregroundStyle(theme.deepColor)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.80)
-                                    .layoutPriority(1)
+                            // The title and the status labels together span the
+                            // exact height of the character: title pinned to the
+                            // top, labels to the bottom (the Spacer fills between).
+                            VStack(alignment: .leading, spacing: 0) {
+                                // Title line: the sound toggle sits right beside
+                                // the title, at its height, pinned to the edge.
+                                HStack(alignment: .center, spacing: 10) {
+                                    Text(info.title)
+                                        .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
+                                        .foregroundStyle(theme.deepColor)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.70)
+                                        .layoutPriority(1)
+                                    Spacer(minLength: 6)
+                                    musicToggleButton
+                                }
+                                Spacer(minLength: 0)
+                                // Status labels sit on their own row and may run
+                                // the full width of the card, under the toggle.
                                 HStack(spacing: 7) {
                                     introStatusLabel(icon: state.lifeMode == .unlimited ? "infinity" : "heart.fill",
                                                      text: state.lifeMode == .unlimited ? L("game.intro.livesOff") : L("game.intro.livesOn"))
                                     introStatusLabel(icon: "lightbulb.fill", text: state.isAnswerHelperEnabled ? L("game.intro.helperOn") : L("game.intro.helperOff"))
+                                    Spacer(minLength: 0)
                                 }
                             }
-                            Spacer(minLength: 0)
+                            .frame(height: introPortraitSize)
                         }
                         DashedDivider(color: theme.color.opacity(0.45))
                             .padding(.vertical, 4)
@@ -543,15 +577,16 @@ struct GameView: View {
         .transition(.opacity)
     }
 
+    /// Size of the character portrait on the start/pause card. The title and
+    /// its status labels are laid out to exactly this height.
+    private var introPortraitSize: CGFloat { 70 * gameScale }
+
     private var characterPortrait: some View {
         theme.artwork
             .resizable()
             .scaledToFit()
             .padding(8)
-            // The feature cards inset their 54 pt icon by 10 pt. Keeping this
-            // card 64 pt wide makes its trailing edge meet the icon edge while
-            // the following title column starts exactly with the feature copy.
-            .frame(width: 64 * gameScale, height: 64 * gameScale)
+            .frame(width: introPortraitSize, height: introPortraitSize)
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.12), lineWidth: 1))
@@ -565,6 +600,26 @@ struct GameView: View {
             )
     }
 
+    /// Master sound switch, sitting beside the title at its height. On by
+    /// default; a tap turns it off and the speaker gains the familiar diagonal
+    /// slash. Controls the music, the spoken sums and every other sound.
+    private var musicToggleButton: some View {
+        Button {
+            withAnimation(.snappy(duration: 0.2)) { audio.isEnabled.toggle() }
+        } label: {
+            Image(systemName: audio.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                .font(.system(size: 19 * gameTextScale, weight: .heavy))
+                .foregroundStyle(theme.deepColor.opacity(audio.isEnabled ? 1 : 0.55))
+                .frame(width: 44 * gameScale, height: 44 * gameScale)
+                .background(theme.skyColor.opacity(audio.isEnabled ? 1 : 0.5),
+                            in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(verbatim: audio.isEnabled ? "Sound on" : "Sound off"))
+    }
+
     private func introStatusLabel(icon: String, text: String) -> some View {
         HStack(spacing: 5) {
             Image(systemName: icon)
@@ -574,6 +629,8 @@ struct GameView: View {
             .font(.system(size: 10 * gameTextScale, weight: .bold))
             .foregroundStyle(theme.deepColor.opacity(0.82))
             .lineLimit(1)
+            .minimumScaleFactor(0.7)
+            .allowsTightening(true)
             .padding(.horizontal, 8 * gameScale)
             .padding(.vertical, 5 * gameScale)
             .background(theme.skyColor.opacity(0.72), in: Capsule())

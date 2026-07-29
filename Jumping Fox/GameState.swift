@@ -67,6 +67,15 @@ enum GameSettings {
         set { UserDefaults.standard.set(newValue, forKey: capTrophiesKey) }
     }
 
+    /// Master audio switch. Controls background music, the correct/wrong sound
+    /// effects, the spoken sums (English only) and the little menu tap sounds.
+    /// On by default — the player turns it off from the start/pause card.
+    static let soundEnabledKey = "settings.soundEnabled"
+    static var soundEnabled: Bool {
+        get { UserDefaults.standard.object(forKey: soundEnabledKey) as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: soundEnabledKey) }
+    }
+
     /// Selected character id ("fox" by default).
     static var characterID: String {
         get { UserDefaults.standard.string(forKey: characterKey) ?? "fox" }

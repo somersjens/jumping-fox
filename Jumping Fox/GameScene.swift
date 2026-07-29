@@ -558,6 +558,11 @@ final class GameScene: SKScene {
     private var velocityX: CGFloat = 0
     private var targetX: CGFloat?
     private var squashTimer: CGFloat = 0
+    /// The jump sound is fired a few frames before the practically-certain
+    /// landing (predicted from the fall), so it lands with the visual bounce
+    /// rather than just after it. One play per descent.
+    private var jumpSoundPlayedThisDescent = false
+    private let jumpSoundLead: TimeInterval = 0.06
     private var currentScaleX: CGFloat = 1
     private var currentScaleY: CGFloat = 1
     private var facing: CGFloat = 1
@@ -2084,7 +2089,13 @@ final class GameScene: SKScene {
         velocityY += gravity * dt
         player.position.y += velocityY * dt
 
-        if velocityY < 0 {
+        if velocityY >= 0 {
+            // Rising (or at the apex): re-arm the jump sound for the next fall.
+            jumpSoundPlayedThisDescent = false
+        } else {
+            // Fire the jump sound a hair before the certain landing…
+            predictJumpSound()
+            // …then resolve the actual landing/bounce.
             checkLanding(previousBottom: previousBottom)
         }
 
@@ -2096,6 +2107,10 @@ final class GameScene: SKScene {
             velocityY = springboardVelocity
             squashTimer = 0.14
             bounceSpring()
+            if !jumpSoundPlayedThisDescent {
+                AppAudio.shared.playJump()
+                jumpSoundPlayedThisDescent = true
+            }
             springboard.run(.sequence([
                 .scaleY(to: 0.6, duration: 0.06),
                 .scaleY(to: 1.0, duration: 0.12)
@@ -2249,6 +2264,38 @@ final class GameScene: SKScene {
 
     // MARK: Landing
 
+    /// Plays the jump sound a fraction of a second before the practically
+    /// certain landing, so it is heard together with the visual bounce instead
+    /// of a beat late. Only for plain bounces (stones / springboard) — scored
+    /// answers keep their own correct/wrong sound at the real landing frame.
+    private func predictJumpSound() {
+        guard !jumpSoundPlayedThisDescent, velocityY < 0 else { return }
+        let bottom = player.position.y - playerHalfHeight
+        let predictedBottom = bottom + velocityY * CGFloat(jumpSoundLead)
+
+        // About to reach the bottom springboard.
+        if bottom > springboardY + 8, predictedBottom <= springboardY + 8 {
+            AppAudio.shared.playJump()
+            jumpSoundPlayedThisDescent = true
+            return
+        }
+
+        let halfWidth = tileSize.width / 2
+        let halfHeight = tileSize.height / 2
+        for platform in platforms {
+            let top = platform.position.y + halfHeight
+            guard bottom > top, predictedBottom <= top else { continue }
+            guard abs(player.position.x - platform.position.x) < halfWidth + 6 else { continue }
+            // A scored answer keeps its correct/wrong sound at the real landing.
+            let isScoredAnswer = platform.isActiveAnswer && answerRefreshAt == nil && !answerBuildPending
+            if !isScoredAnswer {
+                AppAudio.shared.playJump()
+                jumpSoundPlayedThisDescent = true
+            }
+            return
+        }
+    }
+
     private func checkLanding(previousBottom: CGFloat) {
         let bottom = player.position.y - playerHalfHeight
         let halfWidth = tileSize.width / 2
@@ -2278,8 +2325,17 @@ final class GameScene: SKScene {
                     // silent edge-graze forgiveness.
                     landedWrong(on: platform)
                 }
-            } else if tutorial.isActive && tutorial.currentStep == 2 {
-                completeTutorialStep(2)
+            } else {
+                // Any other landing is a plain bounce off a stone — its own
+                // little jump sound, distinct from a scored answer. Skipped if
+                // the predictive trigger already played it this descent.
+                if !jumpSoundPlayedThisDescent {
+                    AppAudio.shared.playJump()
+                    jumpSoundPlayedThisDescent = true
+                }
+                if tutorial.isActive && tutorial.currentStep == 2 {
+                    completeTutorialStep(2)
+                }
             }
             return
         }
@@ -2296,6 +2352,7 @@ final class GameScene: SKScene {
         let trophyOrigin = platform.position
         platform.resolveCorrect(theme: theme)
         haptic(success: true)
+        AppAudio.shared.playCorrect()
         PlaytimeTracker.shared.registerInteraction()
         let wasTripled = state.triplerArmed
         let wasStreakActive = state.isStreakActive
@@ -2308,10 +2365,12 @@ final class GameScene: SKScene {
             setTriplerVisual(false)
             redemptionArmed = false
             awaitingCorrectAfterTutorialStar = false
+            AppAudio.shared.playLevelComplete()
             beginCompletionCelebration(from: platform.position)
             return
         }
         if !wasStreakActive && state.isStreakActive {
+            AppAudio.shared.playStreak()
             performStreakSalto()
         }
         // The star lesson ends only after this remaining good answer is
@@ -2331,6 +2390,7 @@ final class GameScene: SKScene {
         // A consumed tripler flies to the trophy score; an unarmed state
         // just makes sure no stray aura lingers. Redemption ends here too.
         if wasTripled {
+            AppAudio.shared.playTriplerUsed()
             consumeTriplerVisual()
         } else {
             setTriplerVisual(false)
@@ -2402,6 +2462,7 @@ final class GameScene: SKScene {
     private func landedWrong(on platform: GamePlatform) {
         platform.resolveWrong()
         haptic(success: false)
+        AppAudio.shared.playWrong()
         PlaytimeTracker.shared.registerInteraction()
         let hadTripler = state.triplerArmed
         state.answeredWrong()
@@ -2844,6 +2905,13 @@ final class GameScene: SKScene {
         case .minusOne:
             flyMinusOneToScore(from: origin)
         }
+        // A distinct sound for each pickup, at the moment it is collected.
+        switch powerup {
+        case .halfHeart, .fullHeart: AppAudio.shared.playLife()
+        case .eliminator:            AppAudio.shared.playShootingStar()
+        case .tripler:               AppAudio.shared.playTriplerPickup()
+        case .minusOne:              AppAudio.shared.playMinus()
+        }
         if powerup == .halfHeart || powerup == .fullHeart {
             heartHaptic()
         } else {
@@ -2914,6 +2982,7 @@ final class GameScene: SKScene {
             .run { [weak self] in
                 guard let self else { return }
                 self.state.gainLifeHalves(halves)
+                AppAudio.shared.playHeartArrive()
                 self.arrivalPing(at: target, color: self.theme.skDeep)
             },
             .group([.scale(to: 0.3, duration: 0.15), .fadeOut(withDuration: 0.15)]),
