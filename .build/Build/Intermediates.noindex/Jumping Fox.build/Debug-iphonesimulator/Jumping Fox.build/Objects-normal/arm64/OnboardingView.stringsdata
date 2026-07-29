@@ -1,0 +1,192 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/OnboardingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "common.back",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "name.placeholder",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.continue",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.name.subtitle",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.name.title",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.subject.subtitle",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.subject.title",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.beginner.title",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 242
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.intermediate.title",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 243
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.advanced.title",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 244
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.beginner.subtitle",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 247
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.intermediate.subtitle",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 248
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.advanced.subtitle",
+        "location": {
+          "startingColumn": 15,
+          "startingLine": 249
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.subtitle %@",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.title",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.thisTopic",
+        "location": {
+          "startingColumn": 95,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.beginner.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 199
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.beginner.subtitle",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 200
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.intermediate.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 211
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.intermediate.subtitle",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 212
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.advanced.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 223
+        }
+      },
+      {
+        "comment": "",
+        "key": "onboarding.level.advanced.subtitle",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 224
+        }
+      },
+      {
+        "comment": "",
+        "key": "character.pickerTitle",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 490
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,24 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameState.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "lives.three",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "lives.unlimited",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 32
+        }
+      }
+    ]
+  },
+  "version": 1
+}

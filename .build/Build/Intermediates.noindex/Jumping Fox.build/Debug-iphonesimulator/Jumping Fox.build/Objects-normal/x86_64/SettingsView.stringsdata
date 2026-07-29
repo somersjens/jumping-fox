@@ -1,0 +1,112 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/SettingsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "settings.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "common.done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.lives",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.livesInfo",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.playGoals",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 124
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.goalInfo",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 158
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.dailyGoal",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.customMinutes %lld",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.characterInfo",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 186
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.character",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 171
+        }
+      },
+      {
+        "comment": "",
+        "key": "settings.premiumUnlocked",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 243
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.restore",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 267
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.unlock",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 254
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,152 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Notifications.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "notif.day3.title",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 371
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.day3.body %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 372
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.streak.title %lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 377
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.streak.body %lld",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 378
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.animal.title %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 390
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.animal.body %@",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 391
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.comeback.title",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 399
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.comeback.body",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 400
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.reactivate.title",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 407
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.reactivate.body %lld",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 408
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.weekly.title %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 415
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.weekly.body %lld",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 416
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.trophies.title %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 424
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.trophies.body %lld",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 425
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.jumppad.title",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 433
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.jumppad.body",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 434
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.premium.title",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 442
+        }
+      },
+      {
+        "comment": "",
+        "key": "notif.premium.body %lld",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 443
+        }
+      }
+    ]
+  },
+  "version": 1
+}
