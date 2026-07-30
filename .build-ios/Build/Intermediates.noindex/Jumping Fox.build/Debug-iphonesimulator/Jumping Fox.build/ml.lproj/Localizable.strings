@@ -108,6 +108,8 @@
 	<string>ജീവനുകൾ ഓൺ</string>
 	<key>game.intro.scorePaused</key>
 	<string>നിന്റെ ഇപ്പോഴത്തെ സ്കോർ താൽക്കാലികമായി നിർത്തും.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ക്ഷമിക്കണം! ഉറക്കെ വായിക്കുന്ന സൗകര്യം നിങ്ങളുടെ ഭാഷയിൽ ഇതുവരെ ലഭ്യമല്ല.</string>
 	<key>game.intro.start</key>
 	<string>ലെവൽ തുടങ്ങൂ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>നിന്റെ പേര്</string>
 	<key>name.whatsYourName</key>
 	<string>നിന്റെ പേരെന്താണ്?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ഈ മൃഗത്തെ അൺലോക്ക് ചെയ്യാൻ കുറച്ച് ട്രോഫികൾ കൂടി നേടൂ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ഇനി %lld ട്രോഫികൾ മാത്രം! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>നിങ്ങളുടെ മൃഗങ്ങൾ കാത്തിരിക്കുന്നു. കളിക്കാൻ തിരികെ വരിക, ട്രോഫികൾ ശേഖരിക്കുന്നത് തുടരുക!</string>
+	<key>notif.comeback.title</key>
+	<string>എനിക്ക് നിന്നെ മിസ്സാകും! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ഒരു %lld മിനിറ്റ് പ്ലേ സെഷൻ ആരംഭിച്ച് നിങ്ങളുടെ ദൈനംദിന പ്ലേ സ്ട്രീക്ക് നീട്ടുക.</string>
+	<key>notif.day3.title</key>
+	<string>നമുക്ക് ദിവസം 3 ആക്കാം! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>തെറ്റായ ഉത്തരം ഒഴിവാക്കാനും കയറുന്നത് തുടരാനും ജമ്പ് പാഡ് ഉപയോഗിക്കുക!</string>
+	<key>notif.jumppad.title</key>
+	<string>തെറ്റായ ഉത്തരങ്ങൾ മറികടക്കുക! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ജമ്പിംഗ് ഫോക്സ് പ്രീമിയത്തിൽ ഓരോ വിഷയത്തിനും എല്ലാ 10 മൃഗങ്ങൾക്കും %lld ലെവലുകൾ ഉൾപ്പെടുന്നു. സാഹസികത തുടരുന്നു!</string>
+	<key>notif.premium.title</key>
+	<string>കൂടുതൽ ലെവലുകളും മൃഗങ്ങളും അൺലോക്ക് ചെയ്യുക! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ദിവസമായി. നമുക്ക് ചില ഗണിത വ്യായാമങ്ങൾ പരിഹരിച്ച് കൂടുതൽ ട്രോഫികൾ നേടാം!</string>
+	<key>notif.reactivate.title</key>
+	<string>വീണ്ടും കളിക്കാൻ തയ്യാറാണോ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld മിനിറ്റ് കളിക്കുക, നിങ്ങളുടെ ദൈനംദിന കളി തുടരുക!</string>
+	<key>notif.streak.title %lld</key>
+	<string>നിങ്ങളുടെ പ്രതിദിന പ്ലേ സ്ട്രീക്ക് %lld ദിവസത്തിലെത്തി! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>മികച്ച ജോലി! നമുക്ക് %lld മിനിറ്റ് കളിച്ച് കൂടുതൽ ശേഖരിക്കാം.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>അത് നിങ്ങളുടെ ആകെ %lld ട്രോഫികളായി എത്തിക്കുന്നു. അത്ഭുതകരമായ പ്രവൃത്തി!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ഈ ആഴ്ച നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>വ്യത്യസ്ത മിക്സ് കണക്കുകൾ ഒരുമിച്ച്.</string>
 	<key>onboarding.level.advanced.title</key>

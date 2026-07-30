@@ -108,6 +108,8 @@
 	<string>Liv på</string>
 	<key>game.intro.scorePaused</key>
 	<string>Din nuvarande poäng pausas.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Förlåt! Uppläsningsfunktionen är ännu inte tillgänglig på ditt språk.</string>
 	<key>game.intro.start</key>
 	<string>Starta nivån</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Ditt namn</string>
 	<key>name.whatsYourName</key>
 	<string>Vad heter du?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Tjäna några fler troféer för att låsa upp detta djur! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Bara %lld troféer kvar! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Dina djur väntar. Kom tillbaka för att spela och fortsätt samla troféer!</string>
+	<key>notif.comeback.title</key>
+	<string>Vi saknar dig! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Starta en %lld-minuters spelsession och förläng din dagliga spelserie.</string>
+	<key>notif.day3.title</key>
+	<string>Låt oss få dag 3 att hända! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Använd Jump Pad för att hoppa över ett fel svar och fortsätt klättra!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hoppa förbi fel svar! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium innehåller %lld nivåer för varje ämne och alla 10 djur. Äventyret fortsätter!</string>
+	<key>notif.premium.title</key>
+	<string>Lås upp fler nivåer och djur! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Det har gått %lld dagar. Låt oss lösa några matematikövningar och tjäna fler troféer!</string>
+	<key>notif.reactivate.title</key>
+	<string>Redo att spela igen? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spela i %lld minuter och håll igång din dagliga spelserie!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Din dagliga spelsvit har nått %lld dagar! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Bra jobbat! Låt oss spela i %lld minuter och samla ännu mer.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Du har tjänat %lld troféer! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Det ger din totala summa till %lld troféer. Underbart arbete!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Du tjänade %lld troféer den här veckan! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Olika blandade tal.</string>
 	<key>onboarding.level.advanced.title</key>

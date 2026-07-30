@@ -55,7 +55,7 @@
         "key": "common.done",
         "location": {
           "startingColumn": 22,
-          "startingLine": 337
+          "startingLine": 338
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "premium.oneTime",
         "location": {
           "startingColumn": 22,
-          "startingLine": 369
+          "startingLine": 370
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "premium.restore",
         "location": {
           "startingColumn": 24,
-          "startingLine": 373
+          "startingLine": 374
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "premium.unlockWithPrice %@",
         "location": {
           "startingColumn": 22,
-          "startingLine": 391
+          "startingLine": 392
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "premium.unlock",
         "location": {
           "startingColumn": 18,
-          "startingLine": 393
+          "startingLine": 394
         }
       }
     ]

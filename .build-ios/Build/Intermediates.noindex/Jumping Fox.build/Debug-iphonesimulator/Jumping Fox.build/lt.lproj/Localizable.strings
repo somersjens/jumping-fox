@@ -108,6 +108,8 @@
 	<string>Gyvybės įjungtos</string>
 	<key>game.intro.scorePaused</key>
 	<string>Dabartinis rezultatas bus pristabdytas.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Atsiprašome! Skaitymo balsu funkcija tavo kalba dar nepasiekiama.</string>
 	<key>game.intro.start</key>
 	<string>Pradėti lygį</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tavo vardas</string>
 	<key>name.whatsYourName</key>
 	<string>Koks tavo vardas?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Uždirbkite dar kelis trofėjus, kad atrakintumėte šį gyvūną! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Liko tik %lld trofėjai! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jūsų gyvūnai laukia. Grįžkite žaisti ir toliau rinkti trofėjus!</string>
+	<key>notif.comeback.title</key>
+	<string>Mes tavęs pasiilgome! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Pradėkite %lld minučių žaidimo sesiją ir pratęskite savo kasdienę žaidimų seriją.</string>
+	<key>notif.day3.title</key>
+	<string>Kad įvyktų 3 diena! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Naudokite Jump Pad, kad praleistumėte neteisingą atsakymą ir toliau koptumėte!</string>
+	<key>notif.jumppad.title</key>
+	<string>Peršok neteisingus atsakymus! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium apima %lld lygius kiekvienai temai ir visiems 10 gyvūnų. Nuotykis tęsiasi!</string>
+	<key>notif.premium.title</key>
+	<string>Atrakinkite daugiau lygių ir gyvūnų! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Praėjo %lld dienos. Išspręskime keletą matematikos pratimų ir pelnykime daugiau trofėjų!</string>
+	<key>notif.reactivate.title</key>
+	<string>Pasiruošę vėl žaisti? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Žaiskite %lld minučių ir tęskite savo kasdienę žaidimų seriją!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jūsų kasdienė žaidimų serija pasiekė %lld dienas! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Puikus darbas! Žaiskime %lld minučių ir surinkite dar daugiau.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jūs uždirbote %lld trofėjų! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tai padidins jūsų bendrą %lld trofėjų. Nuostabus darbas!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Šią savaitę pelnėte %lld trofėjų! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Įvairios mišrios užduotys kartu.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>开启生命</string>
 	<key>game.intro.scorePaused</key>
 	<string>当前分数会暂停。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>抱歉！朗读功能暂不支持你的语言。</string>
 	<key>game.intro.start</key>
 	<string>开始关卡</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>你的名字</string>
 	<key>name.whatsYourName</key>
 	<string>你叫什么名字？</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: 赢得更多奖杯来解锁这只动物！ 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>只剩下%lld座奖杯了！ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>你的动物正在等待。回来玩并继续收集奖杯！</string>
+	<key>notif.comeback.title</key>
+	<string>我们想你！ 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>开始 %lld 分钟的游戏并延长您每天的连续游戏时间。</string>
+	<key>notif.day3.title</key>
+	<string>让我们实现第三天吧！ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>使用跳板跳过错误答案并继续攀登！</string>
+	<key>notif.jumppad.title</key>
+	<string>跳过错误答案！ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium 包含每个主题的 %lld 个关卡和全部 10 种动物。冒险仍在继续！</string>
+	<key>notif.premium.title</key>
+	<string>解锁更多关卡和动物！ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>已经%lld天了。让我们解决一些数学练习并赢得更多奖杯！</string>
+	<key>notif.reactivate.title</key>
+	<string>准备好再玩了吗？ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>玩 %lld 分钟，让您的日常连续玩下去！</string>
+	<key>notif.streak.title %lld</key>
+	<string>您的每日连续玩次数已达到 %lld 天！ 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>干得好！让我们玩 %lld 分钟并收集更多。</string>
+	<key>notif.trophies.title %lld</key>
+	<string>您已赢得 %lld 个奖杯！ 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>这将使您的奖杯总数达到 %lld 个。了不起的工作！</string>
+	<key>notif.weekly.title %lld</key>
+	<string>本周您赢得了 %lld 个奖杯！ 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>不同的混合题放在一起。</string>
 	<key>onboarding.level.advanced.title</key>

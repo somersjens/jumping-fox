@@ -108,6 +108,8 @@
 	<string>Liv på</string>
 	<key>game.intro.scorePaused</key>
 	<string>Poengsummen din settes på pause.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Beklager! Opplesingsfunksjonen er ennå ikke tilgjengelig på språket ditt.</string>
 	<key>game.intro.start</key>
 	<string>Start nivå</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Navnet ditt</string>
 	<key>name.whatsYourName</key>
 	<string>Hva heter du?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Tjen noen flere trofeer for å låse opp dette dyret! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kun %lld trofeer igjen! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Dyrene dine venter. Kom tilbake for å spille og fortsett å samle trofeer!</string>
+	<key>notif.comeback.title</key>
+	<string>Vi savner deg! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Start en %lld-minutters spilleøkt og forleng din daglige spillrekke.</string>
+	<key>notif.day3.title</key>
+	<string>La oss få dag 3 til å skje! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Bruk Jump Pad for å hoppe over et feil svar og fortsett å klatre!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hopp forbi feil svar! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium inkluderer %lld nivåer for hvert emne og alle 10 dyrene. Eventyret fortsetter!</string>
+	<key>notif.premium.title</key>
+	<string>Lås opp flere nivåer og dyr! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Det har gått %lld dager. La oss løse noen matematikkøvelser og tjene flere trofeer!</string>
+	<key>notif.reactivate.title</key>
+	<string>Klar til å spille igjen? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spill i %lld minutter og hold din daglige spillrekke i gang!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Din daglige spillrekke har nådd %lld dager! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Flott jobb! La oss spille i %lld minutter og samle enda mer.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Du har tjent %lld trofeer! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Det bringer totalen din til %lld trofeer. Utrolig arbeid!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Du har tjent %lld trofeer denne uken! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Forskjellige miksoppgaver sammen.</string>
 	<key>onboarding.level.advanced.title</key>

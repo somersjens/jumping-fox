@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'Jumping Fox' in project 'Jumping Fox' (no dependencies)

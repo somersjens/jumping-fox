@@ -108,6 +108,8 @@
 	<string>Bật mạng</string>
 	<key>game.intro.scorePaused</key>
 	<string>Điểm hiện tại sẽ được tạm dừng.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Xin lỗi! Tính năng đọc thành tiếng chưa hỗ trợ ngôn ngữ của bạn.</string>
 	<key>game.intro.start</key>
 	<string>Bắt đầu màn</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tên của bạn</string>
 	<key>name.whatsYourName</key>
 	<string>Bạn tên gì?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Kiếm thêm một vài danh hiệu để mở khóa con vật này! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Chỉ còn %lld cúp! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Động vật của bạn đang chờ đợi. Hãy quay lại chơi và tiếp tục thu thập chiến lợi phẩm!</string>
+	<key>notif.comeback.title</key>
+	<string>Chúng tôi nhớ bạn! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Bắt đầu phiên chơi %lld phút và kéo dài thời gian chơi hàng ngày của bạn.</string>
+	<key>notif.day3.title</key>
+	<string>Hãy biến ngày thứ 3 thành hiện thực! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Sử dụng Jump Pad để bỏ qua câu trả lời sai và tiếp tục leo lên!</string>
+	<key>notif.jumppad.title</key>
+	<string>Nhảy qua câu trả lời sai! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium bao gồm %lld cấp độ cho mọi chủ đề và tất cả 10 con vật. Cuộc phiêu lưu vẫn tiếp tục!</string>
+	<key>notif.premium.title</key>
+	<string>Mở khóa nhiều cấp độ và động vật hơn! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Đã %lld ngày rồi. Hãy giải một số bài tập toán và kiếm được nhiều cúp hơn!</string>
+	<key>notif.reactivate.title</key>
+	<string>Sẵn sàng chơi lại chưa? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Chơi trong %lld phút và duy trì chuỗi chơi hàng ngày của bạn!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Chuỗi chơi hàng ngày của bạn đã đạt tới %lld ngày! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Làm tốt lắm! Hãy chơi trong %lld phút và thu thập nhiều hơn nữa.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Bạn đã kiếm được %lld danh hiệu! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Điều đó nâng tổng số cúp của bạn lên %lld. Công việc tuyệt vời!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Bạn đã kiếm được %lld danh hiệu trong tuần này! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Các phép tính hỗn hợp khác nhau.</string>
 	<key>onboarding.level.advanced.title</key>

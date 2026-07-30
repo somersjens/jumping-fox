@@ -108,6 +108,8 @@
 	<string>ජීවිත ක්‍රියාත්මකයි</string>
 	<key>game.intro.scorePaused</key>
 	<string>ඔබේ දැන් ලකුණු නවතයි.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>மன்னிக்கவும்! உரக்கப் படிக்கும் வசதி இன்னும் உங்கள் மொழியில் கிடைக்கவில்லை.</string>
 	<key>game.intro.start</key>
 	<string>මට්ටම අරඹන්න</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ඔබේ නම</string>
 	<key>name.whatsYourName</key>
 	<string>ඔබේ නම මොකක්ද?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: இந்த விலங்கைத் திறக்க இன்னும் சில கோப்பைகளைப் பெறுங்கள்! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>இன்னும் %lld கோப்பைகள் மட்டுமே! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>உங்கள் விலங்குகள் காத்திருக்கின்றன. விளையாட மீண்டும் வாருங்கள், கோப்பைகளை சேகரித்துக்கொண்டே இருங்கள்!</string>
+	<key>notif.comeback.title</key>
+	<string>நாங்கள் உங்களை இழக்கிறோம்! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld நிமிட விளையாட்டு அமர்வைத் தொடங்கி, உங்கள் தினசரி விளையாட்டுத் தொடரை நீட்டிக்கவும்.</string>
+	<key>notif.day3.title</key>
+	<string>3வது நாளை நடக்க வைப்போம்! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>தவறான பதிலைத் தவிர்க்கவும், தொடர்ந்து ஏறவும் ஜம்ப் பேடைப் பயன்படுத்தவும்!</string>
+	<key>notif.jumppad.title</key>
+	<string>தவறான பதில்களை கடந்து செல்லுங்கள்! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ஜம்பிங் ஃபாக்ஸ் பிரீமியம் ஒவ்வொரு தலைப்புக்கும் அனைத்து 10 விலங்குகளுக்கும் %lld நிலைகளை உள்ளடக்கியது. சாகசம் தொடர்கிறது!</string>
+	<key>notif.premium.title</key>
+	<string>மேலும் நிலைகளையும் விலங்குகளையும் திறக்கவும்! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld நாட்கள் ஆகிவிட்டது. சில கணிதப் பயிற்சிகளைத் தீர்த்து, மேலும் கோப்பைகளைப் பெறுவோம்!</string>
+	<key>notif.reactivate.title</key>
+	<string>மீண்டும் விளையாடத் தயாரா? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld நிமிடங்கள் விளையாடுங்கள் மற்றும் உங்கள் தினசரி விளையாட்டை தொடருங்கள்!</string>
+	<key>notif.streak.title %lld</key>
+	<string>உங்கள் தினசரி விளையாட்டுத் தொடர் %lld நாட்களை எட்டியுள்ளது! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>பெரிய வேலை!%lld நிமிடங்கள் விளையாடி இன்னும் அதிகமாக சேகரிக்கலாம்.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>நீங்கள் %lld கோப்பைகளைப் பெற்றுள்ளீர்கள்! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>இது உங்கள் மொத்த கோப்பைகளை %lld ஆகக் கொண்டுவருகிறது. அற்புதமான வேலை!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>இந்த வாரம் %lld கோப்பைகளைப் பெற்றுள்ளீர்கள்! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>විවිධ මිශ්‍ර ගණන් එකට.</string>
 	<key>onboarding.level.advanced.title</key>

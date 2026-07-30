@@ -108,6 +108,8 @@
 	<string>جان ئوچۇق</string>
 	<key>game.intro.scorePaused</key>
 	<string>ھازىرقى نومۇرۇڭ توختىتىپ قويۇلىدۇ.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>كەچۈرۈڭ! ئاۋازلىق ئوقۇش ئىقتىدارى تېخى سىزنىڭ تىلىڭىزدا يوق.</string>
 	<key>game.intro.start</key>
 	<string>دەرىجىنى باشلا</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ئىسمىڭ</string>
 	<key>name.whatsYourName</key>
 	<string>ئىسمىڭ نېمە؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: بۇ ھايۋاننىڭ قۇلۇپىنى ئېچىش ئۈچۈن يەنە بىر نەچچە لوڭقىغا ئېرىشىڭ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>پەقەت %lld لوڭقا! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ھايۋانلىرىڭىز ساقلاۋاتىدۇ. قايتىپ كېلىپ داۋاملىق لوڭقا يىغىڭ!</string>
+	<key>notif.comeback.title</key>
+	<string>سېنى سېغىندۇق! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld مىنۇتلۇق ئويۇننى باشلاڭ ۋە كۈندىلىك ئويناش ۋاقتىڭىزنى ئۇزارتىڭ.</string>
+	<key>notif.day3.title</key>
+	<string>3-كۈنىنى قىلايلى! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>سەكرەش تاختىسىدىن پايدىلىنىپ خاتا جاۋابتىن ۋاز كېچىڭ ۋە داۋاملىق يامىشىپ چىقىڭ!</string>
+	<key>notif.jumppad.title</key>
+	<string>ئۆتمۈشتىكى خاتا جاۋابلارغا ئاتلاڭ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>سەكرەش تۈلكە مۇكاپاتى ھەر بىر تېما ۋە 10 ھايۋاننىڭ %lld دەرىجىسىنى ئۆز ئىچىگە ئالىدۇ. تەۋەككۈلچىلىك داۋاملىشىدۇ!</string>
+	<key>notif.premium.title</key>
+	<string>تېخىمۇ كۆپ قاتلام ۋە ھايۋانلارنى ئېچىڭ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld كۈن بولدى. بەزى ماتېماتىكا مەشىقلىرىنى ھەل قىلىپ ، تېخىمۇ كۆپ لوڭقىغا ئېرىشىمىز!</string>
+	<key>notif.reactivate.title</key>
+	<string>قايتا ئويناشقا تەييارمۇ؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld مىنۇت ئويناڭ ھەمدە كۈندىلىك ئويۇنلىرىڭىزنى داۋاملاشتۇرۇڭ!</string>
+	<key>notif.streak.title %lld</key>
+	<string>كۈندىلىك ئويناش ۋاقتىڭىز %lld كۈنگە يەتتى! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>قالتىس خىزمەت!%lld مىنۇت ئويناپ ، تېخىمۇ كۆپ توپلايلى.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>سىز %lld لوڭقىغا ئېرىشتىڭىز! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>بۇ سىزنىڭ ئومۇمىي لوڭقىڭىزنى %lld لوڭقىغا يەتكۈزىدۇ. ھەيران قالارلىق خىزمەت!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>بۇ ھەپتە %lld لوڭقىغا ئېرىشتىڭىز! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>ئوخشىمىغان ئارىلاش مەسىلىلەر.</string>
 	<key>onboarding.level.advanced.title</key>

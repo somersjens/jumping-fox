@@ -390,6 +390,13 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “game.intro.spokenUnavailable” in table “Localizable.xcstrings”.
+     */
+    static var gameIntroSpokenUnavailable: LocalizedStringResource {
+        LocalizedStringResource("game.intro.spokenUnavailable", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “game.intro.start” in table “Localizable.xcstrings”.
      */
     static var gameIntroStart: LocalizedStringResource {

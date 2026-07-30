@@ -108,6 +108,8 @@
 	<string>Жандар қосулы</string>
 	<key>game.intro.scorePaused</key>
 	<string>Қазіргі ұпайың тоқтатылады.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Кешіріңіз! Дауыстап оқу мүмкіндігі сіздің тіліңізде әлі қолжетімді емес.</string>
 	<key>game.intro.start</key>
 	<string>Деңгейді бастау</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Атың</string>
 	<key>name.whatsYourName</key>
 	<string>Атың кім?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Осы жануардың құлпын ашу үшін тағы бірнеше жүлде ұтып алыңыз! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Бар болғаны %lld жүлде қалды! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Сіздің жануарларыңыз күтіп тұр. Ойынға оралыңыз және жүлделерді жинауды жалғастырыңыз!</string>
+	<key>notif.comeback.title</key>
+	<string>Біз сені сағындық! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минуттық ойын сеансын бастаңыз және күнделікті ойын сериясын ұзартыңыз.</string>
+	<key>notif.day3.title</key>
+	<string>3-ші күнді орындайық! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Қате жауапты өткізіп жіберу және өрмелеуді жалғастыру үшін Jump Pad пайдаланыңыз!</string>
+	<key>notif.jumppad.title</key>
+	<string>Қате жауаптардан өтіп кетіңіз! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium әр тақырыпқа және барлық 10 жануарға арналған %lld деңгейді қамтиды. Шытырман оқиға жалғасуда!</string>
+	<key>notif.premium.title</key>
+	<string>Көбірек деңгейлер мен жануарлардың құлпын ашыңыз! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld күн болды. Математикалық жаттығуларды шешіп, көбірек жүлде ұтып алайық!</string>
+	<key>notif.reactivate.title</key>
+	<string>Қайта ойнауға дайынсыз ба? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут ойнаңыз және күнделікті ойын серияңызды жалғастырыңыз!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Сіздің күнделікті ойнау серияңыз %lld күнге жетті! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Керемет жұмыс!%lld минут ойнап, одан да көп жинаймыз.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Сіз %lld жүлде алдыңыз! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Бұл сіздің жалпы жүлделеріңізді %lld-ге жеткізеді. Керемет жұмыс!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Осы аптада %lld жүлде алдыңыз! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Әртүрлі аралас есептер.</string>
 	<key>onboarding.level.advanced.title</key>

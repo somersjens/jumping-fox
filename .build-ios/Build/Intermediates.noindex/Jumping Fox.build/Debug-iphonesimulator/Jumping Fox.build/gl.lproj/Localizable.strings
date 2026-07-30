@@ -108,6 +108,8 @@
 	<string>Vidas activadas</string>
 	<key>game.intro.scorePaused</key>
 	<string>A túa puntuación actual quedará en pausa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Sentímolo! A función de lectura en voz alta aínda non está dispoñible no teu idioma.</string>
 	<key>game.intro.start</key>
 	<string>Comezar nivel</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>O teu nome</string>
 	<key>name.whatsYourName</key>
 	<string>Como te chamas?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Gaña algúns trofeos máis para desbloquear este animal! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Só quedan %lld trofeos! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Os teus animais están esperando. Volve xogar e segue collendo trofeos!</string>
+	<key>notif.comeback.title</key>
+	<string>Botámoste de menos! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Comeza unha sesión de xogo de %lld minutos e amplía a túa racha de xogo diaria.</string>
+	<key>notif.day3.title</key>
+	<string>¡Facemos que o día 3 suceda! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Usa o Jump Pad para saltar unha resposta incorrecta e seguir escalando!</string>
+	<key>notif.jumppad.title</key>
+	<string>Pasar as respostas incorrectas! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium inclúe %lld niveis para cada tema e os 10 animais. A aventura continúa!</string>
+	<key>notif.premium.title</key>
+	<string>Desbloquea máis niveis e animais! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Xa pasaron %lld días. Resolvemos algúns exercicios de matemáticas e gañemos máis trofeos!</string>
+	<key>notif.reactivate.title</key>
+	<string>Listo para xogar de novo? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Xoga durante %lld minutos e mantén a túa racha diaria de xogo!</string>
+	<key>notif.streak.title %lld</key>
+	<string>A túa racha diaria de xogo alcanzou os %lld días! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Gran traballo! Imos xogar %lld minutos e recoller aínda máis.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Gañaches %lld trofeos! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Isto leva o teu total a %lld trofeos. Un traballo incrible!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Gañaches %lld trofeos esta semana! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Diferentes contas mesturadas.</string>
 	<key>onboarding.level.advanced.title</key>

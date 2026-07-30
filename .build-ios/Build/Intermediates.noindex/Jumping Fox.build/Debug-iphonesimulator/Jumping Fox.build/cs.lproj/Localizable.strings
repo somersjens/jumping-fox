@@ -108,6 +108,8 @@
 	<string>Životy zapnuty</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tvé aktuální skóre se pozastaví.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Promiň! Funkce předčítání zatím není ve tvém jazyce dostupná.</string>
 	<key>game.intro.start</key>
 	<string>Spustit úroveň</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tvé jméno</string>
 	<key>name.whatsYourName</key>
 	<string>Jak se jmenuješ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Získejte několik dalších trofejí a odemkněte toto zvíře! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Zbývá už jen %lld trofejí! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vaše zvířata čekají. Vraťte se ke hře a pokračujte ve sbírání trofejí!</string>
+	<key>notif.comeback.title</key>
+	<string>Chybíš nám! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Začněte %lldminutovou herní relaci a prodlužte si svou každodenní herní sérii.</string>
+	<key>notif.day3.title</key>
+	<string>Pojďme uskutečnit den 3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Použijte Jump Pad k přeskočení špatné odpovědi a pokračujte ve stoupání!</string>
+	<key>notif.jumppad.title</key>
+	<string>Přeskočte přes špatné odpovědi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium obsahuje %lld úrovní pro každé téma a všech 10 zvířat. Dobrodružství pokračuje!</string>
+	<key>notif.premium.title</key>
+	<string>Odemkněte další úrovně a zvířata! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Jsou to %lld dny. Pojďme vyřešit pár matematických cvičení a vydělat více trofejí!</string>
+	<key>notif.reactivate.title</key>
+	<string>Jste připraveni znovu hrát? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Hrajte %lld minut a udržujte svou každodenní herní sérii v chodu!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Vaše denní hrací série dosáhla %lld dnů! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Skvělá práce! Pojďme hrát %lld minut a inkasovat ještě víc.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Získali jste %lld trofejí! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>To znamená, že máte celkem %lld trofejí. Úžasná práce!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Tento týden jste získali %lld trofejí! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Různé smíšené příklady dohromady.</string>
 	<key>onboarding.level.advanced.title</key>

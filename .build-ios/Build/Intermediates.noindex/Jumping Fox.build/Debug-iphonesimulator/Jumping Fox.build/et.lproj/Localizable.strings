@@ -108,6 +108,8 @@
 	<string>Elud sees</string>
 	<key>game.intro.scorePaused</key>
 	<string>Sinu praegune tulemus pannakse pausile.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Vabandust! Ettelugemise funktsioon ei ole sinu keeles veel saadaval.</string>
 	<key>game.intro.start</key>
 	<string>Alusta taset</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Sinu nimi</string>
 	<key>name.whatsYourName</key>
 	<string>Mis su nimi on?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Teenige selle looma avamiseks veel mõned trofeed! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Jäänud on vaid %lld karikat! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Teie loomad ootavad. Tulge tagasi mängima ja jätkake karikate kogumist!</string>
+	<key>notif.comeback.title</key>
+	<string>Me igatseme sind! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Alustage %lld-minutilist mänguseanssi ja pikendage oma igapäevast mänguseeriat.</string>
+	<key>notif.day3.title</key>
+	<string>Teeme 3. päeva teoks! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Kasutage hüppeplaati, et vale vastus vahele jätta ja ronida edasi!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hüppa valedest vastustest mööda! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium sisaldab %lld taset iga teema ja kõigi 10 looma jaoks. Seiklus jätkub!</string>
+	<key>notif.premium.title</key>
+	<string>Avage rohkem tasemeid ja loomi! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld päeva on möödas. Lahendame mõned matemaatikaülesanded ja teenime rohkem karikaid!</string>
+	<key>notif.reactivate.title</key>
+	<string>Kas olete uuesti mängimiseks valmis? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Mängige %lld minutit ja jätkake oma igapäevast mänguseeriat!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Teie igapäevane mänguseeria on jõudnud %lld päevani! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Suurepärane töö! Mängime %lld minutit ja kogume veelgi rohkem.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Olete teeninud %lld trofeed! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>See toob kokku %lld trofeed. Hämmastav töö!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Teenisite sel nädalal %lld karikat! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Erinevad segaülesanded koos.</string>
 	<key>onboarding.level.advanced.title</key>

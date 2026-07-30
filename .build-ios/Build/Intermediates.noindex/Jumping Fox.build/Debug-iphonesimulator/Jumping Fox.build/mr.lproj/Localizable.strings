@@ -108,6 +108,8 @@
 	<string>जीव सुरू</string>
 	<key>game.intro.scorePaused</key>
 	<string>तुझे सध्याचे गुण थांबवले जातील.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>माफ करा! मोठ्याने वाचण्याचे वैशिष्ट्य अजून तुमच्या भाषेत उपलब्ध नाही.</string>
 	<key>game.intro.start</key>
 	<string>स्तर सुरू कर</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>तुझं नाव</string>
 	<key>name.whatsYourName</key>
 	<string>तुझं नाव काय?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: या प्राण्याला अनलॉक करण्यासाठी आणखी काही ट्रॉफी मिळवा! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>फक्त %lld ट्रॉफी बाकी आहेत! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>तुमचे प्राणी वाट पाहत आहेत. खेळायला परत या आणि ट्रॉफी गोळा करत रहा!</string>
+	<key>notif.comeback.title</key>
+	<string>आम्हाला तुमची आठवण येते! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld-मिनिटांचे खेळण्याचे सत्र सुरू करा आणि तुमचा दैनंदिन खेळण्याचा सिलसिला वाढवा.</string>
+	<key>notif.day3.title</key>
+	<string>चला तिसरा दिवस घडवूया! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>चुकीचे उत्तर वगळण्यासाठी जंप पॅड वापरा आणि चढत रहा!</string>
+	<key>notif.jumppad.title</key>
+	<string>चुकीच्या उत्तरांवर जा! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>जंपिंग फॉक्स प्रीमियममध्ये प्रत्येक विषयासाठी %lld स्तर आणि सर्व 10 प्राण्यांचा समावेश आहे. साहस चालूच राहते!</string>
+	<key>notif.premium.title</key>
+	<string>अधिक स्तर आणि प्राणी अनलॉक करा! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld दिवस झाले. चला काही गणिताचे व्यायाम सोडवू आणि आणखी ट्रॉफी मिळवू!</string>
+	<key>notif.reactivate.title</key>
+	<string>पुन्हा खेळण्यासाठी तयार आहात? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld मिनिटे खेळा आणि तुमचा रोजचा खेळ सुरू ठेवा!</string>
+	<key>notif.streak.title %lld</key>
+	<string>तुमचा दैनंदिन खेळण्याचा सिलसिला %lld दिवसांपर्यंत पोहोचला आहे! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>छान काम! चला %lld मिनिटे खेळूया आणि आणखी गोळा करूया.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>तुम्ही %lld ट्रॉफी मिळवल्या आहेत! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>त्यामुळे तुमची एकूण %lld ट्रॉफी होतील. आश्चर्यकारक काम!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>तुम्ही या आठवड्यात %lld ट्रॉफी मिळवल्या आहेत! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>वेगवेगळी मिश्र उदाहरणे एकत्र.</string>
 	<key>onboarding.level.advanced.title</key>

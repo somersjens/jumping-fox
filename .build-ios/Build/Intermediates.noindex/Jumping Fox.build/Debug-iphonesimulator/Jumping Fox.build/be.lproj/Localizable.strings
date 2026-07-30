@@ -108,6 +108,8 @@
 	<string>Жыцці ўкл.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Твой цяперашні лік будзе прыпынены.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>На жаль! Функцыя чытання ўслых пакуль недаступная на тваёй мове.</string>
 	<key>game.intro.start</key>
 	<string>Пачаць узровень</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Тваё імя</string>
 	<key>name.whatsYourName</key>
 	<string>Як цябе завуць?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Зарабіце яшчэ некалькі трафеяў, каб разблакаваць гэтую жывёлу! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Засталося толькі %lld трафеяў! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Вашы жывёлы чакаюць. Вяртайцеся гуляць і працягвайце збіраць трафеі!</string>
+	<key>notif.comeback.title</key>
+	<string>Мы сумуем па табе! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Пачніце %lld-хвілінную гульнявую сесію і падоўжыце штодзённую гульнявую серыю.</string>
+	<key>notif.day3.title</key>
+	<string>Давайце зробім дзень 3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Выкарыстоўвайце Jump Pad, каб прапусціць няправільны адказ і працягвайце караскацца!</string>
+	<key>notif.jumppad.title</key>
+	<string>Пераскоквайце міма няправільных адказаў! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium уключае %lld узроўняў для кожнай тэмы і ўсіх 10 жывёл. Прыгоды працягваюцца!</string>
+	<key>notif.premium.title</key>
+	<string>Разблакуйце больш узроўняў і жывёл! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Прайшло %lld дні. Давайце разгадаем матэматычныя заданні і заробім больш трафеяў!</string>
+	<key>notif.reactivate.title</key>
+	<string>Гатовы зноў гуляць? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Гуляйце %lld хвілін і працягвайце штодзённую гульнявую серыю!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ваша штодзённая гульнявая серыя дасягнула %lld дзён! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Выдатная праца! Давайце гуляць %lld хвілін і збіраць яшчэ больш.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Вы зарабілі %lld трафеяў! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Гэта даводзіць вашу агульную суму да %lld трафеяў. Дзіўная праца!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>На гэтым тыдні вы зарабілі %lld трафеяў! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Розныя змешаныя прыклады.</string>
 	<key>onboarding.level.advanced.title</key>

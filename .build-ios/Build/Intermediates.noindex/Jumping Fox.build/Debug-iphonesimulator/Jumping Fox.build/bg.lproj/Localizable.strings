@@ -108,6 +108,8 @@
 	<string>Животи вкл.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Текущият ти резултат ще бъде спрян.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Съжаляваме! Функцията за четене на глас все още не е налична на твоя език.</string>
 	<key>game.intro.start</key>
 	<string>Начало на нивото</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Твоето име</string>
 	<key>name.whatsYourName</key>
 	<string>Как се казваш?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Спечелете още няколко трофея, за да отключите това животно! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Остават само %lld трофея! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Животните ви чакат. Върнете се да играете и продължавайте да събирате трофеи!</string>
+	<key>notif.comeback.title</key>
+	<string>Липсваш ни! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Започнете %lld-минутна игрална сесия и удължете ежедневната си игрална серия.</string>
+	<key>notif.day3.title</key>
+	<string>Нека ден 3 се случи! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Използвайте Jump Pad, за да пропуснете грешен отговор и да продължите да се изкачвате!</string>
+	<key>notif.jumppad.title</key>
+	<string>Прескочете грешните отговори! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium включва %lld нива за всяка тема и всички 10 животни. Приключението продължава!</string>
+	<key>notif.premium.title</key>
+	<string>Отключете повече нива и животни! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Минаха %lld дни. Нека да решим някои математически упражнения и да спечелим повече трофеи!</string>
+	<key>notif.reactivate.title</key>
+	<string>Готови ли сте да играете отново? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Играйте %lld минути и продължете ежедневната си серия от игри!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Вашата ежедневна серия от игри достигна %lld дни! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Страхотна работа! Нека играем %lld минути и да съберем още повече.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Спечелихте %lld трофея! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Това води до %lld трофея. Невероятна работа!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Спечелихте %lld трофея тази седмица! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Различни смесени задачи.</string>
 	<key>onboarding.level.advanced.title</key>

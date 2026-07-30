@@ -108,6 +108,8 @@
 	<string>الحيوات مفعّلة</string>
 	<key>game.intro.scorePaused</key>
 	<string>ستتوقف نتيجتك الحالية مؤقتًا.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>عذرًا! ميزة القراءة بصوت عالٍ غير متاحة بلغتك حتى الآن.</string>
 	<key>game.intro.start</key>
 	<string>ابدأ المستوى</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>اسمك</string>
 	<key>name.whatsYourName</key>
 	<string>ما اسمك؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: احصل على المزيد من الجوائز لفتح هذا الحيوان! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>فقط %lld الجوائز للذهاب! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>حيواناتك تنتظر. عد للعب واستمر في جمع الجوائز!</string>
+	<key>notif.comeback.title</key>
+	<string>إننا نفتقدك! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ابدأ جلسة لعب مدتها %lld دقائق وقم بتمديد خط لعبك اليومي.</string>
+	<key>notif.day3.title</key>
+	<string>دعونا نجعل اليوم الثالث يحدث! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>استخدم لوحة القفز لتخطي الإجابة الخاطئة ومواصلة التسلق!</string>
+	<key>notif.jumppad.title</key>
+	<string>القفز على الإجابات الخاطئة الماضية! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>يتضمن Jumping Fox Premium %lld مستوى لكل موضوع وجميع الحيوانات العشرة. المغامرة مستمرة!</string>
+	<key>notif.premium.title</key>
+	<string>فتح المزيد من المستويات والحيوانات! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>لقد مرت %lld أيام. دعونا نحل بعض تمارين الرياضيات ونكسب المزيد من الجوائز!</string>
+	<key>notif.reactivate.title</key>
+	<string>على استعداد للعب مرة أخرى؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>العب لمدة %lld دقائق وحافظ على استمرار خط لعبك اليومي!</string>
+	<key>notif.streak.title %lld</key>
+	<string>لقد وصلت خط اللعب اليومي الخاص بك إلى %lld أيام! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>عمل عظيم! هيا نلعب لمدة %lld دقائق ونجمع المزيد.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>لقد حصلت على %lld جائزة! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>وبذلك يصل مجموع جوائزك إلى %lld جائزة. عمل مذهل!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>لقد حصلت على %lld جائزة هذا الأسبوع! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>مسائل مختلطة مختلفة معًا.</string>
 	<key>onboarding.level.advanced.title</key>

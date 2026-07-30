@@ -108,6 +108,8 @@
 	<string>Beathaí ar</string>
 	<key>game.intro.scorePaused</key>
 	<string>Cuirfear do scór reatha ar sos.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Tá brón orainn! Níl an ghné léitheoireachta os ard ar fáil i do theanga fós.</string>
 	<key>game.intro.start</key>
 	<string>Tosaigh an leibhéal</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>D’ainm</string>
 	<key>name.whatsYourName</key>
 	<string>Cad is ainm duit?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Faigh cúpla trófaithe eile chun an t-ainmhí seo a dhíghlasáil! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Níl ach %lld thrófaí le dul! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Tá do chuid ainmhithe ag fanacht. Tar ar ais ag imirt agus lean ort ag bailiú trófaithe!</string>
+	<key>notif.comeback.title</key>
+	<string>Is fada uainn thú! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Tosaigh seisiún súgartha %lld-nóiméad agus síneadh do stríoc imeartha laethúil.</string>
+	<key>notif.day3.title</key>
+	<string>Déanaimis an tríú lá! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Bain úsáid as an bPad Léim le freagra mícheart a scipeáil agus lean ort ag dreapadh!</string>
+	<key>notif.jumppad.title</key>
+	<string>Léim anuas freagraí míchearta! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Cuimsíonn Jumping Fox Premium %lld leibhéal do gach ábhar agus do gach 10 n-ainmhí. Leanann an eachtra ar aghaidh!</string>
+	<key>notif.premium.title</key>
+	<string>Díghlasáil níos mó leibhéil agus ainmhithe! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Tá sé %lld lá. Déanaimis roinnt cleachtaí matamaitice a réiteach agus níos mó trófaithe a thuilleamh!</string>
+	<key>notif.reactivate.title</key>
+	<string>Réidh le himirt arís? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Seinn ar feadh %lld nóiméad agus coinnigh do stríoc imeartha laethúil ag dul!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Tá do stríoc imeartha laethúil %lld lá bainte amach! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Jab iontach! A ligean ar imirt ar feadh %lld nóiméad agus a bhailiú fiú níos mó.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Tá %lld trófaí tuillte agat! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tugann sé sin do iomlán go %lld trófaí. Obair iontach!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ghnóthaigh tú %lld trófaí an tseachtain seo chaite! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Suimeanna éagsúla measctha le chéile.</string>
 	<key>onboarding.level.advanced.title</key>

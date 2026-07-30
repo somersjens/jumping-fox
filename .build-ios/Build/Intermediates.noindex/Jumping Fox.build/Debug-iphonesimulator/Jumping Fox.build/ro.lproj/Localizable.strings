@@ -108,6 +108,8 @@
 	<string>Vieți pornite</string>
 	<key>game.intro.scorePaused</key>
 	<string>Scorul actual va fi pus pe pauză.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ne pare rău! Funcția de citire cu voce tare nu este încă disponibilă în limba ta.</string>
 	<key>game.intro.start</key>
 	<string>Începe nivelul</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Numele tău</string>
 	<key>name.whatsYourName</key>
 	<string>Cum te cheamă?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Câștigă încă câteva trofee pentru a debloca acest animal! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Mai sunt doar %lld trofee! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Animalele tale așteaptă. Întoarce-te să joci și continuă să strângi trofee!</string>
+	<key>notif.comeback.title</key>
+	<string>Ne e dor de tine! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Începeți o sesiune de joc de %lld minute și extindeți-vă seria zilnică de joc.</string>
+	<key>notif.day3.title</key>
+	<string>Să facem ziua 3 să se întâmple! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Folosiți Jump Pad pentru a sări peste un răspuns greșit și a continua să urcați!</string>
+	<key>notif.jumppad.title</key>
+	<string>Treci peste răspunsurile greșite! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium include %lld de niveluri pentru fiecare subiect și toate cele 10 animale. Aventura continuă!</string>
+	<key>notif.premium.title</key>
+	<string>Deblochează mai multe niveluri și animale! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Au trecut %lld zile. Să rezolvăm câteva exerciții de matematică și să câștigăm mai multe trofee!</string>
+	<key>notif.reactivate.title</key>
+	<string>Sunteți gata să jucați din nou? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Joacă timp de %lld minute și menține-ți succesul zilnic de joc!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Seria ta zilnică de joc a ajuns la %lld zile! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Mare treabă! Hai să ne jucăm timp de %lld minute și să colectăm și mai multe.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Ai câștigat %lld de trofee! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Asta aduce totalul tău la %lld de trofee. Lucru uimitor!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ați câștigat %lld de trofee săptămâna aceasta! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Exerciții mixte diferite, toate împreună.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>Jonlar yoqilgan</string>
 	<key>game.intro.scorePaused</key>
 	<string>Hozirgi natijang pauza qilinadi.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Kechirasiz! Ovoz chiqarib o‘qish funksiyasi hali sizning tilingizda mavjud emas.</string>
 	<key>game.intro.start</key>
 	<string>Bosqichni boshlash</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Isming</string>
 	<key>name.whatsYourName</key>
 	<string>Isming nima?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Bu hayvonning qulfini ochish uchun yana bir nechta kuboklarni yutib oling! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Oldinda atigi %lld ta kubok bor! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Sizning hayvonlar kutmoqda. O'ynash uchun qaytib keling va sovrinlar yig'ishda davom eting!</string>
+	<key>notif.comeback.title</key>
+	<string>Biz sizni sog'indik! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld daqiqalik o'yin seansini boshlang va kunlik o'yin seriyangizni uzaytiring.</string>
+	<key>notif.day3.title</key>
+	<string>Keling, 3-kunni amalga oshiraylik! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Noto'g'ri javobni o'tkazib yuborish va toqqa chiqishda davom etish uchun Jump Pad-dan foydalaning!</string>
+	<key>notif.jumppad.title</key>
+	<string>Noto'g'ri javoblardan o'ting! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium har bir mavzu va barcha 10 hayvonlar uchun %lld darajani o'z ichiga oladi. Sarguzasht davom etmoqda!</string>
+	<key>notif.premium.title</key>
+	<string>Ko'proq darajalar va hayvonlarni oching! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld kun bo'ldi. Keling, matematika mashqlarini hal qilaylik va ko'proq kuboklarni qo'lga kiritaylik!</string>
+	<key>notif.reactivate.title</key>
+	<string>Yana o'ynashga tayyormisiz? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld daqiqa o'ynang va kunlik o'yin seriyangizni davom ettiring!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Sizning kunlik o'yin seriyangiz %lld kunga yetdi! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Ajoyib ish! Keling, %lld daqiqa o'ynaymiz va undan ham ko'proq to'playmiz.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Siz %lld ta sovrin yutib oldingiz! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Bu sizning jami sovrinlaringizni %lld taga yetkazadi. Ajoyib ish!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Siz bu hafta %lld ta sovrin yutib oldingiz! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Turli aralash misollar birga.</string>
 	<key>onboarding.level.advanced.title</key>

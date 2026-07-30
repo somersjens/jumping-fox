@@ -108,6 +108,8 @@
 	<string>Nyawa aktif</string>
 	<key>game.intro.scorePaused</key>
 	<string>Skormu saat ini akan dijeda.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Maaf! Fitur baca nyaring belum tersedia dalam bahasamu.</string>
 	<key>game.intro.start</key>
 	<string>Mulai level</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Namamu</string>
 	<key>name.whatsYourName</key>
 	<string>Siapa namamu?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Hasilkan beberapa piala lagi untuk membuka kunci hewan ini! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Tinggal %lld trofi lagi! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Hewan Anda sedang menunggu. Kembalilah bermain dan terus kumpulkan piala!</string>
+	<key>notif.comeback.title</key>
+	<string>Kami merindukanmu! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Mulailah sesi bermain %lld menit dan perpanjang rekor permainan harian Anda.</string>
+	<key>notif.day3.title</key>
+	<string>Mari wujudkan hari ke-3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Gunakan Jump Pad untuk melewati jawaban yang salah dan terus mendaki!</string>
+	<key>notif.jumppad.title</key>
+	<string>Lewati jawaban yang salah! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium mencakup %lld level untuk setiap topik dan 10 hewan. Petualangan terus berlanjut!</string>
+	<key>notif.premium.title</key>
+	<string>Buka lebih banyak level dan hewan! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Sudah %lld hari. Ayo selesaikan beberapa latihan matematika dan dapatkan lebih banyak piala!</string>
+	<key>notif.reactivate.title</key>
+	<string>Siap bermain lagi? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Mainkan selama %lld menit dan pertahankan rekor permainan harian Anda!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Rekor permainan harian Anda telah mencapai %lld hari! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Kerja bagus! Ayo bermain selama %lld menit dan kumpulkan lebih banyak lagi.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Anda telah mendapatkan %lld piala! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Itu membuat total Anda menjadi %lld piala. Kerja luar biasa!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Anda memperoleh %lld piala minggu ini! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Berbagai soal campuran.</string>
 	<key>onboarding.level.advanced.title</key>

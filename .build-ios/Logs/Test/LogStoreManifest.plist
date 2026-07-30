@@ -5,6 +5,196 @@
 	<key>logFormatVersion</key>
 	<integer>12</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>4DE9EFB1-5C8E-44AD-83C9-1AFF69B98EE7</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>A10BBAE0-5D5A-4172-A181-05C3BC31D175</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.unit.cocoaUnitTest</string>
+			<key>fileName</key>
+			<string>Test-Jumping Fox-2026.07.30_06-32-05-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasCoverageData</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalCodeCoverage</key>
+				<real>0.22742275602823875</real>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Test Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078725.81554997</real>
+			<key>timeStoppedRecording</key>
+			<real>807078742.77061105</real>
+			<key>title</key>
+			<string>Test Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>4DE9EFB1-5C8E-44AD-83C9-1AFF69B98EE7</string>
+		</dict>
+		<key>92ECDA44-5A37-4A82-A3A1-4CD71985D8D4</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>5A31FBBA-F9F7-4BD0-8B80-A385A3C9A059</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.unit.cocoaUnitTest</string>
+			<key>fileName</key>
+			<string>Test-Jumping Fox-2026.07.30_06-31-36-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasCoverageData</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalCodeCoverage</key>
+				<real>0.22829375630329146</real>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Test Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078696.48536897</real>
+			<key>timeStoppedRecording</key>
+			<real>807078713.52368796</real>
+			<key>title</key>
+			<string>Test Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>92ECDA44-5A37-4A82-A3A1-4CD71985D8D4</string>
+		</dict>
+		<key>C6A39C5C-C214-4822-A15A-290EBE9C991F</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>DFEEB972-71E3-4C3A-B87B-B5D6C44AE17A</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.unit.cocoaUnitTest</string>
+			<key>fileName</key>
+			<string>Test-Jumping Fox-2026.07.30_06-30-59-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasCoverageData</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalCodeCoverage</key>
+				<real>0.2275602823874576</real>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Test Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078659.14730299</real>
+			<key>timeStoppedRecording</key>
+			<real>807078684.99826801</real>
+			<key>title</key>
+			<string>Test Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>C6A39C5C-C214-4822-A15A-290EBE9C991F</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

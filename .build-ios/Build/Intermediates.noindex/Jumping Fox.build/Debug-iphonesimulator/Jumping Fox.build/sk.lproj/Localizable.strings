@@ -108,6 +108,8 @@
 	<string>Životy zap.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tvoje aktuálne skóre sa pozastaví.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Prepáč! Funkcia čítania nahlas ešte nie je dostupná v tvojom jazyku.</string>
 	<key>game.intro.start</key>
 	<string>Spustiť úroveň</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tvoje meno</string>
 	<key>name.whatsYourName</key>
 	<string>Ako sa voláš?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Získajte niekoľko ďalších trofejí a odomknite toto zviera! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Už len %lld trofejí! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vaše zvieratá čakajú. Vráťte sa hrať a zbierajte trofeje!</string>
+	<key>notif.comeback.title</key>
+	<string>Chýbaš nám! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Začnite %lld-minútovú hernú reláciu a predĺžte si dennú sériu hrania.</string>
+	<key>notif.day3.title</key>
+	<string>Uskutočnime deň 3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Použite Jump Pad na preskočenie nesprávnej odpovede a pokračujte v lezení!</string>
+	<key>notif.jumppad.title</key>
+	<string>Preskočte cez nesprávne odpovede! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium obsahuje %lld úrovní pre každú tému a všetkých 10 zvierat. Dobrodružstvo pokračuje!</string>
+	<key>notif.premium.title</key>
+	<string>Odomknite ďalšie úrovne a zvieratá! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Prešli %lld dni. Poďme vyriešiť nejaké matematické cvičenia a zarobiť viac trofejí!</string>
+	<key>notif.reactivate.title</key>
+	<string>Ste pripravení hrať znova? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Hrajte %lld minút a udržujte svoju každodennú hernú sériu v chode!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Vaša denná séria hrania dosiahla %lld dní! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Skvelá práca! Poďme hrať %lld minút a inkasovať ešte viac.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Získali ste %lld trofejí! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Váš celkový počet tak dosiahne %lld trofejí. Úžasná práca!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Tento týždeň ste získali %lld trofejí! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Rôzne zmiešané príklady.</string>
 	<key>onboarding.level.advanced.title</key>

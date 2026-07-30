@@ -108,6 +108,8 @@
 	<string>Jetët aktive</string>
 	<key>game.intro.scorePaused</key>
 	<string>Rezultati yt aktual do të vihet në pauzë.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Na vjen keq! Funksioni i leximit me zë nuk është ende i disponueshëm në gjuhën tënde.</string>
 	<key>game.intro.start</key>
 	<string>Fillo nivelin</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Emri yt</string>
 	<key>name.whatsYourName</key>
 	<string>Si quhesh?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Fitoni disa trofe të tjerë për të zhbllokuar këtë kafshë! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kanë mbetur vetëm %lld trofe! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Kafshët tuaja janë duke pritur. Kthehuni për të luajtur dhe vazhdoni të mblidhni trofe!</string>
+	<key>notif.comeback.title</key>
+	<string>Na mungoni! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Filloni një seancë %lld-minutëshe të lojës dhe zgjeroni brezin tuaj të përditshëm të lojërave.</string>
+	<key>notif.day3.title</key>
+	<string>Le të realizojmë ditën e tretë! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Përdorni "Jump Pad" për të kapërcyer një përgjigje të gabuar dhe për të vazhduar ngjitjen!</string>
+	<key>notif.jumppad.title</key>
+	<string>Kaloni përgjigjet e gabuara! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium përfshin %lld nivele për çdo temë dhe të 10 kafshët. Aventura vazhdon!</string>
+	<key>notif.premium.title</key>
+	<string>Zhbllokoni më shumë nivele dhe kafshë! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Kanë kaluar %lld ditë. Le të zgjidhim disa ushtrime matematikore dhe të fitojmë më shumë trofe!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gati për të luajtur përsëri? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Luaj për %lld minuta dhe vazhdo serinë e përditshme të lojës!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Seria juaj e përditshme e lojërave ka arritur në %lld ditë! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Punë e madhe! Le të luajmë për %lld minuta dhe të mbledhim edhe më shumë.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Ju keni fituar %lld trofe! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Kjo e çon totalin tuaj në %lld trofe. Punë e mahnitshme!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ju fituat %lld trofe këtë javë! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Detyra të ndryshme të përziera.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>Životi uključeni</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tvoj trenutačni rezultat bit će pauziran.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Žao nam je! Funkcija čitanja naglas još nije dostupna na tvom jeziku.</string>
 	<key>game.intro.start</key>
 	<string>Pokreni razinu</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tvoje ime</string>
 	<key>name.whatsYourName</key>
 	<string>Kako se zoveš?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zaradite još nekoliko trofeja da otključate ovu životinju! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Još samo %lld trofeja! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Vaše životinje čekaju. Vratite se igrati i nastavite skupljati trofeje!</string>
+	<key>notif.comeback.title</key>
+	<string>nedostaješ nam! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Započnite %lld-minutnu sesiju igranja i produžite svoj dnevni niz igranja.</string>
+	<key>notif.day3.title</key>
+	<string>Ostvarimo treći dan! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Koristite Jump Pad da preskočite pogrešan odgovor i nastavite se penjati!</string>
+	<key>notif.jumppad.title</key>
+	<string>Preskoči pogrešne odgovore! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium uključuje %lld razina za svaku temu i svih 10 životinja. Avantura nastavlja!</string>
+	<key>notif.premium.title</key>
+	<string>Otključajte više razina i životinja! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Prošla su %lld dana. Riješimo nekoliko matematičkih zadataka i osvojimo još trofeja!</string>
+	<key>notif.reactivate.title</key>
+	<string>Jeste li spremni za ponovnu igru? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Igrajte %lld minuta i nastavite svoj dnevni niz igranja!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Vaš dnevni niz igranja je dosegao %lld dana! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>odličan posao! Igrajmo se %lld minuta i skupimo još više.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Zaradio si %lld trofeja! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>To dovodi vaš ukupni broj do %lld trofeja. Nevjerojatan rad!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Osvojili ste %lld trofeja ovaj tjedan! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Različiti miješani zadaci.</string>
 	<key>onboarding.level.advanced.title</key>

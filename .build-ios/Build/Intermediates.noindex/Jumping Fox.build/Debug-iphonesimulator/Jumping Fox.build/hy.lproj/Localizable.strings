@@ -108,6 +108,8 @@
 	<string>Կյանքերը միացված են</string>
 	<key>game.intro.scorePaused</key>
 	<string>Քո ընթացիկ հաշիվը կդադարեցվի։</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ներողություն։ Բարձրաձայն կարդալու գործառույթը դեռ հասանելի չէ քո լեզվով։</string>
 	<key>game.intro.start</key>
 	<string>Սկսել մակարդակը</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Քո անունը</string>
 	<key>name.whatsYourName</key>
 	<string>Ինչպե՞ս ես կոչվում։</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Վաստակեք ևս մի քանի գավաթներ՝ այս կենդանուն բացելու համար: 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Մնացել է ընդամենը %lld գավաթ: 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Ձեր կենդանիները սպասում են:Վերադարձեք խաղալու և շարունակեք գավաթներ հավաքել:</string>
+	<key>notif.comeback.title</key>
+	<string>Մենք կարոտում ենք քեզ: 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Սկսեք %lld րոպեանոց խաղային նստաշրջան և երկարացրեք ձեր ամենօրյա խաղային շարանը:</string>
+	<key>notif.day3.title</key>
+	<string>Եկեք կատարենք 3-րդ օրը: ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Օգտագործեք Jump Pad սխալ պատասխանը բաց թողնելու և բարձրանալը շարունակելու համար:</string>
+	<key>notif.jumppad.title</key>
+	<string>Անցնել սխալ պատասխաններից: 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium-ը ներառում է %lld մակարդակ յուրաքանչյուր թեմայի և բոլոր 10 կենդանիների համար:Արկածը շարունակվում է:</string>
+	<key>notif.premium.title</key>
+	<string>Բացեք ավելի շատ մակարդակներ և կենդանիներ: 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Անցել է %lld օր։Եկեք լուծենք որոշ մաթեմատիկական վարժություններ և վաստակենք ավելի շատ գավաթներ:</string>
+	<key>notif.reactivate.title</key>
+	<string>Պատրա՞ստ եք նորից խաղալ: 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Խաղացեք %lld րոպե և շարունակեք ձեր ամենօրյա խաղային շարանը:</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ձեր ամենօրյա խաղային շարանը հասել է %lld օրվա: 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Հիանալի աշխատանք:Եկեք %lld րոպե խաղանք և ավելի շատ հավաքենք։</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Դուք վաստակել եք %lld գավաթ: 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Դա ձեր ընդհանուր տիտղոսը հասցնում է %lld-ի:Զարմանալի աշխատանք!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Այս շաբաթ դուք վաստակեցիք %lld գավաթ: 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Տարբեր խառը առաջադրանքներ միասին։</string>
 	<key>onboarding.level.advanced.title</key>

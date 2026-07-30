@@ -108,6 +108,8 @@
 	<string>חיים פעילים</string>
 	<key>game.intro.scorePaused</key>
 	<string>הניקוד הנוכחי יושהה.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>מצטערים! תכונת ההקראה עדיין לא זמינה בשפה שלך.</string>
 	<key>game.intro.start</key>
 	<string>התחלת שלב</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>השם שלך</string>
 	<key>name.whatsYourName</key>
 	<string>איך קוראים לך?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: הרוויחו עוד כמה גביעים כדי לפתוח את החיה הזו! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>נותרו רק %lld גביעים! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>החיות שלך מחכות. חזור לשחק ולהמשיך לאסוף גביעים!</string>
+	<key>notif.comeback.title</key>
+	<string>אנחנו מתגעגעים אליך! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>התחל סשן משחק של %lld דקות והארך את רצף המשחקים היומי שלך.</string>
+	<key>notif.day3.title</key>
+	<string>בואו נגרום ליום השלישי להתרחש! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>השתמש ב-Jump Pad כדי לדלג על תשובה שגויה ולהמשיך לטפס!</string>
+	<key>notif.jumppad.title</key>
+	<string>קפוץ על פני תשובות שגויות! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium כולל %lld רמות לכל נושא וכל 10 החיות. ההרפתקה ממשיכה!</string>
+	<key>notif.premium.title</key>
+	<string>פתח עוד רמות וחיות! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>עברו %lld ימים. בואו נפתור כמה תרגילי מתמטיקה ונרוויח עוד גביעים!</string>
+	<key>notif.reactivate.title</key>
+	<string>מוכן לשחק שוב? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>שחק במשך %lld דקות ושמור על רצף המשחקים היומי שלך!</string>
+	<key>notif.streak.title %lld</key>
+	<string>רצף המשחקים היומי שלך הגיע ל-%lld ימים! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>עבודה נהדרת! בואו נשחק %lld דקות ונאסוף אפילו יותר.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>הרווחת %lld גביעים! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>זה מביא את הסכום הכולל שלך ל-%lld גביעים. עבודה מדהימה!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>זכית ב-%lld גביעים השבוע! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>תרגילים מעורבים מסוגים שונים.</string>
 	<key>onboarding.level.advanced.title</key>

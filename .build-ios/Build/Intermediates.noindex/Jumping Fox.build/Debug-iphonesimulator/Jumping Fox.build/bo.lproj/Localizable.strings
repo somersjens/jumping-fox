@@ -108,6 +108,8 @@
 	<string>སྲོག་ཁ་ཕྱེ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ད་ལྟའི་སྐར་མ་མཚམས་འཇོག་བྱེད།</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>དགོངས་དག སྒྲ་བཏོན་ནས་ཀློག་པའི་བྱེད་ནུས་ད་དུང་ཁྱེད་ཀྱི་སྐད་ཡིག་ནང་མེད།</string>
 	<key>game.intro.start</key>
 	<string>རིམ་པ་འགོ་འཛུགས</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ཁྱེད་ཀྱི་མིང་།</string>
 	<key>name.whatsYourName</key>
 	<string>ཁྱེད་ཀྱི་མིང་ལ་ག་རེ་ཟེར།</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: སེམས་ཅན་འདི་ཕྱེ་ཆེད་དུ་རྟགས་མ་འགའ་ཤས་རག་རོགས། 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>བྱ་དགའ་%lldལས་མེད་པ་རེད། . 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ཁྱེད་ཀྱི་སེམས་ཅན་སྒུག་ནས་ཡོད།རྩེད་མོ་རྩེད་པར་ཕྱིར་ལོག་ནས་རྟགས་མ་བསྡུ་རུབ་བྱེད་རོགས།</string>
+	<key>notif.comeback.title</key>
+	<string>ང་ཚོས་ཁྱེད་རང་དྲན་གི་འདུག . 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>སྐར་མ་ %lld ཡི་རྩེད་མོའི་དུས་ཚོད་འགོ་འཛུགས་ནས་ཉིན་ལྟར་རྩེད་མོའི་རྒྱུན་རིང་དུ་གཏོང་དགོས།</string>
+	<key>notif.day3.title</key>
+	<string>ཉིན་གསུམ་པ་དེ་འགྲུབ་པར་བྱོས། ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ལན་ནོར་བ་མཆོངས་ནས་མུ་མཐུད་དུ་འཕར་བར་མཆོང་རྒྱག་སྟེགས་བུ་བེད་སྤྱོད་བྱོས།</string>
+	<key>notif.jumppad.title</key>
+	<string>ལན་ནོར་བ་ལས་མཆོངས་ཤིག 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>མཆོང་རྒྱུག་ཕོགས་ཀྱི་སྔོན་ཐོན་ནང་བརྗོད་གཞི་རེ་རེ་དང་སེམས་ཅན་10ཚང་མའི་ཆེད་དུ་རིམ་པ་%lldཚུད་ཡོད།མྱོང་ཚོར་དེ་མུ་མཐུད་དུ་འགྲོ་བཞིན་ཡོད།</string>
+	<key>notif.premium.title</key>
+	<string>གནས་རིམ་དང་སེམས་ཅན་མང་བ་ཕྱེ་རོགས། . 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>ཉིན་ %lld ཕྱིན་སོང་།ང་ཚོས་ཨང་རྩིས་སྦྱོང་བརྡར་ཁ་ཤས་ཐག་གཅོད་བྱས་ནས་རྟགས་མ་མང་བ་རག་རོགས།</string>
+	<key>notif.reactivate.title</key>
+	<string>བསྐྱར་དུ་རྩེད་མོ་རྩེད་རྒྱུར་གྲ་སྒྲིག་ཡིན་ནམ། . 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>སྐར་མ་ %lld རྩེད་ནས་ཉིན་ལྟར་རྩེད་མོ་རྩེ་རྒྱུ་རྒྱུན་འཁྱོངས་བྱོས།</string>
+	<key>notif.streak.title %lld</key>
+	<string>ཁྱེད་རང་གི་ཉིན་རེའི་རྩེད་མོའི་རིམ་པ་དེ་ཉིན་%lldལ་སླེབས་ཡོད། 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ལས་ཀ་ཡག་པོ་འདུགང་ཚོས་སྐར་མ་%lld་རྩེད་ནས་དེ་ལས་མང་བ་བསྡུ་རུབ་བྱེད།</string>
+	<key>notif.trophies.title %lld</key>
+	<string>ཁྱོད་ཀྱིས་བྱ་དགའ་%lldཐོབ་ཟིན། . 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>དེས་ཁྱེད་ཀྱི་བསྡོམས་པས་བྱ་དགའ་%lldལ་སླེབས་ཡོད།ཡ་མཚན་ཅན་གྱི་ལས་ཀ་རེད།</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ཁྱོད་ཀྱིས་བདུན་ཕྲག་འདིར་བྱ་དགའ་%lldཐོབ་ཡོད། . 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>རྩིས་འདྲེས་མ་མི་འདྲ་བ་མཉམ་དུ།</string>
 	<key>onboarding.level.advanced.title</key>

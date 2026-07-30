@@ -108,6 +108,8 @@
 	<string>Dzīvības ieslēgtas</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tavs pašreizējais rezultāts tiks apturēts.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Atvaino! Priekšā lasīšanas funkcija tavā valodā vēl nav pieejama.</string>
 	<key>game.intro.start</key>
 	<string>Sākt līmeni</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Tavs vārds</string>
 	<key>name.whatsYourName</key>
 	<string>Kā tevi sauc?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Nopelniet vēl dažas trofejas, lai atbloķētu šo dzīvnieku! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Vēl tikai %lld trofejas! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jūsu dzīvnieki gaida. Atgriezieties spēlēt un turpiniet vākt trofejas!</string>
+	<key>notif.comeback.title</key>
+	<string>Mums tevis pietrūkst! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Sāciet %lld minūšu spēles sesiju un pagariniet savu ikdienas spēļu sēriju.</string>
+	<key>notif.day3.title</key>
+	<string>Panāksim 3. dienu! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Izmantojiet Jump Pad, lai izlaistu nepareizu atbildi un turpinātu kāpt!</string>
+	<key>notif.jumppad.title</key>
+	<string>Pārlēkt garām nepareizām atbildēm! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium ietver %lld līmeņus katrai tēmai un visiem 10 dzīvniekiem. Piedzīvojums turpinās!</string>
+	<key>notif.premium.title</key>
+	<string>Atbloķējiet vairāk līmeņu un dzīvnieku! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Ir pagājušas %lld dienas. Atrisināsim dažus matemātikas uzdevumus un nopelnīsim vairāk trofeju!</string>
+	<key>notif.reactivate.title</key>
+	<string>Vai esat gatavs spēlēt vēlreiz? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spēlējiet %lld minūtes un turpiniet savu ikdienas spēļu sēriju!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jūsu ikdienas spēļu sērija ir sasniegusi %lld dienas! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Lielisks darbs! Spēlēsim %lld minūtes un savāksim vēl vairāk.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jūs esat nopelnījis %lld trofejas! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tādējādi jūs kopā iegūstat %lld trofejas. Apbrīnojams darbs!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Šonedēļ jūs nopelnījāt %lld trofejas! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Dažādi jaukti uzdevumi kopā.</string>
 	<key>onboarding.level.advanced.title</key>

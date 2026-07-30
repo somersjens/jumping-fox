@@ -108,6 +108,8 @@
 	<string>Canlar açık</string>
 	<key>game.intro.scorePaused</key>
 	<string>Şu anki puanın duraklatılacak.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Üzgünüz! Sesli okuma özelliği henüz senin dilinde kullanılamıyor.</string>
 	<key>game.intro.start</key>
 	<string>Seviyeyi başlat</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Adın</string>
 	<key>name.whatsYourName</key>
 	<string>Adın ne?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Bu hayvanın kilidini açmak için birkaç kupa daha kazanın! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Geriye yalnızca %lld kupa kaldı! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Hayvanlarınız bekliyor. Oynamak için geri gelin ve kupa toplamaya devam edin!</string>
+	<key>notif.comeback.title</key>
+	<string>Seni özledik! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld dakikalık bir oyun seansı başlatın ve günlük oyun serinizi uzatın.</string>
+	<key>notif.day3.title</key>
+	<string>Haydi 3. günü gerçekleştirelim! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Yanlış bir cevabı atlayıp tırmanmaya devam etmek için Jump Pad'i kullanın!</string>
+	<key>notif.jumppad.title</key>
+	<string>Yanlış cevapları atlayın! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium, her konu ve 10 hayvanın tümü için %lld seviye içerir. Macera devam ediyor!</string>
+	<key>notif.premium.title</key>
+	<string>Daha fazla seviyenin ve hayvanın kilidini açın! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld gün oldu. Hadi bazı matematik alıştırmalarını çözelim ve daha fazla kupa kazanalım!</string>
+	<key>notif.reactivate.title</key>
+	<string>Tekrar oynamaya hazır mısın? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld dakika oynayın ve günlük oyun serinizi sürdürün!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Günlük oyun seriniz %lld güne ulaştı! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Harika iş!%lld dakika oynayalım ve daha fazlasını toplayalım.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld kupa kazandınız! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Bu, toplamınızı %lld kupaya çıkarır. Harika iş!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Bu hafta %lld kupa kazandınız! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Farklı karışık işlemler bir arada.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>Levens aan</string>
 	<key>game.intro.scorePaused</key>
 	<string>Je huidige score wordt gepauzeerd.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Sorry! De voorleesfunctie is nog niet beschikbaar in jouw taal.</string>
 	<key>game.intro.start</key>
 	<string>Start level</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Jouw naam</string>
 	<key>name.whatsYourName</key>
 	<string>Hoe heet je?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Verdien nog een paar trofeeën om dit dier vrij te spelen! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Nog maar %lld trofeeën te gaan! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Je dieren wachten op je. Spring weer verder en verzamel meer trofeeën!</string>
+	<key>notif.comeback.title</key>
+	<string>We missen je! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Speel %lld minuten en bouw verder aan je reeks.</string>
+	<key>notif.day3.title</key>
+	<string>Maak dag 3 compleet! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Gebruik de Jump Pad om een fout antwoord over te slaan en verder te klimmen!</string>
+	<key>notif.jumppad.title</key>
+	<string>Spring over foute antwoorden heen! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Met Premium krijg je %lld niveaus per onderwerp en alle 10 dieren. Het avontuur gaat verder.</string>
+	<key>notif.premium.title</key>
+	<string>Speel meer niveaus en dieren vrij! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Het is %lld dagen geleden. Tijd voor wat sommen en nieuwe trofeeën!</string>
+	<key>notif.reactivate.title</key>
+	<string>Klaar om weer te spelen? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Speel %lld minuten en houd je reeks vast!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Je reeks van %lld dagen staat in vuur en vlam! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Goed gedaan! Speel %lld minuten en verzamel er nog meer.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Je hebt %lld trofeeën verdiend! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Daarmee kom je op %lld trofeeën. Geweldig gedaan!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Je verdiende deze week %lld trofeeën! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Verschillende mix-sommen door elkaar.</string>
 	<key>onboarding.level.advanced.title</key>

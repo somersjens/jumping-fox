@@ -108,6 +108,8 @@
 	<string>목숨 켜기</string>
 	<key>game.intro.scorePaused</key>
 	<string>현재 점수는 잠시 멈춰요.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>죄송해요! 소리 내어 읽기 기능은 아직 내 언어로 제공되지 않아요.</string>
 	<key>game.intro.start</key>
 	<string>레벨 시작</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>이름</string>
 	<key>name.whatsYourName</key>
 	<string>이름이 뭐예요?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: 이 동물의 잠금을 해제하려면 트로피를 몇 개 더 획득하세요! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>트로피는 %lld개만 남았습니다! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>당신의 동물들이 기다리고 있습니다. 다시 플레이하고 계속해서 트로피를 모아보세요!</string>
+	<key>notif.comeback.title</key>
+	<string>우리는 당신이 그리워요! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld분 플레이 세션을 시작하고 일일 연속 플레이를 연장하세요.</string>
+	<key>notif.day3.title</key>
+	<string>3일차를 만들어보자! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>점프 패드를 사용하여 잘못된 답을 건너뛰고 계속 등반하세요!</string>
+	<key>notif.jumppad.title</key>
+	<string>잘못된 답변을 뛰어 넘으세요! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox 프리미엄에는 모든 주제와 10가지 동물에 대한 %lld개의 레벨이 포함되어 있습니다. 모험은 계속됩니다!</string>
+	<key>notif.premium.title</key>
+	<string>더 많은 레벨과 동물을 잠금 해제하세요! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld일이 지났습니다. 몇 가지 수학 문제를 풀고 더 많은 트로피를 획득해 보세요!</string>
+	<key>notif.reactivate.title</key>
+	<string>다시 플레이할 준비가 되셨나요? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld분 동안 플레이하고 매일 연속 플레이를 계속하세요!</string>
+	<key>notif.streak.title %lld</key>
+	<string>일일 연속 플레이 횟수가 %lld일에 도달했습니다! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>정말 잘했어요!%lld분간 플레이하고 더 많이 모아보세요.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>트로피 %lld개를 획득했습니다! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>그러면 총 트로피가 %lld개가 됩니다. 놀라운 작품입니다!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>이번 주에 트로피 %lld개를 획득하셨습니다! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>여러 가지 섞인 문제를 함께 풀어요.</string>
 	<key>onboarding.level.advanced.title</key>

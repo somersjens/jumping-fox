@@ -108,6 +108,8 @@
 	<string>Bywydau ymlaen</string>
 	<key>game.intro.scorePaused</key>
 	<string>Bydd dy sgôr bresennol yn cael ei seibio.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Mae’n ddrwg gennym! Nid yw’r nodwedd darllen yn uchel ar gael yn dy iaith eto.</string>
 	<key>game.intro.start</key>
 	<string>Dechrau'r lefel</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Dy enw</string>
 	<key>name.whatsYourName</key>
 	<string>Beth yw dy enw?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Enillwch ychydig mwy o dlysau i ddatgloi'r anifail hwn! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Dim ond %lld tlws i fynd! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Mae eich anifeiliaid yn aros. Dewch yn ôl i chwarae a daliwch ati i gasglu tlysau!</string>
+	<key>notif.comeback.title</key>
+	<string>Rydym yn colli chi! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Dechreuwch sesiwn chwarae %lld munud ac ymestyn eich rhediad chwarae dyddiol.</string>
+	<key>notif.day3.title</key>
+	<string>Gadewch i ni wneud i ddiwrnod 3 ddigwydd! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Defnyddiwch y Pad Neidio i hepgor ateb anghywir a daliwch ati i ddringo!</string>
+	<key>notif.jumppad.title</key>
+	<string>Neidiwch heibio atebion anghywir! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Mae Premiwm Jumping Fox yn cynnwys %lld lefel ar gyfer pob pwnc a phob un o'r 10 anifail. Mae'r antur yn dal i fynd!</string>
+	<key>notif.premium.title</key>
+	<string>Datgloi mwy o lefelau ac anifeiliaid! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Mae wedi bod yn %lld diwrnod. Gadewch i ni ddatrys rhai ymarferion mathemateg ac ennill mwy o dlysau!</string>
+	<key>notif.reactivate.title</key>
+	<string>Barod i chwarae eto? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Chwarae am %lld munud a chadwch eich rhediad chwarae dyddiol i fynd!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Mae eich rhediad chwarae dyddiol wedi cyrraedd %lld diwrnod! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Gwaith gwych! Gadewch i ni chwarae am %lld munud a chasglu hyd yn oed mwy.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Rydych chi wedi ennill %lld o dlysau! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Daw hynny â’ch cyfanswm i %lld o dlysau. Gwaith anhygoel!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Fe enilloch chi %lld tlws yr wythnos hon! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Gwahanol symiau cymysg gyda'i gilydd.</string>
 	<key>onboarding.level.advanced.title</key>

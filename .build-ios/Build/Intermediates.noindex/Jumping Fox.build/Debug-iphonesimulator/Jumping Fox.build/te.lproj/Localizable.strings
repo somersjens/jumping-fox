@@ -108,6 +108,8 @@
 	<string>உயிர்கள் இயக்கம்</string>
 	<key>game.intro.scorePaused</key>
 	<string>உன் தற்போதைய மதிப்பெண் இடைநிறுத்தப்படும்.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>క్షమించండి! బిగ్గరగా చదివే సదుపాయం ఇంకా మీ భాషలో అందుబాటులో లేదు.</string>
 	<key>game.intro.start</key>
 	<string>நிலையைத் தொடங்கு</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>உன் பெயர்</string>
 	<key>name.whatsYourName</key>
 	<string>உன் பெயர் என்ன?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ఈ జంతువును అన్‌లాక్ చేయడానికి మరికొన్ని ట్రోఫీలను సంపాదించండి! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>కేవలం %lld ట్రోఫీలు మాత్రమే ఉన్నాయి! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>మీ జంతువులు వేచి ఉన్నాయి. ఆడటానికి తిరిగి రండి మరియు ట్రోఫీలను సేకరిస్తూ ఉండండి!</string>
+	<key>notif.comeback.title</key>
+	<string>మేము నిన్ను కోల్పోతున్నాము! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld నిమిషాల ప్లే సెషన్‌ను ప్రారంభించండి మరియు మీ రోజువారీ ఆటల పరంపరను పొడిగించండి.</string>
+	<key>notif.day3.title</key>
+	<string>3వ రోజు జరిగేలా చేద్దాం! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>తప్పు సమాధానాన్ని దాటవేయడానికి మరియు ఎక్కడం కొనసాగించడానికి జంప్ ప్యాడ్‌ని ఉపయోగించండి!</string>
+	<key>notif.jumppad.title</key>
+	<string>తప్పు సమాధానాలను దాటవేయండి! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>జంపింగ్ ఫాక్స్ ప్రీమియం ప్రతి అంశానికి మరియు మొత్తం 10 జంతువులకు %lld స్థాయిలను కలిగి ఉంటుంది. సాహసం కొనసాగుతుంది!</string>
+	<key>notif.premium.title</key>
+	<string>మరిన్ని స్థాయిలు మరియు జంతువులను అన్‌లాక్ చేయండి! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld రోజులైంది. కొన్ని గణిత వ్యాయామాలను పరిష్కరించండి మరియు మరిన్ని ట్రోఫీలను సంపాదిద్దాం!</string>
+	<key>notif.reactivate.title</key>
+	<string>మళ్లీ ఆడేందుకు సిద్ధంగా ఉన్నారా? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld నిమిషాలు ఆడండి మరియు మీ రోజువారీ ఆటతీరును కొనసాగించండి!</string>
+	<key>notif.streak.title %lld</key>
+	<string>మీ రోజువారీ ఆటల పరంపర %lld రోజులకు చేరుకుంది! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>గొప్ప పని!%lld నిమిషాలు ఆడి ఇంకా ఎక్కువ సేకరిద్దాం.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>మీరు %lld ట్రోఫీలు సంపాదించారు! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>అది మీ మొత్తం %lld ట్రోఫీలకు చేరుకుంటుంది. అద్భుతమైన పని!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>మీరు ఈ వారం %lld ట్రోఫీలు సంపాదించారు! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>விதவிதமான கலவைக் கணக்குகள் ஒன்றாக.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -5,6 +5,133 @@
 	<key>logFormatVersion</key>
 	<integer>12</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>5A31FBBA-F9F7-4BD0-8B80-A385A3C9A059</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>5A31FBBA-F9F7-4BD0-8B80-A385A3C9A059.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078696.48473299</real>
+			<key>timeStoppedRecording</key>
+			<real>807078698.169011</real>
+			<key>title</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>5A31FBBA-F9F7-4BD0-8B80-A385A3C9A059</string>
+		</dict>
+		<key>A10BBAE0-5D5A-4172-A181-05C3BC31D175</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A10BBAE0-5D5A-4172-A181-05C3BC31D175.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078725.81500006</real>
+			<key>timeStoppedRecording</key>
+			<real>807078727.46979594</real>
+			<key>title</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>A10BBAE0-5D5A-4172-A181-05C3BC31D175</string>
+		</dict>
+		<key>DFEEB972-71E3-4C3A-B87B-B5D6C44AE17A</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>DFEEB972-71E3-4C3A-B87B-B5D6C44AE17A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Jumping Fox project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Jumping Fox</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>timeStartedRecording</key>
+			<real>807078659.14667702</real>
+			<key>timeStoppedRecording</key>
+			<real>807078668.13984704</real>
+			<key>title</key>
+			<string>Testing project Jumping Fox with scheme Jumping Fox</string>
+			<key>uniqueIdentifier</key>
+			<string>DFEEB972-71E3-4C3A-B87B-B5D6C44AE17A</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

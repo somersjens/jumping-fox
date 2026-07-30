@@ -108,6 +108,8 @@
 	<string>ਜਾਨਾਂ ਚਾਲੂ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਸਕੋਰ ਰੁਕ ਜਾਵੇਗਾ।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ਮਾਫ਼ ਕਰਨਾ! ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਦੀ ਸਹੂਲਤ ਹਾਲੇ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।</string>
 	<key>game.intro.start</key>
 	<string>ਲੈਵਲ ਸ਼ੁਰੂ ਕਰੋ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ਤੁਹਾਡਾ ਨਾਮ</string>
 	<key>name.whatsYourName</key>
 	<string>ਤੁਹਾਡਾ ਨਾਮ ਕੀ ਹੈ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ਇਸ ਜਾਨਵਰ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਕੁਝ ਹੋਰ ਟਰਾਫੀਆਂ ਕਮਾਓ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ਸਿਰਫ਼ %lld ਟਰਾਫ਼ੀਆਂ ਬਾਕੀ ਹਨ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ਤੁਹਾਡੇ ਜਾਨਵਰ ਉਡੀਕ ਕਰ ਰਹੇ ਹਨ। ਖੇਡਣ ਲਈ ਵਾਪਸ ਆਓ ਅਤੇ ਟਰਾਫੀਆਂ ਇਕੱਠੀਆਂ ਕਰਦੇ ਰਹੋ!</string>
+	<key>notif.comeback.title</key>
+	<string>ਅਸੀਂ ਤੁਹਾਨੂੰ ਯਾਦ ਕਰਦੇ ਹਾਂ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld-ਮਿੰਟ ਦਾ ਪਲੇ ਸੈਸ਼ਨ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਆਪਣੀ ਰੋਜ਼ਾਨਾ ਖੇਡਣ ਦੀ ਲੜੀ ਨੂੰ ਵਧਾਓ।</string>
+	<key>notif.day3.title</key>
+	<string>ਆਉ ਦਿਨ 3 ਨੂੰ ਪੂਰਾ ਕਰੀਏ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ਗਲਤ ਜਵਾਬ ਨੂੰ ਛੱਡਣ ਲਈ ਜੰਪ ਪੈਡ ਦੀ ਵਰਤੋਂ ਕਰੋ ਅਤੇ ਚੜ੍ਹਦੇ ਰਹੋ!</string>
+	<key>notif.jumppad.title</key>
+	<string>ਪਿਛਲੇ ਗਲਤ ਜਵਾਬ ਛਾਲ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ਜੰਪਿੰਗ ਫੌਕਸ ਪ੍ਰੀਮੀਅਮ ਵਿੱਚ ਹਰ ਵਿਸ਼ੇ ਲਈ %lld ਪੱਧਰ ਅਤੇ ਸਾਰੇ 10 ਜਾਨਵਰ ਸ਼ਾਮਲ ਹਨ। ਸਾਹਸ ਜਾਰੀ ਰਹਿੰਦਾ ਹੈ!</string>
+	<key>notif.premium.title</key>
+	<string>ਹੋਰ ਪੱਧਰਾਂ ਅਤੇ ਜਾਨਵਰਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰੋ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ਦਿਨ ਹੋ ਗਏ ਹਨ। ਆਓ ਕੁਝ ਗਣਿਤ ਅਭਿਆਸਾਂ ਨੂੰ ਹੱਲ ਕਰੀਏ ਅਤੇ ਹੋਰ ਟਰਾਫੀਆਂ ਹਾਸਲ ਕਰੀਏ!</string>
+	<key>notif.reactivate.title</key>
+	<string>ਦੁਬਾਰਾ ਖੇਡਣ ਲਈ ਤਿਆਰ ਹੋ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld ਮਿੰਟ ਲਈ ਖੇਡੋ ਅਤੇ ਆਪਣੀ ਰੋਜ਼ਾਨਾ ਖੇਡਣ ਦੀ ਲੜੀ ਨੂੰ ਜਾਰੀ ਰੱਖੋ!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ਤੁਹਾਡੀ ਰੋਜ਼ਾਨਾ ਖੇਡਣ ਦੀ ਸਟ੍ਰੀਕ %lld ਦਿਨਾਂ ਤੱਕ ਪਹੁੰਚ ਗਈ ਹੈ! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ਬਹੁਤ ਵਧੀਆ ਕੰਮ! ਚਲੋ %lld ਮਿੰਟ ਖੇਡੀਏ ਅਤੇ ਹੋਰ ਵੀ ਇਕੱਠਾ ਕਰੀਏ।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>ਤੁਸੀਂ %lld ਟਰਾਫੀਆਂ ਜਿੱਤੀਆਂ ਹਨ! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ਇਸ ਨਾਲ ਤੁਹਾਡੀ ਕੁੱਲ %lld ਟਰਾਫੀਆਂ ਹੋ ਜਾਂਦੀਆਂ ਹਨ। ਹੈਰਾਨੀਜਨਕ ਕੰਮ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ਤੁਸੀਂ ਇਸ ਹਫ਼ਤੇ %lld ਟਰਾਫ਼ੀਆਂ ਹਾਸਲ ਕੀਤੀਆਂ ਹਨ! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>ਵੱਖ-ਵੱਖ ਮਿਲੇ-ਜੁਲੇ ਹਿਸਾਬ ਇਕੱਠੇ।</string>
 	<key>onboarding.level.advanced.title</key>

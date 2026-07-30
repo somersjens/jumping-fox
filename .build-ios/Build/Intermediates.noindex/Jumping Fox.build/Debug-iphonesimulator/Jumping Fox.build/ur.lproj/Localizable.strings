@@ -108,6 +108,8 @@
 	<string>جانیں آن</string>
 	<key>game.intro.scorePaused</key>
 	<string>آپ کا موجودہ اسکور روک دیا جائے گا۔</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>معذرت! بلند آواز میں پڑھنے کی سہولت ابھی آپ کی زبان میں دستیاب نہیں ہے۔</string>
 	<key>game.intro.start</key>
 	<string>لیول شروع کریں</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>آپ کا نام</string>
 	<key>name.whatsYourName</key>
 	<string>آپ کا نام کیا ہے؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: اس جانور کو غیر مقفل کرنے کے لیے کچھ اور ٹرافیاں حاصل کریں! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>صرف %lld ٹرافیاں باقی ہیں! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>آپ کے جانور انتظار کر رہے ہیں۔کھیلنے کے لیے واپس آئیں اور ٹرافیاں جمع کرتے رہیں!</string>
+	<key>notif.comeback.title</key>
+	<string>ہم آپ کو یاد کرتے ہیں! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld منٹ کا پلے سیشن شروع کریں اور اپنے روزانہ کھیلنے کے سلسلے کو بڑھا دیں۔</string>
+	<key>notif.day3.title</key>
+	<string>آئیے دن 3 کو انجام دیں! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>غلط جواب کو چھوڑنے کے لیے جمپ پیڈ کا استعمال کریں اور چڑھتے رہیں!</string>
+	<key>notif.jumppad.title</key>
+	<string>غلط جوابات سے گزریں! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>جمپنگ فاکس پریمیم میں ہر موضوع کے لیے %lld لیولز اور تمام 10 جانور شامل ہیں۔ایڈونچر جاری ہے!</string>
+	<key>notif.premium.title</key>
+	<string>مزید سطحوں اور جانوروں کو غیر مقفل کریں! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld دن ہو گئے ہیں۔آئیے ریاضی کی کچھ مشقیں حل کریں اور مزید ٹرافیاں حاصل کریں!</string>
+	<key>notif.reactivate.title</key>
+	<string>دوبارہ کھیلنے کے لیے تیار ہیں؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld منٹ تک کھیلیں اور اپنی روزانہ کی کھیل کو جاری رکھیں!</string>
+	<key>notif.streak.title %lld</key>
+	<string>آپ کا روزانہ کھیلنے کا سلسلہ %lld دن تک پہنچ گیا ہے! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>بہت اچھا کام! آئیے %lld منٹ کھیلیں اور مزید جمع کریں۔</string>
+	<key>notif.trophies.title %lld</key>
+	<string>آپ نے %lld ٹرافیاں حاصل کی ہیں! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>اس سے آپ کی کل ٹرافیاں %lld ہو جاتی ہیں۔حیرت انگیز کام!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>آپ نے اس ہفتے %lld ٹرافیاں حاصل کیں! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>مختلف ملے جلے سوال۔</string>
 	<key>onboarding.level.advanced.title</key>

@@ -3339,6 +3339,11 @@ struct LevelCardView: View {
             Text("menu.startHere")
                 .font(.system(size: 10 * cardScale * 1.2, weight: .bold))
                 .foregroundStyle(theme.deepColor)
+                // Longer localizations (e.g. Telugu "ఇక్కడ మొదలుపెట్టు") shrink to
+                // fit the card instead of truncating with an ellipsis.
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .allowsTightening(true)
         } else if !showsTrophies {
             if isPaused {
                 Image(systemName: "pause.fill")
@@ -3510,11 +3515,13 @@ struct LevelCardView: View {
                     firstMaxCrownOffset = 0
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                    guard self.celebrationID == celebrationID else { return }
                     withAnimation(.spring(response: 0.32, dampingFraction: 0.42)) {
                         firstMaxCrownTilt = -6
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    guard self.celebrationID == celebrationID else { return }
                     withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                         firstMaxCrownTilt = 0
                     }
@@ -3524,6 +3531,7 @@ struct LevelCardView: View {
             // 2. Once the crown has landed, the border traces out from under it
             //    and the metal flash blooms along with it.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) {
+                guard self.celebrationID == celebrationID else { return }
                 firstMaxGlowScale = 0.9
                 firstMaxGlowOpacity = 0.7
                 withAnimation(.easeInOut(duration: 0.62)) { firstMaxBorderTrace = 1 }
@@ -3549,6 +3557,11 @@ struct LevelCardView: View {
         firstMaxCrownTilt = 0
         firstMaxGlowOpacity = 0
 
+        // Every timer below belongs to this one celebration. Without the guard,
+        // a second completion on the same card within ~2 s had its highlight and
+        // pulse cut short by the previous run's timers still landing on them.
+        let celebrationID = self.celebrationID
+
         withAnimation(.easeOut(duration: 0.38)) { highlightOpacity = 1 }
         withAnimation(.spring(response: 0.38, dampingFraction: 0.58)) { maximumCountPulse = true }
         maximumCountRingScale = 0.82
@@ -3558,12 +3571,15 @@ struct LevelCardView: View {
             maximumCountRingOpacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.92) {
+            guard animatedMaxCelebrationID == celebrationID else { return }
             withAnimation(.spring(response: 0.32, dampingFraction: 0.72)) { maximumCountPulse = false }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.62) {
+            guard animatedMaxCelebrationID == celebrationID else { return }
             withAnimation(.easeOut(duration: 0.42)) { highlightOpacity = 0.32 }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.98) {
+            guard animatedMaxCelebrationID == celebrationID else { return }
             withAnimation(.easeOut(duration: 0.2)) { highlightOpacity = 0 }
         }
         if let celebrationID {
@@ -3803,6 +3819,12 @@ struct LevelCardView: View {
             // rather than the text, is the badge's visual footprint.
             .font(.system(size: 5.6 * cardScale, weight: .heavy, design: .rounded))
             .foregroundStyle(fill)
+            // Roughly six glyphs fit at full size; longer localized words for
+            // "MAX" shrink to stay inside the card instead of spilling over the
+            // edge (or onto a neighbouring card).
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+            .frame(maxWidth: 22 * cardScale)
             .padding(.horizontal, 1.5 * cardScale)
             .padding(.vertical, 1 * cardScale)
             .background(.white.opacity(0.5), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))

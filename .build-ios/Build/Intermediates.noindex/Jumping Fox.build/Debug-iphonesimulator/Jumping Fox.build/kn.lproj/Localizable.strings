@@ -108,6 +108,8 @@
 	<string>ಜೀವಗಳು ಆನ್</string>
 	<key>game.intro.scorePaused</key>
 	<string>ನಿನ್ನ ಈಗಿನ ಅಂಕವನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗುತ್ತದೆ.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ಕ್ಷಮಿಸಿ! ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಸೌಲಭ್ಯವು ಇನ್ನೂ ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ.</string>
 	<key>game.intro.start</key>
 	<string>ಹಂತ ಆರಂಭಿಸು</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ನಿನ್ನ ಹೆಸರು</string>
 	<key>name.whatsYourName</key>
 	<string>ನಿನ್ನ ಹೆಸರೇನು?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ಈ ಪ್ರಾಣಿಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಇನ್ನೂ ಕೆಲವು ಟ್ರೋಫಿಗಳನ್ನು ಗಳಿಸಿ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ಬರಲು ಕೇವಲ %lld ಟ್ರೋಫಿಗಳು! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ನಿಮ್ಮ ಪ್ರಾಣಿಗಳು ಕಾಯುತ್ತಿವೆ. ಆಡಲು ಹಿಂತಿರುಗಿ ಮತ್ತು ಟ್ರೋಫಿಗಳನ್ನು ಸಂಗ್ರಹಿಸುವುದನ್ನು ಮುಂದುವರಿಸಿ!</string>
+	<key>notif.comeback.title</key>
+	<string>ನಾವು ನಿನ್ನನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತೇವೆ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld ನಿಮಿಷಗಳ ಆಟದ ಅವಧಿಯನ್ನು ಪ್ರಾರಂಭಿಸಿ ಮತ್ತು ನಿಮ್ಮ ದೈನಂದಿನ ಆಟದ ಸರಣಿಯನ್ನು ವಿಸ್ತರಿಸಿ.</string>
+	<key>notif.day3.title</key>
+	<string>3 ನೇ ದಿನವನ್ನು ಮಾಡೋಣ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ತಪ್ಪಾದ ಉತ್ತರವನ್ನು ಬಿಟ್ಟುಬಿಡಲು ಮತ್ತು ಹತ್ತುವುದನ್ನು ಮುಂದುವರಿಸಲು ಜಂಪ್ ಪ್ಯಾಡ್ ಬಳಸಿ!</string>
+	<key>notif.jumppad.title</key>
+	<string>ತಪ್ಪು ಉತ್ತರಗಳ ಹಿಂದೆ ಹೋಗು! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ಜಂಪಿಂಗ್ ಫಾಕ್ಸ್ ಪ್ರೀಮಿಯಂ ಪ್ರತಿ ವಿಷಯ ಮತ್ತು ಎಲ್ಲಾ 10 ಪ್ರಾಣಿಗಳಿಗೆ %lld ಹಂತಗಳನ್ನು ಒಳಗೊಂಡಿದೆ. ಸಾಹಸವು ಮುಂದುವರಿಯುತ್ತದೆ!</string>
+	<key>notif.premium.title</key>
+	<string>ಹೆಚ್ಚಿನ ಮಟ್ಟಗಳು ಮತ್ತು ಪ್ರಾಣಿಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ದಿನಗಳಾಗಿವೆ. ಕೆಲವು ಗಣಿತ ವ್ಯಾಯಾಮಗಳನ್ನು ಪರಿಹರಿಸೋಣ ಮತ್ತು ಹೆಚ್ಚಿನ ಟ್ರೋಫಿಗಳನ್ನು ಗಳಿಸೋಣ!</string>
+	<key>notif.reactivate.title</key>
+	<string>ಮತ್ತೆ ಆಡಲು ಸಿದ್ಧರಿದ್ದೀರಾ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld ನಿಮಿಷಗಳ ಕಾಲ ಆಟವಾಡಿ ಮತ್ತು ನಿಮ್ಮ ದೈನಂದಿನ ಆಟದ ಸರಣಿಯನ್ನು ಮುಂದುವರಿಸಿ!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ನಿಮ್ಮ ದೈನಂದಿನ ಆಟದ ಸರಣಿಯು %lld ದಿನಗಳನ್ನು ತಲುಪಿದೆ! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ಉತ್ತಮ ಕೆಲಸ! ನಾವು %lld ನಿಮಿಷಗಳ ಕಾಲ ಆಡೋಣ ಮತ್ತು ಇನ್ನಷ್ಟು ಸಂಗ್ರಹಿಸೋಣ.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>ನೀವು %lld ಟ್ರೋಫಿಗಳನ್ನು ಗಳಿಸಿದ್ದೀರಿ! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ಅದು ನಿಮ್ಮ ಒಟ್ಟು %lld ಟ್ರೋಫಿಗಳನ್ನು ತರುತ್ತದೆ. ಅದ್ಭುತ ಕೆಲಸ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ಈ ವಾರ ನೀವು %lld ಟ್ರೋಫಿಗಳನ್ನು ಗಳಿಸಿದ್ದೀರಿ! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>ಬೇರೆ ಬೇರೆ ಮಿಶ್ರ ಲೆಕ್ಕಗಳು.</string>
 	<key>onboarding.level.advanced.title</key>

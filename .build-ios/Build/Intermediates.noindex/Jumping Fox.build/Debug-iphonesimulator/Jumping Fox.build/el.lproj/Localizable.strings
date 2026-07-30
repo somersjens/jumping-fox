@@ -108,6 +108,8 @@
 	<string>Ζωές ενεργές</string>
 	<key>game.intro.scorePaused</key>
 	<string>Η τωρινή βαθμολογία σου θα παγώσει.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Συγγνώμη! Η λειτουργία εκφώνησης δεν είναι ακόμη διαθέσιμη στη γλώσσα σου.</string>
 	<key>game.intro.start</key>
 	<string>Έναρξη επιπέδου</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Το όνομά σου</string>
 	<key>name.whatsYourName</key>
 	<string>Πώς σε λένε;</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Κερδίστε μερικά ακόμη τρόπαια για να ξεκλειδώσετε αυτό το ζώο! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Μόνο %lld τρόπαια απομένουν! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Τα ζώα σας περιμένουν. Επιστρέψτε για να παίξετε και συνεχίστε να μαζεύετε τρόπαια!</string>
+	<key>notif.comeback.title</key>
+	<string>Μας λείπεις! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Ξεκινήστε ένα παιχνίδι %lld λεπτών και επεκτείνετε το καθημερινό σερί παιχνιδιού σας.</string>
+	<key>notif.day3.title</key>
+	<string>Ας κάνουμε την 3η μέρα να συμβεί! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Χρησιμοποιήστε το Jump Pad για να παραλείψετε μια λάθος απάντηση και να συνεχίσετε να ανεβαίνετε!</string>
+	<key>notif.jumppad.title</key>
+	<string>Ξεπεράστε τις λάθος απαντήσεις! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Το Jumping Fox Premium περιλαμβάνει %lld επίπεδα για κάθε θέμα και τα 10 ζώα. Η περιπέτεια συνεχίζεται!</string>
+	<key>notif.premium.title</key>
+	<string>Ξεκλειδώστε περισσότερα επίπεδα και ζώα! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Έχουν περάσει %lld μέρες. Ας λύσουμε μερικές ασκήσεις μαθηματικών και ας κερδίσουμε περισσότερα τρόπαια!</string>
+	<key>notif.reactivate.title</key>
+	<string>Είστε έτοιμοι να παίξετε ξανά; 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Παίξτε για %lld λεπτά και συνεχίστε το καθημερινό σας σερί παιχνιδιού!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Το καθημερινό σερί παιχνιδιού σας έφτασε τις %lld ημέρες! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Μεγάλη δουλειά! Ας παίξουμε για %lld λεπτά και ας μαζέψουμε ακόμα περισσότερα.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Έχετε κερδίσει %lld τρόπαια! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Αυτό ανεβάζει το σύνολο σας σε %lld τρόπαια. Καταπληκτική δουλειά!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Κέρδισες %lld τρόπαια αυτή την εβδομάδα! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Διαφορετικές μικτές ασκήσεις μαζί.</string>
 	<key>onboarding.level.advanced.title</key>

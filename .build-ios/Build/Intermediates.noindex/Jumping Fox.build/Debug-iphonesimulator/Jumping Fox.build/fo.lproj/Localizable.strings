@@ -108,6 +108,8 @@
 	<string>Lív tendrað</string>
 	<key>game.intro.scorePaused</key>
 	<string>Núverandi stigatal verður sett á steðg.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Orsaka! Upplestrarfunksjónin er ikki tøk á tínum máli enn.</string>
 	<key>game.intro.start</key>
 	<string>Byrja stig</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Títt navn</string>
 	<key>name.whatsYourName</key>
 	<string>Hvat eitur tú?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Tjen nøkur steyp afturat fyri at læsa hetta djórið upp! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Bert %lld steyp eftir! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Tíni djór bíða. Kom aftur at spæla og halt áfram at savna steyp!</string>
+	<key>notif.comeback.title</key>
+	<string>Vit sakna teg! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Byrja eina %lld minuttir langa spælitíð og leingja tína dagligu spælirøð.</string>
+	<key>notif.day3.title</key>
+	<string>Latið okkum fáa dag 3 at henda! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Brúka Jump Pad til at sleppa einum skeivum svari og halda fram at klintra!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hoppa framvið skeivum svarum! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium inniheldur %lld stig til hvørt evni og øll 10 djórini. Ævintýrið heldur fram!</string>
+	<key>notif.premium.title</key>
+	<string>Læs fleiri stig og djór upp! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Tað eru %lld dagar síðani. Latið okkum loysa nakrar støddfrøðiligar uppgávur og vinna okkum fleiri steyp!</string>
+	<key>notif.reactivate.title</key>
+	<string>Klárur at spæla aftur? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spæl í %lld minuttir og halt tína dagligu spælirøð í gongd!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Tín dagliga spælirøð er komin upp á %lld dagar! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Flott arbeiði! Lat okkum spæla í %lld minuttir og savna enn meira.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Tú hevur vunnið tær %lld steyp! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Soleiðis eru tykkara tilsamans %lld steyp. Ótrúligt arbeiði!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Tit vunnu %lld steyp hesa vikuna! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Ymisk blandingsstykki hvørt um annað.</string>
 	<key>onboarding.level.advanced.title</key>

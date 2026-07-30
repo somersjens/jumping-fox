@@ -108,6 +108,8 @@
 	<string>Życia wł.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Twój obecny wynik zostanie wstrzymany.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Przepraszamy! Funkcja czytania na głos nie jest jeszcze dostępna w twoim języku.</string>
 	<key>game.intro.start</key>
 	<string>Zacznij poziom</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Twoje imię</string>
 	<key>name.whatsYourName</key>
 	<string>Jak masz na imię?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zdobądź jeszcze kilka trofeów, aby odblokować to zwierzę! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Pozostało tylko %lld trofeów! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Twoje zwierzęta czekają. Wróć do gry i zbieraj trofea!</string>
+	<key>notif.comeback.title</key>
+	<string>Tęsknimy za tobą! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Rozpocznij %lld-minutową sesję gry i przedłuż swoją codzienną passę.</string>
+	<key>notif.day3.title</key>
+	<string>Sprawmy, aby dzień 3 się odbył! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Użyj panelu skokowego, aby pominąć błędną odpowiedź i wspinaj się dalej!</string>
+	<key>notif.jumppad.title</key>
+	<string>Przeskocz błędne odpowiedzi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium zawiera %lld poziomów dla każdego tematu i wszystkich 10 zwierząt. Przygoda trwa!</string>
+	<key>notif.premium.title</key>
+	<string>Odblokuj więcej poziomów i zwierząt! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Minęły %lld dni. Rozwiążmy kilka ćwiczeń matematycznych i zdobądźmy więcej trofeów!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gotowy do ponownej gry? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Graj przez %lld minut i podtrzymaj swoją codzienną passę!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Twoja codzienna passa gry osiągnęła %lld dni! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Świetna robota! Zagrajmy przez %lld minut i zbierzmy jeszcze więcej.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Zdobyłeś %lld trofeów! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>To daje w sumie %lld trofeów. Niesamowita praca!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>W tym tygodniu zdobyłeś %lld trofeów! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Różne działania wymieszane razem.</string>
 	<key>onboarding.level.advanced.title</key>

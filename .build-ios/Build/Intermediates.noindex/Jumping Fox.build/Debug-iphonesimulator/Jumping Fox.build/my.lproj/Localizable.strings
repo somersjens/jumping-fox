@@ -108,6 +108,8 @@
 	<string>အသက် ဖွင့်</string>
 	<key>game.intro.scorePaused</key>
 	<string>လက်ရှိအမှတ်ကို ခဏရပ်ထားမယ်။</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ဝမ်းနည်းပါတယ်။ အသံဖြင့်ဖတ်ပြသည့်လုပ်ဆောင်ချက်ကို သင့်ဘာသာစကားဖြင့် မရရှိနိုင်သေးပါ။</string>
 	<key>game.intro.start</key>
 	<string>အဆင့်စရန်</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>မင်းနာမည်</string>
 	<key>name.whatsYourName</key>
 	<string>မင်းနာမည် ဘာလဲ။</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ဤတိရစ္ဆာန်ကိုသော့ဖွင့်ရန် နောက်ထပ်ဆုဖလားအချို့ကို ရယူလိုက်ပါ။ 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ဆုဖလား %lld ခုပဲကျန်တော့တယ်။ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>မင်းရဲ့တိရစ္ဆာန်တွေက စောင့်နေတယ်။ပြန်လာကစားပြီး ဆုဖလားတွေ ဆက်လက်စုဆောင်းလိုက်ပါ။</string>
+	<key>notif.comeback.title</key>
+	<string>တို့တွေမင်းကိုသတိရနေတယ်! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld မိနစ်ကြာ ကစားချိန်ကို စတင်ပြီး သင်၏နေ့စဥ်ကစားခြင်းကို သက်တမ်းတိုးပါ။</string>
+	<key>notif.day3.title</key>
+	<string>Day 3 ဖြစ်မြောက်အောင် လုပ်ကြရအောင်။ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>မှားယွင်းသောအဖြေကိုကျော်ပြီး ဆက်တက်ရန် Jump Pad ကိုသုံးပါ။</string>
+	<key>notif.jumppad.title</key>
+	<string>မှားယွင်းသော အဖြေများကို ကျော်ဖြတ်လိုက်ပါ။ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium တွင် အကြောင်းအရာတိုင်းအတွက် အဆင့် %lld နှင့် တိရစ္ဆာန် 10 ကောင်တို့ပါဝင်သည်။စွန့်စားခန်းသည် ဆက်သွားနေသည်။</string>
+	<key>notif.premium.title</key>
+	<string>အဆင့်များနှင့် တိရစ္ဆာန်များကို လော့ခ်ဖွင့်ပါ။ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ရက်ရှိပြီ။သင်္ချာလေ့ကျင့်ခန်းအချို့ကို ဖြေရှင်းပြီး ဆုဖလားများ ထပ်မံရယူကြပါစို့။</string>
+	<key>notif.reactivate.title</key>
+	<string>ပြန်ကစားဖို့ အဆင်သင့်ဖြစ်ပြီလား။ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld မိနစ်လောက်ကစားပြီး သင့်နေ့စဥ်ကစားခြင်းကို ဆက်လက်လုပ်ဆောင်ပါ။</string>
+	<key>notif.streak.title %lld</key>
+	<string>သင်၏နေ့စဥ်ကစားနည်းသည် %lld ရက်သို့ရောက်ရှိသွားပါပြီ။ 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>အလုပ်ကောင်း။%lld မိနစ်လောက် ကစားပြီး ဒီထက်ပိုပြီး စုဆောင်းကြရအောင်။</string>
+	<key>notif.trophies.title %lld</key>
+	<string>သင်သည် ဆုဖလား %lld ကို ရရှိခဲ့သည်။ 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ဒါက မင်းရဲ့ စုစုပေါင်း ဆုဖလား %lld ကို ယူဆောင်လာပေးတယ်။အံ့သြဖွယ်အလုပ်။</string>
+	<key>notif.weekly.title %lld</key>
+	<string>သင်သည် ဤအပတ်တွင် ဆုဖလား %lld ရရှိခဲ့သည်။ 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>ရောစပ်ပုစ္ဆာအမျိုးမျိုး။</string>
 	<key>onboarding.level.advanced.title</key>

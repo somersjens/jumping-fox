@@ -108,6 +108,8 @@
 	<string>Maisha yamewashwa</string>
 	<key>game.intro.scorePaused</key>
 	<string>Alama zako za sasa zitasitishwa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Samahani! Kipengele cha kusoma kwa sauti bado hakipatikani katika lugha yako.</string>
 	<key>game.intro.start</key>
 	<string>Anza kiwango</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Jina lako</string>
 	<key>name.whatsYourName</key>
 	<string>Unaitwa nani?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Pata vikombe vichache zaidi ili kumfungulia mnyama huyu! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Zimesalia kutwaa taji %lld tu! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Wanyama wako wanasubiri. Rudi kucheza na uendelee kukusanya vikombe!</string>
+	<key>notif.comeback.title</key>
+	<string>Tunakukumbuka! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Anza kipindi cha kucheza cha dakika %lld na uongeze mfululizo wako wa kucheza wa kila siku.</string>
+	<key>notif.day3.title</key>
+	<string>Wacha tuifanye siku ya 3 ifanyike! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Tumia Padi ya Kuruka ili kuruka jibu lisilo sahihi na kuendelea kupanda!</string>
+	<key>notif.jumppad.title</key>
+	<string>Rukia majibu yasiyo sahihi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Kuruka Fox Premium inajumuisha viwango %lld kwa kila mada na wanyama wote 10. Matukio yanaendelea!</string>
+	<key>notif.premium.title</key>
+	<string>Fungua viwango zaidi na wanyama! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Imekuwa siku %lld. Wacha tusuluhishe mazoezi kadhaa ya hesabu na tupate nyara zaidi!</string>
+	<key>notif.reactivate.title</key>
+	<string>Je, uko tayari kucheza tena? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Cheza kwa dakika %lld na uendeleze mfululizo wako wa kucheza wa kila siku!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Mfululizo wako wa kucheza wa kila siku umefikia siku %lld! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Kazi nzuri! Wacha tucheze kwa dakika %lld na kukusanya zaidi.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Umejishindia vikombe %lld! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Hiyo inaleta jumla yako hadi nyara %lld. Kazi ya ajabu!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Umejishindia vikombe %lld wiki hii! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Hesabu tofauti zilizochanganywa.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -397,13 +397,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වලහා"
+            "value": "கரடி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கரடி"
+            "value": "ఎలుగుబంటి"
           }
         },
         "th": {
@@ -864,13 +864,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හාවා"
+            "value": "முயல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முயல்"
+            "value": "కుందేలు"
           }
         },
         "th": {
@@ -1331,13 +1331,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කකුළුවා"
+            "value": "நண்டு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நண்டு"
+            "value": "పీత"
           }
         },
         "th": {
@@ -1798,13 +1798,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "බල්ලා"
+            "value": "நாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நாய்"
+            "value": "కుక్క"
           }
         },
         "th": {
@@ -2265,13 +2265,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අලියා"
+            "value": "யானை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "யானை"
+            "value": "ఏనుగు"
           }
         },
         "th": {
@@ -2732,13 +2732,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නරියා"
+            "value": "நரி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நரி"
+            "value": "నక్క"
           }
         },
         "th": {
@@ -3199,13 +3199,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගෙම්බා"
+            "value": "தவளை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தவளை"
+            "value": "కప్ప"
           }
         },
         "th": {
@@ -3666,13 +3666,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සිංහයා"
+            "value": "சிங்கம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சிங்கம்"
+            "value": "సింహం"
           }
         },
         "th": {
@@ -4133,13 +4133,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "බූවල්ලා"
+            "value": "ஆக்டோபஸ்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஆக்டோபஸ்"
+            "value": "ఆక్టోపస్"
           }
         },
         "th": {
@@ -4600,13 +4600,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පෙන්ගුවියා"
+            "value": "பென்குயின்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பென்குயின்"
+            "value": "పెంగ్విన్"
           }
         },
         "th": {
@@ -5067,13 +5067,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබේ චරිතය තෝරන්න"
+            "value": "உன் கதாபாத்திரத்தைத் தேர்ந்தெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உன் கதாபாத்திரத்தைத் தேர்ந்தெடு"
+            "value": "నీ పాత్రను ఎంచుకో"
           }
         },
         "th": {
@@ -5534,13 +5534,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ආපසු"
+            "value": "பின்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பின்"
+            "value": "వెనక్కి"
           }
         },
         "th": {
@@ -6001,13 +6001,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අවලංගු"
+            "value": "ரத்துசெய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ரத்துசெய்"
+            "value": "రద్దు"
           }
         },
         "th": {
@@ -6468,13 +6468,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉදිරියට"
+            "value": "தொடர்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர்"
+            "value": "కొనసాగించు"
           }
         },
         "th": {
@@ -6935,13 +6935,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හරි"
+            "value": "முடிந்தது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முடிந்தது"
+            "value": "పూర్తి"
           }
         },
         "th": {
@@ -7402,13 +7402,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld/%lld මිනි"
+            "value": "%lld/%lld நிமி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld/%lld நிமி"
+            "value": "%lld/%lld నిమి"
           }
         },
         "th": {
@@ -7869,13 +7869,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුරකින්න"
+            "value": "சேமி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சேமி"
+            "value": "సేవ్"
           }
         },
         "th": {
@@ -8336,13 +8336,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සංවර්ධක මාදිලිය විවෘත කිරීමට තත්පර 2ක් ඔබාගෙන සිටින්න."
+            "value": "டெவலப்பர் முறையைத் திறக்க 2 விநாடிகள் அழுத்திப் பிடிக்கவும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "டெவலப்பர் முறையைத் திறக்க 2 விநாடிகள் அழுத்திப் பிடிக்கவும்."
+            "value": "డెవలపర్ మోడ్ తెరవడానికి 2 సెకన్లు నొక్కి పట్టుకోండి."
           }
         },
         "th": {
@@ -8803,13 +8803,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සංවර්ධක මාදිලිය"
+            "value": "டெவலப்பர் முறை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "டெவலப்பர் முறை"
+            "value": "డెవలపర్ మోడ్"
           }
         },
         "th": {
@@ -9270,13 +9270,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම"
+            "value": "கூட்டல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல்"
+            "value": "కూడిక"
           }
         },
         "th": {
@@ -9737,13 +9737,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "භාග"
+            "value": "பின்னங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பின்னங்கள்"
+            "value": "భిన్నాలు"
           }
         },
         "th": {
@@ -10204,13 +10204,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුපිරි මිශ්‍රණය"
+            "value": "சூப்பர் கலவை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சூப்பர் கலவை"
+            "value": "సూపర్‌మిక్స్"
           }
         },
         "th": {
@@ -10671,13 +10671,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රතිශත"
+            "value": "சதவீதங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சதவீதங்கள்"
+            "value": "శాతాలు"
           }
         },
         "th": {
@@ -11138,13 +11138,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අඩු කිරීම"
+            "value": "கழித்தல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கழித்தல்"
+            "value": "తీసివేత"
           }
         },
         "th": {
@@ -11605,13 +11605,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගුණන වගු"
+            "value": "வாய்ப்பாடுகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வாய்ப்பாடுகள்"
+            "value": "ఎక్కాలు"
           }
         },
         "th": {
@@ -12072,13 +12072,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍රණය"
+            "value": "கலவை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலவை"
+            "value": "మిక్స్"
           }
         },
         "th": {
@@ -12539,13 +12539,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld න් %lld"
+            "value": "%lld / %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld / %lld"
+            "value": "%lldలో %lld"
           }
         },
         "th": {
@@ -13006,13 +13006,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හොඳ උත්සාහයක්"
+            "value": "நல்ல முயற்சி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நல்ல முயற்சி"
+            "value": "మంచి ప్రయత్నం"
           }
         },
         "th": {
@@ -13473,13 +13473,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හොඳ ආරම්භයක්"
+            "value": "நல்ல தொடக்கம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நல்ல தொடக்கம்"
+            "value": "మంచి మొదలు"
           }
         },
         "th": {
@@ -13940,13 +13940,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිගටම පුහුණු වන්න"
+            "value": "தொடர்ந்து பயிற்சி செய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர்ந்து பயிற்சி செய்"
+            "value": "సాధన చేస్తూ ఉండు"
           }
         },
         "th": {
@@ -14407,13 +14407,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නරකම නැහැ"
+            "value": "மோசமில்லை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மோசமில்லை"
+            "value": "అంత చెడ్డది కాదు"
           }
         },
         "th": {
@@ -14874,13 +14874,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හොඳට කරනවා"
+            "value": "நன்றாக செய்கிறாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நன்றாக செய்கிறாய்"
+            "value": "బాగా చేస్తున్నావు"
           }
         },
         "th": {
@@ -15341,13 +15341,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ලස්සන දක්ෂතාවක්"
+            "value": "அருமையான ஆட்டம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அருமையான ஆட்டம்"
+            "value": "చక్కని ప్రదర్శన"
           }
         },
         "th": {
@@ -15808,13 +15808,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හොඳට කළා"
+            "value": "சிறப்பாக செய்தாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சிறப்பாக செய்தாய்"
+            "value": "బాగా చేశావు"
           }
         },
         "th": {
@@ -16275,13 +16275,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉතා හොඳට කළා"
+            "value": "மிகச் சிறப்பாக ஆடினாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மிகச் சிறப்பாக ஆடினாய்"
+            "value": "చాలా బాగా ఆడావు"
           }
         },
         "th": {
@@ -16742,13 +16742,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අවසානය පේනවා"
+            "value": "முடிவு நெருங்கிவிட்டது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முடிவு நெருங்கிவிட்டது"
+            "value": "ముగింపు దగ్గరలోనే"
           }
         },
         "th": {
@@ -17209,13 +17209,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තව ටිකයි"
+            "value": "இன்னும் கொஞ்சம்தான்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இன்னும் கொஞ்சம்தான்"
+            "value": "దాదాపు చేరుకున్నావు"
           }
         },
         "th": {
@@ -17676,13 +17676,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හැම ලකුණක්ම ඔබ උපයාගත්තා."
+            "value": "ஒவ்வொரு புள்ளியையும் பெற்றாய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு புள்ளியையும் பெற்றாய்."
+            "value": "ప్రతి పాయింట్ సంపాదించావు."
           }
         },
         "th": {
@@ -18143,13 +18143,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සම්පූර්ණයි!"
+            "value": "முடிந்தது!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முடிந்தது!"
+            "value": "పూర్తయింది!"
           }
         },
         "th": {
@@ -18610,13 +18610,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ක්‍රීඩාව අවසන්"
+            "value": "ஆட்டம் முடிந்தது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஆட்டம் முடிந்தது"
+            "value": "ఆట ముగిసింది"
           }
         },
         "th": {
@@ -19077,13 +19077,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රධාන මෙනුව"
+            "value": "முதன்மை மெனு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முதன்மை மெனு"
+            "value": "ప్రధాన మెనూ"
           }
         },
         "th": {
@@ -19544,13 +19544,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නැවත ක්‍රීඩා කරන්න"
+            "value": "மீண்டும் ஆடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மீண்டும் ஆடு"
+            "value": "మళ్లీ ఆడు"
           }
         },
         "th": {
@@ -20011,13 +20011,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉහළම ලකුණු"
+            "value": "அதிகபட்ச மதிப்பெண்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அதிகபட்ச மதிப்பெண்"
+            "value": "అత్యధిక స్కోరు"
           }
         },
         "th": {
@@ -20478,13 +20478,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රධාන මෙනුවට ආපසු"
+            "value": "முதன்மை மெனுவுக்குத் திரும்பு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முதன்மை மெனுவுக்குத் திரும்பு"
+            "value": "ప్రధాన మెనూకు వెళ్లు"
           }
         },
         "th": {
@@ -20945,13 +20945,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිගටම ක්‍රීඩා කරන්න"
+            "value": "தொடர்ந்து ஆடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர்ந்து ஆடு"
+            "value": "కొనసాగించు"
           }
         },
         "th": {
@@ -21412,13 +21412,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ %lld සිට ඉදිරියට යයි"
+            "value": "%lld இலிருந்து தொடர்வாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld இலிருந்து தொடர்வாய்"
+            "value": "%lld నుంచి కొనసాగిస్తావు"
           }
         },
         "th": {
@@ -21879,13 +21879,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උදව්ව ක්‍රියාත්මක නිසා නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. ඒ නිසා කුසලාන * සමඟ වෙනම ගණන් කරයි."
+            "value": "உதவி இயக்கப்பட்டதால் சரியான விடை பச்சை நிறத்தில் காட்டப்படும். அதனால் கோப்பைகள் * குறியுடன் தனியாக எண்ணப்படும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உதவி இயக்கப்பட்டதால் சரியான விடை பச்சை நிறத்தில் காட்டப்படும். அதனால் கோப்பைகள் * குறியுடன் தனியாக எண்ணப்படும்."
+            "value": "సహాయకుడు ఆన్‌లో ఉన్నందున సరైన జవాబు ఆకుపచ్చగా కనిపిస్తుంది. అందుకే ట్రోఫీలను *తో విడిగా లెక్కిస్తారు."
           }
         },
         "th": {
@@ -22346,13 +22346,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උදව්ව අක්‍රියයි"
+            "value": "உதவி நிறுத்தம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உதவி நிறுத்தம்"
+            "value": "సహాయకుడు ఆఫ్"
           }
         },
         "th": {
@@ -22813,13 +22813,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උදව්ව ක්‍රියාත්මකයි"
+            "value": "உதவி இயக்கம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உதவி இயக்கம்"
+            "value": "సహాయకుడు ఆన్"
           }
         },
         "th": {
@@ -23280,13 +23280,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේ මට්ටම ක්‍රියා කරන හැටි"
+            "value": "இந்த நிலை எப்படி இயங்கும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இந்த நிலை எப்படி இயங்கும்"
+            "value": "ఈ లెవల్ ఇలా పనిచేస్తుంది"
           }
         },
         "th": {
@@ -23747,13 +23747,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත අක්‍රියයි"
+            "value": "உயிர்கள் நிறுத்தம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உயிர்கள் நிறுத்தம்"
+            "value": "లైఫ్‌లు ఆఫ్"
           }
         },
         "th": {
@@ -24214,13 +24214,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත ක්‍රියාත්මකයි"
+            "value": "உயிர்கள் இயக்கம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உயிர்கள் இயக்கம்"
+            "value": "లైఫ్‌లు ఆన్"
           }
         },
         "th": {
@@ -24681,13 +24681,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබේ දැන් ලකුණු නවතයි."
+            "value": "உன் தற்போதைய மதிப்பெண் இடைநிறுத்தப்படும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உன் தற்போதைய மதிப்பெண் இடைநிறுத்தப்படும்."
+            "value": "నీ ప్రస్తుత స్కోరు నిలిపివేయబడుతుంది."
           }
         },
         "th": {
@@ -25160,7 +25160,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "క్షమించండి! బిగ్గరగా చదివే సదుపాయం ఇంకా మీ భాషలో అందుబాటులో లేదు."
+            "value": "క్షమించండి! చదివి వినిపించే సౌకర్యం నీ భాషలో ఇంకా అందుబాటులో లేదు."
           }
         },
         "th": {
@@ -25615,13 +25615,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මට්ටම අරඹන්න"
+            "value": "நிலையைத் தொடங்கு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நிலையைத் தொடங்கு"
+            "value": "లెవల్ ప్రారంభించు"
           }
         },
         "th": {
@@ -26082,13 +26082,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@%@ 1 සිට 12 දක්වා අංකයකින් ගුණ කරන්න."
+            "value": "%@%@ ஐ 1 முதல் 12 வரை உள்ள எண்ணால் பெருக்கு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@%@ ஐ 1 முதல் 12 வரை உள்ள எண்ணால் பெருக்கு."
+            "value": "%@%@ను 1 నుంచి 12 వరకు ఉన్న సంఖ్యతో గుణించు."
           }
         },
         "th": {
@@ -26549,13 +26549,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හෝ අඩු"
+            "value": "அல்லது குறைவு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அல்லது குறைவு"
+            "value": "లేదా తక్కువ"
           }
         },
         "th": {
@@ -27016,13 +27016,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉදිරියට යන්න ඕනෑම තැනක් තට්ටු කරන්න"
+            "value": "தொடர எங்கேயும் தட்டு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர எங்கேயும் தட்டு"
+            "value": "కొనసాగించడానికి ఎక్కడైనా తాకు"
           }
         },
         "th": {
@@ -27483,13 +27483,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අරඹන්න ඕනෑම තැනක් තට්ටු කරන්න"
+            "value": "தொடங்க எங்கேயும் தட்டு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடங்க எங்கேயும் தட்டு"
+            "value": "ప్రారంభించడానికి ఎక్కడైనా తాకు"
           }
         },
         "th": {
@@ -27950,13 +27950,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නිවැරදි පිළිතුරකට |1| කුසලානයක් උපයන්න, වැඩිම |%lld| දක්වා."
+            "value": "ஒவ்வொரு சரியான விடைக்கும் |1| கோப்பை பெறு; அதிகபட்சம் |%lld|."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு சரியான விடைக்கும் |1| கோப்பை பெறு; அதிகபட்சம் |%lld|."
+            "value": "ప్రతి సరైన జవాబుకు |1| ట్రోఫీ పొందు, గరిష్ఠంగా |%lld|."
           }
         },
         "th": {
@@ -28417,13 +28417,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත ඉවර වූ පසු තවත් කුසලාන උපයන්න බැහැ."
+            "value": "உன் உயிர்கள் தீர்ந்ததும் இனி கோப்பைகள் பெற முடியாது."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உன் உயிர்கள் தீர்ந்ததும் இனி கோப்பைகள் பெற முடியாது."
+            "value": "లైఫ్‌లు అయిపోయాక ట్రోఫీలు సంపాదించలేవు."
           }
         },
         "th": {
@@ -28884,13 +28884,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ලකුණු පුවරුවේ උපරිම කුසලාන ගණන ලැබුණා"
+            "value": "தரவரிசைக்கான அதிகபட்ச கோப்பைகள் கிடைத்துவிட்டன"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தரவரிசைக்கான அதிகபட்ச கோப்பைகள் கிடைத்துவிட்டன"
+            "value": "లీడర్‌బోర్డ్‌కు గరిష్ఠ ట్రోఫీలు చేరుకున్నాయి"
           }
         },
         "th": {
@@ -29351,13 +29351,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍ර මාදිලිය"
+            "value": "கலவை முறை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலவை முறை"
+            "value": "మిక్స్ మోడ్"
           }
         },
         "th": {
@@ -29818,13 +29818,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත ඉවර වූ පසු කුසලාන ගණන් නොවේ"
+            "value": "உயிர்கள் தீர்ந்ததும் கோப்பைகள் கணக்கில் சேராது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உயிர்கள் தீர்ந்ததும் கோப்பைகள் கணக்கில் சேராது"
+            "value": "లైఫ్‌లు అయిపోయాక ట్రోఫీలు లెక్కలోకి రావు"
           }
         },
         "th": {
@@ -30285,13 +30285,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කුසලාන ×2"
+            "value": "கோப்பைகள் ×2"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கோப்பைகள் ×2"
+            "value": "ట్రోఫీలు ×2"
           }
         },
         "th": {
@@ -30752,13 +30752,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පේළියට 5ක්!"
+            "value": "தொடர்ந்து 5!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர்ந்து 5!"
+            "value": "వరుసగా 5!"
           }
         },
         "th": {
@@ -31219,13 +31219,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉලක්ක කාලය"
+            "value": "இலக்கு காலம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இலக்கு காலம்"
+            "value": "లక్ష్య కాలం"
           }
         },
         "th": {
@@ -31686,13 +31686,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?"
+            "value": "ஒரு நாளில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரு நாளில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?"
+            "value": "రోజుకు ఎన్ని నిమిషాలు ఆడాలనుకుంటున్నావు?"
           }
         },
         "th": {
@@ -32153,13 +32153,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සතියකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?"
+            "value": "ஒரு வாரத்தில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரு வாரத்தில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?"
+            "value": "వారానికి ఎన్ని నిమిషాలు ఆడాలనుకుంటున్నావు?"
           }
         },
         "th": {
@@ -32620,13 +32620,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ක්‍රීඩා ඉලක්කය"
+            "value": "விளையாட்டு இலக்கு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விளையாட்டு இலக்கு"
+            "value": "ఆట లక్ష్యం"
           }
         },
         "th": {
@@ -33087,13 +33087,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා"
+            "value": "தினமும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினமும்"
+            "value": "రోజువారీ"
           }
         },
         "th": {
@@ -33554,13 +33554,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සතිපතා"
+            "value": "வாரமும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வாரமும்"
+            "value": "వారానికొకసారి"
           }
         },
         "th": {
@@ -34021,13 +34021,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම පමණයි"
+            "value": "கூட்டல் மட்டும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல் மட்டும்"
+            "value": "కూడిక మాత్రమే"
           }
         },
         "th": {
@@ -34488,13 +34488,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "බෙදීම පමණයි"
+            "value": "வகுத்தல் மட்டும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வகுத்தல் மட்டும்"
+            "value": "భాగహారం మాత్రమే"
           }
         },
         "th": {
@@ -34955,13 +34955,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගණන් වර්ග"
+            "value": "கணக்கு வகைகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கணக்கு வகைகள்"
+            "value": "లెక్కల రకాలు"
           }
         },
         "th": {
@@ -35422,13 +35422,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍ර ගණන්"
+            "value": "கலந்த கணக்குகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலந்த கணக்குகள்"
+            "value": "మిశ్రమ లెక్కలు"
           }
         },
         "th": {
@@ -35889,13 +35889,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රතිශත පමණයි"
+            "value": "சதவீதங்கள் மட்டும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சதவீதங்கள் மட்டும்"
+            "value": "శాతాలు మాత్రమే"
           }
         },
         "th": {
@@ -36356,13 +36356,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අඩු කිරීම පමණයි"
+            "value": "கழித்தல் மட்டும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கழித்தல் மட்டும்"
+            "value": "తీసివేత మాత్రమే"
           }
         },
         "th": {
@@ -36823,13 +36823,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගුණ කිරීම පමණයි"
+            "value": "பெருக்கல் மட்டும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பெருக்கல் மட்டும்"
+            "value": "గుణకారం మాత్రమే"
           }
         },
         "th": {
@@ -37290,13 +37290,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කොටස්"
+            "value": "பகுதிகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பகுதிகள்"
+            "value": "భాగాలు"
           }
         },
         "th": {
@@ -37757,13 +37757,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකක් සහ කොටස් කිහිපයක්"
+            "value": "ஒன்று அல்லது பல பகுதிகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒன்று அல்லது பல பகுதிகள்"
+            "value": "ఒకటి లేదా ఎక్కువ భాగాలు"
           }
         },
         "th": {
@@ -38224,13 +38224,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හැමවිටම එක කොටසක්"
+            "value": "எப்போதும் ஒரு பகுதி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "எப்போதும் ஒரு பகுதி"
+            "value": "ఎప్పుడూ ఒక భాగం"
           }
         },
         "th": {
@@ -38691,13 +38691,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිවෙළ"
+            "value": "வரிசை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வரிசை"
+            "value": "క్రమం"
           }
         },
         "th": {
@@ -39158,13 +39158,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පහළ මට්ටම් සමඟ මිශ්‍ර"
+            "value": "கீழ்நிலைகளுடன் கலவை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கீழ்நிலைகளுடன் கலவை"
+            "value": "తక్కువ లెవల్‌లతో కలిపి"
           }
         },
         "th": {
@@ -39625,13 +39625,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නියමිත පිළිවෙළ"
+            "value": "நிலையான வரிசை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நிலையான வரிசை"
+            "value": "స్థిర క్రమం"
           }
         },
         "th": {
@@ -40092,13 +40092,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දශම අංක සමඟ"
+            "value": "தசம எண்களுடன்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தசம எண்களுடன்"
+            "value": "దశాంశ సంఖ్యలతో"
           }
         },
         "th": {
@@ -40559,13 +40559,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වර්ගය"
+            "value": "வகை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வகை"
+            "value": "రకం"
           }
         },
         "th": {
@@ -41026,13 +41026,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දශම අංක නැතිව"
+            "value": "தசம எண்கள் இல்லாமல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தசம எண்கள் இல்லாமல்"
+            "value": "దశాంశ సంఖ్యలు లేకుండా"
           }
         },
         "th": {
@@ -41493,13 +41493,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අහඹු පිළිවෙළ"
+            "value": "சீரற்ற வரிசை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சீரற்ற வரிசை"
+            "value": "యాదృచ్ఛిక క్రమం"
           }
         },
         "th": {
@@ -41960,13 +41960,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම, බෙදීම සහ ප්‍රතිශත"
+            "value": "கூட்டல், கழித்தல், பெருக்கல், வகுத்தல் மற்றும் சதவீதங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல், பெருக்கல், வகுத்தல் மற்றும் சதவீதங்கள்"
+            "value": "కూడిక, తీసివేత, గుణకారం, భాగహారం, శాతాలు"
           }
         },
         "th": {
@@ -42427,13 +42427,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම සහ අඩු කිරීම"
+            "value": "கூட்டல் மற்றும் கழித்தல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல் மற்றும் கழித்தல்"
+            "value": "కూడిక మరియు తీసివేత"
           }
         },
         "th": {
@@ -42894,13 +42894,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම සහ බෙදීම"
+            "value": "கூட்டல், கழித்தல், பெருக்கல் மற்றும் வகுத்தல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல், பெருக்கல் மற்றும் வகுத்தல்"
+            "value": "కూడిక, తీసివేత, గుణకారం మరియు భాగహారం"
           }
         },
         "th": {
@@ -43361,13 +43361,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම සහ ගුණ කිරීම"
+            "value": "கூட்டல், கழித்தல் மற்றும் பெருக்கல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல் மற்றும் பெருக்கல்"
+            "value": "కూడిక, తీసివేత మరియు గుణకారం"
           }
         },
         "th": {
@@ -43828,13 +43828,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "භාෂාව තෝරන්න"
+            "value": "மொழியைத் தேர்ந்தெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மொழியைத் தேர்ந்தெடு"
+            "value": "భాషను ఎంచుకో"
           }
         },
         "th": {
@@ -44295,13 +44295,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත 3ක්"
+            "value": "3 உயிர்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "3 உயிர்கள்"
+            "value": "3 లైఫ్‌లు"
           }
         },
         "th": {
@@ -44762,13 +44762,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අසීමිත"
+            "value": "வரம்பில்லை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வரம்பில்லை"
+            "value": "అపరిమితం"
           }
         },
         "th": {
@@ -45229,13 +45229,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "චරිතය"
+            "value": "கதாபாத்திரம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கதாபாத்திரம்"
+            "value": "పాత్ర"
           }
         },
         "th": {
@@ -45696,13 +45696,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබේ චරිතය වෙනස් කිරීමට තට්ටු කරන්න; පිළිගැනීමේ තිරයෙන් නැවත අරඹන්න තත්පර දෙකක් ඔබාගෙන සිටින්න."
+            "value": "கதாபாத்திரத்தை மாற்றத் தட்டு; வரவேற்புத் திரையிலிருந்து மீண்டும் தொடங்க இரண்டு விநாடிகள் அழுத்திப் பிடி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கதாபாத்திரத்தை மாற்றத் தட்டு; வரவேற்புத் திரையிலிருந்து மீண்டும் தொடங்க இரண்டு விநாடிகள் அழுத்திப் பிடி."
+            "value": "పాత్రను మార్చడానికి తాకు; స్వాగత తెర నుంచి మళ్లీ మొదలుపెట్టడానికి రెండు సెకన్లు నొక్కి పట్టుకో."
           }
         },
         "th": {
@@ -46163,13 +46163,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ තෝරන්න"
+            "value": "%@ ஐத் தேர்ந்தெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ஐத் தேர்ந்தெடு"
+            "value": "%@ను ఎంచుకో"
           }
         },
         "th": {
@@ -46270,13 +46270,13 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الحد الأقصى"
+            "value": "أقصى"
           }
         },
         "hy": {
           "stringUnit": {
             "state": "translated",
-            "value": "ԱՌԱՎԵԼԱԳՈՒՅՆ"
+            "value": "Առավ."
           }
         },
         "as": {
@@ -46504,7 +46504,7 @@
         "ml": {
           "stringUnit": {
             "state": "translated",
-            "value": "പരമാവധി"
+            "value": "പരമം"
           }
         },
         "mr": {
@@ -46630,13 +46630,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උපරිම"
+            "value": "அதிகம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அதிகபட்சம்"
+            "value": "గరిష్ఠం"
           }
         },
         "th": {
@@ -46666,7 +46666,7 @@
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "زیادہ سے زیادہ"
+            "value": "زیادہ"
           }
         },
         "vi": {
@@ -47097,13 +47097,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උපරිමයට %lld වරක් ළඟා වුණා"
+            "value": "அதிகபட்சத்தை %lld முறை அடைந்தாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அதிகபட்சத்தை %lld முறை அடைந்தாய்"
+            "value": "గరిష్ఠాన్ని %lld సార్లు చేరుకున్నావు"
           }
         },
         "th": {
@@ -47564,13 +47564,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උපරිම 30"
+            "value": "அதிகபட்சம் 30"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அதிகபட்சம் 30"
+            "value": "గరిష్ఠం 30"
           }
         },
         "th": {
@@ -48031,13 +48031,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තවත් මට්ටම්"
+            "value": "மேலும் நிலைகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மேலும் நிலைகள்"
+            "value": "మరిన్ని లెవల్‌లు"
           }
         },
         "th": {
@@ -48498,13 +48498,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ක්‍රීඩා විකල්ප"
+            "value": "விளையாட்டு விருப்பங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விளையாட்டு விருப்பங்கள்"
+            "value": "ఆట ఎంపికలు"
           }
         },
         "th": {
@@ -48965,13 +48965,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම්"
+            "value": "பிரீமியம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியம்"
+            "value": "ప్రీమియం"
           }
         },
         "th": {
@@ -49432,13 +49432,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් ගුණන වගු"
+            "value": "பிரீமியம் வாய்ப்பாடுகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியம் வாய்ப்பாடுகள்"
+            "value": "ప్రీమియం ఎక్కాలు"
           }
         },
         "th": {
@@ -49899,13 +49899,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මෙතැනින් අරඹන්න"
+            "value": "இங்கே தொடங்கு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இங்கே தொடங்கு"
+            "value": "ఇక్కడ మొదలుపెట్టు"
           }
         },
         "th": {
@@ -51149,13 +51149,13 @@
               "one": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "කුසලාන %lldක්"
+                  "value": "%lld கோப்பை"
                 }
               },
               "other": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "කුසලාන %lldක්"
+                  "value": "%lld கோப்பைகள்"
                 }
               }
             }
@@ -51167,13 +51167,13 @@
               "one": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "%lld கோப்பை"
+                  "value": "%lld ట్రోఫీ"
                 }
               },
               "other": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "%lld கோப்பைகள்"
+                  "value": "%lld ట్రోఫీలు"
                 }
               }
             }
@@ -51757,13 +51757,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් සමඟ තවත් විවෘත කරන්න"
+            "value": "பிரீமியத்தில் மேலும் திற"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியத்தில் மேலும் திற"
+            "value": "ప్రీమియంతో మరిన్ని తెరువు"
           }
         },
         "th": {
@@ -52224,13 +52224,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කිහිපයක්"
+            "value": "பல"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பல"
+            "value": "ఎక్కువ భాగాలు"
           }
         },
         "th": {
@@ -52691,13 +52691,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකක්"
+            "value": "ஒன்று"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒன்று"
+            "value": "ఒక భాగం"
           }
         },
         "th": {
@@ -53158,13 +53158,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍ර"
+            "value": "கலவை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலவை"
+            "value": "మిక్స్"
           }
         },
         "th": {
@@ -53625,13 +53625,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍රිත"
+            "value": "கலந்தது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலந்தது"
+            "value": "కలిపినవి"
           }
         },
         "th": {
@@ -54092,13 +54092,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිවෙළ"
+            "value": "வரிசை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வரிசை"
+            "value": "క్రమం"
           }
         },
         "th": {
@@ -54559,13 +54559,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දශම"
+            "value": "தசமம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தசமம்"
+            "value": "దశాంశం"
           }
         },
         "th": {
@@ -55026,13 +55026,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පූර්ණ"
+            "value": "முழு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முழு"
+            "value": "పూర్ణం"
           }
         },
         "th": {
@@ -55493,13 +55493,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අහඹු"
+            "value": "சீரற்றது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சீரற்றது"
+            "value": "యాదృచ్ఛికం"
           }
         },
         "th": {
@@ -55960,13 +55960,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සාමාන්‍ය"
+            "value": "வழக்கமானது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வழக்கமானது"
+            "value": "సాధారణం"
           }
         },
         "th": {
@@ -56427,13 +56427,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම · %lld"
+            "value": "கூட்டல் · %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல் · %lld"
+            "value": "కూడిక · %lld"
           }
         },
         "th": {
@@ -56894,13 +56894,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අංක දෙක බැගින් එකතු කරන්න."
+            "value": "இரண்டு எண்களை தொடர்ந்து கூட்டு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இரண்டு எண்களை தொடர்ந்து கூட்டு."
+            "value": "రెండు సంఖ్యలను కలుపుతూ ఉండు."
           }
         },
         "th": {
@@ -57361,13 +57361,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිතුර වැඩිම %lldයි."
+            "value": "விடை அதிகபட்சம் %lld."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விடை அதிகபட்சம் %lld."
+            "value": "జవాబు గరిష్ఠంగా %lld."
           }
         },
         "th": {
@@ -57828,13 +57828,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld දක්වා එකතු කරන්න"
+            "value": "%lld வரை கூட்டல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld வரை கூட்டல்"
+            "value": "%lld వరకు కూడిక"
           }
         },
         "th": {
@@ -58295,13 +58295,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld සහ පෙර මට්ටම්වල වටකුරු අංකවල භාග ගණනය කරන්න."
+            "value": "%lld மற்றும் முந்தைய நிலைகளின் முழு பத்து எண்களில் பின்னங்களைக் கணக்கிடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld மற்றும் முந்தைய நிலைகளின் முழு பத்து எண்களில் பின்னங்களைக் கணக்கிடு."
+            "value": "%lldవ లెవల్ మరియు మునుపటి లెవల్‌ల గుండ్రని సంఖ్యల భిన్నాలను లెక్కించు."
           }
         },
         "th": {
@@ -58762,13 +58762,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අංක වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ."
+            "value": "எண்கள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "எண்கள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்."
+            "value": "సంఖ్యలు గుండ్రంగా ఉంటాయి, కాబట్టి జవాబులు పూర్ణసంఖ్యలే."
           }
         },
         "th": {
@@ -59229,13 +59229,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld දක්වා භාග"
+            "value": "%lld வரை பின்னங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld வரை பின்னங்கள்"
+            "value": "%lld వరకు భిన్నాలు"
           }
         },
         "th": {
@@ -59696,13 +59696,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "භාග · %lld"
+            "value": "பின்னங்கள் · %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பின்னங்கள் · %lld"
+            "value": "భిన్నాలు · %lld"
           }
         },
         "th": {
@@ -60163,13 +60163,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පූර්ණයක කොටසක් ගණනය කර භාග සමාන කරන්න."
+            "value": "ஒரு முழுவதின் பகுதியைக் கணக்கிட்டு, பின்னங்களைச் சமமாக்கு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரு முழுவதின் பகுதியைக் கணக்கிட்டு, பின்னங்களைச் சமமாக்கு."
+            "value": "మొత్తంలో ఒక భాగాన్ని లెక్కించి, భిన్నాలను సమానం చేయి."
           }
         },
         "th": {
@@ -60630,13 +60630,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකම හරය ඇති භාග එකතු කර අඩු කරන්න."
+            "value": "ஒரே பகா எண்ணுள்ள பின்னங்களைக் கூட்டவும் கழிக்கவும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரே பகா எண்ணுள்ள பின்னங்களைக் கூட்டவும் கழிக்கவும்."
+            "value": "ఒకే హారం ఉన్న భిన్నాలను కూడి, తీసివేయి."
           }
         },
         "th": {
@@ -61097,13 +61097,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍ර භාග"
+            "value": "கலந்த பின்னங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலந்த பின்னங்கள்"
+            "value": "మిశ్రమ భిన్నాలు"
           }
         },
         "th": {
@@ -61564,13 +61564,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld දක්වා වටකුරු අංකවල ප්‍රතිශත ගණනය කරන්න."
+            "value": "%lld வரை உள்ள முழு பத்து எண்களின் சதவீதங்களைக் கணக்கிடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld வரை உள்ள முழு பத்து எண்களின் சதவீதங்களைக் கணக்கிடு."
+            "value": "%lld వరకు గుండ్రని సంఖ్యల శాతాలను లెక్కించు."
           }
         },
         "th": {
@@ -62031,13 +62031,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රමාණ වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ."
+            "value": "அளவுகள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அளவுகள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்."
+            "value": "మొత్తాలు గుండ్రంగా ఉంటాయి, కాబట్టి జవాబులు పూర్ణసంఖ్యలే."
           }
         },
         "th": {
@@ -62498,13 +62498,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld දක්වා ප්‍රතිශත"
+            "value": "%lld வரை சதவீதங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld வரை சதவீதங்கள்"
+            "value": "%lld వరకు శాతాలు"
           }
         },
         "th": {
@@ -62965,13 +62965,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ගණනය කරන්න"
+            "value": "%@ கணக்கிடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ கணக்கிடு"
+            "value": "%@ లెక్కించు"
           }
         },
         "th": {
@@ -63432,13 +63432,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අංකයක ප්‍රතිශතයක් ගණනය කරන්න."
+            "value": "ஒரு எண்ணின் சதவீதத்தைக் கணக்கிடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரு எண்ணின் சதவீதத்தைக் கணக்கிடு."
+            "value": "ఒక సంఖ్యలోని శాతాన్ని లెక్కించు."
           }
         },
         "th": {
@@ -63899,13 +63899,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රතිශත සහ භාග එකිනෙකට හරවන්න."
+            "value": "சதவீதங்களையும் பின்னங்களையும் ஒன்றிலிருந்து மற்றொன்றாக மாற்று."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சதவீதங்களையும் பின்னங்களையும் ஒன்றிலிருந்து மற்றொன்றாக மாற்று."
+            "value": "శాతాలను భిన్నాలుగా, భిన్నాలను శాతాలుగా మార్చు."
           }
         },
         "th": {
@@ -64366,13 +64366,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිශ්‍ර ප්‍රතිශත"
+            "value": "கலந்த சதவீதங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கலந்த சதவீதங்கள்"
+            "value": "మిశ్రమ శాతాలు"
           }
         },
         "th": {
@@ -64833,13 +64833,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අඩු කිරීම · %lld"
+            "value": "கழித்தல் · %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கழித்தல் · %lld"
+            "value": "తీసివేత · %lld"
           }
         },
         "th": {
@@ -65300,13 +65300,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පළමු අංකය වැඩිම %lldයි."
+            "value": "முதல் எண் அதிகபட்சம் %lld."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முதல் எண் அதிகபட்சம் %lld."
+            "value": "మొదటి సంఖ్య గరిష్ఠంగా %lld."
           }
         },
         "th": {
@@ -65767,13 +65767,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිතුර බිංදුවට වඩා අඩු විය හැක."
+            "value": "விடை பூஜ்ஜியத்திற்குக் கீழே செல்லலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விடை பூஜ்ஜியத்திற்குக் கீழே செல்லலாம்."
+            "value": "జవాబు సున్నా కంటే తక్కువ కావచ్చు."
           }
         },
         "th": {
@@ -66234,13 +66234,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "බිංදුවට පහළ"
+            "value": "பூஜ்ஜியத்திற்குக் கீழே"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பூஜ்ஜியத்திற்குக் கீழே"
+            "value": "సున్నా కంటే తక్కువ"
           }
         },
         "th": {
@@ -66701,13 +66701,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld දක්වා අඩු කරන්න"
+            "value": "%lld வரை கழித்தல்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld வரை கழித்தல்"
+            "value": "%lld వరకు తీసివేత"
           }
         },
         "th": {
@@ -67168,13 +67168,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අංක දෙක බැගින් අඩු කරන්න."
+            "value": "இரண்டு எண்களை தொடர்ந்து கழி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இரண்டு எண்களை தொடர்ந்து கழி."
+            "value": "రెండు సంఖ్యలను తీసివేస్తూ ఉండు."
           }
         },
         "th": {
@@ -67635,13 +67635,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තෝරාගත් එක් එක් වර්ගයේ අපහසුතාව |මට්ටම %lld| දක්වා වැඩි විය හැක."
+            "value": "தேர்ந்தெடுத்த ஒவ்வொரு வகையிலும் கடினம் |நிலை %lld| வரை உயரலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தேர்ந்தெடுத்த ஒவ்வொரு வகையிலும் கடினம் |நிலை %lld| வரை உயரலாம்."
+            "value": "ఎంచుకున్న ప్రతి విభాగంలో కష్టం |లెవల్ %lld| వరకు పెరగవచ్చు."
           }
         },
         "th": {
@@ -68102,13 +68102,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම, ගුණන වගු, භාග සහ ප්‍රතිශත මිශ්‍රව පුහුණු වන්න."
+            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள், சதவீதங்கள் அனைத்தையும் கலந்து பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள், சதவீதங்கள் அனைத்தையும் கலந்து பயிற்சி செய்."
+            "value": "కూడిక, తీసివేత, ఎక్కాలు, భిన్నాలు, శాతాలను కలిపి సాధన చేయి."
           }
         },
         "th": {
@@ -68569,13 +68569,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුපිරි මිශ්‍රණය %lld"
+            "value": "சூப்பர் கலவை %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சூப்பர் கலவை %lld"
+            "value": "సూపర్‌మిక్స్ %lld"
           }
         },
         "th": {
@@ -69036,13 +69036,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම සහ අඩු කිරීම මිශ්‍රව පුහුණු වන්න."
+            "value": "கூட்டலையும் கழித்தலையும் கலந்து பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டலையும் கழித்தலையும் கலந்து பயிற்சி செய்."
+            "value": "కూడిక, తీసివేతలను కలిపి సాధన చేయి."
           }
         },
         "th": {
@@ -69503,13 +69503,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුපිරි මිශ්‍රණය %lld"
+            "value": "சூப்பர் கலவை %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சூப்பர் கலவை %lld"
+            "value": "సూపర్‌మిక్స్ %lld"
           }
         },
         "th": {
@@ -69970,13 +69970,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම, ගුණන වගු සහ භාග මිශ්‍රව පුහුණු වන්න."
+            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள் அனைத்தையும் கலந்து பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள் அனைத்தையும் கலந்து பயிற்சி செய்."
+            "value": "కూడిక, తీసివేత, ఎక్కాలు, భిన్నాలను కలిపి సాధన చేయి."
           }
         },
         "th": {
@@ -70437,13 +70437,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුපිරි මිශ්‍රණය %lld"
+            "value": "சூப்பர் கலவை %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சூப்பர் கலவை %lld"
+            "value": "సూపర్‌మిక్స్ %lld"
           }
         },
         "th": {
@@ -70904,13 +70904,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු කිරීම, අඩු කිරීම සහ ගුණන වගු මිශ්‍රව පුහුණු වන්න."
+            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள் அனைத்தையும் கலந்து பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல், கழித்தல், வாய்ப்பாடுகள் அனைத்தையும் கலந்து பயிற்சி செய்."
+            "value": "కూడిక, తీసివేత, ఎక్కాలను కలిపి సాధన చేయి."
           }
         },
         "th": {
@@ -71371,13 +71371,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සුපිරි මිශ්‍රණය %lld"
+            "value": "சூப்பர் கலவை %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சூப்பர் கலவை %lld"
+            "value": "సూపర్‌మిక్స్ %lld"
           }
         },
         "th": {
@@ -71838,13 +71838,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එක් එක් වගුව |1 සිට 12| දක්වා අංකයකින් ගුණ කරන්න."
+            "value": "ஒவ்வொரு வாய்ப்பாடும் |1 முதல் 12| வரை உள்ள எண்ணால் பெருக்கப்படும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு வாய்ப்பாடும் |1 முதல் 12| வரை உள்ள எண்ணால் பெருக்கப்படும்."
+            "value": "ప్రతి ఎక్కాన్ని |1 నుంచి 12| వరకు ఉన్న సంఖ్యతో గుణించు."
           }
         },
         "th": {
@@ -72305,13 +72305,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ගුණන වගුව"
+            "value": "%lld ஆம் வாய்ப்பாடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஆம் வாய்ப்பாடு"
+            "value": "%lldవ ఎక్కం"
           }
         },
         "th": {
@@ -72772,13 +72772,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld සිට %lld දක්වා ගුණන වගු මිශ්‍රව පුහුණු වන්න."
+            "value": "%lld முதல் %lld வரை வாய்ப்பாடுகளை கலந்து பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld முதல் %lld வரை வாய்ப்பாடுகளை கலந்து பயிற்சி செய்."
+            "value": "%lld నుంచి %lld వరకు ఎక్కాలను కలిపి సాధన చేయి."
           }
         },
         "th": {
@@ -73239,13 +73239,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගුණන වගු %lld-%lld"
+            "value": "வாய்ப்பாடுகள் %lld-%lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வாய்ப்பாடுகள் %lld-%lld"
+            "value": "ఎక్కాలు %lld-%lld"
           }
         },
         "th": {
@@ -73706,13 +73706,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබේ නම"
+            "value": "உன் பெயர்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உன் பெயர்"
+            "value": "నీ పేరు"
           }
         },
         "th": {
@@ -74173,13 +74173,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබේ නම මොකක්ද?"
+            "value": "உன் பெயர் என்ன?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உன் பெயர் என்ன?"
+            "value": "నీ పేరేంటి?"
           }
         },
         "th": {
@@ -74646,7 +74646,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@: ఈ జంతువును అన్‌లాక్ చేయడానికి మరికొన్ని ట్రోఫీలను సంపాదించండి! 🐼"
+            "value": "%@ను తెరవడానికి మరికొన్ని ట్రోఫీలు సంపాదించు! 🐼"
           }
         },
         "th": {
@@ -75113,7 +75113,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "కేవలం %lld ట్రోఫీలు మాత్రమే ఉన్నాయి! 🏆"
+            "value": "ఇంకా %lld ట్రోఫీలు మాత్రమే! 🏆"
           }
         },
         "th": {
@@ -75580,7 +75580,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీ జంతువులు వేచి ఉన్నాయి. ఆడటానికి తిరిగి రండి మరియు ట్రోఫీలను సేకరిస్తూ ఉండండి!"
+            "value": "నీ జంతువులు ఎదురుచూస్తున్నాయి. మళ్లీ వచ్చి ట్రోఫీలు సేకరిస్తూ ఉండు!"
           }
         },
         "th": {
@@ -76047,7 +76047,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మేము నిన్ను కోల్పోతున్నాము! 👋"
+            "value": "నువ్వు గుర్తొస్తున్నావు! 👋"
           }
         },
         "th": {
@@ -76508,13 +76508,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld நிமிட விளையாட்டு அமர்வைத் தொடங்கி, உங்கள் தினசரி விளையாட்டுத் தொடரை நீட்டிக்கவும்."
+            "value": "%lld నిమిషాల ప్లే సెషన్‌ను ప్రారంభించండి మరియు మీ రోజువారీ ఆటల పరంపరను పొడిగించండి."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld నిమిషాల ప్లే సెషన్‌ను ప్రారంభించండి మరియు మీ రోజువారీ ఆటల పరంపరను పొడిగించండి."
+            "value": "%lld నిమిషాల సెషన్ మొదలుపెట్టి నీ వరుసను పెంచు."
           }
         },
         "th": {
@@ -76981,7 +76981,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "3వ రోజు జరిగేలా చేద్దాం! ⭐"
+            "value": "మూడో రోజును పూర్తి చేద్దాం! ⭐"
           }
         },
         "th": {
@@ -77448,7 +77448,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "తప్పు సమాధానాన్ని దాటవేయడానికి మరియు ఎక్కడం కొనసాగించడానికి జంప్ ప్యాడ్‌ని ఉపయోగించండి!"
+            "value": "తప్పు జవాబును దాటవేసి పైకి ఎక్కడానికి జంప్ ప్యాడ్ వాడు!"
           }
         },
         "th": {
@@ -77915,7 +77915,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "తప్పు సమాధానాలను దాటవేయండి! 🚀"
+            "value": "తప్పు జవాబులను దాటి దూకు! 🚀"
           }
         },
         "th": {
@@ -78382,7 +78382,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "జంపింగ్ ఫాక్స్ ప్రీమియం ప్రతి అంశానికి మరియు మొత్తం 10 జంతువులకు %lld స్థాయిలను కలిగి ఉంటుంది. సాహసం కొనసాగుతుంది!"
+            "value": "ప్రతి అంశానికి %lld లెవల్‌లు, మొత్తం 10 జంతువుల కోసం ప్రీమియం తీసుకో — సాహసం కొనసాగుతుంది."
           }
         },
         "th": {
@@ -78849,7 +78849,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మరిన్ని స్థాయిలు మరియు జంతువులను అన్‌లాక్ చేయండి! 🌈"
+            "value": "మరిన్ని లెవల్‌లు, జంతువులను తెరువు! 🌈"
           }
         },
         "th": {
@@ -79310,13 +79310,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld நாட்கள் ஆகிவிட்டது. சில கணிதப் பயிற்சிகளைத் தீர்த்து, மேலும் கோப்பைகளைப் பெறுவோம்!"
+            "value": "%lld రోజులైంది. కొన్ని గణిత వ్యాయామాలను పరిష్కరించండి మరియు మరిన్ని ట్రోఫీలను సంపాదిద్దాం!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld రోజులైంది. కొన్ని గణిత వ్యాయామాలను పరిష్కరించండి మరియు మరిన్ని ట్రోఫీలను సంపాదిద్దాం!"
+            "value": "%lld రోజులైంది. కొన్ని లెక్కలు చేసి మరిన్ని ట్రోఫీలు సంపాదిద్దాం!"
           }
         },
         "th": {
@@ -79783,7 +79783,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మళ్లీ ఆడేందుకు సిద్ధంగా ఉన్నారా? 🎮"
+            "value": "మళ్లీ ఆడటానికి సిద్ధమా? 🎮"
           }
         },
         "th": {
@@ -80244,13 +80244,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld நிமிடங்கள் விளையாடுங்கள் மற்றும் உங்கள் தினசரி விளையாட்டை தொடருங்கள்!"
+            "value": "%lld నిమిషాలు ఆడండి మరియు మీ రోజువారీ ఆటతీరును కొనసాగించండి!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld నిమిషాలు ఆడండి మరియు మీ రోజువారీ ఆటతీరును కొనసాగించండి!"
+            "value": "%lld నిమిషాలు ఆడి వరుసను కొనసాగించు!"
           }
         },
         "th": {
@@ -80717,7 +80717,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీ రోజువారీ ఆటల పరంపర %lld రోజులకు చేరుకుంది! 🔥"
+            "value": "నీ %lld రోజుల వరుస దూసుకుపోతోంది! 🔥"
           }
         },
         "th": {
@@ -81184,7 +81184,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "గొప్ప పని!%lld నిమిషాలు ఆడి ఇంకా ఎక్కువ సేకరిద్దాం."
+            "value": "బాగా చేశావు! %lld నిమిషాలు ఆడి ఇంకా ఎక్కువ సేకరిద్దాం."
           }
         },
         "th": {
@@ -81651,7 +81651,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీరు %lld ట్రోఫీలు సంపాదించారు! 🏆"
+            "value": "నువ్వు %lld ట్రోఫీలు సంపాదించావు! 🏆"
           }
         },
         "th": {
@@ -82118,7 +82118,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "అది మీ మొత్తం %lld ట్రోఫీలకు చేరుకుంటుంది. అద్భుతమైన పని!"
+            "value": "దీంతో నీ మొత్తం %lld ట్రోఫీలకు చేరింది. అద్భుతం!"
           }
         },
         "th": {
@@ -82585,7 +82585,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీరు ఈ వారం %lld ట్రోఫీలు సంపాదించారు! 🌟"
+            "value": "ఈ వారం నువ్వు %lld ట్రోఫీలు సంపాదించావు! 🌟"
           }
         },
         "th": {
@@ -83046,13 +83046,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "විවිධ මිශ්‍ර ගණන් එකට."
+            "value": "விதவிதமான கலவைக் கணக்குகள் ஒன்றாக."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விதவிதமான கலவைக் கணக்குகள் ஒன்றாக."
+            "value": "వేర్వేరు మిక్స్ లెక్కలు కలిపి."
           }
         },
         "th": {
@@ -83513,13 +83513,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දැනටමත් හොඳයි"
+            "value": "ஏற்கனவே நன்றாக செய்கிறாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஏற்கனவே நன்றாக செய்கிறாய்"
+            "value": "ఇప్పటికే బాగానే వచ్చు"
           }
         },
         "th": {
@@ -83980,13 +83980,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිවෙළට ගණන් පුහුණු වන්න."
+            "value": "வரிசையான கணக்குகளுடன் பயிற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வரிசையான கணக்குகளுடன் பயிற்சி செய்."
+            "value": "లెక్కలను క్రమంగా సాధన చేయి."
           }
         },
         "th": {
@@ -84447,13 +84447,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දැන් පටන් ගත්තා"
+            "value": "இப்போதுதான் தொடங்கினாய்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இப்போதுதான் தொடங்கினாய்"
+            "value": "ఇప్పుడే మొదలు"
           }
         },
         "th": {
@@ -84914,13 +84914,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අහඹු පිළිවෙළේ ගණන්."
+            "value": "சீரற்ற வரிசையில் கணக்குகள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சீரற்ற வரிசையில் கணக்குகள்."
+            "value": "యాదృచ్ఛిక క్రమంలో లెక్కలు."
           }
         },
         "th": {
@@ -85381,13 +85381,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ටිකක් පුහුණු වෙලා"
+            "value": "ஏற்கனவே கொஞ்சம் பயிற்சி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஏற்கனவே கொஞ்சம் பயிற்சி"
+            "value": "కొంత సాధన చేశావు"
           }
         },
         "th": {
@@ -85848,13 +85848,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ සඳහා ආරම්භක තැනක් තෝරන්න."
+            "value": "%@ க்கான தொடக்க இடத்தைத் தேர்ந்தெடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ க்கான தொடக்க இடத்தைத் தேர்ந்தெடு."
+            "value": "%@ కోసం ప్రారంభ స్థాయిని ఎంచుకో."
           }
         },
         "th": {
@@ -86315,13 +86315,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේ මාතෘකාව"
+            "value": "இந்தத் தலைப்பு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இந்தத் தலைப்பு"
+            "value": "ఈ అంశం"
           }
         },
         "th": {
@@ -86782,13 +86782,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේක දැනටමත් කොච්චර හොඳට පුළුවන්ද?"
+            "value": "இதில் உனக்கு ஏற்கனவே எவ்வளவு தெரியும்?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இதில் உனக்கு ஏற்கனவே எவ்வளவு தெரியும்?"
+            "value": "ఇది నీకు ఇప్పటికే ఎంత బాగా వచ్చు?"
           }
         },
         "th": {
@@ -87249,13 +87249,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අපි පටන් ගමු. ඔබේ නම මොකක්ද?"
+            "value": "தொடங்கலாம். உன் பெயர் என்ன?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடங்கலாம். உன் பெயர் என்ன?"
+            "value": "మొదలుపెడదాం. నీ పేరేంటి?"
           }
         },
         "th": {
@@ -87716,13 +87716,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ගණන් හදන එක මෙතරම් විනෝද වෙලා නැහැ!"
+            "value": "கணக்குப் போடுவது இவ்வளவு வேடிக்கையாக இருந்ததே இல்லை!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கணக்குப் போடுவது இவ்வளவு வேடிக்கையாக இருந்ததே இல்லை!"
+            "value": "లెక్కలు చేయడం ఇంత సరదాగా ఎప్పుడూ లేదు!"
           }
         },
         "th": {
@@ -88183,13 +88183,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පටන් ගන්න මාතෘකාවක් තෝරන්න."
+            "value": "தொடங்க ஒரு தலைப்பைத் தேர்ந்தெடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடங்க ஒரு தலைப்பைத் தேர்ந்தெடு."
+            "value": "మొదలుపెట్టడానికి ఒక అంశాన్ని ఎంచుకో."
           }
         },
         "th": {
@@ -88650,13 +88650,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ ඉගෙනගන්න කැමති මොනවාද?"
+            "value": "நீ என்ன கற்க விரும்புகிறாய்?"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நீ என்ன கற்க விரும்புகிறாய்?"
+            "value": "నువ్వు ఏం నేర్చుకోవాలనుకుంటున్నావు?"
           }
         },
         "th": {
@@ -89117,13 +89117,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එක් එක් මට්ටමේ කුසලාන ඉලක්කය 50 දක්වා වේ. මෙය ක්‍රියාත්මක නම් ඉලක්කයට ළඟා වූ විට ක්‍රීඩාව ස්වයංක්‍රීයව අවසන් වේ."
+            "value": "ஒவ்வொரு நிலைக்கும் அதிகபட்சம் 50 கோப்பைகள் இலக்கு. இது இயக்கப்பட்டால், இலக்கை அடைந்ததும் விளையாட்டு தானாக முடியும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு நிலைக்கும் அதிகபட்சம் 50 கோப்பைகள் இலக்கு. இது இயக்கப்பட்டால், இலக்கை அடைந்ததும் விளையாட்டு தானாக முடியும்."
+            "value": "ప్రతి లెవల్‌లో గరిష్ఠంగా 50 ట్రోఫీల లక్ష్యం ఉంటుంది. ఈ ఎంపిక ఆన్‌లో ఉంటే, లక్ష్యాన్ని చేరగానే ఆట ముగుస్తుంది."
           }
         },
         "th": {
@@ -89584,13 +89584,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉලක්කයේදී අවසන් කරන්න"
+            "value": "இலக்கில் முடி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இலக்கில் முடி"
+            "value": "లక్ష్యం వద్ద ముగించు"
           }
         },
         "th": {
@@ -90051,13 +90051,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උදව් මාදිලියේ නිවැරදි පිළිතුර හැමවිටම කොළ පාටින් පෙන්වයි. මෙහි උපයන කුසලාන වෙනම ගණන් කර තරුවකින් සලකුණු කරයි."
+            "value": "உதவி முறையில் சரியான விடை எப்போதும் பச்சை நிறத்தில் காட்டப்படும். இதில் கிடைக்கும் கோப்பைகள் தனியாக எண்ணப்பட்டு நட்சத்திரக் குறியுடன் காட்டப்படும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உதவி முறையில் சரியான விடை எப்போதும் பச்சை நிறத்தில் காட்டப்படும். இதில் கிடைக்கும் கோப்பைகள் தனியாக எண்ணப்பட்டு நட்சத்திரக் குறியுடன் காட்டப்படும்."
+            "value": "సహాయక మోడ్‌లో సరైన జవాబు ఎప్పుడూ ఆకుపచ్చగా కనిపిస్తుంది. ఈ మోడ్‌లో పొందిన ట్రోఫీలను విడిగా లెక్కించి నక్షత్రంతో గుర్తిస్తారు."
           }
         },
         "th": {
@@ -90518,13 +90518,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උදව් මාදිලිය"
+            "value": "உதவி முறை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உதவி முறை"
+            "value": "సహాయక మోడ్"
           }
         },
         "th": {
@@ -90985,13 +90985,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම ජීවිත 3කින් පටන් ගනී. ජීවිත ඉවර වූ විට ක්‍රීඩාව අවසන් වේ. ජීවිත ඉවර වූ පසුත් ක්‍රීඩා කර පුහුණු වීමට මෙය ක්‍රියාත්මක කරන්න."
+            "value": "நீ எப்போதும் 3 உயிர்களுடன் தொடங்குவாய். உயிர்கள் தீர்ந்ததும் விளையாட்டு முடியும். உயிர்கள் தீர்ந்த பிறகும் தொடர்ந்து விளையாடிப் பயிற்சி செய்ய இதை இயக்கு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நீ எப்போதும் 3 உயிர்களுடன் தொடங்குவாய். உயிர்கள் தீர்ந்ததும் விளையாட்டு முடியும். உயிர்கள் தீர்ந்த பிறகும் தொடர்ந்து விளையாடிப் பயிற்சி செய்ய இதை இயக்கு."
+            "value": "నువ్వు ఎప్పుడూ 3 లైఫ్‌లతో మొదలుపెడతావు. లైఫ్‌లు అయిపోతే ఆట ముగుస్తుంది. లైఫ్‌లు అయిపోయాక కూడా ఆడి సాధన చేయడానికి దీన్ని ఆన్ చేయి."
           }
         },
         "th": {
@@ -91452,13 +91452,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අසීමිත ජීවිත"
+            "value": "வரம்பில்லா உயிர்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வரம்பில்லா உயிர்கள்"
+            "value": "అపరిమిత లైఫ్‌లు"
           }
         },
         "th": {
@@ -91919,13 +91919,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අනුමතයි"
+            "value": "அங்கீகரிக்கப்பட்டது"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அங்கீகரிக்கப்பட்டது"
+            "value": "ఆమోదించబడింది"
           }
         },
         "th": {
@@ -92386,13 +92386,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "උත්සාහ: %1$lld න් %2$lld"
+            "value": "முயற்சிகள்: %1$lld / %2$lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முயற்சிகள்: %1$lld / %2$lld"
+            "value": "ప్రయత్నాలు: %1$lldలో %2$lld"
           }
         },
         "th": {
@@ -92853,13 +92853,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ තත්පර %lldක් ඔබාගෙන සිටින්න."
+            "value": "%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும்."
+            "value": "%@ను %lld సెకన్లు నొక్కి పట్టుకోండి."
           }
         },
         "th": {
@@ -93320,13 +93320,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබාගෙන සිටින්න: %lld"
+            "value": "பிடி: %lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிடி: %lld"
+            "value": "పట్టుకోండి: %lld"
           }
         },
         "th": {
@@ -93787,13 +93787,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ තත්පර %lldක් ඔබාගෙන සිටින්න. ඉන්පසු %@ %lld වරක් තට්ටු කරන්න."
+            "value": "%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும். பிறகு %@ ஐ %lld முறை தட்டவும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும். பிறகு %@ ஐ %lld முறை தட்டவும்."
+            "value": "%@ను %lld సెకన్లు నొక్కి పట్టుకోండి. తర్వాత %@ను %lld సార్లు తాకండి."
           }
         },
         "th": {
@@ -94254,13 +94254,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වෘත්තය"
+            "value": "வட்டம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வட்டம்"
+            "value": "వృత్తం"
           }
         },
         "th": {
@@ -94721,13 +94721,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දියමන්තිය"
+            "value": "வைரம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வைரம்"
+            "value": "వజ్రం"
           }
         },
         "th": {
@@ -95188,13 +95188,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හදවත"
+            "value": "இதயம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இதயம்"
+            "value": "గుండె"
           }
         },
         "th": {
@@ -95655,13 +95655,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ෂඩාස්‍රය"
+            "value": "அறுகோணம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அறுகோணம்"
+            "value": "షడ్భుజి"
           }
         },
         "th": {
@@ -96122,13 +96122,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එකතු ලකුණ"
+            "value": "கூட்டல் குறி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கூட்டல் குறி"
+            "value": "ప్లస్"
           }
         },
         "th": {
@@ -96589,13 +96589,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "චතුරස්‍රය"
+            "value": "சதுரம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சதுரம்"
+            "value": "చతురస్రం"
           }
         },
         "th": {
@@ -97056,13 +97056,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තරුව"
+            "value": "நட்சத்திரம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நட்சத்திரம்"
+            "value": "నక్షత్రం"
           }
         },
         "th": {
@@ -97523,13 +97523,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ත්‍රිකෝණය"
+            "value": "முக்கோணம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "முக்கோணம்"
+            "value": "త్రిభుజం"
           }
         },
         "th": {
@@ -97990,13 +97990,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පියවර 1 / 2"
+            "value": "2 இல் படி 1"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "2 இல் படி 1"
+            "value": "2లో 1వ దశ"
           }
         },
         "th": {
@@ -98457,13 +98457,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පියවර 2 / 2"
+            "value": "2 இல் படி 2"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "2 இல் படி 2"
+            "value": "2లో 2వ దశ"
           }
         },
         "th": {
@@ -98924,13 +98924,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කුඩා ක්‍රීඩකයන් ආරක්ෂා කිරීමට, මිලදී ගැනීමට පෙර වැඩිහිටියෙකු මේ පරීක්ෂාව සම්පූර්ණ කළ යුතුය."
+            "value": "இளம் வீரர்களைப் பாதுகாக்க, வாங்குவதற்கு முன் ஒரு பெரியவர் இந்தச் சரிபார்ப்பை முடிக்க வேண்டும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இளம் வீரர்களைப் பாதுகாக்க, வாங்குவதற்கு முன் ஒரு பெரியவர் இந்தச் சரிபார்ப்பை முடிக்க வேண்டும்."
+            "value": "చిన్నారులను రక్షించడానికి, కొనుగోలుకు వెళ్లే ముందు ఒక పెద్దవారు ఈ తనిఖీని పూర్తి చేయాలి."
           }
         },
         "th": {
@@ -99391,13 +99391,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දැන් %2$@ %1$lld වරක් තට්ටු කරන්න."
+            "value": "இப்போது %2$@ ஐ %1$lld முறை தட்டவும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இப்போது %2$@ ஐ %1$lld முறை தட்டவும்."
+            "value": "ఇప్పుడు %2$@ను %1$lld సార్లు తాకండి."
           }
         },
         "th": {
@@ -99858,13 +99858,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තට්ටු: %1$lld න් %2$lld"
+            "value": "தட்டல்கள்: %1$lld / %2$lld"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தட்டல்கள்: %1$lld / %2$lld"
+            "value": "తాకినవి: %1$lldలో %2$lld"
           }
         },
         "th": {
@@ -100325,13 +100325,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වැඩිහිටි අනුමැතිය අවශ්‍යයි"
+            "value": "பெரியவர் அனுமதி தேவை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பெரியவர் அனுமதி தேவை"
+            "value": "పెద్దవారి ఆమోదం అవసరం"
           }
         },
         "th": {
@@ -100792,13 +100792,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් සමඟ සතුන් 10 දෙනාම නිදහසේ භාවිතා කළ හැක."
+            "value": "பிரீமியத்தில் 10 விலங்குகளுடனும் சுதந்திரமாக விளையாடலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியத்தில் 10 விலங்குகளுடனும் சுதந்திரமாக விளையாடலாம்."
+            "value": "ప్రీమియంతో మొత్తం 10 జంతువులతో స్వేచ్ఛగా ఆడవచ్చు."
           }
         },
         "th": {
@@ -101259,13 +101259,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සියලු සතුන්ට ප්‍රවේශය"
+            "value": "எல்லா விலங்குகளும் கிடைக்கும்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "எல்லா விலங்குகளும் கிடைக்கும்"
+            "value": "అన్ని జంతువులు అందుబాటులో"
           }
         },
         "th": {
@@ -101726,13 +101726,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පුහුණු වීමට හැමවිටම අලුත් ගණන් ඇති තරම්."
+            "value": "பயிற்சிக்கு எப்போதும் புதிய கணக்குகள் இருக்கும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பயிற்சிக்கு எப்போதும் புதிய கணக்குகள் இருக்கும்."
+            "value": "సాధనకు ఎప్పుడూ కొత్త లెక్కలు ఉంటాయి."
           }
         },
         "th": {
@@ -102193,13 +102193,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මාතෘකාවකට මට්ටම් 99ක්"
+            "value": "ஒவ்வொரு தலைப்பிலும் 99 நிலைகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு தலைப்பிலும் 99 நிலைகள்"
+            "value": "ప్రతి అంశానికి 99 లెవల్‌లు"
           }
         },
         "th": {
@@ -102660,13 +102660,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කිසිදු බාධාවක් නැතිව ක්‍රීඩා කරන්න."
+            "value": "இடையூறு இல்லாமல் விளையாடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இடையூறு இல்லாமல் விளையாடு."
+            "value": "ఎలాంటి అంతరాయం లేకుండా ఆడు."
           }
         },
         "th": {
@@ -103127,13 +103127,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දැන්වීම් නැහැ"
+            "value": "விளம்பரங்கள் இல்லை"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விளம்பரங்கள் இல்லை"
+            "value": "ప్రకటనలు లేవు"
           }
         },
         "th": {
@@ -103594,13 +103594,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එක් වරක් ගන්න. සදහටම ඔබේ."
+            "value": "ஒருமுறை வாங்கினால் என்றென்றும் உன்னுடையது."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒருமுறை வாங்கினால் என்றென்றும் உன்னுடையது."
+            "value": "ఒక్కసారి కొనండి. ఎప్పటికీ మీదే."
           }
         },
         "th": {
@@ -104061,13 +104061,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මිලදී ගැනීම් ප්‍රතිස්ථාපනය කරන්න"
+            "value": "வாங்கியவற்றை மீட்டெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "வாங்கியவற்றை மீட்டெடு"
+            "value": "కొనుగోళ్లను పునరుద్ధరించు"
           }
         },
         "th": {
@@ -104528,13 +104528,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වෙළඳසැල දැන් ලබාගත නොහැක. පසුව නැවත උත්සාහ කරන්න."
+            "value": "கடை இப்போது கிடைக்கவில்லை. பிறகு மீண்டும் முயற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கடை இப்போது கிடைக்கவில்லை. பிறகு மீண்டும் முயற்சி செய்."
+            "value": "స్టోర్ ఇప్పుడు అందుబాటులో లేదు. తర్వాత మళ్లీ ప్రయత్నించండి."
           }
         },
         "th": {
@@ -104995,13 +104995,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් විවෘත කරන්න"
+            "value": "பிரீமியத்தைத் திற"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியத்தைத் திற"
+            "value": "ప్రీమియం తెరువు"
           }
         },
         "th": {
@@ -105462,13 +105462,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් විවෘත කරන්න · %@"
+            "value": "பிரீமியத்தைத் திற · %@"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியத்தைத் திற · %@"
+            "value": "ప్రీమియం తెరువు · %@"
           }
         },
         "th": {
@@ -105929,13 +105929,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ප්‍රීමියම් තියෙනවා!"
+            "value": "உனக்கு பிரீமியம் உள்ளது!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உனக்கு பிரீமியம் உள்ளது!"
+            "value": "నీకు ప్రీమియం ఉంది!"
           }
         },
         "th": {
@@ -106396,13 +106396,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "චරිතය"
+            "value": "கதாபாத்திரம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கதாபாத்திரம்"
+            "value": "పాత్ర"
           }
         },
         "th": {
@@ -106863,13 +106863,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සෑම සතෙකුම මුළු ක්‍රීඩාවටම තමන්ගේම වර්ණ තේමාවක් දෙයි."
+            "value": "ஒவ்வொரு விலங்கும் முழு விளையாட்டிற்கும் தனித்த நிறத் தோற்றத்தைத் தரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒவ்வொரு விலங்கும் முழு விளையாட்டிற்கும் தனித்த நிறத் தோற்றத்தைத் தரும்."
+            "value": "ప్రతి జంతువు ఆట మొత్తానికి తనదైన రంగుల రూపాన్ని ఇస్తుంది."
           }
         },
         "th": {
@@ -107330,13 +107330,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අභිරුචි: මිනි %lld"
+            "value": "தனிப்பயன்: %lld நிமி"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தனிப்பயன்: %lld நிமி"
+            "value": "అనుకూలం: %lld నిమి"
           }
         },
         "th": {
@@ -107797,13 +107797,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා ඉලක්කය"
+            "value": "தினசரி இலக்கு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினசரி இலக்கு"
+            "value": "రోజువారీ లక్ష్యం"
           }
         },
         "th": {
@@ -108264,13 +108264,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "අඛණ්ඩ ඉලක්කය දිනකට මිනිත්තු 5කින් පටන් ගනී. ක්‍රියාකාරී ක්‍රීඩා කාලය පමණක් ගණන් වේ."
+            "value": "தொடர் இலக்கு நாளுக்கு 5 நிமிடங்களில் தொடங்கும். விளையாடிய நேரம் மட்டும் கணக்காகும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தொடர் இலக்கு நாளுக்கு 5 நிமிடங்களில் தொடங்கும். விளையாடிய நேரம் மட்டும் கணக்காகும்."
+            "value": "వరుస లక్ష్యం రోజుకు 5 నిమిషాల నుంచి మొదలవుతుంది. చురుకుగా ఆడిన సమయం మాత్రమే లెక్కలోకి వస్తుంది."
           }
         },
         "th": {
@@ -108731,13 +108731,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත"
+            "value": "உயிர்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உயிர்கள்"
+            "value": "లైఫ్‌లు"
           }
         },
         "th": {
@@ -109198,13 +109198,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත තුනක් තිබේ නම් අවසාන හදවතෙන් පසු ක්‍රීඩාව අවසන් වේ. අසීමිත මාදිලියේ ජීවිත තිබෙන තුරු පමණක් කුසලාන ගණන් වේ; ඉන්පසුත් ක්‍රීඩා කළ හැක."
+            "value": "மூன்று உயிர்கள் முறையில் கடைசி இதயம் போனதும் விளையாட்டு முடியும். வரம்பில்லா முறையில் உயிர்கள் இருக்கும் வரை மட்டுமே கோப்பைகள் கணக்காகும்; பிறகும் தொடர்ந்து விளையாடலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மூன்று உயிர்கள் முறையில் கடைசி இதயம் போனதும் விளையாட்டு முடியும். வரம்பில்லா முறையில் உயிர்கள் இருக்கும் வரை மட்டுமே கோப்பைகள் கணக்காகும்; பிறகும் தொடர்ந்து விளையாடலாம்."
+            "value": "మూడు లైఫ్‌లతో చివరి గుండె పోగానే ఆట ముగుస్తుంది. అపరిమిత మోడ్‌లో లైఫ్‌లు ఉన్నంతవరకే ట్రోఫీలు లెక్కలోకి వస్తాయి; తర్వాత కూడా ఆడవచ్చు."
           }
         },
         "th": {
@@ -109665,13 +109665,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ක්‍රීඩා ඉලක්ක"
+            "value": "விளையாட்டு இலக்குகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விளையாட்டு இலக்குகள்"
+            "value": "ఆట లక్ష్యాలు"
           }
         },
         "th": {
@@ -110132,13 +110132,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ප්‍රීමියම් විවෘතයි. ස්තුතියි!"
+            "value": "பிரீமியம் திறக்கப்பட்டது. நன்றி!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "பிரீமியம் திறக்கப்பட்டது. நன்றி!"
+            "value": "ప్రీమియం తెరుచుకుంది. ధన్యవాదాలు!"
           }
         },
         "th": {
@@ -110599,13 +110599,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සැකසුම්"
+            "value": "அமைப்புகள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "அமைப்புகள்"
+            "value": "సెట్టింగ్‌లు"
           }
         },
         "th": {
@@ -111066,13 +111066,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා ඉලක්කයක් තෝරන්න"
+            "value": "தினசரி இலக்கைத் தேர்ந்தெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினசரி இலக்கைத் தேர்ந்தெடு"
+            "value": "రోజువారీ లక్ష్యాన్ని ఎంచుకో"
           }
         },
         "th": {
@@ -111533,13 +111533,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා හෝ සතිපතා ඉලක්කයක් තෝරන්න"
+            "value": "தினசரி அல்லது வார இலக்கைத் தேர்ந்தெடு"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினசரி அல்லது வார இலக்கைத் தேர்ந்தெடு"
+            "value": "రోజువారీ లేదా వారపు లక్ష్యాన్ని ఎంచుకో"
           }
         },
         "th": {
@@ -112000,13 +112000,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@, මිනිත්තු %2$lld / %3$lld, දින %4$lldක් පේළියට"
+            "value": "%1$@, %3$lld நிமிடங்களில் %2$lld, தொடர்ந்து %4$lld நாட்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@, %3$lld நிமிடங்களில் %2$lld, தொடர்ந்து %4$lld நாட்கள்"
+            "value": "%1$@, %3$lld నిమిషాల్లో %2$lld, వరుసగా %4$lld రోజులు"
           }
         },
         "th": {
@@ -112467,13 +112467,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා අඛණ්ඩය, මිනිත්තු %lld / %lld"
+            "value": "தினசரி தொடர், %lld / %lld நிமிடங்கள்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினசரி தொடர், %lld / %lld நிமிடங்கள்"
+            "value": "రోజువారీ వరుస, %lld నిమిషాల్లో %lld"
           }
         },
         "th": {
@@ -112934,13 +112934,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දිනපතා අඛණ්ඩය"
+            "value": "தினசரி தொடர்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தினசரி தொடர்"
+            "value": "రోజువారీ వరుస"
           }
         },
         "th": {
@@ -113401,13 +113401,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "දින 1"
+            "value": "நாள் 1"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "நாள் 1"
+            "value": "1వ రోజు"
           }
         },
         "th": {
@@ -114651,13 +114651,13 @@
               "one": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "දින %lldක් පේළියට"
+                  "value": "தொடர்ந்து %lld நாள்"
                 }
               },
               "other": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "දින %lldක් පේළියට"
+                  "value": "தொடர்ந்து %lld நாட்கள்"
                 }
               }
             }
@@ -114669,13 +114669,13 @@
               "one": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "தொடர்ந்து %lld நாள்"
+                  "value": "వరుసగా %lld రోజు"
                 }
               },
               "other": {
                 "stringUnit": {
                   "state": "translated",
-                  "value": "தொடர்ந்து %lld நாட்கள்"
+                  "value": "వరుసగా %lld రోజులు"
                 }
               }
             }
@@ -115259,13 +115259,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "පිළිතුර දන්නේ නැද්ද? බලන්න ගණන තට්ටු කරන්න."
+            "value": "விடை தெரியவில்லையா? கணக்கைத் தட்டிப் பார்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "விடை தெரியவில்லையா? கணக்கைத் தட்டிப் பார்."
+            "value": "జవాబు తెలియదా? చూడటానికి లెక్కను తాకు."
           }
         },
         "th": {
@@ -115726,13 +115726,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "හොඳට කළා! පුහුණු පාඩම ඉවරයි. දැන් ඉහළම ලකුණු ගන්න!"
+            "value": "சிறப்பாக செய்தாய்! பயிற்சி முடிந்தது. இப்போது அதிகபட்ச மதிப்பெண்ணை நோக்கி செல்!"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சிறப்பாக செய்தாய்! பயிற்சி முடிந்தது. இப்போது அதிகபட்ச மதிப்பெண்ணை நோக்கி செல்!"
+            "value": "బాగా చేశావు! సూచనాభ్యాసం పూర్తయింది. ఇప్పుడు అత్యధిక స్కోరు సాధించు!"
           }
         },
         "th": {
@@ -116193,13 +116193,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "කුසලානයක් ගන්න නිවැරදි පිළිතුර මතට පනින්න."
+            "value": "கோப்பையைப் பெற சரியான விடையின் மீது குதி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "கோப்பையைப் பெற சரியான விடையின் மீது குதி."
+            "value": "ట్రోఫీని పొందడానికి సరైన జవాబుపై దూకు."
           }
         },
         "th": {
@@ -116660,13 +116660,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. දැන් එය මතට පනින්න."
+            "value": "சரியான விடை பச்சை நிறத்தில் காட்டப்படுகிறது. இப்போது அதன்மீது குதி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "சரியான விடை பச்சை நிறத்தில் காட்டப்படுகிறது. இப்போது அதன்மீது குதி."
+            "value": "సరైన జవాబు ఆకుపచ్చగా కనిపిస్తుంది. ఇప్పుడు దానిపై దూకు."
           }
         },
         "th": {
@@ -117127,13 +117127,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "තුන් ගුණයක කුසලාන ගන්න නිවැරදි පිළිතුර මතට පනින්න."
+            "value": "மூன்று மடங்கு கோப்பைகள் பெற சரியான விடையின் மீது குதி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மூன்று மடங்கு கோப்பைகள் பெற சரியான விடையின் மீது குதி."
+            "value": "మూడింతల ట్రోఫీలు పొందడానికి ఇప్పుడు సరైన జవాబుపై దూకు."
           }
         },
         "th": {
@@ -117594,13 +117594,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "එක් වරක් තුන් ගුණයක කුසලාන ගන්න ×3 කාසිය අරගන්න."
+            "value": "ஒருமுறை மூன்று மடங்கு கோப்பைகள் பெற ×3 நாணயத்தை எடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒருமுறை மூன்று மடங்கு கோப்பைகள் பெற ×3 நாணயத்தை எடு."
+            "value": "ఒక్కసారి మూడింతల ట్రోఫీలు పొందడానికి ×3 నాణెం తీసుకో."
           }
         },
         "th": {
@@ -118061,13 +118061,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ජීවිත නැවත ගන්න අර්ධ ජීවිතයක් හෝ පූර්ණ ජීවිතයක් සොයාගත හැක."
+            "value": "உயிர்களை மீட்க அரை உயிரையோ முழு உயிரையோ காணலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "உயிர்களை மீட்க அரை உயிரையோ முழு உயிரையோ காணலாம்."
+            "value": "లైఫ్‌లను తిరిగి పొందడానికి అర లైఫ్ లేదా పూర్తి లైఫ్ దొరుకుతుంది."
           }
         },
         "th": {
@@ -118528,13 +118528,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "−1 එකෙන් වළකින්න. එය කුසලානයක් අඩු කරයි."
+            "value": "−1 ஐத் தவிர். அது ஒரு கோப்பையைப் பறிக்கும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "−1 ஐத் தவிர். அது ஒரு கோப்பையைப் பறிக்கும்."
+            "value": "−1ను తప్పించుకో. అది ఒక ట్రోఫీని తీసేస్తుంది."
           }
         },
         "th": {
@@ -118995,13 +118995,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වමට හා දකුණට යන්න උපාංගය හලවන්න. තිරයේ පැති හරහාත් යන්න පුළුවන්."
+            "value": "இடப்புறமும் வலப்புறமும் செல்ல சாதனத்தை அசை. திரையின் ஓரங்கள் வழியாகவும் செல்லலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இடப்புறமும் வலப்புறமும் செல்ல சாதனத்தை அசை. திரையின் ஓரங்கள் வழியாகவும் செல்லலாம்."
+            "value": "ఎడమకు, కుడికి వెళ్లడానికి పరికరాన్ని కదిలించు. తెర అంచుల గుండా కూడా వెళ్లవచ్చు."
           }
         },
         "th": {
@@ -119462,13 +119462,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඉහළට යන්න වේදිකා මතට පනින්න."
+            "value": "மேலே செல்ல மேடைகளின் மீது குதி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மேலே செல்ல மேடைகளின் மீது குதி."
+            "value": "పైకి వెళ్లడానికి వేదికలపై దూకు."
           }
         },
         "th": {
@@ -119929,13 +119929,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේ මට්ටමේ ඔබේ ලකුණු මෙතැන පෙන්වයි."
+            "value": "இந்த நிலைக்கான உன் மதிப்பெண் இங்கே காட்டப்படும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இந்த நிலைக்கான உன் மதிப்பெண் இங்கே காட்டப்படும்."
+            "value": "ఈ లెవల్‌లో నీ స్కోరు ఇక్కడ కనిపిస్తుంది."
           }
         },
         "th": {
@@ -120396,13 +120396,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වැරදි පිළිතුරු ඉවත් කරන්න තරුව තුළට පනින්න."
+            "value": "தவறான விடைகளைச் சுட்டுத் தள்ள நட்சத்திரத்தின் மீது குதி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தவறான விடைகளைச் சுட்டுத் தள்ள நட்சத்திரத்தின் மீது குதி."
+            "value": "తప్పు జవాబులను తొలగించడానికి నక్షత్రంలోకి దూకు."
           }
         },
         "th": {
@@ -120863,13 +120863,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "වැරදි පිළිතුරක් තෝරන විට ජීවිත තුනෙන් එකක් අහිමි වේ. දැන් උත්සාහ කරන්න."
+            "value": "தவறான விடையைத் தேர்ந்தெடுத்தால், உன் மூன்று உயிர்களில் ஒன்று போய்விடும். இப்போது முயற்சி செய்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "தவறான விடையைத் தேர்ந்தெடுத்தால், உன் மூன்று உயிர்களில் ஒன்று போய்விடும். இப்போது முயற்சி செய்."
+            "value": "తప్పు జవాబును ఎంచుకుంటే మూడు లైఫ్‌లలో ఒకటి పోతుంది. ఇప్పుడు ప్రయత్నించు."
           }
         },
         "th": {
@@ -121329,13 +121329,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ලැබෙන්නේ |එකතු කිරීමේ| ගණන් පමණයි."
+            "value": "|கூட்டல்| கணக்குகள் மட்டும் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|கூட்டல்| கணக்குகள் மட்டும் வரும்."
+            "value": "నీకు |కూడిక| లెక్కలు మాత్రమే వస్తాయి."
           }
         },
         "th": {
@@ -121795,13 +121795,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම %lld |ආරෝහණ| පිළිවෙළට එකතු කරයි."
+            "value": "%lld ஐ எப்போதும் |ஏறுவரிசையில்| கூட்டு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஐ எப்போதும் |ஏறுவரிசையில்| கூட்டு."
+            "value": "|పెరుగుతున్న| క్రమంలో ఎప్పుడూ %lld కలుపుతావు."
           }
         },
         "th": {
@@ -122261,13 +122261,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම |අහඹු| අංකයකට %lld එකතු කරයි."
+            "value": "%lld ஐ எப்போதும் ஒரு |சீரற்ற| எண்ணுடன் கூட்டு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஐ எப்போதும் ஒரு |சீரற்ற| எண்ணுடன் கூட்டு."
+            "value": "|యాదృచ్ఛిక| సంఖ్యకు ఎప్పుడూ %lld కలుపుతావు."
           }
         },
         "th": {
@@ -122727,13 +122727,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ වෙනත් අංකයකට %lld |හෝ අඩු| එකතු කරයි."
+            "value": "மற்றொரு எண்ணுடன் %lld |அல்லது குறைவாக| கூட்டு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மற்றொரு எண்ணுடன் %lld |அல்லது குறைவாக| கூட்டு."
+            "value": "మరో సంఖ్యకు %lld |లేదా తక్కువ| కలుపుతావు."
           }
         },
         "th": {
@@ -123193,13 +123193,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ලැබෙන්නේ |අඩු කිරීමේ| ගණන් පමණයි."
+            "value": "|கழித்தல்| கணக்குகள் மட்டும் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|கழித்தல்| கணக்குகள் மட்டும் வரும்."
+            "value": "నీకు |తీసివేత| లెక్కలు మాత్రమే వస్తాయి."
           }
         },
         "th": {
@@ -123659,13 +123659,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම %lld |අවරෝහණ| පිළිවෙළට අඩු කරයි."
+            "value": "%lld ஐ எப்போதும் |இறங்குவரிசையில்| கழி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஐ எப்போதும் |இறங்குவரிசையில்| கழி."
+            "value": "|తగ్గుతున్న| క్రమంలో ఎప్పుడూ %lld తీసివేస్తావు."
           }
         },
         "th": {
@@ -124125,13 +124125,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම |අහඹු| අංකයකින් %lld අඩු කරයි."
+            "value": "ஒரு |சீரற்ற| எண்ணிலிருந்து %lld ஐக் கழி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ஒரு |சீரற்ற| எண்ணிலிருந்து %lld ஐக் கழி."
+            "value": "|యాదృచ్ఛిక| సంఖ్య నుంచి ఎప్పుడూ %lld తీసివేస్తావు."
           }
         },
         "th": {
@@ -124591,13 +124591,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ වෙනත් අංකයකින් %lld |හෝ අඩු| අඩු කරයි."
+            "value": "மற்றொரு எண்ணிலிருந்து %lld |அல்லது குறைவாக| கழி."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "மற்றொரு எண்ணிலிருந்து %lld |அல்லது குறைவாக| கழி."
+            "value": "మరో సంఖ్య నుంచి %lld |లేదా తక్కువ| తీసివేస్తావు."
           }
         },
         "th": {
@@ -125057,13 +125057,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ලැබෙන්නේ |ගුණ කිරීමේ| ගණන් පමණයි."
+            "value": "|பெருக்கல்| கணக்குகள் மட்டும் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|பெருக்கல்| கணக்குகள் மட்டும் வரும்."
+            "value": "నీకు |గుణకారం| లెక్కలు మాత్రమే వస్తాయి."
           }
         },
         "th": {
@@ -125523,13 +125523,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ගුණන වගුව |ආරෝහණ| පිළිවෙළට ලැබේ."
+            "value": "%lld ஆம் வாய்ப்பாடு |ஏறுவரிசையில்| வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஆம் வாய்ப்பாடு |ஏறுவரிசையில்| வரும்."
+            "value": "%lldవ ఎక్కం |పెరుగుతున్న| క్రమంలో వస్తుంది."
           }
         },
         "th": {
@@ -125989,13 +125989,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ගුණන වගුව |අහඹු| පිළිවෙළට ලැබේ."
+            "value": "%lld ஆம் வாய்ப்பாடு |சீரற்ற| வரிசையில் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ஆம் வாய்ப்பாடு |சீரற்ற| வரிசையில் வரும்."
+            "value": "%lldవ ఎక్కం |యాదృచ్ఛిక| క్రమంలో వస్తుంది."
           }
         },
         "th": {
@@ -126455,13 +126455,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "|%lld දක්වා| සියලු ගුණන වගු මිශ්‍රව ලැබේ."
+            "value": "|%lld வரை| உள்ள எல்லா வாய்ப்பாடுகளும் கலந்து வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|%lld வரை| உள்ள எல்லா வாய்ப்பாடுகளும் கலந்து வரும்."
+            "value": "|%lld వరకు| అన్ని ఎక్కాలు కలిపి వస్తాయి."
           }
         },
         "th": {
@@ -126921,13 +126921,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ලැබෙන්නේ |භාග| ගණන් පමණයි."
+            "value": "|பின்னம்| கணக்குகள் மட்டும் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|பின்னம்| கணக்குகள் மட்டும் வரும்."
+            "value": "నీకు |భిన్నాల| లెక్కలు మాత్రమే వస్తాయి."
           }
         },
         "th": {
@@ -127387,13 +127387,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සමාන කොටස් %lldකින් හැමවිටම |1 කොටසක්| ගන්න."
+            "value": "%lld சம பகுதிகளில் |1 பகுதியை| எடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld சம பகுதிகளில் |1 பகுதியை| எடு."
+            "value": "%lld సమాన భాగాల్లో |1 భాగం| తీసుకుంటావు."
           }
         },
         "th": {
@@ -127853,13 +127853,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "සමාන කොටස් %lldකින් එකක් හෝ |කොටස් කිහිපයක්| ගන්න."
+            "value": "%lld சம பகுதிகளில் ஒன்று அல்லது |பல பகுதிகளை| எடு."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld சம பகுதிகளில் ஒன்று அல்லது |பல பகுதிகளை| எடு."
+            "value": "%lld సమాన భాగాల్లో ఒకటి లేదా |ఎక్కువ భాగాలు| తీసుకుంటావు."
           }
         },
         "th": {
@@ -128319,13 +128319,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේ මට්ටමේ සහ |පෙර මට්ටම්වල| භාග ලැබේ."
+            "value": "இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள பின்னங்கள் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள பின்னங்கள் வரும்."
+            "value": "ఈ లెవల్ మరియు |మునుపటి లెవల్‌ల| భిన్నాలు వస్తాయి."
           }
         },
         "th": {
@@ -128785,13 +128785,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබට ලැබෙන්නේ |ප්‍රතිශත| ගණන් පමණයි."
+            "value": "|சதவீத| கணக்குகள் மட்டும் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "|சதவீத| கணக்குகள் மட்டும் வரும்."
+            "value": "నీకు |శాతాల| లెక్కలు మాత్రమే వస్తాయి."
           }
         },
         "th": {
@@ -129251,13 +129251,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |පූර්ණ අංකයක්| වේ."
+            "value": "எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |முழு எண்|."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |முழு எண்|."
+            "value": "ఎప్పుడూ %@ లెక్కిస్తావు, జవాబు |పూర్ణసంఖ్య|."
           }
         },
         "th": {
@@ -129717,13 +129717,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |දශමයක්| විය හැක."
+            "value": "எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |தசம எண்ணாகவும்| இருக்கலாம்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |தசம எண்ணாகவும்| இருக்கலாம்."
+            "value": "ఎప్పుడూ %@ లెక్కిస్తావు, జవాబు |దశాంశం| కూడా కావచ్చు."
           }
         },
         "th": {
@@ -130183,13 +130183,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "මේ මට්ටමේ සහ |පෙර මට්ටම්වල| ප්‍රතිශත ලැබේ."
+            "value": "இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள சதவீதங்கள் வரும்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள சதவீதங்கள் வரும்."
+            "value": "ఈ లెవల్ మరియు |మునుపటి లెవల్‌ల| శాతాలు వస్తాయి."
           }
         },
         "th": {
@@ -130650,13 +130650,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld கோப்பைகளிலிருந்து கிடைக்கும்"
+            "value": "%lld ట్రోఫీల నుండి అందుబాటులో ఉంటుంది"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld ట్రోఫీల నుండి అందుబాటులో ఉంటుంది"
+            "value": "%lld ట్రోఫీల నుంచి అందుబాటులో"
           }
         },
         "th": {
@@ -131123,7 +131123,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మొదటి నుంచే అందుబాటులో ఉంటుంది"
+            "value": "మొదటి నుంచి అందుబాటులో"
           }
         },
         "th": {
@@ -131590,7 +131590,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీరు %lld ట్రోఫీలు సాధించారు"
+            "value": "నువ్వు %lld ట్రోఫీలు సంపాదించావు"
           }
         },
         "th": {
@@ -132057,7 +132057,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "కొత్త పాత్ర అన్‌లాక్ అయింది"
+            "value": "కొత్త పాత్ర తెరుచుకుంది"
           }
         },
         "th": {
@@ -132524,7 +132524,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ అన్‌లాక్ అయింది"
+            "value": "%@ తెరుచుకుంది"
           }
         },
         "th": {
@@ -132985,13 +132985,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premium-இல் மட்டும்"
+            "value": "Premiumతో మాత్రమే"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premiumతో మాత్రమే"
+            "value": "ప్రీమియంతో మాత్రమే"
           }
         },
         "th": {
@@ -133452,13 +133452,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premium-இல் மட்டும்"
+            "value": "Premiumతో మాత్రమే"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premiumతో మాత్రమే"
+            "value": "ప్రీమియంతో మాత్రమే"
           }
         },
         "th": {
@@ -133919,13 +133919,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premium மூலம் திறக்கப்பட்டது"
+            "value": "Premiumతో అన్‌లాక్ అయింది"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "Premiumతో అన్‌లాక్ అయింది"
+            "value": "ప్రీమియంతో తెరుచుకుంది"
           }
         },
         "th": {
@@ -134392,7 +134392,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ప్రారంభించు"
+            "value": "మొదలు"
           }
         },
         "th": {
@@ -134859,7 +134859,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ట్రోఫీలతో అన్‌లాక్ చేయండి"
+            "value": "ట్రోఫీలతో తెరువు"
           }
         },
         "th": {

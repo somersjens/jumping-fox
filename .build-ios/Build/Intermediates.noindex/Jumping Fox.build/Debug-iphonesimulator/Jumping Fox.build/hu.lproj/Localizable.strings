@@ -108,6 +108,8 @@
 	<string>Életek be</string>
 	<key>game.intro.scorePaused</key>
 	<string>A jelenlegi pontszámod megmarad.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Sajnáljuk! A felolvasási funkció még nem érhető el a nyelveden.</string>
 	<key>game.intro.start</key>
 	<string>Szint indítása</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>A neved</string>
 	<key>name.whatsYourName</key>
 	<string>Hogy hívnak?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Szerezz még néhány trófeát, hogy feloldd ezt az állatot! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Már csak %lld trófea van hátra! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Az állataid várnak. Gyere vissza játszani, és gyűjtsd tovább a trófeákat!</string>
+	<key>notif.comeback.title</key>
+	<string>Hiányzol nekünk! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Kezdj el egy %lld perces játékmenetet, és hosszabbítsd meg napi játéksorozatodat.</string>
+	<key>notif.day3.title</key>
+	<string>Legyen a 3. nap! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Használja az ugrópadot, hogy kihagyjon egy rossz választ, és folytassa a mászást!</string>
+	<key>notif.jumppad.title</key>
+	<string>Ugorj túl a rossz válaszokon! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>A Jumping Fox Premium %lld szintet tartalmaz minden témához és mind a 10 állathoz. A kaland folytatódik!</string>
+	<key>notif.premium.title</key>
+	<string>Nyisson meg több szintet és állatot! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld nap telt el. Oldjunk meg néhány matematikai feladatot, és szerezzünk több trófeát!</string>
+	<key>notif.reactivate.title</key>
+	<string>Újra játékra készen állsz? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Játssz %lld percet, és folytasd napi játéksorozatodat!</string>
+	<key>notif.streak.title %lld</key>
+	<string>A napi játéksorozatod elérte az %lld napot! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Remek munka! Játsszunk %lld percig, és gyűjtsünk még többet.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld trófeát gyűjtöttél! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Ezzel eléri az %lld trófeát. Csodálatos munka!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ezen a héten %lld trófeát gyűjtöttél! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Különböző vegyes feladatok együtt.</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>ሕይወቶች በርተዋል</string>
 	<key>game.intro.scorePaused</key>
 	<string>የአሁኑ ውጤትህ ለጊዜው ይቆማል።</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ይቅርታ! የድምፅ ንባብ ባህሪው በቋንቋዎ ገና አይገኝም።</string>
 	<key>game.intro.start</key>
 	<string>ደረጃውን ጀምር</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ስምህ</string>
 	<key>name.whatsYourName</key>
 	<string>ስምህ ማን ነው?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ይህን እንስሳ ለመክፈት ጥቂት ተጨማሪ ዋንጫዎችን ያግኙ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>%lld ዋንጫዎች ብቻ ቀርተዋል! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>እንስሳትዎ እየጠበቁ ናቸው. ለመጫወት ይመለሱ እና ዋንጫዎችን መሰብሰብዎን ይቀጥሉ!</string>
+	<key>notif.comeback.title</key>
+	<string>ትናፍቀናለህ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>የ%lld ደቂቃ የጨዋታ ክፍለ ጊዜ ይጀምሩ እና የእለት ተእለት ጨዋታዎትን ያራዝሙ።</string>
+	<key>notif.day3.title</key>
+	<string>3ኛው ቀን እንዲሆን እናድርግ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>የተሳሳተ መልስ ለመዝለል እና መውጣትዎን ለመቀጠል የዝላይ ፓድ ይጠቀሙ!</string>
+	<key>notif.jumppad.title</key>
+	<string>የተሳሳቱ መልሶችን ይዝለሉ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ዝላይ ፎክስ ፕሪሚየም ለእያንዳንዱ ርዕስ %lld ደረጃዎችን እና ሁሉንም 10 እንስሳትን ያካትታል።ጀብዱ ይቀጥላል!</string>
+	<key>notif.premium.title</key>
+	<string>ተጨማሪ ደረጃዎችን እና እንስሳትን ይክፈቱ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ቀን ሆኖታል።አንዳንድ የሂሳብ ልምምዶችን እንፍታ እና ብዙ ዋንጫዎችን እናገኝ!</string>
+	<key>notif.reactivate.title</key>
+	<string>እንደገና ለመጫወት ዝግጁ ነዎት? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>ለ %lld ደቂቃዎች ይጫወቱ እና የእለት ተእለት ጨዋታዎን ይቀጥሉ!</string>
+	<key>notif.streak.title %lld</key>
+	<string>የእለት ተእለት ጨዋታዎ %lld ቀናት ደርሷል! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ምርጥ ስራ! ለ%lld ደቂቃ እንጫወት እና የበለጠ እንሰበስብ።</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld ዋንጫዎችን አግኝተሃል! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ያ በአጠቃላይ %lld ዋንጫዎችን ያመጣልዎታል።የሚገርም ስራ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>በዚህ ሳምንት %lld ዋንጫዎችን አግኝተዋል! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>የተለያዩ ድብልቅ ስሌቶች።</string>
 	<key>onboarding.level.advanced.title</key>

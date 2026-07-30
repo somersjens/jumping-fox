@@ -108,6 +108,8 @@
 	<string>ライフあり</string>
 	<key>game.intro.scorePaused</key>
 	<string>今のスコアは一時停止されます。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ごめんなさい！読み上げ機能はまだあなたの言語では利用できません。</string>
 	<key>game.intro.start</key>
 	<string>レベルをはじめる</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>なまえ</string>
 	<key>name.whatsYourName</key>
 	<string>きみのなまえは？</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: この動物のロックを解除するには、さらにいくつかのトロフィーを獲得してください! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>残りのトロフィーはあと %lld つです！ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>あなたの動物たちが待っています。再びプレイしてトロフィーを集め続けましょう!</string>
+	<key>notif.comeback.title</key>
+	<string>私たちはあなたがいなくて寂しいです！ 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld 分間のプレイ セッションを開始して、毎日の連続プレイを延長しましょう。</string>
+	<key>notif.day3.title</key>
+	<string>3日目も実現させましょう！ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ジャンプパッドを使用して間違った答えをスキップし、登り続けましょう。</string>
+	<key>notif.jumppad.title</key>
+	<string>間違った答えを飛び越えてください！ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox プレミアムには、すべてのトピックと 10 匹すべての動物の %lld レベルが含まれています。冒険はまだまだ続きます！</string>
+	<key>notif.premium.title</key>
+	<string>さらに多くのレベルと動物をアンロックしましょう！ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld日が経ちました。数学の練習問題を解いて、より多くのトロフィーを獲得しましょう!</string>
+	<key>notif.reactivate.title</key>
+	<string>もう一度プレイする準備はできましたか? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld 分間プレイして、毎日の連続プレイを続けましょう!</string>
+	<key>notif.streak.title %lld</key>
+	<string>毎日の連続プレイ日数が %lld 日に達しました! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>素晴らしい仕事だ！%lld分間プレイしてさらに集めましょう。</string>
+	<key>notif.trophies.title %lld</key>
+	<string>トロフィーを %lld 個獲得しました! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>これでトロフィーの合計は %lld 個になります。素晴らしい作品です！</string>
+	<key>notif.weekly.title %lld</key>
+	<string>今週は %lld 個のトロフィーを獲得しました! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>いろいろなミックス問題。</string>
 	<key>onboarding.level.advanced.title</key>

@@ -108,6 +108,8 @@
 	<string>เปิดชีวิต</string>
 	<key>game.intro.scorePaused</key>
 	<string>คะแนนตอนนี้จะถูกพักไว้</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ขออภัย! ฟีเจอร์อ่านออกเสียงยังไม่รองรับภาษาของคุณ</string>
 	<key>game.intro.start</key>
 	<string>เริ่มด่าน</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ชื่อของเธอ</string>
 	<key>name.whatsYourName</key>
 	<string>เธอชื่ออะไร?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: รับถ้วยรางวัลเพิ่มอีกเล็กน้อยเพื่อปลดล็อคสัตว์ตัวนี้! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>เหลือเพียง %lld ถ้วยรางวัล! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>สัตว์ของคุณกำลังรออยู่กลับมาเล่นสะสมถ้วยรางวัลกันต่อ!</string>
+	<key>notif.comeback.title</key>
+	<string>เราคิดถึงคุณ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>เริ่มเซสชั่นการเล่น %lld นาทีและขยายแนวการเล่นประจำวันของคุณ</string>
+	<key>notif.day3.title</key>
+	<string>มาทำให้วันที่ 3 เกิดขึ้นกันเถอะ! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ใช้ Jump Pad เพื่อข้ามคำตอบที่ผิดแล้วปีนต่อไป!</string>
+	<key>notif.jumppad.title</key>
+	<string>ข้ามคำตอบที่ผิดไป! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium มี %lld ด่านสำหรับทุกหัวข้อและสัตว์ทั้งหมด 10 ตัวการผจญภัยดำเนินต่อไป!</string>
+	<key>notif.premium.title</key>
+	<string>ปลดล็อคระดับและสัตว์เพิ่มเติม! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>ผ่านมา %lld วันแล้วมาแก้แบบฝึกหัดคณิตศาสตร์และรับถ้วยรางวัลเพิ่มกันเถอะ!</string>
+	<key>notif.reactivate.title</key>
+	<string>พร้อมที่จะเล่นอีกครั้งหรือยัง? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>เล่นเป็นเวลา %lld นาทีและเล่นต่อเนื่องทุกวัน!</string>
+	<key>notif.streak.title %lld</key>
+	<string>แนวการเล่นประจำวันของคุณถึง %lld วันแล้ว! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>เยี่ยมมาก! มาเล่นกันสัก %lld นาทีแล้วสะสมให้มากขึ้น</string>
+	<key>notif.trophies.title %lld</key>
+	<string>คุณได้รับ %lld ถ้วยรางวัล! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>นั่นจะทำให้คุณได้รับถ้วยรางวัลถึง %lld ถ้วยผลงานน่าทึ่ง!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>คุณได้รับ %lld ถ้วยรางวัลในสัปดาห์นี้! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>โจทย์ผสมหลายแบบคละกัน</string>
 	<key>onboarding.level.advanced.title</key>

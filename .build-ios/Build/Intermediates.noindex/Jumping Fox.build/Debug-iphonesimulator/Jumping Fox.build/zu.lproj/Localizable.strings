@@ -108,6 +108,8 @@
 	<string>Izimpilo zivuliwe</string>
 	<key>game.intro.scorePaused</key>
 	<string>Amaphuzu akho amanje azomiswa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Siyaxolisa! Isici sokufunda ngokuzwakalayo asikatholakali ngolimi lwakho.</string>
 	<key>game.intro.start</key>
 	<string>Qala ileveli</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Igama lakho</string>
 	<key>name.whatsYourName</key>
 	<string>Ungubani igama lakho?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zuza ezinye izindebe ezimbalwa ukuze uvule lesi silwane! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kusele izindebe ezi-%lld kuphela! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Izilwane zakho zilindile. Buya uzodlala futhi uqhubeke nokuqoqa izindebe!</string>
+	<key>notif.comeback.title</key>
+	<string>Siyakukhumbula! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Qala iseshini yokudlala eyimizuzu engu-%lld futhi wandise ukulandelana kwakho kokudlala kwansuku zonke.</string>
+	<key>notif.day3.title</key>
+	<string>Masenze usuku lwesi-3 lwenzeke! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Sebenzisa i-Jump Pad ukweqa impendulo engalungile futhi uqhubeke ukhuphuka!</string>
+	<key>notif.jumppad.title</key>
+	<string>Yeqa udlule izimpendulo ezingalungile! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>I-Jumping Fox Premium ifaka amazinga angama-%lld esihlokweni ngasinye nazo zonke izilwane eziyi-10. I-adventure iyaqhubeka!</string>
+	<key>notif.premium.title</key>
+	<string>Vula amazinga engeziwe nezilwane! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Sekuphele izinsuku ezi-%lld. Ake sixazulule ezinye izivivinyo zezibalo futhi sizuze izindebe ezengeziwe!</string>
+	<key>notif.reactivate.title</key>
+	<string>Usulungele ukudlala futhi? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Dlala imizuzu eyi-%lld futhi ugcine uchungechunge lwakho lokudlala lwansuku zonke luqhubeka!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ukudlala kwakho kwansuku zonke sekufinyelele ezinsukwini ezi-%lld! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Umsebenzi omuhle! Asidlale imizuzu engu-%lld futhi siqoqe ngisho nangaphezulu.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Uzuze izindebe ezingu-%lld! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Lokho kuletha isamba sakho sezindebe ezingu-%lld. Umsebenzi omangalisayo!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Uzuze izindebe ezingu-%lld kuleli sonto! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Izibalo ezixubile ezahlukene.</string>
 	<key>onboarding.level.advanced.title</key>

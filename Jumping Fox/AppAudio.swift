@@ -53,6 +53,13 @@ final class AppAudio: NSObject, ObservableObject {
             if spokenSumsEnabled {
                 prepare()
                 activateSession()
+                // Enabling mid-session: warm the synthesizer now (idempotent) so
+                // the first spoken sum doesn't cold-start it. A no-op if prepare
+                // hasn't resolved voices yet — that path warms up on its own.
+                if speechVoicesResolved {
+                    let languageCode = LanguageManager.shared.effective.code
+                    warmUpSpeechSynthesizer(preferred: voicesByLanguage[languageCode])
+                }
             } else {
                 cancelPendingSpeech()
                 stopSpeechPlayback()
@@ -191,6 +198,9 @@ final class AppAudio: NSObject, ObservableObject {
     private var voicesByLanguage: [String: AVSpeechSynthesisVoice] = [:]
     @Published private(set) var speechVoicesResolved = false
     private var speechRenderInProgress = false
+    /// The very first `AVSpeechSynthesizer.write(_:)` is done once at prepare
+    /// time to move its heavy first-use cost off the first level start.
+    private var speechWarmedUp = false
 
     private override init() {
         self.gameSoundsEnabled = GameSettings.gameSoundsEnabled
@@ -236,6 +246,13 @@ final class AppAudio: NSObject, ObservableObject {
                 self.voicesByLanguage = voices
                 self.speechVoicesResolved = true
                 self.audioResourcesReady = true
+                // Spin the speech synthesizer up now, at this calm menu moment,
+                // rather than on the first level start where its first-use cost
+                // otherwise lands mid-play (see the method).
+                if self.spokenSumsEnabled {
+                    let languageCode = LanguageManager.shared.effective.code
+                    self.warmUpSpeechSynthesizer(preferred: voices[languageCode])
+                }
                 self.renderPendingSpeechIfPossible()
                 // Only touch the audio session when sound is on, so a muted app
                 // never interrupts the user's own audio.
@@ -562,6 +579,27 @@ final class AppAudio: NSObject, ObservableObject {
         }
         pendingSpeech = request
         scheduleSpeechRender(request)
+    }
+
+    /// The first ever `AVSpeechSynthesizer.write(_:)` spins up the synthesizer's
+    /// internal audio unit and loads the selected voice — heavy one-off work.
+    /// On some iOS versions that first use nudges the shared audio session and
+    /// knocks the always-on effects engine over (an
+    /// `AVAudioEngineConfigurationChange`), which restarts it with an audible
+    /// pop. Doing one throwaway, silent render here — at the menu, before the
+    /// first sum is ever spoken — moves that glitch out of the first level start.
+    /// Output never reaches the speakers: `write` only fills PCM buffers, which
+    /// are discarded. Serialized with real renders on `speechQueue`.
+    private func warmUpSpeechSynthesizer(preferred voice: AVSpeechSynthesisVoice?) {
+        guard !speechWarmedUp else { return }
+        speechWarmedUp = true
+        speechQueue.async { [weak self] in
+            guard let self else { return }
+            let utterance = AVSpeechUtterance(string: "0")
+            utterance.voice = voice
+            utterance.volume = 0
+            self.synthesizer.write(utterance) { _ in }
+        }
     }
 
     private func scheduleSpeechRender(_ request: PendingSpeech) {

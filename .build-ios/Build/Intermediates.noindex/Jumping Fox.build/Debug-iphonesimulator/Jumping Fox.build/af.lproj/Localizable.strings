@@ -108,6 +108,8 @@
 	<string>Lewens aan</string>
 	<key>game.intro.scorePaused</key>
 	<string>Jou huidige telling word gestop.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Jammer! Die voorleesfunksie is nog nie in jou taal beskikbaar nie.</string>
 	<key>game.intro.start</key>
 	<string>Begin vlak</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Jou naam</string>
 	<key>name.whatsYourName</key>
 	<string>Wat is jou naam?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Verdien nog 'n paar trofeë om hierdie dier te ontsluit! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Slegs %lld trofeë om te gaan! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jou diere wag. Kom terug om te speel en hou aan om trofeë in te samel!</string>
+	<key>notif.comeback.title</key>
+	<string>Ons mis jou! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Begin 'n %lld minute speelsessie en verleng jou daaglikse speelreeks.</string>
+	<key>notif.day3.title</key>
+	<string>Kom ons laat dag 3 gebeur! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Gebruik die Jump Pad om 'n verkeerde antwoord oor te slaan en aan te hou klim!</string>
+	<key>notif.jumppad.title</key>
+	<string>Spring verby verkeerde antwoorde! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium bevat %lld vlakke vir elke onderwerp en al 10 diere. Die avontuur gaan voort!</string>
+	<key>notif.premium.title</key>
+	<string>Ontsluit meer vlakke en diere! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Dit is al %lld dae. Kom ons los 'n paar wiskunde-oefeninge op en verdien meer trofeë!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gereed om weer te speel? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Speel vir %lld minute en hou jou daaglikse speelreeks aan die gang!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jou daaglikse speelreeks het %lld dae bereik! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Puik werk! Kom ons speel vir %lld minute en versamel nog meer.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jy het %lld trofeë verdien! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Dit bring jou totaal op %lld trofeë te staan. Wonderlike werk!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Jy het hierdie week %lld trofeë verdien! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Verskillende somme deurmekaar.</string>
 	<key>onboarding.level.advanced.title</key>

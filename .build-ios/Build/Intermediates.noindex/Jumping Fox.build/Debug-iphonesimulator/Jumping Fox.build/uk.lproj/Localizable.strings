@@ -108,6 +108,8 @@
 	<string>Життя увімк.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Твій поточний рахунок буде призупинено.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Вибач! Функція читання вголос ще недоступна твоєю мовою.</string>
 	<key>game.intro.start</key>
 	<string>Почати рівень</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Твоє ім’я</string>
 	<key>name.whatsYourName</key>
 	<string>Як тебе звати?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Заробіть ще кілька трофеїв, щоб розблокувати цю тварину! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Залишилося лише %lld трофеїв! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Ваші тварини чекають. Повертайтеся до гри та продовжуйте збирати трофеї!</string>
+	<key>notif.comeback.title</key>
+	<string>ми сумуємо за тобою! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Почніть %lld-хвилинну ігрову сесію та подовжте щоденну ігрову серію.</string>
+	<key>notif.day3.title</key>
+	<string>Давайте зробимо день 3! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Використовуйте Jump Pad, щоб пропустити неправильну відповідь і продовжувати лазити!</string>
+	<key>notif.jumppad.title</key>
+	<string>Перестрибуйте повз неправильні відповіді! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium містить %lld рівнів для кожної теми та всіх 10 тварин. Пригоди тривають!</string>
+	<key>notif.premium.title</key>
+	<string>Розблокуйте більше рівнів і тварин! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Минуло %lld дні. Давайте розв’яжемо кілька математичних вправ і заробимо більше трофеїв!</string>
+	<key>notif.reactivate.title</key>
+	<string>Готові грати знову? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Грайте %lld хвилин і продовжуйте щоденну ігрову серію!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ваша щоденна ігрова серія досягла %lld днів! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Чудова робота! Давайте пограємо %lld хвилин і зберемо ще більше.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Ви заробили %lld трофеїв! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Таким чином, ваша загальна сума досягає %lld трофеїв. Дивовижна робота!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Цього тижня ви заробили %lld трофеїв! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Різні змішані завдання впереміш.</string>
 	<key>onboarding.level.advanced.title</key>

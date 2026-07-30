@@ -108,6 +108,8 @@
 	<string>ଜୀବନ ଚାଲୁ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ତୁମର ଏବେର ସ୍କୋର ଅଟକି ରହିବ।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ଦୁଃଖିତ! ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ସୁବିଧାଟି ଏପର୍ଯ୍ୟନ୍ତ ଆପଣଙ୍କ ଭାଷାରେ ଉପଲବ୍ଧ ନାହିଁ।</string>
 	<key>game.intro.start</key>
 	<string>ଲେଭେଲ୍ ଆରମ୍ଭ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>ତୁମ ନାମ</string>
 	<key>name.whatsYourName</key>
 	<string>ତୁମ ନାମ କ’ଣ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ଏହି ପଶୁକୁ ଖୋଲିବା ପାଇଁ ଆଉ କିଛି ଟ୍ରଫି ରୋଜଗାର କର! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ଯିବାକୁ କେବଳ %lld ଟ୍ରଫି! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>ତୁମର ପଶୁମାନେ ଅପେକ୍ଷା କରିଛନ୍ତି |ଖେଳିବାକୁ ଫେରି ଆସ ଏବଂ ଟ୍ରଫି ସଂଗ୍ରହ ଜାରି ରଖ!</string>
+	<key>notif.comeback.title</key>
+	<string>ଆମେ ତୁମକୁ ମନେ ପକାଉଛୁ! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ଏକ %lld ମିନିଟର ଖେଳ ଅଧିବେଶନ ଆରମ୍ଭ କରନ୍ତୁ ଏବଂ ଆପଣଙ୍କର ଦ daily ନିକ ଖେଳ ଧାରାକୁ ବିସ୍ତାର କରନ୍ତୁ |</string>
+	<key>notif.day3.title</key>
+	<string>ଚାଲ ଦିନ 3 କରିବା! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ଏକ ଭୁଲ ଉତ୍ତରକୁ ଏଡ଼ାଇବା ଏବଂ ଆରୋହଣ କରିବା ପାଇଁ ଜମ୍ପ ପ୍ୟାଡ୍ ବ୍ୟବହାର କରନ୍ତୁ!</string>
+	<key>notif.jumppad.title</key>
+	<string>ଅତୀତର ଭୁଲ ଉତ୍ତରଗୁଡିକୁ ଡେଇଁପଡ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ଜମ୍ପ୍ ଫକ୍ସ ପ୍ରିମିୟମ୍ ପ୍ରତ୍ୟେକ ବିଷୟ ଏବଂ ସମସ୍ତ 10 ପ୍ରାଣୀ ପାଇଁ %lld ସ୍ତର ଅନ୍ତର୍ଭୁକ୍ତ କରେ |ଦୁ venture ସାହସିକ କାର୍ଯ୍ୟ ଜାରି ରଖେ!</string>
+	<key>notif.premium.title</key>
+	<string>ଅଧିକ ସ୍ତର ଏବଂ ପଶୁମାନଙ୍କୁ ଅନଲକ୍ କରନ୍ତୁ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>ଏହା %lld ଦିନ ହୋଇଗଲାଣି |ଚାଲ କିଛି ଗଣିତ ବ୍ୟାୟାମର ସମାଧାନ କରିବା ଏବଂ ଅଧିକ ଟ୍ରଫି ଅର୍ଜନ କରିବା!</string>
+	<key>notif.reactivate.title</key>
+	<string>ପୁନର୍ବାର ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld ମିନିଟ୍ ପାଇଁ ଖେଳନ୍ତୁ ଏବଂ ଆପଣଙ୍କର ଦ daily ନନ୍ଦିନ ଖେଳିବା ଧାରା ଜାରି ରଖନ୍ତୁ!</string>
+	<key>notif.streak.title %lld</key>
+	<string>ତୁମର ଦ daily ନିକ ଖେଳିବା ଧାରା %lld ଦିନରେ ପହଞ୍ଚିଛି! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ଉତ୍ତମ କାମ! ଚାଲ %lld ମିନିଟ୍ ଖେଳିବା ଏବଂ ଆହୁରି ଅଧିକ ସଂଗ୍ରହ କରିବା |</string>
+	<key>notif.trophies.title %lld</key>
+	<string>ଆପଣ %lld ଟ୍ରଫି ଅର୍ଜନ କରିଛନ୍ତି! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ଏହା ତୁମର ସମୁଦାୟ %lld ଟ୍ରଫି ଆଣିଥାଏ |ଆଶ୍ଚର୍ଯ୍ୟଜନକ କାର୍ଯ୍ୟ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ଆପଣ ଏହି ସପ୍ତାହରେ %lld ଟି ଟ୍ରଫି ଅର୍ଜନ କରିଛନ୍ତି! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>ଭିନ୍ନ ମିଶ୍ରିତ ପ୍ରଶ୍ନ ଏକାଠି।</string>
 	<key>onboarding.level.advanced.title</key>

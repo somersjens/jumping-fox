@@ -108,6 +108,8 @@
 	<string>Амь асаалттай</string>
 	<key>game.intro.scorePaused</key>
 	<string>Одоогийн оноог түр зогсооно.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Уучлаарай! Чангаар унших функц таны хэл дээр хараахан боломжгүй байна.</string>
 	<key>game.intro.start</key>
 	<string>Түвшинг эхлүүлэх</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -352,6 +354,42 @@
 	<string>Чиний нэр</string>
 	<key>name.whatsYourName</key>
 	<string>Чамайг хэн гэдэг вэ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Энэ амьтны түгжээг тайлахын тулд хэд хэдэн цом цуглуулаарай! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Зөвхөн %lld цом үлдлээ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Таны амьтад хүлээж байна. Тоглохоор буцаж ирээд цом цуглуулж байгаарай!</string>
+	<key>notif.comeback.title</key>
+	<string>Бид чамайг санаж байна! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минутын тоглолтыг эхлүүлж, өдөр бүр тоглох цувралаа уртасга.</string>
+	<key>notif.day3.title</key>
+	<string>3 дахь өдрөө амжилттай болгоцгооё! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Jump Pad ашиглан буруу хариултыг алгасаад үргэлжлүүлэн авираарай!</string>
+	<key>notif.jumppad.title</key>
+	<string>Буруу хариултуудыг давж гараарай! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium нь сэдэв бүрийн %lld түвшин болон бүх 10 амьтныг агуулдаг. Адал явдал үргэлжилсээр байна!</string>
+	<key>notif.premium.title</key>
+	<string>Илүү олон түвшин, амьтдын түгжээг нээ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld хонож байна. Математикийн дасгалуудыг шийдэж, илүү олон цом олцгооё!</string>
+	<key>notif.reactivate.title</key>
+	<string>Дахин тоглоход бэлэн үү? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут тоглож, өдөр тутмынхаа цувралыг үргэлжлүүлээрэй!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Таны өдөр тутмын тоглолтын цуврал %lld хоног боллоо! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Маш сайн ажил!%lld минут тоглож, бүр илүү ихийг цуглуулцгаая.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Та %lld цом авлаа! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Ингэснээр таны нийт %lld цом авчирна. Гайхалтай ажил!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Та энэ долоо хоногт %lld цом авлаа! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
 	<string>Өөр өөр холимог бодлогууд.</string>
 	<key>onboarding.level.advanced.title</key>

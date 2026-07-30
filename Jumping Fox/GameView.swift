@@ -111,6 +111,9 @@ struct GameView: View {
     /// One-shot celebratory caption explaining why the streak coin just
     /// appeared ("5 in a row! Trophies ×2"). Auto-dismisses after a beat.
     @State private var showStreakBanner = false
+    /// Identifies the streak caption currently on screen, so a retract timer
+    /// from an earlier streak can never cut a newer caption short.
+    @State private var streakBannerGeneration = 0
     private let theme = CharacterCatalog.current(isPremium: GameSettings.premiumUnlockedCache)
     private var isPad: Bool { AppLayout.isPad }
     private var gameScale: CGFloat { isPad ? 1.2 : 1 }
@@ -316,7 +319,10 @@ struct GameView: View {
             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                 showStreakBanner = true
             }
+            streakBannerGeneration += 1
+            let generation = streakBannerGeneration
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) {
+                guard generation == streakBannerGeneration else { return }
                 withAnimation(.easeOut(duration: 0.35)) { showStreakBanner = false }
             }
         }

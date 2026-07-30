@@ -344,6 +344,7 @@ extern "C" {
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVFAudio;
 @import CoreFoundation;
 @import Foundation;
 @import ObjectiveC;
@@ -371,6 +372,18 @@ extern "C" {
 #endif
 
 #if defined(__OBJC__)
+
+SWIFT_CLASS("_TtC11Jumping_Fox8AppAudio")
+@interface AppAudio : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class AVAudioPlayer;
+@interface AppAudio (SWIFT_EXTENSION(Jumping_Fox)) <AVAudioPlayerDelegate>
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer * _Nonnull)player successfully:(BOOL)flag;
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer * _Nonnull)player error:(NSError * _Nullable)error;
+@end
 
 @class NSCoder;
 /// Immutable identity/value/geometry, mutable status only.
