@@ -406,24 +406,24 @@
         "comment": "",
         "key": "menu.maximumCount",
         "location": {
-          "startingColumn": 78,
-          "startingLine": 3812
+          "startingColumn": 37,
+          "startingLine": 3817
         }
       },
       {
         "comment": "",
         "key": "menu.maximumCount",
         "location": {
-          "startingColumn": 21,
-          "startingLine": 3833
+          "startingColumn": 17,
+          "startingLine": 3835
         }
       },
       {
         "comment": "",
         "key": "menu.maximumCount.accessibility %lld",
         "location": {
-          "startingColumn": 46,
-          "startingLine": 3833
+          "startingColumn": 42,
+          "startingLine": 3835
         }
       }
     ]

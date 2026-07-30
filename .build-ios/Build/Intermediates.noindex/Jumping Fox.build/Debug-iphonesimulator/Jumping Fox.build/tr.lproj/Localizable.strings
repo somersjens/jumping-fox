@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Tekrar oyna</string>
 	<key>game.highScore</key>
-	<string>En yüksek puan</string>
+	<string>Rekor</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Ana menüye dön</string>
 	<key>game.intro.continue</key>

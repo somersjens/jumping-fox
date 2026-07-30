@@ -203,7 +203,7 @@
 	<key>menu.maxScore</key>
 	<string>30 كحد أقصى</string>
 	<key>menu.maximumCount</key>
-	<string>الحد الأقصى</string>
+	<string>أقصى</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>بلغت الحد الأقصى %lld مرة</string>
 	<key>menu.moreLevels</key>

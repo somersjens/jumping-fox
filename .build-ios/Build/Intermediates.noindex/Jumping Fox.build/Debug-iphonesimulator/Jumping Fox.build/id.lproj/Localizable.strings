@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Main lagi</string>
 	<key>game.highScore</key>
-	<string>Skor tertinggi</string>
+	<string>Rekor</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Kembali ke menu utama</string>
 	<key>game.intro.continue</key>

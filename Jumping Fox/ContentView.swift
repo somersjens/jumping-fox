@@ -3813,19 +3813,38 @@ struct LevelCardView: View {
     }
 
     private func maximumCountBadge(fill: Color, metal: Color) -> some View {
+        let isAtMaximum = maximumCount >= ProgressStore.maximumCompletionCount
+        let label = isAtMaximum ? L("menu.maximumCount") : "×\(maximumCount)"
+
+        // The outline is sized by its own text. A fixed width made every badge
+        // as wide as the longest translation of "MAX", so a short "×2" floated
+        // in a box built for something else.
+        return ViewThatFits(in: .horizontal) {
+            // `fixedSize` makes this candidate report its true one-line width,
+            // so it is only chosen while the badge genuinely fits.
+            maximumCountBadgeBody(label, fill: fill, metal: metal)
+                .fixedSize(horizontal: true, vertical: false)
+
+            // The longest words for "MAX" (Bengali, Khmer, Telugu, Vietnamese …)
+            // run past that, and shrink inside the alignment column rather than
+            // spilling over the card edge or onto a neighbouring card.
+            maximumCountBadgeBody(label, fill: fill, metal: metal)
+                .frame(maxWidth: 23 * cardScale)
+        }
+        .accessibilityLabel(isAtMaximum
+            ? L("menu.maximumCount") : L("menu.maximumCount.accessibility \(maximumCount)"))
+    }
+
+    private func maximumCountBadgeBody(_ label: String, fill: Color, metal: Color) -> some View {
         let cornerRadius = 3.5 * cardScale
-        return Text(maximumCount >= ProgressStore.maximumCompletionCount ? L("menu.maximumCount") : "×\(maximumCount)")
+        return Text(verbatim: label)
             // Deliberately smaller than the trophy number: the airy outline,
             // rather than the text, is the badge's visual footprint.
             .font(.system(size: 5.6 * cardScale, weight: .heavy, design: .rounded))
             .foregroundStyle(fill)
-            // Roughly six glyphs fit at full size; longer localized words for
-            // "MAX" shrink to stay inside the card instead of spilling over the
-            // edge (or onto a neighbouring card).
             .lineLimit(1)
             .minimumScaleFactor(0.5)
-            .frame(maxWidth: 22 * cardScale)
-            .padding(.horizontal, 1.5 * cardScale)
+            .padding(.horizontal, 2 * cardScale)
             .padding(.vertical, 1 * cardScale)
             .background(.white.opacity(0.5), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
             .overlay {
@@ -3840,8 +3859,6 @@ struct LevelCardView: View {
             }
             .shadow(color: metal.opacity(0.18), radius: 2, y: 1)
             .scaleEffect(maximumCountPulse ? 1.18 : 1, anchor: .center)
-            .accessibilityLabel(maximumCount >= ProgressStore.maximumCompletionCount
-                ? L("menu.maximumCount") : L("menu.maximumCount.accessibility \(maximumCount)"))
     }
 }
 

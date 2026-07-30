@@ -629,9 +629,14 @@ private extension View {
             .font(.system(size: 10, weight: .heavy, design: .rounded))
             .foregroundStyle(character.deepColor)
             .lineLimit(1)
-            .minimumScaleFactor(1)
-            .allowsTightening(false)
-            .padding(.horizontal, 6)
+            // The four trophy thresholds are at most four digits and always fit
+            // at full size, so they still render identically to each other. Only
+            // the fox's word chip ("Start") can outgrow the capsule — in French
+            // ("Commencer") and Malayalam it was truncated to "Com…" — so let
+            // that one shrink instead of losing its ending.
+            .minimumScaleFactor(0.7)
+            .allowsTightening(true)
+            .padding(.horizontal, 5)
             .padding(.vertical, 4)
             .frame(maxWidth: .infinity)
             .background(character.color.opacity(0.16), in: Capsule())

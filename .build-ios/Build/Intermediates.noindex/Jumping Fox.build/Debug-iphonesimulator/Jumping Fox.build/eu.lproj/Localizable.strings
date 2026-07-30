@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Jokatu berriro</string>
 	<key>game.highScore</key>
-	<string>Puntuazio onena</string>
+	<string>Errekorra</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Menu nagusira</string>
 	<key>game.intro.continue</key>

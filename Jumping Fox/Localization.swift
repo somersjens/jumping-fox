@@ -281,10 +281,7 @@ extension Bundle {
 private struct LiquidGlassCapsule: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 26.0, *) {
-            content
-                .glassEffect(in: Capsule())
-                .overlay(Capsule().stroke(.black.opacity(0.07), lineWidth: 0.7))
-                .shadow(color: .black.opacity(0.10), radius: 4, y: 2)
+            content.glassEffect(in: Capsule())
         } else {
             content
                 .background(.ultraThinMaterial, in: Capsule())
@@ -352,19 +349,15 @@ struct LanguagePicker: View {
                 }
             }
         } label: {
-            HStack(spacing: 4 * scale) {
+            HStack(spacing: 5) {
                 Text(language.effective.flag)
                     .font(.system(size: 20 * scale))
-                    // A flag emoji's line box is much taller than its ink, so
-                    // even padding around it produced a pill that looked
-                    // inflated and top-heavy. Trim the box down to the ink.
-                    .frame(height: 15 * scale)
                 Image(systemName: "chevron.down")
                     .font(.system(size: 10 * scale, weight: .bold))
                     .foregroundStyle(tint)
             }
-            .padding(.horizontal, 11 * scale)
-            .padding(.vertical, 9 * scale)
+            .padding(.horizontal, 12 * scale)
+            .padding(.vertical, 8 * scale)
             .liquidGlassCapsule()
             .contentShape(Capsule())
         }

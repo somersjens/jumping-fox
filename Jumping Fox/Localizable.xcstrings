@@ -19675,7 +19675,7 @@
         "eu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Puntuazio onena"
+            "value": "Errekorra"
           }
         },
         "bn": {
@@ -19693,7 +19693,7 @@
         "bs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Najbolji rezultat"
+            "value": "Rekord"
           }
         },
         "bg": {
@@ -19807,7 +19807,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skor tertinggi"
+            "value": "Rekor"
           }
         },
         "it": {
@@ -19849,7 +19849,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Najbolji rezultat"
+            "value": "Rekord"
           }
         },
         "lo": {
@@ -19873,13 +19873,13 @@
         "mk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Најдобар резултат"
+            "value": "Рекорд"
           }
         },
         "ms": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skor tertinggi"
+            "value": "Rekod"
           }
         },
         "ml": {
@@ -19933,7 +19933,7 @@
         "uz": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eng yuqori natija"
+            "value": "Rekord"
           }
         },
         "fa": {
@@ -19975,7 +19975,7 @@
         "sr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Najbolji rezultat"
+            "value": "Rekord"
           }
         },
         "si": {
@@ -19987,13 +19987,13 @@
         "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Najlepšie skóre"
+            "value": "Rekord"
           }
         },
         "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Najboljši rezultat"
+            "value": "Rekord"
           }
         },
         "es": {
@@ -20035,13 +20035,13 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nejlepší skóre"
+            "value": "Rekord"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "En yüksek puan"
+            "value": "Rekor"
           }
         },
         "ur": {
@@ -20071,7 +20071,7 @@
         "zu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Irekhodi eliphezulu"
+            "value": "Irekhodi"
           }
         },
         "sv": {

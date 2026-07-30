@@ -203,7 +203,7 @@
 	<key>menu.maxScore</key>
 	<string>30 زیادہ سے زیادہ</string>
 	<key>menu.maximumCount</key>
-	<string>زیادہ سے زیادہ</string>
+	<string>زیادہ</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>زیادہ سے زیادہ حد %lld بار حاصل ہوئی</string>
 	<key>menu.moreLevels</key>

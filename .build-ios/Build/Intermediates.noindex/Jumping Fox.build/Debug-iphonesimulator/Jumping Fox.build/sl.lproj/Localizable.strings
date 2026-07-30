@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Igraj znova</string>
 	<key>game.highScore</key>
-	<string>Najboljši rezultat</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Nazaj v glavni meni</string>
 	<key>game.intro.continue</key>

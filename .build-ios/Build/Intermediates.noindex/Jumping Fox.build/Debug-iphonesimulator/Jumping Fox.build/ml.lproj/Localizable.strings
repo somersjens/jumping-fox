@@ -203,7 +203,7 @@
 	<key>menu.maxScore</key>
 	<string>30 പരമാവധി</string>
 	<key>menu.maximumCount</key>
-	<string>പരമാവധി</string>
+	<string>പരമം</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>പരമാവധി %lld തവണ നേടി</string>
 	<key>menu.moreLevels</key>

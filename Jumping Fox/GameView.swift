@@ -91,6 +91,9 @@ struct GameView: View {
     @State private var isPausedAtIntro = false
     @State private var isShowingCompletionPreview = false
     @State private var showEndScreen = false
+    /// Drives the "new record" badge's entrance: it stays hidden while the
+    /// result card settles, then springs in on its own a beat later.
+    @State private var showHighScoreBadge = false
     /// When automatic finishing is off, reaching the scoreboard maximum swaps
     /// two HUD regions at once. Stage that swap just after the score animation
     /// begins so the landing frame itself remains light.
@@ -358,6 +361,7 @@ struct GameView: View {
                 celebrate = false
                 showConfetti = false
                 showEndScreen = false
+                showHighScoreBadge = false
                 showsScoreboardFinishControls = false
                 isShowingCompletionPreview = false
                 // After the tutorial, fresh runs use the normal level start
@@ -1375,7 +1379,7 @@ struct GameView: View {
                 score: state.score,
                 illustration: .character,
                 emphasizesSubtitle: true,
-                showsNewHighScore: state.isNewHighScore && state.score > 0
+                showsNewHighScore: state.beatsPreviousHighScore && state.score > 0
             )
             .opacity(showEndScreen ? 1 : 0)
             .scaleEffect(showEndScreen ? 1 : 0.93)
@@ -1387,8 +1391,19 @@ struct GameView: View {
             .onLongPressGesture(minimumDuration: 2) {
                 isShowingCompletionPreview = true
             }
+
+            // A matched-or-beaten best rains the same confetti as a completion,
+            // layered above the card. `presentEndScreen` only arms it when this
+            // run earned the celebration.
+            if showConfetti {
+                ConfettiView()
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }
         }
-        .onAppear { presentEndScreen(celebrating: false) }
+        // Any run that matches or beats the earlier best (including a first
+        // score) rains confetti; only a lower score ends quietly.
+        .onAppear { presentEndScreen(celebrating: state.didMatchOrBeatBest) }
     }
 
     // MARK: Completion (reached the 30-point goal)
@@ -1408,7 +1423,7 @@ struct GameView: View {
                 score: isShowingCompletionPreview ? ProgressStore.maximumTrophies(for: state.level) : state.score,
                 illustration: .trophy,
                 emphasizesSubtitle: false,
-                showsNewHighScore: state.isNewHighScore && state.score > 0
+                showsNewHighScore: state.beatsPreviousHighScore && state.score > 0
             )
             .opacity(showEndScreen ? 1 : 0)
             .scaleEffect(showEndScreen ? 1 : 0.93)
@@ -1436,6 +1451,7 @@ struct GameView: View {
     private func presentEndScreen(celebrating: Bool) {
         showEndScreen = false
         showConfetti = false
+        showHighScoreBadge = false
         if celebrating { celebrate = false }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
@@ -1443,12 +1459,31 @@ struct GameView: View {
             showEndScreen = true
             if celebrating { celebrate = true }
         }
+
+        // The personal-best sound plays whenever the run matched or beat the
+        // earlier best — first scores and ties included (neither shows a badge).
+        // Layered just after the card so it lands with the result.
+        if state.didMatchOrBeatBest && state.score > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                guard state.isGameOver else { return }
+                AppAudio.shared.playHighScore()
+            }
+        }
+
+        // The record badge springs in on its own, a beat after the card has
+        // settled, so it reads as an earned reward rather than static card text.
+        if state.beatsPreviousHighScore && state.score > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                guard state.isGameOver else { return }
+                // The badge view owns its own spring/shine animations, keyed on
+                // this flag, so a plain assignment triggers the full entrance.
+                showHighScoreBadge = true
+            }
+        }
+
         guard celebrating else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
-            guard state.isGameOver,
-                  state.gameOverReason == .completed
-                    || state.score >= ProgressStore.maximumTrophies(for: state.level)
-                    || isShowingCompletionPreview else { return }
+            guard state.isGameOver else { return }
             showConfetti = true
         }
     }
@@ -1585,19 +1620,43 @@ struct GameView: View {
     private var newHighScoreBadge: some View {
         HStack(spacing: 4) {
             Text("game.highScore")
+                .lineLimit(1)
             Image(systemName: "trophy.fill")
         }
+        // The badge is an overlay pinned to the score capsule's width, so a long
+        // translation would wrap to two lines; fixedSize lets the capsule grow to
+        // fit the label on a single line instead.
+        .fixedSize()
         .font(.system(size: 13 * gameTextScale, weight: .bold, design: .rounded))
         // Match the score digits exactly, for every selected character theme.
         .foregroundStyle(.white)
         .padding(.horizontal, 10 * gameTextScale)
         .padding(.vertical, 6 * gameTextScale)
         .background(theme.color, in: Capsule())
+        // A soft diagonal highlight sweeps across the badge once as it lands.
+        // Clipped to the capsule, it starts and ends off the badge, so it is
+        // invisible before and after the single pass — no fade bookkeeping.
+        .overlay {
+            Rectangle()
+                .fill(LinearGradient(
+                    colors: [.white.opacity(0), .white.opacity(0.75), .white.opacity(0)],
+                    startPoint: .leading, endPoint: .trailing))
+                .frame(width: 26)
+                .rotationEffect(.degrees(22))
+                .offset(x: showHighScoreBadge ? 130 : -130)
+                .animation(.easeIn(duration: 0.5).delay(0.16), value: showHighScoreBadge)
+        }
+        .clipShape(Capsule())
         .overlay {
             Capsule().stroke(.white.opacity(0.45), lineWidth: 1)
         }
         .shadow(color: theme.deepColor.opacity(0.22), radius: 4, y: 2)
-        .scaleEffect(0.8, anchor: .topTrailing)
+        // Entrance: a springy pop with a little overshoot and an unwinding tilt,
+        // settling at the 0.8 scale the pinned overlay is sized for.
+        .scaleEffect(showHighScoreBadge ? 0.8 : 0.12, anchor: .topTrailing)
+        .rotationEffect(.degrees(showHighScoreBadge ? 0 : -28), anchor: .topTrailing)
+        .opacity(showHighScoreBadge ? 1 : 0)
+        .animation(.spring(response: 0.5, dampingFraction: 0.5), value: showHighScoreBadge)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("game.highScore")
     }

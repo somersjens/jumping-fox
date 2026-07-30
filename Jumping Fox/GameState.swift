@@ -209,8 +209,22 @@ final class GameState: ObservableObject {
     @Published private(set) var isGameOver = false
     @Published private(set) var gameOverReason: GameOverReason?
     @Published private(set) var isNewHighScore = false
+    /// Drives the "new record" badge: a strictly higher score than the best the
+    /// level already had (so never on a first run or a mere tie). See also
+    /// `didMatchOrBeatBest`, which additionally covers first runs and ties and
+    /// drives the personal-best sound and confetti.
+    @Published private(set) var beatsPreviousHighScore = false
+    /// True when the finished run's score is at least the best the player had
+    /// *before this attempt* (a tie counts; a first score counts). Only a run
+    /// that ends up lower than that earlier best misses out — that is the single
+    /// case with no personal-best sound and no confetti.
+    @Published private(set) var didMatchOrBeatBest = false
     @Published private(set) var didIncreaseMaximumCount = false
     @Published private(set) var highScore: Int
+    /// The stored best captured at the start of this attempt, so mid-run score
+    /// locking (unlimited mode) can't move the bar the final score is judged
+    /// against. `highScore` itself is updated as soon as a new best is recorded.
+    private var bestAtRunStart: Int
     private var hasPreparedCompletedLevel = false
 
     init(level: LevelConfig) {
@@ -223,8 +237,10 @@ final class GameState: ObservableObject {
         let engine = QuestionEngine(level: level)
         self.engine = engine
         self.question = engine.next()
-        self.highScore = ProgressStore.bestScore(levelID: level.id,
-                                                 helperEnabled: helperEnabled)
+        let best = ProgressStore.bestScore(levelID: level.id,
+                                           helperEnabled: helperEnabled)
+        self.highScore = best
+        self.bestAtRunStart = best
     }
 
     /// Recreates an unfinished run after the app was terminated. The engine
@@ -242,6 +258,7 @@ final class GameState: ObservableObject {
         self.isEndless = pausedSnapshot.isEndless
         self.isAnswerRevealed = pausedSnapshot.isAnswerRevealed
         self.highScore = pausedSnapshot.highScore
+        self.bestAtRunStart = pausedSnapshot.highScore
     }
 
     var pausedSnapshot: PausedSnapshot {
@@ -494,6 +511,12 @@ final class GameState: ObservableObject {
         if result.isNewHighScore {
             highScore = score
             isNewHighScore = showNewHighScore
+            beatsPreviousHighScore = showNewHighScore && result.hadPreviousHighScore
+        }
+        // Judged against the best that existed before this attempt, so only a
+        // genuine regression (ending lower than that) misses the celebration.
+        if showNewHighScore {
+            didMatchOrBeatBest = score > 0 && score >= bestAtRunStart
         }
         didIncreaseMaximumCount = showNewHighScore && result.didIncreaseMaximumCount
         return result
@@ -515,9 +538,12 @@ final class GameState: ObservableObject {
         isGameOver = false
         gameOverReason = nil
         isNewHighScore = false
+        beatsPreviousHighScore = false
+        didMatchOrBeatBest = false
         didIncreaseMaximumCount = false
         hasPreparedCompletedLevel = false
         highScore = ProgressStore.bestScore(levelID: level.id, helperEnabled: isAnswerHelperEnabled)
+        bestAtRunStart = highScore
     }
 
     /// A wrong answer for the current question that isn't in `used`.

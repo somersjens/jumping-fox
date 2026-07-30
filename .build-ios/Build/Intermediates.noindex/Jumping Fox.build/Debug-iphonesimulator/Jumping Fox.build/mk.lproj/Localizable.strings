@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Играј пак</string>
 	<key>game.highScore</key>
-	<string>Најдобар резултат</string>
+	<string>Рекорд</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Назад во главното мени</string>
 	<key>game.intro.continue</key>

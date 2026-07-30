@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Yana o‘yna</string>
 	<key>game.highScore</key>
-	<string>Eng yuqori natija</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Asosiy menyuga qaytish</string>
 	<key>game.intro.continue</key>

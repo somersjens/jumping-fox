@@ -203,7 +203,7 @@
 	<key>menu.maxScore</key>
 	<string>30 ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
 	<key>menu.maximumCount</key>
-	<string>ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
+	<string>Առավ.</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>Առավելագույնին հասել ես %lld անգամ</string>
 	<key>menu.moreLevels</key>

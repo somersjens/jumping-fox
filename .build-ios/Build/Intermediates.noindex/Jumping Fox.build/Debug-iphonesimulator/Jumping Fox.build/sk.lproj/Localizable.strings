@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Hrať znova</string>
 	<key>game.highScore</key>
-	<string>Najlepšie skóre</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Späť do hlavného menu</string>
 	<key>game.intro.continue</key>

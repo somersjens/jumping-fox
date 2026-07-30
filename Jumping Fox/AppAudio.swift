@@ -140,6 +140,13 @@ final class AppAudio: NSObject, ObservableObject {
         Effect(key: "shootingStar",  file: "sfx_shooting_star",  ext: "caf", volume: 0.31, lead: 0.045),
         Effect(key: "streak",        file: "sfx_streak",         ext: "caf", volume: 0.16, lead: 0.225),
         Effect(key: "levelComplete", file: "sfx_level_complete", ext: "caf", volume: 0.10, lead: 0.010),
+        // New personal best. Converted from the supplied MP3 to a lead/tail-
+        // trimmed PCM CAF (audible content is ~4.4s; the file's long trailing
+        // silence was dropped so the preloaded buffer stays small). `volume` was
+        // measured (active-region RMS ~-21 dBFS) to land at ~-38.5 dBFS, the same
+        // gentle level as the other milestone sounds it plays over on the result
+        // card, rather than the raw file's louder opening.
+        Effect(key: "highScore",     file: "sfx_high_score",     ext: "caf", volume: 0.14, lead: 0.025),
         Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "caf", volume: 0.12, lead: 0.050),
         Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.10, lead: 0.015),
         Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "caf", volume: 1.0,  lead: 0.065),
@@ -504,6 +511,7 @@ final class AppAudio: NSObject, ObservableObject {
     func playTriplerUsed()     { playEffect("triplerUsed") }     // ×3 spent on a correct answer
     func playStreak()          { playEffect("streak") }          // 5-in-a-row streak turns on
     func playLevelComplete()   { playEffect("levelComplete") }   // level finished
+    func playHighScore()       { playEffect("highScore") }       // new personal best (also the first score set for a level)
     func playCharacterUnlock() { playEffect("characterUnlock") } // new character earned
     func playTrophyMenu()      { playEffect("trophyMenu") }      // card counts up on return to menu
     func playTrophyFlight()    { playEffect("trophyFlight") }    // whoosh while the trophy flies to the header

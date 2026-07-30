@@ -566,6 +566,10 @@ enum ProgressStore {
     struct RecordResult {
         let isNewHighScore: Bool
         let didIncreaseMaximumCount: Bool
+        /// True when the level already had a stored best before this run — i.e.
+        /// this is NOT the very first score set for the level. Lets the UI show
+        /// the "new record" badge only when an existing best was actually beaten.
+        let hadPreviousHighScore: Bool
     }
 
     /// Records a run. Reaching its goal adds one max-completion badge (up to
@@ -580,6 +584,9 @@ enum ProgressStore {
             ? helperOnlyBestScore(levelID: levelID)
             : bestScore(levelID: levelID)
         let isNewHighScore = cappedScore > currentBest
+        // A positive stored best means the player has finished this level before;
+        // a first-ever run has `currentBest == 0` and beats no existing record.
+        let hadPreviousHighScore = currentBest > 0
         // Read this before storing a newly achieved maximum so a player's
         // first ever full run becomes ×1, not ×2.
         let currentMaximumCount = score >= maximum
@@ -604,7 +611,8 @@ enum ProgressStore {
             didIncreaseMaximumCount = false
         }
         return RecordResult(isNewHighScore: isNewHighScore,
-                            didIncreaseMaximumCount: didIncreaseMaximumCount)
+                            didIncreaseMaximumCount: didIncreaseMaximumCount,
+                            hadPreviousHighScore: hadPreviousHighScore)
     }
 
     /// Existing completed levels predate the badge, so they begin at ×1.
