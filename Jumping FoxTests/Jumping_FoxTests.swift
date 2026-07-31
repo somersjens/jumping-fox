@@ -56,6 +56,24 @@ final class Jumping_FoxTests: XCTestCase {
         XCTAssertTrue(CharacterUnlockStore.canUse(characterID: "fox", isPremium: false))
     }
 
+    func testNextCharacterMilestoneUsesADecreasingRemainingCount() {
+        let first = CharacterUnlockStore.nextMilestone(after: 1)
+        XCTAssertEqual(first?.characterID, "frog")
+        XCTAssertEqual(
+            first.map { CharacterUnlockStore.remainingTrophies(after: 1, until: $0) },
+            499
+        )
+
+        let second = CharacterUnlockStore.nextMilestone(after: 500)
+        XCTAssertEqual(second?.characterID, "penguin")
+        XCTAssertEqual(
+            second.map { CharacterUnlockStore.remainingTrophies(after: 500, until: $0) },
+            1_000
+        )
+
+        XCTAssertNil(CharacterUnlockStore.nextMilestone(after: 5_000))
+    }
+
     func testHelperAnswerColorsContrastWithGreenAndRedCharacters() {
         let frog = CharacterCatalog.character(id: "frog")
         let crab = CharacterCatalog.character(id: "crab")

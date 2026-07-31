@@ -160,6 +160,18 @@ enum CharacterUnlockStore {
         milestones.first { $0.characterID == characterID }?.threshold
     }
 
+    /// The first trophy character the player has not reached yet. Keeping this
+    /// calculation next to the milestone catalog gives the menu, notifications,
+    /// and tests one shared definition of "next".
+    static func nextMilestone(after total: Int) -> TrophyCharacterMilestone? {
+        milestones.first { $0.threshold > max(0, total) }
+    }
+
+    static func remainingTrophies(after total: Int,
+                                  until milestone: TrophyCharacterMilestone) -> Int {
+        max(0, milestone.threshold - max(0, total))
+    }
+
     static func canUse(characterID: String, isPremium: Bool) -> Bool {
         if characterID == CharacterCatalog.freeCharacterID || isPremium { return true }
         guard let threshold = threshold(for: characterID) else { return false }

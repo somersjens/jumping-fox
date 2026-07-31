@@ -41,6 +41,13 @@ private struct ScoreCelebration: Identifiable {
     var startedAt = Date()
 }
 
+/// The stable value presented in the home-card unlock line. It changes only
+/// after the return celebration has settled, so the remaining count is replaced
+/// in one pop instead of counting down alongside the trophy total.
+private enum CharacterUnlockPrompt: Equatable {
+    case trophies(milestone: TrophyCharacterMilestone, remaining: Int)
+}
+
 /// Read-once progress used by the home menu. ProgressStore intentionally
 /// reconciles UserDefaults and iCloud on a read, which is valuable at refresh
 /// boundaries but far too expensive to repeat for every card during every
@@ -344,6 +351,8 @@ struct ContentView: View {
     @State private var celebratedCharacterUnlock: TrophyCharacterMilestone?
     @State private var isCharacterUnlockPreview = false
     @State private var pendingCharacterUnlocks: [TrophyCharacterMilestone] = []
+    @State private var characterUnlockPrompt: CharacterUnlockPrompt?
+    @State private var characterUnlockPreviewTrigger = 0
     @State private var showGoalPicker = false
     @State private var showNameEditor = false
     @State private var nameDraft = ""
@@ -614,6 +623,24 @@ struct ContentView: View {
         .onChange(of: progress.revision) { _ in
             refreshHomeProgress()
         }
+        .onChange(of: totalTrophies) { _ in
+            // A gameplay return installs its final score before any of the
+            // visible celebration runs. Hold the old prompt until that flow
+            // explicitly releases it; cloud/restored progress can update now.
+            guard scoreCelebration == nil else { return }
+            synchronizeCharacterUnlockPrompt(animated: characterUnlockPrompt != nil)
+        }
+        .onChange(of: premium.isPremium) { isPremium in
+            // Returning from the Premium sheet should show the final menu
+            // immediately, without a special disappearance animation.
+            if isPremium {
+                withTransaction(Transaction(animation: nil)) {
+                    characterUnlockPrompt = nil
+                }
+            } else {
+                synchronizeCharacterUnlockPrompt(animated: false)
+            }
+        }
         .onChange(of: lifeModeRaw) { _ in
             refreshHomeProgress()
         }
@@ -622,6 +649,7 @@ struct ContentView: View {
             // the background music plays app-wide, softly on the menus.
             AppAudio.shared.prepare()
             AppAudio.shared.startMusic()
+            synchronizeCharacterUnlockPrompt(animated: false)
         }
         .onChange(of: scenePhase) { phase in
             guard phase == .active else { return }
@@ -874,7 +902,7 @@ struct ContentView: View {
                 .accessibilityLabel("menu.accessibility.character")
                 .accessibilityHint("developerMode.accessibilityHint")
 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: isPad ? 7 : 4) {
                     if tutorial.developerMode {
                         Text("developerMode.title")
                             .font(.caption.weight(.heavy))
@@ -894,30 +922,38 @@ struct ContentView: View {
                     }
                     .buttonStyle(.plain)
 
-                    Label {
-                        // The trophy icon already says "trophies"; just the count.
-                        let total = headerCount(start: scoreCelebration?.totalStart,
-                                                current: totalTrophies)
-                        TrophyCountText(from: total.from,
-                                         to: total.to,
-                                         celebrationStartedAt: total.at,
-                                         suffix: answerHelper ? "*" : "",
-                                         delay: 0,
-                                         duration: 0.95)
-                    } icon: {
-                        HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
-                    }
-                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
-                        .foregroundStyle(character.deepColor)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
+                    let total = headerCount(start: scoreCelebration?.totalStart,
+                                            current: totalTrophies)
+                    AlternatingTrophySummary(
+                        totalFrom: total.from,
+                        totalTo: total.to,
+                        celebrationStartedAt: total.at,
+                        suffix: answerHelper ? "*" : "",
+                        prompt: (!premium.isPremium && totalTrophies > 0)
+                            ? characterUnlockPrompt
+                            : nil,
+                        immediatePreviewID: characterUnlockPreviewTrigger,
+                        isTrophyCelebrationActive: scoreCelebration != nil
+                            || flyingTrophy != nil
+                            || headerTrophyArrival != nil,
+                        accent: character.deepColor,
+                        highlightsTrophy: highlightsHeaderTrophies,
+                        isPad: isPad,
+                        action: {
+                            guard let characterUnlockPrompt else { return }
+                            AppAudio.shared.playMenuTap()
+                            if case .trophies(let milestone, _) = characterUnlockPrompt {
+                                openCharacterCollection(initialCharacterID: milestone.characterID)
+                            }
+                        }
+                    )
                 }
                 .foregroundStyle(character.deepColor)
-                // A player's name gets the available width before the flexible
-                // gap does, so short names do not wrap unnecessarily.
+                // Claim every point up to the fixed streak module. Previously
+                // an explicit Spacer consumed this room while the unlock text
+                // was truncated inside a much narrower intrinsic-width column.
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .layoutPriority(1)
-
-                Spacer(minLength: 8)
 
                 // Streak lives to the right, capped to about a third of the row.
                 CompactStreakView(accent: character.deepColor) {
@@ -947,9 +983,13 @@ struct ContentView: View {
             Divider().overlay(character.deepColor.opacity(0.22))
 
             VStack(spacing: menuControlSpacing) {
-                HStack(alignment: .center) {
+                HStack(alignment: .center, spacing: isPad ? 8 : 5) {
                     Text(selectedFilter.title)
-                    .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
+                        .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.62)
+                        .allowsTightening(true)
+                        .layoutPriority(2)
                     Label {
                         let cat = headerCount(start: scoreCelebration?.categoryStart,
                                               current: categoryTrophies)
@@ -964,7 +1004,19 @@ struct ContentView: View {
                             .reportAnchor("categoryTrophy")
                     }
                         .font(.system(size: isPad ? 22 : 15, weight: .bold))
-                    Spacer()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                        .layoutPriority(1)
+                        // Rounded title glyphs carry more visual weight below
+                        // their mathematical centre. Lower the complete trophy
+                        // total slightly so both groups read on one optical row.
+                        // This is a layout alignment (not a visual-only offset),
+                        // so the reported flight destination moves with it.
+                        .alignmentGuide(VerticalAlignment.center) { dimensions in
+                            dimensions[VerticalAlignment.center] - (isPad ? 2.2 : 1.5)
+                        }
+
+                    Spacer(minLength: 0)
                 }
                 .foregroundStyle(character.deepColor)
 
@@ -1216,6 +1268,7 @@ struct ContentView: View {
 
         guard earnedMore else {
             defersHomeProgressRefresh = false
+            synchronizeCharacterUnlockPrompt(animated: characterUnlockPrompt != nil)
             if showTutorialHintAfter {
                 scheduleTutorialScoreHint(for: levelID, after: 0.05) {
                     // The state is already hidden, but its 0.2-second fade must
@@ -1336,6 +1389,11 @@ struct ContentView: View {
                     return
                 }
                 defersHomeProgressRefresh = false
+                // The card, flight, header count and their fade-out are all
+                // finished now. Reveal the first prompt by expanding the card,
+                // or replace an existing remaining count with one spring pop.
+                characterUnlockPreviewTrigger &+= 1
+                synchronizeCharacterUnlockPrompt(animated: true)
                 refreshHomeProgress()
                 if !presentPendingCharacterUnlockIfPossible() {
                     requestReviewAfterSettledReturn()
@@ -1472,6 +1530,42 @@ struct ContentView: View {
 
     private var totalTrophies: Int {
         totalTrophies(in: homeProgress)
+    }
+
+    @MainActor
+    private func synchronizeCharacterUnlockPrompt(animated: Bool) {
+        let nextPrompt: CharacterUnlockPrompt?
+
+        if premium.isPremium || totalTrophies <= 0 {
+            nextPrompt = nil
+        } else if let milestone = CharacterUnlockStore.nextMilestone(after: totalTrophies) {
+            nextPrompt = .trophies(
+                milestone: milestone,
+                remaining: CharacterUnlockStore.remainingTrophies(
+                    after: totalTrophies,
+                    until: milestone
+                )
+            )
+        } else {
+            // The 5,000-trophy character is the final progression milestone.
+            // From this point onward the header permanently shows the total,
+            // regardless of whether Premium is owned.
+            nextPrompt = nil
+        }
+
+        guard nextPrompt != characterUnlockPrompt else { return }
+        if animated {
+            // No scale/pop on the complete line. The text remains in place;
+            // only the numeric glyph morphs and the resulting small width
+            // adjustment eases into its new position.
+            withAnimation(.easeInOut(duration: 0.28)) {
+                characterUnlockPrompt = nextPrompt
+            }
+        } else {
+            withTransaction(Transaction(animation: nil)) {
+                characterUnlockPrompt = nextPrompt
+            }
+        }
     }
 
     // Premium levels count toward both totals exactly like the free ones: a
@@ -2883,6 +2977,247 @@ private struct HeaderTrophyIcon: View {
                 .scaleEffect(isHighlighted ? 1 : 0.3)
                 .opacity(isHighlighted ? 0.9 : 0)
         }
+    }
+}
+
+/// Normally shows the player's grand trophy total. Once unlock progress is
+/// available, the same slot gently previews the next character between longer
+/// stretches of the total, without adding a permanent line to the menu card.
+private struct TrophySummaryAvailableWidthKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+private struct AlternatingTrophySummary: View {
+    let totalFrom: Int
+    let totalTo: Int
+    let celebrationStartedAt: Date?
+    let suffix: String
+    let prompt: CharacterUnlockPrompt?
+    let immediatePreviewID: Int
+    let isTrophyCelebrationActive: Bool
+    let accent: Color
+    let highlightsTrophy: Bool
+    let isPad: Bool
+    let action: () -> Void
+
+    private var scale: CGFloat { isPad ? 1.47 : 1 }
+    private var baseFontSize: CGFloat { isPad ? 22 : 15 }
+    private var opticalLineHeight: CGFloat { baseFontSize * 1.4 }
+    @ObservedObject private var language = LanguageManager.shared
+    @State private var showsUnlockPreview = false
+    @State private var displayedPrompt: CharacterUnlockPrompt?
+    @State private var handledImmediatePreviewID = 0
+    @State private var availableWidth: CGFloat = 0
+
+    private var contentScale: CGFloat {
+        guard prompt != nil else { return 1 }
+        guard availableWidth > 0, naturalUnlockWidth > availableWidth else { return 1 }
+        // Reserve a tiny rounding margin so the non-wrapping text never lands
+        // exactly on the clipping boundary after pixel quantisation.
+        return max(0.01, (availableWidth - 2 * scale) / naturalUnlockWidth)
+    }
+
+    private var naturalUnlockWidth: CGFloat {
+        guard case .trophies(let milestone, let remaining) = prompt else { return 0 }
+        let systemFont = UIFont.systemFont(ofSize: baseFontSize, weight: .bold)
+        let roundedFont = systemFont.fontDescriptor.withDesign(.rounded)
+            .map { UIFont(descriptor: $0, size: baseFontSize) } ?? systemFont
+        let textWidth = ceil(
+            (remainingText(remaining) as NSString).size(
+                withAttributes: [.font: roundedFont]
+            ).width
+        )
+        // Two HStack gaps + the forward arrow + the character frame.
+        let animal = CharacterCatalog.character(id: milestone.characterID)
+        let artworkWidth = 31.1 * scale * max(1, animal.selectorArtworkScale)
+        return textWidth + 6 * scale + 10 * scale + artworkWidth
+    }
+
+    private var cycleID: String {
+        switch prompt {
+        case .trophies(let milestone, let remaining):
+            return "\(milestone.characterID)-\(remaining)-\(immediatePreviewID)-\(isTrophyCelebrationActive)"
+        case nil:
+            return "total-only-\(immediatePreviewID)-\(isTrophyCelebrationActive)"
+        }
+    }
+
+    var body: some View {
+        HStack(spacing: 4 * scale) {
+            // The shared icon never participates in the transition. Keeping it
+            // perfectly still prevents the brief dim/flash caused by two trophy
+            // icons crossfading over one another.
+            HeaderTrophyIcon(isHighlighted: highlightsTrophy)
+
+            // One live counter, sized from the actual localized phrase. No
+            // duplicate hidden TimelineViews and no truncating text proposal.
+            alternatingValues(contentScale: contentScale)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear.preference(
+                            key: TrophySummaryAvailableWidthKey.self,
+                            value: proxy.size.width
+                        )
+                    }
+                }
+                .onPreferenceChange(TrophySummaryAvailableWidthKey.self) { width in
+                    guard abs(width - availableWidth) > 0.5 else { return }
+                    withTransaction(Transaction(animation: nil)) {
+                        availableWidth = width
+                    }
+                }
+        }
+        .font(.system(size: baseFontSize, weight: .bold))
+        .foregroundStyle(accent)
+        .lineLimit(1)
+        .task(id: cycleID) {
+            // Returning gameplay owns the header until its card count, trophy
+            // flight and grand-total count-up have all settled. Cancelling the
+            // ordinary cycle here also hides a preview that happened to be on
+            // screen when the return sequence began.
+            guard !isTrophyCelebrationActive else {
+                withTransaction(Transaction(animation: nil)) {
+                    showsUnlockPreview = false
+                }
+                return
+            }
+
+            guard let prompt else {
+                showsUnlockPreview = false
+                displayedPrompt = nil
+                handledImmediatePreviewID = immediatePreviewID
+                return
+            }
+
+            do {
+                let shouldPreviewImmediately =
+                    immediatePreviewID != handledImmediatePreviewID
+                if displayedPrompt != prompt {
+                    let hadPreviousValue = displayedPrompt != nil
+                    if !hadPreviousValue {
+                        displayedPrompt = prompt
+                    }
+
+                    if shouldPreviewImmediately {
+                        // Only a completed level-return sequence increments the
+                        // trigger. Startup/cloud synchronization updates the
+                        // stored value silently and waits for the normal cycle.
+                        withAnimation(.easeInOut(duration: 0.55)) {
+                            showsUnlockPreview = true
+                        }
+                        if hadPreviousValue {
+                            try await Task.sleep(nanoseconds: 650_000_000)
+                            withAnimation(.spring(response: 0.42, dampingFraction: 0.78)) {
+                                displayedPrompt = prompt
+                            }
+                        }
+                        try await Task.sleep(nanoseconds: 3_000_000_000)
+                        withAnimation(.easeInOut(duration: 0.55)) {
+                            showsUnlockPreview = false
+                        }
+                    } else {
+                        displayedPrompt = prompt
+                        showsUnlockPreview = false
+                    }
+                }
+                handledImmediatePreviewID = immediatePreviewID
+
+                try await Task.sleep(nanoseconds: 5_000_000_000)
+                while !Task.isCancelled {
+                    withAnimation(.easeInOut(duration: 0.55)) {
+                        showsUnlockPreview = true
+                    }
+                    try await Task.sleep(nanoseconds: 3_000_000_000)
+                    withAnimation(.easeInOut(duration: 0.55)) {
+                        showsUnlockPreview = false
+                    }
+                    try await Task.sleep(nanoseconds: 5_000_000_000)
+                }
+            } catch {
+                // SwiftUI cancels this task when the prompt or view disappears.
+            }
+        }
+    }
+
+    private func remainingText(_ remaining: Int) -> String {
+        String(
+            format: L(key: "menu.characterUnlockRemaining %lld"),
+            locale: language.locale,
+            Int64(remaining)
+        )
+    }
+
+    private func alternatingValues(contentScale: CGFloat) -> some View {
+        ZStack(alignment: .leading) {
+            TrophyCountText(
+                from: totalFrom,
+                to: totalTo,
+                celebrationStartedAt: celebrationStartedAt,
+                suffix: suffix,
+                delay: 0,
+                duration: 0.95
+            )
+            .opacity(showsUnlockPreview ? 0 : 1)
+            .blur(radius: showsUnlockPreview ? 2.2 * scale : 0)
+            .scaleEffect(showsUnlockPreview ? 0.985 : 1, anchor: .leading)
+            .accessibilityHidden(showsUnlockPreview)
+
+            if let displayedPrompt {
+                Button(action: action) {
+                    if case .trophies(let milestone, let remaining) = displayedPrompt {
+                        let animal = CharacterCatalog.character(id: milestone.characterID)
+                        HStack(alignment: .center, spacing: 3 * scale * contentScale) {
+                            Text(verbatim: remainingText(remaining))
+                            .contentTransition(.numericText())
+                            .allowsTightening(true)
+                            .fixedSize(horizontal: true, vertical: false)
+                            Image(systemName: "arrow.forward")
+                                .font(.system(
+                                    size: 10 * scale * contentScale,
+                                    weight: .bold
+                                ))
+                                // SF Symbol's forward arrow sits optically a
+                                // fraction above rounded numerals at this size.
+                                .offset(y: 0.8 * scale * contentScale)
+                                .opacity(0.58)
+                            animal.artwork
+                                .resizable()
+                                .scaledToFit()
+                                .scaleEffect(animal.selectorArtworkScale)
+                                .frame(width: 31.1 * scale * contentScale,
+                                       height: 31.1 * scale * contentScale)
+                                // Preserve the full visual character size, but
+                                // let it extend equally above and below a
+                                // text-height layout footprint. The artwork no
+                                // longer creates invisible space above the text.
+                                .frame(height: opticalLineHeight * contentScale)
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(
+                            Text(verbatim: "\(remaining) ")
+                            + Text("premium.unlockWithTrophies")
+                            + Text(verbatim: " \(animal.localizedName)")
+                        )
+                    }
+                }
+                .buttonStyle(.plain)
+                .opacity(showsUnlockPreview ? 1 : 0)
+                .blur(radius: showsUnlockPreview ? 0 : 2.2 * scale)
+                .scaleEffect(showsUnlockPreview ? 1 : 0.985, anchor: .leading)
+                .allowsHitTesting(showsUnlockPreview)
+                .accessibilityHidden(!showsUnlockPreview)
+            }
+        }
+        // Both alternatives share a text-height optical centre. Taller artwork
+        // grows from that centre instead of increasing the name-to-row gap.
+        .frame(height: opticalLineHeight * contentScale, alignment: .leading)
+        .font(.system(size: baseFontSize * contentScale, weight: .bold))
+        .lineLimit(1)
     }
 }
 
