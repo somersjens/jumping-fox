@@ -1361,10 +1361,14 @@ final class QuestionEngine {
             return percentagesWholeQuestion(percentage: p)
         }
         // Every integer whole whose "p% of whole" lands on a friendly decimal
-        // with a small, readable answer (≤ 60). Working in hundredths keeps the
-        // maths exact — no floating-point rounding anywhere.
+        // with a small, readable answer (≤ 60). The whole itself stays inside
+        // the range the Whole level already uses for this percentage
+        // (base × 8), so the Komma level asks about numbers the child just
+        // practised instead of jumping to three digits. Working in hundredths
+        // keeps the maths exact — no floating-point rounding anywhere.
+        let maxWhole = Self.percentageBase(p) * 8
         var candidates: [(whole: Int, hundredths: Int)] = []
-        for whole in 1...600 {
+        for whole in 1...maxWhole {
             let hundredths = whole * p            // = answer × 100
             guard hundredths <= 6000 else { break }
             if Self.decimalRemainders.contains(hundredths % 100) {

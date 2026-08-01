@@ -108,6 +108,8 @@
 	<string>જીવન ચાલુ</string>
 	<key>game.intro.scorePaused</key>
 	<string>તમારો હાલનો સ્કોર થોભશે.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>માફ કરશો! મોટેથી વાંચવાની સુવિધા હજી તમારી ભાષામાં ઉપલબ્ધ નથી.</string>
 	<key>game.intro.start</key>
 	<string>લેવલ શરૂ કરો</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>પાત્ર બદલવા ટેપ કરો; સ્વાગત સ્ક્રીનથી ફરી શરૂ કરવા બે સેકન્ડ દબાવી રાખો.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ પસંદ કરો</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>હજુ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

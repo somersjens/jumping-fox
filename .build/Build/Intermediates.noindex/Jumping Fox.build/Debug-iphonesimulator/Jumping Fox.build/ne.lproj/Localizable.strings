@@ -108,6 +108,8 @@
 	<string>जीवन चालु</string>
 	<key>game.intro.scorePaused</key>
 	<string>तिम्रो हालको स्कोर रोकिन्छ।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>माफ गर्नुहोस्! ठूलो स्वरमा पढ्ने सुविधा तपाईंको भाषामा अझै उपलब्ध छैन।</string>
 	<key>game.intro.start</key>
 	<string>लेभल सुरु</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>पात्र बदल्न ट्याप गर; स्वागत स्क्रिनबाट फेरि सुरु गर्न दुई सेकेन्ड थिचिराख।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ छान</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>थप %lld</string>
 	<key>menu.maxScore</key>
 	<string>३० MAX</string>
 	<key>menu.maximumCount</key>

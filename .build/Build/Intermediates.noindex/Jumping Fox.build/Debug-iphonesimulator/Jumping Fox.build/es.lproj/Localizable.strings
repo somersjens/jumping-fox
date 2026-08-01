@@ -108,6 +108,8 @@
 	<string>Vidas activadas</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tu puntuación actual quedará en pausa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Lo sentimos. La función de lectura en voz alta todavía no está disponible en tu idioma.</string>
 	<key>game.intro.start</key>
 	<string>Empezar nivel</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Toca para cambiar de personaje; mantén pulsado dos segundos para volver a empezar desde la pantalla de bienvenida.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Elige %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld más</string>
 	<key>menu.maxScore</key>
 	<string>30 MÁX.</string>
 	<key>menu.maximumCount</key>

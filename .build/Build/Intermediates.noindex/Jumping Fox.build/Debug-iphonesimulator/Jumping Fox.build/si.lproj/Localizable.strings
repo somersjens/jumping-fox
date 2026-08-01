@@ -108,6 +108,8 @@
 	<string>ජීවිත ක්‍රියාත්මකයි</string>
 	<key>game.intro.scorePaused</key>
 	<string>ඔබේ දැන් ලකුණු නවතයි.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>සමාවන්න! ශබ්ද නඟා කියවීමේ පහසුකම තවමත් ඔබේ භාෂාවෙන් ලබා ගත නොහැක.</string>
 	<key>game.intro.start</key>
 	<string>මට්ටම අරඹන්න</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ඔබේ චරිතය වෙනස් කිරීමට තට්ටු කරන්න; පිළිගැනීමේ තිරයෙන් නැවත අරඹන්න තත්පර දෙකක් ඔබාගෙන සිටින්න.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ තෝරන්න</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>තවත් %lld</string>
 	<key>menu.maxScore</key>
 	<string>උපරිම 30</string>
 	<key>menu.maximumCount</key>

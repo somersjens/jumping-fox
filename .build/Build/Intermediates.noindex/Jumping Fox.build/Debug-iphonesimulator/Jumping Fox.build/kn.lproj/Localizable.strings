@@ -108,6 +108,8 @@
 	<string>ಜೀವಗಳು ಆನ್</string>
 	<key>game.intro.scorePaused</key>
 	<string>ನಿನ್ನ ಈಗಿನ ಅಂಕವನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗುತ್ತದೆ.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ಕ್ಷಮಿಸಿ! ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಸೌಲಭ್ಯವು ಇನ್ನೂ ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ.</string>
 	<key>game.intro.start</key>
 	<string>ಹಂತ ಆರಂಭಿಸು</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ಪಾತ್ರ ಬದಲಿಸಲು ತಟ್ಟು; ಸ್ವಾಗತ ಪರದೆಯಿಂದ ಮತ್ತೆ ಆರಂಭಿಸಲು ಎರಡು ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ಆರಿಸು</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ಇನ್ನೂ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

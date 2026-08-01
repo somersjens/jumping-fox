@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>one</key>
-			<string>%lld கோப்பை</string>
+			<string>%lld ట్రోఫీ</string>
 			<key>other</key>
-			<string>%lld கோப்பைகள்</string>
+			<string>%lld ట్రోఫీలు</string>
 		</dict>
 	</dict>
 	<key>streak.daysInARow %lld</key>
@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>one</key>
-			<string>தொடர்ந்து %lld நாள்</string>
+			<string>వరుసగా %lld రోజు</string>
 			<key>other</key>
-			<string>தொடர்ந்து %lld நாட்கள்</string>
+			<string>వరుసగా %lld రోజులు</string>
 		</dict>
 	</dict>
 </dict>

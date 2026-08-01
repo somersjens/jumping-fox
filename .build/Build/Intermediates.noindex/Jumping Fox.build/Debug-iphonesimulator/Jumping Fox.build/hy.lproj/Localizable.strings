@@ -108,6 +108,8 @@
 	<string>Կյանքերը միացված են</string>
 	<key>game.intro.scorePaused</key>
 	<string>Քո ընթացիկ հաշիվը կդադարեցվի։</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ներողություն։ Բարձրաձայն կարդալու գործառույթը դեռ հասանելի չէ քո լեզվով։</string>
 	<key>game.intro.start</key>
 	<string>Սկսել մակարդակը</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,10 +200,12 @@
 	<string>Հպվիր՝ կերպարդ փոխելու համար։ Սեղմած պահիր երկու վայրկյան՝ ողջույնի էկրանից նորից սկսելու համար։</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Ընտրիր %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ևս %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
 	<key>menu.maximumCount</key>
-	<string>ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
+	<string>Առավ.</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>Առավելագույնին հասել ես %lld անգամ</string>
 	<key>menu.moreLevels</key>

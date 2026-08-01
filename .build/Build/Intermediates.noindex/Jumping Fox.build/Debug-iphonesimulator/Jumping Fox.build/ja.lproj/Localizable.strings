@@ -108,6 +108,8 @@
 	<string>ライフあり</string>
 	<key>game.intro.scorePaused</key>
 	<string>今のスコアは一時停止されます。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ごめんなさい！読み上げ機能はまだあなたの言語では利用できません。</string>
 	<key>game.intro.start</key>
 	<string>レベルをはじめる</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>タップでキャラクターをかえます。2秒間長押しすると、はじめの画面からやり直します。</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@をえらぶ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>あと%lld</string>
 	<key>menu.maxScore</key>
 	<string>最大30</string>
 	<key>menu.maximumCount</key>

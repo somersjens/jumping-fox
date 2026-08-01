@@ -108,6 +108,8 @@
 	<string>Амь асаалттай</string>
 	<key>game.intro.scorePaused</key>
 	<string>Одоогийн оноог түр зогсооно.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Уучлаарай! Чангаар унших функц таны хэл дээр хараахан боломжгүй байна.</string>
 	<key>game.intro.start</key>
 	<string>Түвшинг эхлүүлэх</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Дүрээ солихын тулд товш; тавтай морилно уу дэлгэцээс дахин эхлэхийн тулд хоёр секунд дар.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@-г сонго</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>дахиад %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

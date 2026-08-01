@@ -540,20 +540,13 @@ struct GameView: View {
                                 Spacer(minLength: 0)
                                 // Status labels sit on their own row, sharing the
                                 // title's width and stopping short of the toggle.
-                                HStack(spacing: 7) {
-                                    introSettingButton(
-                                        icon: selectedLifeMode == .unlimited ? "infinity" : "heart.fill",
-                                        text: selectedLifeMode == .unlimited
-                                            ? L("game.intro.livesOff") : L("game.intro.livesOn"),
-                                        action: toggleIntroLifeMode
-                                    )
-                                    introSettingButton(
-                                        icon: "lightbulb.fill",
-                                        text: selectedAnswerHelper
-                                            ? L("game.intro.helperOn") : L("game.intro.helperOff"),
-                                        action: toggleIntroAnswerHelper
-                                    )
-                                    Spacer(minLength: 0)
+                                // Languages whose wording is too long for that
+                                // width keep only the "on"/"off" half of it, and
+                                // the few that still do not fit keep the icon.
+                                ViewThatFits(in: .horizontal) {
+                                    introSettingRow(labels: .full)
+                                    introSettingRow(labels: .state)
+                                    introSettingRow(labels: .none)
                                 }
                             }
                             .frame(height: introPortraitSize)
@@ -764,19 +757,105 @@ struct GameView: View {
                                    answerHelperEnabled: selectedAnswerHelper)
     }
 
-    private func introSettingButton(icon: String, text: String,
+    /// How far the status labels are allowed to shrink before the wording
+    /// itself is shortened.
+    private var introLabelMinimumScale: CGFloat { 0.7 }
+
+    /// How much of a status label is shown. The row picks one style for both
+    /// labels, so it never mixes a full and a shortened one.
+    private enum IntroLabelStyle {
+        /// "Lives on".
+        case full
+        /// Just the state: "On".
+        case state
+        /// No wording at all — the icon carries it.
+        case none
+    }
+
+    /// The two tappable status labels under the title.
+    private func introSettingRow(labels: IntroLabelStyle) -> some View {
+        let unlimited = selectedLifeMode == .unlimited
+        let lives = L(unlimited ? "game.intro.livesOff" : "game.intro.livesOn")
+        let livesOther = L(unlimited ? "game.intro.livesOn" : "game.intro.livesOff")
+        let helper = L(selectedAnswerHelper ? "game.intro.helperOn" : "game.intro.helperOff")
+        let helperOther = L(selectedAnswerHelper ? "game.intro.helperOff" : "game.intro.helperOn")
+        return EqualWidthPair(spacing: 7) {
+            introSettingButton(
+                // Lives already have an icon per state: hearts or infinity.
+                icon: unlimited ? "infinity" : "heart.fill",
+                text: label(labels, full: lives, opposite: livesOther),
+                action: toggleIntroLifeMode
+            )
+            introSettingButton(
+                icon: "lightbulb.fill",
+                text: label(labels, full: helper, opposite: helperOther),
+                // Without wording the bulb needs the crossed-out mark the sound
+                // buttons beside it use, to tell the two states apart.
+                struckThrough: labels == .none && !selectedAnswerHelper,
+                action: toggleIntroAnswerHelper
+            )
+        }
+    }
+
+    private func label(_ style: IntroLabelStyle, full: String, opposite: String) -> String? {
+        switch style {
+        case .full:  return full
+        case .state: return stateHalf(of: full, versus: opposite)
+        case .none:  return nil
+        }
+    }
+
+    /// The "on"/"off" half of a status label: what it does not have in common
+    /// with its opposite ("Lives on" / "Lives off" → "On" / "Off"). The icon
+    /// beside it already says which setting it is, so dropping the noun keeps
+    /// the label readable instead of cutting it off mid-word in languages that
+    /// word this at length. Taken from the translations themselves — no
+    /// language checks, and nothing extra to translate.
+    private func stateHalf(of text: String, versus opposite: String) -> String {
+        let shared = text.commonPrefix(with: opposite)
+        guard !shared.isEmpty else { return text }
+        // Never cut inside a word: back up to the last space of the shared
+        // part. Scripts that write without spaces keep the whole shared part.
+        let cut: String.Index
+        if let lastSpace = shared.lastIndex(where: { $0.isWhitespace }) {
+            cut = text.index(after: lastSpace)
+        } else {
+            cut = text.index(text.startIndex, offsetBy: shared.count)
+        }
+        let rest = text[cut...].trimmingCharacters(in: .whitespaces)
+        guard !rest.isEmpty else { return text }
+        // It now opens the label, so it opens with a capital as well.
+        return rest.prefix(1).localizedUppercase + rest.dropFirst()
+    }
+
+    private func introSettingButton(icon: String, text: String?,
+                                    struckThrough: Bool = false,
                                     action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 5) {
                 Image(systemName: icon)
                     .font(.system(size: (icon == "infinity" ? 12 : 10) * gameTextScale,
                                   weight: .heavy, design: .rounded))
-                Text(text)
+                    .overlay {
+                        if struckThrough {
+                            Capsule()
+                                .frame(width: 15 * gameScale, height: 1.8 * gameScale)
+                                .rotationEffect(.degrees(-45))
+                        }
+                    }
+                if let text {
+                    // The text may shrink to `introLabelMinimumScale` before it
+                    // would be cut off, so that is the width the row above is
+                    // judged on — the icon beside it never shrinks.
+                    SmallestLabelWidth(minimumScale: introLabelMinimumScale) {
+                        Text(text)
+                    }
+                }
             }
             .font(.system(size: 10 * gameTextScale, weight: .bold))
             .foregroundStyle(theme.deepColor.opacity(0.82))
             .lineLimit(1)
-            .minimumScaleFactor(0.7)
+            .minimumScaleFactor(introLabelMinimumScale)
             .allowsTightening(true)
             .padding(.horizontal, 8 * gameScale)
             .padding(.vertical, 5 * gameScale)
@@ -2034,6 +2113,72 @@ private struct SpokenUnavailableCard: View {
                     .stroke(theme.deepColor.opacity(0.18), lineWidth: 1))
         }
         .shadow(color: theme.deepColor.opacity(0.22), radius: 14, y: 6)
+    }
+}
+
+/// Two labels side by side, each getting exactly half of the row. Because they
+/// share one width, the ideal width it reports is the *wider* label's, twice
+/// over: a `ViewThatFits` around it then judges the pair by the label that
+/// needs the most room, which is the one that would otherwise be cut off.
+private struct EqualWidthPair: Layout {
+    let spacing: CGFloat
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews,
+                      cache: inout ()) -> CGSize {
+        let ideals = subviews.map { $0.sizeThatFits(.unspecified) }
+        let widest = ideals.map(\.width).max() ?? 0
+        let idealWidth = widest * CGFloat(subviews.count)
+            + spacing * CGFloat(max(0, subviews.count - 1))
+        guard let width = proposal.width, width != .infinity else {
+            return CGSize(width: idealWidth,
+                          height: ideals.map(\.height).max() ?? 0)
+        }
+        let half = halfWidth(of: width, subviews: subviews)
+        let heights = subviews.map {
+            $0.sizeThatFits(ProposedViewSize(width: half, height: proposal.height)).height
+        }
+        return CGSize(width: width, height: heights.max() ?? 0)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize,
+                       subviews: Subviews, cache: inout ()) {
+        let half = halfWidth(of: bounds.width, subviews: subviews)
+        for (index, subview) in subviews.enumerated() {
+            let x = bounds.minX + CGFloat(index) * (half + spacing)
+            subview.place(at: CGPoint(x: x + half / 2, y: bounds.midY),
+                          anchor: .center,
+                          proposal: ProposedViewSize(width: half, height: bounds.height))
+        }
+    }
+
+    private func halfWidth(of width: CGFloat, subviews: Subviews) -> CGFloat {
+        let count = CGFloat(max(1, subviews.count))
+        return max(0, width - spacing * (count - 1)) / count
+    }
+}
+
+/// Lays its content out as usual, but when something asks how wide it would
+/// *like* to be, it answers with the width its text may shrink to. A
+/// surrounding `ViewThatFits` then judges a layout by whether the text still
+/// reads at its smallest allowed size, instead of rejecting it as soon as the
+/// text no longer fits at full size.
+private struct SmallestLabelWidth: Layout {
+    let minimumScale: CGFloat
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews,
+                      cache: inout ()) -> CGSize {
+        guard let content = subviews.first else { return .zero }
+        let size = content.sizeThatFits(proposal)
+        // A width was offered: this is a real layout pass, so answer honestly.
+        guard proposal.width == nil || proposal.width == .infinity else { return size }
+        return CGSize(width: size.width * minimumScale, height: size.height)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize,
+                       subviews: Subviews, cache: inout ()) {
+        subviews.first?.place(at: CGPoint(x: bounds.midX, y: bounds.midY),
+                              anchor: .center,
+                              proposal: ProposedViewSize(bounds.size))
     }
 }
 

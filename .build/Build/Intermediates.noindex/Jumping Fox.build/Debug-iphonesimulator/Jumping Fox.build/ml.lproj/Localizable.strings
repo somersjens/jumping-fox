@@ -108,6 +108,8 @@
 	<string>ജീവനുകൾ ഓൺ</string>
 	<key>game.intro.scorePaused</key>
 	<string>നിന്റെ ഇപ്പോഴത്തെ സ്കോർ താൽക്കാലികമായി നിർത്തും.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ക്ഷമിക്കണം! ഉറക്കെ വായിക്കുന്ന സൗകര്യം നിങ്ങളുടെ ഭാഷയിൽ ഇതുവരെ ലഭ്യമല്ല.</string>
 	<key>game.intro.start</key>
 	<string>ലെവൽ തുടങ്ങൂ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,10 +200,12 @@
 	<string>കഥാപാത്രം മാറ്റാൻ തട്ടൂ; സ്വാഗത സ്ക്രീനിൽ നിന്ന് വീണ്ടും തുടങ്ങാൻ രണ്ട് സെക്കൻഡ് അമർത്തിപ്പിടിക്കൂ.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ തിരഞ്ഞെടുക്കൂ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ഇനി %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 പരമാവധി</string>
 	<key>menu.maximumCount</key>
-	<string>പരമാവധി</string>
+	<string>പരമം</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>പരമാവധി %lld തവണ നേടി</string>
 	<key>menu.moreLevels</key>

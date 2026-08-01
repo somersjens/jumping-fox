@@ -108,6 +108,8 @@
 	<string>Gyvybės įjungtos</string>
 	<key>game.intro.scorePaused</key>
 	<string>Dabartinis rezultatas bus pristabdytas.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Atsiprašome! Skaitymo balsu funkcija tavo kalba dar nepasiekiama.</string>
 	<key>game.intro.start</key>
 	<string>Pradėti lygį</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Bakstelėk, kad pakeistum veikėją; palaikyk dvi sekundes, kad grįžtum į pasisveikinimo ekraną.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Pasirink %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>dar %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

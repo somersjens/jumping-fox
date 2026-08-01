@@ -3,355 +3,359 @@
 <plist version="1.0">
 <dict>
 	<key>character.bear</key>
-	<string>වලහා</string>
+	<string>கரடி</string>
 	<key>character.bunny</key>
-	<string>හාවා</string>
+	<string>முயல்</string>
 	<key>character.crab</key>
-	<string>කකුළුවා</string>
+	<string>நண்டு</string>
 	<key>character.dog</key>
-	<string>බල්ලා</string>
+	<string>நாய்</string>
 	<key>character.elephant</key>
-	<string>අලියා</string>
+	<string>யானை</string>
 	<key>character.fox</key>
-	<string>නරියා</string>
+	<string>நரி</string>
 	<key>character.frog</key>
-	<string>ගෙම්බා</string>
+	<string>தவளை</string>
 	<key>character.lion</key>
-	<string>සිංහයා</string>
+	<string>சிங்கம்</string>
 	<key>character.octopus</key>
-	<string>බූවල්ලා</string>
+	<string>ஆக்டோபஸ்</string>
 	<key>character.penguin</key>
-	<string>පෙන්ගුවියා</string>
+	<string>பென்குயின்</string>
 	<key>character.pickerTitle</key>
-	<string>ඔබේ චරිතය තෝරන්න</string>
+	<string>உன் கதாபாத்திரத்தைத் தேர்ந்தெடு</string>
 	<key>common.back</key>
-	<string>ආපසු</string>
+	<string>பின்</string>
 	<key>common.cancel</key>
-	<string>අවලංගු</string>
+	<string>ரத்துசெய்</string>
 	<key>common.continue</key>
-	<string>ඉදිරියට</string>
+	<string>தொடர்</string>
 	<key>common.done</key>
-	<string>හරි</string>
+	<string>முடிந்தது</string>
 	<key>common.minutesShort %lld %lld</key>
-	<string>%lld/%lld මිනි</string>
+	<string>%lld/%lld நிமி</string>
 	<key>common.save</key>
-	<string>සුරකින්න</string>
+	<string>சேமி</string>
 	<key>developerMode.accessibilityHint</key>
-	<string>සංවර්ධක මාදිලිය විවෘත කිරීමට තත්පර 2ක් ඔබාගෙන සිටින්න.</string>
+	<string>டெவலப்பர் முறையைத் திறக்க 2 விநாடிகள் அழுத்திப் பிடிக்கவும்.</string>
 	<key>developerMode.title</key>
-	<string>සංවර්ධක මාදිලිය</string>
+	<string>டெவலப்பர் முறை</string>
 	<key>filter.addition</key>
-	<string>එකතු කිරීම</string>
+	<string>கூட்டல்</string>
 	<key>filter.fractions</key>
-	<string>භාග</string>
+	<string>பின்னங்கள்</string>
 	<key>filter.mixed</key>
-	<string>සුපිරි මිශ්‍රණය</string>
+	<string>சூப்பர் கலவை</string>
 	<key>filter.percentages</key>
-	<string>ප්‍රතිශත</string>
+	<string>சதவீதங்கள்</string>
 	<key>filter.subtraction</key>
-	<string>අඩු කිරීම</string>
+	<string>கழித்தல்</string>
 	<key>filter.tables</key>
-	<string>ගුණන වගු</string>
+	<string>வாய்ப்பாடுகள்</string>
 	<key>game.accessibility.mix</key>
-	<string>මිශ්‍රණය</string>
+	<string>கலவை</string>
 	<key>game.accessibility.scoreOutOf %lld %lld</key>
-	<string>%lld න් %lld</string>
+	<string>%lld / %lld</string>
 	<key>game.encouragement.0</key>
-	<string>හොඳ උත්සාහයක්</string>
+	<string>நல்ல முயற்சி</string>
 	<key>game.encouragement.1</key>
-	<string>හොඳ ආරම්භයක්</string>
+	<string>நல்ல தொடக்கம்</string>
 	<key>game.encouragement.2</key>
-	<string>දිගටම පුහුණු වන්න</string>
+	<string>தொடர்ந்து பயிற்சி செய்</string>
 	<key>game.encouragement.3</key>
-	<string>නරකම නැහැ</string>
+	<string>மோசமில்லை</string>
 	<key>game.encouragement.4</key>
-	<string>හොඳට කරනවා</string>
+	<string>நன்றாக செய்கிறாய்</string>
 	<key>game.encouragement.5</key>
-	<string>ලස්සන දක්ෂතාවක්</string>
+	<string>அருமையான ஆட்டம்</string>
 	<key>game.encouragement.6</key>
-	<string>හොඳට කළා</string>
+	<string>சிறப்பாக செய்தாய்</string>
 	<key>game.encouragement.7</key>
-	<string>ඉතා හොඳට කළා</string>
+	<string>மிகச் சிறப்பாக ஆடினாய்</string>
 	<key>game.encouragement.8</key>
-	<string>අවසානය පේනවා</string>
+	<string>முடிவு நெருங்கிவிட்டது</string>
 	<key>game.encouragement.9</key>
-	<string>තව ටිකයි</string>
+	<string>இன்னும் கொஞ்சம்தான்</string>
 	<key>game.end.completionSubtitle</key>
-	<string>හැම ලකුණක්ම ඔබ උපයාගත්තා.</string>
+	<string>ஒவ்வொரு புள்ளியையும் பெற்றாய்.</string>
 	<key>game.end.completionSuffix</key>
-	<string>සම්පූර්ණයි!</string>
+	<string>முடிந்தது!</string>
 	<key>game.end.gameOverTitle</key>
-	<string>ක්‍රීඩාව අවසන්</string>
+	<string>ஆட்டம் முடிந்தது</string>
 	<key>game.end.mainMenu</key>
-	<string>ප්‍රධාන මෙනුව</string>
+	<string>முதன்மை மெனு</string>
 	<key>game.end.playAgain</key>
-	<string>නැවත ක්‍රීඩා කරන්න</string>
+	<string>மீண்டும் ஆடு</string>
 	<key>game.highScore</key>
-	<string>ඉහළම ලකුණු</string>
+	<string>அதிகபட்ச மதிப்பெண்</string>
 	<key>game.intro.backToMainMenu</key>
-	<string>ප්‍රධාන මෙනුවට ආපසු</string>
+	<string>முதன்மை மெனுவுக்குத் திரும்பு</string>
 	<key>game.intro.continue</key>
-	<string>දිගටම ක්‍රීඩා කරන්න</string>
+	<string>தொடர்ந்து ஆடு</string>
 	<key>game.intro.continueFrom %lld</key>
-	<string>ඔබ %lld සිට ඉදිරියට යයි</string>
+	<string>%lld இலிருந்து தொடர்வாய்</string>
 	<key>game.intro.helperBullet</key>
-	<string>උදව්ව ක්‍රියාත්මක නිසා නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. ඒ නිසා කුසලාන * සමඟ වෙනම ගණන් කරයි.</string>
+	<string>உதவி இயக்கப்பட்டதால் சரியான விடை பச்சை நிறத்தில் காட்டப்படும். அதனால் கோப்பைகள் * குறியுடன் தனியாக எண்ணப்படும்.</string>
 	<key>game.intro.helperOff</key>
-	<string>උදව්ව අක්‍රියයි</string>
+	<string>உதவி நிறுத்தம்</string>
 	<key>game.intro.helperOn</key>
-	<string>උදව්ව ක්‍රියාත්මකයි</string>
+	<string>உதவி இயக்கம்</string>
 	<key>game.intro.howItWorks</key>
-	<string>මේ මට්ටම ක්‍රියා කරන හැටි</string>
+	<string>இந்த நிலை எப்படி இயங்கும்</string>
 	<key>game.intro.livesOff</key>
-	<string>ජීවිත අක්‍රියයි</string>
+	<string>உயிர்கள் நிறுத்தம்</string>
 	<key>game.intro.livesOn</key>
-	<string>ජීවිත ක්‍රියාත්මකයි</string>
+	<string>உயிர்கள் இயக்கம்</string>
 	<key>game.intro.scorePaused</key>
-	<string>ඔබේ දැන් ලකුණු නවතයි.</string>
+	<string>உன் தற்போதைய மதிப்பெண் இடைநிறுத்தப்படும்.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>மன்னிக்கவும்! உரக்கப் படிக்கும் வசதி இன்னும் உங்கள் மொழியில் கிடைக்கவில்லை.</string>
 	<key>game.intro.start</key>
-	<string>මට්ටම අරඹන්න</string>
+	<string>நிலையைத் தொடங்கு</string>
 	<key>game.intro.tablesDetail %@ %@</key>
-	<string>%@%@ 1 සිට 12 දක්වා අංකයකින් ගුණ කරන්න.</string>
+	<string>%@%@ ஐ 1 முதல் 12 வரை உள்ள எண்ணால் பெருக்கு.</string>
 	<key>game.intro.tablesOrLower</key>
-	<string>හෝ අඩු</string>
+	<string>அல்லது குறைவு</string>
 	<key>game.intro.tapToContinue</key>
-	<string>ඉදිරියට යන්න ඕනෑම තැනක් තට්ටු කරන්න</string>
+	<string>தொடர எங்கேயும் தட்டு</string>
 	<key>game.intro.tapToStart</key>
-	<string>අරඹන්න ඕනෑම තැනක් තට්ටු කරන්න</string>
+	<string>தொடங்க எங்கேயும் தட்டு</string>
 	<key>game.intro.trophyBullet %lld</key>
-	<string>නිවැරදි පිළිතුරකට |1| කුසලානයක් උපයන්න, වැඩිම |%lld| දක්වා.</string>
+	<string>ஒவ்வொரு சரியான விடைக்கும் |1| கோப்பை பெறு; அதிகபட்சம் |%lld|.</string>
 	<key>game.intro.unlimitedBullet</key>
-	<string>ජීවිත ඉවර වූ පසු තවත් කුසලාන උපයන්න බැහැ.</string>
+	<string>உன் உயிர்கள் தீர்ந்ததும் இனி கோப்பைகள் பெற முடியாது.</string>
 	<key>game.status.leaderboardMaxed</key>
-	<string>ලකුණු පුවරුවේ උපරිම කුසලාන ගණන ලැබුණා</string>
+	<string>தரவரிசைக்கான அதிகபட்ச கோப்பைகள் கிடைத்துவிட்டன</string>
 	<key>game.status.mixMode</key>
-	<string>මිශ්‍ර මාදිලිය</string>
+	<string>கலவை முறை</string>
 	<key>game.status.scoreLocked</key>
-	<string>ජීවිත ඉවර වූ පසු කුසලාන ගණන් නොවේ</string>
+	<string>உயிர்கள் தீர்ந்ததும் கோப்பைகள் கணக்கில் சேராது</string>
 	<key>game.streak.subtitle</key>
-	<string>කුසලාන ×2</string>
+	<string>கோப்பைகள் ×2</string>
 	<key>game.streak.title</key>
-	<string>පේළියට 5ක්!</string>
+	<string>தொடர்ந்து 5!</string>
 	<key>goal.period</key>
-	<string>ඉලක්ක කාලය</string>
+	<string>இலக்கு காலம்</string>
 	<key>goal.promptDaily</key>
-	<string>දිනකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?</string>
+	<string>ஒரு நாளில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?</string>
 	<key>goal.promptWeekly</key>
-	<string>සතියකට මිනිත්තු කීයක් ක්‍රීඩා කරන්නද?</string>
+	<string>ஒரு வாரத்தில் எத்தனை நிமிடங்கள் விளையாட விரும்புகிறாய்?</string>
 	<key>goal.title</key>
-	<string>ක්‍රීඩා ඉලක්කය</string>
+	<string>விளையாட்டு இலக்கு</string>
 	<key>goalPeriod.daily</key>
-	<string>දිනපතා</string>
+	<string>தினமும்</string>
 	<key>goalPeriod.weekly</key>
-	<string>සතිපතා</string>
+	<string>வாரமும்</string>
 	<key>info.filter.addition</key>
-	<string>එකතු කිරීම පමණයි</string>
+	<string>கூட்டல் மட்டும்</string>
 	<key>info.filter.fractions</key>
-	<string>බෙදීම පමණයි</string>
+	<string>வகுத்தல் மட்டும்</string>
 	<key>info.filter.header</key>
-	<string>ගණන් වර්ග</string>
+	<string>கணக்கு வகைகள்</string>
 	<key>info.filter.mixed</key>
-	<string>මිශ්‍ර ගණන්</string>
+	<string>கலந்த கணக்குகள்</string>
 	<key>info.filter.percentages</key>
-	<string>ප්‍රතිශත පමණයි</string>
+	<string>சதவீதங்கள் மட்டும்</string>
 	<key>info.filter.subtraction</key>
-	<string>අඩු කිරීම පමණයි</string>
+	<string>கழித்தல் மட்டும்</string>
 	<key>info.filter.tables</key>
-	<string>ගුණ කිරීම පමණයි</string>
+	<string>பெருக்கல் மட்டும்</string>
 	<key>info.mode.fractions.header</key>
-	<string>කොටස්</string>
+	<string>பகுதிகள்</string>
 	<key>info.mode.fractions.multiple</key>
-	<string>එකක් සහ කොටස් කිහිපයක්</string>
+	<string>ஒன்று அல்லது பல பகுதிகள்</string>
 	<key>info.mode.fractions.single</key>
-	<string>හැමවිටම එක කොටසක්</string>
+	<string>எப்போதும் ஒரு பகுதி</string>
 	<key>info.mode.header</key>
-	<string>පිළිවෙළ</string>
+	<string>வரிசை</string>
 	<key>info.mode.mixed</key>
-	<string>පහළ මට්ටම් සමඟ මිශ්‍ර</string>
+	<string>கீழ்நிலைகளுடன் கலவை</string>
 	<key>info.mode.order</key>
-	<string>නියමිත පිළිවෙළ</string>
+	<string>நிலையான வரிசை</string>
 	<key>info.mode.percentages.decimal</key>
-	<string>දශම අංක සමඟ</string>
+	<string>தசம எண்களுடன்</string>
 	<key>info.mode.percentages.header</key>
-	<string>වර්ගය</string>
+	<string>வகை</string>
 	<key>info.mode.percentages.whole</key>
-	<string>දශම අංක නැතිව</string>
+	<string>தசம எண்கள் இல்லாமல்</string>
 	<key>info.mode.random</key>
-	<string>අහඹු පිළිවෙළ</string>
+	<string>சீரற்ற வரிசை</string>
 	<key>info.super.all</key>
-	<string>එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම, බෙදීම සහ ප්‍රතිශත</string>
+	<string>கூட்டல், கழித்தல், பெருக்கல், வகுத்தல் மற்றும் சதவீதங்கள்</string>
 	<key>info.super.basic</key>
-	<string>එකතු කිරීම සහ අඩු කිරීම</string>
+	<string>கூட்டல் மற்றும் கழித்தல்</string>
 	<key>info.super.fraction</key>
-	<string>එකතු කිරීම, අඩු කිරීම, ගුණ කිරීම සහ බෙදීම</string>
+	<string>கூட்டல், கழித்தல், பெருக்கல் மற்றும் வகுத்தல்</string>
 	<key>info.super.times</key>
-	<string>එකතු කිරීම, අඩු කිරීම සහ ගුණ කිරීම</string>
+	<string>கூட்டல், கழித்தல் மற்றும் பெருக்கல்</string>
 	<key>language.select</key>
-	<string>භාෂාව තෝරන්න</string>
+	<string>மொழியைத் தேர்ந்தெடு</string>
 	<key>lives.three</key>
-	<string>ජීවිත 3ක්</string>
+	<string>3 உயிர்கள்</string>
 	<key>lives.unlimited</key>
-	<string>අසීමිත</string>
+	<string>வரம்பில்லை</string>
 	<key>menu.accessibility.character</key>
-	<string>චරිතය</string>
+	<string>கதாபாத்திரம்</string>
 	<key>menu.accessibility.characterHint</key>
-	<string>ඔබේ චරිතය වෙනස් කිරීමට තට්ටු කරන්න; පිළිගැනීමේ තිරයෙන් නැවත අරඹන්න තත්පර දෙකක් ඔබාගෙන සිටින්න.</string>
+	<string>கதாபாத்திரத்தை மாற்றத் தட்டு; வரவேற்புத் திரையிலிருந்து மீண்டும் தொடங்க இரண்டு விநாடிகள் அழுத்திப் பிடி.</string>
 	<key>menu.accessibility.chooseMode %@</key>
-	<string>%@ තෝරන්න</string>
+	<string>%@ ஐத் தேர்ந்தெடு</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>இன்னும் %lld</string>
 	<key>menu.maxScore</key>
-	<string>උපරිම 30</string>
+	<string>அதிகபட்சம் 30</string>
 	<key>menu.maximumCount</key>
-	<string>උපරිම</string>
+	<string>அதிகம்</string>
 	<key>menu.maximumCount.accessibility %lld</key>
-	<string>උපරිමයට %lld වරක් ළඟා වුණා</string>
+	<string>அதிகபட்சத்தை %lld முறை அடைந்தாய்</string>
 	<key>menu.moreLevels</key>
-	<string>තවත් මට්ටම්</string>
+	<string>மேலும் நிலைகள்</string>
 	<key>menu.options</key>
-	<string>ක්‍රීඩා විකල්ප</string>
+	<string>விளையாட்டு விருப்பங்கள்</string>
 	<key>menu.premium</key>
-	<string>ප්‍රීමියම්</string>
+	<string>பிரீமியம்</string>
 	<key>menu.premiumTables</key>
-	<string>ප්‍රීමියම් ගුණන වගු</string>
+	<string>பிரீமியம் வாய்ப்பாடுகள்</string>
 	<key>menu.startHere</key>
-	<string>මෙතැනින් අරඹන්න</string>
+	<string>இங்கே தொடங்கு</string>
 	<key>menu.unlockWithPremium</key>
-	<string>ප්‍රීමියම් සමඟ තවත් විවෘත කරන්න</string>
+	<string>பிரீமியத்தில் மேலும் திற</string>
 	<key>mode.fractions.multiple</key>
-	<string>කිහිපයක්</string>
+	<string>பல</string>
 	<key>mode.fractions.single</key>
-	<string>එකක්</string>
+	<string>ஒன்று</string>
 	<key>mode.mix</key>
-	<string>මිශ්‍ර</string>
+	<string>கலவை</string>
 	<key>mode.mixed</key>
-	<string>මිශ්‍රිත</string>
+	<string>கலந்தது</string>
 	<key>mode.order</key>
-	<string>පිළිවෙළ</string>
+	<string>வரிசை</string>
 	<key>mode.percentages.decimal</key>
-	<string>දශම</string>
+	<string>தசமம்</string>
 	<key>mode.percentages.whole</key>
-	<string>පූර්ණ</string>
+	<string>முழு</string>
 	<key>mode.random</key>
-	<string>අහඹු</string>
+	<string>சீரற்றது</string>
 	<key>mode.standard</key>
-	<string>සාමාන්‍ය</string>
+	<string>வழக்கமானது</string>
 	<key>modeIntro.addition.intro</key>
-	<string>ඔබට ලැබෙන්නේ |එකතු කිරීමේ| ගණන් පමණයි.</string>
+	<string>|கூட்டல்| கணக்குகள் மட்டும் வரும்.</string>
 	<key>modeIntro.addition.mixed %lld</key>
-	<string>ඔබ වෙනත් අංකයකට %lld |හෝ අඩු| එකතු කරයි.</string>
+	<string>மற்றொரு எண்ணுடன் %lld |அல்லது குறைவாக| கூட்டு.</string>
 	<key>modeIntro.addition.order %lld</key>
-	<string>ඔබ හැමවිටම %lld |ආරෝහණ| පිළිවෙළට එකතු කරයි.</string>
+	<string>%lld ஐ எப்போதும் |ஏறுவரிசையில்| கூட்டு.</string>
 	<key>modeIntro.addition.random %lld</key>
-	<string>ඔබ හැමවිටම |අහඹු| අංකයකට %lld එකතු කරයි.</string>
+	<string>%lld ஐ எப்போதும் ஒரு |சீரற்ற| எண்ணுடன் கூட்டு.</string>
 	<key>modeIntro.addition.title %lld</key>
-	<string>එකතු කිරීම · %lld</string>
+	<string>கூட்டல் · %lld</string>
 	<key>modeIntro.additionMix.b1</key>
-	<string>අංක දෙක බැගින් එකතු කරන්න.</string>
+	<string>இரண்டு எண்களை தொடர்ந்து கூட்டு.</string>
 	<key>modeIntro.additionMix.b2 %lld</key>
-	<string>පිළිතුර වැඩිම %lldයි.</string>
+	<string>விடை அதிகபட்சம் %lld.</string>
 	<key>modeIntro.additionMix.title %lld</key>
-	<string>%lld දක්වා එකතු කරන්න</string>
+	<string>%lld வரை கூட்டல்</string>
 	<key>modeIntro.fractions.intro</key>
-	<string>ඔබට ලැබෙන්නේ |භාග| ගණන් පමණයි.</string>
+	<string>|பின்னம்| கணக்குகள் மட்டும் வரும்.</string>
 	<key>modeIntro.fractions.mixed</key>
-	<string>මේ මට්ටමේ සහ |පෙර මට්ටම්වල| භාග ලැබේ.</string>
+	<string>இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள பின்னங்கள் வரும்.</string>
 	<key>modeIntro.fractions.order %lld</key>
-	<string>සමාන කොටස් %lldකින් හැමවිටම |1 කොටසක්| ගන්න.</string>
+	<string>%lld சம பகுதிகளில் |1 பகுதியை| எடு.</string>
 	<key>modeIntro.fractions.premium.b1 %lld</key>
-	<string>%lld සහ පෙර මට්ටම්වල වටකුරු අංකවල භාග ගණනය කරන්න.</string>
+	<string>%lld மற்றும் முந்தைய நிலைகளின் முழு பத்து எண்களில் பின்னங்களைக் கணக்கிடு.</string>
 	<key>modeIntro.fractions.premium.b2</key>
-	<string>අංක වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ.</string>
+	<string>எண்கள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்.</string>
 	<key>modeIntro.fractions.premium.title %lld</key>
-	<string>%lld දක්වා භාග</string>
+	<string>%lld வரை பின்னங்கள்</string>
 	<key>modeIntro.fractions.random %lld</key>
-	<string>සමාන කොටස් %lldකින් එකක් හෝ |කොටස් කිහිපයක්| ගන්න.</string>
+	<string>%lld சம பகுதிகளில் ஒன்று அல்லது |பல பகுதிகளை| எடு.</string>
 	<key>modeIntro.fractions.title %lld</key>
-	<string>භාග · %lld</string>
+	<string>பின்னங்கள் · %lld</string>
 	<key>modeIntro.fractionsMix.b1</key>
-	<string>පූර්ණයක කොටසක් ගණනය කර භාග සමාන කරන්න.</string>
+	<string>ஒரு முழுவதின் பகுதியைக் கணக்கிட்டு, பின்னங்களைச் சமமாக்கு.</string>
 	<key>modeIntro.fractionsMix.b2</key>
-	<string>එකම හරය ඇති භාග එකතු කර අඩු කරන්න.</string>
+	<string>ஒரே பகா எண்ணுள்ள பின்னங்களைக் கூட்டவும் கழிக்கவும்.</string>
 	<key>modeIntro.fractionsMix.title</key>
-	<string>මිශ්‍ර භාග</string>
+	<string>கலந்த பின்னங்கள்</string>
 	<key>modeIntro.percentages.intro</key>
-	<string>ඔබට ලැබෙන්නේ |ප්‍රතිශත| ගණන් පමණයි.</string>
+	<string>|சதவீத| கணக்குகள் மட்டும் வரும்.</string>
 	<key>modeIntro.percentages.mixed</key>
-	<string>මේ මට්ටමේ සහ |පෙර මට්ටම්වල| ප්‍රතිශත ලැබේ.</string>
+	<string>இந்த நிலையிலும் |முந்தைய நிலைகளிலும்| உள்ள சதவீதங்கள் வரும்.</string>
 	<key>modeIntro.percentages.order %@</key>
-	<string>ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |පූර්ණ අංකයක්| වේ.</string>
+	<string>எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |முழு எண்|.</string>
 	<key>modeIntro.percentages.premium.b1 %lld</key>
-	<string>%lld දක්වා වටකුරු අංකවල ප්‍රතිශත ගණනය කරන්න.</string>
+	<string>%lld வரை உள்ள முழு பத்து எண்களின் சதவீதங்களைக் கணக்கிடு.</string>
 	<key>modeIntro.percentages.premium.b2</key>
-	<string>ප්‍රමාණ වටකුරු නිසා පිළිතුරු හැමවිටම පූර්ණ අංක වේ.</string>
+	<string>அளவுகள் முழு பத்துகளாக இருப்பதால் விடைகள் எப்போதும் முழு எண்கள்.</string>
 	<key>modeIntro.percentages.premium.title %lld</key>
-	<string>%lld දක්වා ප්‍රතිශත</string>
+	<string>%lld வரை சதவீதங்கள்</string>
 	<key>modeIntro.percentages.random %@</key>
-	<string>ඔබ හැමවිටම %@ ගණනය කරයි, පිළිතුර |දශමයක්| විය හැක.</string>
+	<string>எப்போதும் %@ ஐக் கணக்கிடு; விடை ஒரு |தசம எண்ணாகவும்| இருக்கலாம்.</string>
 	<key>modeIntro.percentages.title %@</key>
-	<string>%@ ගණනය කරන්න</string>
+	<string>%@ கணக்கிடு</string>
 	<key>modeIntro.percentagesMix.b1</key>
-	<string>අංකයක ප්‍රතිශතයක් ගණනය කරන්න.</string>
+	<string>ஒரு எண்ணின் சதவீதத்தைக் கணக்கிடு.</string>
 	<key>modeIntro.percentagesMix.b2</key>
-	<string>ප්‍රතිශත සහ භාග එකිනෙකට හරවන්න.</string>
+	<string>சதவீதங்களையும் பின்னங்களையும் ஒன்றிலிருந்து மற்றொன்றாக மாற்று.</string>
 	<key>modeIntro.percentagesMix.title</key>
-	<string>මිශ්‍ර ප්‍රතිශත</string>
+	<string>கலந்த சதவீதங்கள்</string>
 	<key>modeIntro.subtraction.intro</key>
-	<string>ඔබට ලැබෙන්නේ |අඩු කිරීමේ| ගණන් පමණයි.</string>
+	<string>|கழித்தல்| கணக்குகள் மட்டும் வரும்.</string>
 	<key>modeIntro.subtraction.mixed %lld</key>
-	<string>ඔබ වෙනත් අංකයකින් %lld |හෝ අඩු| අඩු කරයි.</string>
+	<string>மற்றொரு எண்ணிலிருந்து %lld |அல்லது குறைவாக| கழி.</string>
 	<key>modeIntro.subtraction.order %lld</key>
-	<string>ඔබ හැමවිටම %lld |අවරෝහණ| පිළිවෙළට අඩු කරයි.</string>
+	<string>%lld ஐ எப்போதும் |இறங்குவரிசையில்| கழி.</string>
 	<key>modeIntro.subtraction.random %lld</key>
-	<string>ඔබ හැමවිටම |අහඹු| අංකයකින් %lld අඩු කරයි.</string>
+	<string>ஒரு |சீரற்ற| எண்ணிலிருந்து %lld ஐக் கழி.</string>
 	<key>modeIntro.subtraction.title %lld</key>
-	<string>අඩු කිරීම · %lld</string>
+	<string>கழித்தல் · %lld</string>
 	<key>modeIntro.subtractionMix.b2 %lld</key>
-	<string>පළමු අංකය වැඩිම %lldයි.</string>
+	<string>முதல் எண் அதிகபட்சம் %lld.</string>
 	<key>modeIntro.subtractionMix.belowZero.b2</key>
-	<string>පිළිතුර බිංදුවට වඩා අඩු විය හැක.</string>
+	<string>விடை பூஜ்ஜியத்திற்குக் கீழே செல்லலாம்.</string>
 	<key>modeIntro.subtractionMix.belowZero.title</key>
-	<string>බිංදුවට පහළ</string>
+	<string>பூஜ்ஜியத்திற்குக் கீழே</string>
 	<key>modeIntro.subtractionMix.title %lld</key>
-	<string>%lld දක්වා අඩු කරන්න</string>
+	<string>%lld வரை கழித்தல்</string>
 	<key>modeIntro.subtractionMix.twoNumbers</key>
-	<string>අංක දෙක බැගින් අඩු කරන්න.</string>
+	<string>இரண்டு எண்களை தொடர்ந்து கழி.</string>
 	<key>modeIntro.super.b2 %lld</key>
-	<string>තෝරාගත් එක් එක් වර්ගයේ අපහසුතාව |මට්ටම %lld| දක්වා වැඩි විය හැක.</string>
+	<string>தேர்ந்தெடுத்த ஒவ்வொரு வகையிலும் கடினம் |நிலை %lld| வரை உயரலாம்.</string>
 	<key>modeIntro.superAll.b1</key>
-	<string>එකතු කිරීම, අඩු කිරීම, ගුණන වගු, භාග සහ ප්‍රතිශත මිශ්‍රව පුහුණු වන්න.</string>
+	<string>கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள், சதவீதங்கள் அனைத்தையும் கலந்து பயிற்சி செய்.</string>
 	<key>modeIntro.superAll.title %lld</key>
-	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<string>சூப்பர் கலவை %lld</string>
 	<key>modeIntro.superBasic.b1</key>
-	<string>එකතු කිරීම සහ අඩු කිරීම මිශ්‍රව පුහුණු වන්න.</string>
+	<string>கூட்டலையும் கழித்தலையும் கலந்து பயிற்சி செய்.</string>
 	<key>modeIntro.superBasic.title %lld</key>
-	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<string>சூப்பர் கலவை %lld</string>
 	<key>modeIntro.superFraction.b1</key>
-	<string>එකතු කිරීම, අඩු කිරීම, ගුණන වගු සහ භාග මිශ්‍රව පුහුණු වන්න.</string>
+	<string>கூட்டல், கழித்தல், வாய்ப்பாடுகள், பின்னங்கள் அனைத்தையும் கலந்து பயிற்சி செய்.</string>
 	<key>modeIntro.superFraction.title %lld</key>
-	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<string>சூப்பர் கலவை %lld</string>
 	<key>modeIntro.superTimes.b1</key>
-	<string>එකතු කිරීම, අඩු කිරීම සහ ගුණන වගු මිශ්‍රව පුහුණු වන්න.</string>
+	<string>கூட்டல், கழித்தல், வாய்ப்பாடுகள் அனைத்தையும் கலந்து பயிற்சி செய்.</string>
 	<key>modeIntro.superTimes.title %lld</key>
-	<string>සුපිරි මිශ්‍රණය %lld</string>
+	<string>சூப்பர் கலவை %lld</string>
 	<key>modeIntro.tables.intro</key>
-	<string>ඔබට ලැබෙන්නේ |ගුණ කිරීමේ| ගණන් පමණයි.</string>
+	<string>|பெருக்கல்| கணக்குகள் மட்டும் வரும்.</string>
 	<key>modeIntro.tables.mixed %lld</key>
-	<string>|%lld දක්වා| සියලු ගුණන වගු මිශ්‍රව ලැබේ.</string>
+	<string>|%lld வரை| உள்ள எல்லா வாய்ப்பாடுகளும் கலந்து வரும்.</string>
 	<key>modeIntro.tables.multiplyBy</key>
-	<string>එක් එක් වගුව |1 සිට 12| දක්වා අංකයකින් ගුණ කරන්න.</string>
+	<string>ஒவ்வொரு வாய்ப்பாடும் |1 முதல் 12| வரை உள்ள எண்ணால் பெருக்கப்படும்.</string>
 	<key>modeIntro.tables.order %lld</key>
-	<string>%lld ගුණන වගුව |ආරෝහණ| පිළිවෙළට ලැබේ.</string>
+	<string>%lld ஆம் வாய்ப்பாடு |ஏறுவரிசையில்| வரும்.</string>
 	<key>modeIntro.tables.random %lld</key>
-	<string>%lld ගුණන වගුව |අහඹු| පිළිවෙළට ලැබේ.</string>
+	<string>%lld ஆம் வாய்ப்பாடு |சீரற்ற| வரிசையில் வரும்.</string>
 	<key>modeIntro.tables.title %lld</key>
-	<string>%lld ගුණන වගුව</string>
+	<string>%lld ஆம் வாய்ப்பாடு</string>
 	<key>modeIntro.tablesMix.b1 %lld %lld</key>
-	<string>%lld සිට %lld දක්වා ගුණන වගු මිශ්‍රව පුහුණු වන්න.</string>
+	<string>%lld முதல் %lld வரை வாய்ப்பாடுகளை கலந்து பயிற்சி செய்.</string>
 	<key>modeIntro.tablesMix.title %lld %lld</key>
-	<string>ගුණන වගු %lld-%lld</string>
+	<string>வாய்ப்பாடுகள் %lld-%lld</string>
 	<key>name.placeholder</key>
-	<string>ඔබේ නම</string>
+	<string>உன் பெயர்</string>
 	<key>name.whatsYourName</key>
-	<string>ඔබේ නම මොකක්ද?</string>
+	<string>உன் பெயர் என்ன?</string>
 	<key>notif.animal.body %@</key>
 	<string>%@: இந்த விலங்கைத் திறக்க இன்னும் சில கோப்பைகளைப் பெறுங்கள்! 🐼</string>
 	<key>notif.animal.title %lld</key>
@@ -361,7 +365,7 @@
 	<key>notif.comeback.title</key>
 	<string>நாங்கள் உங்களை இழக்கிறோம்! 👋</string>
 	<key>notif.day3.body %lld</key>
-	<string>%lld நிமிட விளையாட்டு அமர்வைத் தொடங்கி, உங்கள் தினசரி விளையாட்டுத் தொடரை நீட்டிக்கவும்.</string>
+	<string>%lld నిమిషాల ప్లే సెషన్‌ను ప్రారంభించండి మరియు మీ రోజువారీ ఆటల పరంపరను పొడిగించండి.</string>
 	<key>notif.day3.title</key>
 	<string>3வது நாளை நடக்க வைப்போம்! ⭐</string>
 	<key>notif.jumppad.body</key>
@@ -373,11 +377,11 @@
 	<key>notif.premium.title</key>
 	<string>மேலும் நிலைகளையும் விலங்குகளையும் திறக்கவும்! 🌈</string>
 	<key>notif.reactivate.body %lld</key>
-	<string>%lld நாட்கள் ஆகிவிட்டது. சில கணிதப் பயிற்சிகளைத் தீர்த்து, மேலும் கோப்பைகளைப் பெறுவோம்!</string>
+	<string>%lld రోజులైంది. కొన్ని గణిత వ్యాయామాలను పరిష్కరించండి మరియు మరిన్ని ట్రోఫీలను సంపాదిద్దాం!</string>
 	<key>notif.reactivate.title</key>
 	<string>மீண்டும் விளையாடத் தயாரா? 🎮</string>
 	<key>notif.streak.body %lld</key>
-	<string>%lld நிமிடங்கள் விளையாடுங்கள் மற்றும் உங்கள் தினசரி விளையாட்டை தொடருங்கள்!</string>
+	<string>%lld నిమిషాలు ఆడండి మరియు మీ రోజువారీ ఆటతీరును కొనసాగించండి!</string>
 	<key>notif.streak.title %lld</key>
 	<string>உங்கள் தினசரி விளையாட்டுத் தொடர் %lld நாட்களை எட்டியுள்ளது! 🔥</string>
 	<key>notif.trophies.body %lld</key>
@@ -389,83 +393,83 @@
 	<key>notif.weekly.title %lld</key>
 	<string>இந்த வாரம் %lld கோப்பைகளைப் பெற்றுள்ளீர்கள்! 🌟</string>
 	<key>onboarding.level.advanced.subtitle</key>
-	<string>විවිධ මිශ්‍ර ගණන් එකට.</string>
+	<string>விதவிதமான கலவைக் கணக்குகள் ஒன்றாக.</string>
 	<key>onboarding.level.advanced.title</key>
-	<string>දැනටමත් හොඳයි</string>
+	<string>ஏற்கனவே நன்றாக செய்கிறாய்</string>
 	<key>onboarding.level.beginner.subtitle</key>
-	<string>පිළිවෙළට ගණන් පුහුණු වන්න.</string>
+	<string>வரிசையான கணக்குகளுடன் பயிற்சி செய்.</string>
 	<key>onboarding.level.beginner.title</key>
-	<string>දැන් පටන් ගත්තා</string>
+	<string>இப்போதுதான் தொடங்கினாய்</string>
 	<key>onboarding.level.intermediate.subtitle</key>
-	<string>අහඹු පිළිවෙළේ ගණන්.</string>
+	<string>சீரற்ற வரிசையில் கணக்குகள்.</string>
 	<key>onboarding.level.intermediate.title</key>
-	<string>ටිකක් පුහුණු වෙලා</string>
+	<string>ஏற்கனவே கொஞ்சம் பயிற்சி</string>
 	<key>onboarding.level.subtitle %@</key>
-	<string>%@ සඳහා ආරම්භක තැනක් තෝරන්න.</string>
+	<string>%@ க்கான தொடக்க இடத்தைத் தேர்ந்தெடு.</string>
 	<key>onboarding.level.thisTopic</key>
-	<string>මේ මාතෘකාව</string>
+	<string>இந்தத் தலைப்பு</string>
 	<key>onboarding.level.title</key>
-	<string>මේක දැනටමත් කොච්චර හොඳට පුළුවන්ද?</string>
+	<string>இதில் உனக்கு ஏற்கனவே எவ்வளவு தெரியும்?</string>
 	<key>onboarding.name.subtitle</key>
-	<string>අපි පටන් ගමු. ඔබේ නම මොකක්ද?</string>
+	<string>தொடங்கலாம். உன் பெயர் என்ன?</string>
 	<key>onboarding.name.title</key>
-	<string>ගණන් හදන එක මෙතරම් විනෝද වෙලා නැහැ!</string>
+	<string>கணக்குப் போடுவது இவ்வளவு வேடிக்கையாக இருந்ததே இல்லை!</string>
 	<key>onboarding.subject.subtitle</key>
-	<string>පටන් ගන්න මාතෘකාවක් තෝරන්න.</string>
+	<string>தொடங்க ஒரு தலைப்பைத் தேர்ந்தெடு.</string>
 	<key>onboarding.subject.title</key>
-	<string>ඔබ ඉගෙනගන්න කැමති මොනවාද?</string>
+	<string>நீ என்ன கற்க விரும்புகிறாய்?</string>
 	<key>options.capAt30.info</key>
-	<string>එක් එක් මට්ටමේ කුසලාන ඉලක්කය 50 දක්වා වේ. මෙය ක්‍රියාත්මක නම් ඉලක්කයට ළඟා වූ විට ක්‍රීඩාව ස්වයංක්‍රීයව අවසන් වේ.</string>
+	<string>ஒவ்வொரு நிலைக்கும் அதிகபட்சம் 50 கோப்பைகள் இலக்கு. இது இயக்கப்பட்டால், இலக்கை அடைந்ததும் விளையாட்டு தானாக முடியும்.</string>
 	<key>options.capAt30.title</key>
-	<string>ඉලක්කයේදී අවසන් කරන්න</string>
+	<string>இலக்கில் முடி</string>
 	<key>options.helperMode.info</key>
-	<string>උදව් මාදිලියේ නිවැරදි පිළිතුර හැමවිටම කොළ පාටින් පෙන්වයි. මෙහි උපයන කුසලාන වෙනම ගණන් කර තරුවකින් සලකුණු කරයි.</string>
+	<string>உதவி முறையில் சரியான விடை எப்போதும் பச்சை நிறத்தில் காட்டப்படும். இதில் கிடைக்கும் கோப்பைகள் தனியாக எண்ணப்பட்டு நட்சத்திரக் குறியுடன் காட்டப்படும்.</string>
 	<key>options.helperMode.title</key>
-	<string>උදව් මාදිලිය</string>
+	<string>உதவி முறை</string>
 	<key>options.unlimitedLives.info</key>
-	<string>ඔබ හැමවිටම ජීවිත 3කින් පටන් ගනී. ජීවිත ඉවර වූ විට ක්‍රීඩාව අවසන් වේ. ජීවිත ඉවර වූ පසුත් ක්‍රීඩා කර පුහුණු වීමට මෙය ක්‍රියාත්මක කරන්න.</string>
+	<string>நீ எப்போதும் 3 உயிர்களுடன் தொடங்குவாய். உயிர்கள் தீர்ந்ததும் விளையாட்டு முடியும். உயிர்கள் தீர்ந்த பிறகும் தொடர்ந்து விளையாடிப் பயிற்சி செய்ய இதை இயக்கு.</string>
 	<key>options.unlimitedLives.title</key>
-	<string>අසීමිත ජීවිත</string>
+	<string>வரம்பில்லா உயிர்கள்</string>
 	<key>parentGate.approved</key>
-	<string>අනුමතයි</string>
+	<string>அங்கீகரிக்கப்பட்டது</string>
 	<key>parentGate.attempts %lld %lld</key>
-	<string>උත්සාහ: %1$lld න් %2$lld</string>
+	<string>முயற்சிகள்: %1$lld / %2$lld</string>
 	<key>parentGate.holdInstruction %@ %lld</key>
-	<string>%@ තත්පර %lldක් ඔබාගෙන සිටින්න.</string>
+	<string>%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும்.</string>
 	<key>parentGate.holdProgress %lld</key>
-	<string>ඔබාගෙන සිටින්න: %lld</string>
+	<string>பிடி: %lld</string>
 	<key>parentGate.instruction %@ %lld %@ %lld</key>
-	<string>%@ තත්පර %lldක් ඔබාගෙන සිටින්න. ඉන්පසු %@ %lld වරක් තට්ටු කරන්න.</string>
+	<string>%@ ஐ %lld விநாடிகள் அழுத்திப் பிடிக்கவும். பிறகு %@ ஐ %lld முறை தட்டவும்.</string>
 	<key>parentGate.shape.circle</key>
-	<string>වෘත්තය</string>
+	<string>வட்டம்</string>
 	<key>parentGate.shape.diamond</key>
-	<string>දියමන්තිය</string>
+	<string>வைரம்</string>
 	<key>parentGate.shape.heart</key>
-	<string>හදවත</string>
+	<string>இதயம்</string>
 	<key>parentGate.shape.hexagon</key>
-	<string>ෂඩාස්‍රය</string>
+	<string>அறுகோணம்</string>
 	<key>parentGate.shape.plus</key>
-	<string>එකතු ලකුණ</string>
+	<string>கூட்டல் குறி</string>
 	<key>parentGate.shape.square</key>
-	<string>චතුරස්‍රය</string>
+	<string>சதுரம்</string>
 	<key>parentGate.shape.star</key>
-	<string>තරුව</string>
+	<string>நட்சத்திரம்</string>
 	<key>parentGate.shape.triangle</key>
-	<string>ත්‍රිකෝණය</string>
+	<string>முக்கோணம்</string>
 	<key>parentGate.stepOne</key>
-	<string>පියවර 1 / 2</string>
+	<string>2 இல் படி 1</string>
 	<key>parentGate.stepTwo</key>
-	<string>පියවර 2 / 2</string>
+	<string>2 இல் படி 2</string>
 	<key>parentGate.subtitle</key>
-	<string>කුඩා ක්‍රීඩකයන් ආරක්ෂා කිරීමට, මිලදී ගැනීමට පෙර වැඩිහිටියෙකු මේ පරීක්ෂාව සම්පූර්ණ කළ යුතුය.</string>
+	<string>இளம் வீரர்களைப் பாதுகாக்க, வாங்குவதற்கு முன் ஒரு பெரியவர் இந்தச் சரிபார்ப்பை முடிக்க வேண்டும்.</string>
 	<key>parentGate.tapInstruction %lld %@</key>
-	<string>දැන් %2$@ %1$lld වරක් තට්ටු කරන්න.</string>
+	<string>இப்போது %2$@ ஐ %1$lld முறை தட்டவும்.</string>
 	<key>parentGate.tapProgress %lld %lld</key>
-	<string>තට්ටු: %1$lld න් %2$lld</string>
+	<string>தட்டல்கள்: %1$lld / %2$lld</string>
 	<key>parentGate.title</key>
-	<string>වැඩිහිටි අනුමැතිය අවශ්‍යයි</string>
+	<string>பெரியவர் அனுமதி தேவை</string>
 	<key>premium.availableAt %lld</key>
-	<string>%lld கோப்பைகளிலிருந்து கிடைக்கும்</string>
+	<string>%lld ట్రోఫీల నుండి అందుబాటులో ఉంటుంది</string>
 	<key>premium.availableFromStart</key>
 	<string>தொடக்கத்திலிருந்தே கிடைக்கும்</string>
 	<key>premium.characterUnlocked</key>
@@ -475,96 +479,96 @@
 	<key>premium.earnedTrophies %lld</key>
 	<string>நீங்கள் %lld கோப்பைகளைப் பெற்றுள்ளீர்கள்</string>
 	<key>premium.exclusiveBadge</key>
-	<string>Premium-இல் மட்டும்</string>
+	<string>Premiumతో మాత్రమే</string>
 	<key>premium.exclusiveWithPremium</key>
-	<string>Premium-இல் மட்டும்</string>
+	<string>Premiumతో మాత్రమే</string>
 	<key>premium.feature.animals.subtitle</key>
-	<string>ප්‍රීමියම් සමඟ සතුන් 10 දෙනාම නිදහසේ භාවිතා කළ හැක.</string>
+	<string>பிரீமியத்தில் 10 விலங்குகளுடனும் சுதந்திரமாக விளையாடலாம்.</string>
 	<key>premium.feature.animals.title</key>
-	<string>සියලු සතුන්ට ප්‍රවේශය</string>
+	<string>எல்லா விலங்குகளும் கிடைக்கும்</string>
 	<key>premium.feature.levels.subtitle</key>
-	<string>පුහුණු වීමට හැමවිටම අලුත් ගණන් ඇති තරම්.</string>
+	<string>பயிற்சிக்கு எப்போதும் புதிய கணக்குகள் இருக்கும்.</string>
 	<key>premium.feature.levels.title</key>
-	<string>මාතෘකාවකට මට්ටම් 99ක්</string>
+	<string>ஒவ்வொரு தலைப்பிலும் 99 நிலைகள்</string>
 	<key>premium.feature.noAds.subtitle</key>
-	<string>කිසිදු බාධාවක් නැතිව ක්‍රීඩා කරන්න.</string>
+	<string>இடையூறு இல்லாமல் விளையாடு.</string>
 	<key>premium.feature.noAds.title</key>
-	<string>දැන්වීම් නැහැ</string>
+	<string>விளம்பரங்கள் இல்லை</string>
 	<key>premium.oneTime</key>
-	<string>එක් වරක් ගන්න. සදහටම ඔබේ.</string>
+	<string>ஒருமுறை வாங்கினால் என்றென்றும் உன்னுடையது.</string>
 	<key>premium.restore</key>
-	<string>මිලදී ගැනීම් ප්‍රතිස්ථාපනය කරන්න</string>
+	<string>வாங்கியவற்றை மீட்டெடு</string>
 	<key>premium.start</key>
 	<string>தொடங்கு</string>
 	<key>premium.storeUnavailable</key>
-	<string>වෙළඳසැල දැන් ලබාගත නොහැක. පසුව නැවත උත්සාහ කරන්න.</string>
+	<string>கடை இப்போது கிடைக்கவில்லை. பிறகு மீண்டும் முயற்சி செய்.</string>
 	<key>premium.unlock</key>
-	<string>ප්‍රීමියම් විවෘත කරන්න</string>
+	<string>பிரீமியத்தைத் திற</string>
 	<key>premium.unlockWithPrice %@</key>
-	<string>ප්‍රීමියම් විවෘත කරන්න · %@</string>
+	<string>பிரீமியத்தைத் திற · %@</string>
 	<key>premium.unlockWithTrophies</key>
 	<string>கோப்பைகளால் திறக்கவும்</string>
 	<key>premium.unlockedWithPremium</key>
-	<string>Premium மூலம் திறக்கப்பட்டது</string>
+	<string>Premiumతో అన్‌లాక్ అయింది</string>
 	<key>premium.youHavePremium</key>
-	<string>ඔබට ප්‍රීමියම් තියෙනවා!</string>
+	<string>உனக்கு பிரீமியம் உள்ளது!</string>
 	<key>settings.character</key>
-	<string>චරිතය</string>
+	<string>கதாபாத்திரம்</string>
 	<key>settings.characterInfo</key>
-	<string>සෑම සතෙකුම මුළු ක්‍රීඩාවටම තමන්ගේම වර්ණ තේමාවක් දෙයි.</string>
+	<string>ஒவ்வொரு விலங்கும் முழு விளையாட்டிற்கும் தனித்த நிறத் தோற்றத்தைத் தரும்.</string>
 	<key>settings.customMinutes %lld</key>
-	<string>අභිරුචි: මිනි %lld</string>
+	<string>தனிப்பயன்: %lld நிமி</string>
 	<key>settings.dailyGoal</key>
-	<string>දිනපතා ඉලක්කය</string>
+	<string>தினசரி இலக்கு</string>
 	<key>settings.goalInfo</key>
-	<string>අඛණ්ඩ ඉලක්කය දිනකට මිනිත්තු 5කින් පටන් ගනී. ක්‍රියාකාරී ක්‍රීඩා කාලය පමණක් ගණන් වේ.</string>
+	<string>தொடர் இலக்கு நாளுக்கு 5 நிமிடங்களில் தொடங்கும். விளையாடிய நேரம் மட்டும் கணக்காகும்.</string>
 	<key>settings.lives</key>
-	<string>ජීවිත</string>
+	<string>உயிர்கள்</string>
 	<key>settings.livesInfo</key>
-	<string>ජීවිත තුනක් තිබේ නම් අවසාන හදවතෙන් පසු ක්‍රීඩාව අවසන් වේ. අසීමිත මාදිලියේ ජීවිත තිබෙන තුරු පමණක් කුසලාන ගණන් වේ; ඉන්පසුත් ක්‍රීඩා කළ හැක.</string>
+	<string>மூன்று உயிர்கள் முறையில் கடைசி இதயம் போனதும் விளையாட்டு முடியும். வரம்பில்லா முறையில் உயிர்கள் இருக்கும் வரை மட்டுமே கோப்பைகள் கணக்காகும்; பிறகும் தொடர்ந்து விளையாடலாம்.</string>
 	<key>settings.playGoals</key>
-	<string>ක්‍රීඩා ඉලක්ක</string>
+	<string>விளையாட்டு இலக்குகள்</string>
 	<key>settings.premiumUnlocked</key>
-	<string>ප්‍රීමියම් විවෘතයි. ස්තුතියි!</string>
+	<string>பிரீமியம் திறக்கப்பட்டது. நன்றி!</string>
 	<key>settings.title</key>
-	<string>සැකසුම්</string>
+	<string>அமைப்புகள்</string>
 	<key>streak.accessibility.chooseDailyGoal</key>
-	<string>දිනපතා ඉලක්කයක් තෝරන්න</string>
+	<string>தினசரி இலக்கைத் தேர்ந்தெடு</string>
 	<key>streak.accessibility.choosePeriod</key>
-	<string>දිනපතා හෝ සතිපතා ඉලක්කයක් තෝරන්න</string>
+	<string>தினசரி அல்லது வார இலக்கைத் தேர்ந்தெடு</string>
 	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
-	<string>%1$@, මිනිත්තු %2$lld / %3$lld, දින %4$lldක් පේළියට</string>
+	<string>%1$@, %3$lld நிமிடங்களில் %2$lld, தொடர்ந்து %4$lld நாட்கள்</string>
 	<key>streak.accessibility.daily %lld %lld</key>
-	<string>දිනපතා අඛණ්ඩය, මිනිත්තු %lld / %lld</string>
+	<string>தினசரி தொடர், %lld / %lld நிமிடங்கள்</string>
 	<key>streak.daily</key>
-	<string>දිනපතා අඛණ්ඩය</string>
+	<string>தினசரி தொடர்</string>
 	<key>streak.dayOne</key>
-	<string>දින 1</string>
+	<string>நாள் 1</string>
 	<key>tutorial.answerHint</key>
-	<string>පිළිතුර දන්නේ නැද්ද? බලන්න ගණන තට්ටු කරන්න.</string>
+	<string>விடை தெரியவில்லையா? கணக்கைத் தட்டிப் பார்.</string>
 	<key>tutorial.complete</key>
-	<string>හොඳට කළා! පුහුණු පාඩම ඉවරයි. දැන් ඉහළම ලකුණු ගන්න!</string>
+	<string>சிறப்பாக செய்தாய்! பயிற்சி முடிந்தது. இப்போது அதிகபட்ச மதிப்பெண்ணை நோக்கி செல்!</string>
 	<key>tutorial.correctAnswer</key>
-	<string>කුසලානයක් ගන්න නිවැරදි පිළිතුර මතට පනින්න.</string>
+	<string>கோப்பையைப் பெற சரியான விடையின் மீது குதி.</string>
 	<key>tutorial.correctAnswerGreen</key>
-	<string>නිවැරදි පිළිතුර කොළ පාටින් පෙන්වයි. දැන් එය මතට පනින්න.</string>
+	<string>சரியான விடை பச்சை நிறத்தில் காட்டப்படுகிறது. இப்போது அதன்மீது குதி.</string>
 	<key>tutorial.doubler.answer</key>
-	<string>තුන් ගුණයක කුසලාන ගන්න නිවැරදි පිළිතුර මතට පනින්න.</string>
+	<string>மூன்று மடங்கு கோப்பைகள் பெற சரியான விடையின் மீது குதி.</string>
 	<key>tutorial.doubler.collect</key>
-	<string>එක් වරක් තුන් ගුණයක කුසලාන ගන්න ×3 කාසිය අරගන්න.</string>
+	<string>ஒருமுறை மூன்று மடங்கு கோப்பைகள் பெற ×3 நாணயத்தை எடு.</string>
 	<key>tutorial.lifePickup</key>
-	<string>ජීවිත නැවත ගන්න අර්ධ ජීවිතයක් හෝ පූර්ණ ජීවිතයක් සොයාගත හැක.</string>
+	<string>உயிர்களை மீட்க அரை உயிரையோ முழு உயிரையோ காணலாம்.</string>
 	<key>tutorial.minusOne</key>
-	<string>−1 එකෙන් වළකින්න. එය කුසලානයක් අඩු කරයි.</string>
+	<string>−1 ஐத் தவிர். அது ஒரு கோப்பையைப் பறிக்கும்.</string>
 	<key>tutorial.move</key>
-	<string>වමට හා දකුණට යන්න උපාංගය හලවන්න. තිරයේ පැති හරහාත් යන්න පුළුවන්.</string>
+	<string>இடப்புறமும் வலப்புறமும் செல்ல சாதனத்தை அசை. திரையின் ஓரங்கள் வழியாகவும் செல்லலாம்.</string>
 	<key>tutorial.platforms</key>
-	<string>ඉහළට යන්න වේදිකා මතට පනින්න.</string>
+	<string>மேலே செல்ல மேடைகளின் மீது குதி.</string>
 	<key>tutorial.scoreHint</key>
-	<string>මේ මට්ටමේ ඔබේ ලකුණු මෙතැන පෙන්වයි.</string>
+	<string>இந்த நிலைக்கான உன் மதிப்பெண் இங்கே காட்டப்படும்.</string>
 	<key>tutorial.star</key>
-	<string>වැරදි පිළිතුරු ඉවත් කරන්න තරුව තුළට පනින්න.</string>
+	<string>தவறான விடைகளைச் சுட்டுத் தள்ள நட்சத்திரத்தின் மீது குதி.</string>
 	<key>tutorial.wrongAnswer</key>
-	<string>වැරදි පිළිතුරක් තෝරන විට ජීවිත තුනෙන් එකක් අහිමි වේ. දැන් උත්සාහ කරන්න.</string>
+	<string>தவறான விடையைத் தேர்ந்தெடுத்தால், உன் மூன்று உயிர்களில் ஒன்று போய்விடும். இப்போது முயற்சி செய்.</string>
 </dict>
 </plist>

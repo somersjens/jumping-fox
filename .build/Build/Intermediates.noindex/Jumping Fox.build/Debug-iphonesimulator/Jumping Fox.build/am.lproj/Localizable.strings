@@ -108,6 +108,8 @@
 	<string>ሕይወቶች በርተዋል</string>
 	<key>game.intro.scorePaused</key>
 	<string>የአሁኑ ውጤትህ ለጊዜው ይቆማል።</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ይቅርታ! የድምፅ ንባብ ባህሪው በቋንቋዎ ገና አይገኝም።</string>
 	<key>game.intro.start</key>
 	<string>ደረጃውን ጀምር</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ገጸ ባሕሪህን ለመቀየር ንካ፤ ከመቀበያ ማያው እንደገና ለመጀመር ለሁለት ሰከንድ ተጭነህ ያዝ።</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ምረጥ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ተጨማሪ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ከፍተኛ</string>
 	<key>menu.maximumCount</key>

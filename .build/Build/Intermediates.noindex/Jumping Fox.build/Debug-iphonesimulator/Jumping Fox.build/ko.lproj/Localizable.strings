@@ -108,6 +108,8 @@
 	<string>목숨 켜기</string>
 	<key>game.intro.scorePaused</key>
 	<string>현재 점수는 잠시 멈춰요.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>죄송해요! 소리 내어 읽기 기능은 아직 내 언어로 제공되지 않아요.</string>
 	<key>game.intro.start</key>
 	<string>레벨 시작</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>누르면 캐릭터를 바꿔요. 2초 동안 길게 누르면 시작 화면부터 다시 해요.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ 선택</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld개 더</string>
 	<key>menu.maxScore</key>
 	<string>최대 30</string>
 	<key>menu.maximumCount</key>

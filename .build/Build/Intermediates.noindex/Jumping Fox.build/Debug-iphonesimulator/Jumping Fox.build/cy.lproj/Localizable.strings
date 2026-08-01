@@ -108,6 +108,8 @@
 	<string>Bywydau ymlaen</string>
 	<key>game.intro.scorePaused</key>
 	<string>Bydd dy sgôr bresennol yn cael ei seibio.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Mae’n ddrwg gennym! Nid yw’r nodwedd darllen yn uchel ar gael yn dy iaith eto.</string>
 	<key>game.intro.start</key>
 	<string>Dechrau'r lefel</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tapia i newid dy gymeriad; pwysa a dal am ddwy eiliad i ddechrau eto ar y sgrin groeso.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Dewis %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld arall</string>
 	<key>menu.maxScore</key>
 	<string>30 MWYAF</string>
 	<key>menu.maximumCount</key>

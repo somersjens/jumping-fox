@@ -108,6 +108,8 @@
 	<string>เปิดชีวิต</string>
 	<key>game.intro.scorePaused</key>
 	<string>คะแนนตอนนี้จะถูกพักไว้</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ขออภัย! ฟีเจอร์อ่านออกเสียงยังไม่รองรับภาษาของคุณ</string>
 	<key>game.intro.start</key>
 	<string>เริ่มด่าน</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>แตะเพื่อเปลี่ยนตัวละคร กดค้างสองวินาทีเพื่อเริ่มใหม่ที่หน้าต้อนรับ</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>เลือก %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>อีก %lld</string>
 	<key>menu.maxScore</key>
 	<string>สูงสุด 30</string>
 	<key>menu.maximumCount</key>

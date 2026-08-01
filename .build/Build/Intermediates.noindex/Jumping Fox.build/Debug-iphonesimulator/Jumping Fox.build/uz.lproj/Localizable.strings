@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Yana o‘yna</string>
 	<key>game.highScore</key>
-	<string>Eng yuqori natija</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Asosiy menyuga qaytish</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Jonlar yoqilgan</string>
 	<key>game.intro.scorePaused</key>
 	<string>Hozirgi natijang pauza qilinadi.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Kechirasiz! Ovoz chiqarib o‘qish funksiyasi hali sizning tilingizda mavjud emas.</string>
 	<key>game.intro.start</key>
 	<string>Bosqichni boshlash</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Qahramonni almashtirish uchun teg; salomlashuv ekranidan qayta boshlash uchun ikki soniya bosib tur.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ni tanla</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>yana %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

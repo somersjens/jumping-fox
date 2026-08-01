@@ -108,6 +108,8 @@
 	<string>Jetët aktive</string>
 	<key>game.intro.scorePaused</key>
 	<string>Rezultati yt aktual do të vihet në pauzë.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Na vjen keq! Funksioni i leximit me zë nuk është ende i disponueshëm në gjuhën tënde.</string>
 	<key>game.intro.start</key>
 	<string>Fillo nivelin</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Prek për të ndryshuar personazhin; mbaje shtypur dy sekonda për të nisur nga ekrani i mirëseardhjes.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Zgjidh %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>edhe %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

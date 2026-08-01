@@ -108,6 +108,8 @@
 	<string>开启生命</string>
 	<key>game.intro.scorePaused</key>
 	<string>当前分数会暂停。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>抱歉！朗读功能暂不支持你的语言。</string>
 	<key>game.intro.start</key>
 	<string>开始关卡</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>轻点可更换角色；长按两秒可返回欢迎页重新开始。</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>选择 %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>还差 %lld</string>
 	<key>menu.maxScore</key>
 	<string>最多 30</string>
 	<key>menu.maximumCount</key>

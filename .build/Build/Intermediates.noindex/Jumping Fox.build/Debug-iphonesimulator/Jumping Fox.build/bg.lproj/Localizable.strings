@@ -108,6 +108,8 @@
 	<string>Животи вкл.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Текущият ти резултат ще бъде спрян.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Съжаляваме! Функцията за четене на глас все още не е налична на твоя език.</string>
 	<key>game.intro.start</key>
 	<string>Начало на нивото</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Докосни, за да смениш героя си; задръж за две секунди, за да започнеш отначало от началния екран.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Избери %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>още %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС</string>
 	<key>menu.maximumCount</key>

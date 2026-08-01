@@ -108,6 +108,8 @@
 	<string>ເປີດຊີວິດ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ຄະແນນປັດຈຸບັນຈະຖືກພັກໄວ້.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ຂໍອະໄພ! ຟັງຊັນອ່ານອອກສຽງຍັງບໍ່ຮອງຮັບພາສາຂອງເຈົ້າ.</string>
 	<key>game.intro.start</key>
 	<string>ເລີ່ມດ່ານ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ແຕະເພື່ອປ່ຽນຕົວລະຄອນ; ກົດຄ້າງສອງວິນາທີເພື່ອເລີ່ມໃໝ່ທີ່ໜ້າຕ້ອນຮັບ.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>ເລືອກ %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ອີກ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ສູງສຸດ</string>
 	<key>menu.maximumCount</key>

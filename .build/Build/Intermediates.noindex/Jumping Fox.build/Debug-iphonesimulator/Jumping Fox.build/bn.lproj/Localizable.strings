@@ -108,6 +108,8 @@
 	<string>জীবন চালু</string>
 	<key>game.intro.scorePaused</key>
 	<string>তোমার বর্তমান স্কোর থামিয়ে রাখা হবে।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>দুঃখিত! জোরে পড়ে শোনানোর সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।</string>
 	<key>game.intro.start</key>
 	<string>লেভেল শুরু</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>চরিত্র বদলাতে ট্যাপ করো; স্বাগত স্ক্রিন থেকে আবার শুরু করতে দুই সেকেন্ড চেপে ধরো।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ বেছে নাও</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>আরও %lld</string>
 	<key>menu.maxScore</key>
 	<string>৩০ সর্বোচ্চ</string>
 	<key>menu.maximumCount</key>

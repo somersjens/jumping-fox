@@ -390,6 +390,13 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “game.intro.spokenUnavailable” in table “Localizable.xcstrings”.
+     */
+    static var gameIntroSpokenUnavailable: LocalizedStringResource {
+        LocalizedStringResource("game.intro.spokenUnavailable", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “game.intro.start” in table “Localizable.xcstrings”.
      */
     static var gameIntroStart: LocalizedStringResource {
@@ -702,6 +709,13 @@ nonisolated extension LocalizedStringResource {
      */
     static func menuAccessibilityChooseMode(_ arg1: String) -> LocalizedStringResource {
         LocalizedStringResource("menu.accessibility.chooseMode %@", defaultValue: "\(arg1)", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “menu.characterUnlockRemaining %lld” in table “Localizable.xcstrings”.
+     */
+    static func menuCharacterUnlockRemaining(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("menu.characterUnlockRemaining %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
     }
 
     /**

@@ -108,6 +108,8 @@
 	<string>Lives on</string>
 	<key>game.intro.scorePaused</key>
 	<string>Your current score will be paused.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Sorry! The read-aloud feature is not available in your language yet.</string>
 	<key>game.intro.start</key>
 	<string>Start level</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tap to change your character; press and hold for two seconds to start over at the welcome screen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Choose %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld more</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

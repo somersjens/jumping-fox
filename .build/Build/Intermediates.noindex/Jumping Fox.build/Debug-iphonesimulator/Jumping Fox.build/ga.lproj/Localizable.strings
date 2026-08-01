@@ -108,6 +108,8 @@
 	<string>Beathaí ar</string>
 	<key>game.intro.scorePaused</key>
 	<string>Cuirfear do scór reatha ar sos.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Tá brón orainn! Níl an ghné léitheoireachta os ard ar fáil i do theanga fós.</string>
 	<key>game.intro.start</key>
 	<string>Tosaigh an leibhéal</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tapáil chun do charachtar a athrú; brúigh agus coinnigh ar feadh dhá shoicind chun tosú arís ag an scáileán fáilte.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Roghnaigh %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld eile</string>
 	<key>menu.maxScore</key>
 	<string>30 AR A MHÉAD</string>
 	<key>menu.maximumCount</key>

@@ -108,6 +108,8 @@
 	<string>Vite attivate</string>
 	<key>game.intro.scorePaused</key>
 	<string>Il punteggio attuale verrà messo in pausa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ci dispiace! La funzione di lettura ad alta voce non è ancora disponibile nella tua lingua.</string>
 	<key>game.intro.start</key>
 	<string>Inizia il livello</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tocca per cambiare personaggio; tieni premuto per due secondi per ricominciare dalla schermata di benvenuto.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Scegli %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ancora %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Igraj ponovno</string>
 	<key>game.highScore</key>
-	<string>Najbolji rezultat</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Natrag na glavni izbornik</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Životi uključeni</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tvoj trenutačni rezultat bit će pauziran.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Žao nam je! Funkcija čitanja naglas još nije dostupna na tvom jeziku.</string>
 	<key>game.intro.start</key>
 	<string>Pokreni razinu</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Dodirni za promjenu lika; pritisni i drži dvije sekunde za povratak na zaslon dobrodošlice.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Odaberi %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>još %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>

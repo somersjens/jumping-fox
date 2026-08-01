@@ -56,6 +56,16 @@
     "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView.swiftdeps",
     "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
   },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/EmphasizedText.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/EmphasizedText~partial.swiftmodule"
+  },
   "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/GameScene.swift" : {
     "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.swiftconstvalues",
     "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/GameScene.d",

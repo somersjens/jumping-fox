@@ -108,6 +108,8 @@
 	<string>ਜਾਨਾਂ ਚਾਲੂ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਸਕੋਰ ਰੁਕ ਜਾਵੇਗਾ।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ਮਾਫ਼ ਕਰਨਾ! ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਦੀ ਸਹੂਲਤ ਹਾਲੇ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।</string>
 	<key>game.intro.start</key>
 	<string>ਲੈਵਲ ਸ਼ੁਰੂ ਕਰੋ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ਕਿਰਦਾਰ ਬਦਲਣ ਲਈ ਟੈਪ ਕਰੋ; ਸਵਾਗਤ ਸਕ੍ਰੀਨ ਤੋਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੋ ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ਚੁਣੋ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ਹੋਰ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

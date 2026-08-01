@@ -108,6 +108,8 @@
 	<string>Жизни вкл.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Твой текущий счёт будет сохранён.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Извини! Функция чтения вслух пока недоступна на твоём языке.</string>
 	<key>game.intro.start</key>
 	<string>Начать уровень</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Нажми, чтобы сменить персонажа; удерживай две секунды, чтобы начать заново с экрана приветствия.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Выбери %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ещё %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС.</string>
 	<key>menu.maximumCount</key>

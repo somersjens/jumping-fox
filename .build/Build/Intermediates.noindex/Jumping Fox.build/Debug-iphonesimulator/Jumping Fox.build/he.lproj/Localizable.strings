@@ -108,6 +108,8 @@
 	<string>חיים פעילים</string>
 	<key>game.intro.scorePaused</key>
 	<string>הניקוד הנוכחי יושהה.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>מצטערים! תכונת ההקראה עדיין לא זמינה בשפה שלך.</string>
 	<key>game.intro.start</key>
 	<string>התחלת שלב</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>הקישו כדי לשנות דמות; לחצו לחיצה ארוכה במשך שתי שניות כדי להתחיל מחדש במסך הפתיחה.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>בחרו %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>עוד %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 מקס׳</string>
 	<key>menu.maximumCount</key>

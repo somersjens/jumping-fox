@@ -108,6 +108,8 @@
 	<string>Maisha yamewashwa</string>
 	<key>game.intro.scorePaused</key>
 	<string>Alama zako za sasa zitasitishwa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Samahani! Kipengele cha kusoma kwa sauti bado hakipatikani katika lugha yako.</string>
 	<key>game.intro.start</key>
 	<string>Anza kiwango</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Gusa kubadilisha mhusika wako; bonyeza na ushikilie kwa sekunde mbili kuanza tena kwenye skrini ya kukaribisha.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Chagua %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld zaidi</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

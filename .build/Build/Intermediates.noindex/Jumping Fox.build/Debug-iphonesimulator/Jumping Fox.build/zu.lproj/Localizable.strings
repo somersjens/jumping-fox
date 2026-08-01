@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Dlala futhi</string>
 	<key>game.highScore</key>
-	<string>Irekhodi eliphezulu</string>
+	<string>Irekhodi</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Buyela kumenyu enkulu</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Izimpilo zivuliwe</string>
 	<key>game.intro.scorePaused</key>
 	<string>Amaphuzu akho amanje azomiswa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Siyaxolisa! Isici sokufunda ngokuzwakalayo asikatholakali ngolimi lwakho.</string>
 	<key>game.intro.start</key>
 	<string>Qala ileveli</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Thepha ukuze ushintshe umlingiswa; cindezela ubambe imizuzwana emibili ukuze uqale kabusha esikrinini sokwamukela.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Khetha %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld ngaphezulu</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

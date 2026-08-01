@@ -108,6 +108,8 @@
 	<string>Elud sees</string>
 	<key>game.intro.scorePaused</key>
 	<string>Sinu praegune tulemus pannakse pausile.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Vabandust! Ettelugemise funktsioon ei ole sinu keeles veel saadaval.</string>
 	<key>game.intro.start</key>
 	<string>Alusta taset</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tegelase muutmiseks puuduta; tervitusekraanilt uuesti alustamiseks hoia kaks sekundit all.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vali %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>veel %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

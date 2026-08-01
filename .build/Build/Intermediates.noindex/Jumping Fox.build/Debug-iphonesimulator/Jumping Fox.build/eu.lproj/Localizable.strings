@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Jokatu berriro</string>
 	<key>game.highScore</key>
-	<string>Puntuazio onena</string>
+	<string>Errekorra</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Menu nagusira</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Bizitzak piztuta</string>
 	<key>game.intro.scorePaused</key>
 	<string>Uneko puntuazioa pausatuko da.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Barkatu! Ozen irakurtzeko funtzioa oraindik ez dago erabilgarri zure hizkuntzan.</string>
 	<key>game.intro.start</key>
 	<string>Hasi maila</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Sakatu pertsonaia aldatzeko; eduki sakatuta bi segundoz ongietorri-pantailatik berriro hasteko.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Aukeratu %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld gehiago</string>
 	<key>menu.maxScore</key>
 	<string>30 GEH.</string>
 	<key>menu.maximumCount</key>

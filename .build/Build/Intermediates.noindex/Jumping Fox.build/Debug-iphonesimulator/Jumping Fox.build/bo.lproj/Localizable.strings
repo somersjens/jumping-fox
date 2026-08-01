@@ -108,6 +108,8 @@
 	<string>སྲོག་ཁ་ཕྱེ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ད་ལྟའི་སྐར་མ་མཚམས་འཇོག་བྱེད།</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>དགོངས་དག སྒྲ་བཏོན་ནས་ཀློག་པའི་བྱེད་ནུས་ད་དུང་ཁྱེད་ཀྱི་སྐད་ཡིག་ནང་མེད།</string>
 	<key>game.intro.start</key>
 	<string>རིམ་པ་འགོ་འཛུགས</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>མི་སྣ་བརྗེ་བར་རེག དགའ་བསུའི་ངོས་ནས་བསྐྱར་དུ་འགོ་འཛུགས་པར་སྐར་ཆ་གཉིས་མནན་ནས་སྡོད།</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ འདེམས</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld དེ་ལས་མང་</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

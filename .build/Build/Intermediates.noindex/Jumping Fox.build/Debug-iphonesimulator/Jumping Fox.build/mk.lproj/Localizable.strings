@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Играј пак</string>
 	<key>game.highScore</key>
-	<string>Најдобар резултат</string>
+	<string>Рекорд</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Назад во главното мени</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Животи вклучени</string>
 	<key>game.intro.scorePaused</key>
 	<string>Твојот тековен резултат ќе се паузира.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Извини! Функцијата за читање на глас сè уште не е достапна на твојот јазик.</string>
 	<key>game.intro.start</key>
 	<string>Почни ниво</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Допри за да го смениш ликот; притисни и држи две секунди за да почнеш одново од екранот за добредојде.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Избери %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>уште %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС</string>
 	<key>menu.maximumCount</key>

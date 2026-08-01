@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Main lagi</string>
 	<key>game.highScore</key>
-	<string>Skor tertinggi</string>
+	<string>Rekod</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Kembali ke menu utama</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Nyawa hidup</string>
 	<key>game.intro.scorePaused</key>
 	<string>Skor semasa kamu akan dijeda.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Maaf! Ciri baca kuat masih belum tersedia dalam bahasa anda.</string>
 	<key>game.intro.start</key>
 	<string>Mula tahap</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Ketik untuk tukar watak; tekan dan tahan dua saat untuk mula semula di skrin selamat datang.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Pilih %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld lagi</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>

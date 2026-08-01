@@ -108,6 +108,8 @@
 	<string>جانیں آن</string>
 	<key>game.intro.scorePaused</key>
 	<string>آپ کا موجودہ اسکور روک دیا جائے گا۔</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>معذرت! بلند آواز میں پڑھنے کی سہولت ابھی آپ کی زبان میں دستیاب نہیں ہے۔</string>
 	<key>game.intro.start</key>
 	<string>لیول شروع کریں</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,10 +200,12 @@
 	<string>کردار بدلنے کے لیے ٹیپ کریں؛ خیرمقدمی اسکرین سے دوبارہ شروع کرنے کے لیے دو سیکنڈ دبائے رکھیں۔</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ چنیں</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>مزید %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 زیادہ سے زیادہ</string>
 	<key>menu.maximumCount</key>
-	<string>زیادہ سے زیادہ</string>
+	<string>زیادہ</string>
 	<key>menu.maximumCount.accessibility %lld</key>
 	<string>زیادہ سے زیادہ حد %lld بار حاصل ہوئی</string>
 	<key>menu.moreLevels</key>

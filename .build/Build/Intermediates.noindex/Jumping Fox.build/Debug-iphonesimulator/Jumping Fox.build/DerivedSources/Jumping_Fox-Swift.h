@@ -381,11 +381,10 @@ SWIFT_CLASS("_TtC11Jumping_Fox8AppAudio")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class AVSpeechSynthesizer;
-@class AVSpeechUtterance;
-@interface AppAudio (SWIFT_EXTENSION(Jumping_Fox)) <AVSpeechSynthesizerDelegate>
-- (void)speechSynthesizer:(AVSpeechSynthesizer * _Nonnull)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance * _Nonnull)utterance;
-- (void)speechSynthesizer:(AVSpeechSynthesizer * _Nonnull)synthesizer didCancelSpeechUtterance:(AVSpeechUtterance * _Nonnull)utterance;
+@class AVAudioPlayer;
+@interface AppAudio (SWIFT_EXTENSION(Jumping_Fox)) <AVAudioPlayerDelegate>
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer * _Nonnull)player successfully:(BOOL)flag;
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer * _Nonnull)player error:(NSError * _Nullable)error;
 @end
 
 @class NSCoder;

@@ -108,6 +108,8 @@
 	<string>Liv på</string>
 	<key>game.intro.scorePaused</key>
 	<string>Din nuvarande poäng pausas.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Förlåt! Uppläsningsfunktionen är ännu inte tillgänglig på ditt språk.</string>
 	<key>game.intro.start</key>
 	<string>Starta nivån</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Tryck för att byta figur. Håll intryckt i två sekunder för att börja om från välkomstskärmen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Välj %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld till</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

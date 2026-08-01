@@ -108,6 +108,8 @@
 	<string>ଜୀବନ ଚାଲୁ</string>
 	<key>game.intro.scorePaused</key>
 	<string>ତୁମର ଏବେର ସ୍କୋର ଅଟକି ରହିବ।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ଦୁଃଖିତ! ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ସୁବିଧାଟି ଏପର୍ଯ୍ୟନ୍ତ ଆପଣଙ୍କ ଭାଷାରେ ଉପଲବ୍ଧ ନାହିଁ।</string>
 	<key>game.intro.start</key>
 	<string>ଲେଭେଲ୍ ଆରମ୍ଭ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>ପାତ୍ର ବଦଳାଇବାକୁ ଟ୍ୟାପ୍ କର; ସ୍ୱାଗତ ସ୍କ୍ରିନ୍‌ରୁ ପୁଣି ଆରମ୍ଭ କରିବାକୁ ଦୁଇ ସେକେଣ୍ଡ ଧରି ରଖ।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ବାଛ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ଆଉ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

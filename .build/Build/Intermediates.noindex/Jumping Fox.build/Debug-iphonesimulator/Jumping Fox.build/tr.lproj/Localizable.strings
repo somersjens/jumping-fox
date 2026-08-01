@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Tekrar oyna</string>
 	<key>game.highScore</key>
-	<string>En yüksek puan</string>
+	<string>Rekor</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Ana menüye dön</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Canlar açık</string>
 	<key>game.intro.scorePaused</key>
 	<string>Şu anki puanın duraklatılacak.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Üzgünüz! Sesli okuma özelliği henüz senin dilinde kullanılamıyor.</string>
 	<key>game.intro.start</key>
 	<string>Seviyeyi başlat</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Karakterini değiştirmek için dokun; karşılama ekranından yeniden başlamak için iki saniye basılı tut.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ seç</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld daha</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS.</string>
 	<key>menu.maximumCount</key>

@@ -108,6 +108,8 @@
 	<string>Vieți pornite</string>
 	<key>game.intro.scorePaused</key>
 	<string>Scorul actual va fi pus pe pauză.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ne pare rău! Funcția de citire cu voce tare nu este încă disponibilă în limba ta.</string>
 	<key>game.intro.start</key>
 	<string>Începe nivelul</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Atinge pentru a schimba personajul; ține apăsat două secunde pentru a reveni la ecranul de bun venit.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Alege %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>încă %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

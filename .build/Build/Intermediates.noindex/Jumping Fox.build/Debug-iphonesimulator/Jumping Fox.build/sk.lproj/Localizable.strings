@@ -87,7 +87,7 @@
 	<key>game.end.playAgain</key>
 	<string>Hrať znova</string>
 	<key>game.highScore</key>
-	<string>Najlepšie skóre</string>
+	<string>Rekord</string>
 	<key>game.intro.backToMainMenu</key>
 	<string>Späť do hlavného menu</string>
 	<key>game.intro.continue</key>
@@ -108,6 +108,8 @@
 	<string>Životy zap.</string>
 	<key>game.intro.scorePaused</key>
 	<string>Tvoje aktuálne skóre sa pozastaví.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Prepáč! Funkcia čítania nahlas ešte nie je dostupná v tvojom jazyku.</string>
 	<key>game.intro.start</key>
 	<string>Spustiť úroveň</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Ťuknutím zmeníš postavičku; podrž dve sekundy a začneš znova na uvítacej obrazovke.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vyber %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ešte %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

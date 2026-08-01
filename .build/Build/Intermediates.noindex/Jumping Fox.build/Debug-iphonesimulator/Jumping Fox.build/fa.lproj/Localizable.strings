@@ -108,6 +108,8 @@
 	<string>جان‌ها روشن</string>
 	<key>game.intro.scorePaused</key>
 	<string>امتیاز فعلی‌ات متوقف می‌شود.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>متأسفیم! قابلیت بلندخوانی هنوز به زبان شما در دسترس نیست.</string>
 	<key>game.intro.start</key>
 	<string>شروع مرحله</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>برای عوض کردن شخصیت بزن؛ برای شروع دوباره از صفحهٔ خوش‌آمدگویی، دو ثانیه نگه دار.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ را انتخاب کن</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld تای دیگر</string>
 	<key>menu.maxScore</key>
 	<string>۳۰ حداکثر</string>
 	<key>menu.maximumCount</key>

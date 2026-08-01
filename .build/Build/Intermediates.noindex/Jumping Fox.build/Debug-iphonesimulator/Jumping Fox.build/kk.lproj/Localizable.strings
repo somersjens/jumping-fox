@@ -108,6 +108,8 @@
 	<string>Жандар қосулы</string>
 	<key>game.intro.scorePaused</key>
 	<string>Қазіргі ұпайың тоқтатылады.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Кешіріңіз! Дауыстап оқу мүмкіндігі сіздің тіліңізде әлі қолжетімді емес.</string>
 	<key>game.intro.start</key>
 	<string>Деңгейді бастау</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Кейіпкерді өзгерту үшін түрт; сәлемдесу экранынан қайта бастау үшін екі секунд басып тұр.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ таңда</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>тағы %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>

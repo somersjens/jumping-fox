@@ -108,6 +108,8 @@
 	<string>Bật mạng</string>
 	<key>game.intro.scorePaused</key>
 	<string>Điểm hiện tại sẽ được tạm dừng.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Xin lỗi! Tính năng đọc thành tiếng chưa hỗ trợ ngôn ngữ của bạn.</string>
 	<key>game.intro.start</key>
 	<string>Bắt đầu màn</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Chạm để đổi nhân vật; nhấn giữ hai giây để bắt đầu lại từ màn hình chào mừng.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Chọn %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>thêm %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 TỐI ĐA</string>
 	<key>menu.maximumCount</key>

@@ -108,6 +108,8 @@
 	<string>Lív tendrað</string>
 	<key>game.intro.scorePaused</key>
 	<string>Núverandi stigatal verður sett á steðg.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Orsaka! Upplestrarfunksjónin er ikki tøk á tínum máli enn.</string>
 	<key>game.intro.start</key>
 	<string>Byrja stig</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>Trýst fyri at skifta figur; halt inni í tvey sekund fyri at byrja av nýggjum á vælkomstskíggjanum.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vel %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld afturat</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>

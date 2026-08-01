@@ -108,6 +108,8 @@
 	<string>სიცოცხლეები ჩართულია</string>
 	<key>game.intro.scorePaused</key>
 	<string>შენი მიმდინარე ქულა შეჩერდება.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ბოდიში! ხმამაღლა წაკითხვის ფუნქცია შენს ენაზე ჯერ არ არის ხელმისაწვდომი.</string>
 	<key>game.intro.start</key>
 	<string>დონის დაწყება</string>
 	<key>game.intro.tablesDetail %@ %@</key>
@@ -198,6 +200,8 @@
 	<string>პერსონაჟის შესაცვლელად შეეხე; მისასალმებელი ეკრანიდან თავიდან დასაწყებად ორი წამით დააჭირე.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>აირჩიე %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>კიდევ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 მაქს.</string>
 	<key>menu.maximumCount</key>
