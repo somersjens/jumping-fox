@@ -6,69 +6,6 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
-		<key>12F87DDE-E219-4BD1-AAD8-AED2F282A4B3</key>
-		<dict>
-			<key>auxiliaryLogUniqueIdentifier</key>
-			<string>6DCCA9C4-1F1B-4502-910E-E8C0375CE993</string>
-			<key>auxiliaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>className</key>
-			<string>IDESchemeActionsInvocationRecord</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>com.apple.dt.unit.cocoaUnitTest</string>
-			<key>fileName</key>
-			<string>Test-Jumping Fox-2026.08.01_09-31-09-+0200.xcresult</string>
-			<key>hasAuxiliaryLog</key>
-			<true/>
-			<key>hasCoverageData</key>
-			<true/>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-				<key>totalCodeCoverage</key>
-				<real>0.50554557011967916</real>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Jumping Fox project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Jumping Fox</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Test Jumping Fox</string>
-			<key>timeStartedRecording</key>
-			<real>807262269.80670202</real>
-			<key>timeStoppedRecording</key>
-			<real>807262951.716061</real>
-			<key>title</key>
-			<string>Test Jumping Fox</string>
-			<key>uniqueIdentifier</key>
-			<string>12F87DDE-E219-4BD1-AAD8-AED2F282A4B3</string>
-		</dict>
 		<key>80C2F32D-F580-49BA-A146-3DFCB57CBCD4</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>

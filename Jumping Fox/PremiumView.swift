@@ -309,20 +309,20 @@ struct PremiumView: View {
         if animal.id == CharacterCatalog.freeCharacterID {
             if trophyTotal >= (CharacterUnlockStore.threshold(for: "frog") ?? 500) {
                 Image(systemName: "checkmark.circle.fill")
-                    .characterChipStyle(character: character)
+                    .characterChipStyle(character: character, scale: scale)
             } else {
                 Text(verbatim: L(key: "premium.start"))
-                    .characterChipStyle(character: character)
+                    .characterChipStyle(character: character, scale: scale)
             }
         } else if canUse(animal) {
             Image(systemName: "checkmark.circle.fill")
-                .characterChipStyle(character: character)
+                .characterChipStyle(character: character, scale: scale)
         } else if let threshold = CharacterUnlockStore.threshold(for: animal.id) {
             Text(verbatim: "\(threshold)")
-                .characterChipStyle(character: character)
+                .characterChipStyle(character: character, scale: scale)
         } else {
             Image(systemName: "crown.fill")
-                .characterChipStyle(character: character)
+                .characterChipStyle(character: character, scale: scale)
         }
     }
 
@@ -624,9 +624,12 @@ struct PremiumView: View {
 }
 
 private extension View {
-    func characterChipStyle(character: AnimalCharacter) -> some View {
+    /// `scale` must be the same iPad factor the rest of the sheet uses: the chip
+    /// sits inside a cell that grows with it, so a fixed size reads as tiny
+    /// there.
+    func characterChipStyle(character: AnimalCharacter, scale: CGFloat = 1) -> some View {
         self
-            .font(.system(size: 10, weight: .heavy, design: .rounded))
+            .font(.system(size: 10 * scale, weight: .heavy, design: .rounded))
             .foregroundStyle(character.deepColor)
             .lineLimit(1)
             // The four trophy thresholds are at most four digits and always fit
@@ -636,8 +639,8 @@ private extension View {
             // that one shrink instead of losing its ending.
             .minimumScaleFactor(0.7)
             .allowsTightening(true)
-            .padding(.horizontal, 5)
-            .padding(.vertical, 4)
+            .padding(.horizontal, 5 * scale)
+            .padding(.vertical, 4 * scale)
             .frame(maxWidth: .infinity)
             .background(character.color.opacity(0.16), in: Capsule())
     }

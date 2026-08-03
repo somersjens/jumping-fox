@@ -120,11 +120,13 @@ final class AppAudio: NSObject, ObservableObject {
         /// sound fires immediately (measured per file; no re-encoding needed).
         let lead: TimeInterval
     }
-    // Short effects are shipped as uncompressed CAF/PCM: unlike MP3 they need no
-    // runtime decode, so re-triggering one (rewind to `lead` + `play`) during a
-    // busy frame costs no CPU and can't contend for the shared audio decoder.
-    // The four `wav` files were already PCM. `volume`/`lead` are unchanged: the
-    // conversion preserved each file's sample rate, channels and timing exactly.
+    // Short effects are shipped as Apple Lossless CAF. Each one is decoded once
+    // at launch into a PCM buffer (`makeBuffer`), so a trigger stays a single
+    // `scheduleBuffer` with nothing to decode on a busy frame — the reason they
+    // used to be shipped as raw PCM, now paid for once instead of on disk. ALAC
+    // is bit-exact and adds no encoder delay, so every file keeps its sample
+    // rate, channel count and frame count, and `volume`/`lead` are unchanged.
+    // (8.7 MB of PCM became 2.7 MB; four files that were `wav` are now `caf`.)
     private static let effects: [Effect] = [
         Effect(key: "correct",       file: "sfx_correct",        ext: "caf", volume: 0.14, lead: 0.0),
         Effect(key: "wrong",         file: "sfx_wrong",          ext: "caf", volume: 0.11, lead: 0.065),
@@ -135,7 +137,7 @@ final class AppAudio: NSObject, ObservableObject {
         // Levelled to the pack like the others (measured active-region RMS
         // ~-15 dBFS). It was previously boosted to 0.50, which put it ~15 dB
         // above everything else and made it stick out.
-        Effect(key: "heartArrive",   file: "sfx_heart_arrive",   ext: "wav", volume: 0.12, lead: 0.0),
+        Effect(key: "heartArrive",   file: "sfx_heart_arrive",   ext: "caf", volume: 0.12, lead: 0.0),
         Effect(key: "minus",         file: "sfx_minus_coin",     ext: "caf", volume: 0.24, lead: 0.045),
         Effect(key: "shootingStar",  file: "sfx_shooting_star",  ext: "caf", volume: 0.31, lead: 0.045),
         Effect(key: "streak",        file: "sfx_streak",         ext: "caf", volume: 0.16, lead: 0.225),
@@ -148,15 +150,15 @@ final class AppAudio: NSObject, ObservableObject {
         // card, rather than the raw file's louder opening.
         Effect(key: "highScore",     file: "sfx_high_score",     ext: "caf", volume: 0.14, lead: 0.025),
         Effect(key: "characterUnlock", file: "sfx_character_unlock", ext: "caf", volume: 0.12, lead: 0.050),
-        Effect(key: "jump",          file: "sfx_jump",           ext: "wav", volume: 0.10, lead: 0.015),
+        Effect(key: "jump",          file: "sfx_jump",           ext: "caf", volume: 0.10, lead: 0.015),
         Effect(key: "trophyMenu",    file: "sfx_trophy_menu",    ext: "caf", volume: 1.0,  lead: 0.065),
         // Whoosh under the trophy's flight up to the header. `volume`/`lead` are
         // measured from the converted CAF (see conversion notes) so it lands at
         // the same ~-38 dBFS as the rest of the pack, a touch under so it never
         // masks the arrival sound that follows immediately.
         Effect(key: "trophyFlight",  file: "sfx_trophy_flight",  ext: "caf", volume: 0.812, lead: 0.35),
-        Effect(key: "trophyTotal",   file: "sfx_trophy_total",   ext: "wav", volume: 0.08, lead: 0.015),
-        Effect(key: "select",        file: "sfx_select",         ext: "wav", volume: 0.17, lead: 0.0),
+        Effect(key: "trophyTotal",   file: "sfx_trophy_total",   ext: "caf", volume: 0.08, lead: 0.015),
+        Effect(key: "select",        file: "sfx_select",         ext: "caf", volume: 0.17, lead: 0.0),
         // Toggle switches in the menu (helper mode, etc.).
         Effect(key: "switchOn",      file: "sfx_switch_on",      ext: "caf", volume: 0.89, lead: 0.200),
         Effect(key: "switchOff",     file: "sfx_switch_off",     ext: "caf", volume: 1.0,  lead: 0.170)
@@ -517,7 +519,7 @@ final class AppAudio: NSObject, ObservableObject {
     func playTrophyFlight()    { playEffect("trophyFlight") }    // whoosh while the trophy flies to the header
     func playTrophyTotal()     { playEffect("trophyTotal") }     // grand total ticks up at the top
     // Menu controls.
-    /// Small select sound for menu navigation (the supplied `select.wav`).
+    /// Small select sound for menu navigation (the supplied select sound).
     func playMenuTap()         { playEffect("select") }
     /// Toggle switches: on / off variants.
     func playSwitch(on: Bool)  { playEffect(on ? "switchOn" : "switchOff") }

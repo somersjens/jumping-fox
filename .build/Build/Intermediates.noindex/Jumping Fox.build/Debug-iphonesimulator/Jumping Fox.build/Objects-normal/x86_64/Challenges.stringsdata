@@ -39,7 +39,7 @@
         "key": "mode.order",
         "location": {
           "startingColumn": 31,
-          "startingLine": 183
+          "startingLine": 216
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "mode.random",
         "location": {
           "startingColumn": 32,
-          "startingLine": 184
+          "startingLine": 217
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "mode.mixed",
         "location": {
           "startingColumn": 31,
-          "startingLine": 185
+          "startingLine": 218
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "info.mode.order",
         "location": {
           "startingColumn": 31,
-          "startingLine": 193
+          "startingLine": 226
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "info.mode.random",
         "location": {
           "startingColumn": 32,
-          "startingLine": 194
+          "startingLine": 227
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "info.mode.mixed",
         "location": {
           "startingColumn": 31,
-          "startingLine": 195
+          "startingLine": 228
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "mode.fractions.single",
         "location": {
           "startingColumn": 36,
-          "startingLine": 209
+          "startingLine": 242
         }
       },
       {
@@ -95,84 +95,12 @@
         "key": "mode.fractions.multiple",
         "location": {
           "startingColumn": 36,
-          "startingLine": 210
+          "startingLine": 243
         }
       },
       {
         "comment": "",
         "key": "mode.mixed",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 211
-        }
-      },
-      {
-        "comment": "",
-        "key": "mode.percentages.whole",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 215
-        }
-      },
-      {
-        "comment": "",
-        "key": "mode.percentages.decimal",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 216
-        }
-      },
-      {
-        "comment": "",
-        "key": "mode.mixed",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 217
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.fractions.header",
-        "location": {
-          "startingColumn": 54,
-          "startingLine": 227
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.percentages.header",
-        "location": {
-          "startingColumn": 54,
-          "startingLine": 228
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.header",
-        "location": {
-          "startingColumn": 54,
-          "startingLine": 229
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.fractions.single",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 238
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.fractions.multiple",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 239
-        }
-      },
-      {
-        "comment": "",
-        "key": "info.mode.percentages.whole",
         "location": {
           "startingColumn": 36,
           "startingLine": 244
@@ -180,10 +108,82 @@
       },
       {
         "comment": "",
+        "key": "mode.percentages.whole",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 248
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.percentages.decimal",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 249
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.mixed",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 250
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 260
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.percentages.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 261
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 262
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.single",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 271
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.multiple",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.percentages.whole",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 277
+        }
+      },
+      {
+        "comment": "",
         "key": "info.mode.percentages.decimal",
         "location": {
           "startingColumn": 36,
-          "startingLine": 245
+          "startingLine": 278
         }
       }
     ]
