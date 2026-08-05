@@ -169,8 +169,18 @@ final class AppAudio: NSObject, ObservableObject {
     /// louder here; the sums are only spoken while this is true.
     private(set) var isGameplayActive = false
 
-    private var sessionConfigured = false
+    /// Which category the shared session currently carries. `.silent` is the
+    /// launch/muted state: `.ambient` + `.mixWithOthers`, which can never stop
+    /// another app's audio. `.playback` is only ever applied when this app is
+    /// about to make sound itself.
+    private enum SessionCategoryState { case none, silent, playback }
+    private var sessionCategory: SessionCategoryState = .none
     private var sessionActive = false
+    /// `prepareToPlay()` acquires the audio hardware, which implicitly activates
+    /// the shared session — that is what used to interrupt music playing in
+    /// another app on a cold launch with both sound options off. It is now
+    /// deferred until this app really owns an active session.
+    private var musicPlayerPrepared = false
     /// The music loops continuously: softly in the background on the menus and
     /// cards, a little louder during play, and briefly ducked while a sum is
     /// read so the words stay clearly audible over it.
@@ -234,11 +244,20 @@ final class AppAudio: NSObject, ObservableObject {
     /// The heavy, blocking bits — file decode, `prepareToPlay`, session
     /// activation — happen here, at a calm moment, not mid-game.
     func prepare() {
+        // Before anything can touch the audio hardware, make sure the shared
+        // session is in a category that cannot interrupt anyone. Setting a
+        // category never activates the session, so this is free and silent.
+        // Deliberately ahead of the guard: it stays correct on every call.
+        configureSessionForSilenceIfNeeded()
         guard !preparationStarted else { return }
         preparationStarted = true
+        // Only pre-warm the music player's hardware buffers when this app is
+        // actually allowed to make sound; see `musicPlayerPrepared`.
+        let wantsOutput = hasAnyAudioEnabled
         prepareQueue.async { [weak self] in
             guard let self else { return }
-            let music = Self.makePlayer(named: "music_background", loops: -1, volume: 0)
+            let music = Self.makePlayer(named: "music_background", loops: -1, volume: 0,
+                                        prepared: wantsOutput)
             // Decode + lead-trim every effect into a ready-to-schedule PCM buffer
             // here, off the main thread, so play time does no file work at all.
             var buffers: [String: AVAudioPCMBuffer] = [:]
@@ -250,7 +269,10 @@ final class AppAudio: NSObject, ObservableObject {
             // enough to freeze a live game. Resolve it alongside file decoding.
             let voices = Self.bestVoicesByLanguage()
             DispatchQueue.main.async {
-                if self.musicPlayer == nil { self.musicPlayer = music }
+                if self.musicPlayer == nil {
+                    self.musicPlayer = music
+                    self.musicPlayerPrepared = wantsOutput
+                }
                 self.installEffectBuffers(buffers)
                 self.voicesByLanguage = voices
                 self.speechVoicesResolved = true
@@ -297,16 +319,27 @@ final class AppAudio: NSObject, ObservableObject {
         if sessionOutputReady { startEngineIfNeeded() }
     }
 
-    /// Builds a fully prepared player. Runs the decode/`prepareToPlay` cost on
-    /// whatever (background) queue calls it.
+    /// Builds a player. Runs the decode/`prepareToPlay` cost on whatever
+    /// (background) queue calls it. `prepared: false` skips `prepareToPlay()`,
+    /// which is what acquires the audio hardware — never do that while the app
+    /// is silent, or the user's own music stops. See `prepareMusicPlayerIfNeeded`.
     private static func makePlayer(named name: String, ext: String = "mp3",
-                                   loops: Int, volume: Float) -> AVAudioPlayer? {
+                                   loops: Int, volume: Float,
+                                   prepared: Bool = true) -> AVAudioPlayer? {
         guard let url = Bundle.main.url(forResource: name, withExtension: ext),
               let player = try? AVAudioPlayer(contentsOf: url) else { return nil }
         player.numberOfLoops = loops
         player.volume = volume
-        player.prepareToPlay()
+        if prepared { player.prepareToPlay() }
         return player
+    }
+
+    /// Pays the deferred `prepareToPlay()` cost once the session is genuinely
+    /// ours and active, so it can no longer disturb another app's audio.
+    private func prepareMusicPlayerIfNeeded() {
+        guard !musicPlayerPrepared, sessionActive, let player = musicPlayer else { return }
+        musicPlayerPrepared = true
+        player.prepareToPlay()
     }
 
     /// Decodes a sound file into a PCM buffer, dropping `trimLeading` seconds of
@@ -351,13 +384,27 @@ final class AppAudio: NSObject, ObservableObject {
     // MARK: - Audio session
 
     private func configureSessionIfNeeded() {
-        guard !sessionConfigured else { return }
+        guard sessionCategory != .playback else { return }
         let session = AVAudioSession.sharedInstance()
         // `.playback` keeps the game audible even with the ring/silent switch
         // set to silent — expected for a game the child is actively playing,
         // and the single in-app switch is the real mute control.
         try? session.setCategory(.playback, mode: .default, options: [])
-        sessionConfigured = true
+        sessionCategory = .playback
+    }
+
+    /// The category to sit in whenever this app makes no sound at all: `.ambient`
+    /// with `.mixWithOthers`, which respects the ring/silent switch and, more
+    /// importantly, never interrupts audio from another app. The default
+    /// category an app starts out with (`.soloAmbient`) *does* interrupt, so
+    /// anything that incidentally touches the audio hardware — a player being
+    /// prepared, the speech synthesizer — would stop the user's music. Setting a
+    /// category does not activate the session, so this stays completely silent.
+    private func configureSessionForSilenceIfNeeded() {
+        guard !hasAnyAudioEnabled, !sessionActive, sessionCategory != .silent else { return }
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(.ambient, mode: .default, options: [.mixWithOthers])
+        sessionCategory = .silent
     }
 
     private func activateSession() {
@@ -385,6 +432,9 @@ final class AppAudio: NSObject, ObservableObject {
             guard let self, token == self.sessionStartupToken,
                   self.sessionActive, self.hasAnyAudioEnabled else { return }
             self.sessionOutputReady = true
+            // Safe here: the session is active and ours, so acquiring the music
+            // player's hardware buffers no longer disturbs anyone.
+            self.prepareMusicPlayerIfNeeded()
             self.startEngineIfNeeded()
             // Stagger the MP3 decoder behind the now-silent effects engine.
             // This avoids piling two cold output paths onto the first render.
@@ -407,6 +457,9 @@ final class AppAudio: NSObject, ObservableObject {
         // Let any paused apps (music, podcasts) resume once we go quiet.
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         sessionActive = false
+        // Drop back to the harmless category so nothing that touches audio
+        // afterwards can take the other app's music away again.
+        configureSessionForSilenceIfNeeded()
     }
 
     private func deactivateSessionIfUnused() {
