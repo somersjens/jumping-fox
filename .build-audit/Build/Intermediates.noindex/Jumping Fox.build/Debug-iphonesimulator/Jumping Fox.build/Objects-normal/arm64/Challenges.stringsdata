@@ -1,0 +1,192 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Challenges.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "info.super.basic",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.super.times",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.super.fraction",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.super.all",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.order",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 216
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.random",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 217
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.mixed",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.order",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 226
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.random",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 227
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.mixed",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 228
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.fractions.single",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 242
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.fractions.multiple",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 243
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.mixed",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 244
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.percentages.whole",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 248
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.percentages.decimal",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 249
+        }
+      },
+      {
+        "comment": "",
+        "key": "mode.mixed",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 250
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 260
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.percentages.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 261
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.header",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 262
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.single",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 271
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.fractions.multiple",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.percentages.whole",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 277
+        }
+      },
+      {
+        "comment": "",
+        "key": "info.mode.percentages.decimal",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 278
+        }
+      }
+    ]
+  },
+  "version": 1
+}

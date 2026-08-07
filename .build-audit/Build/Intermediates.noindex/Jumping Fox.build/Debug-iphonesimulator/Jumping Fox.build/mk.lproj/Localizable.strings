@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Мечка</string>
+	<key>character.bunny</key>
+	<string>Зајак</string>
+	<key>character.crab</key>
+	<string>Рак</string>
+	<key>character.dog</key>
+	<string>Куче</string>
+	<key>character.elephant</key>
+	<string>Слон</string>
+	<key>character.fox</key>
+	<string>Лисица</string>
+	<key>character.frog</key>
+	<string>Жаба</string>
+	<key>character.lion</key>
+	<string>Лав</string>
+	<key>character.octopus</key>
+	<string>Октопод</string>
+	<key>character.penguin</key>
+	<string>Пингвин</string>
+	<key>character.pickerTitle</key>
+	<string>Избери лик</string>
+	<key>common.back</key>
+	<string>Назад</string>
+	<key>common.cancel</key>
+	<string>Откажи</string>
+	<key>common.continue</key>
+	<string>Продолжи</string>
+	<key>common.done</key>
+	<string>Готово</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld мин</string>
+	<key>common.save</key>
+	<string>Зачувај</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Притисни и држи 2 секунди за да го отвориш режимот за програмери.</string>
+	<key>developerMode.title</key>
+	<string>Режим за програмери</string>
+	<key>filter.addition</key>
+	<string>Собирање</string>
+	<key>filter.fractions</key>
+	<string>Дропки</string>
+	<key>filter.mixed</key>
+	<string>Супермикс</string>
+	<key>filter.percentages</key>
+	<string>Проценти</string>
+	<key>filter.subtraction</key>
+	<string>Одземање</string>
+	<key>filter.tables</key>
+	<string>Таблици</string>
+	<key>game.accessibility.mix</key>
+	<string>Микс</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld од %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Добар обид</string>
+	<key>game.encouragement.1</key>
+	<string>Добар почеток</string>
+	<key>game.encouragement.2</key>
+	<string>Продолжи да вежбаш</string>
+	<key>game.encouragement.3</key>
+	<string>Воопшто не е лошо</string>
+	<key>game.encouragement.4</key>
+	<string>Одлично ти оди</string>
+	<key>game.encouragement.5</key>
+	<string>Убав резултат</string>
+	<key>game.encouragement.6</key>
+	<string>Браво</string>
+	<key>game.encouragement.7</key>
+	<string>Одлично одиграно</string>
+	<key>game.encouragement.8</key>
+	<string>Крајот е близу</string>
+	<key>game.encouragement.9</key>
+	<string>Уште малку</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Го освои секој поен.</string>
+	<key>game.end.completionSuffix</key>
+	<string>завршено!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Крај на играта</string>
+	<key>game.end.mainMenu</key>
+	<string>Главно мени</string>
+	<key>game.end.playAgain</key>
+	<string>Играј пак</string>
+	<key>game.highScore</key>
+	<string>Најдобар резултат</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Назад во главното мени</string>
+	<key>game.intro.continue</key>
+	<string>Продолжи</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Ќе продолжиш од %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Точниот одговор е означен со зелено бидејќи помошникот е вклучен. Затоа трофеите се бројат одделно со *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Помошник исклучен</string>
+	<key>game.intro.helperOn</key>
+	<string>Помошник вклучен</string>
+	<key>game.intro.howItWorks</key>
+	<string>Како работи нивото</string>
+	<key>game.intro.livesOff</key>
+	<string>Животи исклучени</string>
+	<key>game.intro.livesOn</key>
+	<string>Животи вклучени</string>
+	<key>game.intro.scorePaused</key>
+	<string>Твојот тековен резултат ќе се паузира.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Извини! Функцијата за читање на глас сè уште не е достапна на твојот јазик.</string>
+	<key>game.intro.start</key>
+	<string>Почни ниво</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Помножи %@%@ со број од 1 до 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>или помалку</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Допри каде било за да продолжиш</string>
+	<key>game.intro.tapToStart</key>
+	<string>Допри каде било за почеток</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Освои |1| трофеј за секој точен одговор, најмногу |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Кога ќе ги изгубиш сите животи, повеќе не можеш да освојуваш трофеи.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Го достигна најголемиот број трофеи за табелата</string>
+	<key>game.status.mixMode</key>
+	<string>МИКС-РЕЖИМ</string>
+	<key>game.status.scoreLocked</key>
+	<string>Трофеите повеќе не се бројат кога ќе ги изгубиш животите</string>
+	<key>game.streak.subtitle</key>
+	<string>Трофеи ×2</string>
+	<key>game.streak.title</key>
+	<string>5 по ред!</string>
+	<key>goal.period</key>
+	<string>Период на целта</string>
+	<key>goal.promptDaily</key>
+	<string>Колку минути сакаш да играш дневно?</string>
+	<key>goal.promptWeekly</key>
+	<string>Колку минути сакаш да играш неделно?</string>
+	<key>goal.title</key>
+	<string>Цел за играње</string>
+	<key>goalPeriod.daily</key>
+	<string>Дневно</string>
+	<key>goalPeriod.weekly</key>
+	<string>Неделно</string>
+	<key>info.filter.addition</key>
+	<string>Само собирање</string>
+	<key>info.filter.fractions</key>
+	<string>Само делење</string>
+	<key>info.filter.header</key>
+	<string>Видови задачи</string>
+	<key>info.filter.mixed</key>
+	<string>Мешани операции</string>
+	<key>info.filter.percentages</key>
+	<string>Само проценти</string>
+	<key>info.filter.subtraction</key>
+	<string>Само одземање</string>
+	<key>info.filter.tables</key>
+	<string>Само множење</string>
+	<key>info.mode.fractions.header</key>
+	<string>Делови</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Еден и повеќе делови</string>
+	<key>info.mode.fractions.single</key>
+	<string>Секогаш еден дел</string>
+	<key>info.mode.header</key>
+	<string>Редослед</string>
+	<key>info.mode.mixed</key>
+	<string>Измешано со пониски нивоа</string>
+	<key>info.mode.order</key>
+	<string>Фиксен редослед</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Со децимални броеви</string>
+	<key>info.mode.percentages.header</key>
+	<string>Вид</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Без децимални броеви</string>
+	<key>info.mode.random</key>
+	<string>Случаен редослед</string>
+	<key>info.super.all</key>
+	<string>Собирање, одземање, множење, делење и проценти</string>
+	<key>info.super.basic</key>
+	<string>Собирање и одземање</string>
+	<key>info.super.fraction</key>
+	<string>Собирање, одземање, множење и делење</string>
+	<key>info.super.times</key>
+	<string>Собирање, одземање и множење</string>
+	<key>language.select</key>
+	<string>Избери јазик</string>
+	<key>lives.three</key>
+	<string>3 животи</string>
+	<key>lives.unlimited</key>
+	<string>Неограничено</string>
+	<key>menu.accessibility.character</key>
+	<string>Лик</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Допри за да го смениш ликот; притисни и држи две секунди за да почнеш одново од екранот за добредојде.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Избери %@</string>
+	<key>menu.maxScore</key>
+	<string>30 МАКС</string>
+	<key>menu.maximumCount</key>
+	<string>МАКС</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Максимумот е достигнат %lld пати</string>
+	<key>menu.moreLevels</key>
+	<string>Повеќе нивоа</string>
+	<key>menu.options</key>
+	<string>Опции за игра</string>
+	<key>menu.premium</key>
+	<string>Премиум</string>
+	<key>menu.premiumTables</key>
+	<string>Премиум таблици</string>
+	<key>menu.startHere</key>
+	<string>Почни тука</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Отклучи повеќе со Премиум</string>
+	<key>mode.fractions.multiple</key>
+	<string>Повеќе</string>
+	<key>mode.fractions.single</key>
+	<string>Еден</string>
+	<key>mode.mix</key>
+	<string>Микс</string>
+	<key>mode.mixed</key>
+	<string>Мешано</string>
+	<key>mode.order</key>
+	<string>Редослед</string>
+	<key>mode.percentages.decimal</key>
+	<string>Децимален</string>
+	<key>mode.percentages.whole</key>
+	<string>Цел</string>
+	<key>mode.random</key>
+	<string>Случајно</string>
+	<key>mode.standard</key>
+	<string>Стандардно</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Ќе добиваш само задачи со |собирање|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Секогаш додаваш %lld |или помалку| на друг број.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Секогаш додаваш %lld по |растечки| редослед.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Секогаш додаваш %lld на |случаен| број.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Собирање · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Постојано собирај по два броја.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Одговорот е најмногу %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Собирање до %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Ќе добиваш само задачи со |дропки|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Ќе добиваш дропки од ова и од |претходните нивоа|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Секогаш земаш |1 дел| од %lld еднакви делови.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Пресметувај дропки од заокружени броеви од нивото %lld и претходните нивоа.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Броевите остануваат заокружени, па одговорите се секогаш цели.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Дропки до %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Земаш еден или |повеќе делови| од %lld еднакви делови.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Дропки · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Пресметај дел од целина и изедначувај дропки.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Собирај и одземај дропки со ист именител.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Мешани дропки</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Ќе добиваш само задачи со |проценти|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Ќе добиваш проценти од ова и од |претходните нивоа|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Секогаш пресметуваш %@, а одговорот е |цел број|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Пресметувај проценти од заокружени броеви до %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Количините остануваат заокружени, па одговорите се секогаш цели.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Проценти до %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Секогаш пресметуваш %@, а одговорот може да биде и |децимален број|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Пресметај %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Пресметај процент од број.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Претворај проценти во дропки и обратно.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Мешани проценти</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Ќе добиваш само задачи со |одземање|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Секогаш одземаш %lld |или помалку| од друг број.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Секогаш одземаш %lld по |опаѓачки| редослед.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Секогаш одземаш %lld од |случаен| број.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Одземање · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Првиот број е најмногу %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Одговорот може да биде под нула.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Под нула</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Одземање до %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Постојано одземај два броја.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Тежината може да се зголеми до |ниво %lld| за секоја избрана категорија.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Вежбај измешани задачи со собирање, одземање, таблици, дропки и проценти.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Вежбај измешани задачи со собирање и одземање.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Вежбај измешани задачи со собирање, одземање, таблици и дропки.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Вежбај измешани задачи со собирање, одземање и таблици.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Ќе добиваш само задачи со |множење|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Ќе ги добиваш измешано сите таблици |до %lld|.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Секоја таблица со број од |1 до 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Ќе ја добиваш таблицата со %lld по |растечки| редослед.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Ќе ја добиваш таблицата со %lld по |случаен| редослед.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Таблица со %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Вежбај ги измешано таблиците од %lld до %lld.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Таблици %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Твоето име</string>
+	<key>name.whatsYourName</key>
+	<string>Како се викаш?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Заработете уште неколку трофеи за да го отклучите ова животно! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Уште само %lld трофеи! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Вашите животни чекаат. Вратете се да играте и продолжете да собирате трофеи!</string>
+	<key>notif.comeback.title</key>
+	<string>Ни недостигаш! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Започнете %lld-минутна сесија за играње и продолжете ја вашата дневна серија на играње.</string>
+	<key>notif.day3.title</key>
+	<string>Да го направиме 3-тиот ден да се случи! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Користете ја подлогата за скокање за да прескокнете погрешен одговор и да продолжите да се качувате!</string>
+	<key>notif.jumppad.title</key>
+	<string>Прескокнете ги погрешните одговори! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium вклучува %lld нивоа за секоја тема и сите 10 животни. Авантурата продолжува!</string>
+	<key>notif.premium.title</key>
+	<string>Отклучете повеќе нивоа и животни! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Поминаа %lld дена. Ајде да решиме неколку математички вежби и да заработиме повеќе трофеи!</string>
+	<key>notif.reactivate.title</key>
+	<string>Подготвени да играте повторно? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Играјте %lld минути и одржувајте ја вашата дневна играчка серија!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Вашата дневна серија на игра достигна %lld дена! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Одлична работа! Ајде да играме %lld минути и да собереме уште повеќе.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Заработивте %lld трофеи! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Тоа го носи вашиот вкупен број на %lld трофеи. Неверојатна работа!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Заработивте %lld трофеи оваа недела! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Различни мешани задачи.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Веќе ти оди добро</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Вежбај задачи по редослед.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Само што почнав</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Задачи по случаен редослед.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Веќе имам вежбано</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Избери почетна точка за %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>оваа тема</string>
+	<key>onboarding.level.title</key>
+	<string>Колку добро го знаеш ова?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Да почнеме. Како се викаш?</string>
+	<key>onboarding.name.title</key>
+	<string>Сметањето никогаш не било позабавно!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Избери тема за почеток.</string>
+	<key>onboarding.subject.title</key>
+	<string>Што сакаш да научиш?</string>
+	<key>options.capAt30.info</key>
+	<string>Секое ниво има цел до 50 трофеи. Кога оваа опција е вклучена, играта автоматски завршува штом ќе ја достигнеш.</string>
+	<key>options.capAt30.title</key>
+	<string>Заврши на целта</string>
+	<key>options.helperMode.info</key>
+	<string>Во режимот со помош точниот одговор секогаш е зелен. Трофеите освоени во овој режим се бројат одделно и се означени со ѕвездичка.</string>
+	<key>options.helperMode.title</key>
+	<string>Режим со помош</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Секогаш почнуваш со 3 животи. Играта завршува кога ќе останеш без животи. Вклучи ја оваа опција за да продолжиш да играш и вежбаш и потоа.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Неограничени животи</string>
+	<key>parentGate.approved</key>
+	<string>Одобрено</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Обиди: %1$lld од %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Држи го %@ %lld секунди.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Држи: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Држи го %@ %lld секунди. Потоа допри го %@ %lld пати.</string>
+	<key>parentGate.shape.circle</key>
+	<string>круг</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ромб</string>
+	<key>parentGate.shape.heart</key>
+	<string>срце</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>шестоаголник</string>
+	<key>parentGate.shape.plus</key>
+	<string>плус</string>
+	<key>parentGate.shape.square</key>
+	<string>квадрат</string>
+	<key>parentGate.shape.star</key>
+	<string>ѕвезда</string>
+	<key>parentGate.shape.triangle</key>
+	<string>триаголник</string>
+	<key>parentGate.stepOne</key>
+	<string>Чекор 1 од 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Чекор 2 од 2</string>
+	<key>parentGate.subtitle</key>
+	<string>За да ги заштитиме младите играчи, возрасен мора да ја заврши оваа проверка пред купувањето.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Сега допри го %2$@ %1$lld пати.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Допири: %1$lld од %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Потребно е одобрение од возрасен</string>
+	<key>premium.availableAt %lld</key>
+	<string>Достапно од %lld трофеи</string>
+	<key>premium.availableFromStart</key>
+	<string>Достапно од почеток</string>
+	<key>premium.characterUnlocked</key>
+	<string>ОТКЛУЧЕН Е НОВ ЛИК</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ е отклучен</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Освои %lld трофеи</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Ексклузивно со Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Ексклузивно со Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Со Премиум можеш слободно да играш со сите 10 животни.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Пристап до сите животни</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Секогаш има доволно нови задачи за вежбање.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 нивоа по тема</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Играј без никакви прекини.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Без реклами</string>
+	<key>premium.oneTime</key>
+	<string>Еднократно купување. Твое засекогаш.</string>
+	<key>premium.restore</key>
+	<string>Врати ги купувањата</string>
+	<key>premium.start</key>
+	<string>Почни</string>
+	<key>premium.storeUnavailable</key>
+	<string>Продавницата моментално не е достапна. Обиди се повторно подоцна.</string>
+	<key>premium.unlock</key>
+	<string>Отклучи Премиум</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Отклучи Премиум · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Отклучи со трофеи</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Отклучено со Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Имаш Премиум!</string>
+	<key>settings.character</key>
+	<string>Лик</string>
+	<key>settings.characterInfo</key>
+	<string>Секое животно ѝ дава своја тема со бои на целата игра.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Прилагодено: %lld мин</string>
+	<key>settings.dailyGoal</key>
+	<string>Дневна цел</string>
+	<key>settings.goalInfo</key>
+	<string>Целта за низа почнува со 5 минути дневно. Се брои само активното играње.</string>
+	<key>settings.lives</key>
+	<string>Животи</string>
+	<key>settings.livesInfo</key>
+	<string>Со три животи, играта завршува по последното срце. Во неограничен режим, трофеите се бројат само додека имаш животи; потоа можеш да продолжиш да играш.</string>
+	<key>settings.playGoals</key>
+	<string>Цели за играње</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Премиум е отклучен. Благодариме!</string>
+	<key>settings.title</key>
+	<string>Поставки</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Избери дневна цел</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Избери дневна или неделна цел</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld од %3$lld минути, %4$lld дена по ред</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Дневна низа, %lld од %lld минути</string>
+	<key>streak.daily</key>
+	<string>Дневна низа</string>
+	<key>streak.dayOne</key>
+	<string>Ден 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Не го знаеш одговорот? Допри ја задачата за да го видиш.</string>
+	<key>tutorial.complete</key>
+	<string>Браво! Упатството е завршено. Сега постигни најдобар резултат!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Скокни на точниот одговор за да собереш трофеј.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Точниот одговор е зелен. Сега скокни на него.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Сега скокни на точниот одговор за да собереш тројно повеќе трофеи.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Собери ја паричката ×3 за еднаш да добиеш тројно повеќе трофеи.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Можеш да најдеш половина или цел живот за да си вратиш животи.</string>
+	<key>tutorial.minusOne</key>
+	<string>Избегни го −1. Ќе изгубиш еден трофеј.</string>
+	<key>tutorial.move</key>
+	<string>Движи го уредот за да одиш лево и десно. Можеш да поминуваш и низ страните на екранот.</string>
+	<key>tutorial.platforms</key>
+	<string>Скокај по платформите за да се движиш нагоре.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Твојот резултат за ова ниво е прикажан тука.</string>
+	<key>tutorial.star</key>
+	<string>Скокни во ѕвездата за да ги отстраниш погрешните одговори.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ако избереш погрешен одговор, губиш еден од трите животи. Пробај сега.</string>
+</dict>
+</plist>

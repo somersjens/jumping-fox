@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ভালুক</string>
+	<key>character.bunny</key>
+	<string>খরগোশ</string>
+	<key>character.crab</key>
+	<string>কাঁকড়া</string>
+	<key>character.dog</key>
+	<string>কুকুর</string>
+	<key>character.elephant</key>
+	<string>হাতি</string>
+	<key>character.fox</key>
+	<string>শিয়াল</string>
+	<key>character.frog</key>
+	<string>ব্যাঙ</string>
+	<key>character.lion</key>
+	<string>সিংহ</string>
+	<key>character.octopus</key>
+	<string>অক্টোপাস</string>
+	<key>character.penguin</key>
+	<string>পেঙ্গুইন</string>
+	<key>character.pickerTitle</key>
+	<string>তোমার চরিত্র বেছে নাও</string>
+	<key>common.back</key>
+	<string>পেছনে</string>
+	<key>common.cancel</key>
+	<string>বাতিল</string>
+	<key>common.continue</key>
+	<string>এগিয়ে</string>
+	<key>common.done</key>
+	<string>হয়ে গেছে</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld মিনিট</string>
+	<key>common.save</key>
+	<string>সংরক্ষণ</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ডেভেলপার মোড খুলতে ২ সেকেন্ড চেপে ধরো।</string>
+	<key>developerMode.title</key>
+	<string>ডেভেলপার মোড</string>
+	<key>filter.addition</key>
+	<string>যোগ</string>
+	<key>filter.fractions</key>
+	<string>ভগ্নাংশ</string>
+	<key>filter.mixed</key>
+	<string>সুপারমিক্স</string>
+	<key>filter.percentages</key>
+	<string>শতকরা</string>
+	<key>filter.subtraction</key>
+	<string>বিয়োগ</string>
+	<key>filter.tables</key>
+	<string>নামতা</string>
+	<key>game.accessibility.mix</key>
+	<string>মিক্স</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld-এর মধ্যে %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ভালো চেষ্টা</string>
+	<key>game.encouragement.1</key>
+	<string>শুরু তো হলো</string>
+	<key>game.encouragement.2</key>
+	<string>অনুশীলন চালিয়ে যাও</string>
+	<key>game.encouragement.3</key>
+	<string>মন্দ নয়</string>
+	<key>game.encouragement.4</key>
+	<string>ভালো করছ</string>
+	<key>game.encouragement.5</key>
+	<string>দারুণ ফল</string>
+	<key>game.encouragement.6</key>
+	<string>শাবাশ</string>
+	<key>game.encouragement.7</key>
+	<string>খুব ভালো খেলেছ</string>
+	<key>game.encouragement.8</key>
+	<string>শেষ দেখা যাচ্ছে</string>
+	<key>game.encouragement.9</key>
+	<string>আর একটু বাকি</string>
+	<key>game.end.completionSubtitle</key>
+	<string>প্রতিটি পয়েন্ট তুমি অর্জন করেছ।</string>
+	<key>game.end.completionSuffix</key>
+	<string>সম্পূর্ণ!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>খেলা শেষ</string>
+	<key>game.end.mainMenu</key>
+	<string>মূল মেনু</string>
+	<key>game.end.playAgain</key>
+	<string>আবার খেলো</string>
+	<key>game.highScore</key>
+	<string>সেরা স্কোর</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>মূল মেনুতে ফেরো</string>
+	<key>game.intro.continue</key>
+	<string>চালিয়ে যাও</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>তুমি %lld থেকে চালিয়ে যাবে</string>
+	<key>game.intro.helperBullet</key>
+	<string>সহায়ক চালু থাকায় সঠিক উত্তর সবুজ দেখানো হয়। তাই * দিয়ে ট্রফি আলাদা গোনা হয়।</string>
+	<key>game.intro.helperOff</key>
+	<string>সহায়ক বন্ধ</string>
+	<key>game.intro.helperOn</key>
+	<string>সহায়ক চালু</string>
+	<key>game.intro.howItWorks</key>
+	<string>এই লেভেল যেভাবে চলে</string>
+	<key>game.intro.livesOff</key>
+	<string>জীবন বন্ধ</string>
+	<key>game.intro.livesOn</key>
+	<string>জীবন চালু</string>
+	<key>game.intro.scorePaused</key>
+	<string>তোমার বর্তমান স্কোর থামিয়ে রাখা হবে।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>দুঃখিত! জোরে পড়ে শোনানোর সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।</string>
+	<key>game.intro.start</key>
+	<string>লেভেল শুরু</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@-কে ১ থেকে ১২-এর একটি সংখ্যা দিয়ে গুণ করো।</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>বা কম</string>
+	<key>game.intro.tapToContinue</key>
+	<string>চালিয়ে যেতে যেকোনো জায়গায় ট্যাপ করো</string>
+	<key>game.intro.tapToStart</key>
+	<string>শুরু করতে যেকোনো জায়গায় ট্যাপ করো</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>প্রতি সঠিক উত্তরে |1|টি ট্রফি পাও, সর্বোচ্চ |%lld|টি।</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>জীবন শেষ হলে আর ট্রফি পাবে না।</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>লিডারবোর্ডের সর্বোচ্চ ট্রফি হয়ে গেছে</string>
+	<key>game.status.mixMode</key>
+	<string>মিক্স মোড</string>
+	<key>game.status.scoreLocked</key>
+	<string>জীবন শেষ হলে ট্রফি আর গোনা হয় না</string>
+	<key>game.streak.subtitle</key>
+	<string>ট্রফি ×2</string>
+	<key>game.streak.title</key>
+	<string>টানা ৫টি!</string>
+	<key>goal.period</key>
+	<string>লক্ষ্যের সময়কাল</string>
+	<key>goal.promptDaily</key>
+	<string>প্রতিদিন কত মিনিট খেলতে চাও?</string>
+	<key>goal.promptWeekly</key>
+	<string>প্রতি সপ্তাহে কত মিনিট খেলতে চাও?</string>
+	<key>goal.title</key>
+	<string>খেলার লক্ষ্য</string>
+	<key>goalPeriod.daily</key>
+	<string>দৈনিক</string>
+	<key>goalPeriod.weekly</key>
+	<string>সাপ্তাহিক</string>
+	<key>info.filter.addition</key>
+	<string>শুধু যোগ</string>
+	<key>info.filter.fractions</key>
+	<string>শুধু ভাগ</string>
+	<key>info.filter.header</key>
+	<string>অঙ্কের ধরন</string>
+	<key>info.filter.mixed</key>
+	<string>মিশ্র অঙ্ক</string>
+	<key>info.filter.percentages</key>
+	<string>শুধু শতকরা</string>
+	<key>info.filter.subtraction</key>
+	<string>শুধু বিয়োগ</string>
+	<key>info.filter.tables</key>
+	<string>শুধু গুণ</string>
+	<key>info.mode.fractions.header</key>
+	<string>অংশ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>একটি ও একাধিক অংশ</string>
+	<key>info.mode.fractions.single</key>
+	<string>সব সময় একটি অংশ</string>
+	<key>info.mode.header</key>
+	<string>ক্রম</string>
+	<key>info.mode.mixed</key>
+	<string>নিচের লেভেলসহ মিশ্র</string>
+	<key>info.mode.order</key>
+	<string>নির্দিষ্ট ক্রম</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>দশমিক সংখ্যাসহ</string>
+	<key>info.mode.percentages.header</key>
+	<string>ধরন</string>
+	<key>info.mode.percentages.whole</key>
+	<string>দশমিক সংখ্যা ছাড়া</string>
+	<key>info.mode.random</key>
+	<string>এলোমেলো ক্রম</string>
+	<key>info.super.all</key>
+	<string>যোগ, বিয়োগ, গুণ, ভাগ ও শতকরা</string>
+	<key>info.super.basic</key>
+	<string>যোগ ও বিয়োগ</string>
+	<key>info.super.fraction</key>
+	<string>যোগ, বিয়োগ, গুণ ও ভাগ</string>
+	<key>info.super.times</key>
+	<string>যোগ, বিয়োগ ও গুণ</string>
+	<key>language.select</key>
+	<string>ভাষা বেছে নাও</string>
+	<key>lives.three</key>
+	<string>৩টি জীবন</string>
+	<key>lives.unlimited</key>
+	<string>অসীম</string>
+	<key>menu.accessibility.character</key>
+	<string>চরিত্র</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>চরিত্র বদলাতে ট্যাপ করো; স্বাগত স্ক্রিন থেকে আবার শুরু করতে দুই সেকেন্ড চেপে ধরো।</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ বেছে নাও</string>
+	<key>menu.maxScore</key>
+	<string>৩০ সর্বোচ্চ</string>
+	<key>menu.maximumCount</key>
+	<string>সর্বোচ্চ</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>সর্বোচ্চ %lld বার হয়েছে</string>
+	<key>menu.moreLevels</key>
+	<string>আরও লেভেল</string>
+	<key>menu.options</key>
+	<string>খেলার বিকল্প</string>
+	<key>menu.premium</key>
+	<string>প্রিমিয়াম</string>
+	<key>menu.premiumTables</key>
+	<string>প্রিমিয়াম নামতা</string>
+	<key>menu.startHere</key>
+	<string>এখান থেকে শুরু</string>
+	<key>menu.unlockWithPremium</key>
+	<string>প্রিমিয়ামে আরও আনলক করো</string>
+	<key>mode.fractions.multiple</key>
+	<string>একাধিক</string>
+	<key>mode.fractions.single</key>
+	<string>একটি</string>
+	<key>mode.mix</key>
+	<string>মিক্স</string>
+	<key>mode.mixed</key>
+	<string>মিশ্র</string>
+	<key>mode.order</key>
+	<string>ক্রম</string>
+	<key>mode.percentages.decimal</key>
+	<string>দশমিক</string>
+	<key>mode.percentages.whole</key>
+	<string>পূর্ণ</string>
+	<key>mode.random</key>
+	<string>এলোমেলো</string>
+	<key>mode.standard</key>
+	<string>সাধারণ</string>
+	<key>modeIntro.addition.intro</key>
+	<string>তুমি শুধু |যোগের| অঙ্ক পাবে।</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>অন্য একটি সংখ্যার সঙ্গে %lld |বা কম| যোগ করো।</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>তুমি সব সময় %lld |ঊর্ধ্বক্রমে| যোগ করবে।</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>তুমি সব সময় একটি |এলোমেলো| সংখ্যার সঙ্গে %lld যোগ করবে।</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>যোগ · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>দুটি সংখ্যা বারবার যোগ করো।</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>উত্তর সর্বোচ্চ %lld।</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld পর্যন্ত যোগ</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>তুমি শুধু |ভগ্নাংশের| অঙ্ক পাবে।</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>এই লেভেল ও |আগের লেভেলগুলোর| ভগ্নাংশ পাবে।</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lldটি সমান অংশ থেকে সব সময় |১টি অংশ| নাও।</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld ও আগের লেভেলের গোল সংখ্যা দিয়ে ভগ্নাংশ হিসাব করো।</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>সংখ্যাগুলো গোল থাকবে, তাই উত্তর সব সময় পূর্ণসংখ্যা।</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld পর্যন্ত ভগ্নাংশ</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lldটি সমান অংশ থেকে একটি বা |একাধিক অংশ| নাও।</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ভগ্নাংশ · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>একটি সম্পূর্ণের অংশ হিসাব করো এবং সমান ভগ্নাংশ বানাও।</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>একই হরের ভগ্নাংশ যোগ ও বিয়োগ করো।</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>মিশ্র ভগ্নাংশ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>তুমি শুধু |শতকরার| অঙ্ক পাবে।</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>এই লেভেল ও |আগের লেভেলগুলোর| শতকরা পাবে।</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>তুমি সব সময় %@ হিসাব করবে, আর উত্তর হবে একটি |পূর্ণসংখ্যা|।</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld পর্যন্ত গোল সংখ্যার শতকরা হিসাব করো।</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>পরিমাণগুলো গোল থাকবে, তাই উত্তর সব সময় পূর্ণসংখ্যা।</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld পর্যন্ত শতকরা</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>তুমি সব সময় %@ হিসাব করবে, আর উত্তর |দশমিক|ও হতে পারে।</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ হিসাব করো</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>একটি সংখ্যার শতকরা হিসাব করো।</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>শতকরা ও ভগ্নাংশ একে অন্যটিতে বদলাও।</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>মিশ্র শতকরা</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>তুমি শুধু |বিয়োগের| অঙ্ক পাবে।</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>অন্য একটি সংখ্যা থেকে %lld |বা কম| বিয়োগ করো।</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>তুমি সব সময় %lld |নিম্নক্রমে| বিয়োগ করবে।</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>তুমি সব সময় একটি |এলোমেলো| সংখ্যা থেকে %lld বিয়োগ করবে।</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>বিয়োগ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>প্রথম সংখ্যা সর্বোচ্চ %lld।</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>উত্তর শূন্যের নিচেও যেতে পারে।</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>শূন্যের নিচে</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld পর্যন্ত বিয়োগ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>দুটি সংখ্যা বারবার বিয়োগ করো।</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>প্রতিটি বাছাই করা বিষয়ে কঠিনতা |লেভেল %lld| পর্যন্ত বাড়তে পারে।</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>যোগ, বিয়োগ, নামতা, ভগ্নাংশ ও শতকরা মিলিয়ে অনুশীলন করো।</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>সুপারমিক্স %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>যোগ ও বিয়োগ মিলিয়ে অনুশীলন করো।</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>সুপারমিক্স %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>যোগ, বিয়োগ, নামতা ও ভগ্নাংশ মিলিয়ে অনুশীলন করো।</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>সুপারমিক্স %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>যোগ, বিয়োগ ও নামতা মিলিয়ে অনুশীলন করো।</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>সুপারমিক্স %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>তুমি শুধু |গুণের| অঙ্ক পাবে।</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld পর্যন্ত| সব নামতা মিলিয়ে পাবে।</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>প্রতিটি নামতা |১ থেকে ১২| পর্যন্ত সংখ্যা দিয়ে গুণ।</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld-এর নামতা |ঊর্ধ্বক্রমে| পাবে।</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld-এর নামতা |এলোমেলো| ক্রমে পাবে।</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-এর নামতা</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld থেকে %lld পর্যন্ত নামতা মিলিয়ে অনুশীলন করো।</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>নামতা %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>তোমার নাম</string>
+	<key>name.whatsYourName</key>
+	<string>তোমার নাম কী?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: এই প্রাণীটিকে আনলক করতে আরও কয়েকটি ট্রফি অর্জন করুন! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>আর মাত্র %lldটি ট্রফি! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>আপনার পশুরা অপেক্ষা করছে। খেলতে ফিরে আসুন এবং ট্রফি সংগ্রহ করতে থাকুন!</string>
+	<key>notif.comeback.title</key>
+	<string>আমরা আপনাকে মিস করি! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>একটি %lld-মিনিটের খেলার সেশন শুরু করুন এবং আপনার প্রতিদিনের খেলার স্ট্রীক প্রসারিত করুন।</string>
+	<key>notif.day3.title</key>
+	<string>দিন 3 ঘটতে দিন! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>একটি ভুল উত্তর এড়িয়ে যেতে এবং আরোহণ চালিয়ে যেতে জাম্প প্যাড ব্যবহার করুন!</string>
+	<key>notif.jumppad.title</key>
+	<string>ভুল উত্তর অতীত লাফ! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>জাম্পিং ফক্স প্রিমিয়ামে প্রতিটি বিষয়ের জন্য %lldটি স্তর এবং সমস্ত 10টি প্রাণী রয়েছে। অ্যাডভেঞ্চার চলতে থাকে!</string>
+	<key>notif.premium.title</key>
+	<string>আরও স্তর এবং প্রাণী আনলক করুন! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld দিন হয়ে গেল। আসুন কিছু গণিত অনুশীলন সমাধান করি এবং আরও ট্রফি অর্জন করি!</string>
+	<key>notif.reactivate.title</key>
+	<string>আবার খেলার জন্য প্রস্তুত? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld মিনিটের জন্য খেলুন এবং আপনার প্রতিদিনের খেলার ধারা অব্যাহত রাখুন!</string>
+	<key>notif.streak.title %lld</key>
+	<string>আপনার দৈনিক খেলার ধারা %lld দিনে পৌঁছেছে! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>দারুণ কাজ! আসুন %lld মিনিটের জন্য খেলি এবং আরও বেশি সংগ্রহ করি।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>আপনি %lldটি ট্রফি জিতেছেন! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>এটি আপনার মোট %lld ট্রফি নিয়ে আসে। আশ্চর্যজনক কাজ!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>আপনি এই সপ্তাহে %lldটি ট্রফি জিতেছেন! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>বিভিন্ন মিশ্র অঙ্ক একসঙ্গে।</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ইতিমধ্যেই বেশ ভালো</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ক্রমে থাকা অঙ্ক অনুশীলন করো।</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>সবে শুরু</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>এলোমেলো ক্রমে অঙ্ক।</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>আগেও কিছু অনুশীলন</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@-এর জন্য শুরুর জায়গা বেছে নাও।</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>এই বিষয়</string>
+	<key>onboarding.level.title</key>
+	<string>এতে তুমি এখন কতটা ভালো?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>চলো শুরু করি। তোমার নাম কী?</string>
+	<key>onboarding.name.title</key>
+	<string>অঙ্ক করা এত মজার কখনও ছিল না!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>শুরু করার জন্য একটি বিষয় বেছে নাও।</string>
+	<key>onboarding.subject.title</key>
+	<string>তুমি কী শিখতে চাও?</string>
+	<key>options.capAt30.info</key>
+	<string>প্রতিটি লেভেলে সর্বোচ্চ ৫০টি ট্রফির লক্ষ্য আছে। এটি চালু থাকলে লক্ষ্য পূরণ করলেই খেলা নিজে থেকে শেষ হবে।</string>
+	<key>options.capAt30.title</key>
+	<string>লক্ষ্যে শেষ</string>
+	<key>options.helperMode.info</key>
+	<string>সহায়ক মোডে সঠিক উত্তর সব সময় সবুজ দেখানো হয়। এই মোডের ট্রফি আলাদা গোনা হয় এবং তারকা দিয়ে চিহ্নিত থাকে।</string>
+	<key>options.helperMode.title</key>
+	<string>সহায়ক মোড</string>
+	<key>options.unlimitedLives.info</key>
+	<string>তুমি সব সময় ৩টি জীবন নিয়ে শুরু করবে। জীবন শেষ হলে খেলা শেষ হবে। জীবন শেষের পরও খেলতে ও অনুশীলন করতে এটি চালু করো।</string>
+	<key>options.unlimitedLives.title</key>
+	<string>অসীম জীবন</string>
+	<key>parentGate.approved</key>
+	<string>অনুমোদিত</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>চেষ্টা: %1$lld-এর মধ্যে %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@-টি %lld সেকেন্ড চেপে ধরুন।</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>চেপে ধরুন: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@-টি %lld সেকেন্ড চেপে ধরুন। তারপর %@-টিতে %lld বার ট্যাপ করুন।</string>
+	<key>parentGate.shape.circle</key>
+	<string>বৃত্ত</string>
+	<key>parentGate.shape.diamond</key>
+	<string>হীরা</string>
+	<key>parentGate.shape.heart</key>
+	<string>হৃদয়</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ষড়ভুজ</string>
+	<key>parentGate.shape.plus</key>
+	<string>যোগচিহ্ন</string>
+	<key>parentGate.shape.square</key>
+	<string>বর্গ</string>
+	<key>parentGate.shape.star</key>
+	<string>তারকা</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ত্রিভুজ</string>
+	<key>parentGate.stepOne</key>
+	<string>ধাপ ১-এর ২</string>
+	<key>parentGate.stepTwo</key>
+	<string>ধাপ ২-এর ২</string>
+	<key>parentGate.subtitle</key>
+	<string>ছোট খেলোয়াড়দের সুরক্ষায়, কেনাকাটা চালানোর আগে একজন প্রাপ্তবয়স্ককে এই যাচাই শেষ করতে হবে।</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>এখন %2$@-টিতে %1$lld বার ট্যাপ করুন।</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>ট্যাপ: %1$lld-এর মধ্যে %2$lld</string>
+	<key>parentGate.title</key>
+	<string>প্রাপ্তবয়স্কের অনুমতি দরকার</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lldটি ট্রফি থেকে পাওয়া যাবে</string>
+	<key>premium.availableFromStart</key>
+	<string>শুরু থেকেই পাওয়া যাবে</string>
+	<key>premium.characterUnlocked</key>
+	<string>নতুন চরিত্র আনলক হয়েছে</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ আনলক হয়েছে</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>তুমি %lldটি ট্রফি অর্জন করেছ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>শুধু Premium-এ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>শুধু Premium-এ</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>প্রিমিয়ামে ১০টি প্রাণী নিয়েই স্বাধীনভাবে খেলতে পারবে।</string>
+	<key>premium.feature.animals.title</key>
+	<string>সব প্রাণী ব্যবহার</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>অনুশীলনের জন্য সব সময় নতুন অঙ্ক থাকবে।</string>
+	<key>premium.feature.levels.title</key>
+	<string>প্রতি বিষয়ে ৯৯ লেভেল</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>কোনো বাধা ছাড়াই খেলো।</string>
+	<key>premium.feature.noAds.title</key>
+	<string>বিজ্ঞাপন নেই</string>
+	<key>premium.oneTime</key>
+	<string>একবার কিনলেই চিরদিন তোমার।</string>
+	<key>premium.restore</key>
+	<string>কেনাকাটা পুনরুদ্ধার</string>
+	<key>premium.start</key>
+	<string>শুরু</string>
+	<key>premium.storeUnavailable</key>
+	<string>স্টোর এখন পাওয়া যাচ্ছে না। পরে আবার চেষ্টা করুন।</string>
+	<key>premium.unlock</key>
+	<string>প্রিমিয়াম আনলক</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>প্রিমিয়াম আনলক · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ট্রফি দিয়ে আনলক করো</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium দিয়ে আনলক হয়েছে</string>
+	<key>premium.youHavePremium</key>
+	<string>তোমার প্রিমিয়াম আছে!</string>
+	<key>settings.character</key>
+	<string>চরিত্র</string>
+	<key>settings.characterInfo</key>
+	<string>প্রতিটি প্রাণী পুরো খেলায় নিজের রঙের থিম আনে।</string>
+	<key>settings.customMinutes %lld</key>
+	<string>নিজের মতো: %lld মিনিট</string>
+	<key>settings.dailyGoal</key>
+	<string>দৈনিক লক্ষ্য</string>
+	<key>settings.goalInfo</key>
+	<string>ধারাবাহিকতার লক্ষ্য দিনে ৫ মিনিট থেকে শুরু হয়। শুধু সক্রিয় খেলার সময় গোনা হয়।</string>
+	<key>settings.lives</key>
+	<string>জীবন</string>
+	<key>settings.livesInfo</key>
+	<string>তিনটি জীবনে শেষ হৃদয় হারালে খেলা শেষ। অসীম মোডে জীবন থাকা পর্যন্তই ট্রফি গোনা হয়; তারপরও খেলতে পারবে।</string>
+	<key>settings.playGoals</key>
+	<string>খেলার লক্ষ্য</string>
+	<key>settings.premiumUnlocked</key>
+	<string>প্রিমিয়াম আনলক হয়েছে। ধন্যবাদ!</string>
+	<key>settings.title</key>
+	<string>সেটিংস</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>দৈনিক লক্ষ্য বেছে নাও</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>দৈনিক বা সাপ্তাহিক লক্ষ্য বেছে নাও</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld মিনিটের মধ্যে %2$lld, টানা %4$lld দিন</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>দৈনিক ধারা, %lld-এর মধ্যে %lld মিনিট</string>
+	<key>streak.daily</key>
+	<string>দৈনিক ধারা</string>
+	<key>streak.dayOne</key>
+	<string>দিন ১</string>
+	<key>tutorial.answerHint</key>
+	<string>উত্তর জানো না? দেখতে অঙ্কটিতে ট্যাপ করো।</string>
+	<key>tutorial.complete</key>
+	<string>শাবাশ! টিউটোরিয়াল শেষ। এবার সেরা স্কোর করো!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ট্রফি নিতে সঠিক উত্তরের ওপর লাফ দাও।</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>সঠিক উত্তর সবুজ দেখানো হয়েছে। এবার তার ওপর লাফ দাও।</string>
+	<key>tutorial.doubler.answer</key>
+	<string>তিন গুণ ট্রফি পেতে এবার সঠিক উত্তরের ওপর লাফ দাও।</string>
+	<key>tutorial.doubler.collect</key>
+	<string>একবার তিন গুণ ট্রফি পেতে ×3 কয়েনটি নাও।</string>
+	<key>tutorial.lifePickup</key>
+	<string>জীবন ফেরত পেতে অর্ধেক বা একটি পুরো জীবন খুঁজে পেতে পারো।</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 এড়িয়ে চলো। এতে একটি ট্রফি যাবে।</string>
+	<key>tutorial.move</key>
+	<string>বাঁ ও ডানে যেতে ডিভাইস নাড়াও। স্ক্রিনের পাশ দিয়েও চলে যেতে পারো।</string>
+	<key>tutorial.platforms</key>
+	<string>ওপরে উঠতে প্ল্যাটফর্মগুলোর ওপর লাফ দাও।</string>
+	<key>tutorial.scoreHint</key>
+	<string>এই লেভেলের স্কোর এখানে দেখানো হয়।</string>
+	<key>tutorial.star</key>
+	<string>ভুল উত্তর সরিয়ে দিতে তারার মধ্যে লাফ দাও।</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>ভুল উত্তর বাছলে তোমার তিনটি জীবনের একটি হারাবে। এবার চেষ্টা করো।</string>
+</dict>
+</plist>

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>دب</string>
+	<key>character.bunny</key>
+	<string>أرنب</string>
+	<key>character.crab</key>
+	<string>سلطعون</string>
+	<key>character.dog</key>
+	<string>كلب</string>
+	<key>character.elephant</key>
+	<string>فيل</string>
+	<key>character.fox</key>
+	<string>ثعلب</string>
+	<key>character.frog</key>
+	<string>ضفدع</string>
+	<key>character.lion</key>
+	<string>أسد</string>
+	<key>character.octopus</key>
+	<string>أخطبوط</string>
+	<key>character.penguin</key>
+	<string>بطريق</string>
+	<key>character.pickerTitle</key>
+	<string>اختر شخصيتك</string>
+	<key>common.back</key>
+	<string>رجوع</string>
+	<key>common.cancel</key>
+	<string>إلغاء</string>
+	<key>common.continue</key>
+	<string>متابعة</string>
+	<key>common.done</key>
+	<string>تم</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld د</string>
+	<key>common.save</key>
+	<string>حفظ</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>اضغط مطولًا لمدة ثانيتين لفتح وضع المطوّر.</string>
+	<key>developerMode.title</key>
+	<string>وضع المطوّر</string>
+	<key>filter.addition</key>
+	<string>الجمع</string>
+	<key>filter.fractions</key>
+	<string>الكسور</string>
+	<key>filter.mixed</key>
+	<string>المزيج الكبير</string>
+	<key>filter.percentages</key>
+	<string>النسب المئوية</string>
+	<key>filter.subtraction</key>
+	<string>الطرح</string>
+	<key>filter.tables</key>
+	<string>جداول الضرب</string>
+	<key>game.accessibility.mix</key>
+	<string>مزيج</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld من %lld</string>
+	<key>game.encouragement.0</key>
+	<string>محاولة جيدة</string>
+	<key>game.encouragement.1</key>
+	<string>بداية موفقة</string>
+	<key>game.encouragement.2</key>
+	<string>واصل التمرّن</string>
+	<key>game.encouragement.3</key>
+	<string>ليس سيئًا</string>
+	<key>game.encouragement.4</key>
+	<string>أداء جيد</string>
+	<key>game.encouragement.5</key>
+	<string>أداء رائع</string>
+	<key>game.encouragement.6</key>
+	<string>أحسنت</string>
+	<key>game.encouragement.7</key>
+	<string>لعب رائع جدًا</string>
+	<key>game.encouragement.8</key>
+	<string>النهاية قريبة</string>
+	<key>game.encouragement.9</key>
+	<string>أوشكت على الوصول</string>
+	<key>game.end.completionSubtitle</key>
+	<string>كسبت كل النقاط.</string>
+	<key>game.end.completionSuffix</key>
+	<string>اكتمل!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>انتهت اللعبة</string>
+	<key>game.end.mainMenu</key>
+	<string>القائمة الرئيسية</string>
+	<key>game.end.playAgain</key>
+	<string>العب مجددًا</string>
+	<key>game.highScore</key>
+	<string>أعلى نتيجة</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>العودة للقائمة الرئيسية</string>
+	<key>game.intro.continue</key>
+	<string>متابعة اللعب</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>ستتابع من %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>الإجابة الصحيحة مميزة بالأخضر لأن المساعد مفعّل. لذلك تُحسب الكؤوس بشكل منفصل مع *.</string>
+	<key>game.intro.helperOff</key>
+	<string>المساعد متوقف</string>
+	<key>game.intro.helperOn</key>
+	<string>المساعد مفعّل</string>
+	<key>game.intro.howItWorks</key>
+	<string>كيف يعمل هذا المستوى</string>
+	<key>game.intro.livesOff</key>
+	<string>الحيوات متوقفة</string>
+	<key>game.intro.livesOn</key>
+	<string>الحيوات مفعّلة</string>
+	<key>game.intro.scorePaused</key>
+	<string>ستتوقف نتيجتك الحالية مؤقتًا.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>عذرًا! ميزة القراءة بصوت عالٍ غير متاحة بلغتك حتى الآن.</string>
+	<key>game.intro.start</key>
+	<string>ابدأ المستوى</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>اضرب %@%@ في عدد من 1 إلى 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>أو أقل</string>
+	<key>game.intro.tapToContinue</key>
+	<string>اضغط في أي مكان للمتابعة</string>
+	<key>game.intro.tapToStart</key>
+	<string>اضغط في أي مكان للبدء</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>اكسب |1| كأسًا لكل إجابة صحيحة، بحد أقصى |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>عندما تنفد حيواتك، لن تتمكن من كسب المزيد من الكؤوس.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>بلغت الحد الأقصى للكؤوس في لوحة الصدارة</string>
+	<key>game.status.mixMode</key>
+	<string>وضع المزيج</string>
+	<key>game.status.scoreLocked</key>
+	<string>لن تُحسب الكؤوس بعد نفاد حيواتك</string>
+	<key>game.streak.subtitle</key>
+	<string>الكؤوس ×2</string>
+	<key>game.streak.title</key>
+	<string>5 متتالية!</string>
+	<key>goal.period</key>
+	<string>فترة الهدف</string>
+	<key>goal.promptDaily</key>
+	<string>كم دقيقة تريد أن تلعب يوميًا؟</string>
+	<key>goal.promptWeekly</key>
+	<string>كم دقيقة تريد أن تلعب أسبوعيًا؟</string>
+	<key>goal.title</key>
+	<string>هدف اللعب</string>
+	<key>goalPeriod.daily</key>
+	<string>يوميًا</string>
+	<key>goalPeriod.weekly</key>
+	<string>أسبوعيًا</string>
+	<key>info.filter.addition</key>
+	<string>الجمع فقط</string>
+	<key>info.filter.fractions</key>
+	<string>القسمة فقط</string>
+	<key>info.filter.header</key>
+	<string>أنواع المسائل</string>
+	<key>info.filter.mixed</key>
+	<string>عمليات مختلطة</string>
+	<key>info.filter.percentages</key>
+	<string>النسب فقط</string>
+	<key>info.filter.subtraction</key>
+	<string>الطرح فقط</string>
+	<key>info.filter.tables</key>
+	<string>الضرب فقط</string>
+	<key>info.mode.fractions.header</key>
+	<string>الأجزاء</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>جزء واحد أو عدة أجزاء</string>
+	<key>info.mode.fractions.single</key>
+	<string>جزء واحد دائمًا</string>
+	<key>info.mode.header</key>
+	<string>الترتيب</string>
+	<key>info.mode.mixed</key>
+	<string>مختلط مع المستويات السابقة</string>
+	<key>info.mode.order</key>
+	<string>ترتيب ثابت</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>يشمل الأعداد العشرية</string>
+	<key>info.mode.percentages.header</key>
+	<string>النوع</string>
+	<key>info.mode.percentages.whole</key>
+	<string>من دون أعداد عشرية</string>
+	<key>info.mode.random</key>
+	<string>ترتيب عشوائي</string>
+	<key>info.super.all</key>
+	<string>الجمع والطرح والضرب والقسمة والنسب المئوية</string>
+	<key>info.super.basic</key>
+	<string>الجمع والطرح</string>
+	<key>info.super.fraction</key>
+	<string>الجمع والطرح والضرب والقسمة</string>
+	<key>info.super.times</key>
+	<string>الجمع والطرح والضرب</string>
+	<key>language.select</key>
+	<string>اختر اللغة</string>
+	<key>lives.three</key>
+	<string>3 حيوات</string>
+	<key>lives.unlimited</key>
+	<string>بلا حدود</string>
+	<key>menu.accessibility.character</key>
+	<string>الشخصية</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>اضغط لتغيير شخصيتك؛ واضغط مطولًا لمدة ثانيتين للبدء من جديد من شاشة الترحيب.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>اختر %@</string>
+	<key>menu.maxScore</key>
+	<string>30 كحد أقصى</string>
+	<key>menu.maximumCount</key>
+	<string>أقصى</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>بلغت الحد الأقصى %lld مرة</string>
+	<key>menu.moreLevels</key>
+	<string>مستويات أكثر</string>
+	<key>menu.options</key>
+	<string>خيارات اللعب</string>
+	<key>menu.premium</key>
+	<string>مميز</string>
+	<key>menu.premiumTables</key>
+	<string>جداول مميزة</string>
+	<key>menu.startHere</key>
+	<string>ابدأ هنا</string>
+	<key>menu.unlockWithPremium</key>
+	<string>افتح المزيد مع المميز</string>
+	<key>mode.fractions.multiple</key>
+	<string>متعدد</string>
+	<key>mode.fractions.single</key>
+	<string>واحد</string>
+	<key>mode.mix</key>
+	<string>مزيج</string>
+	<key>mode.mixed</key>
+	<string>مختلط</string>
+	<key>mode.order</key>
+	<string>ترتيب</string>
+	<key>mode.percentages.decimal</key>
+	<string>عشري</string>
+	<key>mode.percentages.whole</key>
+	<string>صحيح</string>
+	<key>mode.random</key>
+	<string>عشوائي</string>
+	<key>mode.standard</key>
+	<string>عادي</string>
+	<key>modeIntro.addition.intro</key>
+	<string>ستحصل فقط على مسائل |الجمع|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>تضيف %lld |أو أقل| إلى عدد آخر.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>تضيف دائمًا %lld بترتيب |تصاعدي|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>تضيف دائمًا %lld إلى عدد |عشوائي|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>الجمع · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>اجمع عددين في كل مرة.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>الإجابة لا تتجاوز %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>الجمع حتى %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>ستحصل فقط على مسائل |الكسور|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ستحصل على كسور من هذا المستوى و|المستويات السابقة|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>تأخذ دائمًا |جزءًا واحدًا| من %lld أجزاء متساوية.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>احسب كسور الأعداد الكاملة من المستوى %lld والمستويات السابقة.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>تبقى الأعداد كاملة، لذا تكون الإجابات أعدادًا صحيحة دائمًا.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>الكسور حتى %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>تأخذ جزءًا واحدًا أو |عدة أجزاء| من %lld أجزاء متساوية.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>الكسور · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>احسب جزءًا من كل، واجعل الكسور متساوية.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>اجمع واطرح الكسور ذات المقام نفسه.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>كسور مختلطة</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>ستحصل فقط على مسائل |النسب المئوية|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ستحصل على نسب من هذا المستوى و|المستويات السابقة|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>تحسب دائمًا %@، وتكون الإجابة |عددًا صحيحًا|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>احسب نسبًا مئوية من أعداد كاملة حتى %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>تبقى القيم كاملة، لذا تكون الإجابات أعدادًا صحيحة دائمًا.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>النسب حتى %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>تحسب دائمًا %@، وقد تكون الإجابة |عددًا عشريًا|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>احسب %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>احسب نسبة مئوية من عدد.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>حوّل بين النسب المئوية والكسور.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>نسب مختلطة</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>ستحصل فقط على مسائل |الطرح|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>تطرح %lld |أو أقل| من عدد آخر.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>تطرح دائمًا %lld بترتيب |تنازلي|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>تطرح دائمًا %lld من عدد |عشوائي|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>الطرح · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>العدد الأول لا يتجاوز %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>قد تكون الإجابة أقل من صفر.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>أقل من صفر</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>الطرح حتى %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>اطرح عددين في كل مرة.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>قد ترتفع الصعوبة حتى |المستوى %lld| لكل فئة مختارة.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>تدرّب على الجمع والطرح والجداول والكسور والنسب معًا.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>المزيج الكبير %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>تدرّب على الجمع والطرح معًا.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>المزيج الكبير %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>تدرّب على الجمع والطرح والجداول والكسور معًا.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>المزيج الكبير %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>تدرّب على الجمع والطرح والجداول معًا.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>المزيج الكبير %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>ستحصل فقط على مسائل |الضرب|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>ستحصل على كل الجداول |حتى %lld| بشكل مختلط.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>كل جدول مضروب في عدد من |1 إلى 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>ستحصل على جدول %lld بترتيب |تصاعدي|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>ستحصل على جدول %lld بترتيب |عشوائي|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>جدول %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>تدرّب على الجداول من %lld إلى %lld بشكل مختلط.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>الجداول %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>اسمك</string>
+	<key>name.whatsYourName</key>
+	<string>ما اسمك؟</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: احصل على المزيد من الجوائز لفتح هذا الحيوان! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>فقط %lld الجوائز للذهاب! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>حيواناتك تنتظر. عد للعب واستمر في جمع الجوائز!</string>
+	<key>notif.comeback.title</key>
+	<string>إننا نفتقدك! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ابدأ جلسة لعب مدتها %lld دقائق وقم بتمديد خط لعبك اليومي.</string>
+	<key>notif.day3.title</key>
+	<string>دعونا نجعل اليوم الثالث يحدث! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>استخدم لوحة القفز لتخطي الإجابة الخاطئة ومواصلة التسلق!</string>
+	<key>notif.jumppad.title</key>
+	<string>القفز على الإجابات الخاطئة الماضية! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>يتضمن Jumping Fox Premium %lld مستوى لكل موضوع وجميع الحيوانات العشرة. المغامرة مستمرة!</string>
+	<key>notif.premium.title</key>
+	<string>فتح المزيد من المستويات والحيوانات! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>لقد مرت %lld أيام. دعونا نحل بعض تمارين الرياضيات ونكسب المزيد من الجوائز!</string>
+	<key>notif.reactivate.title</key>
+	<string>على استعداد للعب مرة أخرى؟ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>العب لمدة %lld دقائق وحافظ على استمرار خط لعبك اليومي!</string>
+	<key>notif.streak.title %lld</key>
+	<string>لقد وصلت خط اللعب اليومي الخاص بك إلى %lld أيام! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>عمل عظيم! هيا نلعب لمدة %lld دقائق ونجمع المزيد.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>لقد حصلت على %lld جائزة! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>وبذلك يصل مجموع جوائزك إلى %lld جائزة. عمل مذهل!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>لقد حصلت على %lld جائزة هذا الأسبوع! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>مسائل مختلطة مختلفة معًا.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>جيد جدًا بالفعل</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>تدرّب على المسائل بالترتيب.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>بدأت للتو</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>مسائل بترتيب عشوائي.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>تمرّنت قليلًا</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>اختر نقطة بداية لـ %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>هذا الموضوع</string>
+	<key>onboarding.level.title</key>
+	<string>ما مدى إتقانك لهذا؟</string>
+	<key>onboarding.name.subtitle</key>
+	<string>لنبدأ. ما اسمك؟</string>
+	<key>onboarding.name.title</key>
+	<string>لم تكن المسائل ممتعة هكذا من قبل!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>اختر موضوعًا لتبدأ به.</string>
+	<key>onboarding.subject.title</key>
+	<string>ماذا تريد أن تتعلم؟</string>
+	<key>options.capAt30.info</key>
+	<string>لكل مستوى هدف يصل إلى 50 كأسًا. عند تفعيل هذا الخيار، تنتهي اللعبة تلقائيًا عند بلوغه.</string>
+	<key>options.capAt30.title</key>
+	<string>الإنهاء عند الهدف</string>
+	<key>options.helperMode.info</key>
+	<string>في وضع المساعد، تظهر الإجابة الصحيحة دائمًا بالأخضر. تُحسب الكؤوس المكتسبة فيه بشكل منفصل وتُميّز بنجمة.</string>
+	<key>options.helperMode.title</key>
+	<string>وضع المساعد</string>
+	<key>options.unlimitedLives.info</key>
+	<string>تبدأ دائمًا بـ3 حيوات. تنتهي اللعبة عند نفادها. فعّل هذا الخيار لمتابعة اللعب والتمرّن بعد نفاد حيواتك.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>حيوات بلا حدود</string>
+	<key>parentGate.approved</key>
+	<string>تمت الموافقة</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>المحاولات: %1$lld من %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>اضغط مطولًا على %@ لمدة %lld ثوانٍ.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>اضغط مطولًا: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>اضغط مطولًا على %@ لمدة %lld ثوانٍ. ثم اضغط على %@ عدد %lld مرات.</string>
+	<key>parentGate.shape.circle</key>
+	<string>دائرة</string>
+	<key>parentGate.shape.diamond</key>
+	<string>معيّن</string>
+	<key>parentGate.shape.heart</key>
+	<string>قلب</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>سداسي</string>
+	<key>parentGate.shape.plus</key>
+	<string>زائد</string>
+	<key>parentGate.shape.square</key>
+	<string>مربع</string>
+	<key>parentGate.shape.star</key>
+	<string>نجمة</string>
+	<key>parentGate.shape.triangle</key>
+	<string>مثلث</string>
+	<key>parentGate.stepOne</key>
+	<string>الخطوة 1 من 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>الخطوة 2 من 2</string>
+	<key>parentGate.subtitle</key>
+	<string>لحماية اللاعبين الصغار، يجب أن يُكمل شخص بالغ هذا التحقق قبل متابعة الشراء.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>اضغط الآن على %2$@ عدد %1$lld مرات.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>الضغطات: %1$lld من %2$lld</string>
+	<key>parentGate.title</key>
+	<string>موافقة شخص بالغ مطلوبة</string>
+	<key>premium.availableAt %lld</key>
+	<string>متاح بدءًا من %lld كأسًا</string>
+	<key>premium.availableFromStart</key>
+	<string>متاح منذ البداية</string>
+	<key>premium.characterUnlocked</key>
+	<string>تم فتح شخصية جديدة</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>تم فتح %@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>لقد ربحت %lld كأسًا</string>
+	<key>premium.exclusiveBadge</key>
+	<string>حصري مع Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>حصري مع Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>مع المميز، يمكنك اللعب بحرية بكل الحيوانات العشرة.</string>
+	<key>premium.feature.animals.title</key>
+	<string>كل الحيوانات متاحة</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>مسائل جديدة كافية دائمًا للتمرّن.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 مستوى لكل موضوع</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>العب بلا أي مقاطعات.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>بلا إعلانات</string>
+	<key>premium.oneTime</key>
+	<string>شراء مرة واحدة. لك للأبد.</string>
+	<key>premium.restore</key>
+	<string>استعادة المشتريات</string>
+	<key>premium.start</key>
+	<string>ابدأ</string>
+	<key>premium.storeUnavailable</key>
+	<string>المتجر غير متاح الآن. حاول لاحقًا.</string>
+	<key>premium.unlock</key>
+	<string>فتح المميز</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>فتح المميز · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>افتح باستخدام الكؤوس</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>تم فتحه مع Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>لديك المميز!</string>
+	<key>settings.character</key>
+	<string>الشخصية</string>
+	<key>settings.characterInfo</key>
+	<string>يمنح كل حيوان اللعبة كلها ألوانه الخاصة.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>مخصص: %lld د</string>
+	<key>settings.dailyGoal</key>
+	<string>الهدف اليومي</string>
+	<key>settings.goalInfo</key>
+	<string>يبدأ هدف الاستمرار بـ5 دقائق يوميًا. يُحسب وقت اللعب الفعلي فقط.</string>
+	<key>settings.lives</key>
+	<string>الحيوات</string>
+	<key>settings.livesInfo</key>
+	<string>مع ثلاث حيوات، تنتهي اللعبة بعد آخر قلب. في الوضع غير المحدود، تُحسب الكؤوس ما دامت لديك حيوات؛ وبعدها يمكنك متابعة اللعب.</string>
+	<key>settings.playGoals</key>
+	<string>أهداف اللعب</string>
+	<key>settings.premiumUnlocked</key>
+	<string>تم فتح المميز. شكرًا لك!</string>
+	<key>settings.title</key>
+	<string>الإعدادات</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>اختر هدفًا يوميًا</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>اختر هدفًا يوميًا أو أسبوعيًا</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@، %2$lld من %3$lld دقيقة، %4$lld أيام متتالية</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>استمرار يومي، %lld من %lld دقيقة</string>
+	<key>streak.daily</key>
+	<string>الاستمرار اليومي</string>
+	<key>streak.dayOne</key>
+	<string>اليوم 1</string>
+	<key>tutorial.answerHint</key>
+	<string>لا تعرف الإجابة؟ اضغط على المسألة لرؤيتها.</string>
+	<key>tutorial.complete</key>
+	<string>أحسنت! اكتمل الشرح. حاول الآن تحقيق أعلى نتيجة!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>اقفز على الإجابة الصحيحة لجمع كأس.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>تظهر الإجابة الصحيحة بالأخضر. اقفز عليها الآن.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>اقفز الآن على الإجابة الصحيحة لتحصل على ثلاثة أضعاف الكؤوس.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>اجمع عملة ×3 لتحصل مرة واحدة على ثلاثة أضعاف الكؤوس.</string>
+	<key>tutorial.lifePickup</key>
+	<string>يمكنك العثور على نصف حياة أو حياة كاملة لاستعادة حيواتك.</string>
+	<key>tutorial.minusOne</key>
+	<string>تجنب −1. ستخسر بسببه كأسًا واحدًا.</string>
+	<key>tutorial.move</key>
+	<string>حرّك جهازك للذهاب يمينًا ويسارًا. ويمكنك أيضًا العبور من جانبي الشاشة.</string>
+	<key>tutorial.platforms</key>
+	<string>اقفز على المنصات لتصعد.</string>
+	<key>tutorial.scoreHint</key>
+	<string>تظهر نتيجتك في هذا المستوى هنا.</string>
+	<key>tutorial.star</key>
+	<string>اقفز نحو النجمة لإطلاق الإجابات الخاطئة بعيدًا.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>إذا اخترت إجابة خاطئة، تخسر حياة من حيواتك الثلاث. جرّب الآن.</string>
+</dict>
+</plist>

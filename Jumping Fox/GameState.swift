@@ -46,6 +46,10 @@ enum GameSettings {
     static let characterKey = "settings.character"
     static let playerNameKey = "profile.playerName"
     static let onboardingCompleteKey = "onboarding.complete"
+    /// Set by the welcome flow's last step and consumed once by the home menu:
+    /// the player goes straight to the start screen of the first level of what
+    /// they just chose, instead of being left on the menu to find it.
+    static let opensFirstLevelKey = "onboarding.opensFirstLevel"
 
     static var lifeMode: LifeMode {
         get {
@@ -276,18 +280,6 @@ final class GameState: ObservableObject {
 
     /// Lives left as a fraction, for the HUD (e.g. 2.5).
     var livesRemaining: Double? { livesHalves.map { Double($0) / 2 } }
-
-    /// Applies choices made on a fresh level's start card before physics are
-    /// released. A paused run keeps the rules it started with; its card can
-    /// still save preferences for the next new run.
-    func applyPreGameSettings(lifeMode: LifeMode, answerHelperEnabled: Bool) {
-        guard score == 0, !isGameOver, !isCompletingLevel else { return }
-        self.lifeMode = lifeMode
-        self.isAnswerHelperEnabled = answerHelperEnabled
-        livesHalves = lifeMode.startingLives.map { $0 * 2 }
-        highScore = ProgressStore.bestScore(levelID: level.id,
-                                            helperEnabled: answerHelperEnabled)
-    }
 
     /// In unlimited mode, trophies stop counting once the three lives are gone.
     var isScoreLocked: Bool { isEndless }

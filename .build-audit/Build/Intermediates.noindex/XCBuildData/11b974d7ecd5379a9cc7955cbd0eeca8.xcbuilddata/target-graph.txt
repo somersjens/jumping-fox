@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'Jumping FoxUITests' in project 'Jumping Fox'
+➜ Explicit dependency on target 'Jumping Fox' in project 'Jumping Fox'
+Target 'Jumping FoxTests' in project 'Jumping Fox'
+➜ Explicit dependency on target 'Jumping Fox' in project 'Jumping Fox'
+Target 'Jumping Fox' in project 'Jumping Fox' (no dependencies)

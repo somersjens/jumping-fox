@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ari</string>
+	<key>character.bunny</key>
+	<string>Lepur</string>
+	<key>character.crab</key>
+	<string>Gaforre</string>
+	<key>character.dog</key>
+	<string>Qen</string>
+	<key>character.elephant</key>
+	<string>Elefant</string>
+	<key>character.fox</key>
+	<string>Dhelpër</string>
+	<key>character.frog</key>
+	<string>Bretkosë</string>
+	<key>character.lion</key>
+	<string>Luan</string>
+	<key>character.octopus</key>
+	<string>Oktapod</string>
+	<key>character.penguin</key>
+	<string>Pinguin</string>
+	<key>character.pickerTitle</key>
+	<string>Zgjidh personazhin</string>
+	<key>common.back</key>
+	<string>Mbrapa</string>
+	<key>common.cancel</key>
+	<string>Anulo</string>
+	<key>common.continue</key>
+	<string>Vazhdo</string>
+	<key>common.done</key>
+	<string>Gati</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Ruaj</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Mbaje shtypur për 2 sekonda për të hapur modalitetin e zhvilluesit.</string>
+	<key>developerMode.title</key>
+	<string>Modaliteti i zhvilluesit</string>
+	<key>filter.addition</key>
+	<string>Mbledhje</string>
+	<key>filter.fractions</key>
+	<string>Thyesa</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Përqindje</string>
+	<key>filter.subtraction</key>
+	<string>Zbritje</string>
+	<key>filter.tables</key>
+	<string>Tabelat</string>
+	<key>game.accessibility.mix</key>
+	<string>Përzierje</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld nga %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Përpjekje e mirë</string>
+	<key>game.encouragement.1</key>
+	<string>Është një fillim</string>
+	<key>game.encouragement.2</key>
+	<string>Vazhdo të ushtrohesh</string>
+	<key>game.encouragement.3</key>
+	<string>Aspak keq</string>
+	<key>game.encouragement.4</key>
+	<string>Po ecën mirë</string>
+	<key>game.encouragement.5</key>
+	<string>Rezultat i bukur</string>
+	<key>game.encouragement.6</key>
+	<string>Të lumtë</string>
+	<key>game.encouragement.7</key>
+	<string>Shumë mirë</string>
+	<key>game.encouragement.8</key>
+	<string>Fundi po afrohet</string>
+	<key>game.encouragement.9</key>
+	<string>Edhe pak</string>
+	<key>game.end.completionSubtitle</key>
+	<string>I fitove të gjitha pikët.</string>
+	<key>game.end.completionSuffix</key>
+	<string>përfunduar!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Loja mbaroi</string>
+	<key>game.end.mainMenu</key>
+	<string>Menyja kryesore</string>
+	<key>game.end.playAgain</key>
+	<string>Luaj përsëri</string>
+	<key>game.highScore</key>
+	<string>Rekordi</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Kthehu te menyja kryesore</string>
+	<key>game.intro.continue</key>
+	<string>Vazhdo</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Do të vazhdosh nga %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Përgjigjja e saktë është me të gjelbër sepse ndihmësi është aktiv. Prandaj, trofetë numërohen veç me *.</string>
+	<key>game.intro.helperOff</key>
+	<string>Ndihmësi joaktiv</string>
+	<key>game.intro.helperOn</key>
+	<string>Ndihmësi aktiv</string>
+	<key>game.intro.howItWorks</key>
+	<string>Si funksionon ky nivel</string>
+	<key>game.intro.livesOff</key>
+	<string>Jetët joaktive</string>
+	<key>game.intro.livesOn</key>
+	<string>Jetët aktive</string>
+	<key>game.intro.scorePaused</key>
+	<string>Rezultati yt aktual do të vihet në pauzë.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Na vjen keq! Funksioni i leximit me zë nuk është ende i disponueshëm në gjuhën tënde.</string>
+	<key>game.intro.start</key>
+	<string>Fillo nivelin</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Shumëzo %@%@ me një numër nga 1 deri në 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>ose më pak</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Prek kudo për të vazhduar</string>
+	<key>game.intro.tapToStart</key>
+	<string>Prek kudo për të filluar</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Fito |1| trofe për çdo përgjigje të saktë, deri në |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Kur të mbarojnë jetët, nuk mund të fitosh më trofe.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Ke arritur numrin maksimal të trofeve për renditjen</string>
+	<key>game.status.mixMode</key>
+	<string>MODALITETI MIX</string>
+	<key>game.status.scoreLocked</key>
+	<string>Kur mbarojnë jetët, trofetë nuk numërohen më</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofe ×2</string>
+	<key>game.streak.title</key>
+	<string>5 rresht!</string>
+	<key>goal.period</key>
+	<string>Periudha e objektivit</string>
+	<key>goal.promptDaily</key>
+	<string>Sa minuta dëshiron të luash çdo ditë?</string>
+	<key>goal.promptWeekly</key>
+	<string>Sa minuta dëshiron të luash çdo javë?</string>
+	<key>goal.title</key>
+	<string>Objektivi i lojës</string>
+	<key>goalPeriod.daily</key>
+	<string>Çdo ditë</string>
+	<key>goalPeriod.weekly</key>
+	<string>Çdo javë</string>
+	<key>info.filter.addition</key>
+	<string>Vetëm mbledhje</string>
+	<key>info.filter.fractions</key>
+	<string>Vetëm pjesëtim</string>
+	<key>info.filter.header</key>
+	<string>Llojet e detyrave</string>
+	<key>info.filter.mixed</key>
+	<string>Veprime të përziera</string>
+	<key>info.filter.percentages</key>
+	<string>Vetëm përqindje</string>
+	<key>info.filter.subtraction</key>
+	<string>Vetëm zbritje</string>
+	<key>info.filter.tables</key>
+	<string>Vetëm shumëzim</string>
+	<key>info.mode.fractions.header</key>
+	<string>Pjesë</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Një ose disa pjesë</string>
+	<key>info.mode.fractions.single</key>
+	<string>Gjithmonë një pjesë</string>
+	<key>info.mode.header</key>
+	<string>Rendi</string>
+	<key>info.mode.mixed</key>
+	<string>Përzier me nivele më të ulëta</string>
+	<key>info.mode.order</key>
+	<string>Rend fiks</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Me numra dhjetorë</string>
+	<key>info.mode.percentages.header</key>
+	<string>Lloji</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Pa numra dhjetorë</string>
+	<key>info.mode.random</key>
+	<string>Rend i rastësishëm</string>
+	<key>info.super.all</key>
+	<string>Mbledhje, zbritje, shumëzim, pjesëtim dhe përqindje</string>
+	<key>info.super.basic</key>
+	<string>Mbledhje dhe zbritje</string>
+	<key>info.super.fraction</key>
+	<string>Mbledhje, zbritje, shumëzim dhe pjesëtim</string>
+	<key>info.super.times</key>
+	<string>Mbledhje, zbritje dhe shumëzim</string>
+	<key>language.select</key>
+	<string>Zgjidh gjuhën</string>
+	<key>lives.three</key>
+	<string>3 jetë</string>
+	<key>lives.unlimited</key>
+	<string>Pa kufi</string>
+	<key>menu.accessibility.character</key>
+	<string>Personazhi</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Prek për të ndryshuar personazhin; mbaje shtypur dy sekonda për të nisur nga ekrani i mirëseardhjes.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Zgjidh %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimumi u arrit %lld herë</string>
+	<key>menu.moreLevels</key>
+	<string>Më shumë nivele</string>
+	<key>menu.options</key>
+	<string>Opsionet e lojës</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Tabela Premium</string>
+	<key>menu.startHere</key>
+	<string>Fillo këtu</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Zhblloko më shumë me Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Disa</string>
+	<key>mode.fractions.single</key>
+	<string>Një</string>
+	<key>mode.mix</key>
+	<string>Mix</string>
+	<key>mode.mixed</key>
+	<string>Përzier</string>
+	<key>mode.order</key>
+	<string>Rend</string>
+	<key>mode.percentages.decimal</key>
+	<string>Dhjetor</string>
+	<key>mode.percentages.whole</key>
+	<string>I plotë</string>
+	<key>mode.random</key>
+	<string>Rastësor</string>
+	<key>mode.standard</key>
+	<string>Standard</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Do të marrësh vetëm detyra me |mbledhje|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>I shton %lld |ose më pak| një numri tjetër.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Gjithmonë shton %lld në rend |rritës|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Gjithmonë i shton %lld një numri |të rastësishëm|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Mbledhje · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Vazhdo të mbledhësh dy numra.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Përgjigjja është maksimumi %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Mbledhje deri në %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Do të marrësh vetëm detyra me |thyesa|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Do të marrësh thyesa nga ky nivel dhe |nivelet e mëparshme|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Merr gjithmonë |1 pjesë| nga %lld pjesë të barabarta.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Gjej thyesa të numrave të rrumbullakët nga niveli %lld dhe nivelet e mëparshme.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Numrat mbeten të rrumbullakët, prandaj përgjigjet janë gjithmonë numra të plotë.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Thyesa deri në %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Merr një ose |disa pjesë| nga %lld pjesë të barabarta.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Thyesa · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Gjej një pjesë të së tërës dhe bëji thyesat të barabarta.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Mblidh dhe zbrit thyesa me të njëjtin emërues.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Thyesa të përziera</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Do të marrësh vetëm detyra me |përqindje|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Do të marrësh përqindje nga ky nivel dhe |nivelet e mëparshme|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Gjithmonë llogarit %@ dhe përgjigjja është |numër i plotë|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Llogarit përqindje të numrave të rrumbullakët deri në %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Vlerat mbeten të rrumbullakëta, prandaj përgjigjet janë gjithmonë numra të plotë.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Përqindje deri në %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Gjithmonë llogarit %@ dhe përgjigjja mund të jetë edhe |dhjetore|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Llogarit %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Llogarit një përqindje të një numri.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Kthe përqindjet në thyesa dhe anasjelltas.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Përqindje të përziera</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Do të marrësh vetëm detyra me |zbritje|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>I zbret %lld |ose më pak| një numri tjetër.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Gjithmonë zbret %lld në rend |zbritës|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Gjithmonë i zbret %lld një numri |të rastësishëm|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Zbritje · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Numri i parë është maksimumi %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Përgjigjja mund të jetë nën zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Nën zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Zbritje deri në %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Vazhdo të zbresësh dy numra.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Vështirësia mund të rritet deri në |nivelin %lld| për çdo kategori të zgjedhur.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Ushtro mbledhjen, zbritjen, tabelat, thyesat dhe përqindjet të përziera.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Ushtro mbledhjen dhe zbritjen të përziera.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Ushtro mbledhjen, zbritjen, tabelat dhe thyesat të përziera.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Ushtro mbledhjen, zbritjen dhe tabelat të përziera.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Do të marrësh vetëm detyra me |shumëzim|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Do të marrësh të gjitha tabelat |deri në %lld| të përziera.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Çdo tabelë shumëzohet me një numër nga |1 deri në 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Do të marrësh tabelën e %lld në rend |rritës|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Do të marrësh tabelën e %lld në rend |të rastësishëm|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Tabela e %lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Ushtro tabelat nga %lld deri në %lld të përziera.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tabelat %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Emri yt</string>
+	<key>name.whatsYourName</key>
+	<string>Si quhesh?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Fitoni disa trofe të tjerë për të zhbllokuar këtë kafshë! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kanë mbetur vetëm %lld trofe! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Kafshët tuaja janë duke pritur. Kthehuni për të luajtur dhe vazhdoni të mblidhni trofe!</string>
+	<key>notif.comeback.title</key>
+	<string>Na mungoni! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Filloni një seancë %lld-minutëshe të lojës dhe zgjeroni brezin tuaj të përditshëm të lojërave.</string>
+	<key>notif.day3.title</key>
+	<string>Le të realizojmë ditën e tretë! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Përdorni "Jump Pad" për të kapërcyer një përgjigje të gabuar dhe për të vazhduar ngjitjen!</string>
+	<key>notif.jumppad.title</key>
+	<string>Kaloni përgjigjet e gabuara! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium përfshin %lld nivele për çdo temë dhe të 10 kafshët. Aventura vazhdon!</string>
+	<key>notif.premium.title</key>
+	<string>Zhbllokoni më shumë nivele dhe kafshë! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Kanë kaluar %lld ditë. Le të zgjidhim disa ushtrime matematikore dhe të fitojmë më shumë trofe!</string>
+	<key>notif.reactivate.title</key>
+	<string>Gati për të luajtur përsëri? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Luaj për %lld minuta dhe vazhdo serinë e përditshme të lojës!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Seria juaj e përditshme e lojërave ka arritur në %lld ditë! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Punë e madhe! Le të luajmë për %lld minuta dhe të mbledhim edhe më shumë.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Ju keni fituar %lld trofe! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Kjo e çon totalin tuaj në %lld trofe. Punë e mahnitshme!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ju fituat %lld trofe këtë javë! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Detyra të ndryshme të përziera.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Tashmë mjaft mirë</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Ushtrohu me detyra në rend.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Sapo ke filluar</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Detyra në rend të rastësishëm.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Ke bërë pak ushtrime</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Zgjidh një pikënisje për %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>këtë temë</string>
+	<key>onboarding.level.title</key>
+	<string>Sa mirë e njeh këtë?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Le të fillojmë. Si quhesh?</string>
+	<key>onboarding.name.title</key>
+	<string>Detyrat s’kanë qenë kurrë kaq zbavitëse!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Zgjidh një temë për të filluar.</string>
+	<key>onboarding.subject.title</key>
+	<string>Çfarë dëshiron të mësosh?</string>
+	<key>options.capAt30.info</key>
+	<string>Çdo nivel ka një objektiv deri në 50 trofe. Kur ky opsion është aktiv, loja mbaron vetë sapo ta arrish.</string>
+	<key>options.capAt30.title</key>
+	<string>Mbaro te objektivi</string>
+	<key>options.helperMode.info</key>
+	<string>Në modalitetin e ndihmës, përgjigjja e saktë shfaqet gjithmonë me të gjelbër. Trofetë e fituar këtu numërohen veç dhe shënohen me yll.</string>
+	<key>options.helperMode.title</key>
+	<string>Modaliteti i ndihmës</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Fillon gjithmonë me 3 jetë. Loja mbaron kur nuk të mbetet asnjë jetë. Aktivizoje këtë opsion për të vazhduar të luash e të ushtrohesh pasi të mbarojnë jetët.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Jetë pa kufi</string>
+	<key>parentGate.approved</key>
+	<string>Miratuar</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Përpjekje: %1$lld nga %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Mbaje %@ shtypur për %lld sekonda.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Mbaje: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Mbaje %@ shtypur për %lld sekonda. Pastaj prek %@ %lld herë.</string>
+	<key>parentGate.shape.circle</key>
+	<string>rrethi</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombi</string>
+	<key>parentGate.shape.heart</key>
+	<string>zemra</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>gjashtëkëndëshi</string>
+	<key>parentGate.shape.plus</key>
+	<string>plus</string>
+	<key>parentGate.shape.square</key>
+	<string>katrori</string>
+	<key>parentGate.shape.star</key>
+	<string>ylli</string>
+	<key>parentGate.shape.triangle</key>
+	<string>trekëndëshi</string>
+	<key>parentGate.stepOne</key>
+	<string>Hapi 1 nga 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Hapi 2 nga 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Për të mbrojtur lojtarët e vegjël, një i rritur duhet ta kryejë këtë kontroll para blerjes.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Tani prek %2$@ %1$lld herë.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Prekje: %1$lld nga %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Duhet miratimi i një të rrituri</string>
+	<key>premium.availableAt %lld</key>
+	<string>I disponueshëm nga %lld trofe</string>
+	<key>premium.availableFromStart</key>
+	<string>I disponueshëm që nga fillimi</string>
+	<key>premium.characterUnlocked</key>
+	<string>U ZHBLLOKUA NJË PERSONAZH I RI</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ u zhbllokua</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Ke fituar %lld trofe</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Ekskluziv me Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Ekskluziv me Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Me Premium luan lirshëm me të 10 kafshët.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Të gjitha kafshët</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Gjithmonë detyra të reja për t’u ushtruar.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 nivele për temë</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Luaj pa asnjë ndërprerje.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Pa reklama</string>
+	<key>premium.oneTime</key>
+	<string>Një blerje e vetme. E jotja përgjithmonë.</string>
+	<key>premium.restore</key>
+	<string>Rikthe blerjet</string>
+	<key>premium.start</key>
+	<string>Fillo</string>
+	<key>premium.storeUnavailable</key>
+	<string>Dyqani nuk është i disponueshëm tani. Provo përsëri më vonë.</string>
+	<key>premium.unlock</key>
+	<string>Zhblloko Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Zhblloko Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Zhblloko me trofe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>U zhbllokua me Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Ke Premium!</string>
+	<key>settings.character</key>
+	<string>Personazhi</string>
+	<key>settings.characterInfo</key>
+	<string>Çdo kafshë i jep gjithë lojës temën e vet me ngjyra.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Personalizuar: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Objektivi ditor</string>
+	<key>settings.goalInfo</key>
+	<string>Objektivi i serisë nis me 5 minuta në ditë. Numërohet vetëm koha aktive e lojës.</string>
+	<key>settings.lives</key>
+	<string>Jetët</string>
+	<key>settings.livesInfo</key>
+	<string>Me tre jetë, loja mbaron pas zemrës së fundit. Në modalitetin pa kufi, trofetë numërohen vetëm sa ke jetë; më pas mund të vazhdosh të luash.</string>
+	<key>settings.playGoals</key>
+	<string>Objektivat e lojës</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium u zhbllokua. Faleminderit!</string>
+	<key>settings.title</key>
+	<string>Cilësimet</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Zgjidh një objektiv ditor</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Zgjidh një objektiv ditor ose javor</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld nga %3$lld minuta, %4$lld ditë rresht</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Seria ditore, %lld nga %lld minuta</string>
+	<key>streak.daily</key>
+	<string>Seria ditore</string>
+	<key>streak.dayOne</key>
+	<string>Dita 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Nuk e di përgjigjen? Prek detyrën për ta parë.</string>
+	<key>tutorial.complete</key>
+	<string>Të lumtë! Udhëzuesi përfundoi. Tani syno rekordin!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Hidhu mbi përgjigjen e saktë për të marrë një trofe.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Përgjigjja e saktë shfaqet me të gjelbër. Tani hidhu mbi të.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Tani hidhu mbi përgjigjen e saktë për të marrë trefish trofe.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Merr monedhën ×3 për të fituar trefish trofe një herë.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Mund të gjesh gjysmë jete ose një jetë të plotë për të rifituar jetë.</string>
+	<key>tutorial.minusOne</key>
+	<string>Shmang −1. Të kushton një trofe.</string>
+	<key>tutorial.move</key>
+	<string>Lëvize pajisjen për të shkuar majtas e djathtas. Mund të kalosh edhe nga anët e ekranit.</string>
+	<key>tutorial.platforms</key>
+	<string>Hidhu mbi platformat për t’u ngjitur.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Rezultati yt për këtë nivel shfaqet këtu.</string>
+	<key>tutorial.star</key>
+	<string>Hidhu te ylli për të larguar përgjigjet e gabuara.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Po zgjodhe gabim, humbet një nga tri jetët. Provoje tani.</string>
+</dict>
+</plist>

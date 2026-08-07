@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ఎలుగుబంటి</string>
+	<key>character.bunny</key>
+	<string>కుందేలు</string>
+	<key>character.crab</key>
+	<string>పీత</string>
+	<key>character.dog</key>
+	<string>కుక్క</string>
+	<key>character.elephant</key>
+	<string>ఏనుగు</string>
+	<key>character.fox</key>
+	<string>నక్క</string>
+	<key>character.frog</key>
+	<string>కప్ప</string>
+	<key>character.lion</key>
+	<string>సింహం</string>
+	<key>character.octopus</key>
+	<string>ఆక్టోపస్</string>
+	<key>character.penguin</key>
+	<string>పెంగ్విన్</string>
+	<key>character.pickerTitle</key>
+	<string>నీ పాత్రను ఎంచుకో</string>
+	<key>common.back</key>
+	<string>వెనక్కి</string>
+	<key>common.cancel</key>
+	<string>రద్దు</string>
+	<key>common.continue</key>
+	<string>కొనసాగించు</string>
+	<key>common.done</key>
+	<string>పూర్తి</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld నిమి</string>
+	<key>common.save</key>
+	<string>సేవ్</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>డెవలపర్ మోడ్ తెరవడానికి 2 సెకన్లు నొక్కి పట్టుకోండి.</string>
+	<key>developerMode.title</key>
+	<string>డెవలపర్ మోడ్</string>
+	<key>filter.addition</key>
+	<string>కూడిక</string>
+	<key>filter.fractions</key>
+	<string>భిన్నాలు</string>
+	<key>filter.mixed</key>
+	<string>సూపర్‌మిక్స్</string>
+	<key>filter.percentages</key>
+	<string>శాతాలు</string>
+	<key>filter.subtraction</key>
+	<string>తీసివేత</string>
+	<key>filter.tables</key>
+	<string>ఎక్కాలు</string>
+	<key>game.accessibility.mix</key>
+	<string>మిక్స్</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lldలో %lld</string>
+	<key>game.encouragement.0</key>
+	<string>మంచి ప్రయత్నం</string>
+	<key>game.encouragement.1</key>
+	<string>మంచి మొదలు</string>
+	<key>game.encouragement.2</key>
+	<string>సాధన చేస్తూ ఉండు</string>
+	<key>game.encouragement.3</key>
+	<string>అంత చెడ్డది కాదు</string>
+	<key>game.encouragement.4</key>
+	<string>బాగా చేస్తున్నావు</string>
+	<key>game.encouragement.5</key>
+	<string>చక్కని ప్రదర్శన</string>
+	<key>game.encouragement.6</key>
+	<string>బాగా చేశావు</string>
+	<key>game.encouragement.7</key>
+	<string>చాలా బాగా ఆడావు</string>
+	<key>game.encouragement.8</key>
+	<string>ముగింపు దగ్గరలోనే</string>
+	<key>game.encouragement.9</key>
+	<string>దాదాపు చేరుకున్నావు</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ప్రతి పాయింట్ సంపాదించావు.</string>
+	<key>game.end.completionSuffix</key>
+	<string>పూర్తయింది!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ఆట ముగిసింది</string>
+	<key>game.end.mainMenu</key>
+	<string>ప్రధాన మెనూ</string>
+	<key>game.end.playAgain</key>
+	<string>మళ్లీ ఆడు</string>
+	<key>game.highScore</key>
+	<string>అత్యధిక స్కోరు</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ప్రధాన మెనూకు వెళ్లు</string>
+	<key>game.intro.continue</key>
+	<string>కొనసాగించు</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld నుంచి కొనసాగిస్తావు</string>
+	<key>game.intro.helperBullet</key>
+	<string>సహాయకుడు ఆన్‌లో ఉన్నందున సరైన జవాబు ఆకుపచ్చగా కనిపిస్తుంది. అందుకే ట్రోఫీలను *తో విడిగా లెక్కిస్తారు.</string>
+	<key>game.intro.helperOff</key>
+	<string>సహాయకుడు ఆఫ్</string>
+	<key>game.intro.helperOn</key>
+	<string>సహాయకుడు ఆన్</string>
+	<key>game.intro.howItWorks</key>
+	<string>ఈ లెవల్ ఇలా పనిచేస్తుంది</string>
+	<key>game.intro.livesOff</key>
+	<string>లైఫ్‌లు ఆఫ్</string>
+	<key>game.intro.livesOn</key>
+	<string>లైఫ్‌లు ఆన్</string>
+	<key>game.intro.scorePaused</key>
+	<string>నీ ప్రస్తుత స్కోరు నిలిపివేయబడుతుంది.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>క్షమించండి! చదివి వినిపించే సౌకర్యం నీ భాషలో ఇంకా అందుబాటులో లేదు.</string>
+	<key>game.intro.start</key>
+	<string>లెవల్ ప్రారంభించు</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ను 1 నుంచి 12 వరకు ఉన్న సంఖ్యతో గుణించు.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>లేదా తక్కువ</string>
+	<key>game.intro.tapToContinue</key>
+	<string>కొనసాగించడానికి ఎక్కడైనా తాకు</string>
+	<key>game.intro.tapToStart</key>
+	<string>ప్రారంభించడానికి ఎక్కడైనా తాకు</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ప్రతి సరైన జవాబుకు |1| ట్రోఫీ పొందు, గరిష్ఠంగా |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>లైఫ్‌లు అయిపోయాక ట్రోఫీలు సంపాదించలేవు.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>లీడర్‌బోర్డ్‌కు గరిష్ఠ ట్రోఫీలు చేరుకున్నాయి</string>
+	<key>game.status.mixMode</key>
+	<string>మిక్స్ మోడ్</string>
+	<key>game.status.scoreLocked</key>
+	<string>లైఫ్‌లు అయిపోయాక ట్రోఫీలు లెక్కలోకి రావు</string>
+	<key>game.streak.subtitle</key>
+	<string>ట్రోఫీలు ×2</string>
+	<key>game.streak.title</key>
+	<string>వరుసగా 5!</string>
+	<key>goal.period</key>
+	<string>లక్ష్య కాలం</string>
+	<key>goal.promptDaily</key>
+	<string>రోజుకు ఎన్ని నిమిషాలు ఆడాలనుకుంటున్నావు?</string>
+	<key>goal.promptWeekly</key>
+	<string>వారానికి ఎన్ని నిమిషాలు ఆడాలనుకుంటున్నావు?</string>
+	<key>goal.title</key>
+	<string>ఆట లక్ష్యం</string>
+	<key>goalPeriod.daily</key>
+	<string>రోజువారీ</string>
+	<key>goalPeriod.weekly</key>
+	<string>వారానికొకసారి</string>
+	<key>info.filter.addition</key>
+	<string>కూడిక మాత్రమే</string>
+	<key>info.filter.fractions</key>
+	<string>భాగహారం మాత్రమే</string>
+	<key>info.filter.header</key>
+	<string>లెక్కల రకాలు</string>
+	<key>info.filter.mixed</key>
+	<string>మిశ్రమ లెక్కలు</string>
+	<key>info.filter.percentages</key>
+	<string>శాతాలు మాత్రమే</string>
+	<key>info.filter.subtraction</key>
+	<string>తీసివేత మాత్రమే</string>
+	<key>info.filter.tables</key>
+	<string>గుణకారం మాత్రమే</string>
+	<key>info.mode.fractions.header</key>
+	<string>భాగాలు</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ఒకటి లేదా ఎక్కువ భాగాలు</string>
+	<key>info.mode.fractions.single</key>
+	<string>ఎప్పుడూ ఒక భాగం</string>
+	<key>info.mode.header</key>
+	<string>క్రమం</string>
+	<key>info.mode.mixed</key>
+	<string>తక్కువ లెవల్‌లతో కలిపి</string>
+	<key>info.mode.order</key>
+	<string>స్థిర క్రమం</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>దశాంశ సంఖ్యలతో</string>
+	<key>info.mode.percentages.header</key>
+	<string>రకం</string>
+	<key>info.mode.percentages.whole</key>
+	<string>దశాంశ సంఖ్యలు లేకుండా</string>
+	<key>info.mode.random</key>
+	<string>యాదృచ్ఛిక క్రమం</string>
+	<key>info.super.all</key>
+	<string>కూడిక, తీసివేత, గుణకారం, భాగహారం, శాతాలు</string>
+	<key>info.super.basic</key>
+	<string>కూడిక మరియు తీసివేత</string>
+	<key>info.super.fraction</key>
+	<string>కూడిక, తీసివేత, గుణకారం మరియు భాగహారం</string>
+	<key>info.super.times</key>
+	<string>కూడిక, తీసివేత మరియు గుణకారం</string>
+	<key>language.select</key>
+	<string>భాషను ఎంచుకో</string>
+	<key>lives.three</key>
+	<string>3 లైఫ్‌లు</string>
+	<key>lives.unlimited</key>
+	<string>అపరిమితం</string>
+	<key>menu.accessibility.character</key>
+	<string>పాత్ర</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>పాత్రను మార్చడానికి తాకు; స్వాగత తెర నుంచి మళ్లీ మొదలుపెట్టడానికి రెండు సెకన్లు నొక్కి పట్టుకో.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ను ఎంచుకో</string>
+	<key>menu.maxScore</key>
+	<string>గరిష్ఠం 30</string>
+	<key>menu.maximumCount</key>
+	<string>గరిష్ఠం</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>గరిష్ఠాన్ని %lld సార్లు చేరుకున్నావు</string>
+	<key>menu.moreLevels</key>
+	<string>మరిన్ని లెవల్‌లు</string>
+	<key>menu.options</key>
+	<string>ఆట ఎంపికలు</string>
+	<key>menu.premium</key>
+	<string>ప్రీమియం</string>
+	<key>menu.premiumTables</key>
+	<string>ప్రీమియం ఎక్కాలు</string>
+	<key>menu.startHere</key>
+	<string>ఇక్కడ మొదలుపెట్టు</string>
+	<key>menu.unlockWithPremium</key>
+	<string>ప్రీమియంతో మరిన్ని తెరువు</string>
+	<key>mode.fractions.multiple</key>
+	<string>ఎక్కువ భాగాలు</string>
+	<key>mode.fractions.single</key>
+	<string>ఒక భాగం</string>
+	<key>mode.mix</key>
+	<string>మిక్స్</string>
+	<key>mode.mixed</key>
+	<string>కలిపినవి</string>
+	<key>mode.order</key>
+	<string>క్రమం</string>
+	<key>mode.percentages.decimal</key>
+	<string>దశాంశం</string>
+	<key>mode.percentages.whole</key>
+	<string>పూర్ణం</string>
+	<key>mode.random</key>
+	<string>యాదృచ్ఛికం</string>
+	<key>mode.standard</key>
+	<string>సాధారణం</string>
+	<key>modeIntro.addition.intro</key>
+	<string>నీకు |కూడిక| లెక్కలు మాత్రమే వస్తాయి.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>మరో సంఖ్యకు %lld |లేదా తక్కువ| కలుపుతావు.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>|పెరుగుతున్న| క్రమంలో ఎప్పుడూ %lld కలుపుతావు.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>|యాదృచ్ఛిక| సంఖ్యకు ఎప్పుడూ %lld కలుపుతావు.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>కూడిక · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>రెండు సంఖ్యలను కలుపుతూ ఉండు.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>జవాబు గరిష్ఠంగా %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld వరకు కూడిక</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>నీకు |భిన్నాల| లెక్కలు మాత్రమే వస్తాయి.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ఈ లెవల్ మరియు |మునుపటి లెవల్‌ల| భిన్నాలు వస్తాయి.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld సమాన భాగాల్లో |1 భాగం| తీసుకుంటావు.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lldవ లెవల్ మరియు మునుపటి లెవల్‌ల గుండ్రని సంఖ్యల భిన్నాలను లెక్కించు.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>సంఖ్యలు గుండ్రంగా ఉంటాయి, కాబట్టి జవాబులు పూర్ణసంఖ్యలే.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld వరకు భిన్నాలు</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld సమాన భాగాల్లో ఒకటి లేదా |ఎక్కువ భాగాలు| తీసుకుంటావు.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>భిన్నాలు · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>మొత్తంలో ఒక భాగాన్ని లెక్కించి, భిన్నాలను సమానం చేయి.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ఒకే హారం ఉన్న భిన్నాలను కూడి, తీసివేయి.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>మిశ్రమ భిన్నాలు</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>నీకు |శాతాల| లెక్కలు మాత్రమే వస్తాయి.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ఈ లెవల్ మరియు |మునుపటి లెవల్‌ల| శాతాలు వస్తాయి.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>ఎప్పుడూ %@ లెక్కిస్తావు, జవాబు |పూర్ణసంఖ్య|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld వరకు గుండ్రని సంఖ్యల శాతాలను లెక్కించు.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>మొత్తాలు గుండ్రంగా ఉంటాయి, కాబట్టి జవాబులు పూర్ణసంఖ్యలే.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld వరకు శాతాలు</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>ఎప్పుడూ %@ లెక్కిస్తావు, జవాబు |దశాంశం| కూడా కావచ్చు.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ లెక్కించు</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ఒక సంఖ్యలోని శాతాన్ని లెక్కించు.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>శాతాలను భిన్నాలుగా, భిన్నాలను శాతాలుగా మార్చు.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>మిశ్రమ శాతాలు</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>నీకు |తీసివేత| లెక్కలు మాత్రమే వస్తాయి.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>మరో సంఖ్య నుంచి %lld |లేదా తక్కువ| తీసివేస్తావు.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>|తగ్గుతున్న| క్రమంలో ఎప్పుడూ %lld తీసివేస్తావు.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>|యాదృచ్ఛిక| సంఖ్య నుంచి ఎప్పుడూ %lld తీసివేస్తావు.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>తీసివేత · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>మొదటి సంఖ్య గరిష్ఠంగా %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>జవాబు సున్నా కంటే తక్కువ కావచ్చు.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>సున్నా కంటే తక్కువ</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld వరకు తీసివేత</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>రెండు సంఖ్యలను తీసివేస్తూ ఉండు.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ఎంచుకున్న ప్రతి విభాగంలో కష్టం |లెవల్ %lld| వరకు పెరగవచ్చు.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>కూడిక, తీసివేత, ఎక్కాలు, భిన్నాలు, శాతాలను కలిపి సాధన చేయి.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>సూపర్‌మిక్స్ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>కూడిక, తీసివేతలను కలిపి సాధన చేయి.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>సూపర్‌మిక్స్ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>కూడిక, తీసివేత, ఎక్కాలు, భిన్నాలను కలిపి సాధన చేయి.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>సూపర్‌మిక్స్ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>కూడిక, తీసివేత, ఎక్కాలను కలిపి సాధన చేయి.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>సూపర్‌మిక్స్ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>నీకు |గుణకారం| లెక్కలు మాత్రమే వస్తాయి.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld వరకు| అన్ని ఎక్కాలు కలిపి వస్తాయి.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ప్రతి ఎక్కాన్ని |1 నుంచి 12| వరకు ఉన్న సంఖ్యతో గుణించు.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldవ ఎక్కం |పెరుగుతున్న| క్రమంలో వస్తుంది.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldవ ఎక్కం |యాదృచ్ఛిక| క్రమంలో వస్తుంది.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldవ ఎక్కం</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld నుంచి %lld వరకు ఎక్కాలను కలిపి సాధన చేయి.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ఎక్కాలు %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>నీ పేరు</string>
+	<key>name.whatsYourName</key>
+	<string>నీ పేరేంటి?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@ను తెరవడానికి మరికొన్ని ట్రోఫీలు సంపాదించు! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ఇంకా %lld ట్రోఫీలు మాత్రమే! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>నీ జంతువులు ఎదురుచూస్తున్నాయి. మళ్లీ వచ్చి ట్రోఫీలు సేకరిస్తూ ఉండు!</string>
+	<key>notif.comeback.title</key>
+	<string>నువ్వు గుర్తొస్తున్నావు! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld నిమిషాల సెషన్ మొదలుపెట్టి నీ వరుసను పెంచు.</string>
+	<key>notif.day3.title</key>
+	<string>మూడో రోజును పూర్తి చేద్దాం! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>తప్పు జవాబును దాటవేసి పైకి ఎక్కడానికి జంప్ ప్యాడ్ వాడు!</string>
+	<key>notif.jumppad.title</key>
+	<string>తప్పు జవాబులను దాటి దూకు! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ప్రతి అంశానికి %lld లెవల్‌లు, మొత్తం 10 జంతువుల కోసం ప్రీమియం తీసుకో — సాహసం కొనసాగుతుంది.</string>
+	<key>notif.premium.title</key>
+	<string>మరిన్ని లెవల్‌లు, జంతువులను తెరువు! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld రోజులైంది. కొన్ని లెక్కలు చేసి మరిన్ని ట్రోఫీలు సంపాదిద్దాం!</string>
+	<key>notif.reactivate.title</key>
+	<string>మళ్లీ ఆడటానికి సిద్ధమా? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld నిమిషాలు ఆడి వరుసను కొనసాగించు!</string>
+	<key>notif.streak.title %lld</key>
+	<string>నీ %lld రోజుల వరుస దూసుకుపోతోంది! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>బాగా చేశావు! %lld నిమిషాలు ఆడి ఇంకా ఎక్కువ సేకరిద్దాం.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>నువ్వు %lld ట్రోఫీలు సంపాదించావు! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>దీంతో నీ మొత్తం %lld ట్రోఫీలకు చేరింది. అద్భుతం!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ఈ వారం నువ్వు %lld ట్రోఫీలు సంపాదించావు! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>వేర్వేరు మిక్స్ లెక్కలు కలిపి.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ఇప్పటికే బాగానే వచ్చు</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>లెక్కలను క్రమంగా సాధన చేయి.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ఇప్పుడే మొదలు</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>యాదృచ్ఛిక క్రమంలో లెక్కలు.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>కొంత సాధన చేశావు</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ కోసం ప్రారంభ స్థాయిని ఎంచుకో.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ఈ అంశం</string>
+	<key>onboarding.level.title</key>
+	<string>ఇది నీకు ఇప్పటికే ఎంత బాగా వచ్చు?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>మొదలుపెడదాం. నీ పేరేంటి?</string>
+	<key>onboarding.name.title</key>
+	<string>లెక్కలు చేయడం ఇంత సరదాగా ఎప్పుడూ లేదు!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>మొదలుపెట్టడానికి ఒక అంశాన్ని ఎంచుకో.</string>
+	<key>onboarding.subject.title</key>
+	<string>నువ్వు ఏం నేర్చుకోవాలనుకుంటున్నావు?</string>
+	<key>options.capAt30.info</key>
+	<string>ప్రతి లెవల్‌లో గరిష్ఠంగా 50 ట్రోఫీల లక్ష్యం ఉంటుంది. ఈ ఎంపిక ఆన్‌లో ఉంటే, లక్ష్యాన్ని చేరగానే ఆట ముగుస్తుంది.</string>
+	<key>options.capAt30.title</key>
+	<string>లక్ష్యం వద్ద ముగించు</string>
+	<key>options.helperMode.info</key>
+	<string>సహాయక మోడ్‌లో సరైన జవాబు ఎప్పుడూ ఆకుపచ్చగా కనిపిస్తుంది. ఈ మోడ్‌లో పొందిన ట్రోఫీలను విడిగా లెక్కించి నక్షత్రంతో గుర్తిస్తారు.</string>
+	<key>options.helperMode.title</key>
+	<string>సహాయక మోడ్</string>
+	<key>options.unlimitedLives.info</key>
+	<string>నువ్వు ఎప్పుడూ 3 లైఫ్‌లతో మొదలుపెడతావు. లైఫ్‌లు అయిపోతే ఆట ముగుస్తుంది. లైఫ్‌లు అయిపోయాక కూడా ఆడి సాధన చేయడానికి దీన్ని ఆన్ చేయి.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>అపరిమిత లైఫ్‌లు</string>
+	<key>parentGate.approved</key>
+	<string>ఆమోదించబడింది</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ప్రయత్నాలు: %1$lldలో %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ను %lld సెకన్లు నొక్కి పట్టుకోండి.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>పట్టుకోండి: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ను %lld సెకన్లు నొక్కి పట్టుకోండి. తర్వాత %@ను %lld సార్లు తాకండి.</string>
+	<key>parentGate.shape.circle</key>
+	<string>వృత్తం</string>
+	<key>parentGate.shape.diamond</key>
+	<string>వజ్రం</string>
+	<key>parentGate.shape.heart</key>
+	<string>గుండె</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>షడ్భుజి</string>
+	<key>parentGate.shape.plus</key>
+	<string>ప్లస్</string>
+	<key>parentGate.shape.square</key>
+	<string>చతురస్రం</string>
+	<key>parentGate.shape.star</key>
+	<string>నక్షత్రం</string>
+	<key>parentGate.shape.triangle</key>
+	<string>త్రిభుజం</string>
+	<key>parentGate.stepOne</key>
+	<string>2లో 1వ దశ</string>
+	<key>parentGate.stepTwo</key>
+	<string>2లో 2వ దశ</string>
+	<key>parentGate.subtitle</key>
+	<string>చిన్నారులను రక్షించడానికి, కొనుగోలుకు వెళ్లే ముందు ఒక పెద్దవారు ఈ తనిఖీని పూర్తి చేయాలి.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ఇప్పుడు %2$@ను %1$lld సార్లు తాకండి.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>తాకినవి: %1$lldలో %2$lld</string>
+	<key>parentGate.title</key>
+	<string>పెద్దవారి ఆమోదం అవసరం</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ట్రోఫీల నుంచి అందుబాటులో</string>
+	<key>premium.availableFromStart</key>
+	<string>మొదటి నుంచి అందుబాటులో</string>
+	<key>premium.characterUnlocked</key>
+	<string>కొత్త పాత్ర తెరుచుకుంది</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ తెరుచుకుంది</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>నువ్వు %lld ట్రోఫీలు సంపాదించావు</string>
+	<key>premium.exclusiveBadge</key>
+	<string>ప్రీమియంతో మాత్రమే</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>ప్రీమియంతో మాత్రమే</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>ప్రీమియంతో మొత్తం 10 జంతువులతో స్వేచ్ఛగా ఆడవచ్చు.</string>
+	<key>premium.feature.animals.title</key>
+	<string>అన్ని జంతువులు అందుబాటులో</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>సాధనకు ఎప్పుడూ కొత్త లెక్కలు ఉంటాయి.</string>
+	<key>premium.feature.levels.title</key>
+	<string>ప్రతి అంశానికి 99 లెవల్‌లు</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>ఎలాంటి అంతరాయం లేకుండా ఆడు.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ప్రకటనలు లేవు</string>
+	<key>premium.oneTime</key>
+	<string>ఒక్కసారి కొనండి. ఎప్పటికీ మీదే.</string>
+	<key>premium.restore</key>
+	<string>కొనుగోళ్లను పునరుద్ధరించు</string>
+	<key>premium.start</key>
+	<string>మొదలు</string>
+	<key>premium.storeUnavailable</key>
+	<string>స్టోర్ ఇప్పుడు అందుబాటులో లేదు. తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+	<key>premium.unlock</key>
+	<string>ప్రీమియం తెరువు</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>ప్రీమియం తెరువు · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ట్రోఫీలతో తెరువు</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>ప్రీమియంతో తెరుచుకుంది</string>
+	<key>premium.youHavePremium</key>
+	<string>నీకు ప్రీమియం ఉంది!</string>
+	<key>settings.character</key>
+	<string>పాత్ర</string>
+	<key>settings.characterInfo</key>
+	<string>ప్రతి జంతువు ఆట మొత్తానికి తనదైన రంగుల రూపాన్ని ఇస్తుంది.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>అనుకూలం: %lld నిమి</string>
+	<key>settings.dailyGoal</key>
+	<string>రోజువారీ లక్ష్యం</string>
+	<key>settings.goalInfo</key>
+	<string>వరుస లక్ష్యం రోజుకు 5 నిమిషాల నుంచి మొదలవుతుంది. చురుకుగా ఆడిన సమయం మాత్రమే లెక్కలోకి వస్తుంది.</string>
+	<key>settings.lives</key>
+	<string>లైఫ్‌లు</string>
+	<key>settings.livesInfo</key>
+	<string>మూడు లైఫ్‌లతో చివరి గుండె పోగానే ఆట ముగుస్తుంది. అపరిమిత మోడ్‌లో లైఫ్‌లు ఉన్నంతవరకే ట్రోఫీలు లెక్కలోకి వస్తాయి; తర్వాత కూడా ఆడవచ్చు.</string>
+	<key>settings.playGoals</key>
+	<string>ఆట లక్ష్యాలు</string>
+	<key>settings.premiumUnlocked</key>
+	<string>ప్రీమియం తెరుచుకుంది. ధన్యవాదాలు!</string>
+	<key>settings.title</key>
+	<string>సెట్టింగ్‌లు</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>రోజువారీ లక్ష్యాన్ని ఎంచుకో</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>రోజువారీ లేదా వారపు లక్ష్యాన్ని ఎంచుకో</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld నిమిషాల్లో %2$lld, వరుసగా %4$lld రోజులు</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>రోజువారీ వరుస, %lld నిమిషాల్లో %lld</string>
+	<key>streak.daily</key>
+	<string>రోజువారీ వరుస</string>
+	<key>streak.dayOne</key>
+	<string>1వ రోజు</string>
+	<key>tutorial.answerHint</key>
+	<string>జవాబు తెలియదా? చూడటానికి లెక్కను తాకు.</string>
+	<key>tutorial.complete</key>
+	<string>బాగా చేశావు! సూచనాభ్యాసం పూర్తయింది. ఇప్పుడు అత్యధిక స్కోరు సాధించు!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ట్రోఫీని పొందడానికి సరైన జవాబుపై దూకు.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>సరైన జవాబు ఆకుపచ్చగా కనిపిస్తుంది. ఇప్పుడు దానిపై దూకు.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>మూడింతల ట్రోఫీలు పొందడానికి ఇప్పుడు సరైన జవాబుపై దూకు.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>ఒక్కసారి మూడింతల ట్రోఫీలు పొందడానికి ×3 నాణెం తీసుకో.</string>
+	<key>tutorial.lifePickup</key>
+	<string>లైఫ్‌లను తిరిగి పొందడానికి అర లైఫ్ లేదా పూర్తి లైఫ్ దొరుకుతుంది.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1ను తప్పించుకో. అది ఒక ట్రోఫీని తీసేస్తుంది.</string>
+	<key>tutorial.move</key>
+	<string>ఎడమకు, కుడికి వెళ్లడానికి పరికరాన్ని కదిలించు. తెర అంచుల గుండా కూడా వెళ్లవచ్చు.</string>
+	<key>tutorial.platforms</key>
+	<string>పైకి వెళ్లడానికి వేదికలపై దూకు.</string>
+	<key>tutorial.scoreHint</key>
+	<string>ఈ లెవల్‌లో నీ స్కోరు ఇక్కడ కనిపిస్తుంది.</string>
+	<key>tutorial.star</key>
+	<string>తప్పు జవాబులను తొలగించడానికి నక్షత్రంలోకి దూకు.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>తప్పు జవాబును ఎంచుకుంటే మూడు లైఫ్‌లలో ఒకటి పోతుంది. ఇప్పుడు ప్రయత్నించు.</string>
+</dict>
+</plist>

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ভালুক</string>
+	<key>character.bunny</key>
+	<string>খৰগোশ</string>
+	<key>character.crab</key>
+	<string>কেঁকোৰা</string>
+	<key>character.dog</key>
+	<string>কুকুৰ</string>
+	<key>character.elephant</key>
+	<string>হাতী</string>
+	<key>character.fox</key>
+	<string>শিয়াল</string>
+	<key>character.frog</key>
+	<string>ভেকুলী</string>
+	<key>character.lion</key>
+	<string>সিংহ</string>
+	<key>character.octopus</key>
+	<string>অক্টোপাছ</string>
+	<key>character.penguin</key>
+	<string>পেংগুইন</string>
+	<key>character.pickerTitle</key>
+	<string>তোমাৰ চৰিত্ৰ বাছা</string>
+	<key>common.back</key>
+	<string>পিছলৈ</string>
+	<key>common.cancel</key>
+	<string>বাতিল</string>
+	<key>common.continue</key>
+	<string>আগলৈ</string>
+	<key>common.done</key>
+	<string>হ’ল</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld মিনিট</string>
+	<key>common.save</key>
+	<string>সংৰক্ষণ</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ডেভেলপাৰ মোড খোলিবলৈ ২ ছেকেণ্ড ধৰি ৰাখা।</string>
+	<key>developerMode.title</key>
+	<string>ডেভেলপাৰ মোড</string>
+	<key>filter.addition</key>
+	<string>যোগ</string>
+	<key>filter.fractions</key>
+	<string>ভগ্নাংশ</string>
+	<key>filter.mixed</key>
+	<string>ছুপাৰমিক্স</string>
+	<key>filter.percentages</key>
+	<string>শতাংশ</string>
+	<key>filter.subtraction</key>
+	<string>বিয়োগ</string>
+	<key>filter.tables</key>
+	<string>পূৰণৰ নামতা</string>
+	<key>game.accessibility.mix</key>
+	<string>মিক্স</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld ৰ ভিতৰত %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ভাল চেষ্টা</string>
+	<key>game.encouragement.1</key>
+	<string>আৰম্ভণি হৈছে</string>
+	<key>game.encouragement.2</key>
+	<string>অভ্যাস কৰি থাকা</string>
+	<key>game.encouragement.3</key>
+	<string>একেবাৰে বেয়া নহয়</string>
+	<key>game.encouragement.4</key>
+	<string>ভাল কৰি আছা</string>
+	<key>game.encouragement.5</key>
+	<string>সুন্দৰ খেলিলা</string>
+	<key>game.encouragement.6</key>
+	<string>বঢ়িয়া</string>
+	<key>game.encouragement.7</key>
+	<string>খুব ভাল খেলিলা</string>
+	<key>game.encouragement.8</key>
+	<string>শেষ দেখা গৈছে</string>
+	<key>game.encouragement.9</key>
+	<string>আৰু অলপ বাকী</string>
+	<key>game.end.completionSubtitle</key>
+	<string>তুমি প্ৰতিটো পইণ্ট অৰ্জন কৰিলা।</string>
+	<key>game.end.completionSuffix</key>
+	<string>সম্পূৰ্ণ!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>খেল শেষ</string>
+	<key>game.end.mainMenu</key>
+	<string>মূল মেনু</string>
+	<key>game.end.playAgain</key>
+	<string>আকৌ খেলা</string>
+	<key>game.highScore</key>
+	<string>সৰ্বোচ্চ স্ক’ৰ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>মূল মেনুলৈ উভতি যাওক</string>
+	<key>game.intro.continue</key>
+	<string>আগবাঢ়া</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>তুমি %lld ৰ পৰা আগবাঢ়িবা</string>
+	<key>game.intro.helperBullet</key>
+	<string>সহায়ক চালু থকাৰ বাবে সঠিক উত্তৰটো সেউজীয়া। সেয়ে ট্ৰফী * চিহ্নেৰে পৃথকে গণনা হয়।</string>
+	<key>game.intro.helperOff</key>
+	<string>সহায়ক বন্ধ</string>
+	<key>game.intro.helperOn</key>
+	<string>সহায়ক চালু</string>
+	<key>game.intro.howItWorks</key>
+	<string>এই লেভেল কেনেকৈ চলে</string>
+	<key>game.intro.livesOff</key>
+	<string>জীৱন বন্ধ</string>
+	<key>game.intro.livesOn</key>
+	<string>জীৱন চালু</string>
+	<key>game.intro.scorePaused</key>
+	<string>তোমাৰ বৰ্তমানৰ স্ক’ৰ থমকি থাকিব।</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>দুঃখিত! উচ্চস্বরে পড়ার সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।</string>
+	<key>game.intro.start</key>
+	<string>লেভেল আৰম্ভ</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ক ১ৰ পৰা ১২লৈ এটা সংখ্যাৰে পূৰণ কৰা।</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>বা কম</string>
+	<key>game.intro.tapToContinue</key>
+	<string>আগবাঢ়িবলৈ যিকোনো ঠাইত টেপ কৰা</string>
+	<key>game.intro.tapToStart</key>
+	<string>আৰম্ভ কৰিবলৈ যিকোনো ঠাইত টেপ কৰা</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>প্ৰতি সঠিক উত্তৰত |1|টা ট্ৰফী, সৰ্বাধিক |%lld|টা।</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>জীৱন শেষ হ’লে আৰু ট্ৰফী পাব নোৱাৰিবা।</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>লিডাৰব’ৰ্ডৰ সৰ্বাধিক ট্ৰফী পোৱা হ’ল</string>
+	<key>game.status.mixMode</key>
+	<string>মিক্স মোড</string>
+	<key>game.status.scoreLocked</key>
+	<string>জীৱন শেষ হ’লে ট্ৰফী আৰু গণনা নহয়</string>
+	<key>game.streak.subtitle</key>
+	<string>ট্ৰফী ×2</string>
+	<key>game.streak.title</key>
+	<string>একেৰাহে ৫টা!</string>
+	<key>goal.period</key>
+	<string>লক্ষ্যৰ সময়</string>
+	<key>goal.promptDaily</key>
+	<string>দিনে কিমান মিনিট খেলিব খোজা?</string>
+	<key>goal.promptWeekly</key>
+	<string>সপ্তাহত কিমান মিনিট খেলিব খোজা?</string>
+	<key>goal.title</key>
+	<string>খেলৰ লক্ষ্য</string>
+	<key>goalPeriod.daily</key>
+	<string>দৈনিক</string>
+	<key>goalPeriod.weekly</key>
+	<string>সাপ্তাহিক</string>
+	<key>info.filter.addition</key>
+	<string>কেৱল যোগ</string>
+	<key>info.filter.fractions</key>
+	<string>কেৱল ভাগ</string>
+	<key>info.filter.header</key>
+	<string>অংকৰ ধৰণ</string>
+	<key>info.filter.mixed</key>
+	<string>মিশ্ৰ ক্ৰিয়া</string>
+	<key>info.filter.percentages</key>
+	<string>কেৱল শতাংশ</string>
+	<key>info.filter.subtraction</key>
+	<string>কেৱল বিয়োগ</string>
+	<key>info.filter.tables</key>
+	<string>কেৱল পূৰণ</string>
+	<key>info.mode.fractions.header</key>
+	<string>অংশ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>এটা আৰু একাধিক অংশ</string>
+	<key>info.mode.fractions.single</key>
+	<string>সদায় এটা অংশ</string>
+	<key>info.mode.header</key>
+	<string>ক্ৰম</string>
+	<key>info.mode.mixed</key>
+	<string>আগৰ লেভেলৰ সৈতে মিশ্ৰ</string>
+	<key>info.mode.order</key>
+	<string>নিৰ্দিষ্ট ক্ৰম</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>দশমিক সংখ্যাসহ</string>
+	<key>info.mode.percentages.header</key>
+	<string>ধৰণ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>দশমিক সংখ্যা নোহোৱাকৈ</string>
+	<key>info.mode.random</key>
+	<string>যাদৃচ্ছিক ক্ৰম</string>
+	<key>info.super.all</key>
+	<string>যোগ, বিয়োগ, পূৰণ, ভাগ আৰু শতাংশ</string>
+	<key>info.super.basic</key>
+	<string>যোগ আৰু বিয়োগ</string>
+	<key>info.super.fraction</key>
+	<string>যোগ, বিয়োগ, পূৰণ আৰু ভাগ</string>
+	<key>info.super.times</key>
+	<string>যোগ, বিয়োগ আৰু পূৰণ</string>
+	<key>language.select</key>
+	<string>ভাষা বাছা</string>
+	<key>lives.three</key>
+	<string>৩টা জীৱন</string>
+	<key>lives.unlimited</key>
+	<string>সীমাহীন</string>
+	<key>menu.accessibility.character</key>
+	<string>চৰিত্ৰ</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>চৰিত্ৰ সলাবলৈ টেপ কৰা; স্বাগতম পৰ্দাৰ পৰা নতুনকৈ আৰম্ভ কৰিবলৈ দুই ছেকেণ্ড ধৰি ৰাখা।</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ বাছা</string>
+	<key>menu.maxScore</key>
+	<string>৩০ সৰ্বাধিক</string>
+	<key>menu.maximumCount</key>
+	<string>সৰ্বাধিক</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>সৰ্বাধিক %lld বাৰ পোৱা হৈছে</string>
+	<key>menu.moreLevels</key>
+	<string>আৰু লেভেল</string>
+	<key>menu.options</key>
+	<string>খেলৰ বিকল্প</string>
+	<key>menu.premium</key>
+	<string>প্ৰিমিয়াম</string>
+	<key>menu.premiumTables</key>
+	<string>প্ৰিমিয়াম নামতা</string>
+	<key>menu.startHere</key>
+	<string>ইয়াৰ পৰা আৰম্ভ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>প্ৰিমিয়ামেৰে আৰু খোলা</string>
+	<key>mode.fractions.multiple</key>
+	<string>একাধিক</string>
+	<key>mode.fractions.single</key>
+	<string>এটা</string>
+	<key>mode.mix</key>
+	<string>মিক্স</string>
+	<key>mode.mixed</key>
+	<string>মিশ্ৰ</string>
+	<key>mode.order</key>
+	<string>ক্ৰম</string>
+	<key>mode.percentages.decimal</key>
+	<string>দশমিক</string>
+	<key>mode.percentages.whole</key>
+	<string>পূৰ্ণ</string>
+	<key>mode.random</key>
+	<string>যাদৃচ্ছিক</string>
+	<key>mode.standard</key>
+	<string>মানক</string>
+	<key>modeIntro.addition.intro</key>
+	<string>তুমি কেৱল |যোগ|ৰ অংক পাবা।</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>তুমি আন এটা সংখ্যাত %lld |বা কম| যোগ কৰিবা।</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>তুমি সদায় %lld |উৰ্ধ্বক্ৰমত| যোগ কৰিবা।</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>তুমি সদায় এটা |যাদৃচ্ছিক| সংখ্যাত %lld যোগ কৰিবা।</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>যোগ · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>দুটা সংখ্যা যোগ কৰি যোৱা।</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>উত্তৰ সৰ্বাধিক %lld।</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld লৈ যোগ</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>তুমি কেৱল |ভগ্নাংশ|ৰ অংক পাবা।</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>এই লেভেল আৰু |আগৰ লেভেল|ৰ ভগ্নাংশ পাবা।</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lldটা সমান অংশৰ পৰা সদায় |১টা অংশ| লোৱা।</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld আৰু আগৰ লেভেলৰ ঘূৰণীয়া সংখ্যাৰ ভগ্নাংশ উলিওৱা।</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>সংখ্যাবোৰ ঘূৰণীয়া থাকে, সেয়ে উত্তৰ সদায় পূৰ্ণ সংখ্যা।</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld লৈ ভগ্নাংশ</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lldটা সমান অংশৰ পৰা এটা বা |একাধিক অংশ| লোৱা।</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ভগ্নাংশ · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>এটা সম্পূৰ্ণৰ অংশ উলিওৱা আৰু ভগ্নাংশ সমান কৰা।</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>একে হৰ থকা ভগ্নাংশ যোগ আৰু বিয়োগ কৰা।</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>মিশ্ৰ ভগ্নাংশ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>তুমি কেৱল |শতাংশ|ৰ অংক পাবা।</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>এই লেভেল আৰু |আগৰ লেভেল|ৰ শতাংশ পাবা।</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>সদায় %@ উলিওৱা, উত্তৰ এটা |পূৰ্ণ সংখ্যা|।</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld লৈ ঘূৰণীয়া সংখ্যাৰ শতাংশ উলিওৱা।</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>পৰিমাণবোৰ ঘূৰণীয়া থাকে, সেয়ে উত্তৰ সদায় পূৰ্ণ সংখ্যা।</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld লৈ শতাংশ</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>সদায় %@ উলিওৱা, উত্তৰ এটা |দশমিক|ও হ’ব পাৰে।</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ গণনা</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>এটা সংখ্যাৰ শতাংশ উলিওৱা।</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>শতাংশ আৰু ভগ্নাংশ ইটোক সিটোলৈ ৰূপান্তৰ কৰা।</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>মিশ্ৰ শতাংশ</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>তুমি কেৱল |বিয়োগ|ৰ অংক পাবা।</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>আন এটা সংখ্যাৰ পৰা %lld |বা কম| বিয়োগ কৰিবা।</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>তুমি সদায় %lld |অধঃক্ৰমত| বিয়োগ কৰিবা।</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>তুমি সদায় এটা |যাদৃচ্ছিক| সংখ্যাৰ পৰা %lld বিয়োগ কৰিবা।</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>বিয়োগ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>প্ৰথম সংখ্যাটো সৰ্বাধিক %lld।</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>উত্তৰ শূন্যৰ তললৈ যাব পাৰে।</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>শূন্যৰ তলত</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld লৈ বিয়োগ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>দুটা সংখ্যা বিয়োগ কৰি যোৱা।</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>বাছনি কৰা প্ৰতিটো ভাগত কঠিনতা |লেভেল %lld| লৈ বাঢ়িব পাৰে।</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>যোগ, বিয়োগ, নামতা, ভগ্নাংশ আৰু শতাংশ মিহলাই অভ্যাস কৰা।</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>ছুপাৰমিক্স %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>যোগ আৰু বিয়োগ মিহলাই অভ্যাস কৰা।</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>ছুপাৰমিক্স %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>যোগ, বিয়োগ, নামতা আৰু ভগ্নাংশ মিহলাই অভ্যাস কৰা।</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>ছুপাৰমিক্স %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>যোগ, বিয়োগ আৰু নামতা মিহলাই অভ্যাস কৰা।</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>ছুপাৰমিক্স %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>তুমি কেৱল |পূৰণ|ৰ অংক পাবা।</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld লৈকে| সকলো নামতা মিহলাই পাবা।</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>প্ৰতিটো নামতা |১ৰ পৰা ১২|লৈ এটা সংখ্যাৰে পূৰণ কৰা।</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldৰ নামতা |উৰ্ধ্বক্ৰমত| পাবা।</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldৰ নামতা |যাদৃচ্ছিক| ক্ৰমত পাবা।</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldৰ নামতা</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lldৰ পৰা %lldলৈ নামতা মিহলাই অভ্যাস কৰা।</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>নামতা %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>তোমাৰ নাম</string>
+	<key>name.whatsYourName</key>
+	<string>তোমাৰ নাম কি?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: এই জন্তুটোৰ তলা খুলিবলৈ আৰু কেইটামান ট্ৰফী অৰ্জন কৰক! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>মাত্ৰ %lld টা ট্ৰফী বাকী আছে! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>তোমাৰ জীৱ-জন্তুবোৰে ৰৈ আছে। খেলিবলৈ উভতি আহক আৰু ট্ৰফী সংগ্ৰহ কৰি থাকিব!</string>
+	<key>notif.comeback.title</key>
+	<string>আমি তোমাক মিছ কৰিছো! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld মিনিটৰ খেলা অধিবেশন আৰম্ভ কৰক আৰু আপোনাৰ দৈনিক খেলাৰ ধাৰা বৃদ্ধি কৰক।</string>
+	<key>notif.day3.title</key>
+	<string>3য় দিনটো ঘটাওঁ আহক! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ভুল উত্তৰ এৰিবলৈ আৰু বগাই যাবলৈ জাম্প পেড ব্যৱহাৰ কৰক!</string>
+	<key>notif.jumppad.title</key>
+	<string>ভুল উত্তৰৰ কাষেৰে জপিয়াই যাওক! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>জাম্পিং ফক্স প্ৰিমিয়ামত প্ৰতিটো বিষয় আৰু সকলো 10টা প্ৰাণীৰ বাবে %lldটা স্তৰ অন্তৰ্ভুক্ত কৰা হৈছে। দুঃসাহসিক অভিযান চলি থাকে!</string>
+	<key>notif.premium.title</key>
+	<string>অধিক স্তৰ আৰু প্ৰাণী আনলক! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld দিন হ'ল। আহকচোন কিছুমান গণিতৰ অনুশীলন সমাধান কৰি আৰু অধিক ট্ৰফী উপাৰ্জন কৰো!</string>
+	<key>notif.reactivate.title</key>
+	<string>আকৌ খেলিবলৈ সাজুনে? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld মিনিট খেলক আৰু আপোনাৰ দৈনন্দিন খেলাৰ ধাৰাটো চলি থাকিব!</string>
+	<key>notif.streak.title %lld</key>
+	<string>আপোনাৰ দৈনিক খেলাৰ ধাৰা %lld দিন হ’ল! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>ডাঙৰ কাম!%lld মিনিট খেলি আৰু অধিক সংগ্ৰহ কৰোঁ আহক।</string>
+	<key>notif.trophies.title %lld</key>
+	<string>%lld টা ট্ৰফী উপাৰ্জন কৰিলা! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>তেতিয়া আপোনাৰ মুঠ %lld ট্ৰফী হ’ব। আচৰিত কাম!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>এই সপ্তাহত আপুনি %lldটা ট্ৰফী অৰ্জন কৰিলে! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>বেলেগ বেলেগ মিশ্ৰ অংক একেলগে।</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ইতিমধ্যে যথেষ্ট ভাল</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ক্ৰমে থকা অংকৰে অভ্যাস কৰা।</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>এতিয়াহে আৰম্ভ</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>যাদৃচ্ছিক ক্ৰমৰ অংক।</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>ইতিমধ্যে অলপ অভ্যাস</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ৰ আৰম্ভণিৰ ঠাই বাছা।</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>এই বিষয়</string>
+	<key>onboarding.level.title</key>
+	<string>ইয়াত তুমি ইতিমধ্যে কিমান ভাল?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>আৰম্ভ কৰোঁ আহা। তোমাৰ নাম কি?</string>
+	<key>onboarding.name.title</key>
+	<string>অংক কৰা কেতিয়াও ইমান মজাৰ নাছিল!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>আৰম্ভ কৰিবলৈ এটা বিষয় বাছা।</string>
+	<key>onboarding.subject.title</key>
+	<string>তুমি কি শিকিব খোজা?</string>
+	<key>options.capAt30.info</key>
+	<string>প্ৰতিটো লেভেলত সৰ্বাধিক ৫০টা ট্ৰফীৰ লক্ষ্য আছে। এই বিকল্প চালু থাকিলে লক্ষ্য পোৱাৰ লগে লগে খেল নিজে শেষ হ’ব।</string>
+	<key>options.capAt30.title</key>
+	<string>লক্ষ্যত শেষ</string>
+	<key>options.helperMode.info</key>
+	<string>সহায়ক মোডত সঠিক উত্তৰ সদায় সেউজীয়া দেখুৱায়। এই মোডৰ ট্ৰফী পৃথকে গণনা হয় আৰু তাৰকা চিহ্ন থাকে।</string>
+	<key>options.helperMode.title</key>
+	<string>সহায়ক মোড</string>
+	<key>options.unlimitedLives.info</key>
+	<string>তুমি সদায় ৩টা জীৱনেৰে আৰম্ভ কৰা। জীৱন শেষ হ’লে খেল শেষ হ’ব। জীৱন শেষৰ পিছতো খেলি অভ্যাস কৰিবলৈ এই বিকল্প চালু কৰা।</string>
+	<key>options.unlimitedLives.title</key>
+	<string>সীমাহীন জীৱন</string>
+	<key>parentGate.approved</key>
+	<string>অনুমোদিত</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>চেষ্টা: %1$lld ৰ ভিতৰত %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@টো %lld ছেকেণ্ড ধৰি ৰাখা।</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ধৰি ৰাখা: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@টো %lld ছেকেণ্ড ধৰি ৰাখা। তাৰ পিছত %@টো %lld বাৰ টেপ কৰা।</string>
+	<key>parentGate.shape.circle</key>
+	<string>বৃত্ত</string>
+	<key>parentGate.shape.diamond</key>
+	<string>হীৰা</string>
+	<key>parentGate.shape.heart</key>
+	<string>হৃদয়</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ষড়ভুজ</string>
+	<key>parentGate.shape.plus</key>
+	<string>যোগ চিহ্ন</string>
+	<key>parentGate.shape.square</key>
+	<string>বৰ্গ</string>
+	<key>parentGate.shape.star</key>
+	<string>তৰা</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ত্ৰিভুজ</string>
+	<key>parentGate.stepOne</key>
+	<string>২ৰ ১ম ধাপ</string>
+	<key>parentGate.stepTwo</key>
+	<string>২ৰ ২য় ধাপ</string>
+	<key>parentGate.subtitle</key>
+	<string>সৰু খেলুৱৈক সুৰক্ষিত ৰাখিবলৈ ক্ৰয়ৰ আগতে এজন ডাঙৰে এই পৰীক্ষা সম্পূৰ্ণ কৰিব লাগিব।</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>এতিয়া %2$@টো %1$lld বাৰ টেপ কৰা।</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>টেপ: %1$lld ৰ ভিতৰত %2$lld</string>
+	<key>parentGate.title</key>
+	<string>ডাঙৰৰ অনুমোদন লাগিব</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lldটা ট্ৰফীৰ পৰা উপলব্ধ</string>
+	<key>premium.availableFromStart</key>
+	<string>আৰম্ভণিৰ পৰাই উপলব্ধ</string>
+	<key>premium.characterUnlocked</key>
+	<string>নতুন চৰিত্ৰ খোলা হ’ল</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ খোলা হ’ল</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>তুমি %lldটা ট্ৰফী অৰ্জন কৰিলা</string>
+	<key>premium.exclusiveBadge</key>
+	<string>কেৱল Premium-ত</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>কেৱল Premium-ত</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>প্ৰিমিয়ামত সকলো ১০টা জন্তুৰে মুক্তভাৱে খেলিব পাৰা।</string>
+	<key>premium.feature.animals.title</key>
+	<string>সকলো জন্তু ব্যৱহাৰ</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>অভ্যাসৰ বাবে সদায় নতুন অংক।</string>
+	<key>premium.feature.levels.title</key>
+	<string>প্ৰতি বিষয়ত ৯৯টা লেভেল</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>কোনো বাধা নোহোৱাকৈ খেলা।</string>
+	<key>premium.feature.noAds.title</key>
+	<string>বিজ্ঞাপন নাই</string>
+	<key>premium.oneTime</key>
+	<string>এবাৰ কিনিলেই চিৰদিন তোমাৰ।</string>
+	<key>premium.restore</key>
+	<string>ক্ৰয় পুনৰুদ্ধাৰ</string>
+	<key>premium.start</key>
+	<string>আৰম্ভ</string>
+	<key>premium.storeUnavailable</key>
+	<string>এতিয়া ষ্ট’ৰ উপলব্ধ নহয়। পিছত আকৌ চেষ্টা কৰা।</string>
+	<key>premium.unlock</key>
+	<string>প্ৰিমিয়াম খোলা</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>প্ৰিমিয়াম খোলা · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ট্ৰফীৰে খোলা</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium-এৰে খোলা হ’ল</string>
+	<key>premium.youHavePremium</key>
+	<string>তোমাৰ প্ৰিমিয়াম আছে!</string>
+	<key>settings.character</key>
+	<string>চৰিত্ৰ</string>
+	<key>settings.characterInfo</key>
+	<string>প্ৰতিটো জন্তুৱে গোটেই খেললৈ নিজৰ ৰঙৰ থিম আনে।</string>
+	<key>settings.customMinutes %lld</key>
+	<string>নিজৰ মতে: %lld মিনিট</string>
+	<key>settings.dailyGoal</key>
+	<string>দৈনিক লক্ষ্য</string>
+	<key>settings.goalInfo</key>
+	<string>একেৰাহে খেলাৰ লক্ষ্য দিনে ৫ মিনিটৰ পৰা আৰম্ভ। কেৱল সক্ৰিয় খেলৰ সময় গণনা হয়।</string>
+	<key>settings.lives</key>
+	<string>জীৱন</string>
+	<key>settings.livesInfo</key>
+	<string>৩টা জীৱনত শেষ হৃদয়ৰ পিছত খেল শেষ হয়। সীমাহীন মোডত জীৱন থকালৈকে ট্ৰফী গণনা হয়; তাৰ পিছতো খেলি থাকিব পাৰা।</string>
+	<key>settings.playGoals</key>
+	<string>খেলৰ লক্ষ্য</string>
+	<key>settings.premiumUnlocked</key>
+	<string>প্ৰিমিয়াম খোলা হ’ল। ধন্যবাদ!</string>
+	<key>settings.title</key>
+	<string>ছেটিংছ</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>এটা দৈনিক লক্ষ্য বাছা</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>দৈনিক বা সাপ্তাহিক লক্ষ্য বাছা</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld মিনিটৰ ভিতৰত %2$lld, একেৰাহে %4$lld দিন</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>দৈনিক ধাৰাবাহিকতা, %lld মিনিটৰ ভিতৰত %lld</string>
+	<key>streak.daily</key>
+	<string>দৈনিক ধাৰাবাহিকতা</string>
+	<key>streak.dayOne</key>
+	<string>১ম দিন</string>
+	<key>tutorial.answerHint</key>
+	<string>উত্তৰ নাজানা? চাবলৈ অংকটো টেপ কৰা।</string>
+	<key>tutorial.complete</key>
+	<string>বঢ়িয়া! শিকনি শেষ। এতিয়া সৰ্বোচ্চ স্ক’ৰৰ বাবে খেলা!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ট্ৰফী পাবলৈ সঠিক উত্তৰৰ ওপৰত জঁপিওৱা।</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>সঠিক উত্তৰটো সেউজীয়া। এতিয়া তাৰ ওপৰত জঁপিওৱা।</string>
+	<key>tutorial.doubler.answer</key>
+	<string>তিনিগুণ ট্ৰফী পাবলৈ এতিয়া সঠিক উত্তৰৰ ওপৰত জঁপিওৱা।</string>
+	<key>tutorial.doubler.collect</key>
+	<string>এবাৰ তিনিগুণ ট্ৰফী পাবলৈ ×3 মুদ্ৰাটো লোৱা।</string>
+	<key>tutorial.lifePickup</key>
+	<string>জীৱন ঘূৰাই পাবলৈ আধা বা এটা পূৰ্ণ জীৱন বিচাৰি পাবা।</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 এৰাই চলা। ই এটা ট্ৰফী কমায়।</string>
+	<key>tutorial.move</key>
+	<string>বাওঁ-সোঁ যাবলৈ ডিভাইচটো লৰোৱা। পৰ্দাৰ কাষেদিও পাৰ হ’ব পাৰা।</string>
+	<key>tutorial.platforms</key>
+	<string>ওপৰলৈ যাবলৈ প্লেটফৰ্মত জঁপিওৱা।</string>
+	<key>tutorial.scoreHint</key>
+	<string>এই লেভেলৰ তোমাৰ স্ক’ৰ ইয়াত দেখা যায়।</string>
+	<key>tutorial.star</key>
+	<string>ভুল উত্তৰ আঁতৰাবলৈ তৰাটোৰ ভিতৰলৈ জঁপিওৱা।</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>ভুল উত্তৰ বাছিলে ৩টা জীৱনৰ এটা হেৰাবা। এতিয়া চেষ্টা কৰা।</string>
+</dict>
+</plist>

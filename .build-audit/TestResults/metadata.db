@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FormatVersion</key>
+	<integer>1</integer>
+	<key>Store</key>
+	<dict>
+		<key>Jumping FoxUITests</key>
+		<dict>
+			<key>ZZTextAuditUITests</key>
+			<dict>
+				<key>testAuditCharacterAndStreak</key>
+				<dict>
+					<key>mrnet</key>
+					<real>16.311820983886719</real>
+				</dict>
+				<key>testAuditGameplay</key>
+				<dict>
+					<key>mrnet</key>
+					<real>21.419617056846619</real>
+				</dict>
+				<key>testAuditMenuSurfaces</key>
+				<dict>
+					<key>mrnet</key>
+					<real>30.795252919197083</real>
+				</dict>
+				<key>testAuditOnboarding</key>
+				<dict>
+					<key>mrnet</key>
+					<real>14.007528901100159</real>
+				</dict>
+				<key>testAuditPremium</key>
+				<dict>
+					<key>mrnet</key>
+					<real>16.590435981750488</real>
+				</dict>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

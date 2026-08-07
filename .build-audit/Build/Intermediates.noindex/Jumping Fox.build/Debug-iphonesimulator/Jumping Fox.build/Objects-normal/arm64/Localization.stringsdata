@@ -1,0 +1,16 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Localization.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "language.select",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 371
+        }
+      }
+    ]
+  },
+  "version": 1
+}

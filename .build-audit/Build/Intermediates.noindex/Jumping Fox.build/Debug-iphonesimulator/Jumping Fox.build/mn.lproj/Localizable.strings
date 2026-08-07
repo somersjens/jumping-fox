@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Баавгай</string>
+	<key>character.bunny</key>
+	<string>Туулай</string>
+	<key>character.crab</key>
+	<string>Хавч</string>
+	<key>character.dog</key>
+	<string>Нохой</string>
+	<key>character.elephant</key>
+	<string>Заан</string>
+	<key>character.fox</key>
+	<string>Үнэг</string>
+	<key>character.frog</key>
+	<string>Мэлхий</string>
+	<key>character.lion</key>
+	<string>Арслан</string>
+	<key>character.octopus</key>
+	<string>Наймаалж</string>
+	<key>character.penguin</key>
+	<string>Оцон шувуу</string>
+	<key>character.pickerTitle</key>
+	<string>Дүрээ сонго</string>
+	<key>common.back</key>
+	<string>Буцах</string>
+	<key>common.cancel</key>
+	<string>Цуцлах</string>
+	<key>common.continue</key>
+	<string>Үргэлжлүүлэх</string>
+	<key>common.done</key>
+	<string>Боллоо</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld мин</string>
+	<key>common.save</key>
+	<string>Хадгалах</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Хөгжүүлэгчийн горимыг нээхийн тулд 2 секунд дар.</string>
+	<key>developerMode.title</key>
+	<string>Хөгжүүлэгчийн горим</string>
+	<key>filter.addition</key>
+	<string>Нэмэх</string>
+	<key>filter.fractions</key>
+	<string>Бутархай</string>
+	<key>filter.mixed</key>
+	<string>Супермикс</string>
+	<key>filter.percentages</key>
+	<string>Хувь</string>
+	<key>filter.subtraction</key>
+	<string>Хасах</string>
+	<key>filter.tables</key>
+	<string>Үржүүлэхийн хүрд</string>
+	<key>game.accessibility.mix</key>
+	<string>Холимог</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld-аас %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Сайн оролдлоо</string>
+	<key>game.encouragement.1</key>
+	<string>Сайхан эхлэл</string>
+	<key>game.encouragement.2</key>
+	<string>Дахин давтаарай</string>
+	<key>game.encouragement.3</key>
+	<string>Муугүй шүү</string>
+	<key>game.encouragement.4</key>
+	<string>Сайн байна</string>
+	<key>game.encouragement.5</key>
+	<string>Сайхан тоглолоо</string>
+	<key>game.encouragement.6</key>
+	<string>Мундаг</string>
+	<key>game.encouragement.7</key>
+	<string>Маш сайн тоглолоо</string>
+	<key>game.encouragement.8</key>
+	<string>Бариа ойрхон байна</string>
+	<key>game.encouragement.9</key>
+	<string>Бараг боллоо</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Чи бүх оноогоо авлаа.</string>
+	<key>game.end.completionSuffix</key>
+	<string>дууслаа!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Тоглоом дууслаа</string>
+	<key>game.end.mainMenu</key>
+	<string>Үндсэн цэс</string>
+	<key>game.end.playAgain</key>
+	<string>Дахин тоглох</string>
+	<key>game.highScore</key>
+	<string>Дээд оноо</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Үндсэн цэс рүү буцах</string>
+	<key>game.intro.continue</key>
+	<string>Үргэлжлүүлэн тоглох</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld-оос үргэлжлүүлнэ</string>
+	<key>game.intro.helperBullet</key>
+	<string>Туслагч асаалттай тул зөв хариултыг ногооноор харуулна. Тиймээс цомуудыг * тэмдэгтэйгээр тусад нь тоолно.</string>
+	<key>game.intro.helperOff</key>
+	<string>Туслагч унтраалттай</string>
+	<key>game.intro.helperOn</key>
+	<string>Туслагч асаалттай</string>
+	<key>game.intro.howItWorks</key>
+	<string>Энэ түвшин хэрхэн явагдах вэ</string>
+	<key>game.intro.livesOff</key>
+	<string>Амь унтраалттай</string>
+	<key>game.intro.livesOn</key>
+	<string>Амь асаалттай</string>
+	<key>game.intro.scorePaused</key>
+	<string>Одоогийн оноог түр зогсооно.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Уучлаарай! Чангаар унших функц таны хэл дээр хараахан боломжгүй байна.</string>
+	<key>game.intro.start</key>
+	<string>Түвшинг эхлүүлэх</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@-г 1-ээс 12 хүртэлх тоогоор үржүүл.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>эсвэл бага</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Үргэлжлүүлэхийн тулд хаана ч товш</string>
+	<key>game.intro.tapToStart</key>
+	<string>Эхлэхийн тулд хаана ч товш</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Зөв хариулт бүрд |1| цом, хамгийн ихдээ |%lld| цом авна.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Амь дууссаны дараа цом авах боломжгүй.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Онооны самбарын цомын дээд хэмжээнд хүрлээ</string>
+	<key>game.status.mixMode</key>
+	<string>ХОЛИМОГ ГОРИМ</string>
+	<key>game.status.scoreLocked</key>
+	<string>Амь дууссаны дараа цом тооцогдохгүй</string>
+	<key>game.streak.subtitle</key>
+	<string>Цом ×2</string>
+	<key>game.streak.title</key>
+	<string>5 дарааллаа!</string>
+	<key>goal.period</key>
+	<string>Зорилгын хугацаа</string>
+	<key>goal.promptDaily</key>
+	<string>Өдөрт хэдэн минут тоглох вэ?</string>
+	<key>goal.promptWeekly</key>
+	<string>Долоо хоногт хэдэн минут тоглох вэ?</string>
+	<key>goal.title</key>
+	<string>Тоглох зорилго</string>
+	<key>goalPeriod.daily</key>
+	<string>Өдөр бүр</string>
+	<key>goalPeriod.weekly</key>
+	<string>Долоо хоног бүр</string>
+	<key>info.filter.addition</key>
+	<string>Зөвхөн нэмэх</string>
+	<key>info.filter.fractions</key>
+	<string>Зөвхөн хуваах</string>
+	<key>info.filter.header</key>
+	<string>Бодлогын төрлүүд</string>
+	<key>info.filter.mixed</key>
+	<string>Холимог үйлдэл</string>
+	<key>info.filter.percentages</key>
+	<string>Зөвхөн хувь</string>
+	<key>info.filter.subtraction</key>
+	<string>Зөвхөн хасах</string>
+	<key>info.filter.tables</key>
+	<string>Зөвхөн үржүүлэх</string>
+	<key>info.mode.fractions.header</key>
+	<string>Хэсэг</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Нэг болон олон хэсэг</string>
+	<key>info.mode.fractions.single</key>
+	<string>Үргэлж нэг хэсэг</string>
+	<key>info.mode.header</key>
+	<string>Дараалал</string>
+	<key>info.mode.mixed</key>
+	<string>Доод түвшинтэй холих</string>
+	<key>info.mode.order</key>
+	<string>Тогтсон дараалал</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Аравтын бутархайтай</string>
+	<key>info.mode.percentages.header</key>
+	<string>Төрөл</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Аравтын бутархайгүй</string>
+	<key>info.mode.random</key>
+	<string>Санамсаргүй дараалал</string>
+	<key>info.super.all</key>
+	<string>Нэмэх, хасах, үржүүлэх, хуваах, хувь</string>
+	<key>info.super.basic</key>
+	<string>Нэмэх ба хасах</string>
+	<key>info.super.fraction</key>
+	<string>Нэмэх, хасах, үржүүлэх, хуваах</string>
+	<key>info.super.times</key>
+	<string>Нэмэх, хасах, үржүүлэх</string>
+	<key>language.select</key>
+	<string>Хэл сонгох</string>
+	<key>lives.three</key>
+	<string>3 амь</string>
+	<key>lives.unlimited</key>
+	<string>Хязгааргүй</string>
+	<key>menu.accessibility.character</key>
+	<string>Дүр</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Дүрээ солихын тулд товш; тавтай морилно уу дэлгэцээс дахин эхлэхийн тулд хоёр секунд дар.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@-г сонго</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Дээд хэмжээнд %lld удаа хүрсэн</string>
+	<key>menu.moreLevels</key>
+	<string>Бусад түвшин</string>
+	<key>menu.options</key>
+	<string>Тоглоомын тохиргоо</string>
+	<key>menu.premium</key>
+	<string>Премиум</string>
+	<key>menu.premiumTables</key>
+	<string>Премиум хүрдүүд</string>
+	<key>menu.startHere</key>
+	<string>Эндээс эхэл</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Премиумаар илүүг нээ</string>
+	<key>mode.fractions.multiple</key>
+	<string>Олон</string>
+	<key>mode.fractions.single</key>
+	<string>Нэг</string>
+	<key>mode.mix</key>
+	<string>Холимог</string>
+	<key>mode.mixed</key>
+	<string>Хольсон</string>
+	<key>mode.order</key>
+	<string>Дараалал</string>
+	<key>mode.percentages.decimal</key>
+	<string>Аравтын</string>
+	<key>mode.percentages.whole</key>
+	<string>Бүхэл</string>
+	<key>mode.random</key>
+	<string>Санамсаргүй</string>
+	<key>mode.standard</key>
+	<string>Стандарт</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Зөвхөн |нэмэх| бодлого бодно.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Өөр тоон дээр %lld |эсвэл бага| тоо нэмнэ.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>%lld-ыг үргэлж |өсөх| дарааллаар нэмнэ.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>%lld-ыг үргэлж |санамсаргүй| тоон дээр нэмнэ.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Нэмэх · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Хоёр тоог хооронд нь нэмээрэй.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Хариу хамгийн ихдээ %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld хүртэл нэмэх</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Зөвхөн |бутархайн| бодлого бодно.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Энэ болон |өмнөх түвшний| бутархайнууд орно.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld тэнцүү хэсгээс үргэлж |1 хэсэг| авна.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld болон өмнөх түвшний бүхэл тоонуудын бутархайг ол.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Тоонууд бүхэл тул хариу үргэлж бүхэл байна.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld хүртэлх бутархай</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld тэнцүү хэсгээс нэг эсвэл |олон хэсэг| авна.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Бутархай · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Бүхлийн нэг хэсгийг олж, бутархайнуудыг тэнцүү болго.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Ижил хуваарьтай бутархайнуудыг нэмээд хас.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Холимог бутархай</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Зөвхөн |хувийн| бодлого бодно.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Энэ болон |өмнөх түвшний| хувиуд орно.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Үргэлж %@-г олно. Хариу нь |бүхэл тоо| байна.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld хүртэлх бүхэл тооны хувийг ол.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Хэмжээнүүд бүхэл тул хариу үргэлж бүхэл байна.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld хүртэлх хувь</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Үргэлж %@-г олно. Хариу нь |аравтын бутархай| байж болно.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@-г бодох</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Тооны хувийг ол.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Хувь ба бутархайг хооронд нь хөрвүүл.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Холимог хувь</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Зөвхөн |хасах| бодлого бодно.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Өөр тооноос %lld |эсвэл бага| тоо хасна.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>%lld-ыг үргэлж |буурах| дарааллаар хасна.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>%lld-ыг үргэлж |санамсаргүй| тооноос хасна.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Хасах · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Эхний тоо хамгийн ихдээ %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Хариу тэгээс бага байж болно.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Тэгээс доош</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld хүртэл хасах</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Хоёр тоог хооронд нь хасаарай.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Сонгосон төрөл бүрийн хэцүү байдал |%lld-р түвшин| хүртэл нэмэгдэнэ.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Нэмэх, хасах, хүрд, бутархай, хувийг хольж давт.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Нэмэх, хасахыг хольж давт.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Нэмэх, хасах, хүрд, бутархайг хольж давт.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Нэмэх, хасах, хүрдийг хольж давт.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Супермикс %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Зөвхөн |үржүүлэх| бодлого бодно.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld хүртэлх| бүх хүрд холилдож орно.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Хүрд бүрийг |1-ээс 12| хүртэлх тоогоор үржүүлнэ.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld-ын хүрдийг |өсөх| дарааллаар бодно.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld-ын хүрдийг |санамсаргүй| дарааллаар бодно.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-ын хүрд</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld-оос %lld хүртэлх хүрдийг хольж давт.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Хүрд %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Чиний нэр</string>
+	<key>name.whatsYourName</key>
+	<string>Чамайг хэн гэдэг вэ?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Энэ амьтны түгжээг тайлахын тулд хэд хэдэн цом цуглуулаарай! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Зөвхөн %lld цом үлдлээ! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Таны амьтад хүлээж байна. Тоглохоор буцаж ирээд цом цуглуулж байгаарай!</string>
+	<key>notif.comeback.title</key>
+	<string>Бид чамайг санаж байна! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минутын тоглолтыг эхлүүлж, өдөр бүр тоглох цувралаа уртасга.</string>
+	<key>notif.day3.title</key>
+	<string>3 дахь өдрөө амжилттай болгоцгооё! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Jump Pad ашиглан буруу хариултыг алгасаад үргэлжлүүлэн авираарай!</string>
+	<key>notif.jumppad.title</key>
+	<string>Буруу хариултуудыг давж гараарай! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium нь сэдэв бүрийн %lld түвшин болон бүх 10 амьтныг агуулдаг. Адал явдал үргэлжилсээр байна!</string>
+	<key>notif.premium.title</key>
+	<string>Илүү олон түвшин, амьтдын түгжээг нээ! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld хонож байна. Математикийн дасгалуудыг шийдэж, илүү олон цом олцгооё!</string>
+	<key>notif.reactivate.title</key>
+	<string>Дахин тоглоход бэлэн үү? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут тоглож, өдөр тутмынхаа цувралыг үргэлжлүүлээрэй!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Таны өдөр тутмын тоглолтын цуврал %lld хоног боллоо! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Маш сайн ажил!%lld минут тоглож, бүр илүү ихийг цуглуулцгаая.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Та %lld цом авлаа! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Ингэснээр таны нийт %lld цом авчирна. Гайхалтай ажил!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Та энэ долоо хоногт %lld цом авлаа! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Өөр өөр холимог бодлогууд.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Аль хэдийн сайн</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Бодлогуудыг дарааллаар давт.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Дөнгөж эхэлсэн</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Бодлогууд санамсаргүй дараалалтай.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Бага зэрэг давтсан</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@-д эхлэх цэгээ сонго.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>энэ сэдэв</string>
+	<key>onboarding.level.title</key>
+	<string>Чи үүнийг хэр сайн мэдэх вэ?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Эхэлцгээе. Чамайг хэн гэдэг вэ?</string>
+	<key>onboarding.name.title</key>
+	<string>Бодлого бодох ийм хөгжилтэй байгаагүй!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Эхлэх сэдвээ сонго.</string>
+	<key>onboarding.subject.title</key>
+	<string>Юу сурмаар байна?</string>
+	<key>options.capAt30.info</key>
+	<string>Түвшин бүр 50 хүртэлх цомын зорилготой. Үүнийг асаавал зорилгодоо хүрэхэд тоглоом автоматаар дуусна.</string>
+	<key>options.capAt30.title</key>
+	<string>Зорилгод хүрээд дуусгах</string>
+	<key>options.helperMode.info</key>
+	<string>Туслагчийн горимд зөв хариултыг үргэлж ногооноор харуулна. Энэ горимд авсан цомыг тусад нь тоолж, одоор тэмдэглэнэ.</string>
+	<key>options.helperMode.title</key>
+	<string>Туслагчийн горим</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Чи үргэлж 3 амьтай эхэлнэ. Амь дуусахад тоглоом дуусна. Амь дууссан ч үргэлжлүүлэн тоглож, давтахын тулд үүнийг асаа.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Хязгааргүй амь</string>
+	<key>parentGate.approved</key>
+	<string>Зөвшөөрлөө</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Оролдлого: %1$lld-аас %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@-г %lld секунд дар.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Дарах: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@-г %lld секунд дар. Дараа нь %@ дээр %lld удаа товш.</string>
+	<key>parentGate.shape.circle</key>
+	<string>дугуй</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ромбо</string>
+	<key>parentGate.shape.heart</key>
+	<string>зүрх</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>зургаан өнцөгт</string>
+	<key>parentGate.shape.plus</key>
+	<string>нэмэх тэмдэг</string>
+	<key>parentGate.shape.square</key>
+	<string>дөрвөлжин</string>
+	<key>parentGate.shape.star</key>
+	<string>од</string>
+	<key>parentGate.shape.triangle</key>
+	<string>гурвалжин</string>
+	<key>parentGate.stepOne</key>
+	<string>2-ын 1-р алхам</string>
+	<key>parentGate.stepTwo</key>
+	<string>2-ын 2-р алхам</string>
+	<key>parentGate.subtitle</key>
+	<string>Бяцхан тоглогчдыг хамгаалахын тулд худалдан авалтаас өмнө насанд хүрсэн хүн энэ шалгалтыг давах ёстой.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Одоо %2$@ дээр %1$lld удаа товш.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Товшилт: %1$lld-аас %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Насанд хүрэгчийн зөвшөөрөл хэрэгтэй</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld цомоос эхлэн нээгдэнэ</string>
+	<key>premium.availableFromStart</key>
+	<string>Эхнээсээ нээлттэй</string>
+	<key>premium.characterUnlocked</key>
+	<string>ШИНЭ ДҮР НЭЭГДЛЭЭ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ нээгдлээ</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Чи %lld цом авсан</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Зөвхөн Premium-д</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Зөвхөн Premium-д</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Премиумтай бол 10 амьтнаар бүгдээр нь чөлөөтэй тоглоно.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Бүх амьтныг ашиглах</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Давтах шинэ бодлого үргэлж хангалттай.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Сэдэв бүрд 99 түвшин</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Ямар ч саадгүй тогло.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Зар сурталчилгаагүй</string>
+	<key>premium.oneTime</key>
+	<string>Нэг удаагийн худалдан авалт. Үүрд чинийх.</string>
+	<key>premium.restore</key>
+	<string>Худалдан авалтыг сэргээх</string>
+	<key>premium.start</key>
+	<string>Эхлэх</string>
+	<key>premium.storeUnavailable</key>
+	<string>Дэлгүүр одоогоор ажиллахгүй байна. Дараа дахин оролдоорой.</string>
+	<key>premium.unlock</key>
+	<string>Премиум нээх</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Премиум нээх · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Цомоор нээ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium-аар нээгдсэн</string>
+	<key>premium.youHavePremium</key>
+	<string>Чи Премиумтай!</string>
+	<key>settings.character</key>
+	<string>Дүр</string>
+	<key>settings.characterInfo</key>
+	<string>Амьтан бүр тоглоомд өөрийн өнгөний загварыг өгнө.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Өөрийн: %lld мин</string>
+	<key>settings.dailyGoal</key>
+	<string>Өдрийн зорилго</string>
+	<key>settings.goalInfo</key>
+	<string>Дарааллын зорилго өдөрт 5 минутаас эхэлнэ. Зөвхөн идэвхтэй тоглосон хугацааг тооцно.</string>
+	<key>settings.lives</key>
+	<string>Амь</string>
+	<key>settings.livesInfo</key>
+	<string>3 амьтай үед сүүлийн зүрхээ алдмагц тоглоом дуусна. Хязгааргүй горимд амьтай байх үед л цом тооцогдоно; дараа нь үргэлжлүүлэн тоглож болно.</string>
+	<key>settings.playGoals</key>
+	<string>Тоглох зорилгууд</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Премиум нээгдлээ. Баярлалаа!</string>
+	<key>settings.title</key>
+	<string>Тохиргоо</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Өдрийн зорилго сонго</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Өдрийн эсвэл долоо хоногийн зорилго сонго</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld минутаас %2$lld, %4$lld өдөр дараалан</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Өдрийн дараалал, %lld минутаас %lld</string>
+	<key>streak.daily</key>
+	<string>Өдрийн дараалал</string>
+	<key>streak.dayOne</key>
+	<string>1 дэх өдөр</string>
+	<key>tutorial.answerHint</key>
+	<string>Хариугаа мэдэхгүй байна уу? Бодлогыг товшиж хариуг хар.</string>
+	<key>tutorial.complete</key>
+	<string>Мундаг! Заавар дууслаа. Одоо дээд онооны төлөө тогло!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Зөв хариулт дээр үсэрч цом ав.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Зөв хариултыг ногооноор харууллаа. Одоо зөв хариулт дээр үсэр.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Зөв хариулт дээр үсэрч, гурав дахин олон цом ав.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>×3 зоосыг авч, нэг удаа гурав дахин олон цом ав.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Хагас эсвэл бүтэн амь олж, амь нөхөж болно.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1-ээс зайлсхий. Нэг цом хасагдана.</string>
+	<key>tutorial.move</key>
+	<string>Төхөөрөмжөө хөдөлгөж баруун, зүүн тийш яв. Дэлгэцийн хажуугаар нэвт гарч болно.</string>
+	<key>tutorial.platforms</key>
+	<string>Тавцан дээр үсэрч дээш гар.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Энэ түвшний оноо энд харагдана.</string>
+	<key>tutorial.star</key>
+	<string>Од руу үсэрч буруу хариултуудыг бууд.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Буруу хариулт сонговол гурван амийнхаа нэгийг алдана. Одоо туршаарай.</string>
+</dict>
+</plist>

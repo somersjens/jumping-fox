@@ -46,12 +46,23 @@ private enum GameHUDAnchor: Hashable {
     case heart(Int)
 }
 
-/// Frame of the read-aloud toggle on the start/pause card, so the
-/// "not available in your language" pop-out can anchor its caret to it.
-private struct SpokenBubbleAnchorKey: PreferenceKey {
-    static var defaultValue: Anchor<CGRect>? = nil
-    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
-        value = nextValue() ?? value
+/// The two explanations the start/pause card can raise from its icon buttons:
+/// why read-aloud is unavailable in this language (a small caret pop-out under
+/// the button), and why the tutorial cannot start while a level is already
+/// under way (a centred dialog, since it asks the player to do something).
+private enum IntroNotice: Hashable {
+    case spokenUnavailable
+    case tutorialBlocked
+}
+
+/// Frame of the read-aloud button on the start/pause card, so its pop-out can
+/// anchor its caret to exactly the button that was tapped.
+private struct IntroNoticeAnchorKey: PreferenceKey {
+    static var defaultValue: [IntroNotice: Anchor<CGRect>] = [:]
+
+    static func reduce(value: inout [IntroNotice: Anchor<CGRect>],
+                       nextValue: () -> [IntroNotice: Anchor<CGRect>]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
 
@@ -82,8 +93,6 @@ struct GameView: View {
     @ObservedObject private var tutorial = TutorialProgress.shared
     @ObservedObject private var audio = AppAudio.shared
     @Environment(\.layoutDirection) private var layoutDirection
-    @AppStorage(GameSettings.lifeModeKey) private var selectedLifeModeRaw = LifeMode.three.rawValue
-    @AppStorage(GameSettings.answerHelperKey) private var selectedAnswerHelper = false
 
     // Pre-game mode intro card. The field is frozen until the player starts.
     @State private var showingIntro: Bool
@@ -101,9 +110,9 @@ struct GameView: View {
     @State private var heartHintNudge: CGFloat = 0
     @State private var isAnswerHintFlying = false
     @State private var suppressIntroTap = false
-    /// Shown when the read-aloud toggle on the start/pause card is tapped while
-    /// spoken sums are unavailable in the current language.
-    @State private var showSpokenUnavailablePopup = false
+    /// The explanation currently popped out under one of the start/pause card's
+    /// icon buttons, if any.
+    @State private var introNotice: IntroNotice?
     @State private var isTutorialArrowBouncing = false
     @State private var showsTutorialCompletion = false
     /// The tutorial keeps one stable sum, and its equation is hidden during the
@@ -147,11 +156,9 @@ struct GameView: View {
             initialValue: state.score >= ProgressStore.maximumTrophies(for: level)
                 && !GameSettings.capsTrophiesAtThirty
         )
-        // The first ever level starts straight in the live tutorial. Normal
-        // runs restore the start screen; developer runs use it as an explicit
-        // launch gate so the game cannot start behind the test menu.
-        _showingIntro = State(initialValue: TutorialProgress.shared.developerMode
-                              || !TutorialProgress.shared.isActive)
+        // Every level opens on its start screen — including the very first one,
+        // whose action button starts the guided tutorial.
+        _showingIntro = State(initialValue: true)
     }
 
     var body: some View {
@@ -197,12 +204,17 @@ struct GameView: View {
                 introCard
             }
 
-            if tutorial.isActive, (1...11).contains(tutorial.currentStep),
-               tutorial.currentStep != 1 && !state.isGameOver && !showingIntro {
+            // Mounted for the whole tutorial and merely faded in and out.
+            // Building this capsule (its shadow above all) the first time a
+            // step calls for it used to hitch the frame that completed the
+            // lesson; laying it out once, behind the start card, does not.
+            if tutorial.isActive, !state.isGameOver {
                 VStack {
                     Spacer()
                     tutorialPrompt.padding(.bottom, 132)
                 }
+                .opacity(showsTutorialPrompt ? 1 : 0)
+                .animation(.easeInOut(duration: 0.2), value: showsTutorialPrompt)
                 .allowsHitTesting(false)
             }
 
@@ -275,14 +287,20 @@ struct GameView: View {
             // Reapply the gate on the next runloop so that layout cannot
             // accidentally release the field behind the start screen.
             DispatchQueue.main.async { scene.isFrozen = showingIntro }
-            isTutorialArrowBouncing = true
             PlaytimeTracker.shared.challengeStarted()
             setScreenAwake(true)
             AppAudio.shared.prepare()   // ensure players are loaded before play
             updateGameplayAudio()
+            if tutorial.isActive {
+                // Both are first needed several lessons in, where their
+                // first-use cost is a visible stutter. The start card is the
+                // calm moment to pay for them.
+                Prewarm.tutorialGlyphs()
+                scene.prepareHintHaptic()
+            }
         }
         .onDisappear {
-            if tutorial.developerMode { tutorial.leaveDeveloperMode() }
+            tutorial.endReplay()
             PlaytimeTracker.shared.challengeEnded()
             setScreenAwake(false)
             AppAudio.shared.setGameplayActive(false, questionText: nil)
@@ -449,10 +467,10 @@ struct GameView: View {
     }
 
     private func dismissIntroFromTap() {
-        // While the read-aloud explanation is up, a tap anywhere just closes it
-        // — it must not fall through and start/continue the game.
-        if showSpokenUnavailablePopup {
-            dismissSpokenUnavailable()
+        // While an explanation is up, a tap anywhere just closes it — it must
+        // not fall through and start/continue the game.
+        if introNotice != nil {
+            dismissIntroNotice()
             return
         }
         guard !suppressIntroTap else {
@@ -462,29 +480,35 @@ struct GameView: View {
         dismissIntro()
     }
 
-    private func showSpokenUnavailable() {
+    private func showIntroNotice(_ notice: IntroNotice) {
 #if canImport(UIKit)
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
 #endif
         withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) {
-            showSpokenUnavailablePopup = true
+            introNotice = notice
         }
     }
 
-    private func dismissSpokenUnavailable() {
-        withAnimation(.easeOut(duration: 0.16)) { showSpokenUnavailablePopup = false }
+    private func dismissIntroNotice() {
+        withAnimation(.easeOut(duration: 0.16)) { introNotice = nil }
     }
 
-    /// Hidden developer entry point: it belongs to the character on the
-    /// level's own start screen, not to the character on the main menu.
-    private func activateDeveloperTutorial() {
+    /// The tutorial button on the start screen. It replays the guided lessons
+    /// from the beginning, which needs a level that has not been started yet:
+    /// a paused or resumed run is explained rather than thrown away.
+    private func startTutorialFromIntro() {
         guard showingIntro else { return }
-        tutorial.enterDeveloperMode()
-        isContinuingLevel = false
-        isPausedAtIntro = false
-        PausedGameStore.shared.remove(state)
+        guard !isPausedIntro, state.score == 0 else {
+            showIntroNotice(.tutorialBlocked)
+            return
+        }
+        dismissIntroNotice()
+        // Restart the lesson plan first: the fresh field is then laid out for
+        // the tutorial's opening movement step.
+        tutorial.restart()
+        hasAnnouncedTutorialSum = false
         scene.resetGame()
-        scene.isFrozen = true
+        dismissIntro()
     }
 
     private func pauseToIntro() {
@@ -524,12 +548,11 @@ struct GameView: View {
                     VStack(alignment: .leading, spacing: 14) {
                         HStack(alignment: .top, spacing: 14) {
                             characterPortrait
-                            // The title and the status labels together span the
+                            // The title and the icon buttons together span the
                             // exact height of the character box: title pinned to
-                            // the top, labels to the bottom (the Spacer fills
+                            // the top, buttons to the bottom (the Spacer fills
                             // between). Both share this single column, which runs
-                            // as wide as possible while the HStack spacing leaves
-                            // a safety margin to the sound toggle on the right.
+                            // as wide as the card allows beside the portrait.
                             VStack(alignment: .leading, spacing: 0) {
                                 Text(info.title)
                                     .font(.system(size: 33 * gameTextScale * introTitleScale, weight: .heavy, design: .rounded))
@@ -538,21 +561,9 @@ struct GameView: View {
                                     .minimumScaleFactor(0.5)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Spacer(minLength: 0)
-                                // Status labels sit on their own row, sharing the
-                                // title's width and stopping short of the toggle.
-                                // Languages whose wording is too long for that
-                                // width keep only the "on"/"off" half of it, and
-                                // the few that still do not fit keep the icon.
-                                ViewThatFits(in: .horizontal) {
-                                    introSettingRow(labels: .full)
-                                    introSettingRow(labels: .state)
-                                    introSettingRow(labels: .none)
-                                }
+                                introControlRow
                             }
                             .frame(height: introPortraitSize)
-                            // Both audio choices share one outlined column with
-                            // exactly the same height as the character portrait.
-                            audioControlColumn
                         }
                         DashedDivider(color: theme.color.opacity(0.45))
                             .padding(.vertical, 4)
@@ -563,18 +574,15 @@ struct GameView: View {
 
                         VStack(spacing: 10) {
                             Button(action: dismissIntro) {
-                                Group {
-                                    if tutorial.developerMode {
-                                        Text("developerMode.title")
-                                    } else {
-                                        Text(isPausedIntro ? "game.intro.continue" : "game.intro.start")
-                                    }
-                                }
-                                .font(.system(size: 17 * introActionScale, weight: .heavy))
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 15 * introActionScale)
-                                .foregroundStyle(.white)
-                                .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                Text(introActionTitle)
+                                    .font(.system(size: 17 * introActionScale, weight: .heavy))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.6)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 15 * introActionScale)
+                                    .padding(.horizontal, 10)
+                                    .foregroundStyle(.white)
+                                    .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                             }
                             .buttonStyle(.plain)
 
@@ -611,21 +619,30 @@ struct GameView: View {
                 .scrollBounceBehavior(.basedOnSize)
             }
         }
-        .overlayPreferenceValue(SpokenBubbleAnchorKey.self) { anchor in
+        .overlayPreferenceValue(IntroNoticeAnchorKey.self) { anchor in
             spokenUnavailableOverlay(anchor)
         }
         .contentShape(Rectangle())
         .onTapGesture(perform: dismissIntroFromTap)
+        .overlay { tutorialNoticeDialog }
         .transition(.opacity)
     }
 
+    /// The wording of the big action button: continue a paused run, start the
+    /// guided tutorial, or simply start the level.
+    private var introActionTitle: LocalizedStringKey {
+        if isPausedIntro { return "game.intro.continue" }
+        return tutorial.isActive ? "game.intro.startTutorial" : "game.intro.start"
+    }
+
     /// The caret-topped card explaining that read-aloud is not available in the
-    /// current language, anchored beneath the tapped toggle. Styled like the
+    /// current language, anchored beneath the tapped button. Styled like the
     /// home-menu info pop-out, without a header.
     @ViewBuilder
-    private func spokenUnavailableOverlay(_ anchor: Anchor<CGRect>?) -> some View {
+    private func spokenUnavailableOverlay(_ anchors: [IntroNotice: Anchor<CGRect>]) -> some View {
         GeometryReader { geo in
-            if showSpokenUnavailablePopup, let anchor {
+            if introNotice == .spokenUnavailable,
+               let anchor = anchors[.spokenUnavailable] {
                 let rect = geo[anchor]
                 let cardWidth = min(240 * gameScale, geo.size.width - 24)
                 let anchorMidX = rect.midX
@@ -635,20 +652,83 @@ struct GameView: View {
                 let caret = min(max(anchorMidX - (x + cardWidth / 2), -caretLimit), caretLimit)
                 let y = rect.maxY + 6
 
-                SpokenUnavailableCard(message: L("game.intro.spokenUnavailable"),
-                                      caretOffset: caret,
-                                      theme: theme,
-                                      isPad: isPad)
+                IntroNoticeCard(message: L("game.intro.spokenUnavailable"),
+                                caretOffset: caret,
+                                theme: theme,
+                                isPad: isPad)
                     .frame(width: cardWidth)
                     .offset(x: x, y: y)
-                    .onTapGesture(perform: dismissSpokenUnavailable)
+                    .onTapGesture(perform: dismissIntroNotice)
                     .transition(.opacity.combined(with: .scale(scale: 0.9, anchor: .top)))
             }
+        }
+        // `x` and the caret are measured from the resolved anchor, whose
+        // coordinates always grow to the right. `offset` mirrors in a
+        // right-to-left language, so place the card in a left-to-right space
+        // and let the message itself keep its own writing direction.
+        .environment(\.layoutDirection, .leftToRight)
+    }
+
+    /// The tutorial button asks the player to finish or restart the level
+    /// first, so its explanation is a centred dialog with its own dismiss
+    /// button rather than a caret pop-out that a stray tap could close.
+    @ViewBuilder
+    private var tutorialNoticeDialog: some View {
+        if introNotice == .tutorialBlocked {
+            ZStack {
+                Color.black.opacity(0.28)
+                    .ignoresSafeArea()
+                    .contentShape(Rectangle())
+                    .onTapGesture(perform: dismissIntroNotice)
+
+                VStack(spacing: 12 * gameScale) {
+                    Image(systemName: "graduationcap.fill")
+                        .font(.system(size: 26 * gameTextScale, weight: .heavy))
+                        .foregroundStyle(theme.deepColor)
+                        .frame(width: 62 * gameScale, height: 62 * gameScale)
+                        .background(theme.skyColor, in: Circle())
+
+                    Text("tutorial.button")
+                        .font(.system(size: 21 * gameTextScale, weight: .heavy, design: .rounded))
+                        .foregroundStyle(theme.deepColor)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.6)
+
+                    Text(L("tutorial.notice.message"))
+                        .font(.system(size: 15 * gameTextScale, weight: .semibold))
+                        .foregroundStyle(theme.deepColor.opacity(0.72))
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    Button(action: dismissIntroNotice) {
+                        Text("common.done")
+                            .font(.system(size: 17 * introActionScale, weight: .heavy))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.6)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14 * introActionScale)
+                            .padding(.horizontal, 10)
+                            .foregroundStyle(.white)
+                            .background(theme.deepColor, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, 2)
+                }
+                .padding(24 * gameScale)
+                .frame(maxWidth: 340 * gameScale)
+                .background(.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
+                .shadow(color: .black.opacity(0.28), radius: 20, y: 8)
+                .padding(.horizontal, 24)
+            }
+            .transition(.opacity.combined(with: .scale(scale: 0.93)))
         }
     }
 
     /// Size of the character portrait on the start/pause card. The title and
-    /// its status labels are laid out to exactly this height.
+    /// its icon buttons are laid out to exactly this height.
     private var introPortraitSize: CGFloat { 70 * gameScale }
 
     private var characterPortrait: some View {
@@ -662,58 +742,59 @@ struct GameView: View {
             .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .stroke(theme.deepColor.opacity(0.12), lineWidth: 1))
-            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .highPriorityGesture(
-                LongPressGesture(minimumDuration: 2)
-                    .onEnded { _ in
-                        suppressIntroTap = true
-                        activateDeveloperTutorial()
-                    }
-            )
     }
 
-    private var audioControlColumn: some View {
-        VStack(spacing: 0) {
-            introAudioButton(
+    /// Music, read-aloud and the tutorial, side by side under the title. All
+    /// three are icon-only: no wording to translate, and no width that a long
+    /// translation could break.
+    private var introControlRow: some View {
+        HStack(spacing: 7 * gameScale) {
+            introIconButton(
                 icon: "music.note",
                 isOn: audio.gameSoundsEnabled,
                 isAvailable: true,
-                accessibilityLabel: audio.gameSoundsEnabled
-                    ? "Music and effects on" : "Music and effects off"
+                accessibilityLabel: Text(verbatim: audio.gameSoundsEnabled
+                                         ? "Music and effects on" : "Music and effects off")
             ) {
                 withAnimation(.snappy(duration: 0.2)) { audio.toggleGameSounds() }
             }
 
-            Rectangle()
-                .fill(theme.deepColor.opacity(0.15))
-                .frame(height: 1)
-                .padding(.horizontal, 7 * gameScale)
-
-            introAudioButton(
+            introIconButton(
                 icon: "text.bubble.fill",
                 isOn: audio.spokenSumsEnabled && audio.isSpokenMathAvailable,
                 isAvailable: audio.isSpokenMathAvailable,
-                accessibilityLabel: audio.spokenSumsEnabled
-                    ? "Spoken sums on" : "Spoken sums off",
+                accessibilityLabel: Text(verbatim: audio.spokenSumsEnabled
+                                         ? "Spoken sums on" : "Spoken sums off"),
                 // Tapping it while spoken sums are unavailable explains why,
                 // rather than doing nothing.
-                unavailableAction: showSpokenUnavailable
+                unavailableAction: { showIntroNotice(.spokenUnavailable) }
             ) {
                 withAnimation(.snappy(duration: 0.2)) { audio.toggleSpokenSums() }
             }
-            .anchorPreference(key: SpokenBubbleAnchorKey.self,
-                              value: .bounds) { $0 }
+            .anchorPreference(key: IntroNoticeAnchorKey.self, value: .bounds) {
+                [.spokenUnavailable: $0]
+            }
+
+            // Not a switch: the cap plays the guided lessons again, from the
+            // first one, whenever the player asks for them.
+            introIconButton(
+                icon: "graduationcap.fill",
+                isOn: true,
+                isAvailable: true,
+                accessibilityLabel: Text("tutorial.button"),
+                action: startTutorialFromIntro
+            )
+            .anchorPreference(key: IntroNoticeAnchorKey.self, value: .bounds) {
+                [.tutorialBlocked: $0]
+            }
         }
-        .frame(width: 44 * gameScale, height: introPortraitSize)
-        .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-            .stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func introAudioButton(icon: String, isOn: Bool, isAvailable: Bool,
-                                  accessibilityLabel: String,
-                                  unavailableAction: (() -> Void)? = nil,
-                                  action: @escaping () -> Void) -> some View {
+    private func introIconButton(icon: String, isOn: Bool, isAvailable: Bool,
+                                 accessibilityLabel: Text,
+                                 unavailableAction: (() -> Void)? = nil,
+                                 action: @escaping () -> Void) -> some View {
         // When unavailable but given an explanation to show, the button stays
         // tappable so the pop-out can appear; otherwise it is truly disabled.
         let handlesUnavailableTap = !isAvailable && unavailableAction != nil
@@ -729,142 +810,17 @@ struct GameView: View {
                 }
             }
             .foregroundStyle(theme.deepColor.opacity(isAvailable ? (isOn ? 1 : 0.55) : 0.28))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            // Each button takes an equal share of the row, up to a width that
+            // keeps the three of them looking like buttons rather than bars.
+            .frame(maxWidth: 54 * gameScale, minHeight: 32 * gameScale)
+            .background(theme.skyColor, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
+            .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
         .buttonStyle(.plain)
         .disabled(!isAvailable && !handlesUnavailableTap)
-        .accessibilityLabel(Text(verbatim: accessibilityLabel))
-    }
-
-    private var selectedLifeMode: LifeMode {
-        LifeMode(rawValue: selectedLifeModeRaw) ?? .three
-    }
-
-    private func toggleIntroLifeMode() {
-        let newMode: LifeMode = selectedLifeMode == .three ? .unlimited : .three
-        selectedLifeModeRaw = newMode.rawValue
-        AppAudio.shared.playSwitch(on: newMode == .unlimited)
-        guard !isPausedIntro else { return }
-        scene.applyPreGameSettings(lifeMode: newMode,
-                                   answerHelperEnabled: selectedAnswerHelper)
-    }
-
-    private func toggleIntroAnswerHelper() {
-        selectedAnswerHelper.toggle()
-        AppAudio.shared.playSwitch(on: selectedAnswerHelper)
-        guard !isPausedIntro else { return }
-        scene.applyPreGameSettings(lifeMode: selectedLifeMode,
-                                   answerHelperEnabled: selectedAnswerHelper)
-    }
-
-    /// How far the status labels are allowed to shrink before the wording
-    /// itself is shortened.
-    private var introLabelMinimumScale: CGFloat { 0.7 }
-
-    /// How much of a status label is shown. The row picks one style for both
-    /// labels, so it never mixes a full and a shortened one.
-    private enum IntroLabelStyle {
-        /// "Lives on".
-        case full
-        /// Just the state: "On".
-        case state
-        /// No wording at all — the icon carries it.
-        case none
-    }
-
-    /// The two tappable status labels under the title.
-    private func introSettingRow(labels: IntroLabelStyle) -> some View {
-        let unlimited = selectedLifeMode == .unlimited
-        let lives = L(unlimited ? "game.intro.livesOff" : "game.intro.livesOn")
-        let livesOther = L(unlimited ? "game.intro.livesOn" : "game.intro.livesOff")
-        let helper = L(selectedAnswerHelper ? "game.intro.helperOn" : "game.intro.helperOff")
-        let helperOther = L(selectedAnswerHelper ? "game.intro.helperOff" : "game.intro.helperOn")
-        return EqualWidthPair(spacing: 7) {
-            introSettingButton(
-                // Lives already have an icon per state: hearts or infinity.
-                icon: unlimited ? "infinity" : "heart.fill",
-                text: label(labels, full: lives, opposite: livesOther),
-                action: toggleIntroLifeMode
-            )
-            introSettingButton(
-                icon: "lightbulb.fill",
-                text: label(labels, full: helper, opposite: helperOther),
-                // Without wording the bulb needs the crossed-out mark the sound
-                // buttons beside it use, to tell the two states apart.
-                struckThrough: labels == .none && !selectedAnswerHelper,
-                action: toggleIntroAnswerHelper
-            )
-        }
-    }
-
-    private func label(_ style: IntroLabelStyle, full: String, opposite: String) -> String? {
-        switch style {
-        case .full:  return full
-        case .state: return stateHalf(of: full, versus: opposite)
-        case .none:  return nil
-        }
-    }
-
-    /// The "on"/"off" half of a status label: what it does not have in common
-    /// with its opposite ("Lives on" / "Lives off" → "On" / "Off"). The icon
-    /// beside it already says which setting it is, so dropping the noun keeps
-    /// the label readable instead of cutting it off mid-word in languages that
-    /// word this at length. Taken from the translations themselves — no
-    /// language checks, and nothing extra to translate.
-    private func stateHalf(of text: String, versus opposite: String) -> String {
-        let shared = text.commonPrefix(with: opposite)
-        guard !shared.isEmpty else { return text }
-        // Never cut inside a word: back up to the last space of the shared
-        // part. Scripts that write without spaces keep the whole shared part.
-        let cut: String.Index
-        if let lastSpace = shared.lastIndex(where: { $0.isWhitespace }) {
-            cut = text.index(after: lastSpace)
-        } else {
-            cut = text.index(text.startIndex, offsetBy: shared.count)
-        }
-        let rest = text[cut...].trimmingCharacters(in: .whitespaces)
-        guard !rest.isEmpty else { return text }
-        // It now opens the label, so it opens with a capital as well.
-        return rest.prefix(1).localizedUppercase + rest.dropFirst()
-    }
-
-    private func introSettingButton(icon: String, text: String?,
-                                    struckThrough: Bool = false,
-                                    action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack(spacing: 5) {
-                Image(systemName: icon)
-                    .font(.system(size: (icon == "infinity" ? 12 : 10) * gameTextScale,
-                                  weight: .heavy, design: .rounded))
-                    .overlay {
-                        if struckThrough {
-                            Capsule()
-                                .frame(width: 15 * gameScale, height: 1.8 * gameScale)
-                                .rotationEffect(.degrees(-45))
-                        }
-                    }
-                if let text {
-                    // The text may shrink to `introLabelMinimumScale` before it
-                    // would be cut off, so that is the width the row above is
-                    // judged on — the icon beside it never shrinks.
-                    SmallestLabelWidth(minimumScale: introLabelMinimumScale) {
-                        Text(text)
-                    }
-                }
-            }
-            .font(.system(size: 10 * gameTextScale, weight: .bold))
-            .foregroundStyle(theme.deepColor.opacity(0.82))
-            .lineLimit(1)
-            .minimumScaleFactor(introLabelMinimumScale)
-            .allowsTightening(true)
-            .padding(.horizontal, 8 * gameScale)
-            .padding(.vertical, 5 * gameScale)
-            .frame(maxWidth: 118 * gameScale)
-            .background(theme.skyColor.opacity(0.72), in: Capsule())
-            .overlay(Capsule().stroke(theme.deepColor.opacity(0.15), lineWidth: 1))
-            .contentShape(Capsule())
-        }
-        .buttonStyle(.plain)
+        .accessibilityLabel(accessibilityLabel)
     }
 
     private var pausedIntroMessage: some View {
@@ -1170,36 +1126,7 @@ struct GameView: View {
                 in: RoundedRectangle(cornerRadius: 20)
             )
             .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
-            .overlay(alignment: .topTrailing) {
-                if tutorial.isActive && tutorial.currentStep == 6 {
-                    ZStack {
-                        Circle()
-                            .fill(.white)
-                        Image(systemName: "arrow.down.left.circle")
-                            .foregroundStyle(theme.deepColor)
-                    }
-                    .font(.title.weight(.black))
-                    .frame(width: 34, height: 34)
-                        // The question mark sits down and to the left of this
-                        // top-trailing overlay.  Move the cue in that same
-                        // direction, rather than further along the edge.
-                        .offset(x: isTutorialArrowBouncing ? 2 : 14,
-                                y: isTutorialArrowBouncing ? -13.5 : -27)
-                        .scaleEffect(isTutorialArrowBouncing ? 1.15 : 0.94)
-                        .animation(.easeInOut(duration: 0.55).repeatForever(autoreverses: true),
-                                   value: isTutorialArrowBouncing)
-                        .onAppear {
-                            // This cue appears after the screen itself, so it
-                            // needs its own state transition to start the
-                            // repeating animation.
-                            isTutorialArrowBouncing = false
-                            DispatchQueue.main.async {
-                                isTutorialArrowBouncing = true
-                            }
-                        }
-                        .allowsHitTesting(false)
-                }
-            }
+            .overlay(alignment: .topTrailing) { tutorialQuestionCue }
             .padding(.horizontal, 12)
             .contentShape(Rectangle())
             .onTapGesture {
@@ -1212,6 +1139,45 @@ struct GameView: View {
             // just the row) so the tutorial cue keeps pointing at the "?", which
             // stays at the trailing end of the equation.
             .environment(\.layoutDirection, .leftToRight)
+    }
+
+    /// The bouncing cue that points at the question mark during the "tap it"
+    /// lesson. It is part of the equation badge for the whole tutorial and is
+    /// only faded in for step 6: creating this circle, glyph and repeating
+    /// animation at the moment the step arrives cost a visible hitch, whereas
+    /// mounting it early costs nothing (an overlay never changes the layout of
+    /// what it sits on).
+    @ViewBuilder
+    private var tutorialQuestionCue: some View {
+        if tutorial.isActive {
+            let isVisible = tutorial.currentStep == 6
+            ZStack {
+                Circle()
+                    .fill(.white)
+                Image(systemName: "arrow.down.left.circle")
+                    .foregroundStyle(theme.deepColor)
+            }
+            .font(.title.weight(.black))
+            .frame(width: 34, height: 34)
+            // The question mark sits down and to the left of this
+            // top-trailing overlay.  Move the cue in that same
+            // direction, rather than further along the edge.
+            .offset(x: isTutorialArrowBouncing ? 2 : 14,
+                    y: isTutorialArrowBouncing ? -13.5 : -27)
+            .scaleEffect(isTutorialArrowBouncing ? 1.15 : 0.94)
+            .animation(.easeInOut(duration: 0.55).repeatForever(autoreverses: true),
+                       value: isTutorialArrowBouncing)
+            .opacity(isVisible ? 1 : 0)
+            .animation(.easeInOut(duration: 0.2), value: isVisible)
+            .allowsHitTesting(false)
+            .onChange(of: isVisible) { visible in
+                // The repeating bounce needs a state transition to start, and
+                // costs nothing while the cue is not on screen.
+                isTutorialArrowBouncing = false
+                guard visible else { return }
+                DispatchQueue.main.async { isTutorialArrowBouncing = true }
+            }
+        }
     }
 
     /// Delay the state change until the flying half-heart reaches the question
@@ -1243,6 +1209,13 @@ struct GameView: View {
         isAnswerHintFlying = false
         AppAudio.shared.playAnswerInfo()
         _ = state.revealAnswer()
+    }
+
+    /// Step 1's instruction replaces the equation itself, and the start card
+    /// carries its own wording, so the floating prompt stays hidden for both.
+    private var showsTutorialPrompt: Bool {
+        tutorial.isActive && (2...11).contains(tutorial.currentStep)
+            && !state.isGameOver && !showingIntro
     }
 
     private var tutorialPrompt: some View {
@@ -2096,7 +2069,7 @@ private struct ConfettiView: View {
 /// A small caret-topped card matching the home-menu info pop-out styling — a
 /// white fill, a hairline theme stroke and a soft shadow — but headerless. The
 /// message is kept to two lines and shrinks to fit when a translation is long.
-private struct SpokenUnavailableCard: View {
+private struct IntroNoticeCard: View {
     let message: String
     let caretOffset: CGFloat
     let theme: AnimalCharacter
@@ -2128,72 +2101,6 @@ private struct SpokenUnavailableCard: View {
                     .stroke(theme.deepColor.opacity(0.18), lineWidth: 1))
         }
         .shadow(color: theme.deepColor.opacity(0.22), radius: 14, y: 6)
-    }
-}
-
-/// Two labels side by side, each getting exactly half of the row. Because they
-/// share one width, the ideal width it reports is the *wider* label's, twice
-/// over: a `ViewThatFits` around it then judges the pair by the label that
-/// needs the most room, which is the one that would otherwise be cut off.
-private struct EqualWidthPair: Layout {
-    let spacing: CGFloat
-
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews,
-                      cache: inout ()) -> CGSize {
-        let ideals = subviews.map { $0.sizeThatFits(.unspecified) }
-        let widest = ideals.map(\.width).max() ?? 0
-        let idealWidth = widest * CGFloat(subviews.count)
-            + spacing * CGFloat(max(0, subviews.count - 1))
-        guard let width = proposal.width, width != .infinity else {
-            return CGSize(width: idealWidth,
-                          height: ideals.map(\.height).max() ?? 0)
-        }
-        let half = halfWidth(of: width, subviews: subviews)
-        let heights = subviews.map {
-            $0.sizeThatFits(ProposedViewSize(width: half, height: proposal.height)).height
-        }
-        return CGSize(width: width, height: heights.max() ?? 0)
-    }
-
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize,
-                       subviews: Subviews, cache: inout ()) {
-        let half = halfWidth(of: bounds.width, subviews: subviews)
-        for (index, subview) in subviews.enumerated() {
-            let x = bounds.minX + CGFloat(index) * (half + spacing)
-            subview.place(at: CGPoint(x: x + half / 2, y: bounds.midY),
-                          anchor: .center,
-                          proposal: ProposedViewSize(width: half, height: bounds.height))
-        }
-    }
-
-    private func halfWidth(of width: CGFloat, subviews: Subviews) -> CGFloat {
-        let count = CGFloat(max(1, subviews.count))
-        return max(0, width - spacing * (count - 1)) / count
-    }
-}
-
-/// Lays its content out as usual, but when something asks how wide it would
-/// *like* to be, it answers with the width its text may shrink to. A
-/// surrounding `ViewThatFits` then judges a layout by whether the text still
-/// reads at its smallest allowed size, instead of rejecting it as soon as the
-/// text no longer fits at full size.
-private struct SmallestLabelWidth: Layout {
-    let minimumScale: CGFloat
-
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews,
-                      cache: inout ()) -> CGSize {
-        guard let content = subviews.first else { return .zero }
-        let size = content.sizeThatFits(proposal)
-        // A width was offered: this is a real layout pass, so answer honestly.
-        guard proposal.width == nil || proposal.width == .infinity else { return size }
-        return CGSize(width: size.width * minimumScale, height: size.height)
-    }
-
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize,
-                       subviews: Subviews, cache: inout ()) {
-        subviews.first?.place(at: CGPoint(x: bounds.midX, y: bounds.midY),
-                              anchor: .center,
-                              proposal: ProposedViewSize(bounds.size))
     }
 }
 

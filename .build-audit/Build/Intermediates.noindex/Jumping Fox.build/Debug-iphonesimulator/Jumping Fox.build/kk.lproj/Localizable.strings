@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Аю</string>
+	<key>character.bunny</key>
+	<string>Қоян</string>
+	<key>character.crab</key>
+	<string>Теңізшаян</string>
+	<key>character.dog</key>
+	<string>Ит</string>
+	<key>character.elephant</key>
+	<string>Піл</string>
+	<key>character.fox</key>
+	<string>Түлкі</string>
+	<key>character.frog</key>
+	<string>Бақа</string>
+	<key>character.lion</key>
+	<string>Арыстан</string>
+	<key>character.octopus</key>
+	<string>Сегізаяқ</string>
+	<key>character.penguin</key>
+	<string>Пингвин</string>
+	<key>character.pickerTitle</key>
+	<string>Кейіпкеріңді таңда</string>
+	<key>common.back</key>
+	<string>Артқа</string>
+	<key>common.cancel</key>
+	<string>Бас тарту</string>
+	<key>common.continue</key>
+	<string>Жалғастыру</string>
+	<key>common.done</key>
+	<string>Дайын</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld мин</string>
+	<key>common.save</key>
+	<string>Сақтау</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Әзірлеуші режимін ашу үшін 2 секунд басып тұрыңыз.</string>
+	<key>developerMode.title</key>
+	<string>Әзірлеуші режимі</string>
+	<key>filter.addition</key>
+	<string>Қосу</string>
+	<key>filter.fractions</key>
+	<string>Бөлшектер</string>
+	<key>filter.mixed</key>
+	<string>Супераралас</string>
+	<key>filter.percentages</key>
+	<string>Пайыздар</string>
+	<key>filter.subtraction</key>
+	<string>Азайту</string>
+	<key>filter.tables</key>
+	<string>Көбейту кестесі</string>
+	<key>game.accessibility.mix</key>
+	<string>Аралас</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld / %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Жақсы талпыныс</string>
+	<key>game.encouragement.1</key>
+	<string>Басы жаман емес</string>
+	<key>game.encouragement.2</key>
+	<string>Жаттыға бер</string>
+	<key>game.encouragement.3</key>
+	<string>Жаман емес</string>
+	<key>game.encouragement.4</key>
+	<string>Жақсы орындаудасың</string>
+	<key>game.encouragement.5</key>
+	<string>Керемет нәтиже</string>
+	<key>game.encouragement.6</key>
+	<string>Жарайсың</string>
+	<key>game.encouragement.7</key>
+	<string>Өте жақсы ойнадың</string>
+	<key>game.encouragement.8</key>
+	<string>Мәре жақын</string>
+	<key>game.encouragement.9</key>
+	<string>Жетіп қалдың</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Әр ұпайды өзің жинадың.</string>
+	<key>game.end.completionSuffix</key>
+	<string>аяқталды!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Ойын аяқталды</string>
+	<key>game.end.mainMenu</key>
+	<string>Басты мәзір</string>
+	<key>game.end.playAgain</key>
+	<string>Қайта ойнау</string>
+	<key>game.highScore</key>
+	<string>Үздік ұпай</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Басты мәзірге қайту</string>
+	<key>game.intro.continue</key>
+	<string>Жалғастыру</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld-ден жалғастырасың</string>
+	<key>game.intro.helperBullet</key>
+	<string>Көмекші қосулы болғандықтан, дұрыс жауап жасылмен белгіленеді. Сондықтан жүлделер * белгісімен бөлек саналады.</string>
+	<key>game.intro.helperOff</key>
+	<string>Көмекші өшірулі</string>
+	<key>game.intro.helperOn</key>
+	<string>Көмекші қосулы</string>
+	<key>game.intro.howItWorks</key>
+	<string>Бұл деңгей қалай ойналады</string>
+	<key>game.intro.livesOff</key>
+	<string>Жандар өшірулі</string>
+	<key>game.intro.livesOn</key>
+	<string>Жандар қосулы</string>
+	<key>game.intro.scorePaused</key>
+	<string>Қазіргі ұпайың тоқтатылады.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Кешіріңіз! Дауыстап оқу мүмкіндігі сіздің тіліңізде әлі қолжетімді емес.</string>
+	<key>game.intro.start</key>
+	<string>Деңгейді бастау</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ санын 1-ден 12-ге дейінгі санға көбейт.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>немесе аз</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Жалғастыру үшін кез келген жерді түрт</string>
+	<key>game.intro.tapToStart</key>
+	<string>Бастау үшін кез келген жерді түрт</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Әр дұрыс жауапқа |1| жүлде ал, ең көбі |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Жандарың біткен соң жүлде жинай алмайсың.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Көшбасшылар кестесіне арналған ең көп жүлде жиналды</string>
+	<key>game.status.mixMode</key>
+	<string>АРАЛАС РЕЖИМ</string>
+	<key>game.status.scoreLocked</key>
+	<string>Жандарың біткен соң жүлделер есептелмейді</string>
+	<key>game.streak.subtitle</key>
+	<string>Жүлделер ×2</string>
+	<key>game.streak.title</key>
+	<string>Қатарынан 5!</string>
+	<key>goal.period</key>
+	<string>Мақсат кезеңі</string>
+	<key>goal.promptDaily</key>
+	<string>Күніне неше минут ойнағың келеді?</string>
+	<key>goal.promptWeekly</key>
+	<string>Аптасына неше минут ойнағың келеді?</string>
+	<key>goal.title</key>
+	<string>Ойын мақсаты</string>
+	<key>goalPeriod.daily</key>
+	<string>Күн сайын</string>
+	<key>goalPeriod.weekly</key>
+	<string>Апта сайын</string>
+	<key>info.filter.addition</key>
+	<string>Тек қосу</string>
+	<key>info.filter.fractions</key>
+	<string>Тек бөлу</string>
+	<key>info.filter.header</key>
+	<string>Есеп түрлері</string>
+	<key>info.filter.mixed</key>
+	<string>Аралас амалдар</string>
+	<key>info.filter.percentages</key>
+	<string>Тек пайыздар</string>
+	<key>info.filter.subtraction</key>
+	<string>Тек азайту</string>
+	<key>info.filter.tables</key>
+	<string>Тек көбейту</string>
+	<key>info.mode.fractions.header</key>
+	<string>Бөліктер</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Бір және бірнеше бөлік</string>
+	<key>info.mode.fractions.single</key>
+	<string>Әрқашан бір бөлік</string>
+	<key>info.mode.header</key>
+	<string>Реті</string>
+	<key>info.mode.mixed</key>
+	<string>Төменгі деңгейлермен аралас</string>
+	<key>info.mode.order</key>
+	<string>Тұрақты рет</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Ондық сандармен</string>
+	<key>info.mode.percentages.header</key>
+	<string>Түрі</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Ондық сандарсыз</string>
+	<key>info.mode.random</key>
+	<string>Кездейсоқ рет</string>
+	<key>info.super.all</key>
+	<string>Қосу, азайту, көбейту, бөлу және пайыздар</string>
+	<key>info.super.basic</key>
+	<string>Қосу және азайту</string>
+	<key>info.super.fraction</key>
+	<string>Қосу, азайту, көбейту және бөлу</string>
+	<key>info.super.times</key>
+	<string>Қосу, азайту және көбейту</string>
+	<key>language.select</key>
+	<string>Тілді таңда</string>
+	<key>lives.three</key>
+	<string>3 жан</string>
+	<key>lives.unlimited</key>
+	<string>Шексіз</string>
+	<key>menu.accessibility.character</key>
+	<string>Кейіпкер</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Кейіпкерді өзгерту үшін түрт; сәлемдесу экранынан қайта бастау үшін екі секунд басып тұр.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ таңда</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Ең жоғарғы шекке %lld рет жеттің</string>
+	<key>menu.moreLevels</key>
+	<string>Қосымша деңгейлер</string>
+	<key>menu.options</key>
+	<string>Ойын баптаулары</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium кестелер</string>
+	<key>menu.startHere</key>
+	<string>Осы жерден баста</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium арқылы көбірек аш</string>
+	<key>mode.fractions.multiple</key>
+	<string>Бірнеше</string>
+	<key>mode.fractions.single</key>
+	<string>Бір</string>
+	<key>mode.mix</key>
+	<string>Аралас</string>
+	<key>mode.mixed</key>
+	<string>Аралас</string>
+	<key>mode.order</key>
+	<string>Рет</string>
+	<key>mode.percentages.decimal</key>
+	<string>Ондық</string>
+	<key>mode.percentages.whole</key>
+	<string>Бүтін</string>
+	<key>mode.random</key>
+	<string>Кездейсоқ</string>
+	<key>mode.standard</key>
+	<string>Қалыпты</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Саған тек |қосу| есептері беріледі.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Басқа санға %lld |немесе одан аз| қосасың.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Әрдайым %lld санын |өсу| ретімен қосасың.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Әрдайым %lld санын |кездейсоқ| санға қосасың.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Қосу · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Екі санды бір-біріне қоса бер.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Жауап ең көбі %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld-ге дейін қосу</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Саған тек |бөлшек| есептері беріледі.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Осы және |алдыңғы деңгейлердің| бөлшектері беріледі.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld тең бөліктің ішінен әрдайым |1 бөлікті| аласың.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld-деңгейдегі және алдыңғы деңгейлердегі дөңгелек сандардың бөлшектерін есепте.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Сандар дөңгелек болады, сондықтан жауаптар әрқашан бүтін.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld-ге дейінгі бөлшектер</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld тең бөліктің ішінен бір немесе |бірнеше бөлікті| аласың.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Бөлшектер · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Бүтіннің бір бөлігін есептеп, бөлшектерді теңестір.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Бөлімдері бірдей бөлшектерді қос және азайт.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Аралас бөлшектер</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Саған тек |пайыз| есептері беріледі.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Осы және |алдыңғы деңгейлердің| пайыздары беріледі.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Әрдайым %@ есептейсің, жауабы |бүтін сан| болады.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld-ге дейінгі дөңгелек сандардың пайызын есепте.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Мәндер дөңгелек болады, сондықтан жауаптар әрқашан бүтін.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld-ге дейінгі пайыздар</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Әрдайым %@ есептейсің, жауабы |ондық сан| да болуы мүмкін.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ есепте</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Санның пайызын есепте.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Пайыздар мен бөлшектерді бір-біріне айналдыр.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Аралас пайыздар</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Саған тек |азайту| есептері беріледі.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Басқа саннан %lld |немесе одан аз| азайтасың.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Әрдайым %lld санын |кему| ретімен азайтасың.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Әрдайым |кездейсоқ| саннан %lld азайтасың.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Азайту · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Бірінші сан ең көбі %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Жауап нөлден төмен болуы мүмкін.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Нөлден төмен</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld-ге дейін азайту</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Екі санды бір-бірінен азайта бер.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Әр таңдалған бөлімнің қиындығы |%lld-деңгейге| дейін өсуі мүмкін.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Қосу, азайту, көбейту кестесі, бөлшектер мен пайыздарды араластырып жаттық.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Супераралас %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Қосу мен азайтуды араластырып жаттық.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Супераралас %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Қосу, азайту, көбейту кестесі мен бөлшектерді араластырып жаттық.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Супераралас %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Қосу, азайту және көбейту кестесін араластырып жаттық.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Супераралас %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Саған тек |көбейту| есептері беріледі.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld-ге дейінгі| барлық көбейту кестелері араласып беріледі.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Әр кесте |1-ден 12-ге дейінгі| санға көбейтіледі.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld-дің көбейту кестесі |өсу| ретімен беріледі.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld-дің көбейту кестесі |кездейсоқ| ретпен беріледі.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld кестесі</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld-ден %lld-ге дейінгі кестелерді араластырып жаттық.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>%lld–%lld кестелері</string>
+	<key>name.placeholder</key>
+	<string>Атың</string>
+	<key>name.whatsYourName</key>
+	<string>Атың кім?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Осы жануардың құлпын ашу үшін тағы бірнеше жүлде ұтып алыңыз! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Бар болғаны %lld жүлде қалды! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Сіздің жануарларыңыз күтіп тұр. Ойынға оралыңыз және жүлделерді жинауды жалғастырыңыз!</string>
+	<key>notif.comeback.title</key>
+	<string>Біз сені сағындық! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld минуттық ойын сеансын бастаңыз және күнделікті ойын сериясын ұзартыңыз.</string>
+	<key>notif.day3.title</key>
+	<string>3-ші күнді орындайық! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Қате жауапты өткізіп жіберу және өрмелеуді жалғастыру үшін Jump Pad пайдаланыңыз!</string>
+	<key>notif.jumppad.title</key>
+	<string>Қате жауаптардан өтіп кетіңіз! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium әр тақырыпқа және барлық 10 жануарға арналған %lld деңгейді қамтиды. Шытырман оқиға жалғасуда!</string>
+	<key>notif.premium.title</key>
+	<string>Көбірек деңгейлер мен жануарлардың құлпын ашыңыз! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld күн болды. Математикалық жаттығуларды шешіп, көбірек жүлде ұтып алайық!</string>
+	<key>notif.reactivate.title</key>
+	<string>Қайта ойнауға дайынсыз ба? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld минут ойнаңыз және күнделікті ойын серияңызды жалғастырыңыз!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Сіздің күнделікті ойнау серияңыз %lld күнге жетті! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Керемет жұмыс!%lld минут ойнап, одан да көп жинаймыз.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Сіз %lld жүлде алдыңыз! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Бұл сіздің жалпы жүлделеріңізді %lld-ге жеткізеді. Керемет жұмыс!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Осы аптада %lld жүлде алдыңыз! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Әртүрлі аралас есептер.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Әжептәуір жақсы</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Есептерді ретімен жаттық.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Жаңа бастадың</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Есептер кездейсоқ ретпен.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Біраз жаттыққансың</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ үшін бастау орнын таңда.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>осы тақырып</string>
+	<key>onboarding.level.title</key>
+	<string>Мұны қаншалықты жақсы білесің?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Бастайық. Атың кім?</string>
+	<key>onboarding.name.title</key>
+	<string>Есеп шығару бұрын-соңды мұндай қызық болмаған!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Бастайтын тақырыпты таңда.</string>
+	<key>onboarding.subject.title</key>
+	<string>Нені үйренгің келеді?</string>
+	<key>options.capAt30.info</key>
+	<string>Әр деңгейде 50-ге дейінгі жүлде мақсаты бар. Бұл баптау қосылса, мақсатқа жеткенде ойын автоматты түрде аяқталады.</string>
+	<key>options.capAt30.title</key>
+	<string>Мақсатта аяқтау</string>
+	<key>options.helperMode.info</key>
+	<string>Көмекші режимінде дұрыс жауап әрдайым жасыл түспен көрсетіледі. Бұл режимде алынған жүлделер бөлек саналып, жұлдызшамен белгіленеді.</string>
+	<key>options.helperMode.title</key>
+	<string>Көмекші режимі</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Әрдайым 3 жанмен бастайсың. Жандарың біткенде ойын аяқталады. Жандарың біткеннен кейін де ойнап, жаттығу үшін осы баптауды қос.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Шексіз жан</string>
+	<key>parentGate.approved</key>
+	<string>Мақұлданды</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Әрекеттер: %1$lld / %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ белгісін %lld секунд басып тұр.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Басып тұру: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ белгісін %lld секунд басып тұр. Содан кейін %3$@ белгісін %4$lld рет түрт.</string>
+	<key>parentGate.shape.circle</key>
+	<string>шеңбер</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ромб</string>
+	<key>parentGate.shape.heart</key>
+	<string>жүрек</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>алтыбұрыш</string>
+	<key>parentGate.shape.plus</key>
+	<string>қосу</string>
+	<key>parentGate.shape.square</key>
+	<string>шаршы</string>
+	<key>parentGate.shape.star</key>
+	<string>жұлдыз</string>
+	<key>parentGate.shape.triangle</key>
+	<string>үшбұрыш</string>
+	<key>parentGate.stepOne</key>
+	<string>1-қадам / 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>2-қадам / 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Кішкентай ойыншыларды қорғау үшін сатып алуды жалғастырмас бұрын ересек адам осы тексеруден өтуі керек.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Енді %2$@ белгісін %1$lld рет түрт.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Түртулер: %1$lld / %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Ересек адамның рұқсаты қажет</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld жүлдеден бастап қолжетімді</string>
+	<key>premium.availableFromStart</key>
+	<string>Басынан бастап қолжетімді</string>
+	<key>premium.characterUnlocked</key>
+	<string>ЖАҢА КЕЙІПКЕР АШЫЛДЫ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ашылды</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Сен %lld жүлде жинадың</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Тек Premium арқылы</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Тек Premium арқылы</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium арқылы барлық 10 жануармен еркін ойнайсың.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Барлық жануарларға қолжетімділік</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Жаттығуға әрдайым жаңа есептер жеткілікті.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Әр тақырыпқа 99 деңгей</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Еш кедергісіз ойна.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Жарнамасыз</string>
+	<key>premium.oneTime</key>
+	<string>Бір рет сатып аласың. Мәңгі сенікі.</string>
+	<key>premium.restore</key>
+	<string>Сатып алуларды қалпына келтіру</string>
+	<key>premium.start</key>
+	<string>Бастау</string>
+	<key>premium.storeUnavailable</key>
+	<string>Дүкен қазір қолжетімсіз. Кейінірек қайталап көр.</string>
+	<key>premium.unlock</key>
+	<string>Premium-ды ашу</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium-ды ашу · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Жүлделермен аш</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium арқылы ашылды</string>
+	<key>premium.youHavePremium</key>
+	<string>Сенде Premium бар!</string>
+	<key>settings.character</key>
+	<string>Кейіпкер</string>
+	<key>settings.characterInfo</key>
+	<string>Әр жануар бүкіл ойынға өз түс тақырыбын береді.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Өзгеше: %lld мин</string>
+	<key>settings.dailyGoal</key>
+	<string>Күндік мақсат</string>
+	<key>settings.goalInfo</key>
+	<string>Күндер тізбегінің мақсаты күніне 5 минуттан басталады. Тек белсенді ойын уақыты есептеледі.</string>
+	<key>settings.lives</key>
+	<string>Жандар</string>
+	<key>settings.livesInfo</key>
+	<string>Үш жан режимінде соңғы жүрегің біткенде ойын аяқталады. Шексіз режимде жүлделер жандарың бар кезде ғана есептеледі; кейін ойнай беруге болады.</string>
+	<key>settings.playGoals</key>
+	<string>Ойын мақсаттары</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ашылды. Рақмет!</string>
+	<key>settings.title</key>
+	<string>Баптаулар</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Күндік мақсатты таңда</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Күндік немесе апталық мақсатты таңда</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld минуттың %2$lld минуты, қатарынан %4$lld күн</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Күндік тізбек, %lld / %lld минут</string>
+	<key>streak.daily</key>
+	<string>Күндік тізбек</string>
+	<key>streak.dayOne</key>
+	<string>1-күн</string>
+	<key>tutorial.answerHint</key>
+	<string>Жауапты білмейсің бе? Көру үшін есепті түрт.</string>
+	<key>tutorial.complete</key>
+	<string>Жарайсың! Үйрету аяқталды. Енді үздік ұпайға ұмтыл!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Жүлде алу үшін дұрыс жауаптың үстіне секір.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Дұрыс жауап жасыл түспен көрсетілді. Енді соның үстіне секір.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Үш есе жүлде алу үшін дұрыс жауаптың үстіне секір.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Бір рет үш есе жүлде алу үшін ×3 тиынын жина.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Жандарыңды қайтару үшін жарты немесе толық жан таба аласың.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1-ден қаш. Ол бір жүлдеңді алып қояды.</string>
+	<key>tutorial.move</key>
+	<string>Солға және оңға жүру үшін құрылғыңды қозға. Экранның бір шетінен екінші шетіне де өте аласың.</string>
+	<key>tutorial.platforms</key>
+	<string>Жоғары көтерілу үшін платформаларға секір.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Осы деңгейдегі ұпайың осында көрсетіледі.</string>
+	<key>tutorial.star</key>
+	<string>Қате жауаптарды атып жіберу үшін жұлдызға секір.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Қате жауапты таңдасаң, үш жаныңның бірінен айырыласың. Қазір байқап көр.</string>
+</dict>
+</plist>

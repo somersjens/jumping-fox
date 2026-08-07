@@ -14,13 +14,15 @@ final class TutorialProgress: ObservableObject {
         static let triplerAnswer = "tutorial.triplerAnswerPending"
     }
 
-    @Published private(set) var developerMode = false
+    /// A replay: the player has already finished the tutorial and is watching
+    /// it again from the start screen's tutorial button. It runs entirely in
+    /// memory, so their real (completed) progress is never rewritten.
+    @Published private(set) var isReplaying = false
     @Published private(set) var started: Bool
     @Published private(set) var lastCompletedStep: Int
     @Published private(set) var isComplete: Bool
     @Published private(set) var scoreHintShown: Bool
     @Published private(set) var shouldShowScoreHint = false
-    private var scoreHintIsDeveloper = false
     @Published private(set) var triplerAnswerPending: Bool
 
     private init(defaults: UserDefaults = .standard) {
@@ -32,8 +34,8 @@ final class TutorialProgress: ObservableObject {
         triplerAnswerPending = defaults.bool(forKey: Key.triplerAnswer)
     }
 
-    /// Developer mode starts a fresh tutorial, but once step 11 is done it
-    /// must obey normal gameplay rules just like a real player run.
+    /// A replay starts a fresh tutorial, but once step 11 is done it must obey
+    /// normal gameplay rules just like a real player run.
     var isActive: Bool { !isComplete }
     var currentStep: Int { min(12, lastCompletedStep + 1) }
 
@@ -41,7 +43,7 @@ final class TutorialProgress: ObservableObject {
         guard isActive else { return }
         if !started {
             started = true
-            if !developerMode { UserDefaults.standard.set(true, forKey: Key.started) }
+            if !isReplaying { UserDefaults.standard.set(true, forKey: Key.started) }
         }
         // The green-answer lesson is redundant when the helper is enabled.
         if helperEnabled && lastCompletedStep == 4 { complete(step: 5, helperEnabled: true) }
@@ -57,7 +59,7 @@ final class TutorialProgress: ObservableObject {
         guard isActive, step == currentStep else { return }
         lastCompletedStep = step
         if step >= 11 { isComplete = true }
-        if !developerMode {
+        if !isReplaying {
             UserDefaults.standard.set(lastCompletedStep, forKey: Key.step)
             UserDefaults.standard.set(isComplete, forKey: Key.complete)
         }
@@ -67,34 +69,45 @@ final class TutorialProgress: ObservableObject {
 
     func setTriplerAnswerPending(_ pending: Bool) {
         triplerAnswerPending = pending
-        if !developerMode { UserDefaults.standard.set(pending, forKey: Key.triplerAnswer) }
+        if !isReplaying { UserDefaults.standard.set(pending, forKey: Key.triplerAnswer) }
     }
 
-    func enterDeveloperMode() {
-        developerMode = true
-        // Kept in memory only: real player progress is never changed.
-        started = true; lastCompletedStep = 0; isComplete = false; triplerAnswerPending = false
+    /// Play the guided tutorial again from its first lesson, on request from
+    /// the level start screen. A player who already finished it replays in
+    /// memory only, so their completed state (and normal scoring) survives; an
+    /// unfinished tutorial genuinely starts over and is saved as such.
+    func restart() {
+        isReplaying = isComplete
+        started = true
+        lastCompletedStep = 0
+        isComplete = false
+        triplerAnswerPending = false
+        guard !isReplaying else { return }
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: Key.started)
+        defaults.set(0, forKey: Key.step)
+        defaults.set(false, forKey: Key.complete)
+        defaults.set(false, forKey: Key.triplerAnswer)
     }
 
-    func leaveDeveloperMode() { developerMode = false; reloadPersistedState() }
+    /// Leaving the game screen ends a replay: the stored, real progress of the
+    /// player takes over again.
+    func endReplay() {
+        guard isReplaying else { return }
+        isReplaying = false
+        reloadPersistedState()
+    }
 
     func markGameOver() {
-        if developerMode {
-            scoreHintIsDeveloper = true
-            shouldShowScoreHint = true
-            return
-        }
-        guard isComplete, !scoreHintShown else { return }
+        // A replay is a repeat viewing; the one-off "this is your score" hint
+        // belongs to the very first real run only.
+        guard !isReplaying, isComplete, !scoreHintShown else { return }
         shouldShowScoreHint = true
     }
 
     func consumeScoreHint() {
         guard shouldShowScoreHint else { return }
         shouldShowScoreHint = false
-        if scoreHintIsDeveloper {
-            scoreHintIsDeveloper = false
-            return
-        }
         scoreHintShown = true
         UserDefaults.standard.set(true, forKey: Key.scoreHint)
     }

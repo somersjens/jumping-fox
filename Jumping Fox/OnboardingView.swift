@@ -4,6 +4,7 @@ import UIKit
 struct OnboardingView: View {
     @AppStorage(GameSettings.playerNameKey) private var playerName = ""
     @AppStorage(GameSettings.onboardingCompleteKey) private var isComplete = false
+    @AppStorage(GameSettings.opensFirstLevelKey) private var opensFirstLevel = false
     @AppStorage("ui.menuFilter") private var menuFilterRaw = MenuFilter.tables.rawValue
     @AppStorage("ui.menuMode") private var menuModeRaw = PracticeMode.order.rawValue
     @AppStorage("ui.supermixCategory") private var supermixCategoryRaw = ChallengeCategory.superBasic.rawValue
@@ -72,6 +73,13 @@ struct OnboardingView: View {
                            scale: isPad ? 1.25 : 1)
                 .padding(.top, isPad ? 20 : 8)
                 .padding(.trailing, isPad ? 28 : 16)
+        }
+        .onAppear {
+            // This flow ends in the tutorial, so pay its first-use costs while
+            // the player is still reading: decoding sounds, resolving a voice
+            // and rasterizing the symbols the lessons raise mid-play.
+            AppAudio.shared.prepare()
+            Prewarm.tutorialGlyphs()
         }
     }
 
@@ -300,9 +308,12 @@ struct OnboardingView: View {
         if MenuFilter(rawValue: menuFilterRaw) == .mixed {
             supermixCategoryRaw = (mode == .mixed ? ChallengeCategory.superAll : .superBasic).rawValue
         }
-        withAnimation(.easeInOut(duration: 0.55)) {
-            isComplete = true
-        }
+        // Hand the player straight to the first level of what they just chose.
+        // The menu takes this up in its own initialiser, so the level's start
+        // screen is already presented in the frame the menu first appears —
+        // no menu that builds itself and is then covered a moment later.
+        opensFirstLevel = true
+        isComplete = true
     }
 }
 

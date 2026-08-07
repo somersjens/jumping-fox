@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>കരടി</string>
+	<key>character.bunny</key>
+	<string>മുയൽ</string>
+	<key>character.crab</key>
+	<string>ഞണ്ട്</string>
+	<key>character.dog</key>
+	<string>നായ</string>
+	<key>character.elephant</key>
+	<string>ആന</string>
+	<key>character.fox</key>
+	<string>കുറുക്കൻ</string>
+	<key>character.frog</key>
+	<string>തവള</string>
+	<key>character.lion</key>
+	<string>സിംഹം</string>
+	<key>character.octopus</key>
+	<string>നീരാളി</string>
+	<key>character.penguin</key>
+	<string>പെൻഗ്വിൻ</string>
+	<key>character.pickerTitle</key>
+	<string>നിന്റെ കഥാപാത്രം തിരഞ്ഞെടുക്കൂ</string>
+	<key>common.back</key>
+	<string>പിന്നോട്ട്</string>
+	<key>common.cancel</key>
+	<string>റദ്ദാക്കുക</string>
+	<key>common.continue</key>
+	<string>തുടരുക</string>
+	<key>common.done</key>
+	<string>പൂർത്തിയായി</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld മിനിറ്റ്</string>
+	<key>common.save</key>
+	<string>സേവ്</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>ഡെവലപ്പർ മോഡ് തുറക്കാൻ 2 സെക്കൻഡ് അമർത്തിപ്പിടിക്കുക.</string>
+	<key>developerMode.title</key>
+	<string>ഡെവലപ്പർ മോഡ്</string>
+	<key>filter.addition</key>
+	<string>കൂട്ടൽ</string>
+	<key>filter.fractions</key>
+	<string>ഭിന്നങ്ങൾ</string>
+	<key>filter.mixed</key>
+	<string>സൂപ്പർമിക്സ്</string>
+	<key>filter.percentages</key>
+	<string>ശതമാനങ്ങൾ</string>
+	<key>filter.subtraction</key>
+	<string>കുറയ്ക്കൽ</string>
+	<key>filter.tables</key>
+	<string>ഗുണനപ്പട്ടികകൾ</string>
+	<key>game.accessibility.mix</key>
+	<string>മിക്സ്</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lldൽ %lld</string>
+	<key>game.encouragement.0</key>
+	<string>നല്ല ശ്രമം</string>
+	<key>game.encouragement.1</key>
+	<string>നല്ല തുടക്കം</string>
+	<key>game.encouragement.2</key>
+	<string>പരിശീലിച്ചുകൊണ്ടിരിക്കുക</string>
+	<key>game.encouragement.3</key>
+	<string>ഒട്ടും മോശമല്ല</string>
+	<key>game.encouragement.4</key>
+	<string>നന്നായി ചെയ്യുന്നു</string>
+	<key>game.encouragement.5</key>
+	<string>മികച്ച പ്രകടനം</string>
+	<key>game.encouragement.6</key>
+	<string>വളരെ നന്നായി</string>
+	<key>game.encouragement.7</key>
+	<string>അതിമനോഹരമായി കളിച്ചു</string>
+	<key>game.encouragement.8</key>
+	<string>അവസാനം അടുത്തു</string>
+	<key>game.encouragement.9</key>
+	<string>ഇനി കുറച്ചേ ഉള്ളൂ</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ഓരോ പോയിന്റും നീ നേടി.</string>
+	<key>game.end.completionSuffix</key>
+	<string>പൂർത്തിയായി!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>കളി കഴിഞ്ഞു</string>
+	<key>game.end.mainMenu</key>
+	<string>പ്രധാന മെനു</string>
+	<key>game.end.playAgain</key>
+	<string>വീണ്ടും കളിക്കൂ</string>
+	<key>game.highScore</key>
+	<string>മികച്ച സ്കോർ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>പ്രധാന മെനുവിലേക്ക്</string>
+	<key>game.intro.continue</key>
+	<string>തുടർന്ന് കളിക്കൂ</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld മുതൽ തുടരും</string>
+	<key>game.intro.helperBullet</key>
+	<string>സഹായി ഓണായതിനാൽ ശരിയായ ഉത്തരം പച്ചയായി കാണിക്കും. അതിനാൽ ട്രോഫികൾ * ഉപയോഗിച്ച് വേറെയായി എണ്ണും.</string>
+	<key>game.intro.helperOff</key>
+	<string>സഹായി ഓഫ്</string>
+	<key>game.intro.helperOn</key>
+	<string>സഹായി ഓൺ</string>
+	<key>game.intro.howItWorks</key>
+	<string>ഈ ലെവൽ എങ്ങനെ കളിക്കാം</string>
+	<key>game.intro.livesOff</key>
+	<string>ജീവനുകൾ ഓഫ്</string>
+	<key>game.intro.livesOn</key>
+	<string>ജീവനുകൾ ഓൺ</string>
+	<key>game.intro.scorePaused</key>
+	<string>നിന്റെ ഇപ്പോഴത്തെ സ്കോർ താൽക്കാലികമായി നിർത്തും.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ക്ഷമിക്കണം! ഉറക്കെ വായിക്കുന്ന സൗകര്യം നിങ്ങളുടെ ഭാഷയിൽ ഇതുവരെ ലഭ്യമല്ല.</string>
+	<key>game.intro.start</key>
+	<string>ലെവൽ തുടങ്ങൂ</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ നെ 1 മുതൽ 12 വരെയുള്ള ഒരു സംഖ്യ കൊണ്ട് ഗുണിക്കൂ.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>അല്ലെങ്കിൽ കുറവ്</string>
+	<key>game.intro.tapToContinue</key>
+	<string>തുടരാൻ എവിടെയെങ്കിലും തട്ടൂ</string>
+	<key>game.intro.tapToStart</key>
+	<string>തുടങ്ങാൻ എവിടെയെങ്കിലും തട്ടൂ</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>ഓരോ ശരിയുത്തരത്തിനും |1| ട്രോഫി നേടൂ, പരമാവധി |%lld| വരെ.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ജീവനുകൾ തീർന്നാൽ ഇനി ട്രോഫികൾ നേടാനാവില്ല.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ലീഡർബോർഡിനുള്ള പരമാവധി ട്രോഫികൾ നേടി</string>
+	<key>game.status.mixMode</key>
+	<string>മിക്സ് മോഡ്</string>
+	<key>game.status.scoreLocked</key>
+	<string>ജീവനുകൾ തീർന്നാൽ ട്രോഫികൾ ഇനി എണ്ണില്ല</string>
+	<key>game.streak.subtitle</key>
+	<string>ട്രോഫികൾ ×2</string>
+	<key>game.streak.title</key>
+	<string>തുടർച്ചയായി 5!</string>
+	<key>goal.period</key>
+	<string>ലക്ഷ്യകാലം</string>
+	<key>goal.promptDaily</key>
+	<string>ദിവസം എത്ര മിനിറ്റ് കളിക്കണം?</string>
+	<key>goal.promptWeekly</key>
+	<string>ആഴ്ചയിൽ എത്ര മിനിറ്റ് കളിക്കണം?</string>
+	<key>goal.title</key>
+	<string>കളിലക്ഷ്യം</string>
+	<key>goalPeriod.daily</key>
+	<string>ദിവസേന</string>
+	<key>goalPeriod.weekly</key>
+	<string>ആഴ്ചതോറും</string>
+	<key>info.filter.addition</key>
+	<string>കൂട്ടൽ മാത്രം</string>
+	<key>info.filter.fractions</key>
+	<string>ഹരണം മാത്രം</string>
+	<key>info.filter.header</key>
+	<string>കണക്കുകളുടെ തരങ്ങൾ</string>
+	<key>info.filter.mixed</key>
+	<string>കലർന്ന ക്രിയകൾ</string>
+	<key>info.filter.percentages</key>
+	<string>ശതമാനങ്ങൾ മാത്രം</string>
+	<key>info.filter.subtraction</key>
+	<string>കുറയ്ക്കൽ മാത്രം</string>
+	<key>info.filter.tables</key>
+	<string>ഗുണനം മാത്രം</string>
+	<key>info.mode.fractions.header</key>
+	<string>ഭാഗങ്ങൾ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>ഒന്നോ പലതോ ഭാഗങ്ങൾ</string>
+	<key>info.mode.fractions.single</key>
+	<string>എപ്പോഴും ഒരു ഭാഗം</string>
+	<key>info.mode.header</key>
+	<string>ക്രമം</string>
+	<key>info.mode.mixed</key>
+	<string>താഴത്തെ ലെവലുകളുമായി കലർത്തിയത്</string>
+	<key>info.mode.order</key>
+	<string>നിശ്ചിത ക്രമം</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ദശാംശ സംഖ്യകളും ഉൾപ്പെടെ</string>
+	<key>info.mode.percentages.header</key>
+	<string>തരം</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ദശാംശ സംഖ്യകളില്ലാതെ</string>
+	<key>info.mode.random</key>
+	<string>ക്രമരഹിതം</string>
+	<key>info.super.all</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനം, ഹരണം, ശതമാനങ്ങൾ</string>
+	<key>info.super.basic</key>
+	<string>കൂട്ടലും കുറയ്ക്കലും</string>
+	<key>info.super.fraction</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനം, ഹരണം</string>
+	<key>info.super.times</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനം</string>
+	<key>language.select</key>
+	<string>ഭാഷ തിരഞ്ഞെടുക്കൂ</string>
+	<key>lives.three</key>
+	<string>3 ജീവനുകൾ</string>
+	<key>lives.unlimited</key>
+	<string>പരിധിയില്ല</string>
+	<key>menu.accessibility.character</key>
+	<string>കഥാപാത്രം</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>കഥാപാത്രം മാറ്റാൻ തട്ടൂ; സ്വാഗത സ്ക്രീനിൽ നിന്ന് വീണ്ടും തുടങ്ങാൻ രണ്ട് സെക്കൻഡ് അമർത്തിപ്പിടിക്കൂ.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ തിരഞ്ഞെടുക്കൂ</string>
+	<key>menu.maxScore</key>
+	<string>30 പരമാവധി</string>
+	<key>menu.maximumCount</key>
+	<string>പരമം</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>പരമാവധി %lld തവണ നേടി</string>
+	<key>menu.moreLevels</key>
+	<string>കൂടുതൽ ലെവലുകൾ</string>
+	<key>menu.options</key>
+	<string>കളി ഓപ്ഷനുകൾ</string>
+	<key>menu.premium</key>
+	<string>പ്രീമിയം</string>
+	<key>menu.premiumTables</key>
+	<string>പ്രീമിയം പട്ടികകൾ</string>
+	<key>menu.startHere</key>
+	<string>ഇവിടെ തുടങ്ങൂ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>പ്രീമിയം ഉപയോഗിച്ച് കൂടുതൽ തുറക്കൂ</string>
+	<key>mode.fractions.multiple</key>
+	<string>പല ഭാഗങ്ങൾ</string>
+	<key>mode.fractions.single</key>
+	<string>ഒരു ഭാഗം</string>
+	<key>mode.mix</key>
+	<string>മിക്സ്</string>
+	<key>mode.mixed</key>
+	<string>കലർന്നത്</string>
+	<key>mode.order</key>
+	<string>ക്രമം</string>
+	<key>mode.percentages.decimal</key>
+	<string>ദശാംശം</string>
+	<key>mode.percentages.whole</key>
+	<string>പൂർണ്ണം</string>
+	<key>mode.random</key>
+	<string>ക്രമരഹിതം</string>
+	<key>mode.standard</key>
+	<string>സാധാരണം</string>
+	<key>modeIntro.addition.intro</key>
+	<string>നിനക്ക് |കൂട്ടൽ| കണക്കുകൾ മാത്രം കിട്ടും.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>മറ്റൊരു സംഖ്യയിലേക്ക് %lld |അല്ലെങ്കിൽ കുറവ്| കൂട്ടൂ.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>%lld എപ്പോഴും |ആരോഹണ| ക്രമത്തിൽ കൂട്ടൂ.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>ഒരു |ക്രമരഹിത| സംഖ്യയിലേക്ക് %lld കൂട്ടൂ.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>കൂട്ടൽ · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>രണ്ട് സംഖ്യകൾ കൂട്ടിക്കൊണ്ടിരിക്കുക.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>ഉത്തരം പരമാവധി %lld ആണ്.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld വരെ കൂട്ടൽ</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>നിനക്ക് |ഭിന്നം| കണക്കുകൾ മാത്രം കിട്ടും.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ഈ ലെവലിലെയും |മുൻ ലെവലുകളിലെയും| ഭിന്നങ്ങൾ കിട്ടും.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lld തുല്യ ഭാഗങ്ങളിൽ നിന്ന് എപ്പോഴും |1 ഭാഗം| എടുക്കൂ.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>%lld ലെവലിലെയും മുൻ ലെവലുകളിലെയും വട്ടസംഖ്യകളുടെ ഭിന്നങ്ങൾ കണ്ടുപിടിക്കൂ.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>സംഖ്യകൾ വട്ടമായതിനാൽ ഉത്തരങ്ങൾ എപ്പോഴും പൂർണ്ണസംഖ്യകളായിരിക്കും.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld വരെ ഭിന്നങ്ങൾ</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lld തുല്യ ഭാഗങ്ങളിൽ നിന്ന് ഒന്നോ |പല ഭാഗങ്ങളോ| എടുക്കൂ.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>ഭിന്നങ്ങൾ · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>ഒരു പൂർണ്ണത്തിന്റെ ഭാഗം കണ്ടുപിടിച്ച് തുല്യഭിന്നങ്ങൾ ഉണ്ടാക്കൂ.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ഒരേ ഹരമുള്ള ഭിന്നങ്ങൾ കൂട്ടുകയും കുറയ്ക്കുകയും ചെയ്യൂ.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>കലർന്ന ഭിന്നങ്ങൾ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>നിനക്ക് |ശതമാനം| കണക്കുകൾ മാത്രം കിട്ടും.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ഈ ലെവലിലെയും |മുൻ ലെവലുകളിലെയും| ശതമാനങ്ങൾ കിട്ടും.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>എപ്പോഴും %@ കണക്കാക്കൂ; ഉത്തരം ഒരു |പൂർണ്ണസംഖ്യ| ആയിരിക്കും.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld വരെയുള്ള വട്ടസംഖ്യകളുടെ ശതമാനം കണ്ടുപിടിക്കൂ.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>അളവുകൾ വട്ടമായതിനാൽ ഉത്തരങ്ങൾ എപ്പോഴും പൂർണ്ണസംഖ്യകളായിരിക്കും.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld വരെ ശതമാനങ്ങൾ</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>എപ്പോഴും %@ കണക്കാക്കൂ; ഉത്തരം ഒരു |ദശാംശം| ആകാം.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ കണക്കാക്കൂ</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ഒരു സംഖ്യയുടെ ശതമാനം കണ്ടുപിടിക്കൂ.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>ശതമാനങ്ങളും ഭിന്നങ്ങളും തമ്മിൽ മാറ്റൂ.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>കലർന്ന ശതമാനങ്ങൾ</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>നിനക്ക് |കുറയ്ക്കൽ| കണക്കുകൾ മാത്രം കിട്ടും.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>മറ്റൊരു സംഖ്യയിൽ നിന്ന് %lld |അല്ലെങ്കിൽ കുറവ്| കുറയ്ക്കൂ.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>%lld എപ്പോഴും |അവരോഹണ| ക്രമത്തിൽ കുറയ്ക്കൂ.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>ഒരു |ക്രമരഹിത| സംഖ്യയിൽ നിന്ന് %lld കുറയ്ക്കൂ.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>കുറയ്ക്കൽ · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>ആദ്യ സംഖ്യ പരമാവധി %lld ആണ്.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>ഉത്തരം പൂജ്യത്തിന് താഴെയാകാം.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>പൂജ്യത്തിന് താഴെ</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld വരെ കുറയ്ക്കൽ</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>രണ്ട് സംഖ്യകൾ കുറച്ചുകൊണ്ടിരിക്കുക.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>തിരഞ്ഞെടുത്ത ഓരോ വിഭാഗത്തിലും ബുദ്ധിമുട്ട് |ലെവൽ %lld| വരെ ഉയരാം.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനപ്പട്ടികകൾ, ഭിന്നങ്ങൾ, ശതമാനങ്ങൾ എല്ലാം കലർത്തി പരിശീലിക്കൂ.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>സൂപ്പർമിക്സ് %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>കൂട്ടലും കുറയ്ക്കലും കലർത്തി പരിശീലിക്കൂ.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>സൂപ്പർമിക്സ് %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനപ്പട്ടികകൾ, ഭിന്നങ്ങൾ എല്ലാം കലർത്തി പരിശീലിക്കൂ.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>സൂപ്പർമിക്സ് %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>കൂട്ടൽ, കുറയ്ക്കൽ, ഗുണനപ്പട്ടികകൾ എല്ലാം കലർത്തി പരിശീലിക്കൂ.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>സൂപ്പർമിക്സ് %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>നിനക്ക് |ഗുണനം| കണക്കുകൾ മാത്രം കിട്ടും.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld വരെ| എല്ലാ ഗുണനപ്പട്ടികകളും കലർത്തി കിട്ടും.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ഓരോ പട്ടികയും |1 മുതൽ 12| വരെയുള്ള സംഖ്യ കൊണ്ട് ഗുണിക്കൂ.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldന്റെ പട്ടിക |ആരോഹണ| ക്രമത്തിൽ കിട്ടും.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldന്റെ പട്ടിക |ക്രമരഹിത| ക്രമത്തിൽ കിട്ടും.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldന്റെ പട്ടിക</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld മുതൽ %lld വരെയുള്ള പട്ടികകൾ കലർത്തി പരിശീലിക്കൂ.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>പട്ടികകൾ %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>നിന്റെ പേര്</string>
+	<key>name.whatsYourName</key>
+	<string>നിന്റെ പേരെന്താണ്?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ഈ മൃഗത്തെ അൺലോക്ക് ചെയ്യാൻ കുറച്ച് ട്രോഫികൾ കൂടി നേടൂ! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ഇനി %lld ട്രോഫികൾ മാത്രം! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>നിങ്ങളുടെ മൃഗങ്ങൾ കാത്തിരിക്കുന്നു. കളിക്കാൻ തിരികെ വരിക, ട്രോഫികൾ ശേഖരിക്കുന്നത് തുടരുക!</string>
+	<key>notif.comeback.title</key>
+	<string>എനിക്ക് നിന്നെ മിസ്സാകും! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>ഒരു %lld മിനിറ്റ് പ്ലേ സെഷൻ ആരംഭിച്ച് നിങ്ങളുടെ ദൈനംദിന പ്ലേ സ്ട്രീക്ക് നീട്ടുക.</string>
+	<key>notif.day3.title</key>
+	<string>നമുക്ക് ദിവസം 3 ആക്കാം! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>തെറ്റായ ഉത്തരം ഒഴിവാക്കാനും കയറുന്നത് തുടരാനും ജമ്പ് പാഡ് ഉപയോഗിക്കുക!</string>
+	<key>notif.jumppad.title</key>
+	<string>തെറ്റായ ഉത്തരങ്ങൾ മറികടക്കുക! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>ജമ്പിംഗ് ഫോക്സ് പ്രീമിയത്തിൽ ഓരോ വിഷയത്തിനും എല്ലാ 10 മൃഗങ്ങൾക്കും %lld ലെവലുകൾ ഉൾപ്പെടുന്നു. സാഹസികത തുടരുന്നു!</string>
+	<key>notif.premium.title</key>
+	<string>കൂടുതൽ ലെവലുകളും മൃഗങ്ങളും അൺലോക്ക് ചെയ്യുക! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ദിവസമായി. നമുക്ക് ചില ഗണിത വ്യായാമങ്ങൾ പരിഹരിച്ച് കൂടുതൽ ട്രോഫികൾ നേടാം!</string>
+	<key>notif.reactivate.title</key>
+	<string>വീണ്ടും കളിക്കാൻ തയ്യാറാണോ? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld മിനിറ്റ് കളിക്കുക, നിങ്ങളുടെ ദൈനംദിന കളി തുടരുക!</string>
+	<key>notif.streak.title %lld</key>
+	<string>നിങ്ങളുടെ പ്രതിദിന പ്ലേ സ്ട്രീക്ക് %lld ദിവസത്തിലെത്തി! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>മികച്ച ജോലി! നമുക്ക് %lld മിനിറ്റ് കളിച്ച് കൂടുതൽ ശേഖരിക്കാം.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>അത് നിങ്ങളുടെ ആകെ %lld ട്രോഫികളായി എത്തിക്കുന്നു. അത്ഭുതകരമായ പ്രവൃത്തി!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>ഈ ആഴ്ച നിങ്ങൾ %lld ട്രോഫികൾ നേടി! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>വ്യത്യസ്ത മിക്സ് കണക്കുകൾ ഒരുമിച്ച്.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>ഇതിനകം നന്നായി അറിയാം</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>ക്രമത്തിലുള്ള കണക്കുകൾ പരിശീലിക്കൂ.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>ഇപ്പോൾ തുടങ്ങിയതാണ്</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ക്രമരഹിത കണക്കുകൾ.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>കുറച്ച് പരിശീലിച്ചിട്ടുണ്ട്</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ ന് ഒരു തുടക്കസ്ഥാനം തിരഞ്ഞെടുക്കൂ.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ഈ വിഷയം</string>
+	<key>onboarding.level.title</key>
+	<string>ഇത് നിനക്ക് ഇതിനകം എത്ര നന്നായി അറിയാം?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>തുടങ്ങാം. നിന്റെ പേരെന്താണ്?</string>
+	<key>onboarding.name.title</key>
+	<string>കണക്കുകൾ ഇത്ര രസകരമായിട്ടില്ല!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>തുടങ്ങാൻ ഒരു വിഷയം തിരഞ്ഞെടുക്കൂ.</string>
+	<key>onboarding.subject.title</key>
+	<string>നിനക്ക് എന്താണ് പഠിക്കേണ്ടത്?</string>
+	<key>options.capAt30.info</key>
+	<string>ഓരോ ലെവലിലും പരമാവധി 50 ട്രോഫികളുടെ ലക്ഷ്യമുണ്ട്. ഇത് ഓണാക്കിയാൽ ലക്ഷ്യം എത്തിയ ഉടൻ കളി തീരും.</string>
+	<key>options.capAt30.title</key>
+	<string>ലക്ഷ്യത്തിലെത്തുമ്പോൾ തീർക്കൂ</string>
+	<key>options.helperMode.info</key>
+	<string>സഹായി മോഡിൽ ശരിയായ ഉത്തരം എപ്പോഴും പച്ചയായി കാണിക്കും. ഈ മോഡിൽ നേടിയ ട്രോഫികൾ വേറെയായി എണ്ണി നക്ഷത്രം അടയാളപ്പെടുത്തും.</string>
+	<key>options.helperMode.title</key>
+	<string>സഹായി മോഡ്</string>
+	<key>options.unlimitedLives.info</key>
+	<string>നീ എപ്പോഴും 3 ജീവനുകളോടെ തുടങ്ങും. ജീവനുകൾ തീർന്നാൽ കളി തീരും. അതിന് ശേഷവും കളിച്ച് പരിശീലിക്കാൻ ഇത് ഓണാക്കൂ.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>പരിധിയില്ലാത്ത ജീവനുകൾ</string>
+	<key>parentGate.approved</key>
+	<string>അംഗീകരിച്ചു</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ശ്രമങ്ങൾ: %1$lldൽ %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ %lld സെക്കൻഡ് അമർത്തിപ്പിടിക്കൂ.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>അമർത്തിപ്പിടിക്കുക: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ %lld സെക്കൻഡ് അമർത്തിപ്പിടിക്കൂ. പിന്നെ %@ %lld തവണ തട്ടൂ.</string>
+	<key>parentGate.shape.circle</key>
+	<string>വൃത്തം</string>
+	<key>parentGate.shape.diamond</key>
+	<string>വജ്രം</string>
+	<key>parentGate.shape.heart</key>
+	<string>ഹൃദയം</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ഷട്ഭുജം</string>
+	<key>parentGate.shape.plus</key>
+	<string>പ്ലസ്</string>
+	<key>parentGate.shape.square</key>
+	<string>ചതുരം</string>
+	<key>parentGate.shape.star</key>
+	<string>നക്ഷത്രം</string>
+	<key>parentGate.shape.triangle</key>
+	<string>ത്രികോണം</string>
+	<key>parentGate.stepOne</key>
+	<string>ഘട്ടം 1 / 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>ഘട്ടം 2 / 2</string>
+	<key>parentGate.subtitle</key>
+	<string>ചെറിയ കളിക്കാരെ സംരക്ഷിക്കാൻ, വാങ്ങലിലേക്ക് പോകുന്നതിന് മുമ്പ് ഒരു മുതിർന്നയാൾ ഈ പരിശോധന പൂർത്തിയാക്കണം.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>ഇപ്പോൾ %2$@ %1$lld തവണ തട്ടൂ.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>തട്ടുകൾ: %1$lldൽ %2$lld</string>
+	<key>parentGate.title</key>
+	<string>മുതിർന്നയാളുടെ അനുമതി വേണം</string>
+	<key>premium.availableAt %lld</key>
+	<string>%lld ട്രോഫികൾ മുതൽ ലഭ്യം</string>
+	<key>premium.availableFromStart</key>
+	<string>തുടക്കം മുതൽ ലഭ്യം</string>
+	<key>premium.characterUnlocked</key>
+	<string>പുതിയ കഥാപാത്രം തുറന്നു</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ തുറന്നു</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>നിങ്ങൾ %lld ട്രോഫികൾ നേടി</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium-ൽ മാത്രം</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium-ൽ മാത്രം</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>പ്രീമിയത്തിൽ 10 മൃഗങ്ങളുമായും സ്വതന്ത്രമായി കളിക്കാം.</string>
+	<key>premium.feature.animals.title</key>
+	<string>എല്ലാ മൃഗങ്ങളും ലഭ്യം</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>പരിശീലിക്കാൻ എപ്പോഴും പുതിയ കണക്കുകൾ.</string>
+	<key>premium.feature.levels.title</key>
+	<string>ഓരോ വിഷയത്തിനും 99 ലെവലുകൾ</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>തടസ്സങ്ങളില്ലാതെ കളിക്കൂ.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>പരസ്യങ്ങളില്ല</string>
+	<key>premium.oneTime</key>
+	<string>ഒറ്റത്തവണ വാങ്ങൽ. എന്നേക്കും നിന്റേത്.</string>
+	<key>premium.restore</key>
+	<string>വാങ്ങലുകൾ പുനഃസ്ഥാപിക്കൂ</string>
+	<key>premium.start</key>
+	<string>തുടങ്ങുക</string>
+	<key>premium.storeUnavailable</key>
+	<string>സ്റ്റോർ ഇപ്പോൾ ലഭ്യമല്ല. പിന്നീട് വീണ്ടും ശ്രമിക്കൂ.</string>
+	<key>premium.unlock</key>
+	<string>പ്രീമിയം തുറക്കൂ</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>പ്രീമിയം തുറക്കൂ · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ട്രോഫികൾ ഉപയോഗിച്ച് തുറക്കൂ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ഉപയോഗിച്ച് തുറന്നു</string>
+	<key>premium.youHavePremium</key>
+	<string>നിനക്ക് പ്രീമിയം ലഭിച്ചു!</string>
+	<key>settings.character</key>
+	<string>കഥാപാത്രം</string>
+	<key>settings.characterInfo</key>
+	<string>ഓരോ മൃഗവും കളിക്ക് സ്വന്തം നിറത്തീം നൽകും.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>ഇഷ്ടാനുസരണം: %lld മിനിറ്റ്</string>
+	<key>settings.dailyGoal</key>
+	<string>ദിവസലക്ഷ്യം</string>
+	<key>settings.goalInfo</key>
+	<string>തുടർച്ചാ ലക്ഷ്യം ദിവസം 5 മിനിറ്റിൽ തുടങ്ങും. സജീവമായി കളിച്ച സമയം മാത്രം എണ്ണും.</string>
+	<key>settings.lives</key>
+	<string>ജീവനുകൾ</string>
+	<key>settings.livesInfo</key>
+	<string>മൂന്ന് ജീവനുകളുള്ളപ്പോൾ അവസാന ഹൃദയം പോയാൽ കളി തീരും. പരിധിയില്ലാത്ത മോഡിൽ ജീവനുകൾ ഉള്ളപ്പോൾ മാത്രം ട്രോഫികൾ എണ്ണും; ശേഷം കളി തുടരാം.</string>
+	<key>settings.playGoals</key>
+	<string>കളിലക്ഷ്യങ്ങൾ</string>
+	<key>settings.premiumUnlocked</key>
+	<string>പ്രീമിയം തുറന്നു. നന്ദി!</string>
+	<key>settings.title</key>
+	<string>ക്രമീകരണങ്ങൾ</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>ഒരു ദിവസലക്ഷ്യം തിരഞ്ഞെടുക്കൂ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>ദിവസലക്ഷ്യമോ ആഴ്ചലക്ഷ്യമോ തിരഞ്ഞെടുക്കൂ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %3$lld മിനിറ്റിൽ %2$lld, തുടർച്ചയായി %4$lld ദിവസം</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>ദിവസതുടർച്ച, %lldൽ %lld മിനിറ്റ്</string>
+	<key>streak.daily</key>
+	<string>ദിവസതുടർച്ച</string>
+	<key>streak.dayOne</key>
+	<string>ദിവസം 1</string>
+	<key>tutorial.answerHint</key>
+	<string>ഉത്തരം അറിയില്ലേ? കാണാൻ ചോദ്യത്തിൽ തട്ടൂ.</string>
+	<key>tutorial.complete</key>
+	<string>വളരെ നന്നായി! പരിശീലനം പൂർത്തിയായി. ഇനി മികച്ച സ്കോർ നേടൂ!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ട്രോഫി നേടാൻ ശരിയായ ഉത്തരത്തിലേക്ക് ചാടൂ.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>ശരിയായ ഉത്തരം പച്ചയായി കാണിക്കുന്നു. ഇപ്പോൾ അതിലേക്കു ചാടൂ.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>മൂന്നിരട്ടി ട്രോഫികൾ നേടാൻ ശരിയായ ഉത്തരത്തിലേക്ക് ചാടൂ.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>ഒരിക്കൽ മൂന്നിരട്ടി ട്രോഫികൾ നേടാൻ ×3 നാണയം എടുക്കൂ.</string>
+	<key>tutorial.lifePickup</key>
+	<string>ജീവനുകൾ തിരികെ നേടാൻ അരജീവനോ മുഴുവൻ ജീവനോ കണ്ടെത്താം.</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 ഒഴിവാക്കൂ. അത് ഒരു ട്രോഫി നഷ്ടപ്പെടുത്തും.</string>
+	<key>tutorial.move</key>
+	<string>ഇടത്തോട്ടും വലത്തോട്ടും പോകാൻ ഉപകരണം നീക്കൂ. സ്ക്രീന്റെ വശങ്ങളിലൂടെയും കടക്കാം.</string>
+	<key>tutorial.platforms</key>
+	<string>മുകളിലേക്ക് പോകാൻ പ്ലാറ്റ്ഫോമുകളിൽ ചാടൂ.</string>
+	<key>tutorial.scoreHint</key>
+	<string>ഈ ലെവലിലെ നിന്റെ സ്കോർ ഇവിടെ കാണാം.</string>
+	<key>tutorial.star</key>
+	<string>തെറ്റായ ഉത്തരങ്ങൾ വെടിവെച്ച് നീക്കാൻ നക്ഷത്രത്തിലേക്ക് ചാടൂ.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>തെറ്റായ ഉത്തരം തിരഞ്ഞെടുത്താൽ മൂന്ന് ജീവനുകളിൽ ഒന്ന് നഷ്ടമാകും. ഇപ്പോൾ പരീക്ഷിക്കൂ.</string>
+</dict>
+</plist>

@@ -1171,21 +1171,6 @@ final class GameScene: SKScene {
         layoutNewGame()
     }
 
-    /// Keeps the frozen field behind a fresh start card in sync when its
-    /// helper/lives pills are used as controls.
-    func applyPreGameSettings(lifeMode: LifeMode, answerHelperEnabled: Bool) {
-        state.applyPreGameSettings(lifeMode: lifeMode,
-                                   answerHelperEnabled: answerHelperEnabled)
-        helperEnabled = answerHelperEnabled
-        for platform in platforms where platform.isActiveAnswer {
-            platform.styleAsActiveAnswer(
-                theme: theme,
-                isCorrect: platform.value == state.correctAnswer,
-                helperEnabled: answerHelperEnabled
-            )
-        }
-    }
-
     // MARK: Themed background pattern
 
     /// The number + operation sign that fills the wallpaper for a level, built

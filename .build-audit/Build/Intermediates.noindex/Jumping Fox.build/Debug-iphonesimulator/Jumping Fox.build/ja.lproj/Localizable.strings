@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>クマ</string>
+	<key>character.bunny</key>
+	<string>ウサギ</string>
+	<key>character.crab</key>
+	<string>カニ</string>
+	<key>character.dog</key>
+	<string>イヌ</string>
+	<key>character.elephant</key>
+	<string>ゾウ</string>
+	<key>character.fox</key>
+	<string>キツネ</string>
+	<key>character.frog</key>
+	<string>カエル</string>
+	<key>character.lion</key>
+	<string>ライオン</string>
+	<key>character.octopus</key>
+	<string>タコ</string>
+	<key>character.penguin</key>
+	<string>ペンギン</string>
+	<key>character.pickerTitle</key>
+	<string>キャラクターをえらぼう</string>
+	<key>common.back</key>
+	<string>もどる</string>
+	<key>common.cancel</key>
+	<string>キャンセル</string>
+	<key>common.continue</key>
+	<string>つづける</string>
+	<key>common.done</key>
+	<string>できた</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld分</string>
+	<key>common.save</key>
+	<string>ほぞん</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>2秒間長押しすると、開発者モードが開きます。</string>
+	<key>developerMode.title</key>
+	<string>開発者モード</string>
+	<key>filter.addition</key>
+	<string>たし算</string>
+	<key>filter.fractions</key>
+	<string>分数</string>
+	<key>filter.mixed</key>
+	<string>スーパーミックス</string>
+	<key>filter.percentages</key>
+	<string>パーセント</string>
+	<key>filter.subtraction</key>
+	<string>ひき算</string>
+	<key>filter.tables</key>
+	<string>九九</string>
+	<key>game.accessibility.mix</key>
+	<string>ミックス</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld／%lld</string>
+	<key>game.encouragement.0</key>
+	<string>よくがんばったね</string>
+	<key>game.encouragement.1</key>
+	<string>いいスタート</string>
+	<key>game.encouragement.2</key>
+	<string>れんしゅうをつづけよう</string>
+	<key>game.encouragement.3</key>
+	<string>なかなかいいね</string>
+	<key>game.encouragement.4</key>
+	<string>いいかんじ</string>
+	<key>game.encouragement.5</key>
+	<string>いいできだね</string>
+	<key>game.encouragement.6</key>
+	<string>よくできました</string>
+	<key>game.encouragement.7</key>
+	<string>とってもよくできたね</string>
+	<key>game.encouragement.8</key>
+	<string>ゴールはもうすぐ</string>
+	<key>game.encouragement.9</key>
+	<string>あとちょっと</string>
+	<key>game.end.completionSubtitle</key>
+	<string>ぜんぶのポイントをとったよ。</string>
+	<key>game.end.completionSuffix</key>
+	<string>クリア！</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ゲームオーバー</string>
+	<key>game.end.mainMenu</key>
+	<string>メインメニュー</string>
+	<key>game.end.playAgain</key>
+	<string>もう一度</string>
+	<key>game.highScore</key>
+	<string>ハイスコア</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>メインメニューにもどる</string>
+	<key>game.intro.continue</key>
+	<string>つづきから</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lldからつづける</string>
+	<key>game.intro.helperBullet</key>
+	<string>おたすけがオンなので、正しい答えが緑色になります。そのため、トロフィーは*付きで別に数えます。</string>
+	<key>game.intro.helperOff</key>
+	<string>おたすけオフ</string>
+	<key>game.intro.helperOn</key>
+	<string>おたすけオン</string>
+	<key>game.intro.howItWorks</key>
+	<string>このレベルの遊び方</string>
+	<key>game.intro.livesOff</key>
+	<string>ライフなし</string>
+	<key>game.intro.livesOn</key>
+	<string>ライフあり</string>
+	<key>game.intro.scorePaused</key>
+	<string>今のスコアは一時停止されます。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ごめんなさい！読み上げ機能はまだあなたの言語では利用できません。</string>
+	<key>game.intro.start</key>
+	<string>レベルをはじめる</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@に1から12までの数をかけよう。</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>またはそれより小さい数</string>
+	<key>game.intro.tapToContinue</key>
+	<string>どこかをタップしてつづける</string>
+	<key>game.intro.tapToStart</key>
+	<string>どこかをタップしてスタート</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>正解1つでトロフィーを|1|こゲット。最大|%lld|こまで。</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>ライフがなくなると、トロフィーはもらえません。</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>ランキング用トロフィーの上限に達しました</string>
+	<key>game.status.mixMode</key>
+	<string>ミックスモード</string>
+	<key>game.status.scoreLocked</key>
+	<string>ライフがなくなるとトロフィーは増えません</string>
+	<key>game.streak.subtitle</key>
+	<string>トロフィー×2</string>
+	<key>game.streak.title</key>
+	<string>5もんれんぞく！</string>
+	<key>goal.period</key>
+	<string>目標の期間</string>
+	<key>goal.promptDaily</key>
+	<string>1日に何分あそびたい？</string>
+	<key>goal.promptWeekly</key>
+	<string>1週間に何分あそびたい？</string>
+	<key>goal.title</key>
+	<string>あそぶ目標</string>
+	<key>goalPeriod.daily</key>
+	<string>毎日</string>
+	<key>goalPeriod.weekly</key>
+	<string>毎週</string>
+	<key>info.filter.addition</key>
+	<string>たし算だけ</string>
+	<key>info.filter.fractions</key>
+	<string>わり算だけ</string>
+	<key>info.filter.header</key>
+	<string>問題のしゅるい</string>
+	<key>info.filter.mixed</key>
+	<string>いろいろな計算</string>
+	<key>info.filter.percentages</key>
+	<string>パーセントだけ</string>
+	<key>info.filter.subtraction</key>
+	<string>ひき算だけ</string>
+	<key>info.filter.tables</key>
+	<string>かけ算だけ</string>
+	<key>info.mode.fractions.header</key>
+	<string>パーツ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>1つまたはいくつかのパーツ</string>
+	<key>info.mode.fractions.single</key>
+	<string>いつも1つのパーツ</string>
+	<key>info.mode.header</key>
+	<string>順番</string>
+	<key>info.mode.mixed</key>
+	<string>前のレベルもまぜる</string>
+	<key>info.mode.order</key>
+	<string>決まった順番</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>小数あり</string>
+	<key>info.mode.percentages.header</key>
+	<string>しゅるい</string>
+	<key>info.mode.percentages.whole</key>
+	<string>小数なし</string>
+	<key>info.mode.random</key>
+	<string>ランダムな順番</string>
+	<key>info.super.all</key>
+	<string>たし算、ひき算、かけ算、わり算、パーセント</string>
+	<key>info.super.basic</key>
+	<string>たし算とひき算</string>
+	<key>info.super.fraction</key>
+	<string>たし算、ひき算、かけ算、わり算</string>
+	<key>info.super.times</key>
+	<string>たし算、ひき算、かけ算</string>
+	<key>language.select</key>
+	<string>言語をえらぶ</string>
+	<key>lives.three</key>
+	<string>ライフ3こ</string>
+	<key>lives.unlimited</key>
+	<string>むげん</string>
+	<key>menu.accessibility.character</key>
+	<string>キャラクター</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>タップでキャラクターをかえます。2秒間長押しすると、はじめの画面からやり直します。</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@をえらぶ</string>
+	<key>menu.maxScore</key>
+	<string>最大30</string>
+	<key>menu.maximumCount</key>
+	<string>最大</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>最大に%lld回達しました</string>
+	<key>menu.moreLevels</key>
+	<string>もっとレベル</string>
+	<key>menu.options</key>
+	<string>ゲーム設定</string>
+	<key>menu.premium</key>
+	<string>プレミアム</string>
+	<key>menu.premiumTables</key>
+	<string>プレミアム九九</string>
+	<key>menu.startHere</key>
+	<string>ここからスタート</string>
+	<key>menu.unlockWithPremium</key>
+	<string>プレミアムでもっと遊ぼう</string>
+	<key>mode.fractions.multiple</key>
+	<string>いくつか</string>
+	<key>mode.fractions.single</key>
+	<string>1つ</string>
+	<key>mode.mix</key>
+	<string>ミックス</string>
+	<key>mode.mixed</key>
+	<string>まぜる</string>
+	<key>mode.order</key>
+	<string>順番</string>
+	<key>mode.percentages.decimal</key>
+	<string>小数</string>
+	<key>mode.percentages.whole</key>
+	<string>整数</string>
+	<key>mode.random</key>
+	<string>ランダム</string>
+	<key>mode.standard</key>
+	<string>スタンダード</string>
+	<key>modeIntro.addition.intro</key>
+	<string>|たし算|の問題だけが出るよ。</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>ほかの数に%lld|以下|をたすよ。</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>%lldずつ|小さい順|にたすよ。</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>|ランダム|な数に%lldをたすよ。</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>たし算・%lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>2つの数をたしていこう。</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>答えは最大%lldです。</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lldまでのたし算</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>|分数|の問題だけが出るよ。</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>このレベルと|前のレベル|の分数が出るよ。</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>%lldこの同じパーツから、いつも|1つ|をとるよ。</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>レベル%lldまでの丸い数で分数を計算しよう。</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>数はきりのよい数なので、答えはいつも整数です。</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lldまでの分数</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>%lldこの同じパーツから、1つまたは|いくつか|をとるよ。</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>分数・%lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>全体の一部を計算し、同じ大きさの分数を作ろう。</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>分母が同じ分数をたしたり、ひいたりしよう。</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>分数ミックス</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>|パーセント|の問題だけが出るよ。</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>このレベルと|前のレベル|のパーセントが出るよ。</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>いつも%@を計算し、答えは|整数|になるよ。</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lldまでのきりのよい数でパーセントを計算しよう。</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>数はきりがよいので、答えはいつも整数です。</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lldまでのパーセント</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>いつも%@を計算し、答えが|小数|になることもあるよ。</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@を計算</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ある数の何パーセントかを計算しよう。</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>パーセントと分数をたがいに直そう。</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>パーセントミックス</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>|ひき算|の問題だけが出るよ。</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>ほかの数から%lld|以下|をひくよ。</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>%lldずつ|大きい順|にひくよ。</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>|ランダム|な数から%lldをひくよ。</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>ひき算・%lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>最初の数は最大%lldです。</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>答えが0より小さくなることもあるよ。</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>0より小さい数</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lldまでのひき算</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>2つの数をひいていこう。</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>えらんだしゅるいごとに、むずかしさは|レベル%lld|まで上がります。</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>たし算、ひき算、九九、分数、パーセントをまぜてれんしゅうしよう。</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>スーパーミックス%lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>たし算とひき算をまぜてれんしゅうしよう。</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>スーパーミックス%lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>たし算、ひき算、九九、分数をまぜてれんしゅうしよう。</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>スーパーミックス%lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>たし算、ひき算、九九をまぜてれんしゅうしよう。</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>スーパーミックス%lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>|かけ算|の問題だけが出るよ。</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lldのだんまで|の九九がまざって出るよ。</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>それぞれのだんに|1から12|までの数をかけるよ。</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lldのだんを|小さい順|にやるよ。</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lldのだんを|ランダム|な順番でやるよ。</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lldのだん</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lldから%lldのだんをまぜてれんしゅうしよう。</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>九九 %lld〜%lld</string>
+	<key>name.placeholder</key>
+	<string>なまえ</string>
+	<key>name.whatsYourName</key>
+	<string>きみのなまえは？</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: この動物のロックを解除するには、さらにいくつかのトロフィーを獲得してください! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>残りのトロフィーはあと %lld つです！ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>あなたの動物たちが待っています。再びプレイしてトロフィーを集め続けましょう!</string>
+	<key>notif.comeback.title</key>
+	<string>私たちはあなたがいなくて寂しいです！ 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld 分間のプレイ セッションを開始して、毎日の連続プレイを延長しましょう。</string>
+	<key>notif.day3.title</key>
+	<string>3日目も実現させましょう！ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>ジャンプパッドを使用して間違った答えをスキップし、登り続けましょう。</string>
+	<key>notif.jumppad.title</key>
+	<string>間違った答えを飛び越えてください！ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox プレミアムには、すべてのトピックと 10 匹すべての動物の %lld レベルが含まれています。冒険はまだまだ続きます！</string>
+	<key>notif.premium.title</key>
+	<string>さらに多くのレベルと動物をアンロックしましょう！ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld日が経ちました。数学の練習問題を解いて、より多くのトロフィーを獲得しましょう!</string>
+	<key>notif.reactivate.title</key>
+	<string>もう一度プレイする準備はできましたか? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld 分間プレイして、毎日の連続プレイを続けましょう!</string>
+	<key>notif.streak.title %lld</key>
+	<string>毎日の連続プレイ日数が %lld 日に達しました! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>素晴らしい仕事だ！%lld分間プレイしてさらに集めましょう。</string>
+	<key>notif.trophies.title %lld</key>
+	<string>トロフィーを %lld 個獲得しました! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>これでトロフィーの合計は %lld 個になります。素晴らしい作品です！</string>
+	<key>notif.weekly.title %lld</key>
+	<string>今週は %lld 個のトロフィーを獲得しました! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>いろいろなミックス問題。</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>もうけっこうできる</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>順番どおりの問題をれんしゅう。</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>はじめたばかり</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ランダムな順番の問題。</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>少しれんしゅうした</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@のスタート地点をえらぼう。</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>このテーマ</string>
+	<key>onboarding.level.title</key>
+	<string>もうどれくらいできる？</string>
+	<key>onboarding.name.subtitle</key>
+	<string>さあ、はじめよう。きみのなまえは？</string>
+	<key>onboarding.name.title</key>
+	<string>計算ってこんなに楽しい！</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>最初にやるテーマをえらぼう。</string>
+	<key>onboarding.subject.title</key>
+	<string>何を学びたい？</string>
+	<key>options.capAt30.info</key>
+	<string>各レベルのトロフィー目標は最大50こです。オンにすると、目標に達したときゲームが自動で終わります。</string>
+	<key>options.capAt30.title</key>
+	<string>目標でおわる</string>
+	<key>options.helperMode.info</key>
+	<string>おたすけモードでは、正しい答えがいつも緑色で表示されます。このモードでもらったトロフィーは別に数え、星印が付きます。</string>
+	<key>options.helperMode.title</key>
+	<string>おたすけモード</string>
+	<key>options.unlimitedLives.info</key>
+	<string>いつもライフ3こで始まります。ライフがなくなるとゲームは終わります。オンにすると、ライフがなくなったあとも遊んでれんしゅうできます。</string>
+	<key>options.unlimitedLives.title</key>
+	<string>ライフむげん</string>
+	<key>parentGate.approved</key>
+	<string>承認ずみ</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>回数：%1$lld／%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@を%lld秒間長押ししてください。</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>長押し：%lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@を%lld秒間長押ししてください。そのあと、%@を%lld回タップしてください。</string>
+	<key>parentGate.shape.circle</key>
+	<string>まる</string>
+	<key>parentGate.shape.diamond</key>
+	<string>ひし形</string>
+	<key>parentGate.shape.heart</key>
+	<string>ハート</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>六角形</string>
+	<key>parentGate.shape.plus</key>
+	<string>プラス</string>
+	<key>parentGate.shape.square</key>
+	<string>四角</string>
+	<key>parentGate.shape.star</key>
+	<string>星</string>
+	<key>parentGate.shape.triangle</key>
+	<string>三角</string>
+	<key>parentGate.stepOne</key>
+	<string>ステップ1／2</string>
+	<key>parentGate.stepTwo</key>
+	<string>ステップ2／2</string>
+	<key>parentGate.subtitle</key>
+	<string>小さなお子さまを守るため、購入に進む前に大人の方がこの確認を行ってください。</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>つぎに、%2$@を%1$lld回タップしてください。</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>タップ：%1$lld／%2$lld</string>
+	<key>parentGate.title</key>
+	<string>大人の承認が必要です</string>
+	<key>premium.availableAt %lld</key>
+	<string>トロフィー%lld個で使用可能</string>
+	<key>premium.availableFromStart</key>
+	<string>最初から使用可能</string>
+	<key>premium.characterUnlocked</key>
+	<string>新しいキャラクターをアンロック！</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@をアンロック</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>トロフィーを%lld個獲得しました</string>
+	<key>premium.exclusiveBadge</key>
+	<string>プレミアム限定</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>プレミアム限定</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>プレミアムなら、10ぴきの動物すべてで自由に遊べます。</string>
+	<key>premium.feature.animals.title</key>
+	<string>すべての動物が使える</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>れんしゅうできる新しい問題がいつもたくさん。</string>
+	<key>premium.feature.levels.title</key>
+	<string>テーマごとに99レベル</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>じゃまされずにずっと遊べます。</string>
+	<key>premium.feature.noAds.title</key>
+	<string>広告なし</string>
+	<key>premium.oneTime</key>
+	<string>一度買えば、ずっと使えます。</string>
+	<key>premium.restore</key>
+	<string>購入を復元</string>
+	<key>premium.start</key>
+	<string>スタート</string>
+	<key>premium.storeUnavailable</key>
+	<string>今はストアを使えません。あとでもう一度お試しください。</string>
+	<key>premium.unlock</key>
+	<string>プレミアムを購入</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>プレミアムを購入・%@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>トロフィーでアンロック</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>プレミアムでアンロック</string>
+	<key>premium.youHavePremium</key>
+	<string>プレミアムを使えます！</string>
+	<key>settings.character</key>
+	<string>キャラクター</string>
+	<key>settings.characterInfo</key>
+	<string>動物ごとに、ゲーム全体の色テーマが変わります。</string>
+	<key>settings.customMinutes %lld</key>
+	<string>カスタム：%lld分</string>
+	<key>settings.dailyGoal</key>
+	<string>毎日の目標</string>
+	<key>settings.goalInfo</key>
+	<string>れんぞく目標は1日5分から。実際に遊んだ時間だけ数えます。</string>
+	<key>settings.lives</key>
+	<string>ライフ</string>
+	<key>settings.livesInfo</key>
+	<string>ライフ3こでは、最後のハートがなくなるとゲーム終了です。むげんモードでは、ライフがある間だけトロフィーが増え、そのあとも遊びつづけられます。</string>
+	<key>settings.playGoals</key>
+	<string>あそぶ目標</string>
+	<key>settings.premiumUnlocked</key>
+	<string>プレミアムを使えるようになりました。ありがとう！</string>
+	<key>settings.title</key>
+	<string>設定</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>毎日の目標をえらぶ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>毎日または毎週の目標をえらぶ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@、%3$lld分中%2$lld分、%4$lld日れんぞく</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>毎日のれんぞく、%lld分中%lld分</string>
+	<key>streak.daily</key>
+	<string>毎日のれんぞく</string>
+	<key>streak.dayOne</key>
+	<string>1日目</string>
+	<key>tutorial.answerHint</key>
+	<string>答えがわからない？問題をタップすると見られるよ。</string>
+	<key>tutorial.complete</key>
+	<string>よくできました！チュートリアルはおしまい。つぎはハイスコアをめざそう！</string>
+	<key>tutorial.correctAnswer</key>
+	<string>正しい答えにジャンプして、トロフィーをゲットしよう。</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>正しい答えが緑色になっているよ。そこにジャンプしよう。</string>
+	<key>tutorial.doubler.answer</key>
+	<string>正しい答えにジャンプして、トロフィーを3倍ゲットしよう。</string>
+	<key>tutorial.doubler.collect</key>
+	<string>×3コインをとると、1回だけトロフィーが3倍になるよ。</string>
+	<key>tutorial.lifePickup</key>
+	<string>半分のライフや1このライフを見つけると、ライフがもどるよ。</string>
+	<key>tutorial.minusOne</key>
+	<string>−1をよけよう。トロフィーが1こへるよ。</string>
+	<key>tutorial.move</key>
+	<string>端末を動かして左右に進もう。画面の端から反対側へも行けるよ。</string>
+	<key>tutorial.platforms</key>
+	<string>足場にジャンプして上へ進もう。</string>
+	<key>tutorial.scoreHint</key>
+	<string>このレベルのスコアはここに出るよ。</string>
+	<key>tutorial.star</key>
+	<string>星にジャンプすると、まちがった答えを消せるよ。</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>まちがった答えをえらぶと、3このライフのうち1こを失うよ。やってみよう。</string>
+</dict>
+</plist>

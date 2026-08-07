@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Karhu</string>
+	<key>character.bunny</key>
+	<string>Pupu</string>
+	<key>character.crab</key>
+	<string>Rapu</string>
+	<key>character.dog</key>
+	<string>Koira</string>
+	<key>character.elephant</key>
+	<string>Norsu</string>
+	<key>character.fox</key>
+	<string>Kettu</string>
+	<key>character.frog</key>
+	<string>Sammakko</string>
+	<key>character.lion</key>
+	<string>Leijona</string>
+	<key>character.octopus</key>
+	<string>Mustekala</string>
+	<key>character.penguin</key>
+	<string>Pingviini</string>
+	<key>character.pickerTitle</key>
+	<string>Valitse hahmosi</string>
+	<key>common.back</key>
+	<string>Takaisin</string>
+	<key>common.cancel</key>
+	<string>Peruuta</string>
+	<key>common.continue</key>
+	<string>Jatka</string>
+	<key>common.done</key>
+	<string>Valmis</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Tallenna</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Avaa kehittäjätila pitämällä painettuna 2 sekuntia.</string>
+	<key>developerMode.title</key>
+	<string>Kehittäjätila</string>
+	<key>filter.addition</key>
+	<string>Yhteenlasku</string>
+	<key>filter.fractions</key>
+	<string>Murtoluvut</string>
+	<key>filter.mixed</key>
+	<string>Supermix</string>
+	<key>filter.percentages</key>
+	<string>Prosentit</string>
+	<key>filter.subtraction</key>
+	<string>Vähennyslasku</string>
+	<key>filter.tables</key>
+	<string>Kertotaulut</string>
+	<key>game.accessibility.mix</key>
+	<string>Sekoitus</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld/%lld</string>
+	<key>game.encouragement.0</key>
+	<string>Hyvä yritys</string>
+	<key>game.encouragement.1</key>
+	<string>Hyvä alku</string>
+	<key>game.encouragement.2</key>
+	<string>Jatka harjoittelua</string>
+	<key>game.encouragement.3</key>
+	<string>Ei hassumpaa</string>
+	<key>game.encouragement.4</key>
+	<string>Hyvin menee</string>
+	<key>game.encouragement.5</key>
+	<string>Hieno suoritus</string>
+	<key>game.encouragement.6</key>
+	<string>Hienosti tehty</string>
+	<key>game.encouragement.7</key>
+	<string>Todella hyvin</string>
+	<key>game.encouragement.8</key>
+	<string>Maali häämöttää</string>
+	<key>game.encouragement.9</key>
+	<string>Olet melkein perillä</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Ansaitsit jokaisen pisteen.</string>
+	<key>game.end.completionSuffix</key>
+	<string>valmis!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Peli ohi</string>
+	<key>game.end.mainMenu</key>
+	<string>Päävalikko</string>
+	<key>game.end.playAgain</key>
+	<string>Pelaa uudelleen</string>
+	<key>game.highScore</key>
+	<string>Ennätys</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Takaisin päävalikkoon</string>
+	<key>game.intro.continue</key>
+	<string>Jatka</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Jatkat kohdasta %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Oikea vastaus näkyy vihreänä, koska apuri on päällä. Siksi tähdellä * merkityt pokaalit lasketaan erikseen.</string>
+	<key>game.intro.helperOff</key>
+	<string>Apuri pois</string>
+	<key>game.intro.helperOn</key>
+	<string>Apuri päällä</string>
+	<key>game.intro.howItWorks</key>
+	<string>Näin taso toimii</string>
+	<key>game.intro.livesOff</key>
+	<string>Elämät pois</string>
+	<key>game.intro.livesOn</key>
+	<string>Elämät päällä</string>
+	<key>game.intro.scorePaused</key>
+	<string>Nykyinen pistemääräsi jää tauolle.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Anteeksi! Ääneenlukutoiminto ei ole vielä saatavilla omalla kielelläsi.</string>
+	<key>game.intro.start</key>
+	<string>Aloita taso</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Kerro %@%@ luvulla 1–12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>tai pienempi</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Jatka napauttamalla</string>
+	<key>game.intro.tapToStart</key>
+	<string>Aloita napauttamalla</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Saat |1| pokaalin jokaisesta oikeasta vastauksesta, enintään |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Kun elämäsi loppuvat, et voi enää ansaita pokaaleja.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Tulostaulun pokaalien enimmäismäärä saavutettu</string>
+	<key>game.status.mixMode</key>
+	<string>SEKOITUSTILA</string>
+	<key>game.status.scoreLocked</key>
+	<string>Pokaaleja ei enää lasketa, kun elämäsi loppuvat</string>
+	<key>game.streak.subtitle</key>
+	<string>Pokaalit ×2</string>
+	<key>game.streak.title</key>
+	<string>5 oikein putkeen!</string>
+	<key>goal.period</key>
+	<string>Tavoitejakso</string>
+	<key>goal.promptDaily</key>
+	<string>Kuinka monta minuuttia haluat pelata päivässä?</string>
+	<key>goal.promptWeekly</key>
+	<string>Kuinka monta minuuttia haluat pelata viikossa?</string>
+	<key>goal.title</key>
+	<string>Pelitavoite</string>
+	<key>goalPeriod.daily</key>
+	<string>Päivittäin</string>
+	<key>goalPeriod.weekly</key>
+	<string>Viikoittain</string>
+	<key>info.filter.addition</key>
+	<string>Vain yhteenlasku</string>
+	<key>info.filter.fractions</key>
+	<string>Vain jakolasku</string>
+	<key>info.filter.header</key>
+	<string>Laskutyypit</string>
+	<key>info.filter.mixed</key>
+	<string>Sekalaskut</string>
+	<key>info.filter.percentages</key>
+	<string>Vain prosentit</string>
+	<key>info.filter.subtraction</key>
+	<string>Vain vähennyslasku</string>
+	<key>info.filter.tables</key>
+	<string>Vain kertolasku</string>
+	<key>info.mode.fractions.header</key>
+	<string>Osat</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Yksi tai monta osaa</string>
+	<key>info.mode.fractions.single</key>
+	<string>Aina yksi osa</string>
+	<key>info.mode.header</key>
+	<string>Järjestys</string>
+	<key>info.mode.mixed</key>
+	<string>Mukana alempia tasoja</string>
+	<key>info.mode.order</key>
+	<string>Kiinteä järjestys</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Myös desimaaliluvut</string>
+	<key>info.mode.percentages.header</key>
+	<string>Tyyppi</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Ilman desimaalilukuja</string>
+	<key>info.mode.random</key>
+	<string>Satunnainen järjestys</string>
+	<key>info.super.all</key>
+	<string>Yhteen-, vähennys-, kerto- ja jakolasku sekä prosentit</string>
+	<key>info.super.basic</key>
+	<string>Yhteen- ja vähennyslasku</string>
+	<key>info.super.fraction</key>
+	<string>Yhteen-, vähennys-, kerto- ja jakolasku</string>
+	<key>info.super.times</key>
+	<string>Yhteen-, vähennys- ja kertolasku</string>
+	<key>language.select</key>
+	<string>Valitse kieli</string>
+	<key>lives.three</key>
+	<string>3 elämää</string>
+	<key>lives.unlimited</key>
+	<string>Rajattomasti</string>
+	<key>menu.accessibility.character</key>
+	<string>Hahmo</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Vaihda hahmoa napauttamalla. Aloita tervetulonäkymästä alusta pitämällä painettuna kaksi sekuntia.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Valitse %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Enimmäismäärä saavutettu %lld kertaa</string>
+	<key>menu.moreLevels</key>
+	<string>Lisää tasoja</string>
+	<key>menu.options</key>
+	<string>Peliasetukset</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium-taulut</string>
+	<key>menu.startHere</key>
+	<string>Aloita tästä</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Avaa lisää Premiumilla</string>
+	<key>mode.fractions.multiple</key>
+	<string>Monta</string>
+	<key>mode.fractions.single</key>
+	<string>Yksi</string>
+	<key>mode.mix</key>
+	<string>Sekoitus</string>
+	<key>mode.mixed</key>
+	<string>Sekoitettu</string>
+	<key>mode.order</key>
+	<string>Järjestys</string>
+	<key>mode.percentages.decimal</key>
+	<string>Desimaali</string>
+	<key>mode.percentages.whole</key>
+	<string>Kokonainen</string>
+	<key>mode.random</key>
+	<string>Satunnainen</string>
+	<key>mode.standard</key>
+	<string>Tavallinen</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Saat vain |yhteenlaskuja|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Lisäät enintään %lld |tai vähemmän| toiseen lukuun.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Lisäät aina %lld |nousevassa| järjestyksessä.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Lisäät aina %lld |satunnaiseen| lukuun.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Yhteenlasku · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Laske aina kaksi lukua yhteen.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Vastaus on enintään %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Yhteenlasku %lld asti</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Saat vain |murtolukutehtäviä|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Saat murtolukuja tältä ja |aiemmilta tasoilta|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Otat aina |1 osan| %lld yhtä suuresta osasta.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Laske pyöreiden lukujen murtolukuja tasolta %lld ja aiemmilta tasoilta.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Luvut pysyvät pyöreinä, joten vastaukset ovat aina kokonaislukuja.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Murtoluvut %lld asti</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Otat yhden tai |useampia osia| %lld yhtä suuresta osasta.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Murtoluvut · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Laske osa kokonaisuudesta ja tee murtoluvuista yhtä suuria.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Laske yhteen ja vähennä murtolukuja, joilla on sama nimittäjä.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Murtoluvut sekaisin</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Saat vain |prosenttitehtäviä|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Saat prosentteja tältä ja |aiemmilta tasoilta|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Lasket aina %@, ja vastaus on |kokonaisluku|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Laske prosentteja pyöreistä luvuista %lld asti.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Määrät pysyvät pyöreinä, joten vastaukset ovat aina kokonaislukuja.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Prosentit %lld asti</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Lasket aina %@, ja vastaus voi olla myös |desimaaliluku|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Laske %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Laske prosenttiosuus luvusta.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Muunna prosentteja murtoluvuiksi ja takaisin.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Prosentit sekaisin</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Saat vain |vähennyslaskuja|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Vähennät toisesta luvusta enintään %lld |tai vähemmän|.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Vähennät aina %lld |laskevassa| järjestyksessä.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Vähennät aina %lld |satunnaisesta| luvusta.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Vähennyslasku · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Ensimmäinen luku on enintään %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Vastaus voi mennä alle nollan.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Alle nollan</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Vähennyslasku %lld asti</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Vähennä aina kaksi lukua toisistaan.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Vaikeus voi nousta jokaisessa valitussa aiheessa |tasolle %lld|.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Harjoittele yhteen- ja vähennyslaskua, kertotauluja, murtolukuja ja prosentteja sekaisin.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Harjoittele yhteen- ja vähennyslaskua sekaisin.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Harjoittele yhteen- ja vähennyslaskua, kertotauluja ja murtolukuja sekaisin.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Harjoittele yhteen- ja vähennyslaskua sekä kertotauluja sekaisin.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermix %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Saat vain |kertolaskuja|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Saat kaikki kertotaulut |%lld:ään asti| sekaisin.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Jokainen taulu kerrotaan luvulla |1–12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Saat %lld:n kertotaulun |nousevassa| järjestyksessä.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Saat %lld:n kertotaulun |satunnaisessa| järjestyksessä.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld:n kertotaulu</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Harjoittele kertotauluja %lld–%lld sekaisin.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Kertotaulut %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Nimesi</string>
+	<key>name.whatsYourName</key>
+	<string>Mikä sinun nimesi on?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Ansaitse muutama palkinto lisää avataksesi tämän eläimen! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Vain %lld palkintoa jäljellä! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Eläimesi odottavat. Tule takaisin pelaamaan ja jatka pokaalien keräämistä!</string>
+	<key>notif.comeback.title</key>
+	<string>Kaipaamme sinua! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Aloita %lld minuutin pelisessio ja pidennä päivittäistä pelisarjaasi.</string>
+	<key>notif.day3.title</key>
+	<string>Tehdään päivästä 3 toteutuva! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Käytä hyppyalustaa ohittaaksesi väärän vastauksen ja jatkat kiipeilyä!</string>
+	<key>notif.jumppad.title</key>
+	<string>Hyppää väärien vastausten ohi! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium sisältää %lld tasoa jokaiselle aiheelle ja kaikille 10 eläimelle. Seikkailu jatkuu!</string>
+	<key>notif.premium.title</key>
+	<string>Avaa lisää tasoja ja eläimiä! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Siitä on %lld päivää. Ratkaistaan ​​matemaattisia tehtäviä ja ansaitaan lisää pokaaleja!</string>
+	<key>notif.reactivate.title</key>
+	<string>Oletko valmis pelaamaan uudelleen? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Pelaa %lld minuuttia ja jatka päivittäistä pelisarjaasi!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Päivittäinen peliputkesi on saavuttanut %lld päivää! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Hienoa työtä! Pelataan %lld minuuttia ja kerätään vielä enemmän.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Olet ansainnut %lld palkintoa! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tämä nostaa yhteensä %lld palkintoa. Hämmästyttävää työtä!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Ansaitsit %lld palkintoa tällä viikolla! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Erilaisia sekalaskuja.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Osaat jo aika hyvin</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Harjoittele laskuja järjestyksessä.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Olet vasta aloittanut</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Laskut satunnaisessa järjestyksessä.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Olet jo harjoitellut</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Valitse aloituskohta aiheelle %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>tämä aihe</string>
+	<key>onboarding.level.title</key>
+	<string>Kuinka hyvin osaat jo?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Aloitetaan! Mikä sinun nimesi on?</string>
+	<key>onboarding.name.title</key>
+	<string>Laskeminen ei ole koskaan ollut näin hauskaa!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Valitse aihe, josta aloitat.</string>
+	<key>onboarding.subject.title</key>
+	<string>Mitä haluat oppia?</string>
+	<key>options.capAt30.info</key>
+	<string>Jokaisella tasolla on enintään 50 pokaalin tavoite. Kun tämä asetus on päällä, peli päättyy automaattisesti saavuttaessasi tavoitteen.</string>
+	<key>options.capAt30.title</key>
+	<string>Lopeta tavoitteeseen</string>
+	<key>options.helperMode.info</key>
+	<string>Apuritilassa oikea vastaus näkyy aina vihreänä. Tässä tilassa ansaitut pokaalit lasketaan erikseen ja merkitään tähdellä.</string>
+	<key>options.helperMode.title</key>
+	<string>Apuritila</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Aloitat aina kolmella elämällä. Peli päättyy, kun elämäsi loppuvat. Ota tämä käyttöön, jotta voit jatkaa pelaamista ja harjoittelua sen jälkeen.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Rajattomat elämät</string>
+	<key>parentGate.approved</key>
+	<string>Hyväksytty</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Yritykset: %1$lld/%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Pidä %@ painettuna %lld sekuntia.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Pidä: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Pidä %@ painettuna %lld sekuntia. Napauta sitten %@ %lld kertaa.</string>
+	<key>parentGate.shape.circle</key>
+	<string>ympyrä</string>
+	<key>parentGate.shape.diamond</key>
+	<string>vinoneliö</string>
+	<key>parentGate.shape.heart</key>
+	<string>sydän</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>kuusikulmio</string>
+	<key>parentGate.shape.plus</key>
+	<string>plusmerkki</string>
+	<key>parentGate.shape.square</key>
+	<string>neliö</string>
+	<key>parentGate.shape.star</key>
+	<string>tähti</string>
+	<key>parentGate.shape.triangle</key>
+	<string>kolmio</string>
+	<key>parentGate.stepOne</key>
+	<string>Vaihe 1/2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Vaihe 2/2</string>
+	<key>parentGate.subtitle</key>
+	<string>Nuorten pelaajien suojelemiseksi aikuisen on tehtävä tämä tarkistus ennen ostoksen jatkamista.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Napauta nyt %2$@ %1$lld kertaa.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Napautukset: %1$lld/%2$lld</string>
+	<key>parentGate.title</key>
+	<string>Aikuisen hyväksyntä tarvitaan</string>
+	<key>premium.availableAt %lld</key>
+	<string>Saatavilla %lld pokaalista alkaen</string>
+	<key>premium.availableFromStart</key>
+	<string>Saatavilla alusta asti</string>
+	<key>premium.characterUnlocked</key>
+	<string>UUSI HAHMO AVATTU</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ avattu</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Olet ansainnut %lld pokaalia</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Vain Premiumilla</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Vain Premiumilla</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premiumilla voit pelata vapaasti kaikilla 10 eläimellä.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Kaikki eläimet</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Aina tarpeeksi uusia laskuja harjoiteltavaksi.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 tasoa per aihe</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Pelaa täysin ilman keskeytyksiä.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Ei mainoksia</string>
+	<key>premium.oneTime</key>
+	<string>Kertaostos. Omistat sen ikuisesti.</string>
+	<key>premium.restore</key>
+	<string>Palauta ostokset</string>
+	<key>premium.start</key>
+	<string>Aloita</string>
+	<key>premium.storeUnavailable</key>
+	<string>Kauppa ei ole juuri nyt käytettävissä. Yritä myöhemmin uudelleen.</string>
+	<key>premium.unlock</key>
+	<string>Avaa Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Avaa Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Avaa pokaaleilla</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Avattu Premiumilla</string>
+	<key>premium.youHavePremium</key>
+	<string>Sinulla on Premium!</string>
+	<key>settings.character</key>
+	<string>Hahmo</string>
+	<key>settings.characterInfo</key>
+	<string>Jokainen eläin tuo koko peliin oman väriteemansa.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Oma: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Päivätavoite</string>
+	<key>settings.goalInfo</key>
+	<string>Putkitavoite alkaa viidestä minuutista päivässä. Vain aktiivinen peliaika lasketaan.</string>
+	<key>settings.lives</key>
+	<string>Elämät</string>
+	<key>settings.livesInfo</key>
+	<string>Kolmella elämällä peli päättyy viimeisen sydämesi jälkeen. Rajattomassa tilassa pokaalit lasketaan vain niin kauan kuin elämiä on jäljellä; sen jälkeen voit jatkaa pelaamista.</string>
+	<key>settings.playGoals</key>
+	<string>Pelitavoitteet</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium avattu. Kiitos!</string>
+	<key>settings.title</key>
+	<string>Asetukset</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Valitse päivätavoite</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Valitse päivä- tai viikkotavoite</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld/%3$lld minuuttia, %4$lld päivää putkeen</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Päiväputki, %lld/%lld minuuttia</string>
+	<key>streak.daily</key>
+	<string>Päiväputki</string>
+	<key>streak.dayOne</key>
+	<string>Päivä 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Etkö tiedä vastausta? Näet sen napauttamalla laskua.</string>
+	<key>tutorial.complete</key>
+	<string>Hienoa! Opastus on valmis. Tavoittele nyt ennätystä!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Hyppää oikean vastauksen päälle ja kerää pokaali.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Oikea vastaus näkyy vihreänä. Hyppää nyt oikean vastauksen päälle.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Hyppää nyt oikean vastauksen päälle ja kerää kolminkertaiset pokaalit.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Kerää ×3-kolikko ja saat kerran kolminkertaiset pokaalit.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Voit löytää puolikkaan tai kokonaisen elämän ja saada elämiä takaisin.</string>
+	<key>tutorial.minusOne</key>
+	<string>Vältä −1:tä. Se vie yhden pokaalin.</string>
+	<key>tutorial.move</key>
+	<string>Liikuta laitettasi vasemmalle ja oikealle. Voit myös kulkea näytön reunojen kautta.</string>
+	<key>tutorial.platforms</key>
+	<string>Hyppää tasanteille päästäksesi ylöspäin.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Tämän tason pisteesi näkyvät tässä.</string>
+	<key>tutorial.star</key>
+	<string>Hyppää tähteen ampuaksesi väärät vastaukset pois.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Jos valitset väärän vastauksen, menetät yhden kolmesta elämästäsi. Kokeile nyt.</string>
+</dict>
+</plist>

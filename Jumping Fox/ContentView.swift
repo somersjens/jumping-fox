@@ -412,6 +412,18 @@ struct ContentView: View {
     // prevents that rebuild from cancelling the reveal or the subsequent flight.
     @State private var reachedMaximumCelebrationID: UUID?
 
+    init() {
+        // The welcome flow hands the player straight to their first level. Take
+        // that hand-off here, before the first frame, so the start screen is
+        // already up when the menu appears: the player never sees the menu
+        // build itself and then get covered a moment later.
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: GameSettings.opensFirstLevelKey) {
+            defaults.set(false, forKey: GameSettings.opensFirstLevelKey)
+            _selection = State(initialValue: Self.firstLevel.map { LevelSelection(level: $0) })
+        }
+    }
+
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
     private var selectedFilter: MenuFilter { MenuFilter(rawValue: menuFilterRaw) ?? .tables }
@@ -600,7 +612,7 @@ struct ContentView: View {
             }
         })
         .onChange(of: selection?.id) { selectionID in
-            guard let selectionID else { return }
+            guard let selectionID, let level = selection?.level else { return }
             ReviewRequestCoordinator.shared.discardPendingReturn()
             // Starting another level ends any return celebration cleanly. Its
             // delayed callbacks are ID-guarded and therefore become no-ops.
@@ -612,16 +624,18 @@ struct ContentView: View {
                 reachedMaximumCelebrationID = nil
                 defersHomeProgressRefresh = false
             }
-            lastOpenedLevelID = selectionID
-            lastOpenedLevel = selection?.level
-            openedLevelScore = displayedScore(forLevelID: selectionID)
-            openedLevelMaximumCount = displayedMaximumCount(forLevelID: selectionID)
-            openedCategoryTrophies = categoryTrophies
-            openedTotalTrophies = totalTrophies
+            recordOpenedLevel(id: selectionID, level: level)
         }
         .task {
             premium.startInitialRefresh()
             refreshHomeProgress()
+            // A level handed over by the welcome flow is already selected
+            // before the first frame, so it never passes through the change
+            // handler above. Record its before-values here instead — the
+            // return celebration and the first-score hint both need them.
+            if let selection, lastOpenedLevelID == nil {
+                recordOpenedLevel(id: selection.id, level: selection.level)
+            }
         }
         .onChange(of: progress.revision) { _ in
             refreshHomeProgress()
@@ -652,6 +666,10 @@ struct ContentView: View {
             // the background music plays app-wide, softly on the menus.
             AppAudio.shared.prepare()
             AppAudio.shared.startMusic()
+            // The tutorial can be replayed from any level's start card, so its
+            // glyphs are warmed from the menu too, not only from the welcome
+            // flow that a returning player never sees again.
+            Prewarm.tutorialGlyphs()
             synchronizeCharacterUnlockPrompt(animated: false)
         }
         .onChange(of: scenePhase) { phase in
@@ -709,8 +727,32 @@ struct ContentView: View {
             : displayName.map(String.init).joined(separator: "\u{00AD}")
     }
 
+    /// Remembers what the level looked like on the menu at the moment it was
+    /// opened, so the return can animate from those exact numbers.
+    private func recordOpenedLevel(id: String, level: LevelConfig) {
+        lastOpenedLevelID = id
+        lastOpenedLevel = level
+        openedLevelScore = displayedScore(forLevelID: id)
+        openedLevelMaximumCount = displayedMaximumCount(forLevelID: id)
+        openedCategoryTrophies = categoryTrophies
+        openedTotalTrophies = totalTrophies
+    }
+
+    /// The level a fresh player is pointed at: the first free level of the
+    /// selected topic and order — the same one the menu marks as recommended.
+    private static var firstLevel: LevelConfig? {
+        let defaults = UserDefaults.standard
+        let filter = MenuFilter(rawValue: defaults.integer(forKey: "ui.menuFilter")) ?? .tables
+        let mode = PracticeMode(rawValue: defaults.string(forKey: "ui.menuMode") ?? "") ?? .order
+        let supermix = ChallengeCategory(rawValue: defaults.string(forKey: "ui.supermixCategory") ?? "")
+            ?? .superBasic
+        let category = filter == .mixed ? supermix : filter.category(for: mode)
+        return LevelCatalog.levels(for: category)
+            .map { filter != .mixed ? $0.variant(mode) : $0 }
+            .first { !$0.requiresPremium }
+    }
+
     /// A long press on the home character always restarts the welcome flow.
-    /// Developer mode belongs to the character on the level start screen.
     private func restartOnboarding() {
 #if canImport(UIKit)
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -903,14 +945,8 @@ struct ContentView: View {
                         }
                 )
                 .accessibilityLabel("menu.accessibility.character")
-                .accessibilityHint("developerMode.accessibilityHint")
 
                 VStack(alignment: .leading, spacing: isPad ? 7 : 4) {
-                    if tutorial.developerMode {
-                        Text("developerMode.title")
-                            .font(.caption.weight(.heavy))
-                            .foregroundStyle(character.deepColor)
-                    }
                     Button {
                         nameDraft = playerName
                         showNameEditor = true

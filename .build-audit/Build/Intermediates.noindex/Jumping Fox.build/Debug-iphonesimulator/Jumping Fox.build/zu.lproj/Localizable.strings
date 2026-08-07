@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Ibhere</string>
+	<key>character.bunny</key>
+	<string>Unogwaja</string>
+	<key>character.crab</key>
+	<string>Inkalankala</string>
+	<key>character.dog</key>
+	<string>Inja</string>
+	<key>character.elephant</key>
+	<string>Indlovu</string>
+	<key>character.fox</key>
+	<string>Impungushe</string>
+	<key>character.frog</key>
+	<string>Ixoxo</string>
+	<key>character.lion</key>
+	<string>Ibhubesi</string>
+	<key>character.octopus</key>
+	<string>Ingwane</string>
+	<key>character.penguin</key>
+	<string>Iphengwini</string>
+	<key>character.pickerTitle</key>
+	<string>Khetha umlingiswa wakho</string>
+	<key>common.back</key>
+	<string>Emuva</string>
+	<key>common.cancel</key>
+	<string>Khansela</string>
+	<key>common.continue</key>
+	<string>Qhubeka</string>
+	<key>common.done</key>
+	<string>Kwenziwe</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld imin</string>
+	<key>common.save</key>
+	<string>Londoloza</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Cindezela ubambe imizuzwana engu-2 ukuze uvule imodi yonjiniyela.</string>
+	<key>developerMode.title</key>
+	<string>Imodi yonjiniyela</string>
+	<key>filter.addition</key>
+	<string>Ukuhlanganisa</string>
+	<key>filter.fractions</key>
+	<string>Amaqhezu</string>
+	<key>filter.mixed</key>
+	<string>Ingxube enkulu</string>
+	<key>filter.percentages</key>
+	<string>Amaphesenti</string>
+	<key>filter.subtraction</key>
+	<string>Ukususa</string>
+	<key>filter.tables</key>
+	<string>Amathebula</string>
+	<key>game.accessibility.mix</key>
+	<string>Ingxube</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld kokungu-%lld</string>
+	<key>game.encouragement.0</key>
+	<string>Uzamile kahle</string>
+	<key>game.encouragement.1</key>
+	<string>Yisiqalo</string>
+	<key>game.encouragement.2</key>
+	<string>Qhubeka uzijwayeza</string>
+	<key>game.encouragement.3</key>
+	<string>Akukubi neze</string>
+	<key>game.encouragement.4</key>
+	<string>Wenza kahle</string>
+	<key>game.encouragement.5</key>
+	<string>Umsebenzi omuhle</string>
+	<key>game.encouragement.6</key>
+	<string>Wenze kahle</string>
+	<key>game.encouragement.7</key>
+	<string>Udlale kahle kakhulu</string>
+	<key>game.encouragement.8</key>
+	<string>Usuzofika ekugcineni</string>
+	<key>game.encouragement.9</key>
+	<string>Usuzofika</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Uthole wonke amaphuzu.</string>
+	<key>game.end.completionSuffix</key>
+	<string>kuqediwe!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Umdlalo uphelile</string>
+	<key>game.end.mainMenu</key>
+	<string>Imenyu enkulu</string>
+	<key>game.end.playAgain</key>
+	<string>Dlala futhi</string>
+	<key>game.highScore</key>
+	<string>Irekhodi eliphezulu</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Buyela kumenyu enkulu</string>
+	<key>game.intro.continue</key>
+	<string>Qhubeka</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Uzoqhubeka kusuka ku-%lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Impendulo efanele igqanyiswe ngokuluhlaza ngoba umsizi uvuliwe. Ngakho izindebe zibalwa ngokwehlukana ngo-*.</string>
+	<key>game.intro.helperOff</key>
+	<string>Umsizi uvaliwe</string>
+	<key>game.intro.helperOn</key>
+	<string>Umsizi uvuliwe</string>
+	<key>game.intro.howItWorks</key>
+	<string>Isebenza kanje le leveli</string>
+	<key>game.intro.livesOff</key>
+	<string>Izimpilo zivaliwe</string>
+	<key>game.intro.livesOn</key>
+	<string>Izimpilo zivuliwe</string>
+	<key>game.intro.scorePaused</key>
+	<string>Amaphuzu akho amanje azomiswa.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Siyaxolisa! Isici sokufunda ngokuzwakalayo asikatholakali ngolimi lwakho.</string>
+	<key>game.intro.start</key>
+	<string>Qala ileveli</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Phindaphinda %@%@ ngenombolo esuka ku-1 kuya ku-12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>noma ngaphansi</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Thepha noma kuphi ukuze uqhubeke</string>
+	<key>game.intro.tapToStart</key>
+	<string>Thepha noma kuphi ukuze uqale</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Thola indebe engu-|1| ngempendulo ngayinye efanele, kuze kufike ku-|%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Uma izimpilo zakho seziphelile, awusakwazi ukuthola izindebe.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Usufinyelele enanini eliphezulu lezindebe ebhodini lamaphuzu</string>
+	<key>game.status.mixMode</key>
+	<string>IMODI YENGXUBE</string>
+	<key>game.status.scoreLocked</key>
+	<string>Izindebe azisabalwa uma izimpilo zakho seziphelile</string>
+	<key>game.streak.subtitle</key>
+	<string>Izindebe ×2</string>
+	<key>game.streak.title</key>
+	<string>5 zilandelana!</string>
+	<key>goal.period</key>
+	<string>Isikhathi somgomo</string>
+	<key>goal.promptDaily</key>
+	<string>Ufuna ukudlala imizuzu emingaki ngosuku?</string>
+	<key>goal.promptWeekly</key>
+	<string>Ufuna ukudlala imizuzu emingaki ngesonto?</string>
+	<key>goal.title</key>
+	<string>Umgomo wokudlala</string>
+	<key>goalPeriod.daily</key>
+	<string>Nsuku zonke</string>
+	<key>goalPeriod.weekly</key>
+	<string>Masonto onke</string>
+	<key>info.filter.addition</key>
+	<string>Ukuhlanganisa kuphela</string>
+	<key>info.filter.fractions</key>
+	<string>Ukuhlukanisa kuphela</string>
+	<key>info.filter.header</key>
+	<string>Izinhlobo zezibalo</string>
+	<key>info.filter.mixed</key>
+	<string>Izibalo ezixubile</string>
+	<key>info.filter.percentages</key>
+	<string>Amaphesenti kuphela</string>
+	<key>info.filter.subtraction</key>
+	<string>Ukususa kuphela</string>
+	<key>info.filter.tables</key>
+	<string>Ukuphindaphinda kuphela</string>
+	<key>info.mode.fractions.header</key>
+	<string>Izingxenye</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Ingxenye eyodwa neziningi</string>
+	<key>info.mode.fractions.single</key>
+	<string>Njalo ingxenye eyodwa</string>
+	<key>info.mode.header</key>
+	<string>Ukuhleleka</string>
+	<key>info.mode.mixed</key>
+	<string>Kuxutshwe namaleveli aphansi</string>
+	<key>info.mode.order</key>
+	<string>Ukuhleleka okuqinile</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Kufaka izinombolo zedesimali</string>
+	<key>info.mode.percentages.header</key>
+	<string>Uhlobo</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Ngaphandle kwezinombolo zedesimali</string>
+	<key>info.mode.random</key>
+	<string>Ukuhleleka okungahleliwe</string>
+	<key>info.super.all</key>
+	<string>Ukuhlanganisa, ukususa, ukuphindaphinda, ukuhlukanisa namaphesenti</string>
+	<key>info.super.basic</key>
+	<string>Ukuhlanganisa nokususa</string>
+	<key>info.super.fraction</key>
+	<string>Ukuhlanganisa, ukususa, ukuphindaphinda nokuhlukanisa</string>
+	<key>info.super.times</key>
+	<string>Ukuhlanganisa, ukususa nokuphindaphinda</string>
+	<key>language.select</key>
+	<string>Khetha ulimi</string>
+	<key>lives.three</key>
+	<string>Izimpilo ezi-3</string>
+	<key>lives.unlimited</key>
+	<string>Akunamkhawulo</string>
+	<key>menu.accessibility.character</key>
+	<string>Umlingiswa</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Thepha ukuze ushintshe umlingiswa; cindezela ubambe imizuzwana emibili ukuze uqale kabusha esikrinini sokwamukela.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Khetha %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Umkhawulo ufinyelelwe izikhathi ezingu-%lld</string>
+	<key>menu.moreLevels</key>
+	<string>Amaleveli amaningi</string>
+	<key>menu.options</key>
+	<string>Izinketho zomdlalo</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Amathebula e-Premium</string>
+	<key>menu.startHere</key>
+	<string>Qala lapha</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Vula okwengeziwe nge-Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Eziningi</string>
+	<key>mode.fractions.single</key>
+	<string>Eyodwa</string>
+	<key>mode.mix</key>
+	<string>Ingxube</string>
+	<key>mode.mixed</key>
+	<string>Kuxubile</string>
+	<key>mode.order</key>
+	<string>Ukuhleleka</string>
+	<key>mode.percentages.decimal</key>
+	<string>Idesimali</string>
+	<key>mode.percentages.whole</key>
+	<string>Ephelele</string>
+	<key>mode.random</key>
+	<string>Okungahleliwe</string>
+	<key>mode.standard</key>
+	<string>Okuvamile</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Uthola kuphela izibalo |zokuhlanganisa|.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Uhlanganisa u-%lld |noma ngaphansi| nenye inombolo.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Njalo uhlanganisa u-%lld ngokulandelana |okukhuphukayo|.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Njalo uhlanganisa u-%lld nenombolo |engahleliwe|.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Ukuhlanganisa · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Qhubeka uhlanganisa izinombolo ezimbili.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Impendulo ayidluli ku-%lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Hlanganisa kuze kufike ku-%lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Uthola kuphela izibalo |zamaqhezu|.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Uthola amaqhezu akule leveli |nakumaleveli angaphambilini|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Njalo uthatha |ingxenye engu-1| ezingxenyeni ezilinganayo ezingu-%lld.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Bala amaqhezu ezinombolo eziyindilinga kusukela ku-%lld nakumaleveli angaphambilini.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Izinombolo zihlala ziyindilinga, ngakho izimpendulo zihlala ziphelele.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Amaqhezu kuze kufike ku-%lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Uthatha ingxenye eyodwa noma |izingxenye eziningi| ezingxenyeni ezilinganayo ezingu-%lld.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Amaqhezu · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Bala ingxenye yokuphelele bese wenza amaqhezu alingane.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Hlanganisa futhi ususe amaqhezu anedinominetha efanayo.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Amaqhezu axubile</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Uthola kuphela izibalo |zamaphesenti|.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Uthola amaphesenti akule leveli |nakumaleveli angaphambilini|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Njalo ubala u-%@, futhi impendulo iba |inombolo ephelele|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Bala amaphesenti ezinombolo eziyindilinga kuze kufike ku-%lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Amanani ahlala eyindilinga, ngakho izimpendulo zihlala ziphelele.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Amaphesenti kuze kufike ku-%lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Njalo ubala u-%@, futhi impendulo ingaba |idesimali|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Bala %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Bala iphesenti lenombolo.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Guqula amaphesenti abe amaqhezu, namaqhezu abe amaphesenti.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Amaphesenti axubile</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Uthola kuphela izibalo |zokususa|.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Ususa u-%lld |noma ngaphansi| kwenye inombolo.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Njalo ususa u-%lld ngokulandelana |okwehlayo|.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Njalo ususa u-%lld enombolweni |engahleliwe|.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Ukususa · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Inombolo yokuqala ayidluli ku-%lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Impendulo ingehla ngaphansi kuka-zero.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Ngaphansi kuka-zero</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Susa kuze kufike ku-%lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Qhubeka ususa izinombolo ezimbili.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Ubunzima bungakhuphukela ku-|leveli %lld| esigabeni ngasinye esikhethiwe.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Zijwayeze ukuhlanganisa, ukususa, amathebula, amaqhezu namaphesenti kuxubile.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Ingxube enkulu %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Zijwayeze ukuhlanganisa nokususa kuxubile.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Ingxube enkulu %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Zijwayeze ukuhlanganisa, ukususa, amathebula namaqhezu kuxubile.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Ingxube enkulu %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Zijwayeze ukuhlanganisa, ukususa namathebula kuxubile.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Ingxube enkulu %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Uthola kuphela izibalo |zokuphindaphinda|.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Uthola wonke amathebula |kuze kufike ku-%lld| exubile.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Ithebula ngalinye liphindaphindwa ngenombolo esuka ku-|1 kuya ku-12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Uthola ithebula lika-%lld ngokulandelana |okukhuphukayo|.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Uthola ithebula lika-%lld ngokulandelana |okungahleliwe|.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>Ithebula lika-%lld</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Zijwayeze amathebula kusuka ku-%lld kuya ku-%lld exubile.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Amathebula %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Igama lakho</string>
+	<key>name.whatsYourName</key>
+	<string>Ungubani igama lakho?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Zuza ezinye izindebe ezimbalwa ukuze uvule lesi silwane! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Kusele izindebe ezi-%lld kuphela! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Izilwane zakho zilindile. Buya uzodlala futhi uqhubeke nokuqoqa izindebe!</string>
+	<key>notif.comeback.title</key>
+	<string>Siyakukhumbula! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Qala iseshini yokudlala eyimizuzu engu-%lld futhi wandise ukulandelana kwakho kokudlala kwansuku zonke.</string>
+	<key>notif.day3.title</key>
+	<string>Masenze usuku lwesi-3 lwenzeke! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Sebenzisa i-Jump Pad ukweqa impendulo engalungile futhi uqhubeke ukhuphuka!</string>
+	<key>notif.jumppad.title</key>
+	<string>Yeqa udlule izimpendulo ezingalungile! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>I-Jumping Fox Premium ifaka amazinga angama-%lld esihlokweni ngasinye nazo zonke izilwane eziyi-10. I-adventure iyaqhubeka!</string>
+	<key>notif.premium.title</key>
+	<string>Vula amazinga engeziwe nezilwane! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Sekuphele izinsuku ezi-%lld. Ake sixazulule ezinye izivivinyo zezibalo futhi sizuze izindebe ezengeziwe!</string>
+	<key>notif.reactivate.title</key>
+	<string>Usulungele ukudlala futhi? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Dlala imizuzu eyi-%lld futhi ugcine uchungechunge lwakho lokudlala lwansuku zonke luqhubeka!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ukudlala kwakho kwansuku zonke sekufinyelele ezinsukwini ezi-%lld! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Umsebenzi omuhle! Asidlale imizuzu engu-%lld futhi siqoqe ngisho nangaphezulu.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Uzuze izindebe ezingu-%lld! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Lokho kuletha isamba sakho sezindebe ezingu-%lld. Umsebenzi omangalisayo!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Uzuze izindebe ezingu-%lld kuleli sonto! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Izibalo ezixubile ezahlukene.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Usuvele wenza kahle</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Zijwayeze izibalo ngokulandelana.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Usanda kuqala</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Izibalo ngokulandelana okungahleliwe.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Usuvele uzijwayeze</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Khetha lapho uzoqala khona ku-%@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>lesi sihloko</string>
+	<key>onboarding.level.title</key>
+	<string>Usuvele wazi kangakanani ngalokhu?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Asiqale. Ungubani igama lakho?</string>
+	<key>onboarding.name.title</key>
+	<string>Ukubala akukaze kube mnandi kanje!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Khetha isihloko ozoqala ngaso.</string>
+	<key>onboarding.subject.title</key>
+	<string>Ufuna ukufunda ini?</string>
+	<key>options.capAt30.info</key>
+	<string>Ileveli ngayinye inomgomo wezindebe ofinyelela ku-50. Uma le nketho ivuliwe, umdlalo uphela ngokuzenzakalela lapho uwufinyelela.</string>
+	<key>options.capAt30.title</key>
+	<string>Qeda emgomweni</string>
+	<key>options.helperMode.info</key>
+	<string>Kumodi yomsizi, impendulo efanele ihlale iboniswa ngokuluhlaza. Izindebe ezitholwe kule modi zibalwa ngokwehlukana futhi zimakwe ngenkanyezi.</string>
+	<key>options.helperMode.title</key>
+	<string>Imodi yomsizi</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Njalo uqala ngezimpilo ezi-3. Umdlalo uphela uma zingasekho izimpilo. Vula le nketho ukuze uqhubeke udlale futhi uzijwayeze ngemva kokuphela kwezimpilo.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Izimpilo ezingenamkhawulo</string>
+	<key>parentGate.approved</key>
+	<string>Kuvunyelwe</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Imizamo: %1$lld kokungu-%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Bamba i-%@ imizuzwana engu-%lld.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Bamba: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Bamba i-%@ imizuzwana engu-%lld. Bese uthepha i-%@ izikhathi ezingu-%lld.</string>
+	<key>parentGate.shape.circle</key>
+	<string>indilinga</string>
+	<key>parentGate.shape.diamond</key>
+	<string>idayimane</string>
+	<key>parentGate.shape.heart</key>
+	<string>inhliziyo</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>iheksagoni</string>
+	<key>parentGate.shape.plus</key>
+	<string>uphawu lokuhlanganisa</string>
+	<key>parentGate.shape.square</key>
+	<string>isikwele</string>
+	<key>parentGate.shape.star</key>
+	<string>inkanyezi</string>
+	<key>parentGate.shape.triangle</key>
+	<string>unxantathu</string>
+	<key>parentGate.stepOne</key>
+	<string>Isinyathelo 1 kwezingu-2</string>
+	<key>parentGate.stepTwo</key>
+	<string>Isinyathelo 2 kwezingu-2</string>
+	<key>parentGate.subtitle</key>
+	<string>Ukuvikela abadlali abancane, umuntu omdala kufanele aqedele lokhu kuhlola ngaphambi kokuqhubeka nokuthenga.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Manje thepha i-%2$@ izikhathi ezingu-%1$lld.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Ukuthepha: %1$lld kokungu-%2$lld</string>
+	<key>parentGate.title</key>
+	<string>Kudingeka imvume yomuntu omdala</string>
+	<key>premium.availableAt %lld</key>
+	<string>Kutholakala kusukela ezindebeni ezingu-%lld</string>
+	<key>premium.availableFromStart</key>
+	<string>Kutholakala kusukela ekuqaleni</string>
+	<key>premium.characterUnlocked</key>
+	<string>KUVULWE UMLINGISWA OMUSHA</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>Kuvulwe u-%@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Uzuze izindebe ezingu-%lld</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Okwe-Premium kuphela</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Okwe-Premium kuphela</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Nge-Premium udlala ngokukhululekile ngazo zonke izilwane eziyi-10.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Zonke izilwane ziyatholakala</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Kuhlale kunezibalo ezintsha ezanele zokuzijwayeza.</string>
+	<key>premium.feature.levels.title</key>
+	<string>Amaleveli angu-99 ngesihloko</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Dlala ngaphandle kweziphazamiso.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Azikho izikhangiso</string>
+	<key>premium.oneTime</key>
+	<string>Kuthengwa kanye. Kungokwakho phakade.</string>
+	<key>premium.restore</key>
+	<string>Buyisela okuthengiwe</string>
+	<key>premium.start</key>
+	<string>Qala</string>
+	<key>premium.storeUnavailable</key>
+	<string>Isitolo asitholakali manje. Sicela uzame futhi kamuva.</string>
+	<key>premium.unlock</key>
+	<string>Vula i-Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Vula i-Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Vula ngezindebe</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Kuvulwe nge-Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Une-Premium!</string>
+	<key>settings.character</key>
+	<string>Umlingiswa</string>
+	<key>settings.characterInfo</key>
+	<string>Isilwane ngasinye sinikeza wonke umdlalo imibala yaso.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Okwakho: %lld imin</string>
+	<key>settings.dailyGoal</key>
+	<string>Umgomo wansuku zonke</string>
+	<key>settings.goalInfo</key>
+	<string>Umgomo wokulandelana uqala ngemizuzu emi-5 ngosuku. Kubalwa kuphela isikhathi sokudlala ngempela.</string>
+	<key>settings.lives</key>
+	<string>Izimpilo</string>
+	<key>settings.livesInfo</key>
+	<string>Ngezimpilo ezintathu, umdlalo uphela ngemva kwenhliziyo yakho yokugcina. Kumodi engenamkhawulo, izindebe zibalwa kuphela usenezimpilo; ngemva kwalokho ungaqhubeka udlale.</string>
+	<key>settings.playGoals</key>
+	<string>Imigomo yokudlala</string>
+	<key>settings.premiumUnlocked</key>
+	<string>I-Premium ivuliwe. Siyabonga!</string>
+	<key>settings.title</key>
+	<string>Izilungiselelo</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Khetha umgomo wansuku zonke</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Khetha umgomo wansuku zonke noma wamasonto onke</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld kwemizuzu engu-%3$lld, izinsuku ezingu-%4$lld zilandelana</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Ukulandelana kwansuku zonke, %lld kwemizuzu engu-%lld</string>
+	<key>streak.daily</key>
+	<string>Ukulandelana kwansuku zonke</string>
+	<key>streak.dayOne</key>
+	<string>Usuku 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Awuyazi impendulo? Thepha umbuzo ukuze uyibone.</string>
+	<key>tutorial.complete</key>
+	<string>Wenze kahle! Isifundo sesiphelile. Manje zama ukuthola irekhodi eliphezulu!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Gxumela empendulweni efanele ukuze uthole indebe.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Impendulo efanele iboniswa ngokuluhlaza. Manje gxumela empendulweni efanele.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Manje gxumela empendulweni efanele ukuze uthole izindebe eziphindwe kathathu.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Qoqa uhlamvu lwemali lwe-×3 ukuze uthole izindebe eziphindwe kathathu kanye.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Ungathola uhhafu wempilo noma impilo ephelele ukuze ubuyise izimpilo.</string>
+	<key>tutorial.minusOne</key>
+	<string>Gwema u-−1. Ukulahlekisela indebe eyodwa.</string>
+	<key>tutorial.move</key>
+	<string>Nyakazisa idivayisi yakho ukuze uye kwesokunxele nakwesokudla. Ungaphinde udlule emaceleni esikrini.</string>
+	<key>tutorial.platforms</key>
+	<string>Gxumela ezinkundleni ukuze ukhuphuke.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Amaphuzu akho ale leveli aboniswa lapha.</string>
+	<key>tutorial.star</key>
+	<string>Gxumela enkanyezini ukuze ususe izimpendulo ezingalungile.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Uma ukhetha impendulo engalungile, ulahlekelwa yimpilo eyodwa kwezintathu. Kuzame manje.</string>
+</dict>
+</plist>

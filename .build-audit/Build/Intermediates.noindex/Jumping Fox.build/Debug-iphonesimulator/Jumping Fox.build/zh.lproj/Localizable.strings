@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>熊</string>
+	<key>character.bunny</key>
+	<string>兔子</string>
+	<key>character.crab</key>
+	<string>螃蟹</string>
+	<key>character.dog</key>
+	<string>狗</string>
+	<key>character.elephant</key>
+	<string>大象</string>
+	<key>character.fox</key>
+	<string>狐狸</string>
+	<key>character.frog</key>
+	<string>青蛙</string>
+	<key>character.lion</key>
+	<string>狮子</string>
+	<key>character.octopus</key>
+	<string>章鱼</string>
+	<key>character.penguin</key>
+	<string>企鹅</string>
+	<key>character.pickerTitle</key>
+	<string>选择你的角色</string>
+	<key>common.back</key>
+	<string>返回</string>
+	<key>common.cancel</key>
+	<string>取消</string>
+	<key>common.continue</key>
+	<string>继续</string>
+	<key>common.done</key>
+	<string>完成</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld 分钟</string>
+	<key>common.save</key>
+	<string>保存</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>长按 2 秒打开开发者模式。</string>
+	<key>developerMode.title</key>
+	<string>开发者模式</string>
+	<key>filter.addition</key>
+	<string>加法</string>
+	<key>filter.fractions</key>
+	<string>分数</string>
+	<key>filter.mixed</key>
+	<string>超级混合</string>
+	<key>filter.percentages</key>
+	<string>百分数</string>
+	<key>filter.subtraction</key>
+	<string>减法</string>
+	<key>filter.tables</key>
+	<string>乘法表</string>
+	<key>game.accessibility.mix</key>
+	<string>混合</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld，共 %lld</string>
+	<key>game.encouragement.0</key>
+	<string>不错的尝试</string>
+	<key>game.encouragement.1</key>
+	<string>这是个好开始</string>
+	<key>game.encouragement.2</key>
+	<string>继续练习</string>
+	<key>game.encouragement.3</key>
+	<string>很不错哦</string>
+	<key>game.encouragement.4</key>
+	<string>做得不错</string>
+	<key>game.encouragement.5</key>
+	<string>表现真棒</string>
+	<key>game.encouragement.6</key>
+	<string>做得好</string>
+	<key>game.encouragement.7</key>
+	<string>玩得真棒</string>
+	<key>game.encouragement.8</key>
+	<string>终点就在眼前</string>
+	<key>game.encouragement.9</key>
+	<string>就快到了</string>
+	<key>game.end.completionSubtitle</key>
+	<string>每一分都是你赢来的。</string>
+	<key>game.end.completionSuffix</key>
+	<string>完成！</string>
+	<key>game.end.gameOverTitle</key>
+	<string>游戏结束</string>
+	<key>game.end.mainMenu</key>
+	<string>主菜单</string>
+	<key>game.end.playAgain</key>
+	<string>再玩一次</string>
+	<key>game.highScore</key>
+	<string>最高分</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>返回主菜单</string>
+	<key>game.intro.continue</key>
+	<string>继续</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>你将从 %lld 继续</string>
+	<key>game.intro.helperBullet</key>
+	<string>辅助模式已开启，正确答案会显示为绿色。因此，带 * 的奖杯会单独计算。</string>
+	<key>game.intro.helperOff</key>
+	<string>关闭辅助</string>
+	<key>game.intro.helperOn</key>
+	<string>开启辅助</string>
+	<key>game.intro.howItWorks</key>
+	<string>本关玩法</string>
+	<key>game.intro.livesOff</key>
+	<string>关闭生命</string>
+	<key>game.intro.livesOn</key>
+	<string>开启生命</string>
+	<key>game.intro.scorePaused</key>
+	<string>当前分数会暂停。</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>抱歉！朗读功能暂不支持你的语言。</string>
+	<key>game.intro.start</key>
+	<string>开始关卡</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>用 %@%@ 乘以 1 到 12 的一个数。</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>或更小</string>
+	<key>game.intro.tapToContinue</key>
+	<string>点击任意位置继续</string>
+	<key>game.intro.tapToStart</key>
+	<string>点击任意位置开始</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>每答对一题可得 |1| 个奖杯，最多可得 |%lld| 个。</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>生命用完后，就不能再获得奖杯了。</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>已达到排行榜奖杯上限</string>
+	<key>game.status.mixMode</key>
+	<string>混合模式</string>
+	<key>game.status.scoreLocked</key>
+	<string>生命用完后，奖杯不再计数</string>
+	<key>game.streak.subtitle</key>
+	<string>奖杯 ×2</string>
+	<key>game.streak.title</key>
+	<string>连续答对 5 题！</string>
+	<key>goal.period</key>
+	<string>目标周期</string>
+	<key>goal.promptDaily</key>
+	<string>你每天想玩几分钟？</string>
+	<key>goal.promptWeekly</key>
+	<string>你每周想玩几分钟？</string>
+	<key>goal.title</key>
+	<string>游戏目标</string>
+	<key>goalPeriod.daily</key>
+	<string>每天</string>
+	<key>goalPeriod.weekly</key>
+	<string>每周</string>
+	<key>info.filter.addition</key>
+	<string>只练加法</string>
+	<key>info.filter.fractions</key>
+	<string>只练除法</string>
+	<key>info.filter.header</key>
+	<string>题目类型</string>
+	<key>info.filter.mixed</key>
+	<string>混合运算</string>
+	<key>info.filter.percentages</key>
+	<string>只练百分数</string>
+	<key>info.filter.subtraction</key>
+	<string>只练减法</string>
+	<key>info.filter.tables</key>
+	<string>只练乘法</string>
+	<key>info.mode.fractions.header</key>
+	<string>份数</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>一份或多份</string>
+	<key>info.mode.fractions.single</key>
+	<string>总是一份</string>
+	<key>info.mode.header</key>
+	<string>顺序</string>
+	<key>info.mode.mixed</key>
+	<string>混合较低关卡</string>
+	<key>info.mode.order</key>
+	<string>固定顺序</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>包含小数</string>
+	<key>info.mode.percentages.header</key>
+	<string>类型</string>
+	<key>info.mode.percentages.whole</key>
+	<string>不含小数</string>
+	<key>info.mode.random</key>
+	<string>随机顺序</string>
+	<key>info.super.all</key>
+	<string>加法、减法、乘法、除法和百分数</string>
+	<key>info.super.basic</key>
+	<string>加法和减法</string>
+	<key>info.super.fraction</key>
+	<string>加法、减法、乘法和除法</string>
+	<key>info.super.times</key>
+	<string>加法、减法和乘法</string>
+	<key>language.select</key>
+	<string>选择语言</string>
+	<key>lives.three</key>
+	<string>3 条生命</string>
+	<key>lives.unlimited</key>
+	<string>无限</string>
+	<key>menu.accessibility.character</key>
+	<string>角色</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>轻点可更换角色；长按两秒可返回欢迎页重新开始。</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>选择 %@</string>
+	<key>menu.maxScore</key>
+	<string>最多 30</string>
+	<key>menu.maximumCount</key>
+	<string>最多</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>已达到上限 %lld 次</string>
+	<key>menu.moreLevels</key>
+	<string>更多关卡</string>
+	<key>menu.options</key>
+	<string>游戏选项</string>
+	<key>menu.premium</key>
+	<string>高级版</string>
+	<key>menu.premiumTables</key>
+	<string>高级版乘法表</string>
+	<key>menu.startHere</key>
+	<string>从这里开始</string>
+	<key>menu.unlockWithPremium</key>
+	<string>升级高级版，解锁更多</string>
+	<key>mode.fractions.multiple</key>
+	<string>多份</string>
+	<key>mode.fractions.single</key>
+	<string>一份</string>
+	<key>mode.mix</key>
+	<string>混合</string>
+	<key>mode.mixed</key>
+	<string>混合</string>
+	<key>mode.order</key>
+	<string>顺序</string>
+	<key>mode.percentages.decimal</key>
+	<string>小数</string>
+	<key>mode.percentages.whole</key>
+	<string>整数</string>
+	<key>mode.random</key>
+	<string>随机</string>
+	<key>mode.standard</key>
+	<string>标准</string>
+	<key>modeIntro.addition.intro</key>
+	<string>你只会遇到 |加法| 题。</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>把 %lld |或更小| 的数加到另一个数上。</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>每次加 %lld，按 |从小到大| 的顺序。</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>每次把 %lld 加到一个 |随机| 数上。</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>加法 · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>不断把两个数相加。</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>答案最大为 %lld。</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>加到 %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>你只会遇到 |分数| 题。</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>题目来自本关和 |之前的关卡|。</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>把 %lld 个相等部分中的 |1 份| 取出来。</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>计算第 %lld 关及之前关卡中整十整百数的分数。</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>数字都是整的，所以答案一定是整数。</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>分数到 %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>把 %lld 个相等部分中的一份或 |多份| 取出来。</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>分数 · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>算出整体的一部分，并找出相等的分数。</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>同分母分数相加或相减。</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>分数混合</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>你只会遇到 |百分数| 题。</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>题目来自本关和 |之前的关卡|。</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>每次计算 %@，答案是 |整数|。</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>计算不超过 %lld 的整十整百数的百分数。</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>数值都是整的，所以答案一定是整数。</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>百分数到 %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>每次计算 %@，答案也可能是 |小数|。</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>计算 %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>算出一个数的百分数。</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>在百分数和分数之间转换。</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>百分数混合</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>你只会遇到 |减法| 题。</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>从另一个数中减去 %lld |或更小| 的数。</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>每次减 %lld，按 |从大到小| 的顺序。</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>每次从一个 |随机| 数中减去 %lld。</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>减法 · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>第一个数最大为 %lld。</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>答案可以小于零。</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>小于零</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>减到 %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>不断用一个数减去另一个数。</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>每个所选类型的难度最高可到 |第 %lld 关|。</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>混合练习加法、减法、乘法表、分数和百分数。</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>超级混合 %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>混合练习加法和减法。</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>超级混合 %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>混合练习加法、减法、乘法表和分数。</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>超级混合 %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>混合练习加法、减法和乘法表。</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>超级混合 %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>你只会遇到 |乘法| 题。</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>混合练习 |到 %lld 为止| 的所有乘法表。</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>每个乘法表都乘以 |1 到 12| 的数。</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>按 |从小到大| 的顺序练习 %lld 的乘法表。</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>按 |随机| 顺序练习 %lld 的乘法表。</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld 的乘法表</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>混合练习 %lld 到 %lld 的乘法表。</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>乘法表 %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>你的名字</string>
+	<key>name.whatsYourName</key>
+	<string>你叫什么名字？</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: 赢得更多奖杯来解锁这只动物！ 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>只剩下%lld座奖杯了！ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>你的动物正在等待。回来玩并继续收集奖杯！</string>
+	<key>notif.comeback.title</key>
+	<string>我们想你！ 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>开始 %lld 分钟的游戏并延长您每天的连续游戏时间。</string>
+	<key>notif.day3.title</key>
+	<string>让我们实现第三天吧！ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>使用跳板跳过错误答案并继续攀登！</string>
+	<key>notif.jumppad.title</key>
+	<string>跳过错误答案！ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium 包含每个主题的 %lld 个关卡和全部 10 种动物。冒险仍在继续！</string>
+	<key>notif.premium.title</key>
+	<string>解锁更多关卡和动物！ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>已经%lld天了。让我们解决一些数学练习并赢得更多奖杯！</string>
+	<key>notif.reactivate.title</key>
+	<string>准备好再玩了吗？ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>玩 %lld 分钟，让您的日常连续玩下去！</string>
+	<key>notif.streak.title %lld</key>
+	<string>您的每日连续玩次数已达到 %lld 天！ 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>干得好！让我们玩 %lld 分钟并收集更多。</string>
+	<key>notif.trophies.title %lld</key>
+	<string>您已赢得 %lld 个奖杯！ 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>这将使您的奖杯总数达到 %lld 个。了不起的工作！</string>
+	<key>notif.weekly.title %lld</key>
+	<string>本周您赢得了 %lld 个奖杯！ 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>不同的混合题放在一起。</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>已经很不错</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>按顺序练习算式。</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>刚刚开始</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>随机顺序的算式。</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>已经练过一些</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>为 %@ 选择起点。</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>这个主题</string>
+	<key>onboarding.level.title</key>
+	<string>你已经有多熟练？</string>
+	<key>onboarding.name.subtitle</key>
+	<string>开始吧。你叫什么名字？</string>
+	<key>onboarding.name.title</key>
+	<string>做算术从没这么好玩！</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>选择一个主题开始。</string>
+	<key>onboarding.subject.title</key>
+	<string>你想学什么？</string>
+	<key>options.capAt30.info</key>
+	<string>每关的奖杯目标最高为 50。开启后，达到目标时游戏会自动结束。</string>
+	<key>options.capAt30.title</key>
+	<string>达标后结束</string>
+	<key>options.helperMode.info</key>
+	<string>辅助模式会一直用绿色显示正确答案。在此模式中获得的奖杯会单独计算，并标上星号。</string>
+	<key>options.helperMode.title</key>
+	<string>辅助模式</string>
+	<key>options.unlimitedLives.info</key>
+	<string>你每次都从 3 条生命开始。生命用完时游戏结束。开启此选项后，生命用完仍可继续练习。</string>
+	<key>options.unlimitedLives.title</key>
+	<string>无限生命</string>
+	<key>parentGate.approved</key>
+	<string>已通过</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>尝试次数：%1$lld/%2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>按住 %@ %lld 秒。</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>按住：%lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>按住 %@ %lld 秒，然后轻点 %@ %lld 次。</string>
+	<key>parentGate.shape.circle</key>
+	<string>圆形</string>
+	<key>parentGate.shape.diamond</key>
+	<string>菱形</string>
+	<key>parentGate.shape.heart</key>
+	<string>爱心</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>六边形</string>
+	<key>parentGate.shape.plus</key>
+	<string>加号</string>
+	<key>parentGate.shape.square</key>
+	<string>正方形</string>
+	<key>parentGate.shape.star</key>
+	<string>星形</string>
+	<key>parentGate.shape.triangle</key>
+	<string>三角形</string>
+	<key>parentGate.stepOne</key>
+	<string>第 1 步，共 2 步</string>
+	<key>parentGate.stepTwo</key>
+	<string>第 2 步，共 2 步</string>
+	<key>parentGate.subtitle</key>
+	<string>为了保护小玩家，继续购买前需要一位成年人完成验证。</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>现在轻点 %2$@ %1$lld 次。</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>轻点次数：%1$lld/%2$lld</string>
+	<key>parentGate.title</key>
+	<string>需要成年人同意</string>
+	<key>premium.availableAt %lld</key>
+	<string>获得 %lld 个奖杯后可用</string>
+	<key>premium.availableFromStart</key>
+	<string>从一开始即可使用</string>
+	<key>premium.characterUnlocked</key>
+	<string>已解锁新角色</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>已解锁%@</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>你已获得 %lld 个奖杯</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium 专属</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium 专属</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>高级版可自由使用全部 10 种动物。</string>
+	<key>premium.feature.animals.title</key>
+	<string>使用所有动物</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>总有足够的新题可以练习。</string>
+	<key>premium.feature.levels.title</key>
+	<string>每个主题 99 关</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>畅玩无打扰。</string>
+	<key>premium.feature.noAds.title</key>
+	<string>无广告</string>
+	<key>premium.oneTime</key>
+	<string>一次购买，永久拥有。</string>
+	<key>premium.restore</key>
+	<string>恢复购买</string>
+	<key>premium.start</key>
+	<string>开始</string>
+	<key>premium.storeUnavailable</key>
+	<string>商店暂时不可用，请稍后再试。</string>
+	<key>premium.unlock</key>
+	<string>解锁高级版</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>解锁高级版 · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>用奖杯解锁</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>已通过 Premium 解锁</string>
+	<key>premium.youHavePremium</key>
+	<string>你已拥有高级版！</string>
+	<key>settings.character</key>
+	<string>角色</string>
+	<key>settings.characterInfo</key>
+	<string>每种动物都会给整个游戏带来自己的配色。</string>
+	<key>settings.customMinutes %lld</key>
+	<string>自定义：%lld 分钟</string>
+	<key>settings.dailyGoal</key>
+	<string>每日目标</string>
+	<key>settings.goalInfo</key>
+	<string>连续目标从每天 5 分钟开始。只有实际游戏时间才会计入。</string>
+	<key>settings.lives</key>
+	<string>生命</string>
+	<key>settings.livesInfo</key>
+	<string>使用三条生命时，最后一颗爱心用完后游戏结束。无限模式中，只有还有生命时奖杯才会计数；之后仍可继续游戏。</string>
+	<key>settings.playGoals</key>
+	<string>游戏目标</string>
+	<key>settings.premiumUnlocked</key>
+	<string>高级版已解锁，谢谢！</string>
+	<key>settings.title</key>
+	<string>设置</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>选择每日目标</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>选择每日或每周目标</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@，%2$lld/%3$lld 分钟，连续 %4$lld 天</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>每日连续，%lld/%lld 分钟</string>
+	<key>streak.daily</key>
+	<string>每日连续</string>
+	<key>streak.dayOne</key>
+	<string>第 1 天</string>
+	<key>tutorial.answerHint</key>
+	<string>不知道答案？轻点题目就能看到。</string>
+	<key>tutorial.complete</key>
+	<string>做得好！教程完成了。现在去挑战最高分吧！</string>
+	<key>tutorial.correctAnswer</key>
+	<string>跳到正确答案上，收集一个奖杯。</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>正确答案会显示为绿色。现在跳到正确答案上。</string>
+	<key>tutorial.doubler.answer</key>
+	<string>现在跳到正确答案上，一次收集三倍奖杯。</string>
+	<key>tutorial.doubler.collect</key>
+	<string>收集 ×3 金币，这一次可获得三倍奖杯。</string>
+	<key>tutorial.lifePickup</key>
+	<string>你可能找到半条或一整条生命，补回生命。</string>
+	<key>tutorial.minusOne</key>
+	<string>避开 −1，它会让你失去一个奖杯。</string>
+	<key>tutorial.move</key>
+	<string>移动设备来左右移动。也可以从屏幕一侧穿到另一侧。</string>
+	<key>tutorial.platforms</key>
+	<string>跳上平台向上移动。</string>
+	<key>tutorial.scoreHint</key>
+	<string>这里会显示你在本关的分数。</string>
+	<key>tutorial.star</key>
+	<string>跳进星星，把错误答案射走。</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>选错答案会失去三条生命中的一条。现在试试看。</string>
+</dict>
+</plist>

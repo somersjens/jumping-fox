@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>ဝက်ဝံ</string>
+	<key>character.bunny</key>
+	<string>ယုန်ကလေး</string>
+	<key>character.crab</key>
+	<string>ကဏန်း</string>
+	<key>character.dog</key>
+	<string>ခွေး</string>
+	<key>character.elephant</key>
+	<string>ဆင်</string>
+	<key>character.fox</key>
+	<string>မြေခွေး</string>
+	<key>character.frog</key>
+	<string>ဖား</string>
+	<key>character.lion</key>
+	<string>ခြင်္သေ့</string>
+	<key>character.octopus</key>
+	<string>ရေဘဝဲ</string>
+	<key>character.penguin</key>
+	<string>ပင်ဂွင်း</string>
+	<key>character.pickerTitle</key>
+	<string>ကိုယ့်ဇာတ်ကောင်ကို ရွေးပါ</string>
+	<key>common.back</key>
+	<string>နောက်သို့</string>
+	<key>common.cancel</key>
+	<string>မလုပ်တော့</string>
+	<key>common.continue</key>
+	<string>ဆက်ရန်</string>
+	<key>common.done</key>
+	<string>ပြီးပြီ</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld မိနစ်</string>
+	<key>common.save</key>
+	<string>သိမ်းရန်</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>တီထွင်သူမုဒ်ဖွင့်ရန် ၂ စက္ကန့် ဖိထားပါ။</string>
+	<key>developerMode.title</key>
+	<string>တီထွင်သူမုဒ်</string>
+	<key>filter.addition</key>
+	<string>ပေါင်းခြင်း</string>
+	<key>filter.fractions</key>
+	<string>အပိုင်းကိန်း</string>
+	<key>filter.mixed</key>
+	<string>စူပါပေါင်းစပ်</string>
+	<key>filter.percentages</key>
+	<string>ရာခိုင်နှုန်း</string>
+	<key>filter.subtraction</key>
+	<string>နုတ်ခြင်း</string>
+	<key>filter.tables</key>
+	<string>မြှောက်ကိန်းဇယား</string>
+	<key>game.accessibility.mix</key>
+	<string>ပေါင်းစပ်</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld မှ %lld</string>
+	<key>game.encouragement.0</key>
+	<string>ကြိုးစားတာ ကောင်းတယ်</string>
+	<key>game.encouragement.1</key>
+	<string>စတင်နိုင်ပြီ</string>
+	<key>game.encouragement.2</key>
+	<string>ဆက်လေ့ကျင့်ပါ</string>
+	<key>game.encouragement.3</key>
+	<string>မဆိုးပါဘူး</string>
+	<key>game.encouragement.4</key>
+	<string>ကောင်းကောင်းလုပ်နေတယ်</string>
+	<key>game.encouragement.5</key>
+	<string>ကောင်းမွန်တဲ့ စွမ်းဆောင်မှု</string>
+	<key>game.encouragement.6</key>
+	<string>တော်တယ်</string>
+	<key>game.encouragement.7</key>
+	<string>အရမ်းကောင်းတယ်</string>
+	<key>game.encouragement.8</key>
+	<string>ပန်းတိုင် နီးလာပြီ</string>
+	<key>game.encouragement.9</key>
+	<string>ရောက်ခါနီးပြီ</string>
+	<key>game.end.completionSubtitle</key>
+	<string>အမှတ်တိုင်းကို ကိုယ်တိုင်ရခဲ့တယ်။</string>
+	<key>game.end.completionSuffix</key>
+	<string>ပြီးပြီ!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>ဂိမ်းပြီးပြီ</string>
+	<key>game.end.mainMenu</key>
+	<string>ပင်မမီနူး</string>
+	<key>game.end.playAgain</key>
+	<string>ထပ်ကစား</string>
+	<key>game.highScore</key>
+	<string>အမြင့်ဆုံးအမှတ်</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>ပင်မမီနူးသို့ ပြန်ရန်</string>
+	<key>game.intro.continue</key>
+	<string>ဆက်ကစား</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>%lld မှ ဆက်ကစားမယ်</string>
+	<key>game.intro.helperBullet</key>
+	<string>အကူမုဒ်ဖွင့်ထားလို့ အဖြေမှန်ကို အစိမ်းရောင်နဲ့ ပြထားတယ်။ ဒါကြောင့် ဆုဖလားတွေကို * နဲ့ သီးခြားရေတွက်မယ်။</string>
+	<key>game.intro.helperOff</key>
+	<string>အကူ ပိတ်</string>
+	<key>game.intro.helperOn</key>
+	<string>အကူ ဖွင့်</string>
+	<key>game.intro.howItWorks</key>
+	<string>ဒီအဆင့် ကစားပုံ</string>
+	<key>game.intro.livesOff</key>
+	<string>အသက် ပိတ်</string>
+	<key>game.intro.livesOn</key>
+	<string>အသက် ဖွင့်</string>
+	<key>game.intro.scorePaused</key>
+	<string>လက်ရှိအမှတ်ကို ခဏရပ်ထားမယ်။</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>ဝမ်းနည်းပါတယ်။ အသံဖြင့်ဖတ်ပြသည့်လုပ်ဆောင်ချက်ကို သင့်ဘာသာစကားဖြင့် မရရှိနိုင်သေးပါ။</string>
+	<key>game.intro.start</key>
+	<string>အဆင့်စရန်</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>%@%@ ကို 1 မှ 12 အတွင်း ဂဏန်းတစ်ခုနဲ့ မြှောက်ပါ။</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>သို့မဟုတ် အောက်</string>
+	<key>game.intro.tapToContinue</key>
+	<string>ဆက်ကစားရန် နေရာမရွေးတို့ပါ</string>
+	<key>game.intro.tapToStart</key>
+	<string>စရန် နေရာမရွေးတို့ပါ</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>အဖြေမှန်တစ်ခုစီအတွက် |1| ဆုဖလားရမယ်၊ အများဆုံး |%lld| အထိ။</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>အသက်ကုန်သွားရင် ဆုဖလား ထပ်မရတော့ဘူး။</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>အမှတ်စာရင်းအတွက် အများဆုံးဆုဖလား ရပြီးပြီ</string>
+	<key>game.status.mixMode</key>
+	<string>ပေါင်းစပ်မုဒ်</string>
+	<key>game.status.scoreLocked</key>
+	<string>အသက်ကုန်ပြီးရင် ဆုဖလား မရေတွက်တော့ဘူး</string>
+	<key>game.streak.subtitle</key>
+	<string>ဆုဖလား ×2</string>
+	<key>game.streak.title</key>
+	<string>၅ ခုဆက်တိုက်!</string>
+	<key>goal.period</key>
+	<string>ပန်းတိုင်ကာလ</string>
+	<key>goal.promptDaily</key>
+	<string>တစ်နေ့ကို ဘယ်နှမိနစ် ကစားချင်လဲ။</string>
+	<key>goal.promptWeekly</key>
+	<string>တစ်ပတ်ကို ဘယ်နှမိနစ် ကစားချင်လဲ။</string>
+	<key>goal.title</key>
+	<string>ကစားချိန်ပန်းတိုင်</string>
+	<key>goalPeriod.daily</key>
+	<string>နေ့စဉ်</string>
+	<key>goalPeriod.weekly</key>
+	<string>အပတ်စဉ်</string>
+	<key>info.filter.addition</key>
+	<string>ပေါင်းခြင်းသာ</string>
+	<key>info.filter.fractions</key>
+	<string>စားခြင်းသာ</string>
+	<key>info.filter.header</key>
+	<string>ပုစ္ဆာအမျိုးအစား</string>
+	<key>info.filter.mixed</key>
+	<string>ရောစပ်တွက်ချက်မှု</string>
+	<key>info.filter.percentages</key>
+	<string>ရာခိုင်နှုန်းသာ</string>
+	<key>info.filter.subtraction</key>
+	<string>နုတ်ခြင်းသာ</string>
+	<key>info.filter.tables</key>
+	<string>မြှောက်ခြင်းသာ</string>
+	<key>info.mode.fractions.header</key>
+	<string>အပိုင်းများ</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>တစ်ပိုင်းနှင့် အပိုင်းများ</string>
+	<key>info.mode.fractions.single</key>
+	<string>အမြဲ တစ်ပိုင်းသာ</string>
+	<key>info.mode.header</key>
+	<string>အစဉ်</string>
+	<key>info.mode.mixed</key>
+	<string>အောက်အဆင့်များနှင့် ရောစပ်</string>
+	<key>info.mode.order</key>
+	<string>သတ်မှတ်အစဉ်</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>ဒသမကိန်းများ ပါဝင်</string>
+	<key>info.mode.percentages.header</key>
+	<string>အမျိုးအစား</string>
+	<key>info.mode.percentages.whole</key>
+	<string>ဒသမကိန်း မပါ</string>
+	<key>info.mode.random</key>
+	<string>ကျပန်းအစဉ်</string>
+	<key>info.super.all</key>
+	<string>ပေါင်း၊ နုတ်၊ မြှောက်၊ စားနှင့် ရာခိုင်နှုန်း</string>
+	<key>info.super.basic</key>
+	<string>ပေါင်းနှင့် နုတ်</string>
+	<key>info.super.fraction</key>
+	<string>ပေါင်း၊ နုတ်၊ မြှောက်နှင့် စား</string>
+	<key>info.super.times</key>
+	<string>ပေါင်း၊ နုတ်နှင့် မြှောက်</string>
+	<key>language.select</key>
+	<string>ဘာသာစကားရွေးပါ</string>
+	<key>lives.three</key>
+	<string>အသက် ၃ ခု</string>
+	<key>lives.unlimited</key>
+	<string>အကန့်အသတ်မရှိ</string>
+	<key>menu.accessibility.character</key>
+	<string>ဇာတ်ကောင်</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>ဇာတ်ကောင်ပြောင်းရန် တို့ပါ။ ကြိုဆိုမျက်နှာပြင်ကနေ ပြန်စရန် ၂ စက္ကန့် ဖိထားပါ။</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>%@ ကို ရွေးပါ</string>
+	<key>menu.maxScore</key>
+	<string>30 MAX</string>
+	<key>menu.maximumCount</key>
+	<string>MAX</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>အများဆုံးကို %lld ကြိမ် ရောက်ခဲ့သည်</string>
+	<key>menu.moreLevels</key>
+	<string>နောက်ထပ်အဆင့်များ</string>
+	<key>menu.options</key>
+	<string>ဂိမ်းရွေးချယ်စရာ</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium ဇယားများ</string>
+	<key>menu.startHere</key>
+	<string>ဒီမှာ စပါ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Premium နဲ့ ပိုဖွင့်ပါ</string>
+	<key>mode.fractions.multiple</key>
+	<string>အပိုင်းများ</string>
+	<key>mode.fractions.single</key>
+	<string>တစ်ပိုင်း</string>
+	<key>mode.mix</key>
+	<string>ပေါင်းစပ်</string>
+	<key>mode.mixed</key>
+	<string>ရောစပ်</string>
+	<key>mode.order</key>
+	<string>အစဉ်</string>
+	<key>mode.percentages.decimal</key>
+	<string>ဒသမ</string>
+	<key>mode.percentages.whole</key>
+	<string>ကိန်းပြည့်</string>
+	<key>mode.random</key>
+	<string>ကျပန်း</string>
+	<key>mode.standard</key>
+	<string>ပုံမှန်</string>
+	<key>modeIntro.addition.intro</key>
+	<string>|ပေါင်းခြင်း| ပုစ္ဆာပဲ ရမယ်။</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>အခြားဂဏန်းတစ်ခုကို %lld |သို့မဟုတ် အောက်| ပေါင်းမယ်။</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>%lld ကို |ငယ်မှကြီး| အစဉ်နဲ့ အမြဲပေါင်းမယ်။</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>|ကျပန်း| ဂဏန်းတစ်ခုကို %lld အမြဲပေါင်းမယ်။</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>ပေါင်းခြင်း · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>ဂဏန်းနှစ်ခုကို ဆက်ပေါင်းပါ။</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>အဖြေက အများဆုံး %lld ပါ။</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>%lld အထိ ပေါင်းခြင်း</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>|အပိုင်းကိန်း| ပုစ္ဆာပဲ ရမယ်။</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>ဒီအဆင့်နဲ့ |အရင်အဆင့်များ| က အပိုင်းကိန်းတွေ ရမယ်။</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>တူညီတဲ့ %lld ပိုင်းထဲက |1 ပိုင်း| ကို အမြဲယူမယ်။</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>အဆင့် %lld နဲ့ အရင်အဆင့်တွေက ကိန်းလုံးတွေရဲ့ အပိုင်းကိန်းကို တွက်ပါ။</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>ကိန်းတွေက ပြည့်ကိန်းဖြစ်လို့ အဖြေတွေလည်း ကိန်းပြည့်ပဲ။</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>%lld အထိ အပိုင်းကိန်း</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>တူညီတဲ့ %lld ပိုင်းထဲက တစ်ပိုင်း သို့မဟုတ် |အပိုင်းများ| ကို ယူမယ်။</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>အပိုင်းကိန်း · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>တစ်ခုလုံးရဲ့ အပိုင်းကိုတွက်ပြီး အပိုင်းကိန်းတွေ ညီအောင်လုပ်ပါ။</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>ပိုင်းခြေတူ အပိုင်းကိန်းတွေကို ပေါင်း၊ နုတ်ပါ။</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>အပိုင်းကိန်း ရောစပ်</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>|ရာခိုင်နှုန်း| ပုစ္ဆာပဲ ရမယ်။</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>ဒီအဆင့်နဲ့ |အရင်အဆင့်များ| က ရာခိုင်နှုန်းတွေ ရမယ်။</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>%@ ကို အမြဲတွက်မယ်၊ အဖြေက |ကိန်းပြည့်| ဖြစ်မယ်။</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>%lld အထိ ကိန်းလုံးတွေရဲ့ ရာခိုင်နှုန်းကို တွက်ပါ။</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>ပမာဏတွေက ကိန်းလုံးဖြစ်လို့ အဖြေတွေလည်း ကိန်းပြည့်ပဲ။</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>%lld အထိ ရာခိုင်နှုန်း</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>%@ ကို အမြဲတွက်မယ်၊ အဖြေက |ဒသမကိန်း| လည်း ဖြစ်နိုင်တယ်။</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>%@ တွက်ရန်</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>ဂဏန်းတစ်ခုရဲ့ ရာခိုင်နှုန်းကို တွက်ပါ။</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>ရာခိုင်နှုန်းနဲ့ အပိုင်းကိန်းကို အပြန်အလှန် ပြောင်းပါ။</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>ရာခိုင်နှုန်း ရောစပ်</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>|နုတ်ခြင်း| ပုစ္ဆာပဲ ရမယ်။</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>အခြားဂဏန်းတစ်ခုထဲက %lld |သို့မဟုတ် အောက်| နုတ်မယ်။</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>%lld ကို |ကြီးမှငယ်| အစဉ်နဲ့ အမြဲနုတ်မယ်။</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>|ကျပန်း| ဂဏန်းတစ်ခုထဲက %lld အမြဲနုတ်မယ်။</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>နုတ်ခြင်း · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>ပထမဂဏန်းက အများဆုံး %lld ပါ။</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>အဖြေက သုညအောက် ရောက်နိုင်တယ်။</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>သုညအောက်</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>%lld အထိ နုတ်ခြင်း</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>ဂဏန်းနှစ်ခုကို ဆက်နုတ်ပါ။</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>ရွေးထားတဲ့ အမျိုးအစားတစ်ခုစီမှာ ခက်ခဲမှုက |အဆင့် %lld| အထိ တိုးနိုင်တယ်။</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>ပေါင်း၊ နုတ်၊ မြှောက်ကိန်းဇယား၊ အပိုင်းကိန်းနဲ့ ရာခိုင်နှုန်းတွေကို ရောစပ်လေ့ကျင့်ပါ။</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>စူပါပေါင်းစပ် %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>ပေါင်းနဲ့ နုတ်ကို ရောစပ်လေ့ကျင့်ပါ။</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>စူပါပေါင်းစပ် %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>ပေါင်း၊ နုတ်၊ မြှောက်ကိန်းဇယားနဲ့ အပိုင်းကိန်းကို ရောစပ်လေ့ကျင့်ပါ။</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>စူပါပေါင်းစပ် %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>ပေါင်း၊ နုတ်နဲ့ မြှောက်ကိန်းဇယားကို ရောစပ်လေ့ကျင့်ပါ။</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>စူပါပေါင်းစပ် %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>|မြှောက်ခြင်း| ပုစ္ဆာပဲ ရမယ်။</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>|%lld အထိ| မြှောက်ကိန်းဇယားအားလုံး ရောပြီး ရမယ်။</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>ဇယားတစ်ခုစီကို |1 မှ 12| အတွင်း ဂဏန်းတစ်ခုနဲ့ မြှောက်မယ်။</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld မြှောက်ကိန်းဇယားကို |ငယ်မှကြီး| အစဉ်နဲ့ ရမယ်။</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld မြှောက်ကိန်းဇယားကို |ကျပန်း| အစဉ်နဲ့ ရမယ်။</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld မြှောက်ကိန်းဇယား</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>%lld မှ %lld အထိ ဇယားတွေကို ရောစပ်လေ့ကျင့်ပါ။</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>ဇယား %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>မင်းနာမည်</string>
+	<key>name.whatsYourName</key>
+	<string>မင်းနာမည် ဘာလဲ။</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: ဤတိရစ္ဆာန်ကိုသော့ဖွင့်ရန် နောက်ထပ်ဆုဖလားအချို့ကို ရယူလိုက်ပါ။ 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>ဆုဖလား %lld ခုပဲကျန်တော့တယ်။ 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>မင်းရဲ့တိရစ္ဆာန်တွေက စောင့်နေတယ်။ပြန်လာကစားပြီး ဆုဖလားတွေ ဆက်လက်စုဆောင်းလိုက်ပါ။</string>
+	<key>notif.comeback.title</key>
+	<string>တို့တွေမင်းကိုသတိရနေတယ်! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>%lld မိနစ်ကြာ ကစားချိန်ကို စတင်ပြီး သင်၏နေ့စဥ်ကစားခြင်းကို သက်တမ်းတိုးပါ။</string>
+	<key>notif.day3.title</key>
+	<string>Day 3 ဖြစ်မြောက်အောင် လုပ်ကြရအောင်။ ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>မှားယွင်းသောအဖြေကိုကျော်ပြီး ဆက်တက်ရန် Jump Pad ကိုသုံးပါ။</string>
+	<key>notif.jumppad.title</key>
+	<string>မှားယွင်းသော အဖြေများကို ကျော်ဖြတ်လိုက်ပါ။ 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium တွင် အကြောင်းအရာတိုင်းအတွက် အဆင့် %lld နှင့် တိရစ္ဆာန် 10 ကောင်တို့ပါဝင်သည်။စွန့်စားခန်းသည် ဆက်သွားနေသည်။</string>
+	<key>notif.premium.title</key>
+	<string>အဆင့်များနှင့် တိရစ္ဆာန်များကို လော့ခ်ဖွင့်ပါ။ 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>%lld ရက်ရှိပြီ။သင်္ချာလေ့ကျင့်ခန်းအချို့ကို ဖြေရှင်းပြီး ဆုဖလားများ ထပ်မံရယူကြပါစို့။</string>
+	<key>notif.reactivate.title</key>
+	<string>ပြန်ကစားဖို့ အဆင်သင့်ဖြစ်ပြီလား။ 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>%lld မိနစ်လောက်ကစားပြီး သင့်နေ့စဥ်ကစားခြင်းကို ဆက်လက်လုပ်ဆောင်ပါ။</string>
+	<key>notif.streak.title %lld</key>
+	<string>သင်၏နေ့စဥ်ကစားနည်းသည် %lld ရက်သို့ရောက်ရှိသွားပါပြီ။ 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>အလုပ်ကောင်း။%lld မိနစ်လောက် ကစားပြီး ဒီထက်ပိုပြီး စုဆောင်းကြရအောင်။</string>
+	<key>notif.trophies.title %lld</key>
+	<string>သင်သည် ဆုဖလား %lld ကို ရရှိခဲ့သည်။ 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>ဒါက မင်းရဲ့ စုစုပေါင်း ဆုဖလား %lld ကို ယူဆောင်လာပေးတယ်။အံ့သြဖွယ်အလုပ်။</string>
+	<key>notif.weekly.title %lld</key>
+	<string>သင်သည် ဤအပတ်တွင် ဆုဖလား %lld ရရှိခဲ့သည်။ 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>ရောစပ်ပုစ္ဆာအမျိုးမျိုး။</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>တော်တော်ကောင်းနေပြီ</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>အစဉ်လိုက် ပုစ္ဆာများကို လေ့ကျင့်ပါ။</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>စတင်ခါစ</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>ကျပန်းအစဉ်နဲ့ ပုစ္ဆာများ။</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>နည်းနည်း လေ့ကျင့်ပြီးပြီ</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>%@ အတွက် စမှတ်ရွေးပါ။</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>ဒီအကြောင်းအရာ</string>
+	<key>onboarding.level.title</key>
+	<string>ဒါကို ဘယ်လောက်တော်ပြီးပြီလဲ။</string>
+	<key>onboarding.name.subtitle</key>
+	<string>စလိုက်ရအောင်။ မင်းနာမည် ဘာလဲ။</string>
+	<key>onboarding.name.title</key>
+	<string>ပုစ္ဆာတွက်တာ ဒီလောက်ပျော်စရာ မရှိသေးဘူး!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>စဖို့ အကြောင်းအရာတစ်ခု ရွေးပါ။</string>
+	<key>onboarding.subject.title</key>
+	<string>ဘာသင်ချင်လဲ။</string>
+	<key>options.capAt30.info</key>
+	<string>အဆင့်တိုင်းမှာ ဆုဖလားပန်းတိုင် အများဆုံး 50 ရှိတယ်။ ဒီရွေးချယ်မှုဖွင့်ထားရင် ပန်းတိုင်ရောက်တာနဲ့ ဂိမ်းအလိုအလျောက်ပြီးမယ်။</string>
+	<key>options.capAt30.title</key>
+	<string>ပန်းတိုင်ရောက်လျှင် ပြီးရန်</string>
+	<key>options.helperMode.info</key>
+	<string>အကူမုဒ်မှာ အဖြေမှန်ကို အမြဲအစိမ်းရောင်နဲ့ ပြမယ်။ ဒီမုဒ်က ဆုဖလားတွေကို သီးခြားရေတွက်ပြီး ကြယ်ပွင့်နဲ့ မှတ်ထားမယ်။</string>
+	<key>options.helperMode.title</key>
+	<string>အကူမုဒ်</string>
+	<key>options.unlimitedLives.info</key>
+	<string>အမြဲ အသက် ၃ ခုနဲ့ စမယ်။ အသက်ကုန်ရင် ဂိမ်းပြီးမယ်။ အသက်ကုန်ပြီးနောက်လည်း ဆက်ကစားလေ့ကျင့်ဖို့ ဒီရွေးချယ်မှုကို ဖွင့်ပါ။</string>
+	<key>options.unlimitedLives.title</key>
+	<string>အသက် အကန့်အသတ်မရှိ</string>
+	<key>parentGate.approved</key>
+	<string>အတည်ပြုပြီး</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>ကြိုးစားမှု: %1$lld မှ %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>%@ ကို %lld စက္ကန့် ဖိထားပါ။</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>ဖိထားရန်: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>%@ ကို %lld စက္ကန့် ဖိထားပါ။ ပြီးရင် %@ ကို %lld ကြိမ် တို့ပါ။</string>
+	<key>parentGate.shape.circle</key>
+	<string>စက်ဝိုင်း</string>
+	<key>parentGate.shape.diamond</key>
+	<string>စိန်ပုံ</string>
+	<key>parentGate.shape.heart</key>
+	<string>နှလုံး</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>ခြောက်ထောင့်ပုံ</string>
+	<key>parentGate.shape.plus</key>
+	<string>အပေါင်း</string>
+	<key>parentGate.shape.square</key>
+	<string>စတုရန်း</string>
+	<key>parentGate.shape.star</key>
+	<string>ကြယ်</string>
+	<key>parentGate.shape.triangle</key>
+	<string>တြိဂံ</string>
+	<key>parentGate.stepOne</key>
+	<string>အဆင့် 1 မှ 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>အဆင့် 2 မှ 2</string>
+	<key>parentGate.subtitle</key>
+	<string>ကလေးကစားသမားတွေကို ကာကွယ်ဖို့ ဝယ်ယူမှုမဆက်ခင် လူကြီးတစ်ယောက်က ဒီစစ်ဆေးမှုကို ပြီးအောင်လုပ်ရမယ်။</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>အခု %2$@ ကို %1$lld ကြိမ် တို့ပါ။</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>တို့ချက်: %1$lld မှ %2$lld</string>
+	<key>parentGate.title</key>
+	<string>လူကြီးအတည်ပြုချက် လိုသည်</string>
+	<key>premium.availableAt %lld</key>
+	<string>ဆုဖလား %lld ခုမှ စ၍ ရနိုင်သည်</string>
+	<key>premium.availableFromStart</key>
+	<string>အစကတည်းက ရနိုင်သည်</string>
+	<key>premium.characterUnlocked</key>
+	<string>ဇာတ်ကောင်အသစ် ဖွင့်ပြီးပြီ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ ဖွင့်ပြီးပြီ</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>ဆုဖလား %lld ခု ရရှိပြီးပြီ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Premium အတွက်သာ</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Premium အတွက်သာ</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Premium နဲ့ တိရစ္ဆာန် ၁၀ ကောင်လုံးကို လွတ်လပ်စွာ ကစားနိုင်တယ်။</string>
+	<key>premium.feature.animals.title</key>
+	<string>တိရစ္ဆာန်အားလုံး သုံးနိုင်</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>လေ့ကျင့်ဖို့ ပုစ္ဆာအသစ်တွေ အမြဲလုံလောက်တယ်။</string>
+	<key>premium.feature.levels.title</key>
+	<string>အကြောင်းအရာတစ်ခုစီ 99 အဆင့်</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>အနှောင့်အယှက်မရှိ လုံးဝကစားပါ။</string>
+	<key>premium.feature.noAds.title</key>
+	<string>ကြော်ငြာမရှိ</string>
+	<key>premium.oneTime</key>
+	<string>တစ်ကြိမ်ဝယ်၊ အမြဲပိုင်။</string>
+	<key>premium.restore</key>
+	<string>ဝယ်ယူမှုများ ပြန်ယူရန်</string>
+	<key>premium.start</key>
+	<string>စတင်</string>
+	<key>premium.storeUnavailable</key>
+	<string>စတိုးကို အခုသုံးမရပါ။ နောက်မှ ထပ်ကြိုးစားပါ။</string>
+	<key>premium.unlock</key>
+	<string>Premium ဖွင့်ရန်</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Premium ဖွင့်ရန် · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>ဆုဖလားများဖြင့် ဖွင့်ပါ</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Premium ဖြင့် ဖွင့်ပြီးပြီ</string>
+	<key>premium.youHavePremium</key>
+	<string>Premium ရပြီ!</string>
+	<key>settings.character</key>
+	<string>ဇာတ်ကောင်</string>
+	<key>settings.characterInfo</key>
+	<string>တိရစ္ဆာန်တစ်ကောင်စီက ဂိမ်းတစ်ခုလုံးကို သူ့အရောင်ပုံစံနဲ့ ပြောင်းပေးတယ်။</string>
+	<key>settings.customMinutes %lld</key>
+	<string>စိတ်ကြိုက်: %lld မိနစ်</string>
+	<key>settings.dailyGoal</key>
+	<string>နေ့စဉ်ပန်းတိုင်</string>
+	<key>settings.goalInfo</key>
+	<string>ဆက်တိုက်ပန်းတိုင်က တစ်နေ့ ၅ မိနစ်ကနေ စတယ်။ တကယ်ကစားတဲ့အချိန်ပဲ ရေတွက်မယ်။</string>
+	<key>settings.lives</key>
+	<string>အသက်</string>
+	<key>settings.livesInfo</key>
+	<string>အသက်သုံးခုမုဒ်မှာ နောက်ဆုံးနှလုံးကုန်ရင် ဂိမ်းပြီးမယ်။ အကန့်အသတ်မရှိမုဒ်မှာ အသက်ရှိနေသေးချိန်ပဲ ဆုဖလားရေတွက်မယ်၊ ပြီးရင်တော့ ဆက်ကစားနိုင်တယ်။</string>
+	<key>settings.playGoals</key>
+	<string>ကစားချိန်ပန်းတိုင်များ</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium ဖွင့်ပြီးပြီ။ ကျေးဇူးတင်ပါတယ်!</string>
+	<key>settings.title</key>
+	<string>ဆက်တင်များ</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>နေ့စဉ်ပန်းတိုင် ရွေးပါ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>နေ့စဉ် သို့မဟုတ် အပတ်စဉ်ပန်းတိုင် ရွေးပါ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@၊ %3$lld မိနစ်ထဲက %2$lld၊ %4$lld ရက်ဆက်တိုက်</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>နေ့စဉ်ဆက်တိုက်၊ %lld မိနစ်ထဲက %lld</string>
+	<key>streak.daily</key>
+	<string>နေ့စဉ်ဆက်တိုက်</string>
+	<key>streak.dayOne</key>
+	<string>နေ့ 1</string>
+	<key>tutorial.answerHint</key>
+	<string>အဖြေမသိဘူးလား။ ပုစ္ဆာကို တို့ပြီး အဖြေကြည့်ပါ။</string>
+	<key>tutorial.complete</key>
+	<string>တော်တယ်! သင်ခန်းစာပြီးပြီ။ အခု အမြင့်ဆုံးအမှတ်ရအောင် ကစားပါ!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>ဆုဖလားရဖို့ အဖြေမှန်ပေါ် ခုန်ပါ။</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>အဖြေမှန်ကို အစိမ်းရောင်နဲ့ ပြထားတယ်။ အခု အဖြေမှန်ပေါ် ခုန်ပါ။</string>
+	<key>tutorial.doubler.answer</key>
+	<string>ဆုဖလား သုံးဆရဖို့ အဖြေမှန်ပေါ် ခုန်ပါ။</string>
+	<key>tutorial.doubler.collect</key>
+	<string>တစ်ကြိမ် ဆုဖလားသုံးဆရဖို့ ×3 ဒင်္ဂါးကို ယူပါ။</string>
+	<key>tutorial.lifePickup</key>
+	<string>အသက်ပြန်ရဖို့ အသက်တစ်ဝက် သို့မဟုတ် အသက်တစ်ခုလုံးကို ရှာနိုင်တယ်။</string>
+	<key>tutorial.minusOne</key>
+	<string>−1 ကို ရှောင်ပါ။ ဆုဖလားတစ်ခု လျော့မယ်။</string>
+	<key>tutorial.move</key>
+	<string>ဘယ်ညာသွားဖို့ စက်ကို လှုပ်ပါ။ မျက်နှာပြင်ဘေးကနေလည်း ဖြတ်သွားနိုင်တယ်။</string>
+	<key>tutorial.platforms</key>
+	<string>အပေါ်တက်ဖို့ စင်တွေပေါ် ခုန်ပါ။</string>
+	<key>tutorial.scoreHint</key>
+	<string>ဒီအဆင့်အတွက် မင်းရဲ့အမှတ်ကို ဒီမှာပြထားတယ်။</string>
+	<key>tutorial.star</key>
+	<string>အဖြေမှားတွေကို ပစ်ဖယ်ဖို့ ကြယ်ထဲ ခုန်ဝင်ပါ။</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>အဖြေမှားကို ရွေးရင် အသက်သုံးခုထဲက တစ်ခု ဆုံးရှုံးမယ်။ အခု စမ်းကြည့်ပါ။</string>
+</dict>
+</plist>

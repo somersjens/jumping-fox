@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Lācis</string>
+	<key>character.bunny</key>
+	<string>Zaķis</string>
+	<key>character.crab</key>
+	<string>Krabis</string>
+	<key>character.dog</key>
+	<string>Suns</string>
+	<key>character.elephant</key>
+	<string>Zilonis</string>
+	<key>character.fox</key>
+	<string>Lapsa</string>
+	<key>character.frog</key>
+	<string>Varde</string>
+	<key>character.lion</key>
+	<string>Lauva</string>
+	<key>character.octopus</key>
+	<string>Astoņkājis</string>
+	<key>character.penguin</key>
+	<string>Pingvīns</string>
+	<key>character.pickerTitle</key>
+	<string>Izvēlies tēlu</string>
+	<key>common.back</key>
+	<string>Atpakaļ</string>
+	<key>common.cancel</key>
+	<string>Atcelt</string>
+	<key>common.continue</key>
+	<string>Turpināt</string>
+	<key>common.done</key>
+	<string>Gatavs</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld min</string>
+	<key>common.save</key>
+	<string>Saglabāt</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Turiet nospiestu 2 sekundes, lai atvērtu izstrādātāja režīmu.</string>
+	<key>developerMode.title</key>
+	<string>Izstrādātāja režīms</string>
+	<key>filter.addition</key>
+	<string>Saskaitīšana</string>
+	<key>filter.fractions</key>
+	<string>Daļskaitļi</string>
+	<key>filter.mixed</key>
+	<string>Supermikss</string>
+	<key>filter.percentages</key>
+	<string>Procenti</string>
+	<key>filter.subtraction</key>
+	<string>Atņemšana</string>
+	<key>filter.tables</key>
+	<string>Reizināšana</string>
+	<key>game.accessibility.mix</key>
+	<string>Mikss</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld no %lld</string>
+	<key>game.encouragement.0</key>
+	<string>Labs mēģinājums</string>
+	<key>game.encouragement.1</key>
+	<string>Labs sākums</string>
+	<key>game.encouragement.2</key>
+	<string>Turpini trenēties</string>
+	<key>game.encouragement.3</key>
+	<string>Nemaz nav slikti</string>
+	<key>game.encouragement.4</key>
+	<string>Tev labi sanāk</string>
+	<key>game.encouragement.5</key>
+	<string>Lielisks sniegums</string>
+	<key>game.encouragement.6</key>
+	<string>Labi padarīts</string>
+	<key>game.encouragement.7</key>
+	<string>Ļoti labi nospēlēts</string>
+	<key>game.encouragement.8</key>
+	<string>Finišs jau redzams</string>
+	<key>game.encouragement.9</key>
+	<string>Tu esi gandrīz galā</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Tu nopelnīji katru punktu.</string>
+	<key>game.end.completionSuffix</key>
+	<string>pabeigts!</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Spēle beigusies</string>
+	<key>game.end.mainMenu</key>
+	<string>Galvenā izvēlne</string>
+	<key>game.end.playAgain</key>
+	<string>Spēlēt vēlreiz</string>
+	<key>game.highScore</key>
+	<string>Rekords</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Atpakaļ uz galveno izvēlni</string>
+	<key>game.intro.continue</key>
+	<string>Turpināt</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Turpināsi no %lld</string>
+	<key>game.intro.helperBullet</key>
+	<string>Pareizā atbilde ir iezīmēta zaļā krāsā, jo palīgs ir ieslēgts. Tāpēc trofejas ar * skaita atsevišķi.</string>
+	<key>game.intro.helperOff</key>
+	<string>Palīgs izslēgts</string>
+	<key>game.intro.helperOn</key>
+	<string>Palīgs ieslēgts</string>
+	<key>game.intro.howItWorks</key>
+	<string>Kā darbojas šis līmenis</string>
+	<key>game.intro.livesOff</key>
+	<string>Dzīvības izslēgtas</string>
+	<key>game.intro.livesOn</key>
+	<string>Dzīvības ieslēgtas</string>
+	<key>game.intro.scorePaused</key>
+	<string>Tavs pašreizējais rezultāts tiks apturēts.</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Atvaino! Priekšā lasīšanas funkcija tavā valodā vēl nav pieejama.</string>
+	<key>game.intro.start</key>
+	<string>Sākt līmeni</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Reizini %@%@ ar skaitli no 1 līdz 12.</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>vai mazāk</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Pieskaries jebkur, lai turpinātu</string>
+	<key>game.intro.tapToStart</key>
+	<string>Pieskaries jebkur, lai sāktu</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Par katru pareizo atbildi saņem |1| trofeju, ne vairāk kā |%lld|.</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Kad dzīvības beigušās, trofejas vairs nevar nopelnīt.</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Sasniegts maksimālais trofeju skaits topā</string>
+	<key>game.status.mixMode</key>
+	<string>MIKSA REŽĪMS</string>
+	<key>game.status.scoreLocked</key>
+	<string>Kad dzīvības beigušās, trofejas vairs neskaita</string>
+	<key>game.streak.subtitle</key>
+	<string>Trofejas ×2</string>
+	<key>game.streak.title</key>
+	<string>5 pēc kārtas!</string>
+	<key>goal.period</key>
+	<string>Mērķa periods</string>
+	<key>goal.promptDaily</key>
+	<string>Cik minūtes dienā vēlies spēlēt?</string>
+	<key>goal.promptWeekly</key>
+	<string>Cik minūtes nedēļā vēlies spēlēt?</string>
+	<key>goal.title</key>
+	<string>Spēles mērķis</string>
+	<key>goalPeriod.daily</key>
+	<string>Katru dienu</string>
+	<key>goalPeriod.weekly</key>
+	<string>Katru nedēļu</string>
+	<key>info.filter.addition</key>
+	<string>Tikai saskaitīšana</string>
+	<key>info.filter.fractions</key>
+	<string>Tikai dalīšana</string>
+	<key>info.filter.header</key>
+	<string>Uzdevumu veidi</string>
+	<key>info.filter.mixed</key>
+	<string>Jauktas darbības</string>
+	<key>info.filter.percentages</key>
+	<string>Tikai procenti</string>
+	<key>info.filter.subtraction</key>
+	<string>Tikai atņemšana</string>
+	<key>info.filter.tables</key>
+	<string>Tikai reizināšana</string>
+	<key>info.mode.fractions.header</key>
+	<string>Daļas</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Viena un vairākas daļas</string>
+	<key>info.mode.fractions.single</key>
+	<string>Vienmēr viena daļa</string>
+	<key>info.mode.header</key>
+	<string>Secība</string>
+	<key>info.mode.mixed</key>
+	<string>Kopā ar zemākiem līmeņiem</string>
+	<key>info.mode.order</key>
+	<string>Noteikta secība</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Ar decimālskaitļiem</string>
+	<key>info.mode.percentages.header</key>
+	<string>Veids</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Bez decimālskaitļiem</string>
+	<key>info.mode.random</key>
+	<string>Nejauša secība</string>
+	<key>info.super.all</key>
+	<string>Saskaitīšana, atņemšana, reizināšana, dalīšana un procenti</string>
+	<key>info.super.basic</key>
+	<string>Saskaitīšana un atņemšana</string>
+	<key>info.super.fraction</key>
+	<string>Saskaitīšana, atņemšana, reizināšana un dalīšana</string>
+	<key>info.super.times</key>
+	<string>Saskaitīšana, atņemšana un reizināšana</string>
+	<key>language.select</key>
+	<string>Izvēlies valodu</string>
+	<key>lives.three</key>
+	<string>3 dzīvības</string>
+	<key>lives.unlimited</key>
+	<string>Neierobežoti</string>
+	<key>menu.accessibility.character</key>
+	<string>Tēls</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Pieskaries, lai mainītu tēlu; turiet nospiestu divas sekundes, lai sāktu no jauna sveiciena ekrānā.</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Izvēlies %@</string>
+	<key>menu.maxScore</key>
+	<string>30 MAKS.</string>
+	<key>menu.maximumCount</key>
+	<string>MAKS.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Maksimums sasniegts %lld reizes</string>
+	<key>menu.moreLevels</key>
+	<string>Vairāk līmeņu</string>
+	<key>menu.options</key>
+	<string>Spēles iestatījumi</string>
+	<key>menu.premium</key>
+	<string>Premium</string>
+	<key>menu.premiumTables</key>
+	<string>Premium reizināšana</string>
+	<key>menu.startHere</key>
+	<string>Sāc šeit</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Atbloķē vairāk ar Premium</string>
+	<key>mode.fractions.multiple</key>
+	<string>Vairākas</string>
+	<key>mode.fractions.single</key>
+	<string>Viena</string>
+	<key>mode.mix</key>
+	<string>Mikss</string>
+	<key>mode.mixed</key>
+	<string>Jaukts</string>
+	<key>mode.order</key>
+	<string>Secība</string>
+	<key>mode.percentages.decimal</key>
+	<string>Decimāls</string>
+	<key>mode.percentages.whole</key>
+	<string>Vesels</string>
+	<key>mode.random</key>
+	<string>Nejauši</string>
+	<key>mode.standard</key>
+	<string>Standarta</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Te būs tikai |saskaitīšanas| uzdevumi.</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Tu pieskaiti %lld |vai mazāk| citam skaitlim.</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Tu vienmēr pieskaiti %lld |augošā| secībā.</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Tu vienmēr pieskaiti %lld |nejaušam| skaitlim.</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Saskaitīšana · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Turpini saskaitīt divus skaitļus.</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Atbilde nav lielāka par %lld.</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Saskaiti līdz %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Te būs tikai |daļskaitļu| uzdevumi.</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Te būs daļskaitļi no šī un |iepriekšējiem līmeņiem|.</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Tu vienmēr ņem |1 daļu| no %lld vienādām daļām.</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Aprēķini apaļu skaitļu daļas no %lld. līmeņa un iepriekšējiem līmeņiem.</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Skaitļi paliek apaļi, tāpēc atbildes vienmēr ir veseli skaitļi.</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Daļskaitļi līdz %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Tu ņem vienu vai |vairākas daļas| no %lld vienādām daļām.</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Daļskaitļi · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Aprēķini daļu no veseluma un atrodi vienādus daļskaitļus.</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Saskaiti un atņem daļskaitļus ar vienādu saucēju.</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Jaukti daļskaitļi</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Te būs tikai |procentu| uzdevumi.</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Te būs procenti no šī un |iepriekšējiem līmeņiem|.</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Tu vienmēr aprēķini %@, un atbilde ir |vesels skaitlis|.</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Aprēķini procentus no apaļiem skaitļiem līdz %lld.</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Skaitļi paliek apaļi, tāpēc atbildes vienmēr ir veseli skaitļi.</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Procenti līdz %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Tu vienmēr aprēķini %@, un atbilde var būt arī |decimālskaitlis|.</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Aprēķini %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Aprēķini procentus no skaitļa.</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Pārvērt procentus daļskaitļos un otrādi.</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Jaukti procenti</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Te būs tikai |atņemšanas| uzdevumi.</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Tu atņem %lld |vai mazāk| no cita skaitļa.</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Tu vienmēr atņem %lld |dilstošā| secībā.</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Tu vienmēr atņem %lld no |nejauša| skaitļa.</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Atņemšana · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Pirmais skaitlis nav lielāks par %lld.</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Atbilde drīkst būt zem nulles.</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Zem nulles</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Atņem līdz %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Turpini atņemt vienu skaitli no otra.</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Grūtība katrā izvēlētajā sadaļā var pieaugt līdz |%lld. līmenim|.</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Trenē saskaitīšanu, atņemšanu, reizināšanu, daļskaitļus un procentus jauktā secībā.</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Supermikss %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Trenē saskaitīšanu un atņemšanu jauktā secībā.</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Supermikss %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Trenē saskaitīšanu, atņemšanu, reizināšanu un daļskaitļus jauktā secībā.</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Supermikss %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Trenē saskaitīšanu, atņemšanu un reizināšanu jauktā secībā.</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Supermikss %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Te būs tikai |reizināšanas| uzdevumi.</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Te būs visas reizināšanas tabulas |līdz %lld| jauktā secībā.</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Katra tabula reizināta ar skaitli no |1 līdz 12|.</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>Te būs %lld reizināšanas tabula |augošā| secībā.</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>Te būs %lld reizināšanas tabula |nejaušā| secībā.</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld reizināšanas tabula</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Trenē tabulas no %lld līdz %lld jauktā secībā.</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Tabulas %lld–%lld</string>
+	<key>name.placeholder</key>
+	<string>Tavs vārds</string>
+	<key>name.whatsYourName</key>
+	<string>Kā tevi sauc?</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Nopelniet vēl dažas trofejas, lai atbloķētu šo dzīvnieku! 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Vēl tikai %lld trofejas! 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Jūsu dzīvnieki gaida. Atgriezieties spēlēt un turpiniet vākt trofejas!</string>
+	<key>notif.comeback.title</key>
+	<string>Mums tevis pietrūkst! 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Sāciet %lld minūšu spēles sesiju un pagariniet savu ikdienas spēļu sēriju.</string>
+	<key>notif.day3.title</key>
+	<string>Panāksim 3. dienu! ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Izmantojiet Jump Pad, lai izlaistu nepareizu atbildi un turpinātu kāpt!</string>
+	<key>notif.jumppad.title</key>
+	<string>Pārlēkt garām nepareizām atbildēm! 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium ietver %lld līmeņus katrai tēmai un visiem 10 dzīvniekiem. Piedzīvojums turpinās!</string>
+	<key>notif.premium.title</key>
+	<string>Atbloķējiet vairāk līmeņu un dzīvnieku! 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Ir pagājušas %lld dienas. Atrisināsim dažus matemātikas uzdevumus un nopelnīsim vairāk trofeju!</string>
+	<key>notif.reactivate.title</key>
+	<string>Vai esat gatavs spēlēt vēlreiz? 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Spēlējiet %lld minūtes un turpiniet savu ikdienas spēļu sēriju!</string>
+	<key>notif.streak.title %lld</key>
+	<string>Jūsu ikdienas spēļu sērija ir sasniegusi %lld dienas! 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Lielisks darbs! Spēlēsim %lld minūtes un savāksim vēl vairāk.</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Jūs esat nopelnījis %lld trofejas! 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Tādējādi jūs kopā iegūstat %lld trofejas. Apbrīnojams darbs!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Šonedēļ jūs nopelnījāt %lld trofejas! 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Dažādi jaukti uzdevumi kopā.</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Jau diezgan labi</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Trenējies ar uzdevumiem secībā.</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Tikko sāki</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Uzdevumi nejaušā secībā.</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Jau nedaudz trenējies</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Izvēlies sākuma punktu tēmai %@.</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>šī tēma</string>
+	<key>onboarding.level.title</key>
+	<string>Cik labi tu to jau proti?</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Sāksim! Kā tevi sauc?</string>
+	<key>onboarding.name.title</key>
+	<string>Rēķināt vēl nekad nav bijis tik jautri!</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Izvēlies tēmu, ar ko sākt.</string>
+	<key>onboarding.subject.title</key>
+	<string>Ko tu vēlies iemācīties?</string>
+	<key>options.capAt30.info</key>
+	<string>Katrā līmenī trofeju mērķis ir līdz 50. Ja šī iespēja ir ieslēgta, spēle automātiski beidzas, kad to sasniedz.</string>
+	<key>options.capAt30.title</key>
+	<string>Beigt pie mērķa</string>
+	<key>options.helperMode.info</key>
+	<string>Palīga režīmā pareizā atbilde vienmēr ir zaļa. Šajā režīmā nopelnītās trofejas skaita atsevišķi un atzīmē ar zvaigznīti.</string>
+	<key>options.helperMode.title</key>
+	<string>Palīga režīms</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Tu vienmēr sāc ar 3 dzīvībām. Spēle beidzas, kad dzīvību vairs nav. Ieslēdz šo iespēju, lai pēc tam turpinātu spēlēt un trenēties.</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Neierobežotas dzīvības</string>
+	<key>parentGate.approved</key>
+	<string>Apstiprināts</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Mēģinājumi: %1$lld no %2$lld</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Turiet %@ nospiestu %lld sekundes.</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Turēt: %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Turiet %@ nospiestu %lld sekundes. Tad pieskarieties %@ %lld reizes.</string>
+	<key>parentGate.shape.circle</key>
+	<string>aplis</string>
+	<key>parentGate.shape.diamond</key>
+	<string>rombs</string>
+	<key>parentGate.shape.heart</key>
+	<string>sirds</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>sešstūris</string>
+	<key>parentGate.shape.plus</key>
+	<string>pluss</string>
+	<key>parentGate.shape.square</key>
+	<string>kvadrāts</string>
+	<key>parentGate.shape.star</key>
+	<string>zvaigzne</string>
+	<key>parentGate.shape.triangle</key>
+	<string>trīsstūris</string>
+	<key>parentGate.stepOne</key>
+	<string>1. solis no 2</string>
+	<key>parentGate.stepTwo</key>
+	<string>2. solis no 2</string>
+	<key>parentGate.subtitle</key>
+	<string>Lai aizsargātu mazos spēlētājus, pirms pirkuma turpināšanas pieaugušajam jāizpilda šī pārbaude.</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Tagad pieskarieties %2$@ %1$lld reizes.</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Pieskārieni: %1$lld no %2$lld</string>
+	<key>parentGate.title</key>
+	<string>Vajadzīgs pieaugušā apstiprinājums</string>
+	<key>premium.availableAt %lld</key>
+	<string>Pieejams no %lld trofejām</string>
+	<key>premium.availableFromStart</key>
+	<string>Pieejams jau no sākuma</string>
+	<key>premium.characterUnlocked</key>
+	<string>ATBLOĶĒTS JAUNS TĒLS</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ atbloķēts</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Tev ir %lld trofejas</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Tikai ar Premium</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Tikai ar Premium</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Ar Premium vari brīvi spēlēt ar visiem 10 dzīvniekiem.</string>
+	<key>premium.feature.animals.title</key>
+	<string>Visi dzīvnieki pieejami</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Vienmēr pietiek jaunu uzdevumu treniņam.</string>
+	<key>premium.feature.levels.title</key>
+	<string>99 līmeņi katrā tēmā</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Spēlē bez pārtraukumiem.</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Bez reklāmām</string>
+	<key>premium.oneTime</key>
+	<string>Vienreizējs pirkums. Tavs uz visiem laikiem.</string>
+	<key>premium.restore</key>
+	<string>Atjaunot pirkumus</string>
+	<key>premium.start</key>
+	<string>Sākt</string>
+	<key>premium.storeUnavailable</key>
+	<string>Veikals pašlaik nav pieejams. Lūdzu, mēģini vēlāk.</string>
+	<key>premium.unlock</key>
+	<string>Atbloķēt Premium</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Atbloķēt Premium · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Atbloķē ar trofejām</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Atbloķēts ar Premium</string>
+	<key>premium.youHavePremium</key>
+	<string>Tev ir Premium!</string>
+	<key>settings.character</key>
+	<string>Tēls</string>
+	<key>settings.characterInfo</key>
+	<string>Katrs dzīvnieks visai spēlei piešķir savu krāsu motīvu.</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Pielāgots: %lld min</string>
+	<key>settings.dailyGoal</key>
+	<string>Dienas mērķis</string>
+	<key>settings.goalInfo</key>
+	<string>Sērijas mērķis sākas ar 5 minūtēm dienā. Skaita tikai aktīvo spēles laiku.</string>
+	<key>settings.lives</key>
+	<string>Dzīvības</string>
+	<key>settings.livesInfo</key>
+	<string>Ar trim dzīvībām spēle beidzas pēc pēdējās sirsniņas. Neierobežotajā režīmā trofejas skaita tikai, kamēr tev vēl ir dzīvības; pēc tam vari turpināt spēlēt.</string>
+	<key>settings.playGoals</key>
+	<string>Spēles mērķi</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Premium atbloķēts. Paldies!</string>
+	<key>settings.title</key>
+	<string>Iestatījumi</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Izvēlies dienas mērķi</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Izvēlies dienas vai nedēļas mērķi</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld no %3$lld minūtēm, %4$lld dienas pēc kārtas</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Dienas sērija, %lld no %lld minūtēm</string>
+	<key>streak.daily</key>
+	<string>Dienas sērija</string>
+	<key>streak.dayOne</key>
+	<string>1. diena</string>
+	<key>tutorial.answerHint</key>
+	<string>Nezini atbildi? Pieskaries uzdevumam, lai to redzētu.</string>
+	<key>tutorial.complete</key>
+	<string>Labi padarīts! Pamācība pabeigta. Tagad tiecies pēc rekorda!</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Uzlec uz pareizās atbildes, lai iegūtu trofeju.</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Pareizā atbilde ir zaļa. Tagad uzlec uz pareizās atbildes.</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Tagad uzlec uz pareizās atbildes, lai iegūtu trīsreiz vairāk trofeju.</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Paņem ×3 monētu, lai vienreiz iegūtu trīsreiz vairāk trofeju.</string>
+	<key>tutorial.lifePickup</key>
+	<string>Vari atrast pusi dzīvības vai veselu dzīvību, lai tās atgūtu.</string>
+	<key>tutorial.minusOne</key>
+	<string>Izvairies no −1. Tas maksā vienu trofeju.</string>
+	<key>tutorial.move</key>
+	<string>Kustini ierīci, lai pārvietotos pa kreisi un pa labi. Vari arī pāriet caur ekrāna malām.</string>
+	<key>tutorial.platforms</key>
+	<string>Lec uz platformām, lai tiktu augstāk.</string>
+	<key>tutorial.scoreHint</key>
+	<string>Tavs rezultāts šajā līmenī ir redzams šeit.</string>
+	<key>tutorial.star</key>
+	<string>Ielec zvaigznē, lai aizšautu prom nepareizās atbildes.</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Ja izvēlies nepareizu atbildi, zaudē vienu no trim dzīvībām. Pamēģini tagad.</string>
+</dict>
+</plist>

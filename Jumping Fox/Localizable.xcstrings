@@ -135390,6 +135390,1407 @@
           }
         }
       }
+    },
+    "game.intro.startTutorial": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start tutorial"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial starten"
+          }
+        },
+        "af": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Begin tutoriaal"
+          }
+        },
+        "sq": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fillo udhëzimin"
+          }
+        },
+        "am": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "መማሪያውን ጀምር"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابدأ التدريب"
+          }
+        },
+        "hy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Սկսել ուսուցումը"
+          }
+        },
+        "as": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "টিউটোৰিয়েল আৰম্ভ"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təlimə başla"
+          }
+        },
+        "eu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasi tutoriala"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "টিউটোরিয়াল শুরু"
+          }
+        },
+        "my": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "သင်ခန်းစာ စမယ်"
+          }
+        },
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokreni uputstvo"
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Започни урока"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia el tutorial"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始教程"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start guide"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial starten"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alusta õpetust"
+          }
+        },
+        "fo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byrja vegleiðing"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aloita opastus"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lancer le tutoriel"
+          }
+        },
+        "gl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comezar tutorial"
+          }
+        },
+        "ka": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "გაკვეთილის დაწყება"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ξεκίνα οδηγό"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ટ્યુટોરિયલ શરૂ કરો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "להתחיל הדרכה"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्यूटोरियल शुरू करो"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oktató indítása"
+          }
+        },
+        "ga": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tosaigh an treoir"
+          }
+        },
+        "is": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byrja kennslu"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai tutorial"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvia tutorial"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "チュートリアル開始"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಟ್ಯುಟೋರಿಯಲ್ ಆರಂಭಿಸು"
+          }
+        },
+        "kk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Үйретуді бастау"
+          }
+        },
+        "km": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ចាប់ផ្តើមណែនាំ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "튜토리얼 시작"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokreni upute"
+          }
+        },
+        "lo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ເລີ່ມບົດສອນ"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sākt pamācību"
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pradėti pamokėlę"
+          }
+        },
+        "mk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почни упатство"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mula tutorial"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ട്യൂട്ടോറിയൽ തുടങ്ങൂ"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्युटोरियल सुरू करा"
+          }
+        },
+        "mn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заавар эхлүүлэх"
+          }
+        },
+        "ne": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्युटोरियल सुरु"
+          }
+        },
+        "no": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start veiledning"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати навчання"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଟ୍ୟୁଟୋରିଆଲ୍ ଆରମ୍ଭ"
+          }
+        },
+        "ug": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوللانمىنى باشلا"
+          }
+        },
+        "uz": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O‘rgatishni boshlash"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شروع آموزش"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start samouczka"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar tutorial"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਟਿਊਟੋਰਿਅਲ ਸ਼ੁਰੂ ਕਰੋ"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Începe tutorialul"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начать обучение"
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokreni uputstvo"
+          }
+        },
+        "si": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "පුහුණුව අරඹන්න"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spustiť návod"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Začni vadnico"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empezar tutorial"
+          }
+        },
+        "sw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anza mafunzo"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "பயிற்சி தொடங்கு"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ట్యుటోరియల్ మొదలు"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เริ่มสอนเล่น"
+          }
+        },
+        "bo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "སློབ་ཁྲིད་འགོ་འཛུགས"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spustit návod"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eğitimi başlat"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ٹیوٹوریل شروع کریں"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bắt đầu hướng dẫn"
+          }
+        },
+        "cy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dechrau’r tiwtorial"
+          }
+        },
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пачаць навучанне"
+          }
+        },
+        "zu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qala ukufundiswa"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starta guide"
+          }
+        }
+      }
+    },
+    "tutorial.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "af": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutoriaal"
+          }
+        },
+        "sq": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Udhëzimi"
+          }
+        },
+        "am": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "መማሪያ"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التدريب"
+          }
+        },
+        "hy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ուսուցում"
+          }
+        },
+        "as": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "টিউটোৰিয়েল"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təlim"
+          }
+        },
+        "eu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutoriala"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "টিউটোরিয়াল"
+          }
+        },
+        "my": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "သင်ခန်းစာ"
+          }
+        },
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uputstvo"
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "教程"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guide"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Õpetus"
+          }
+        },
+        "fo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vegleiðing"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opastus"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutoriel"
+          }
+        },
+        "gl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "ka": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "გაკვეთილი"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Οδηγός"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ટ્યુટોરિયલ"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "הדרכה"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्यूटोरियल"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oktató"
+          }
+        },
+        "ga": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Treoir"
+          }
+        },
+        "is": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kennsla"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "チュートリアル"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಟ್ಯುಟೋರಿಯಲ್"
+          }
+        },
+        "kk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Үйрету"
+          }
+        },
+        "km": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ការណែនាំ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "튜토리얼"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upute"
+          }
+        },
+        "lo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ບົດສອນ"
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pamācība"
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pamokėlė"
+          }
+        },
+        "mk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упатство"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ട്യൂട്ടോറിയൽ"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्युटोरियल"
+          }
+        },
+        "mn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заавар"
+          }
+        },
+        "ne": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्युटोरियल"
+          }
+        },
+        "no": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veiledning"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Навчання"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଟ୍ୟୁଟୋରିଆଲ୍"
+          }
+        },
+        "ug": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوللانما"
+          }
+        },
+        "uz": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O‘rgatish"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آموزش"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Samouczek"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਟਿਊਟੋਰਿਅਲ"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обучение"
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uputstvo"
+          }
+        },
+        "si": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "පුහුණුව"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Návod"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vadnica"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutorial"
+          }
+        },
+        "sw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mafunzo"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "பயிற்சி"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ట్యుటోరియల్"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สอนเล่น"
+          }
+        },
+        "bo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "སློབ་ཁྲིད"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Návod"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eğitim"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ٹیوٹوریل"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hướng dẫn"
+          }
+        },
+        "cy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiwtorial"
+          }
+        },
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Навучанне"
+          }
+        },
+        "zu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukufundiswa"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guide"
+          }
+        }
+      }
+    },
+    "tutorial.notice.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are already playing this level. Finish it or start a new game, then tap the cap again to play the tutorial."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je bent dit level al aan het spelen. Maak het af of begin een nieuw spel en tik dan opnieuw op het hoedje om de tutorial te spelen."
+          }
+        },
+        "af": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jy speel reeds hierdie vlak. Maak dit klaar of begin 'n nuwe speletjie en tik dan weer op die hoedjie vir die tutoriaal."
+          }
+        },
+        "sq": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Po luan tashmë këtë nivel. Mbaroje ose nis një lojë të re, pastaj prek sërish kapelën për udhëzimin."
+          }
+        },
+        "am": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ይህን ደረጃ እየተጫወትክ ነው። ጨርሰው ወይም አዲስ ጨዋታ ጀምር፣ ከዚያ መማሪያውን ለመጫወት ኮፍያውን እንደገና ንካ።"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنت تلعب هذا المستوى بالفعل. أنهِه أو ابدأ لعبة جديدة، ثم اضغط القبعة مجددًا لتشغيل التدريب."
+          }
+        },
+        "hy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Դու արդեն խաղում ես այս մակարդակը։ Ավարտիր այն կամ սկսիր նոր խաղ, հետո նորից սեղմիր գլխարկին՝ ուսուցումը խաղալու համար։"
+          }
+        },
+        "as": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "তুমি এই লেভেলটো ইতিমধ্যে খেলি আছা। শেষ কৰা বা নতুন খেল আৰম্ভ কৰি টুপীটো আকৌ টিপা।"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu səviyyəni artıq oynayırsan. Onu bitir və ya yeni oyun başlat, sonra təlim üçün papağa yenidən toxun."
+          }
+        },
+        "eu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maila honetan jokatzen ari zara. Amaitu edo hasi joko berri bat; gero sakatu berriro txanoa tutoriala egiteko."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "তুমি এই লেভেলটি ইতিমধ্যে খেলছ। এটি শেষ করো বা নতুন খেলা শুরু করো, তারপর টিউটোরিয়াল খেলতে টুপিটিতে আবার চাপ দাও।"
+          }
+        },
+        "my": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ဒီအဆင့်ကို ကစားနေပြီးသားပါ။ ပြီးအောင်ကစားပါ၊ ဒါမှမဟုတ် ဂိမ်းအသစ်စပြီး သင်ခန်းစာကစားဖို့ ဦးထုပ်ကို ထပ်နှိပ်ပါ။"
+          }
+        },
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Već igraš ovaj nivo. Završi ga ili počni novu igru, pa opet dodirni kapu za uputstvo."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вече играеш това ниво. Завърши го или започни нова игра, после натисни пак шапката, за да пуснеш урока."
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja estàs jugant aquest nivell. Acaba’l o inicia una partida nova i torna a tocar la gorra per jugar el tutorial."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你已经在玩这个关卡了。先完成它或开始新游戏，然后再点一次帽子开始教程。"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du spiller allerede dette niveau. Gør det færdigt, eller start et nyt spil, og tryk så på huen igen for at spille guiden."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du spielst dieses Level schon. Beende es oder starte ein neues Spiel. Tippe dann erneut auf die Kappe für das Tutorial."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa juba mängid seda taset. Lõpeta see või alusta uut mängu, siis vajuta õpetuse alustamiseks uuesti mütsile."
+          }
+        },
+        "fo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tú spælir longu hetta stigið. Ger tað liðugt ella byrja eitt nýtt spæl, og trýst so á húgvuna aftur fyri at spæla vegleiðingina."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pelaat jo tätä tasoa. Pelaa se loppuun tai aloita uusi peli ja napauta sitten hattua uudelleen aloittaaksesi opastuksen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu joues déjà à ce niveau. Termine-le ou lance une nouvelle partie, puis touche à nouveau le chapeau pour lancer le tutoriel."
+          }
+        },
+        "gl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xa estás xogando este nivel. Remátao ou comeza unha partida nova e toca de novo o gorro para facer o tutorial."
+          }
+        },
+        "ka": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ამ დონეს უკვე თამაშობ. დაასრულე ან დაიწყე ახალი თამაში, მერე ისევ დააჭირე ქუდს გაკვეთილისთვის."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Παίζεις ήδη αυτό το επίπεδο. Τελείωσέ το ή ξεκίνα νέο παιχνίδι και μετά πάτησε ξανά το καπέλο για τον οδηγό."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "તમે આ લેવલ રમી રહ્યા છો. તેને પૂરું કરો અથવા નવી રમત શરૂ કરો, પછી ટ્યુટોરિયલ માટે ટોપી ફરી ટૅપ કરો."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "כבר התחלתם את השלב הזה. סיימו אותו או התחילו משחק חדש, ואז לחצו שוב על הכובע כדי לשחק בהדרכה."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तुम यह लेवल पहले से खेल रहे हो। इसे पूरा करो या नया खेल शुरू करो, फिर ट्यूटोरियल खेलने के लिए टोपी पर दोबारा टैप करो।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Már ezen a pályán játszol. Fejezd be vagy indíts új játékot, majd koppints újra a sapkára az oktatóhoz."
+          }
+        },
+        "ga": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tá an leibhéal seo á imirt agat cheana. Críochnaigh é nó tosaigh cluiche nua, ansin tapáil an hata arís chun an treoir a imirt."
+          }
+        },
+        "is": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Þú ert þegar að spila þetta borð. Kláraðu það eða byrjaðu nýjan leik og ýttu svo aftur á hattinn til að spila kennsluna."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamu sudah memainkan level ini. Selesaikan atau mulai permainan baru, lalu ketuk topinya lagi untuk memulai tutorial."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stai già giocando questo livello. Finiscilo o inizia una nuova partita, poi tocca di nuovo il cappello per fare il tutorial."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このレベルはもうプレイ中だよ。終わらせるか新しいゲームを始めてから、もう一度ぼうしをタップしてチュートリアルを始めよう。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನೀನು ಈ ಹಂತವನ್ನು ಈಗಾಗಲೇ ಆಡುತ್ತಿದ್ದೀಯ. ಅದನ್ನು ಮುಗಿಸು ಅಥವಾ ಹೊಸ ಆಟ ಆರಂಭಿಸು. ನಂತರ ಟ್ಯುಟೋರಿಯಲ್ ಆಡಲು ಟೋಪಿಯನ್ನು ಮತ್ತೆ ಒತ್ತು."
+          }
+        },
+        "kk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Бұл деңгейді ойнап жатырсың. Аяқта немесе жаңа ойын баста, сосын үйрету үшін қалпақты қайта бас."
+          }
+        },
+        "km": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "អ្នកកំពុងលេងលេវែលនេះ។ លេងឱ្យចប់ ឬចាប់ហ្គេមថ្មី រួចចុចមួកម្ដងទៀត ដើម្បីលេងការណែនាំ។"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 레벨을 이미 플레이 중이에요. 끝내거나 새 게임을 시작한 뒤, 모자를 다시 눌러 튜토리얼을 해 보세요."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Već igraš ovu razinu. Dovrši je ili započni novu igru, pa opet dodirni kapu za upute."
+          }
+        },
+        "lo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ເຈົ້າກຳລັງຫຼິ້ນດ່ານນີ້ຢູ່. ຫຼິ້ນໃຫ້ຈົບ ຫຼື ເລີ່ມເກມໃໝ່ ແລ້ວກົດໝວກອີກຄັ້ງເພື່ອຫຼິ້ນບົດສອນ."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu jau spēlē šo līmeni. Pabeidz to vai sāc jaunu spēli, tad vēlreiz pieskaries cepurei, lai spēlētu pamācību."
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jau žaidi šį lygį. Pabaik jį arba pradėk naują žaidimą, tada vėl spustelėk kepurėlę ir paleisk pamokėlę."
+          }
+        },
+        "mk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Веќе го играш ова ниво. Заврши го или почни нова игра, па пак допри го шеширчето за упатството."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamu sudah bermain tahap ini. Habiskan atau mulakan permainan baharu, kemudian tekan topi lagi untuk bermain tutorial."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഈ ലെവൽ നീ ഇതിനകം കളിക്കുകയാണ്. അത് തീർക്കൂ അല്ലെങ്കിൽ പുതിയ കളി തുടങ്ങൂ. പിന്നെ ട്യൂട്ടോറിയലിന് തൊപ്പിയിൽ വീണ്ടും ടാപ്പ് ചെയ്യൂ."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हा स्तर आधीच सुरू आहे. तो पूर्ण कर किंवा नवा खेळ सुरू कर. मग ट्युटोरियलसाठी टोपीवर पुन्हा टॅप कर."
+          }
+        },
+        "mn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чи энэ түвшинг тоглож байна. Дуусгах эсвэл шинэ тоглоом эхлүүлээд, зааврыг тоглохын тулд малгайг дахин дар."
+          }
+        },
+        "ne": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तिमी यो लेभल खेल्दैछौ। सकाऊ वा नयाँ खेल सुरु गर, अनि ट्युटोरियल खेल्न टोपी फेरि थिच।"
+          }
+        },
+        "no": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du spiller allerede dette nivået. Fullfør det eller start et nytt spill, og trykk så på lua igjen for å spille veiledningen."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ти вже граєш цей рівень. Заверши його або почни нову гру, а тоді знову натисни на шапочку, щоб пройти навчання."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ତୁମେ ଏହି ଲେଭେଲ୍ ଆଗରୁ ଖେଳୁଛ। ସେଟା ସାର କିମ୍ବା ନୂଆ ଖେଳ ଆରମ୍ଭ କର, ପରେ ଟ୍ୟୁଟୋରିଆଲ୍ ପାଇଁ ଟୋପିକୁ ପୁଣି ଟ୍ୟାପ୍ କର।"
+          }
+        },
+        "ug": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بۇ دەرىجىنى ئاللىبۇرۇن ئويناۋاتىسەن. تۈگەت ياكى يېڭى ئويۇن باشلا، ئاندىن قوللانما ئۈچۈن قالپاقنى يەنە باس."
+          }
+        },
+        "uz": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sen bu bosqichni allaqachon o‘ynayapsan. Uni tugat yoki yangi o‘yin boshla, so‘ng o‘rgatish uchun qalpoqchani yana bos."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این مرحله را شروع کرده‌ای. تمامش کن یا بازی تازه‌ای شروع کن، بعد دوباره روی کلاه بزن تا آموزش را بازی کنی."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Już grasz na tym poziomie. Dokończ grę albo zacznij nową, a potem znów stuknij czapkę, by uruchomić samouczek."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Já estás a jogar este nível. Acaba-o ou começa um novo jogo e depois toca de novo no chapéu para fazer o tutorial."
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਤੁਸੀਂ ਇਹ ਲੈਵਲ ਪਹਿਲਾਂ ਹੀ ਖੇਡ ਰਹੇ ਹੋ। ਇਸਨੂੰ ਪੂਰਾ ਕਰੋ ਜਾਂ ਨਵੀਂ ਖੇਡ ਸ਼ੁਰੂ ਕਰੋ, ਫਿਰ ਟਿਊਟੋਰਿਅਲ ਲਈ ਟੋਪੀ 'ਤੇ ਮੁੜ ਟੈਪ ਕਰੋ।"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deja joci acest nivel. Termină-l sau începe un joc nou, apoi apasă iar pe pălărie pentru tutorial."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ты уже играешь этот уровень. Закончи его или начни новую игру, затем снова нажми на шапочку, чтобы пройти обучение."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Već igraš ovaj nivo. Završi ga ili počni novu igru, pa ponovo dodirni kapu da pokreneš uputstvo."
+          }
+        },
+        "si": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ඔයා මේ මට්ටම දැනටමත් සෙල්ලම් කරනවා. ඒක ඉවර කරලා හෝ අලුත් ක්‍රීඩාවක් පටන්ගෙන, පුහුණුවට තොප්පිය ආයෙත් ඔබන්න."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Túto úroveň už hráš. Dokonči ju alebo začni novú hru a potom znova ťukni na čiapku, aby si spustil návod."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To stopnjo že igraš. Dokončaj jo ali začni novo igro, nato znova tapni kapico za vadnico."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya estás jugando este nivel. Termínalo o empieza una partida nueva y vuelve a tocar el gorro para hacer el tutorial."
+          }
+        },
+        "sw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tayari unacheza kiwango hiki. Maliza au anza mchezo mpya, kisha gusa kofia tena ili kucheza mafunzo."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இந்த நிலையை நீ ஏற்கனவே விளையாடுகிறாய். அதை முடி அல்லது புதிய விளையாட்டைத் தொடங்கி, பிறகு பயிற்சிக்காக தொப்பியை மீண்டும் தட்டு."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "నువ్వు ఇప్పటికే ఈ లెవెల్ ఆడుతున్నావు. దాన్ని పూర్తి చేయి లేదా కొత్త ఆట మొదలుపెట్టి, ట్యుటోరియల్ కోసం టోపీని మళ్లీ నొక్కు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุณกำลังเล่นด่านนี้อยู่ เล่นให้จบหรือเริ่มเกมใหม่ แล้วแตะหมวกอีกครั้งเพื่อเล่นบทสอน"
+          }
+        },
+        "bo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ཁྱེད་རིམ་པ་འདི་རྩེ་བཞིན་ཡོད། ཚར་བར་རྩེའམ་རྩེད་མོ་གསར་པ་འགོ་ཚུགས། དེ་ནས་སློབ་ཁྲིད་རྩེ་བར་ཞྭ་མོ་ལ་ཡང་བསྐྱར་གནོན།"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuto úroveň už hraješ. Dokonči ji nebo začni novou hru a pak znovu klepni na čepici pro návod."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu seviyeyi zaten oynuyorsun. Bitir ya da yeni bir oyun başlat. Sonra eğitim için şapkaya tekrar dokun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ یہ لیول پہلے ہی کھیل رہے ہیں۔ اسے مکمل کریں یا نیا کھیل شروع کریں، پھر ٹیوٹوریل کے لیے ٹوپی پر دوبارہ ٹیپ کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bạn đang chơi màn này. Hãy chơi xong hoặc bắt đầu trò mới, rồi bấm lại vào mũ để xem hướng dẫn."
+          }
+        },
+        "cy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rwyt ti eisoes yn chwarae’r lefel hon. Gorffen hi neu ddechrau gêm newydd, yna tapio’r cap eto i chwarae’r tiwtorial."
+          }
+        },
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ты ўжо гуляеш на гэтым узроўні. Скончы яго або пачні новую гульню, а потым зноў націсні на шапачку, каб прайсці навучанне."
+          }
+        },
+        "zu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usuvele udlala leli zinga. Liqede noma uqale umdlalo omusha, bese uthinta isigqoko futhi ukuze udlale ukufundiswa."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du spelar redan den här nivån. Spela klart eller starta ett nytt spel och tryck sedan på mössan igen för att köra guiden."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

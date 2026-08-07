@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>character.bear</key>
+	<string>Արջ</string>
+	<key>character.bunny</key>
+	<string>Նապաստակ</string>
+	<key>character.crab</key>
+	<string>Խեցգետին</string>
+	<key>character.dog</key>
+	<string>Շուն</string>
+	<key>character.elephant</key>
+	<string>Փիղ</string>
+	<key>character.fox</key>
+	<string>Աղվես</string>
+	<key>character.frog</key>
+	<string>Գորտ</string>
+	<key>character.lion</key>
+	<string>Առյուծ</string>
+	<key>character.octopus</key>
+	<string>Ութոտնուկ</string>
+	<key>character.penguin</key>
+	<string>Պինգվին</string>
+	<key>character.pickerTitle</key>
+	<string>Ընտրիր քո կերպարին</string>
+	<key>common.back</key>
+	<string>Հետ</string>
+	<key>common.cancel</key>
+	<string>Չեղարկել</string>
+	<key>common.continue</key>
+	<string>Շարունակել</string>
+	<key>common.done</key>
+	<string>Պատրաստ է</string>
+	<key>common.minutesShort %lld %lld</key>
+	<string>%lld/%lld ր</string>
+	<key>common.save</key>
+	<string>Պահել</string>
+	<key>developerMode.accessibilityHint</key>
+	<string>Սեղմած պահիր 2 վայրկյան՝ մշակողի ռեժիմը բացելու համար։</string>
+	<key>developerMode.title</key>
+	<string>Մշակողի ռեժիմ</string>
+	<key>filter.addition</key>
+	<string>Գումարում</string>
+	<key>filter.fractions</key>
+	<string>Կոտորակներ</string>
+	<key>filter.mixed</key>
+	<string>Սուպերխառնուրդ</string>
+	<key>filter.percentages</key>
+	<string>Տոկոսներ</string>
+	<key>filter.subtraction</key>
+	<string>Հանում</string>
+	<key>filter.tables</key>
+	<string>Աղյուսակներ</string>
+	<key>game.accessibility.mix</key>
+	<string>Խառնուրդ</string>
+	<key>game.accessibility.scoreOutOf %lld %lld</key>
+	<string>%lld՝ %lld-ից</string>
+	<key>game.encouragement.0</key>
+	<string>Լավ փորձ էր</string>
+	<key>game.encouragement.1</key>
+	<string>Սա սկիզբն է</string>
+	<key>game.encouragement.2</key>
+	<string>Շարունակի՛ր փորձել</string>
+	<key>game.encouragement.3</key>
+	<string>Բոլորովին վատ չէ</string>
+	<key>game.encouragement.4</key>
+	<string>Լավ ես անում</string>
+	<key>game.encouragement.5</key>
+	<string>Հիանալի արդյունք</string>
+	<key>game.encouragement.6</key>
+	<string>Ապրե՛ս</string>
+	<key>game.encouragement.7</key>
+	<string>Շատ լավ խաղացիր</string>
+	<key>game.encouragement.8</key>
+	<string>Վերջը մոտ է</string>
+	<key>game.encouragement.9</key>
+	<string>Գրեթե հասել ես</string>
+	<key>game.end.completionSubtitle</key>
+	<string>Դու վաստակեցիր բոլոր միավորները։</string>
+	<key>game.end.completionSuffix</key>
+	<string>ավարտված է։</string>
+	<key>game.end.gameOverTitle</key>
+	<string>Խաղն ավարտվեց</string>
+	<key>game.end.mainMenu</key>
+	<string>Գլխավոր ընտրացանկ</string>
+	<key>game.end.playAgain</key>
+	<string>Կրկին խաղալ</string>
+	<key>game.highScore</key>
+	<string>Լավագույն հաշիվ</string>
+	<key>game.intro.backToMainMenu</key>
+	<string>Դեպի գլխավոր ընտրացանկ</string>
+	<key>game.intro.continue</key>
+	<string>Շարունակել</string>
+	<key>game.intro.continueFrom %lld</key>
+	<string>Կշարունակես %lld-ից</string>
+	<key>game.intro.helperBullet</key>
+	<string>Ճիշտ պատասխանը կանաչ է, քանի որ օգնականը միացված է։ Այդ պատճառով գավաթները *-ով առանձին են հաշվվում։</string>
+	<key>game.intro.helperOff</key>
+	<string>Օգնականն անջատված է</string>
+	<key>game.intro.helperOn</key>
+	<string>Օգնականը միացված է</string>
+	<key>game.intro.howItWorks</key>
+	<string>Ինչպես է աշխատում մակարդակը</string>
+	<key>game.intro.livesOff</key>
+	<string>Կյանքերն անջատված են</string>
+	<key>game.intro.livesOn</key>
+	<string>Կյանքերը միացված են</string>
+	<key>game.intro.scorePaused</key>
+	<string>Քո ընթացիկ հաշիվը կդադարեցվի։</string>
+	<key>game.intro.spokenUnavailable</key>
+	<string>Ներողություն։ Բարձրաձայն կարդալու գործառույթը դեռ հասանելի չէ քո լեզվով։</string>
+	<key>game.intro.start</key>
+	<string>Սկսել մակարդակը</string>
+	<key>game.intro.tablesDetail %@ %@</key>
+	<string>Բազմապատկիր %@%@-ը 1-ից 12 թվով։</string>
+	<key>game.intro.tablesOrLower</key>
+	<string>կամ պակաս</string>
+	<key>game.intro.tapToContinue</key>
+	<string>Հպվիր ցանկացած տեղ՝ շարունակելու համար</string>
+	<key>game.intro.tapToStart</key>
+	<string>Հպվիր ցանկացած տեղ՝ սկսելու համար</string>
+	<key>game.intro.trophyBullet %lld</key>
+	<string>Յուրաքանչյուր ճիշտ պատասխանի համար վաստակիր |1| գավաթ՝ առավելագույնը |%lld|։</string>
+	<key>game.intro.unlimitedBullet</key>
+	<string>Երբ կյանքերդ վերջանան, այլևս գավաթներ չես վաստակի։</string>
+	<key>game.status.leaderboardMaxed</key>
+	<string>Առաջատարների աղյուսակի գավաթների առավելագույնը հասել է</string>
+	<key>game.status.mixMode</key>
+	<string>ԽԱՌԸ ՌԵԺԻՄ</string>
+	<key>game.status.scoreLocked</key>
+	<string>Երբ կյանքերդ վերջանան, գավաթներն այլևս չեն հաշվվում</string>
+	<key>game.streak.subtitle</key>
+	<string>Գավաթներ ×2</string>
+	<key>game.streak.title</key>
+	<string>5-ն անընդմեջ։</string>
+	<key>goal.period</key>
+	<string>Նպատակի շրջան</string>
+	<key>goal.promptDaily</key>
+	<string>Օրական քանի՞ րոպե ես ուզում խաղալ։</string>
+	<key>goal.promptWeekly</key>
+	<string>Շաբաթական քանի՞ րոպե ես ուզում խաղալ։</string>
+	<key>goal.title</key>
+	<string>Խաղի նպատակ</string>
+	<key>goalPeriod.daily</key>
+	<string>Օրական</string>
+	<key>goalPeriod.weekly</key>
+	<string>Շաբաթական</string>
+	<key>info.filter.addition</key>
+	<string>Միայն գումարում</string>
+	<key>info.filter.fractions</key>
+	<string>Միայն բաժանում</string>
+	<key>info.filter.header</key>
+	<string>Առաջադրանքների տեսակներ</string>
+	<key>info.filter.mixed</key>
+	<string>Խառը գործողություններ</string>
+	<key>info.filter.percentages</key>
+	<string>Միայն տոկոսներ</string>
+	<key>info.filter.subtraction</key>
+	<string>Միայն հանում</string>
+	<key>info.filter.tables</key>
+	<string>Միայն բազմապատկում</string>
+	<key>info.mode.fractions.header</key>
+	<string>Մասեր</string>
+	<key>info.mode.fractions.multiple</key>
+	<string>Մեկ և մի քանի մաս</string>
+	<key>info.mode.fractions.single</key>
+	<string>Միշտ մեկ մաս</string>
+	<key>info.mode.header</key>
+	<string>Հերթականություն</string>
+	<key>info.mode.mixed</key>
+	<string>Խառը՝ ավելի ցածր մակարդակների հետ</string>
+	<key>info.mode.order</key>
+	<string>Հաստատուն հերթականություն</string>
+	<key>info.mode.percentages.decimal</key>
+	<string>Նաև տասնորդական թվերով</string>
+	<key>info.mode.percentages.header</key>
+	<string>Տեսակ</string>
+	<key>info.mode.percentages.whole</key>
+	<string>Առանց տասնորդական թվերի</string>
+	<key>info.mode.random</key>
+	<string>Պատահական հերթականություն</string>
+	<key>info.super.all</key>
+	<string>Գումարում, հանում, բազմապատկում, բաժանում և տոկոսներ</string>
+	<key>info.super.basic</key>
+	<string>Գումարում և հանում</string>
+	<key>info.super.fraction</key>
+	<string>Գումարում, հանում, բազմապատկում և բաժանում</string>
+	<key>info.super.times</key>
+	<string>Գումարում, հանում և բազմապատկում</string>
+	<key>language.select</key>
+	<string>Ընտրիր լեզուն</string>
+	<key>lives.three</key>
+	<string>3 կյանք</string>
+	<key>lives.unlimited</key>
+	<string>Անսահման</string>
+	<key>menu.accessibility.character</key>
+	<string>Կերպար</string>
+	<key>menu.accessibility.characterHint</key>
+	<string>Հպվիր՝ կերպարդ փոխելու համար։ Սեղմած պահիր երկու վայրկյան՝ ողջույնի էկրանից նորից սկսելու համար։</string>
+	<key>menu.accessibility.chooseMode %@</key>
+	<string>Ընտրիր %@</string>
+	<key>menu.maxScore</key>
+	<string>30 ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
+	<key>menu.maximumCount</key>
+	<string>Առավ.</string>
+	<key>menu.maximumCount.accessibility %lld</key>
+	<string>Առավելագույնին հասել ես %lld անգամ</string>
+	<key>menu.moreLevels</key>
+	<string>Ավելի շատ մակարդակներ</string>
+	<key>menu.options</key>
+	<string>Խաղի ընտրանքներ</string>
+	<key>menu.premium</key>
+	<string>Պրեմիում</string>
+	<key>menu.premiumTables</key>
+	<string>Պրեմիում աղյուսակներ</string>
+	<key>menu.startHere</key>
+	<string>Սկսիր այստեղ</string>
+	<key>menu.unlockWithPremium</key>
+	<string>Բացիր ավելին Պրեմիումով</string>
+	<key>mode.fractions.multiple</key>
+	<string>Մի քանի</string>
+	<key>mode.fractions.single</key>
+	<string>Մեկ</string>
+	<key>mode.mix</key>
+	<string>Խառնուրդ</string>
+	<key>mode.mixed</key>
+	<string>Խառը</string>
+	<key>mode.order</key>
+	<string>Հերթ</string>
+	<key>mode.percentages.decimal</key>
+	<string>Տասնորդական</string>
+	<key>mode.percentages.whole</key>
+	<string>Ամբողջ</string>
+	<key>mode.random</key>
+	<string>Պատահական</string>
+	<key>mode.standard</key>
+	<string>Սովորական</string>
+	<key>modeIntro.addition.intro</key>
+	<string>Դու ստանում ես միայն |գումարման| առաջադրանքներ։</string>
+	<key>modeIntro.addition.mixed %lld</key>
+	<string>Մեկ այլ թվին ավելացնում ես %lld |կամ պակաս|։</string>
+	<key>modeIntro.addition.order %lld</key>
+	<string>Միշտ ավելացնում ես %lld՝ |աճման| հերթականությամբ։</string>
+	<key>modeIntro.addition.random %lld</key>
+	<string>Միշտ %lld ես ավելացնում |պատահական| թվին։</string>
+	<key>modeIntro.addition.title %lld</key>
+	<string>Գումարում · %lld</string>
+	<key>modeIntro.additionMix.b1</key>
+	<string>Շարունակ գումարիր երկու թիվ։</string>
+	<key>modeIntro.additionMix.b2 %lld</key>
+	<string>Պատասխանը առավելագույնը %lld է։</string>
+	<key>modeIntro.additionMix.title %lld</key>
+	<string>Գումարում մինչև %lld</string>
+	<key>modeIntro.fractions.intro</key>
+	<string>Դու ստանում ես միայն |կոտորակների| առաջադրանքներ։</string>
+	<key>modeIntro.fractions.mixed</key>
+	<string>Դու ստանում ես այս և |նախորդ մակարդակների| կոտորակները։</string>
+	<key>modeIntro.fractions.order %lld</key>
+	<string>Միշտ վերցնում ես |1 մաս|՝ %lld հավասար մասերից։</string>
+	<key>modeIntro.fractions.premium.b1 %lld</key>
+	<string>Հաշվիր կլոր թվերի կոտորակները %lld-րդ և նախորդ մակարդակներից։</string>
+	<key>modeIntro.fractions.premium.b2</key>
+	<string>Թվերը կլոր են մնում, ու պատասխանները միշտ ամբողջ են։</string>
+	<key>modeIntro.fractions.premium.title %lld</key>
+	<string>Կոտորակներ մինչև %lld</string>
+	<key>modeIntro.fractions.random %lld</key>
+	<string>Վերցնում ես մեկ կամ |մի քանի մաս|՝ %lld հավասար մասերից։</string>
+	<key>modeIntro.fractions.title %lld</key>
+	<string>Կոտորակներ · %lld</string>
+	<key>modeIntro.fractionsMix.b1</key>
+	<string>Հաշվիր ամբողջի մի մասը և հավասարեցրու կոտորակները։</string>
+	<key>modeIntro.fractionsMix.b2</key>
+	<string>Գումարիր և հանիր նույն հայտարարով կոտորակները։</string>
+	<key>modeIntro.fractionsMix.title</key>
+	<string>Խառը կոտորակներ</string>
+	<key>modeIntro.percentages.intro</key>
+	<string>Դու ստանում ես միայն |տոկոսների| առաջադրանքներ։</string>
+	<key>modeIntro.percentages.mixed</key>
+	<string>Դու ստանում ես այս և |նախորդ մակարդակների| տոկոսները։</string>
+	<key>modeIntro.percentages.order %@</key>
+	<string>Միշտ հաշվում ես %@, իսկ պատասխանը |ամբողջ թիվ| է։</string>
+	<key>modeIntro.percentages.premium.b1 %lld</key>
+	<string>Հաշվիր կլոր թվերի տոկոսները մինչև %lld։</string>
+	<key>modeIntro.percentages.premium.b2</key>
+	<string>Քանակները կլոր են մնում, ու պատասխանները միշտ ամբողջ են։</string>
+	<key>modeIntro.percentages.premium.title %lld</key>
+	<string>Տոկոսներ մինչև %lld</string>
+	<key>modeIntro.percentages.random %@</key>
+	<string>Միշտ հաշվում ես %@, իսկ պատասխանը կարող է նաև |տասնորդական| լինել։</string>
+	<key>modeIntro.percentages.title %@</key>
+	<string>Հաշվել %@</string>
+	<key>modeIntro.percentagesMix.b1</key>
+	<string>Հաշվիր թվի տոկոսը։</string>
+	<key>modeIntro.percentagesMix.b2</key>
+	<string>Տոկոսները փոխարկիր կոտորակների և հակառակը։</string>
+	<key>modeIntro.percentagesMix.title</key>
+	<string>Խառը տոկոսներ</string>
+	<key>modeIntro.subtraction.intro</key>
+	<string>Դու ստանում ես միայն |հանման| առաջադրանքներ։</string>
+	<key>modeIntro.subtraction.mixed %lld</key>
+	<string>Մեկ այլ թվից հանում ես %lld |կամ պակաս|։</string>
+	<key>modeIntro.subtraction.order %lld</key>
+	<string>Միշտ հանում ես %lld՝ |նվազման| հերթականությամբ։</string>
+	<key>modeIntro.subtraction.random %lld</key>
+	<string>Միշտ %lld ես հանում |պատահական| թվից։</string>
+	<key>modeIntro.subtraction.title %lld</key>
+	<string>Հանում · %lld</string>
+	<key>modeIntro.subtractionMix.b2 %lld</key>
+	<string>Առաջին թիվը առավելագույնը %lld է։</string>
+	<key>modeIntro.subtractionMix.belowZero.b2</key>
+	<string>Պատասխանը կարող է զրոյից փոքր լինել։</string>
+	<key>modeIntro.subtractionMix.belowZero.title</key>
+	<string>Զրոյից ցածր</string>
+	<key>modeIntro.subtractionMix.title %lld</key>
+	<string>Հանում մինչև %lld</string>
+	<key>modeIntro.subtractionMix.twoNumbers</key>
+	<string>Շարունակ հանիր երկու թվերը։</string>
+	<key>modeIntro.super.b2 %lld</key>
+	<string>Յուրաքանչյուր ընտրված բաժնի դժվարությունը կարող է հասնել մինչև |%lld մակարդակ|։</string>
+	<key>modeIntro.superAll.b1</key>
+	<string>Փորձիր գումարում, հանում, աղյուսակներ, կոտորակներ և տոկոսներ՝ խառը։</string>
+	<key>modeIntro.superAll.title %lld</key>
+	<string>Սուպերխառնուրդ %lld</string>
+	<key>modeIntro.superBasic.b1</key>
+	<string>Փորձիր գումարում և հանում՝ խառը։</string>
+	<key>modeIntro.superBasic.title %lld</key>
+	<string>Սուպերխառնուրդ %lld</string>
+	<key>modeIntro.superFraction.b1</key>
+	<string>Փորձիր գումարում, հանում, աղյուսակներ և կոտորակներ՝ խառը։</string>
+	<key>modeIntro.superFraction.title %lld</key>
+	<string>Սուպերխառնուրդ %lld</string>
+	<key>modeIntro.superTimes.b1</key>
+	<string>Փորձիր գումարում, հանում և աղյուսակներ՝ խառը։</string>
+	<key>modeIntro.superTimes.title %lld</key>
+	<string>Սուպերխառնուրդ %lld</string>
+	<key>modeIntro.tables.intro</key>
+	<string>Դու ստանում ես միայն |բազմապատկման| առաջադրանքներ։</string>
+	<key>modeIntro.tables.mixed %lld</key>
+	<string>Դու ստանում ես բոլոր աղյուսակները՝ խառը, |մինչև %lld|։</string>
+	<key>modeIntro.tables.multiplyBy</key>
+	<string>Յուրաքանչյուր աղյուսակը բազմապատկվում է |1-ից 12| թվով։</string>
+	<key>modeIntro.tables.order %lld</key>
+	<string>%lld-ի աղյուսակը ստանում ես |աճման| հերթականությամբ։</string>
+	<key>modeIntro.tables.random %lld</key>
+	<string>%lld-ի աղյուսակը ստանում ես |պատահական| հերթականությամբ։</string>
+	<key>modeIntro.tables.title %lld</key>
+	<string>%lld-ի աղյուսակ</string>
+	<key>modeIntro.tablesMix.b1 %lld %lld</key>
+	<string>Խառը փորձիր %lld-ից %lld աղյուսակները։</string>
+	<key>modeIntro.tablesMix.title %lld %lld</key>
+	<string>Աղյուսակներ %lld-%lld</string>
+	<key>name.placeholder</key>
+	<string>Քո անունը</string>
+	<key>name.whatsYourName</key>
+	<string>Ինչպե՞ս ես կոչվում։</string>
+	<key>notif.animal.body %@</key>
+	<string>%@: Վաստակեք ևս մի քանի գավաթներ՝ այս կենդանուն բացելու համար: 🐼</string>
+	<key>notif.animal.title %lld</key>
+	<string>Մնացել է ընդամենը %lld գավաթ: 🏆</string>
+	<key>notif.comeback.body</key>
+	<string>Ձեր կենդանիները սպասում են:Վերադարձեք խաղալու և շարունակեք գավաթներ հավաքել:</string>
+	<key>notif.comeback.title</key>
+	<string>Մենք կարոտում ենք քեզ: 👋</string>
+	<key>notif.day3.body %lld</key>
+	<string>Սկսեք %lld րոպեանոց խաղային նստաշրջան և երկարացրեք ձեր ամենօրյա խաղային շարանը:</string>
+	<key>notif.day3.title</key>
+	<string>Եկեք կատարենք 3-րդ օրը: ⭐</string>
+	<key>notif.jumppad.body</key>
+	<string>Օգտագործեք Jump Pad սխալ պատասխանը բաց թողնելու և բարձրանալը շարունակելու համար:</string>
+	<key>notif.jumppad.title</key>
+	<string>Անցնել սխալ պատասխաններից: 🚀</string>
+	<key>notif.premium.body %lld</key>
+	<string>Jumping Fox Premium-ը ներառում է %lld մակարդակ յուրաքանչյուր թեմայի և բոլոր 10 կենդանիների համար:Արկածը շարունակվում է:</string>
+	<key>notif.premium.title</key>
+	<string>Բացեք ավելի շատ մակարդակներ և կենդանիներ: 🌈</string>
+	<key>notif.reactivate.body %lld</key>
+	<string>Անցել է %lld օր։Եկեք լուծենք որոշ մաթեմատիկական վարժություններ և վաստակենք ավելի շատ գավաթներ:</string>
+	<key>notif.reactivate.title</key>
+	<string>Պատրա՞ստ եք նորից խաղալ: 🎮</string>
+	<key>notif.streak.body %lld</key>
+	<string>Խաղացեք %lld րոպե և շարունակեք ձեր ամենօրյա խաղային շարանը:</string>
+	<key>notif.streak.title %lld</key>
+	<string>Ձեր ամենօրյա խաղային շարանը հասել է %lld օրվա: 🔥</string>
+	<key>notif.trophies.body %lld</key>
+	<string>Հիանալի աշխատանք:Եկեք %lld րոպե խաղանք և ավելի շատ հավաքենք։</string>
+	<key>notif.trophies.title %lld</key>
+	<string>Դուք վաստակել եք %lld գավաթ: 🏆</string>
+	<key>notif.weekly.body %lld</key>
+	<string>Դա ձեր ընդհանուր տիտղոսը հասցնում է %lld-ի:Զարմանալի աշխատանք!</string>
+	<key>notif.weekly.title %lld</key>
+	<string>Այս շաբաթ դուք վաստակեցիք %lld գավաթ: 🌟</string>
+	<key>onboarding.level.advanced.subtitle</key>
+	<string>Տարբեր խառը առաջադրանքներ միասին։</string>
+	<key>onboarding.level.advanced.title</key>
+	<string>Արդեն բավական լավ է</string>
+	<key>onboarding.level.beginner.subtitle</key>
+	<string>Փորձիր հերթականությամբ տրված առաջադրանքներ։</string>
+	<key>onboarding.level.beginner.title</key>
+	<string>Հենց նոր եմ սկսել</string>
+	<key>onboarding.level.intermediate.subtitle</key>
+	<string>Առաջադրանքներ՝ պատահական հերթականությամբ։</string>
+	<key>onboarding.level.intermediate.title</key>
+	<string>Արդեն մի քիչ փորձել եմ</string>
+	<key>onboarding.level.subtitle %@</key>
+	<string>Ընտրիր %@-ի մեկնարկային կետը։</string>
+	<key>onboarding.level.thisTopic</key>
+	<string>այս թեման</string>
+	<key>onboarding.level.title</key>
+	<string>Որքա՞ն լավ գիտես սա արդեն։</string>
+	<key>onboarding.name.subtitle</key>
+	<string>Սկսենք։ Ինչպե՞ս ես կոչվում։</string>
+	<key>onboarding.name.title</key>
+	<string>Հաշվելը երբեք այսքան զվարճալի չի եղել։</string>
+	<key>onboarding.subject.subtitle</key>
+	<string>Ընտրիր թեմա՝ սկսելու համար։</string>
+	<key>onboarding.subject.title</key>
+	<string>Ի՞նչ ես ուզում սովորել։</string>
+	<key>options.capAt30.info</key>
+	<string>Յուրաքանչյուր մակարդակի գավաթների նպատակը մինչև 50 է։ Եթե այս ընտրանքը միացված է, խաղն ինքնաբերաբար ավարտվում է, երբ հասնում ես դրան։</string>
+	<key>options.capAt30.title</key>
+	<string>Ավարտել նպատակին հասնելիս</string>
+	<key>options.helperMode.info</key>
+	<string>Օգնականի ռեժիմում ճիշտ պատասխանը միշտ կանաչ է։ Այս ռեժիմում վաստակած գավաթները հաշվվում են առանձին և նշվում աստղով։</string>
+	<key>options.helperMode.title</key>
+	<string>Օգնականի ռեժիմ</string>
+	<key>options.unlimitedLives.info</key>
+	<string>Դու միշտ սկսում ես 3 կյանքով։ Երբ կյանքերդ վերջանան, խաղը կավարտվի։ Միացրու այս ընտրանքը՝ դրանից հետո էլ խաղալու և փորձելու համար։</string>
+	<key>options.unlimitedLives.title</key>
+	<string>Անսահման կյանքեր</string>
+	<key>parentGate.approved</key>
+	<string>Հաստատված է</string>
+	<key>parentGate.attempts %lld %lld</key>
+	<string>Փորձեր՝ %1$lld՝ %2$lld-ից</string>
+	<key>parentGate.holdInstruction %@ %lld</key>
+	<string>Սեղմած պահեք %@-ը %lld վայրկյան։</string>
+	<key>parentGate.holdProgress %lld</key>
+	<string>Պահել՝ %lld</string>
+	<key>parentGate.instruction %@ %lld %@ %lld</key>
+	<string>Սեղմած պահեք %@-ը %lld վայրկյան։ Հետո %@-ին հպվեք %lld անգամ։</string>
+	<key>parentGate.shape.circle</key>
+	<string>շրջան</string>
+	<key>parentGate.shape.diamond</key>
+	<string>շեղանկյուն</string>
+	<key>parentGate.shape.heart</key>
+	<string>սիրտ</string>
+	<key>parentGate.shape.hexagon</key>
+	<string>վեցանկյուն</string>
+	<key>parentGate.shape.plus</key>
+	<string>գումարման նշան</string>
+	<key>parentGate.shape.square</key>
+	<string>քառակուսի</string>
+	<key>parentGate.shape.star</key>
+	<string>աստղ</string>
+	<key>parentGate.shape.triangle</key>
+	<string>եռանկյուն</string>
+	<key>parentGate.stepOne</key>
+	<string>Քայլ 1-ը 2-ից</string>
+	<key>parentGate.stepTwo</key>
+	<string>Քայլ 2-ը 2-ից</string>
+	<key>parentGate.subtitle</key>
+	<string>Փոքրիկ խաղացողներին պաշտպանելու համար մեծահասակը պետք է անցնի այս ստուգումը՝ գնումը շարունակելուց առաջ։</string>
+	<key>parentGate.tapInstruction %lld %@</key>
+	<string>Այժմ %2$@-ին հպվեք %1$lld անգամ։</string>
+	<key>parentGate.tapProgress %lld %lld</key>
+	<string>Հպումներ՝ %1$lld՝ %2$lld-ից</string>
+	<key>parentGate.title</key>
+	<string>Պահանջվում է մեծահասակի հաստատում</string>
+	<key>premium.availableAt %lld</key>
+	<string>Հասանելի է %lld գավաթից</string>
+	<key>premium.availableFromStart</key>
+	<string>Հասանելի է սկզբից</string>
+	<key>premium.characterUnlocked</key>
+	<string>ՆՈՐ ԿԵՐՊԱՐԸ ԲԱՑՎԵՑ</string>
+	<key>premium.characterUnlocked %@</key>
+	<string>%@ բացվեց</string>
+	<key>premium.earnedTrophies %lld</key>
+	<string>Դու վաստակել ես %lld գավաթ</string>
+	<key>premium.exclusiveBadge</key>
+	<string>Բացառիկ՝ Premium-ով</string>
+	<key>premium.exclusiveWithPremium</key>
+	<string>Բացառիկ՝ Premium-ով</string>
+	<key>premium.feature.animals.subtitle</key>
+	<string>Պրեմիումով կարող ես ազատ խաղալ բոլոր 10 կենդանիներով։</string>
+	<key>premium.feature.animals.title</key>
+	<string>Բոլոր կենդանիները հասանելի են</string>
+	<key>premium.feature.levels.subtitle</key>
+	<string>Միշտ կան բավական նոր առաջադրանքներ փորձելու համար։</string>
+	<key>premium.feature.levels.title</key>
+	<string>Յուրաքանչյուր թեմայում՝ 99 մակարդակ</string>
+	<key>premium.feature.noAds.subtitle</key>
+	<string>Խաղա առանց ընդհատումների։</string>
+	<key>premium.feature.noAds.title</key>
+	<string>Առանց գովազդի</string>
+	<key>premium.oneTime</key>
+	<string>Մեկանգամյա գնում։ Ընդմիշտ քոնն է։</string>
+	<key>premium.restore</key>
+	<string>Վերականգնել գնումները</string>
+	<key>premium.start</key>
+	<string>Սկսել</string>
+	<key>premium.storeUnavailable</key>
+	<string>Խանութն այժմ հասանելի չէ։ Փորձեք ավելի ուշ։</string>
+	<key>premium.unlock</key>
+	<string>Բացել Պրեմիումը</string>
+	<key>premium.unlockWithPrice %@</key>
+	<string>Բացել Պրեմիումը · %@</string>
+	<key>premium.unlockWithTrophies</key>
+	<string>Բացել գավաթներով</string>
+	<key>premium.unlockedWithPremium</key>
+	<string>Բացվեց Premium-ով</string>
+	<key>premium.youHavePremium</key>
+	<string>Դու ունես Պրեմիում։</string>
+	<key>settings.character</key>
+	<string>Կերպար</string>
+	<key>settings.characterInfo</key>
+	<string>Յուրաքանչյուր կենդանի ամբողջ խաղին տալիս է իր գունային ձևավորումը։</string>
+	<key>settings.customMinutes %lld</key>
+	<string>Հատուկ՝ %lld ր</string>
+	<key>settings.dailyGoal</key>
+	<string>Օրական նպատակ</string>
+	<key>settings.goalInfo</key>
+	<string>Շարքի նպատակը սկսվում է օրական 5 րոպեից։ Հաշվվում է միայն ակտիվ խաղաժամանակը։</string>
+	<key>settings.lives</key>
+	<string>Կյանքեր</string>
+	<key>settings.livesInfo</key>
+	<string>Երեք կյանքով խաղն ավարտվում է վերջին սրտից հետո։ Անսահման ռեժիմում գավաթները հաշվվում են միայն քանի դեռ կյանք ունես, իսկ հետո կարող ես շարունակել խաղալ։</string>
+	<key>settings.playGoals</key>
+	<string>Խաղի նպատակներ</string>
+	<key>settings.premiumUnlocked</key>
+	<string>Պրեմիումը բացված է։ Շնորհակալություն։</string>
+	<key>settings.title</key>
+	<string>Կարգավորումներ</string>
+	<key>streak.accessibility.chooseDailyGoal</key>
+	<string>Ընտրիր օրական նպատակ</string>
+	<key>streak.accessibility.choosePeriod</key>
+	<string>Ընտրիր օրական կամ շաբաթական նպատակ</string>
+	<key>streak.accessibility.compact %@ %lld %lld %lld</key>
+	<string>%1$@, %2$lld՝ %3$lld րոպեից, %4$lld օր անընդմեջ</string>
+	<key>streak.accessibility.daily %lld %lld</key>
+	<string>Օրական շարք՝ %lld՝ %lld րոպեից</string>
+	<key>streak.daily</key>
+	<string>Օրական շարք</string>
+	<key>streak.dayOne</key>
+	<string>Օր 1</string>
+	<key>tutorial.answerHint</key>
+	<string>Չգիտե՞ս պատասխանը։ Հպվիր առաջադրանքին՝ այն տեսնելու համար։</string>
+	<key>tutorial.complete</key>
+	<string>Ապրե՛ս։ Ուսուցումն ավարտված է։ Այժմ փորձիր լավագույն հաշիվը հավաքել։</string>
+	<key>tutorial.correctAnswer</key>
+	<string>Ցատկիր ճիշտ պատասխանի վրա՝ գավաթ վերցնելու համար։</string>
+	<key>tutorial.correctAnswerGreen</key>
+	<string>Ճիշտ պատասխանը կանաչ է։ Հիմա ցատկիր ճիշտ պատասխանի վրա։</string>
+	<key>tutorial.doubler.answer</key>
+	<string>Հիմա ցատկիր ճիշտ պատասխանի վրա՝ եռակի գավաթներ ստանալու համար։</string>
+	<key>tutorial.doubler.collect</key>
+	<string>Վերցրու ×3 մետաղադրամը՝ մեկ անգամ եռակի գավաթներ ստանալու համար։</string>
+	<key>tutorial.lifePickup</key>
+	<string>Կարող ես գտնել կես կամ մեկ ամբողջ կյանք՝ կյանքերդ վերականգնելու համար։</string>
+	<key>tutorial.minusOne</key>
+	<string>Խուսափիր −1-ից։ Այն քեզնից մեկ գավաթ է վերցնում։</string>
+	<key>tutorial.move</key>
+	<string>Շարժիր սարքդ՝ աջ ու ձախ գնալու համար։ Կարող ես նաև անցնել էկրանի կողքերով։</string>
+	<key>tutorial.platforms</key>
+	<string>Ցատկիր հարթակների վրա՝ վեր բարձրանալու համար։</string>
+	<key>tutorial.scoreHint</key>
+	<string>Այս մակարդակի քո հաշիվը երևում է այստեղ։</string>
+	<key>tutorial.star</key>
+	<string>Ցատկիր աստղի մեջ՝ սխալ պատասխանները հեռացնելու համար։</string>
+	<key>tutorial.wrongAnswer</key>
+	<string>Եթե սխալ պատասխան ընտրես, կկորցնես երեք կյանքերից մեկը։ Փորձիր հիմա։</string>
+</dict>
+</plist>
