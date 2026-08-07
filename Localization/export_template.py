@@ -14,7 +14,10 @@ Columns:
     nl           - Dutch text.
     <lang codes> - one empty column per target language, to be filled in.
 
-Leave a target cell EMPTY to keep the current English fallback for that key.
+Target-language cells are pre-filled with whatever translation already exists
+in the catalog for that language, so translators can see and refine current
+text. Leave a target cell EMPTY to keep the current English fallback for that
+key.
 
 Run from the Localization/ folder:  python3 export_template.py
 """
@@ -131,11 +134,16 @@ def main():
             continue
         en_pairs = dict(unit_value(en))
         nl_pairs = dict(unit_value(nl)) if nl else {}
+        lang_pairs = {
+            lang: dict(unit_value(locs[lang])) if lang in locs else {}
+            for lang in TARGET_LANGS
+        }
 
         for variant, en_value in unit_value(en):
             instruction = build_instruction(key, en_value)
             nl_value = nl_pairs.get(variant, "")
-            row = [key, variant, instruction, en_value, nl_value] + [""] * len(TARGET_LANGS)
+            lang_values = [lang_pairs[lang].get(variant, "") for lang in TARGET_LANGS]
+            row = [key, variant, instruction, en_value, nl_value] + lang_values
             rows.append(row)
 
     with open(OUTPUT, "w", encoding="utf-8-sig", newline="") as f:

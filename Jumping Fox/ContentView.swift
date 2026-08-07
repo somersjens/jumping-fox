@@ -519,6 +519,9 @@ struct ContentView: View {
                 LinearGradient(colors: [character.skyColor, character.tintColor],
                                startPoint: .top, endPoint: .bottom)
             }
+            // A sheet starts a fresh environment, so it has to opt back into the
+            // chosen language's layout direction (see `gameEnvironment`).
+            .gameEnvironment()
         }
         .gameCover(item: $selection, onDismiss: {
             // Stop any in-flight all-level reconciliation from replacing the
@@ -4166,6 +4169,10 @@ struct LevelCardView: View {
             maximumCountBadgeBody(label, fill: fill, metal: metal)
                 .frame(maxWidth: 23 * cardScale)
         }
+        // "×3" is arithmetic, not prose: without this it reads "3×" in a
+        // right-to-left language. The translated "MAX" word is unaffected —
+        // its own strong characters still lay themselves out right-to-left.
+        .environment(\.layoutDirection, .leftToRight)
         .accessibilityLabel(isAtMaximum
             ? L("menu.maximumCount") : L("menu.maximumCount.accessibility \(maximumCount)"))
     }

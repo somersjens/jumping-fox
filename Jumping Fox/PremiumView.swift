@@ -115,6 +115,11 @@ struct PremiumView: View {
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
+        // This screen is always presented as a sheet, which begins a fresh
+        // environment: without opting back in, a right-to-left language left the
+        // whole paywall laid out left-to-right (feature icons stuck on the left,
+        // text left-aligned) while the rest of the app mirrored.
+        .gameEnvironment()
     }
 
     private var closeButton: some View {

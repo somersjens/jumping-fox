@@ -1206,6 +1206,12 @@ struct GameView: View {
                 scene.tutorialQuestionWasTapped()
                 requestAnswerHint()
             }
+            // Arithmetic is written left-to-right in every language, including
+            // the right-to-left ones. Without this the row of tokens mirrors and
+            // "12 + 3 = ?" reads "? = 3 + 12". Applied to the whole badge (not
+            // just the row) so the tutorial cue keeps pointing at the "?", which
+            // stays at the trailing end of the equation.
+            .environment(\.layoutDirection, .leftToRight)
     }
 
     /// Delay the state change until the flying half-heart reaches the question
@@ -1627,11 +1633,15 @@ struct GameView: View {
                     Capsule().stroke(theme.color.opacity(0.12), lineWidth: 1)
                 }
                 // The smaller capsule deliberately sits just beyond the score's
-                // top-right corner, leaving the tally itself unobscured.
+                // top trailing corner, leaving the tally itself unobscured.
+                // Negative padding (rather than an offset) does the nudging, so
+                // it points outward in a right-to-left language too instead of
+                // pushing the badge back over the tally.
                 .overlay(alignment: .topTrailing) {
                     if showsNewHighScore {
                         newHighScoreBadge
-                            .offset(x: 30, y: -16)
+                            .padding(.trailing, -30)
+                            .padding(.top, -16)
                     }
                 }
                 .padding(.top, 22 * gameScale)
@@ -1758,6 +1768,9 @@ struct GameView: View {
         case .completion(let level):
             HStack(spacing: 7 * gameScale) {
                 completionOperationLabel(for: level, fontSize: titleFontSize)
+                    // The operation itself stays left-to-right ("+1", not "1+");
+                    // only its position in the row follows the language.
+                    .environment(\.layoutDirection, .leftToRight)
                 Text(endScreenText.completionSuffix)
                     .font(titleFont)
                     .minimumScaleFactor(0.72)
@@ -1875,6 +1888,8 @@ private struct StreakCoin: View {
                     Text(verbatim: "×2")
                         .font(.system(size: size * 0.5, weight: .heavy, design: .rounded))
                         .foregroundStyle(ink)
+                        // Keeps the multiplier from reading "2×" in RTL.
+                        .environment(\.layoutDirection, .leftToRight)
                 )
                 .frame(width: size, height: size)
                 .rotation3DEffect(.degrees(spin), axis: (x: 0, y: 1, z: 0))
