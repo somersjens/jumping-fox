@@ -1661,7 +1661,8 @@ struct ContentView: View {
     }
 
     /// Score contribution of one exact level+mode id, including a higher paused
-    /// score in that same subcategory only.
+    /// score in that same subcategory only. A level's goal contributes at most
+    /// once even when an uncapped run continues beyond it.
     private func trophies(forExactLevel level: LevelConfig) -> Int {
         trophies(forExactLevel: level, snapshot: homeProgress)
     }
@@ -1675,10 +1676,8 @@ struct ContentView: View {
         let pausedRaw = answerHelper
             ? progress.pausedIncludingHelper
             : progress.pausedNormal
-        let paused = capsTrophiesAtThirty
-            ? min(ProgressStore.maximumTrophies(for: level), pausedRaw)
-            : pausedRaw
-        return max(recorded, paused)
+        let bestForTotal = max(recorded, pausedRaw)
+        return ProgressStore.trophiesCountingTowardTotal(bestForTotal, for: level)
     }
 
     /// Matches the score a level card presents in the current helper mode, so

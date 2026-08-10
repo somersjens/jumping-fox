@@ -336,6 +336,20 @@ final class Jumping_FoxTests: XCTestCase {
         XCTAssertTrue(state.isPastScoreboardCap)
     }
 
+    func testOvertimeTrophiesDoNotIncreaseLevelContributionToTotals() {
+        let level = LevelConfig(category: .addition, index: 1, cardNumber: "1")
+        let maximum = ProgressStore.maximumTrophies(for: level)
+
+        XCTAssertEqual(
+            ProgressStore.trophiesCountingTowardTotal(maximum, for: level),
+            maximum
+        )
+        XCTAssertEqual(
+            ProgressStore.trophiesCountingTowardTotal(maximum + 25, for: level),
+            maximum
+        )
+    }
+
     func testThresholdIsNotAnExactGameNumber() {
         let now = Date(timeIntervalSince1970: 1_000_000)
         let coordinator = ReviewRequestCoordinator(defaults: defaults, now: now)

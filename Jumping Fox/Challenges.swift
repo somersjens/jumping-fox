@@ -494,6 +494,14 @@ enum ProgressStore {
         return orderMaximumTrophies
     }
 
+    /// A level can contribute its trophy goal to aggregate totals only once.
+    /// Runs may continue past the goal (and still improve the stored record or
+    /// maximum-completion counter), but overtime trophies are not new trophies
+    /// for the category or grand total.
+    static func trophiesCountingTowardTotal(_ score: Int, for level: LevelConfig) -> Int {
+        min(maximumTrophies(for: level), max(0, score))
+    }
+
     /// Scores belong to the level, not to a life-mode variant. The legacy
     /// keys are still read so existing players keep all of their trophies.
     private static func key(_ levelID: String) -> String {
