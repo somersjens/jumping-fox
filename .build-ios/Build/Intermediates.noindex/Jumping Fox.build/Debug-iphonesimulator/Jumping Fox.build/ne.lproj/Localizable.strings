@@ -112,6 +112,8 @@
 	<string>माफ गर्नुहोस्! ठूलो स्वरमा पढ्ने सुविधा तपाईंको भाषामा अझै उपलब्ध छैन।</string>
 	<key>game.intro.start</key>
 	<string>लेभल सुरु</string>
+	<key>game.intro.startTutorial</key>
+	<string>ट्युटोरियल सुरु</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ लाई १ देखि १२ सम्मको सङ्ख्याले गुणा गर।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>पात्र बदल्न ट्याप गर; स्वागत स्क्रिनबाट फेरि सुरु गर्न दुई सेकेन्ड थिचिराख।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ छान</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>थप %lld</string>
 	<key>menu.maxScore</key>
 	<string>३० MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>दिन १</string>
 	<key>tutorial.answerHint</key>
 	<string>उत्तर थाहा छैन? हेर्न प्रश्नमा ट्याप गर।</string>
+	<key>tutorial.button</key>
+	<string>ट्युटोरियल</string>
 	<key>tutorial.complete</key>
 	<string>स्याबास! सिकाइ पूरा भयो। अब उच्च स्कोर बनाऊ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 बाट बच। यसले एउटा ट्रफी घटाउँछ।</string>
 	<key>tutorial.move</key>
 	<string>बायाँ-दायाँ जान आफ्नो उपकरण हल्लाऊ। स्क्रिनको छेउबाट पनि पार जान सक्छौ।</string>
+	<key>tutorial.notice.message</key>
+	<string>तिमी यो लेभल खेल्दैछौ। सकाऊ वा नयाँ खेल सुरु गर, अनि ट्युटोरियल खेल्न टोपी फेरि थिच।</string>
 	<key>tutorial.platforms</key>
 	<string>माथि जान प्लेटफर्ममाथि उफ्र।</string>
 	<key>tutorial.scoreHint</key>

@@ -112,6 +112,8 @@
 	<string>متأسفیم! قابلیت بلندخوانی هنوز به زبان شما در دسترس نیست.</string>
 	<key>game.intro.start</key>
 	<string>شروع مرحله</string>
+	<key>game.intro.startTutorial</key>
+	<string>شروع آموزش</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ را در عددی از ۱ تا ۱۲ ضرب کن.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>برای عوض کردن شخصیت بزن؛ برای شروع دوباره از صفحهٔ خوش‌آمدگویی، دو ثانیه نگه دار.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ را انتخاب کن</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld تای دیگر</string>
 	<key>menu.maxScore</key>
 	<string>۳۰ حداکثر</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>روز ۱</string>
 	<key>tutorial.answerHint</key>
 	<string>جواب را نمی‌دانی؟ روی سؤال بزن تا آن را ببینی.</string>
+	<key>tutorial.button</key>
+	<string>آموزش</string>
 	<key>tutorial.complete</key>
 	<string>آفرین! آموزش تمام شد. حالا رکورد بزن!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>از −1 دوری کن. یک جام از تو کم می‌کند.</string>
 	<key>tutorial.move</key>
 	<string>دستگاهت را حرکت بده تا چپ و راست بروی. از کناره‌های صفحه هم می‌توانی رد شوی.</string>
+	<key>tutorial.notice.message</key>
+	<string>این مرحله را شروع کرده‌ای. تمامش کن یا بازی تازه‌ای شروع کن، بعد دوباره روی کلاه بزن تا آموزش را بازی کنی.</string>
 	<key>tutorial.platforms</key>
 	<string>روی سکوها بپر تا بالا بروی.</string>
 	<key>tutorial.scoreHint</key>

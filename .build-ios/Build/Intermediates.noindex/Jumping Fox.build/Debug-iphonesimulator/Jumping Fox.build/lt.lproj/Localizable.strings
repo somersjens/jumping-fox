@@ -112,6 +112,8 @@
 	<string>Atsiprašome! Skaitymo balsu funkcija tavo kalba dar nepasiekiama.</string>
 	<key>game.intro.start</key>
 	<string>Pradėti lygį</string>
+	<key>game.intro.startTutorial</key>
+	<string>Pradėti pamokėlę</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Padaugink %@%@ iš skaičiaus nuo 1 iki 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Bakstelėk, kad pakeistum veikėją; palaikyk dvi sekundes, kad grįžtum į pasisveikinimo ekraną.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Pasirink %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>dar %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1 diena</string>
 	<key>tutorial.answerHint</key>
 	<string>Nežinai atsakymo? Bakstelėk užduotį ir jį pamatysi.</string>
+	<key>tutorial.button</key>
+	<string>Pamokėlė</string>
 	<key>tutorial.complete</key>
 	<string>Šaunu! Pamoka baigta. Dabar siek rekordo!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Venk −1. Jis kainuoja vieną trofėjų.</string>
 	<key>tutorial.move</key>
 	<string>Judink įrenginį į kairę ir dešinę. Gali pereiti ir per ekrano kraštus.</string>
+	<key>tutorial.notice.message</key>
+	<string>Jau žaidi šį lygį. Pabaik jį arba pradėk naują žaidimą, tada vėl spustelėk kepurėlę ir paleisk pamokėlę.</string>
 	<key>tutorial.platforms</key>
 	<string>Šokinėk ant platformų, kad kiltum aukštyn.</string>
 	<key>tutorial.scoreHint</key>

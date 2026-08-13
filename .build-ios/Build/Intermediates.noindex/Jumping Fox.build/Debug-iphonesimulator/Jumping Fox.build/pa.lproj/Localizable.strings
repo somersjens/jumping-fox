@@ -112,6 +112,8 @@
 	<string>ਮਾਫ਼ ਕਰਨਾ! ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਦੀ ਸਹੂਲਤ ਹਾਲੇ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।</string>
 	<key>game.intro.start</key>
 	<string>ਲੈਵਲ ਸ਼ੁਰੂ ਕਰੋ</string>
+	<key>game.intro.startTutorial</key>
+	<string>ਟਿਊਟੋਰਿਅਲ ਸ਼ੁਰੂ ਕਰੋ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ਨੂੰ 1 ਤੋਂ 12 ਤੱਕ ਕਿਸੇ ਗਿਣਤੀ ਨਾਲ ਗੁਣਾ ਕਰੋ।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ਕਿਰਦਾਰ ਬਦਲਣ ਲਈ ਟੈਪ ਕਰੋ; ਸਵਾਗਤ ਸਕ੍ਰੀਨ ਤੋਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੋ ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ਚੁਣੋ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ਹੋਰ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ਦਿਨ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>ਜਵਾਬ ਨਹੀਂ ਪਤਾ? ਵੇਖਣ ਲਈ ਸਵਾਲ 'ਤੇ ਟੈਪ ਕਰੋ।</string>
+	<key>tutorial.button</key>
+	<string>ਟਿਊਟੋਰਿਅਲ</string>
 	<key>tutorial.complete</key>
 	<string>ਸ਼ਾਬਾਸ਼! ਸਿਖਲਾਈ ਪੂਰੀ ਹੋਈ। ਹੁਣ ਸਭ ਤੋਂ ਵੱਧ ਸਕੋਰ ਬਣਾਓ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ਤੋਂ ਬਚੋ। ਇਹ ਇੱਕ ਟ੍ਰਾਫੀ ਘਟਾਉਂਦਾ ਹੈ।</string>
 	<key>tutorial.move</key>
 	<string>ਖੱਬੇ-ਸੱਜੇ ਜਾਣ ਲਈ ਆਪਣਾ ਡਿਵਾਈਸ ਹਿਲਾਓ। ਤੁਸੀਂ ਸਕ੍ਰੀਨ ਦੇ ਪਾਸਿਆਂ ਰਾਹੀਂ ਵੀ ਲੰਘ ਸਕਦੇ ਹੋ।</string>
+	<key>tutorial.notice.message</key>
+	<string>ਤੁਸੀਂ ਇਹ ਲੈਵਲ ਪਹਿਲਾਂ ਹੀ ਖੇਡ ਰਹੇ ਹੋ। ਇਸਨੂੰ ਪੂਰਾ ਕਰੋ ਜਾਂ ਨਵੀਂ ਖੇਡ ਸ਼ੁਰੂ ਕਰੋ, ਫਿਰ ਟਿਊਟੋਰਿਅਲ ਲਈ ਟੋਪੀ 'ਤੇ ਮੁੜ ਟੈਪ ਕਰੋ।</string>
 	<key>tutorial.platforms</key>
 	<string>ਉੱਪਰ ਜਾਣ ਲਈ ਪਲੇਟਫਾਰਮਾਂ 'ਤੇ ਛਾਲ ਮਾਰੋ।</string>
 	<key>tutorial.scoreHint</key>

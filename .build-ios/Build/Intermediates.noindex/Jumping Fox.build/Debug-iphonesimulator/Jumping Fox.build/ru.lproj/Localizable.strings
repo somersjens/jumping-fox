@@ -112,6 +112,8 @@
 	<string>Извини! Функция чтения вслух пока недоступна на твоём языке.</string>
 	<key>game.intro.start</key>
 	<string>Начать уровень</string>
+	<key>game.intro.startTutorial</key>
+	<string>Начать обучение</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Умножь %@%@ на число от 1 до 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Нажми, чтобы сменить персонажа; удерживай две секунды, чтобы начать заново с экрана приветствия.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Выбери %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ещё %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>День 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Не знаешь ответ? Нажми на пример, чтобы увидеть его.</string>
+	<key>tutorial.button</key>
+	<string>Обучение</string>
 	<key>tutorial.complete</key>
 	<string>Молодец! Обучение пройдено. Теперь побей рекорд!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Избегай −1: он забирает один трофей.</string>
 	<key>tutorial.move</key>
 	<string>Наклоняй устройство, чтобы двигаться влево и вправо. Можно также проходить через края экрана.</string>
+	<key>tutorial.notice.message</key>
+	<string>Ты уже играешь этот уровень. Закончи его или начни новую игру, затем снова нажми на шапочку, чтобы пройти обучение.</string>
 	<key>tutorial.platforms</key>
 	<string>Прыгай по платформам, чтобы подняться выше.</string>
 	<key>tutorial.scoreHint</key>

@@ -112,6 +112,8 @@
 	<string>Förlåt! Uppläsningsfunktionen är ännu inte tillgänglig på ditt språk.</string>
 	<key>game.intro.start</key>
 	<string>Starta nivån</string>
+	<key>game.intro.startTutorial</key>
+	<string>Starta guide</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multiplicera %@%@ med ett tal från 1 till 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tryck för att byta figur. Håll intryckt i två sekunder för att börja om från välkomstskärmen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Välj %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld till</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dag 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Vet du inte svaret? Tryck på talet för att se det.</string>
+	<key>tutorial.button</key>
+	<string>Guide</string>
 	<key>tutorial.complete</key>
 	<string>Bra jobbat! Guiden är klar. Försök nu slå rekordet!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Undvik −1. Den kostar en pokal.</string>
 	<key>tutorial.move</key>
 	<string>Luta enheten för att gå åt vänster och höger. Du kan också gå genom skärmens kanter.</string>
+	<key>tutorial.notice.message</key>
+	<string>Du spelar redan den här nivån. Spela klart eller starta ett nytt spel och tryck sedan på mössan igen för att köra guiden.</string>
 	<key>tutorial.platforms</key>
 	<string>Hoppa på plattformarna för att komma uppåt.</string>
 	<key>tutorial.scoreHint</key>

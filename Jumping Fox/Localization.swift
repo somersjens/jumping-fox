@@ -46,10 +46,33 @@ struct AppLanguage: Identifiable, Hashable, Sendable {
     /// Whether this language reads right-to-left.
     var isRTL: Bool { AppLanguage.rtlCodes.contains(code) }
 
-    /// Every language the app is prepared to present. Order follows the roster
-    /// the app ships with; adding a row here (plus its catalog column) is all it
-    /// takes to offer a new language.
-    static let all: [AppLanguage] = [
+    /// Whether the endonym is written in the Latin alphabet. Only used to order
+    /// the picker (see `all`); it says nothing about the language itself.
+    var usesLatinScript: Bool {
+        displayName.unicodeScalars.allSatisfy { scalar in
+            !scalar.properties.isAlphabetic
+                || AppLanguage.latinScalarRanges.contains { $0.contains(scalar.value) }
+        }
+    }
+
+    /// Blocks that make up the Latin alphabet as the endonyms use it: Basic
+    /// Latin through the modifier letters (covering Azərbaycanca's `ə` and
+    /// Oʻzbekcha's `ʻ`), plus Latin Extended Additional for Tiếng Việt.
+    private static let latinScalarRanges: [ClosedRange<UInt32>] = [
+        0x0041...0x02FF,
+        0x1E00...0x1EFF,
+    ]
+
+    /// Every language the app is prepared to present. Adding a row here (plus
+    /// its catalog column) is all it takes to offer a new language — the picker
+    /// order is derived, not hand-maintained, so a new row can go anywhere.
+    ///
+    /// The `code` must match the name of the `.lproj` Xcode actually produces,
+    /// which is not always the code in the string catalog: Xcode normalises the
+    /// Norwegian macrolanguage `no` to Bokmål's `nb`. A code with no matching
+    /// `.lproj` silently falls back to the device language, so the roster
+    /// follows the built bundle.
+    private static let roster: [AppLanguage] = [
         AppLanguage(code: "en", flag: "🇬🇧", displayName: "English"),
         AppLanguage(code: "nl", flag: "🇳🇱", displayName: "Nederlands"),
         AppLanguage(code: "af", flag: "🇿🇦", displayName: "Afrikaans"),
@@ -98,7 +121,7 @@ struct AppLanguage: Identifiable, Hashable, Sendable {
         AppLanguage(code: "mr", flag: "🇮🇳", displayName: "मराठी"),
         AppLanguage(code: "mn", flag: "🇲🇳", displayName: "Монгол"),
         AppLanguage(code: "ne", flag: "🇳🇵", displayName: "नेपाली"),
-        AppLanguage(code: "no", flag: "🇳🇴", displayName: "Norsk"),
+        AppLanguage(code: "nb", flag: "🇳🇴", displayName: "Norsk"),
         AppLanguage(code: "uk", flag: "🇺🇦", displayName: "Українська"),
         AppLanguage(code: "or", flag: "🇮🇳", displayName: "ଓଡ଼ିଆ"),
         AppLanguage(code: "ug", flag: "🇨🇳", displayName: "ئۇيغۇرچە"),
@@ -129,9 +152,32 @@ struct AppLanguage: Identifiable, Hashable, Sendable {
         AppLanguage(code: "sv", flag: "🇸🇪", displayName: "Svenska"),
     ]
 
+    /// The roster in the order the picker shows it: Latin-script languages
+    /// first, alphabetically by endonym (ignoring case and diacritics, so
+    /// Čeština sits with the C's), then the other scripts below them. Those are
+    /// ordered by their endonym's code points, which keeps each script — Greek,
+    /// Cyrillic, Hebrew, Arabic, the Indic scripts, CJK — in one block.
+    static let all: [AppLanguage] = roster.sorted { a, b in
+        guard a.usesLatinScript == b.usesLatinScript else { return a.usesLatinScript }
+        guard a.usesLatinScript else { return a.displayName < b.displayName }
+        let order = a.displayName.compare(
+            b.displayName,
+            options: [.caseInsensitive, .diacriticInsensitive],
+            range: nil,
+            locale: Locale(identifier: "en")
+        )
+        return order == .orderedSame ? a.code < b.code : order == .orderedAscending
+    }
+
+    /// Codes that are not in the roster but should still resolve to one of its
+    /// languages — currently the `no` under which Norwegian was stored before
+    /// the roster moved to Bokmål's `nb`, so an existing choice survives.
+    private static let codeAliases: [String: String] = ["no": "nb"]
+
     /// Look up a language by its ISO code.
     static func named(_ code: String) -> AppLanguage? {
-        all.first { $0.code == code }
+        let resolved = codeAliases[code] ?? code
+        return all.first { $0.code == resolved }
     }
 
     /// The two base languages the app is authored in, used as sensible defaults

@@ -112,6 +112,8 @@
 	<string>Кешіріңіз! Дауыстап оқу мүмкіндігі сіздің тіліңізде әлі қолжетімді емес.</string>
 	<key>game.intro.start</key>
 	<string>Деңгейді бастау</string>
+	<key>game.intro.startTutorial</key>
+	<string>Үйретуді бастау</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ санын 1-ден 12-ге дейінгі санға көбейт.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Кейіпкерді өзгерту үшін түрт; сәлемдесу экранынан қайта бастау үшін екі секунд басып тұр.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ таңда</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>тағы %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1-күн</string>
 	<key>tutorial.answerHint</key>
 	<string>Жауапты білмейсің бе? Көру үшін есепті түрт.</string>
+	<key>tutorial.button</key>
+	<string>Үйрету</string>
 	<key>tutorial.complete</key>
 	<string>Жарайсың! Үйрету аяқталды. Енді үздік ұпайға ұмтыл!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1-ден қаш. Ол бір жүлдеңді алып қояды.</string>
 	<key>tutorial.move</key>
 	<string>Солға және оңға жүру үшін құрылғыңды қозға. Экранның бір шетінен екінші шетіне де өте аласың.</string>
+	<key>tutorial.notice.message</key>
+	<string>Бұл деңгейді ойнап жатырсың. Аяқта немесе жаңа ойын баста, сосын үйрету үшін қалпақты қайта бас.</string>
 	<key>tutorial.platforms</key>
 	<string>Жоғары көтерілу үшін платформаларға секір.</string>
 	<key>tutorial.scoreHint</key>

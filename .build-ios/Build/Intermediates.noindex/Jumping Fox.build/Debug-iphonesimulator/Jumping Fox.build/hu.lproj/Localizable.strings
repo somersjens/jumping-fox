@@ -112,6 +112,8 @@
 	<string>Sajnáljuk! A felolvasási funkció még nem érhető el a nyelveden.</string>
 	<key>game.intro.start</key>
 	<string>Szint indítása</string>
+	<key>game.intro.startTutorial</key>
+	<string>Oktató indítása</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Szorozd meg a(z) %@%@ értéket egy 1 és 12 közötti számmal.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Koppints a figurád megváltoztatásához; tartsd nyomva két másodpercig, hogy újrakezdd az üdvözlőképernyőn.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Válaszd ezt: %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>még %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. nap</string>
 	<key>tutorial.answerHint</key>
 	<string>Nem tudod a választ? Koppints a feladatra, és megmutatjuk.</string>
+	<key>tutorial.button</key>
+	<string>Oktató</string>
 	<key>tutorial.complete</key>
 	<string>Ügyes voltál! Az oktatórész véget ért. Most döntsd meg a rekordot!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Kerüld el a −1-et. Egy trófeádba kerül.</string>
 	<key>tutorial.move</key>
 	<string>Mozgasd az eszközöd balra és jobbra. A képernyő szélein át is közlekedhetsz.</string>
+	<key>tutorial.notice.message</key>
+	<string>Már ezen a pályán játszol. Fejezd be vagy indíts új játékot, majd koppints újra a sapkára az oktatóhoz.</string>
 	<key>tutorial.platforms</key>
 	<string>Ugrálj a platformokra, hogy feljebb juss.</string>
 	<key>tutorial.scoreHint</key>

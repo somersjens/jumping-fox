@@ -112,6 +112,8 @@
 	<string>Beklager! Oplæsningsfunktionen er endnu ikke tilgængelig på dit sprog.</string>
 	<key>game.intro.start</key>
 	<string>Start bane</string>
+	<key>game.intro.startTutorial</key>
+	<string>Start guide</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Gang %@%@ med et tal fra 1 til 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tryk for at skifte figur. Hold nede i to sekunder for at starte forfra på velkomstskærmen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vælg %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld mere</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dag 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Kender du ikke svaret? Tryk på opgaven for at se det.</string>
+	<key>tutorial.button</key>
+	<string>Guide</string>
 	<key>tutorial.complete</key>
 	<string>Godt klaret! Introduktionen er færdig. Gå nu efter topscoren!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Undgå −1. Den koster dig én pokal.</string>
 	<key>tutorial.move</key>
 	<string>Bevæg din enhed for at gå til venstre og højre. Du kan også gå gennem skærmens sider.</string>
+	<key>tutorial.notice.message</key>
+	<string>Du spiller allerede dette niveau. Gør det færdigt, eller start et nyt spil, og tryk så på huen igen for at spille guiden.</string>
 	<key>tutorial.platforms</key>
 	<string>Hop på platformene for at komme opad.</string>
 	<key>tutorial.scoreHint</key>

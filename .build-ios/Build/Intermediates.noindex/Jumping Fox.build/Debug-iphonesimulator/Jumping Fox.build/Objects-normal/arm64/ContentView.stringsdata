@@ -7,7 +7,7 @@
         "key": "filter.addition",
         "location": {
           "startingColumn": 34,
-          "startingLine": 269
+          "startingLine": 276
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "filter.subtraction",
         "location": {
           "startingColumn": 37,
-          "startingLine": 270
+          "startingLine": 277
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "filter.tables",
         "location": {
           "startingColumn": 32,
-          "startingLine": 271
+          "startingLine": 278
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "filter.fractions",
         "location": {
           "startingColumn": 35,
-          "startingLine": 272
+          "startingLine": 279
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "filter.percentages",
         "location": {
           "startingColumn": 37,
-          "startingLine": 273
+          "startingLine": 280
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "filter.mixed",
         "location": {
           "startingColumn": 31,
-          "startingLine": 274
+          "startingLine": 281
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "info.filter.addition",
         "location": {
           "startingColumn": 34,
-          "startingLine": 311
+          "startingLine": 318
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "info.filter.subtraction",
         "location": {
           "startingColumn": 37,
-          "startingLine": 312
+          "startingLine": 319
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "info.filter.tables",
         "location": {
           "startingColumn": 32,
-          "startingLine": 313
+          "startingLine": 320
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "info.filter.fractions",
         "location": {
           "startingColumn": 35,
-          "startingLine": 314
+          "startingLine": 321
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "info.filter.percentages",
         "location": {
           "startingColumn": 37,
-          "startingLine": 315
+          "startingLine": 322
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "info.filter.mixed",
         "location": {
           "startingColumn": 31,
-          "startingLine": 316
+          "startingLine": 323
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "menu.premiumTables",
         "location": {
           "startingColumn": 31,
-          "startingLine": 417
+          "startingLine": 438
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "menu.premium",
         "location": {
           "startingColumn": 54,
-          "startingLine": 417
+          "startingLine": 438
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "tutorial.scoreHint",
         "location": {
           "startingColumn": 26,
-          "startingLine": 635
+          "startingLine": 684
         }
       },
       {
@@ -127,23 +127,7 @@
         "key": "menu.accessibility.character",
         "location": {
           "startingColumn": 37,
-          "startingLine": 874
-        }
-      },
-      {
-        "comment": "",
-        "key": "developerMode.accessibilityHint",
-        "location": {
-          "startingColumn": 36,
-          "startingLine": 875
-        }
-      },
-      {
-        "comment": "",
-        "key": "developerMode.title",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 879
+          "startingLine": 954
         }
       },
       {
@@ -151,7 +135,7 @@
         "key": "info.filter.header",
         "location": {
           "startingColumn": 48,
-          "startingLine": 2272
+          "startingLine": 2411
         }
       },
       {
@@ -159,7 +143,7 @@
         "key": "menu.accessibility.chooseMode %@",
         "location": {
           "startingColumn": 37,
-          "startingLine": 1841
+          "startingLine": 1980
         }
       },
       {
@@ -167,7 +151,7 @@
         "key": "menu.accessibility.chooseMode %@",
         "location": {
           "startingColumn": 37,
-          "startingLine": 1876
+          "startingLine": 2015
         }
       },
       {
@@ -175,7 +159,7 @@
         "key": "menu.options",
         "location": {
           "startingColumn": 27,
-          "startingLine": 1942
+          "startingLine": 2081
         }
       },
       {
@@ -183,7 +167,7 @@
         "key": "options.capAt30.title",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1966
+          "startingLine": 2105
         }
       },
       {
@@ -191,7 +175,7 @@
         "key": "options.capAt30.info",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1967
+          "startingLine": 2106
         }
       },
       {
@@ -199,7 +183,7 @@
         "key": "options.unlimitedLives.title",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1968
+          "startingLine": 2107
         }
       },
       {
@@ -207,7 +191,7 @@
         "key": "options.unlimitedLives.info",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1969
+          "startingLine": 2108
         }
       },
       {
@@ -215,7 +199,7 @@
         "key": "options.helperMode.title",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1970
+          "startingLine": 2109
         }
       },
       {
@@ -223,7 +207,7 @@
         "key": "options.helperMode.info",
         "location": {
           "startingColumn": 28,
-          "startingLine": 1971
+          "startingLine": 2110
         }
       },
       {
@@ -231,7 +215,7 @@
         "key": "menu.moreLevels",
         "location": {
           "startingColumn": 30,
-          "startingLine": 2218
+          "startingLine": 2357
         }
       },
       {
@@ -239,7 +223,7 @@
         "key": "menu.unlockWithPremium",
         "location": {
           "startingColumn": 30,
-          "startingLine": 2221
+          "startingLine": 2360
         }
       },
       {
@@ -247,7 +231,7 @@
         "key": "streak.accessibility.daily %lld %lld",
         "location": {
           "startingColumn": 29,
-          "startingLine": 2507
+          "startingLine": 2646
         }
       },
       {
@@ -255,7 +239,7 @@
         "key": "streak.accessibility.chooseDailyGoal",
         "location": {
           "startingColumn": 28,
-          "startingLine": 2508
+          "startingLine": 2647
         }
       },
       {
@@ -263,7 +247,7 @@
         "key": "streak.daysInARow %lld",
         "location": {
           "startingColumn": 26,
-          "startingLine": 2492
+          "startingLine": 2631
         }
       },
       {
@@ -271,7 +255,7 @@
         "key": "streak.daily",
         "location": {
           "startingColumn": 30,
-          "startingLine": 2482
+          "startingLine": 2621
         }
       },
       {
@@ -279,7 +263,7 @@
         "key": "common.minutesShort %lld %lld",
         "location": {
           "startingColumn": 30,
-          "startingLine": 2485
+          "startingLine": 2624
         }
       },
       {
@@ -287,7 +271,7 @@
         "key": "streak.accessibility.compact %@ %lld %lld %lld",
         "location": {
           "startingColumn": 29,
-          "startingLine": 2582
+          "startingLine": 2721
         }
       },
       {
@@ -295,7 +279,7 @@
         "key": "streak.accessibility.choosePeriod",
         "location": {
           "startingColumn": 28,
-          "startingLine": 2583
+          "startingLine": 2722
         }
       },
       {
@@ -303,7 +287,7 @@
         "key": "common.minutesShort %lld %lld",
         "location": {
           "startingColumn": 22,
-          "startingLine": 2572
+          "startingLine": 2711
         }
       },
       {
@@ -311,7 +295,7 @@
         "key": "goalPeriod.daily",
         "location": {
           "startingColumn": 17,
-          "startingLine": 2728
+          "startingLine": 2867
         }
       },
       {
@@ -319,7 +303,7 @@
         "key": "goalPeriod.weekly",
         "location": {
           "startingColumn": 17,
-          "startingLine": 2729
+          "startingLine": 2868
         }
       },
       {
@@ -327,7 +311,7 @@
         "key": "streak.dayOne",
         "location": {
           "startingColumn": 22,
-          "startingLine": 2594
+          "startingLine": 2733
         }
       },
       {
@@ -335,7 +319,7 @@
         "key": "name.placeholder",
         "location": {
           "startingColumn": 59,
-          "startingLine": 2658
+          "startingLine": 2797
         }
       },
       {
@@ -343,7 +327,7 @@
         "key": "name.whatsYourName",
         "location": {
           "startingColumn": 22,
-          "startingLine": 2653
+          "startingLine": 2792
         }
       },
       {
@@ -351,7 +335,7 @@
         "key": "common.cancel",
         "location": {
           "startingColumn": 26,
-          "startingLine": 2677
+          "startingLine": 2816
         }
       },
       {
@@ -359,7 +343,7 @@
         "key": "common.save",
         "location": {
           "startingColumn": 26,
-          "startingLine": 2690
+          "startingLine": 2829
         }
       },
       {
@@ -367,7 +351,7 @@
         "key": "goal.title",
         "location": {
           "startingColumn": 18,
-          "startingLine": 2743
+          "startingLine": 2882
         }
       },
       {
@@ -375,7 +359,7 @@
         "key": "goal.period",
         "location": {
           "startingColumn": 20,
-          "startingLine": 2745
+          "startingLine": 2884
         }
       },
       {
@@ -383,7 +367,7 @@
         "key": "goal.promptWeekly",
         "location": {
           "startingColumn": 42,
-          "startingLine": 2752
+          "startingLine": 2891
         }
       },
       {
@@ -391,7 +375,15 @@
         "key": "goal.promptDaily",
         "location": {
           "startingColumn": 64,
-          "startingLine": 2752
+          "startingLine": 2891
+        }
+      },
+      {
+        "comment": "",
+        "key": "premium.unlockWithTrophies",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 3248
         }
       },
       {
@@ -399,7 +391,7 @@
         "key": "menu.startHere",
         "location": {
           "startingColumn": 18,
-          "startingLine": 3339
+          "startingLine": 3719
         }
       },
       {
@@ -407,7 +399,7 @@
         "key": "menu.maximumCount",
         "location": {
           "startingColumn": 37,
-          "startingLine": 3817
+          "startingLine": 4197
         }
       },
       {
@@ -415,7 +407,7 @@
         "key": "menu.maximumCount",
         "location": {
           "startingColumn": 17,
-          "startingLine": 3835
+          "startingLine": 4219
         }
       },
       {
@@ -423,7 +415,7 @@
         "key": "menu.maximumCount.accessibility %lld",
         "location": {
           "startingColumn": 42,
-          "startingLine": 3835
+          "startingLine": 4219
         }
       }
     ]

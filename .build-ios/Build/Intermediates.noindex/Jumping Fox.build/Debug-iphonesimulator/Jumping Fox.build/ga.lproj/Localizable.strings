@@ -112,6 +112,8 @@
 	<string>Tá brón orainn! Níl an ghné léitheoireachta os ard ar fáil i do theanga fós.</string>
 	<key>game.intro.start</key>
 	<string>Tosaigh an leibhéal</string>
+	<key>game.intro.startTutorial</key>
+	<string>Tosaigh an treoir</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Méadaigh %@%@ faoi uimhir ó 1 go 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tapáil chun do charachtar a athrú; brúigh agus coinnigh ar feadh dhá shoicind chun tosú arís ag an scáileán fáilte.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Roghnaigh %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld eile</string>
 	<key>menu.maxScore</key>
 	<string>30 AR A MHÉAD</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Lá 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Níl an freagra ar eolas agat? Tapáil an cheist chun é a fheiceáil.</string>
+	<key>tutorial.button</key>
+	<string>Treoir</string>
 	<key>tutorial.complete</key>
 	<string>Maith thú! Tá an rang teagaisc críochnaithe. Anois bain amach an scór is airde!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Seachain an −1. Cosnaíonn sé trófaí amháin ort.</string>
 	<key>tutorial.move</key>
 	<string>Bog do ghléas chun dul ar chlé agus ar dheis. Is féidir leat dul trí thaobhanna an scáileáin freisin.</string>
+	<key>tutorial.notice.message</key>
+	<string>Tá an leibhéal seo á imirt agat cheana. Críochnaigh é nó tosaigh cluiche nua, ansin tapáil an hata arís chun an treoir a imirt.</string>
 	<key>tutorial.platforms</key>
 	<string>Léim ar na hardáin chun dul suas.</string>
 	<key>tutorial.scoreHint</key>

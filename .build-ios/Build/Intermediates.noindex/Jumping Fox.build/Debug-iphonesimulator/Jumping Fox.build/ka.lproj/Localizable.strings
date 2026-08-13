@@ -112,6 +112,8 @@
 	<string>ბოდიში! ხმამაღლა წაკითხვის ფუნქცია შენს ენაზე ჯერ არ არის ხელმისაწვდომი.</string>
 	<key>game.intro.start</key>
 	<string>დონის დაწყება</string>
+	<key>game.intro.startTutorial</key>
+	<string>გაკვეთილის დაწყება</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>გაამრავლე %@%@ 1-დან 12-მდე რიცხვზე.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>პერსონაჟის შესაცვლელად შეეხე; მისასალმებელი ეკრანიდან თავიდან დასაწყებად ორი წამით დააჭირე.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>აირჩიე %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>კიდევ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 მაქს.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>დღე 1</string>
 	<key>tutorial.answerHint</key>
 	<string>პასუხი არ იცი? სანახავად ამოცანას შეეხე.</string>
+	<key>tutorial.button</key>
+	<string>გაკვეთილი</string>
 	<key>tutorial.complete</key>
 	<string>ყოჩაღ! სწავლება დასრულდა. ახლა საუკეთესო ქულა მოაგროვე!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>მოერიდე −1-ს. ის ერთ თასს გაკლებს.</string>
 	<key>tutorial.move</key>
 	<string>მოწყობილობა ამოძრავე მარცხნივ და მარჯვნივ გადასაადგილებლად. ეკრანის გვერდებიდანაც შეგიძლია გახვიდე.</string>
+	<key>tutorial.notice.message</key>
+	<string>ამ დონეს უკვე თამაშობ. დაასრულე ან დაიწყე ახალი თამაში, მერე ისევ დააჭირე ქუდს გაკვეთილისთვის.</string>
 	<key>tutorial.platforms</key>
 	<string>ზემოთ ასასვლელად პლატფორმებზე ახტი.</string>
 	<key>tutorial.scoreHint</key>

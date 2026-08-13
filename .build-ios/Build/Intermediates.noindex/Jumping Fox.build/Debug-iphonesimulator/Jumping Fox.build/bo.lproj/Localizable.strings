@@ -112,6 +112,8 @@
 	<string>དགོངས་དག སྒྲ་བཏོན་ནས་ཀློག་པའི་བྱེད་ནུས་ད་དུང་ཁྱེད་ཀྱི་སྐད་ཡིག་ནང་མེད།</string>
 	<key>game.intro.start</key>
 	<string>རིམ་པ་འགོ་འཛུགས</string>
+	<key>game.intro.startTutorial</key>
+	<string>སློབ་ཁྲིད་འགོ་འཛུགས</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ལ་ 1 ནས་ 12 བར་གྱི་གྲངས་ཤིག་སྒྱུར།</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>མི་སྣ་བརྗེ་བར་རེག དགའ་བསུའི་ངོས་ནས་བསྐྱར་དུ་འགོ་འཛུགས་པར་སྐར་ཆ་གཉིས་མནན་ནས་སྡོད།</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ འདེམས</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld དེ་ལས་མང་</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ཉིན་1</string>
 	<key>tutorial.answerHint</key>
 	<string>ལན་མི་ཤེས་སམ། ལན་མཐོང་བར་རྩིས་ལ་རེག</string>
+	<key>tutorial.button</key>
+	<string>སློབ་ཁྲིད</string>
 	<key>tutorial.complete</key>
 	<string>ཡག་པོ་བྱས་སོང་! སློབ་སྟོན་ཚར་སོང་། ད་སྐར་མ་མཐོ་ཤོས་ལ་འགྲན་རྩོད་བྱོས།</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ལ་གཡོལ། དེས་བྱ་དགའ་གཅིག་འཕྲོག</string>
 	<key>tutorial.move</key>
 	<string>གཡོན་དང་གཡས་སུ་འགྲོ་བར་ཁྱེད་ཀྱི་ཡོ་བྱད་སྒུལ། བརྙན་ཡོལ་གྱི་ཟུར་ནས་ཀྱང་བརྒྱུད་ཆོག</string>
+	<key>tutorial.notice.message</key>
+	<string>ཁྱེད་རིམ་པ་འདི་རྩེ་བཞིན་ཡོད། ཚར་བར་རྩེའམ་རྩེད་མོ་གསར་པ་འགོ་ཚུགས། དེ་ནས་སློབ་ཁྲིད་རྩེ་བར་ཞྭ་མོ་ལ་ཡང་བསྐྱར་གནོན།</string>
 	<key>tutorial.platforms</key>
 	<string>ཡར་འགྲོ་བར་སྟེགས་བུའི་སྟེང་མཆོངས།</string>
 	<key>tutorial.scoreHint</key>

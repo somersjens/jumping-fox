@@ -112,6 +112,8 @@
 	<string>Désolé ! La fonction de lecture à voix haute n’est pas encore disponible dans ta langue.</string>
 	<key>game.intro.start</key>
 	<string>Commencer le niveau</string>
+	<key>game.intro.startTutorial</key>
+	<string>Lancer le tutoriel</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multiplie %@%@ par un nombre de 1 à 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Touche pour changer de personnage ; maintiens appuyé deux secondes pour recommencer à l’écran d’accueil.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Choisis %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>encore %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Jour 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Tu ne connais pas la réponse ? Touche le calcul pour la voir.</string>
+	<key>tutorial.button</key>
+	<string>Tutoriel</string>
 	<key>tutorial.complete</key>
 	<string>Bravo ! Le tutoriel est terminé. Maintenant, vise le meilleur score !</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Évite le −1. Il te coûte un trophée.</string>
 	<key>tutorial.move</key>
 	<string>Bouge ton appareil pour aller à gauche et à droite. Tu peux aussi passer par les côtés de l’écran.</string>
+	<key>tutorial.notice.message</key>
+	<string>Tu joues déjà à ce niveau. Termine-le ou lance une nouvelle partie, puis touche à nouveau le chapeau pour lancer le tutoriel.</string>
 	<key>tutorial.platforms</key>
 	<string>Saute sur les plateformes pour monter.</string>
 	<key>tutorial.scoreHint</key>

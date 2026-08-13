@@ -112,6 +112,8 @@
 	<string>Samahani! Kipengele cha kusoma kwa sauti bado hakipatikani katika lugha yako.</string>
 	<key>game.intro.start</key>
 	<string>Anza kiwango</string>
+	<key>game.intro.startTutorial</key>
+	<string>Anza mafunzo</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Zidisha %@%@ kwa nambari kutoka 1 hadi 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Gusa kubadilisha mhusika wako; bonyeza na ushikilie kwa sekunde mbili kuanza tena kwenye skrini ya kukaribisha.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Chagua %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld zaidi</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Siku ya 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Hujui jibu? Gusa swali ili kuliona.</string>
+	<key>tutorial.button</key>
+	<string>Mafunzo</string>
 	<key>tutorial.complete</key>
 	<string>Hongera! Mafunzo yamekamilika. Sasa lenga rekodi bora!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Epuka −1. Inakugharimu kikombe kimoja.</string>
 	<key>tutorial.move</key>
 	<string>Sogeza kifaa chako kwenda kushoto na kulia. Unaweza pia kupita kwenye pande za skrini.</string>
+	<key>tutorial.notice.message</key>
+	<string>Tayari unacheza kiwango hiki. Maliza au anza mchezo mpya, kisha gusa kofia tena ili kucheza mafunzo.</string>
 	<key>tutorial.platforms</key>
 	<string>Rukia majukwaa ili kwenda juu.</string>
 	<key>tutorial.scoreHint</key>

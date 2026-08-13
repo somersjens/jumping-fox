@@ -847,10 +847,9 @@ final class AppAudio: NSObject, ObservableObject {
         bestVoicesByLanguage()["en"] ?? AVSpeechSynthesisVoice(language: "en-US")
     }
 
-    /// Picks the clearest installed voice for each supported language. Apple
-    /// identifies Norwegian Bokmål as `nb`, while the app uses the broader
-    /// language code `no`, so that one is mapped explicitly. Dutch is pinned
-    /// to the Netherlands locale so a higher-quality Belgian voice cannot win.
+    /// Picks the clearest installed voice for each supported language. Dutch is
+    /// pinned to the Netherlands locale so a higher-quality Belgian voice cannot
+    /// win.
     private static func bestVoicesByLanguage() -> [String: AVSpeechSynthesisVoice] {
         let novelty: Set<String> = ["Albert", "Bad News", "Bahh", "Bells", "Boing",
                                     "Bubbles", "Cellos", "Wobble", "Fred", "Good News",
@@ -871,9 +870,8 @@ final class AppAudio: NSObject, ObservableObject {
             .filter { !novelty.contains($0.name) }
         var result: [String: AVSpeechSynthesisVoice] = [:]
         for languageCode in SpokenMath.lexicons.keys {
-            let voiceCode = languageCode == "no" ? "nb" : languageCode
             let candidates = installed.filter {
-                $0.language.split(separator: "-").first.map(String.init) == voiceCode
+                $0.language.split(separator: "-").first.map(String.init) == languageCode
             }
             let localeCandidates: [AVSpeechSynthesisVoice]
             if languageCode == "nl" {

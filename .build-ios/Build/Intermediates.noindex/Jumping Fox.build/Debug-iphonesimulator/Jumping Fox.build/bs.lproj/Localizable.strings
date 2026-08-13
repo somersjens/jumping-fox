@@ -112,6 +112,8 @@
 	<string>Žao nam je! Funkcija čitanja naglas još nije dostupna na tvom jeziku.</string>
 	<key>game.intro.start</key>
 	<string>Pokreni nivo</string>
+	<key>game.intro.startTutorial</key>
+	<string>Pokreni uputstvo</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Pomnoži %@%@ brojem od 1 do 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Dodirni za promjenu lika; pritisni i drži dvije sekunde za povratak na ekran dobrodošlice.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Izaberi %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>još %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. dan</string>
 	<key>tutorial.answerHint</key>
 	<string>Ne znaš odgovor? Dodirni zadatak da ga vidiš.</string>
+	<key>tutorial.button</key>
+	<string>Uputstvo</string>
 	<key>tutorial.complete</key>
 	<string>Bravo! Uputstvo je završeno. Sada obori najbolji rezultat!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Izbjegni −1. Košta te jednog trofeja.</string>
 	<key>tutorial.move</key>
 	<string>Pomjeraj uređaj da ideš lijevo i desno. Možeš proći i kroz rubove ekrana.</string>
+	<key>tutorial.notice.message</key>
+	<string>Već igraš ovaj nivo. Završi ga ili počni novu igru, pa opet dodirni kapu za uputstvo.</string>
 	<key>tutorial.platforms</key>
 	<string>Skači po platformama da ideš gore.</string>
 	<key>tutorial.scoreHint</key>

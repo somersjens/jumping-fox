@@ -112,6 +112,8 @@
 	<string>Xin lỗi! Tính năng đọc thành tiếng chưa hỗ trợ ngôn ngữ của bạn.</string>
 	<key>game.intro.start</key>
 	<string>Bắt đầu màn</string>
+	<key>game.intro.startTutorial</key>
+	<string>Bắt đầu hướng dẫn</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Nhân %@%@ với một số từ 1 đến 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Chạm để đổi nhân vật; nhấn giữ hai giây để bắt đầu lại từ màn hình chào mừng.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Chọn %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>thêm %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 TỐI ĐA</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Ngày 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Không biết đáp án? Chạm vào phép tính để xem.</string>
+	<key>tutorial.button</key>
+	<string>Hướng dẫn</string>
 	<key>tutorial.complete</key>
 	<string>Giỏi lắm! Bạn đã hoàn thành hướng dẫn. Giờ hãy lập điểm cao nhé!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Tránh −1. Nó làm bạn mất một chiếc cúp.</string>
 	<key>tutorial.move</key>
 	<string>Nghiêng thiết bị để di chuyển sang trái và phải. Bạn cũng có thể đi xuyên qua hai bên màn hình.</string>
+	<key>tutorial.notice.message</key>
+	<string>Bạn đang chơi màn này. Hãy chơi xong hoặc bắt đầu trò mới, rồi bấm lại vào mũ để xem hướng dẫn.</string>
 	<key>tutorial.platforms</key>
 	<string>Nhảy lên các bệ để đi lên.</string>
 	<key>tutorial.scoreHint</key>

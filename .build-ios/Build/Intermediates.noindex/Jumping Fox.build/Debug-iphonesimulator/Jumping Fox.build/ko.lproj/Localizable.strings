@@ -112,6 +112,8 @@
 	<string>죄송해요! 소리 내어 읽기 기능은 아직 내 언어로 제공되지 않아요.</string>
 	<key>game.intro.start</key>
 	<string>레벨 시작</string>
+	<key>game.intro.startTutorial</key>
+	<string>튜토리얼 시작</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@에 1부터 12까지의 수를 곱해요.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>누르면 캐릭터를 바꿔요. 2초 동안 길게 누르면 시작 화면부터 다시 해요.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ 선택</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld개 더</string>
 	<key>menu.maxScore</key>
 	<string>최대 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1일 차</string>
 	<key>tutorial.answerHint</key>
 	<string>답을 모르겠나요? 문제를 누르면 답을 볼 수 있어요.</string>
+	<key>tutorial.button</key>
+	<string>튜토리얼</string>
 	<key>tutorial.complete</key>
 	<string>잘했어요! 튜토리얼이 끝났어요. 이제 최고 점수에 도전해요!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1을 피하세요. 트로피 1개를 잃어요.</string>
 	<key>tutorial.move</key>
 	<string>기기를 움직여 왼쪽과 오른쪽으로 가요. 화면 양옆을 통과할 수도 있어요.</string>
+	<key>tutorial.notice.message</key>
+	<string>이 레벨을 이미 플레이 중이에요. 끝내거나 새 게임을 시작한 뒤, 모자를 다시 눌러 튜토리얼을 해 보세요.</string>
 	<key>tutorial.platforms</key>
 	<string>발판 위로 점프해 위로 올라가요.</string>
 	<key>tutorial.scoreHint</key>

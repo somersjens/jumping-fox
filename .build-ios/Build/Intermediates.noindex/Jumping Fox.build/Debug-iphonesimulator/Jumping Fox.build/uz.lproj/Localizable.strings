@@ -112,6 +112,8 @@
 	<string>Kechirasiz! Ovoz chiqarib o‘qish funksiyasi hali sizning tilingizda mavjud emas.</string>
 	<key>game.intro.start</key>
 	<string>Bosqichni boshlash</string>
+	<key>game.intro.startTutorial</key>
+	<string>O‘rgatishni boshlash</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ni 1 dan 12 gacha bo‘lgan songa ko‘paytir.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Qahramonni almashtirish uchun teg; salomlashuv ekranidan qayta boshlash uchun ikki soniya bosib tur.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ni tanla</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>yana %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1-kun</string>
 	<key>tutorial.answerHint</key>
 	<string>Javobni bilmaysanmi? Ko‘rish uchun misolga teg.</string>
+	<key>tutorial.button</key>
+	<string>O‘rgatish</string>
 	<key>tutorial.complete</key>
 	<string>Barakalla! Qo‘llanma tugadi. Endi eng yuqori natijaga intil!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 dan qoch. U bitta sovriningni olib qo‘yadi.</string>
 	<key>tutorial.move</key>
 	<string>Chapga va o‘ngga yurish uchun qurilmangni qimirlat. Ekranning chetlaridan ham o‘tishing mumkin.</string>
+	<key>tutorial.notice.message</key>
+	<string>Sen bu bosqichni allaqachon o‘ynayapsan. Uni tugat yoki yangi o‘yin boshla, so‘ng o‘rgatish uchun qalpoqchani yana bos.</string>
 	<key>tutorial.platforms</key>
 	<string>Yuqoriga chiqish uchun platformalarga sakra.</string>
 	<key>tutorial.scoreHint</key>

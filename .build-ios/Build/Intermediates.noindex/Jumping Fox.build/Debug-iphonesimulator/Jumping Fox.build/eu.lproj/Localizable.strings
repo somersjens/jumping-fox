@@ -112,6 +112,8 @@
 	<string>Barkatu! Ozen irakurtzeko funtzioa oraindik ez dago erabilgarri zure hizkuntzan.</string>
 	<key>game.intro.start</key>
 	<string>Hasi maila</string>
+	<key>game.intro.startTutorial</key>
+	<string>Hasi tutoriala</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Biderkatu %@%@ 1etik 12ra bitarteko zenbaki batez.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Sakatu pertsonaia aldatzeko; eduki sakatuta bi segundoz ongietorri-pantailatik berriro hasteko.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Aukeratu %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld gehiago</string>
 	<key>menu.maxScore</key>
 	<string>30 GEH.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. eguna</string>
 	<key>tutorial.answerHint</key>
 	<string>Ez dakizu erantzuna? Sakatu ariketa ikusteko.</string>
+	<key>tutorial.button</key>
+	<string>Tutoriala</string>
 	<key>tutorial.complete</key>
 	<string>Oso ondo! Tutoriala amaitu duzu. Orain, lortu puntuazio onena!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Saihestu −1. Garaikur bat kentzen dizu.</string>
 	<key>tutorial.move</key>
 	<string>Mugitu gailua ezkerrera eta eskuinera joateko. Pantailaren alboetatik ere pasa zaitezke.</string>
+	<key>tutorial.notice.message</key>
+	<string>Maila honetan jokatzen ari zara. Amaitu edo hasi joko berri bat; gero sakatu berriro txanoa tutoriala egiteko.</string>
 	<key>tutorial.platforms</key>
 	<string>Jauzi plataformen gainera gora egiteko.</string>
 	<key>tutorial.scoreHint</key>

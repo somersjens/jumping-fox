@@ -112,6 +112,8 @@
 	<string>מצטערים! תכונת ההקראה עדיין לא זמינה בשפה שלך.</string>
 	<key>game.intro.start</key>
 	<string>התחלת שלב</string>
+	<key>game.intro.startTutorial</key>
+	<string>להתחיל הדרכה</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>כפלו את %@%@ במספר מ־1 עד 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>הקישו כדי לשנות דמות; לחצו לחיצה ארוכה במשך שתי שניות כדי להתחיל מחדש במסך הפתיחה.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>בחרו %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>עוד %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 מקס׳</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>יום 1</string>
 	<key>tutorial.answerHint</key>
 	<string>לא יודעים את התשובה? הקישו על התרגיל כדי לראות אותה.</string>
+	<key>tutorial.button</key>
+	<string>הדרכה</string>
 	<key>tutorial.complete</key>
 	<string>כל הכבוד! סיימתם את ההדרכה. עכשיו נסו לשבור את השיא!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>היזהרו מ־−1. הוא עולה לכם בגביע אחד.</string>
 	<key>tutorial.move</key>
 	<string>הזיזו את המכשיר כדי לנוע ימינה ושמאלה. אפשר גם לעבור דרך צדי המסך.</string>
+	<key>tutorial.notice.message</key>
+	<string>כבר התחלתם את השלב הזה. סיימו אותו או התחילו משחק חדש, ואז לחצו שוב על הכובע כדי לשחק בהדרכה.</string>
 	<key>tutorial.platforms</key>
 	<string>קפצו על המשטחים כדי לעלות.</string>
 	<key>tutorial.scoreHint</key>

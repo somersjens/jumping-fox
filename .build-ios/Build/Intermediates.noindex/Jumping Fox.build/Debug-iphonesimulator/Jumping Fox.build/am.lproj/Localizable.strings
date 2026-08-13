@@ -112,6 +112,8 @@
 	<string>ይቅርታ! የድምፅ ንባብ ባህሪው በቋንቋዎ ገና አይገኝም።</string>
 	<key>game.intro.start</key>
 	<string>ደረጃውን ጀምር</string>
+	<key>game.intro.startTutorial</key>
+	<string>መማሪያውን ጀምር</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ን ከ1 እስከ 12 ባለ ቁጥር አባዛ።</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ገጸ ባሕሪህን ለመቀየር ንካ፤ ከመቀበያ ማያው እንደገና ለመጀመር ለሁለት ሰከንድ ተጭነህ ያዝ።</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ምረጥ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ተጨማሪ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ከፍተኛ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ቀን 1</string>
 	<key>tutorial.answerHint</key>
 	<string>መልሱን አታውቅም? ለማየት ጥያቄውን ንካ።</string>
+	<key>tutorial.button</key>
+	<string>መማሪያ</string>
 	<key>tutorial.complete</key>
 	<string>ጎበዝ! መማሪያውን ጨርሰሃል። አሁን ከፍተኛ ውጤት አምጣ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1ን ራቅ። አንድ ዋንጫ ያሳጣሃል።</string>
 	<key>tutorial.move</key>
 	<string>ወደ ግራና ቀኝ ለመሄድ መሣሪያህን አንቀሳቅስ። ከማያው ጎኖች አልፈህም መሄድ ትችላለህ።</string>
+	<key>tutorial.notice.message</key>
+	<string>ይህን ደረጃ እየተጫወትክ ነው። ጨርሰው ወይም አዲስ ጨዋታ ጀምር፣ ከዚያ መማሪያውን ለመጫወት ኮፍያውን እንደገና ንካ።</string>
 	<key>tutorial.platforms</key>
 	<string>ወደ ላይ ለመውጣት መድረኮቹ ላይ ዝለል።</string>
 	<key>tutorial.scoreHint</key>

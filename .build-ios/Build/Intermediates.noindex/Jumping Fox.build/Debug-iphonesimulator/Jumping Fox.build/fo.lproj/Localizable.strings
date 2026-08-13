@@ -112,6 +112,8 @@
 	<string>Orsaka! Upplestrarfunksjónin er ikki tøk á tínum máli enn.</string>
 	<key>game.intro.start</key>
 	<string>Byrja stig</string>
+	<key>game.intro.startTutorial</key>
+	<string>Byrja vegleiðing</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Falda %@%@ við einum tali frá 1 til 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Trýst fyri at skifta figur; halt inni í tvey sekund fyri at byrja av nýggjum á vælkomstskíggjanum.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vel %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld afturat</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dagur 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Veitst tú ikki svarið? Trýst á roknistykkið fyri at síggja tað.</string>
+	<key>tutorial.button</key>
+	<string>Vegleiðing</string>
 	<key>tutorial.complete</key>
 	<string>Væl gjørt! Vegleiðingin er liðug. Far nú eftir metinum!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Halt teg frá −1. Tað kostar tær eitt steyp.</string>
 	<key>tutorial.move</key>
 	<string>Flyt tólið fyri at fara til vinstru og høgru. Tú kanst eisini fara gjøgnum síðurnar á skíggjanum.</string>
+	<key>tutorial.notice.message</key>
+	<string>Tú spælir longu hetta stigið. Ger tað liðugt ella byrja eitt nýtt spæl, og trýst so á húgvuna aftur fyri at spæla vegleiðingina.</string>
 	<key>tutorial.platforms</key>
 	<string>Leyp á pallarnar fyri at koma uppeftir.</string>
 	<key>tutorial.scoreHint</key>

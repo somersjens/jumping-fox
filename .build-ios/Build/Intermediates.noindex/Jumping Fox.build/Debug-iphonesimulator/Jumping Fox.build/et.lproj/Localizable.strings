@@ -112,6 +112,8 @@
 	<string>Vabandust! Ettelugemise funktsioon ei ole sinu keeles veel saadaval.</string>
 	<key>game.intro.start</key>
 	<string>Alusta taset</string>
+	<key>game.intro.startTutorial</key>
+	<string>Alusta õpetust</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Korruta %@%@ arvuga 1 kuni 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tegelase muutmiseks puuduta; tervitusekraanilt uuesti alustamiseks hoia kaks sekundit all.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vali %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>veel %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. päev</string>
 	<key>tutorial.answerHint</key>
 	<string>Ei tea vastust? Selle nägemiseks puuduta ülesannet.</string>
+	<key>tutorial.button</key>
+	<string>Õpetus</string>
 	<key>tutorial.complete</key>
 	<string>Tubli! Õpetus on läbi. Nüüd püüa rekordit!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Väldi −1. See maksab ühe karika.</string>
 	<key>tutorial.move</key>
 	<string>Liiguta seadet, et minna vasakule ja paremale. Saad liikuda ka läbi ekraani külgede.</string>
+	<key>tutorial.notice.message</key>
+	<string>Sa juba mängid seda taset. Lõpeta see või alusta uut mängu, siis vajuta õpetuse alustamiseks uuesti mütsile.</string>
 	<key>tutorial.platforms</key>
 	<string>Üles liikumiseks hüppa platvormidele.</string>
 	<key>tutorial.scoreHint</key>

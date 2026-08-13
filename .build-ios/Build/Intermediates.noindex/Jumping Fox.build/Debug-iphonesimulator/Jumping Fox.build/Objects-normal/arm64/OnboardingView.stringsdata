@@ -7,7 +7,7 @@
         "key": "common.back",
         "location": {
           "startingColumn": 34,
-          "startingLine": 90
+          "startingLine": 98
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "name.placeholder",
         "location": {
           "startingColumn": 65,
-          "startingLine": 116
+          "startingLine": 124
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "common.continue",
         "location": {
           "startingColumn": 20,
-          "startingLine": 134
+          "startingLine": 142
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "onboarding.name.subtitle",
         "location": {
           "startingColumn": 22,
-          "startingLine": 110
+          "startingLine": 118
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "onboarding.name.title",
         "location": {
           "startingColumn": 29,
-          "startingLine": 106
+          "startingLine": 114
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "onboarding.subject.subtitle",
         "location": {
           "startingColumn": 18,
-          "startingLine": 147
+          "startingLine": 155
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "onboarding.subject.title",
         "location": {
           "startingColumn": 25,
-          "startingLine": 143
+          "startingLine": 151
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "onboarding.level.beginner.title",
         "location": {
           "startingColumn": 15,
-          "startingLine": 242
+          "startingLine": 250
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "onboarding.level.intermediate.title",
         "location": {
           "startingColumn": 15,
-          "startingLine": 243
+          "startingLine": 251
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "onboarding.level.advanced.title",
         "location": {
           "startingColumn": 15,
-          "startingLine": 244
+          "startingLine": 252
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "onboarding.level.beginner.subtitle",
         "location": {
           "startingColumn": 15,
-          "startingLine": 247
+          "startingLine": 255
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "onboarding.level.intermediate.subtitle",
         "location": {
           "startingColumn": 15,
-          "startingLine": 248
+          "startingLine": 256
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "onboarding.level.advanced.subtitle",
         "location": {
           "startingColumn": 15,
-          "startingLine": 249
+          "startingLine": 257
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "onboarding.level.subtitle %@",
         "location": {
           "startingColumn": 18,
-          "startingLine": 191
+          "startingLine": 199
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "onboarding.level.title",
         "location": {
           "startingColumn": 25,
-          "startingLine": 187
+          "startingLine": 195
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "onboarding.level.thisTopic",
         "location": {
           "startingColumn": 95,
-          "startingLine": 191
+          "startingLine": 199
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "onboarding.level.beginner.title",
         "location": {
           "startingColumn": 30,
-          "startingLine": 199
+          "startingLine": 207
         }
       },
       {
@@ -143,7 +143,7 @@
         "key": "onboarding.level.beginner.subtitle",
         "location": {
           "startingColumn": 33,
-          "startingLine": 200
+          "startingLine": 208
         }
       },
       {
@@ -151,7 +151,7 @@
         "key": "onboarding.level.intermediate.title",
         "location": {
           "startingColumn": 30,
-          "startingLine": 211
+          "startingLine": 219
         }
       },
       {
@@ -159,7 +159,7 @@
         "key": "onboarding.level.intermediate.subtitle",
         "location": {
           "startingColumn": 33,
-          "startingLine": 212
+          "startingLine": 220
         }
       },
       {
@@ -167,7 +167,7 @@
         "key": "onboarding.level.advanced.title",
         "location": {
           "startingColumn": 30,
-          "startingLine": 223
+          "startingLine": 231
         }
       },
       {
@@ -175,7 +175,7 @@
         "key": "onboarding.level.advanced.subtitle",
         "location": {
           "startingColumn": 33,
-          "startingLine": 224
+          "startingLine": 232
         }
       },
       {
@@ -183,7 +183,7 @@
         "key": "character.pickerTitle",
         "location": {
           "startingColumn": 30,
-          "startingLine": 490
+          "startingLine": 501
         }
       }
     ]

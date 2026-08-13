@@ -112,6 +112,8 @@
 	<string>Beklager! Opplesingsfunksjonen er ennå ikke tilgjengelig på språket ditt.</string>
 	<key>game.intro.start</key>
 	<string>Start nivå</string>
+	<key>game.intro.startTutorial</key>
+	<string>Start veiledning</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Gang %@%@ med et tall fra 1 til 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Trykk for å bytte figur. Hold inne i to sekunder for å starte på nytt fra velkomstskjermen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Velg %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld til</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dag 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Vet du ikke svaret? Trykk på oppgaven for å se det.</string>
+	<key>tutorial.button</key>
+	<string>Veiledning</string>
 	<key>tutorial.complete</key>
 	<string>Godt gjort! Opplæringen er ferdig. Gå for rekorden!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Unngå −1. Den koster deg ett trofé.</string>
 	<key>tutorial.move</key>
 	<string>Beveg enheten mot venstre og høyre. Du kan også gå gjennom sidene av skjermen.</string>
+	<key>tutorial.notice.message</key>
+	<string>Du spiller allerede dette nivået. Fullfør det eller start et nytt spill, og trykk så på lua igjen for å spille veiledningen.</string>
 	<key>tutorial.platforms</key>
 	<string>Hopp på plattformene for å komme oppover.</string>
 	<key>tutorial.scoreHint</key>

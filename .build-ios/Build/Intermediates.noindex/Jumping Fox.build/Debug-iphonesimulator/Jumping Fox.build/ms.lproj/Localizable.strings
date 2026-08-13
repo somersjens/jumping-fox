@@ -112,6 +112,8 @@
 	<string>Maaf! Ciri baca kuat masih belum tersedia dalam bahasa anda.</string>
 	<key>game.intro.start</key>
 	<string>Mula tahap</string>
+	<key>game.intro.startTutorial</key>
+	<string>Mula tutorial</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Darab %@%@ dengan nombor dari 1 hingga 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Ketik untuk tukar watak; tekan dan tahan dua saat untuk mula semula di skrin selamat datang.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Pilih %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld lagi</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Hari 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Tak tahu jawapan? Ketik soalan untuk melihatnya.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>Syabas! Tutorial selesai. Sekarang cuba dapatkan skor tertinggi!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Elakkan −1. Ia menyebabkan kamu hilang satu trofi.</string>
 	<key>tutorial.move</key>
 	<string>Gerakkan peranti ke kiri dan kanan. Kamu juga boleh bergerak melalui sisi skrin.</string>
+	<key>tutorial.notice.message</key>
+	<string>Kamu sudah bermain tahap ini. Habiskan atau mulakan permainan baharu, kemudian tekan topi lagi untuk bermain tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Lompat pada platform untuk naik.</string>
 	<key>tutorial.scoreHint</key>

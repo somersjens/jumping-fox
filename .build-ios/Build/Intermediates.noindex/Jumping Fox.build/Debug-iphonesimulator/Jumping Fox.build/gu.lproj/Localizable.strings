@@ -112,6 +112,8 @@
 	<string>માફ કરશો! મોટેથી વાંચવાની સુવિધા હજી તમારી ભાષામાં ઉપલબ્ધ નથી.</string>
 	<key>game.intro.start</key>
 	<string>લેવલ શરૂ કરો</string>
+	<key>game.intro.startTutorial</key>
+	<string>ટ્યુટોરિયલ શરૂ કરો</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ને 1 થી 12ના કોઈ અંકથી ગુણો.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>પાત્ર બદલવા ટેપ કરો; સ્વાગત સ્ક્રીનથી ફરી શરૂ કરવા બે સેકન્ડ દબાવી રાખો.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ પસંદ કરો</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>હજુ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>દિવસ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>જવાબ નથી આવડતો? જવાબ જોવા દાખલા પર ટેપ કરો.</string>
+	<key>tutorial.button</key>
+	<string>ટ્યુટોરિયલ</string>
 	<key>tutorial.complete</key>
 	<string>શાબાશ! માર્ગદર્શન પૂરું થયું. હવે ઉચ્ચ સ્કોર બનાવો!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 થી બચો. તે એક ટ્રોફી ઘટાડે છે.</string>
 	<key>tutorial.move</key>
 	<string>ડાબે-જમણે જવા ઉપકરણ હલાવો. તમે સ્ક્રીનની બાજુઓમાંથી પણ પસાર થઈ શકો.</string>
+	<key>tutorial.notice.message</key>
+	<string>તમે આ લેવલ રમી રહ્યા છો. તેને પૂરું કરો અથવા નવી રમત શરૂ કરો, પછી ટ્યુટોરિયલ માટે ટોપી ફરી ટૅપ કરો.</string>
 	<key>tutorial.platforms</key>
 	<string>ઉપર જવા પ્લેટફોર્મ પર કૂદો.</string>
 	<key>tutorial.scoreHint</key>

@@ -736,6 +736,13 @@ final class GameScene: SKScene {
     private var tutorialHeartCount = 0
     private var tutorialNextPickupAt: TimeInterval = 0
     private var tutorialAwaitingQuestionTap = false
+    /// The reveal lesson initially remains live, so the player can connect the
+    /// instruction with the moving game. If it is missed, wait for a clean
+    /// landing before holding the field — never freeze a squashed mascot
+    /// halfway through a jump.
+    private var tutorialQuestionTapReminderAt: TimeInterval?
+    private var tutorialQuestionTapFreezePending = false
+    private let tutorialQuestionTapReminderDelay: TimeInterval = 5
     /// Step 7 may start while the answer tapped in step 6 is still on screen.
     /// Keep that answer fully active until it is landed on; the heart lesson
     /// must not turn it into an inert platform.
@@ -1148,6 +1155,9 @@ final class GameScene: SKScene {
         tutorialHeartCount = 0
         tutorialNextPickupAt = 0
         tutorialAwaitingQuestionTap = tutorial.isActive && tutorial.currentStep == 6
+        tutorialQuestionTapReminderAt = nil
+        tutorialQuestionTapFreezePending = false
+        tutorial.setQuestionTapReminderVisible(false)
         tutorialRevealedAnswerIsActive = false
         awaitingCorrectAfterTutorialStar = false
         setTriplerVisual(false)
@@ -2143,6 +2153,13 @@ final class GameScene: SKScene {
         }
 
         updateHorizontal(dt: dt)
+        if tutorialAwaitingQuestionTap, tutorial.isActive, tutorial.currentStep == 6 {
+            if tutorialQuestionTapReminderAt == nil {
+                tutorialQuestionTapReminderAt = currentTime + tutorialQuestionTapReminderDelay
+            } else if let reminderAt = tutorialQuestionTapReminderAt, currentTime >= reminderAt {
+                tutorialQuestionTapFreezePending = true
+            }
+        }
         if tutorial.isActive && tutorial.currentStep == 1 {
             tutorialMovedLeft = tutorialMovedLeft || player.position.x < tutorialStartX - 45
             tutorialMovedRight = tutorialMovedRight || player.position.x > tutorialStartX + 45
@@ -2391,6 +2408,11 @@ final class GameScene: SKScene {
             let dx = abs(player.position.x - platform.position.x)
             guard dx < halfWidth + 6 else { continue }
 
+            if tutorialQuestionTapFreezePending {
+                holdTutorialForQuestionTap(on: platform, top: top)
+                return
+            }
+
             velocityY = bounceVelocity
             squashTimer = 0.14
             bounceSpring()
@@ -2423,6 +2445,24 @@ final class GameScene: SKScene {
             }
             return
         }
+    }
+
+    /// Holds the reminder at the first ordinary platform contact after its
+    /// timer elapsed. Centre and fully restore the mascot so the field reads
+    /// as an intentional teaching moment, rather than a stalled animation.
+    private func holdTutorialForQuestionTap(on platform: GamePlatform, top: CGFloat) {
+        tutorialQuestionTapFreezePending = false
+        tutorialQuestionTapReminderAt = nil
+        player.position = CGPoint(x: platform.position.x, y: top + playerHalfHeight)
+        velocityX = 0
+        velocityY = 0
+        targetX = nil
+        squashTimer = 0
+        playerSprite.xScale = 1
+        playerSprite.yScale = 1
+        playerSprite.zRotation = 0
+        tutorial.setQuestionTapReminderVisible(true)
+        isFrozen = true
     }
 
     /// Flow: register once → checkmark INSIDE the block → block stays an
@@ -2626,6 +2666,10 @@ final class GameScene: SKScene {
         guard tutorial.isActive, tutorial.currentStep == 6,
               tutorialAwaitingQuestionTap else { return }
         tutorialAwaitingQuestionTap = false
+        tutorialQuestionTapReminderAt = nil
+        tutorialQuestionTapFreezePending = false
+        tutorial.setQuestionTapReminderVisible(false)
+        isFrozen = false
         tutorialRevealedAnswerIsActive = true
         platforms.first { $0.isActiveAnswer && $0.value == state.correctAnswer }?
             .styleAsActiveAnswer(theme: theme, isCorrect: true, helperEnabled: true)
@@ -2644,6 +2688,9 @@ final class GameScene: SKScene {
         }
         if tutorial.currentStep == 6 {
             tutorialAwaitingQuestionTap = true
+            tutorialQuestionTapReminderAt = nil
+            tutorialQuestionTapFreezePending = false
+            tutorial.setQuestionTapReminderVisible(false)
         }
         if step == 7 {
             tutorialRevealedAnswerIsActive = false

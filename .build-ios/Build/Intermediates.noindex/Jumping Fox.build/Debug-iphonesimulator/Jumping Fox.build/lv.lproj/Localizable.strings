@@ -112,6 +112,8 @@
 	<string>Atvaino! Priekšā lasīšanas funkcija tavā valodā vēl nav pieejama.</string>
 	<key>game.intro.start</key>
 	<string>Sākt līmeni</string>
+	<key>game.intro.startTutorial</key>
+	<string>Sākt pamācību</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Reizini %@%@ ar skaitli no 1 līdz 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Pieskaries, lai mainītu tēlu; turiet nospiestu divas sekundes, lai sāktu no jauna sveiciena ekrānā.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Izvēlies %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>vēl %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. diena</string>
 	<key>tutorial.answerHint</key>
 	<string>Nezini atbildi? Pieskaries uzdevumam, lai to redzētu.</string>
+	<key>tutorial.button</key>
+	<string>Pamācība</string>
 	<key>tutorial.complete</key>
 	<string>Labi padarīts! Pamācība pabeigta. Tagad tiecies pēc rekorda!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Izvairies no −1. Tas maksā vienu trofeju.</string>
 	<key>tutorial.move</key>
 	<string>Kustini ierīci, lai pārvietotos pa kreisi un pa labi. Vari arī pāriet caur ekrāna malām.</string>
+	<key>tutorial.notice.message</key>
+	<string>Tu jau spēlē šo līmeni. Pabeidz to vai sāc jaunu spēli, tad vēlreiz pieskaries cepurei, lai spēlētu pamācību.</string>
 	<key>tutorial.platforms</key>
 	<string>Lec uz platformām, lai tiktu augstāk.</string>
 	<key>tutorial.scoreHint</key>

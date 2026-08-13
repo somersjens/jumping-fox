@@ -112,6 +112,8 @@
 	<string>Anteeksi! Ääneenlukutoiminto ei ole vielä saatavilla omalla kielelläsi.</string>
 	<key>game.intro.start</key>
 	<string>Aloita taso</string>
+	<key>game.intro.startTutorial</key>
+	<string>Aloita opastus</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Kerro %@%@ luvulla 1–12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Vaihda hahmoa napauttamalla. Aloita tervetulonäkymästä alusta pitämällä painettuna kaksi sekuntia.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Valitse %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>vielä %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Päivä 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Etkö tiedä vastausta? Näet sen napauttamalla laskua.</string>
+	<key>tutorial.button</key>
+	<string>Opastus</string>
 	<key>tutorial.complete</key>
 	<string>Hienoa! Opastus on valmis. Tavoittele nyt ennätystä!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Vältä −1:tä. Se vie yhden pokaalin.</string>
 	<key>tutorial.move</key>
 	<string>Liikuta laitettasi vasemmalle ja oikealle. Voit myös kulkea näytön reunojen kautta.</string>
+	<key>tutorial.notice.message</key>
+	<string>Pelaat jo tätä tasoa. Pelaa se loppuun tai aloita uusi peli ja napauta sitten hattua uudelleen aloittaaksesi opastuksen.</string>
 	<key>tutorial.platforms</key>
 	<string>Hyppää tasanteille päästäksesi ylöspäin.</string>
 	<key>tutorial.scoreHint</key>

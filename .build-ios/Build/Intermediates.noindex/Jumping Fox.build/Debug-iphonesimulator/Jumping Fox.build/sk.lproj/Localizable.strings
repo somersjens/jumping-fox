@@ -112,6 +112,8 @@
 	<string>Prepáč! Funkcia čítania nahlas ešte nie je dostupná v tvojom jazyku.</string>
 	<key>game.intro.start</key>
 	<string>Spustiť úroveň</string>
+	<key>game.intro.startTutorial</key>
+	<string>Spustiť návod</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Vynásob %@%@ číslom od 1 do 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Ťuknutím zmeníš postavičku; podrž dve sekundy a začneš znova na uvítacej obrazovke.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Vyber %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ešte %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. deň</string>
 	<key>tutorial.answerHint</key>
 	<string>Nevieš odpoveď? Ťukni na príklad a zobrazí sa.</string>
+	<key>tutorial.button</key>
+	<string>Návod</string>
 	<key>tutorial.complete</key>
 	<string>Výborne! Návod je hotový. Teraz skús prekonať najlepšie skóre!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Vyhni sa −1. Prídeš o jednu trofej.</string>
 	<key>tutorial.move</key>
 	<string>Nakláňaj zariadenie doľava a doprava. Môžeš prejsť aj cez okraje obrazovky.</string>
+	<key>tutorial.notice.message</key>
+	<string>Túto úroveň už hráš. Dokonči ju alebo začni novú hru a potom znova ťukni na čiapku, aby si spustil návod.</string>
 	<key>tutorial.platforms</key>
 	<string>Skáč na plošiny a dostaň sa vyššie.</string>
 	<key>tutorial.scoreHint</key>

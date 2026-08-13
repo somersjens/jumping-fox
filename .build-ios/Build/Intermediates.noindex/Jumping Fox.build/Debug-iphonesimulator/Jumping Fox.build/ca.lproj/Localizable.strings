@@ -112,6 +112,8 @@
 	<string>Ho sentim! La funció de lectura en veu alta encara no està disponible en el teu idioma.</string>
 	<key>game.intro.start</key>
 	<string>Comença el nivell</string>
+	<key>game.intro.startTutorial</key>
+	<string>Inicia el tutorial</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multiplica %@%@ per un nombre de l’1 al 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Toca per canviar de personatge; mantén premut durant dos segons per tornar a començar a la pantalla de benvinguda.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Tria %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld més</string>
 	<key>menu.maxScore</key>
 	<string>30 MÀX.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dia 1</string>
 	<key>tutorial.answerHint</key>
 	<string>No saps la resposta? Toca l’operació per veure-la.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>Molt bé! Has completat el tutorial. Ara ves a buscar el rècord!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Evita el −1. Et costa un trofeu.</string>
 	<key>tutorial.move</key>
 	<string>Mou el dispositiu per anar a esquerra i dreta. També pots travessar els costats de la pantalla.</string>
+	<key>tutorial.notice.message</key>
+	<string>Ja estàs jugant aquest nivell. Acaba’l o inicia una partida nova i torna a tocar la gorra per jugar el tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Salta sobre les plataformes per pujar.</string>
 	<key>tutorial.scoreHint</key>

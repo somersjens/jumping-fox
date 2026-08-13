@@ -7,7 +7,7 @@
         "key": "premium.feature.levels.title",
         "location": {
           "startingColumn": 33,
-          "startingLine": 205
+          "startingLine": 210
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "premium.feature.levels.subtitle",
         "location": {
           "startingColumn": 36,
-          "startingLine": 206
+          "startingLine": 211
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "premium.feature.animals.title",
         "location": {
           "startingColumn": 33,
-          "startingLine": 208
+          "startingLine": 213
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "premium.feature.animals.subtitle",
         "location": {
           "startingColumn": 36,
-          "startingLine": 209
+          "startingLine": 214
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "premium.feature.noAds.title",
         "location": {
           "startingColumn": 33,
-          "startingLine": 211
+          "startingLine": 216
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "premium.feature.noAds.subtitle",
         "location": {
           "startingColumn": 36,
-          "startingLine": 212
+          "startingLine": 217
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "common.done",
         "location": {
           "startingColumn": 22,
-          "startingLine": 338
+          "startingLine": 343
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "premium.oneTime",
         "location": {
           "startingColumn": 22,
-          "startingLine": 370
+          "startingLine": 375
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "premium.restore",
         "location": {
           "startingColumn": 24,
-          "startingLine": 374
+          "startingLine": 379
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "premium.unlockWithPrice %@",
         "location": {
           "startingColumn": 22,
-          "startingLine": 392
+          "startingLine": 397
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "premium.unlock",
         "location": {
           "startingColumn": 18,
-          "startingLine": 394
+          "startingLine": 399
         }
       }
     ]

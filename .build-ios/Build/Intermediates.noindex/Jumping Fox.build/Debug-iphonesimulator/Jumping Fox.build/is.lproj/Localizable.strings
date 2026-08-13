@@ -112,6 +112,8 @@
 	<string>Fyrirgefðu! Upplestraraðgerðin er ekki enn í boði á þínu tungumáli.</string>
 	<key>game.intro.start</key>
 	<string>Byrja borð</string>
+	<key>game.intro.startTutorial</key>
+	<string>Byrja kennslu</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Margfaldaðu %@%@ með tölu frá 1 til 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Pikkaðu til að skipta um persónu; haltu inni í tvær sekúndur til að byrja aftur á móttökuskjánum.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Veldu %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld í viðbót</string>
 	<key>menu.maxScore</key>
 	<string>30 HÁM.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dagur 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Veistu ekki svarið? Pikkaðu á dæmið til að sjá það.</string>
+	<key>tutorial.button</key>
+	<string>Kennsla</string>
 	<key>tutorial.complete</key>
 	<string>Vel gert! Kennslunni er lokið. Reyndu nú að slá metið!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Forðastu −1. Það kostar einn bikar.</string>
 	<key>tutorial.move</key>
 	<string>Hreyfðu tækið til vinstri og hægri. Þú getur líka farið út um aðra hlið skjásins og inn um hina.</string>
+	<key>tutorial.notice.message</key>
+	<string>Þú ert þegar að spila þetta borð. Kláraðu það eða byrjaðu nýjan leik og ýttu svo aftur á hattinn til að spila kennsluna.</string>
 	<key>tutorial.platforms</key>
 	<string>Hoppaðu á pallana til að komast upp.</string>
 	<key>tutorial.scoreHint</key>

@@ -112,6 +112,8 @@
 	<string>ဝမ်းနည်းပါတယ်။ အသံဖြင့်ဖတ်ပြသည့်လုပ်ဆောင်ချက်ကို သင့်ဘာသာစကားဖြင့် မရရှိနိုင်သေးပါ။</string>
 	<key>game.intro.start</key>
 	<string>အဆင့်စရန်</string>
+	<key>game.intro.startTutorial</key>
+	<string>သင်ခန်းစာ စမယ်</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ကို 1 မှ 12 အတွင်း ဂဏန်းတစ်ခုနဲ့ မြှောက်ပါ။</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ဇာတ်ကောင်ပြောင်းရန် တို့ပါ။ ကြိုဆိုမျက်နှာပြင်ကနေ ပြန်စရန် ၂ စက္ကန့် ဖိထားပါ။</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ကို ရွေးပါ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>နောက်ထပ် %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>နေ့ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>အဖြေမသိဘူးလား။ ပုစ္ဆာကို တို့ပြီး အဖြေကြည့်ပါ။</string>
+	<key>tutorial.button</key>
+	<string>သင်ခန်းစာ</string>
 	<key>tutorial.complete</key>
 	<string>တော်တယ်! သင်ခန်းစာပြီးပြီ။ အခု အမြင့်ဆုံးအမှတ်ရအောင် ကစားပါ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ကို ရှောင်ပါ။ ဆုဖလားတစ်ခု လျော့မယ်။</string>
 	<key>tutorial.move</key>
 	<string>ဘယ်ညာသွားဖို့ စက်ကို လှုပ်ပါ။ မျက်နှာပြင်ဘေးကနေလည်း ဖြတ်သွားနိုင်တယ်။</string>
+	<key>tutorial.notice.message</key>
+	<string>ဒီအဆင့်ကို ကစားနေပြီးသားပါ။ ပြီးအောင်ကစားပါ၊ ဒါမှမဟုတ် ဂိမ်းအသစ်စပြီး သင်ခန်းစာကစားဖို့ ဦးထုပ်ကို ထပ်နှိပ်ပါ။</string>
 	<key>tutorial.platforms</key>
 	<string>အပေါ်တက်ဖို့ စင်တွေပေါ် ခုန်ပါ။</string>
 	<key>tutorial.scoreHint</key>

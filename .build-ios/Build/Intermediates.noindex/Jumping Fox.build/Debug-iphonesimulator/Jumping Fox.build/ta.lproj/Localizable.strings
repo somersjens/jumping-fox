@@ -112,6 +112,8 @@
 	<string>மன்னிக்கவும்! உரக்கப் படிக்கும் வசதி இன்னும் உங்கள் மொழியில் கிடைக்கவில்லை.</string>
 	<key>game.intro.start</key>
 	<string>நிலையைத் தொடங்கு</string>
+	<key>game.intro.startTutorial</key>
+	<string>பயிற்சி தொடங்கு</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ஐ 1 முதல் 12 வரை உள்ள எண்ணால் பெருக்கு.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>கதாபாத்திரத்தை மாற்றத் தட்டு; வரவேற்புத் திரையிலிருந்து மீண்டும் தொடங்க இரண்டு விநாடிகள் அழுத்திப் பிடி.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ஐத் தேர்ந்தெடு</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>இன்னும் %lld</string>
 	<key>menu.maxScore</key>
 	<string>அதிகபட்சம் 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>நாள் 1</string>
 	<key>tutorial.answerHint</key>
 	<string>விடை தெரியவில்லையா? கணக்கைத் தட்டிப் பார்.</string>
+	<key>tutorial.button</key>
+	<string>பயிற்சி</string>
 	<key>tutorial.complete</key>
 	<string>சிறப்பாக செய்தாய்! பயிற்சி முடிந்தது. இப்போது அதிகபட்ச மதிப்பெண்ணை நோக்கி செல்!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ஐத் தவிர். அது ஒரு கோப்பையைப் பறிக்கும்.</string>
 	<key>tutorial.move</key>
 	<string>இடப்புறமும் வலப்புறமும் செல்ல சாதனத்தை அசை. திரையின் ஓரங்கள் வழியாகவும் செல்லலாம்.</string>
+	<key>tutorial.notice.message</key>
+	<string>இந்த நிலையை நீ ஏற்கனவே விளையாடுகிறாய். அதை முடி அல்லது புதிய விளையாட்டைத் தொடங்கி, பிறகு பயிற்சிக்காக தொப்பியை மீண்டும் தட்டு.</string>
 	<key>tutorial.platforms</key>
 	<string>மேலே செல்ல மேடைகளின் மீது குதி.</string>
 	<key>tutorial.scoreHint</key>

@@ -112,6 +112,8 @@
 	<string>క్షమించండి! చదివి వినిపించే సౌకర్యం నీ భాషలో ఇంకా అందుబాటులో లేదు.</string>
 	<key>game.intro.start</key>
 	<string>లెవల్ ప్రారంభించు</string>
+	<key>game.intro.startTutorial</key>
+	<string>ట్యుటోరియల్ మొదలు</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ను 1 నుంచి 12 వరకు ఉన్న సంఖ్యతో గుణించు.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>పాత్రను మార్చడానికి తాకు; స్వాగత తెర నుంచి మళ్లీ మొదలుపెట్టడానికి రెండు సెకన్లు నొక్కి పట్టుకో.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ను ఎంచుకో</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ఇంకా %lld</string>
 	<key>menu.maxScore</key>
 	<string>గరిష్ఠం 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1వ రోజు</string>
 	<key>tutorial.answerHint</key>
 	<string>జవాబు తెలియదా? చూడటానికి లెక్కను తాకు.</string>
+	<key>tutorial.button</key>
+	<string>ట్యుటోరియల్</string>
 	<key>tutorial.complete</key>
 	<string>బాగా చేశావు! సూచనాభ్యాసం పూర్తయింది. ఇప్పుడు అత్యధిక స్కోరు సాధించు!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1ను తప్పించుకో. అది ఒక ట్రోఫీని తీసేస్తుంది.</string>
 	<key>tutorial.move</key>
 	<string>ఎడమకు, కుడికి వెళ్లడానికి పరికరాన్ని కదిలించు. తెర అంచుల గుండా కూడా వెళ్లవచ్చు.</string>
+	<key>tutorial.notice.message</key>
+	<string>నువ్వు ఇప్పటికే ఈ లెవెల్ ఆడుతున్నావు. దాన్ని పూర్తి చేయి లేదా కొత్త ఆట మొదలుపెట్టి, ట్యుటోరియల్ కోసం టోపీని మళ్లీ నొక్కు.</string>
 	<key>tutorial.platforms</key>
 	<string>పైకి వెళ్లడానికి వేదికలపై దూకు.</string>
 	<key>tutorial.scoreHint</key>

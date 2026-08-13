@@ -112,6 +112,8 @@
 	<string>Bağışlayın! Səslə oxuma funksiyası hələ sizin dilinizdə mövcud deyil.</string>
 	<key>game.intro.start</key>
 	<string>Səviyyəyə başla</string>
+	<key>game.intro.startTutorial</key>
+	<string>Təlimə başla</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@-ı 1-dən 12-yə qədər bir ədədə vur.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Personajını dəyişmək üçün toxun; qarşılama ekranından yenidən başlamaq üçün iki saniyə basıb saxla.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ seç</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>daha %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1-ci gün</string>
 	<key>tutorial.answerHint</key>
 	<string>Cavabı bilmirsən? Görmək üçün misala toxun.</string>
+	<key>tutorial.button</key>
+	<string>Təlim</string>
 	<key>tutorial.complete</key>
 	<string>Afərin! Təlim bitdi. İndi rekord vur!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1-dən uzaq dur. O, bir kubokunu aparır.</string>
 	<key>tutorial.move</key>
 	<string>Sola və sağa getmək üçün cihazını hərəkət etdir. Ekranın kənarlarından da keçə bilərsən.</string>
+	<key>tutorial.notice.message</key>
+	<string>Bu səviyyəni artıq oynayırsan. Onu bitir və ya yeni oyun başlat, sonra təlim üçün papağa yenidən toxun.</string>
 	<key>tutorial.platforms</key>
 	<string>Yuxarı qalxmaq üçün platformaların üstünə tullan.</string>
 	<key>tutorial.scoreHint</key>

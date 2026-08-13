@@ -112,6 +112,8 @@
 	<string>Przepraszamy! Funkcja czytania na głos nie jest jeszcze dostępna w twoim języku.</string>
 	<key>game.intro.start</key>
 	<string>Zacznij poziom</string>
+	<key>game.intro.startTutorial</key>
+	<string>Start samouczka</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Pomnóż %@%@ przez liczbę od 1 do 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Stuknij, aby zmienić postać; przytrzymaj przez dwie sekundy, aby zacząć od nowa na ekranie powitalnym.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Wybierz %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>jeszcze %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dzień 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Nie znasz odpowiedzi? Stuknij zadanie, aby ją zobaczyć.</string>
+	<key>tutorial.button</key>
+	<string>Samouczek</string>
 	<key>tutorial.complete</key>
 	<string>Brawo! Samouczek ukończony. Teraz pobij rekord!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Omijaj −1. Kosztuje jeden puchar.</string>
 	<key>tutorial.move</key>
 	<string>Poruszaj urządzeniem, aby iść w lewo lub w prawo. Możesz też przechodzić przez boki ekranu.</string>
+	<key>tutorial.notice.message</key>
+	<string>Już grasz na tym poziomie. Dokończ grę albo zacznij nową, a potem znów stuknij czapkę, by uruchomić samouczek.</string>
 	<key>tutorial.platforms</key>
 	<string>Skacz po platformach, aby iść w górę.</string>
 	<key>tutorial.scoreHint</key>

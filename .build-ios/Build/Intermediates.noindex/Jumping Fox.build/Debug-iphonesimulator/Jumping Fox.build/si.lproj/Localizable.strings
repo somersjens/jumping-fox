@@ -112,6 +112,8 @@
 	<string>සමාවන්න! ශබ්ද නඟා කියවීමේ පහසුකම තවමත් ඔබේ භාෂාවෙන් ලබා ගත නොහැක.</string>
 	<key>game.intro.start</key>
 	<string>මට්ටම අරඹන්න</string>
+	<key>game.intro.startTutorial</key>
+	<string>පුහුණුව අරඹන්න</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ 1 සිට 12 දක්වා අංකයකින් ගුණ කරන්න.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ඔබේ චරිතය වෙනස් කිරීමට තට්ටු කරන්න; පිළිගැනීමේ තිරයෙන් නැවත අරඹන්න තත්පර දෙකක් ඔබාගෙන සිටින්න.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ තෝරන්න</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>තවත් %lld</string>
 	<key>menu.maxScore</key>
 	<string>උපරිම 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>දින 1</string>
 	<key>tutorial.answerHint</key>
 	<string>පිළිතුර දන්නේ නැද්ද? බලන්න ගණන තට්ටු කරන්න.</string>
+	<key>tutorial.button</key>
+	<string>පුහුණුව</string>
 	<key>tutorial.complete</key>
 	<string>හොඳට කළා! පුහුණු පාඩම ඉවරයි. දැන් ඉහළම ලකුණු ගන්න!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 එකෙන් වළකින්න. එය කුසලානයක් අඩු කරයි.</string>
 	<key>tutorial.move</key>
 	<string>වමට හා දකුණට යන්න උපාංගය හලවන්න. තිරයේ පැති හරහාත් යන්න පුළුවන්.</string>
+	<key>tutorial.notice.message</key>
+	<string>ඔයා මේ මට්ටම දැනටමත් සෙල්ලම් කරනවා. ඒක ඉවර කරලා හෝ අලුත් ක්‍රීඩාවක් පටන්ගෙන, පුහුණුවට තොප්පිය ආයෙත් ඔබන්න.</string>
 	<key>tutorial.platforms</key>
 	<string>ඉහළට යන්න වේදිකා මතට පනින්න.</string>
 	<key>tutorial.scoreHint</key>

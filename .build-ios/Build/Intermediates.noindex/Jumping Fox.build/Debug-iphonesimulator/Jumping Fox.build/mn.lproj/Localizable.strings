@@ -112,6 +112,8 @@
 	<string>Уучлаарай! Чангаар унших функц таны хэл дээр хараахан боломжгүй байна.</string>
 	<key>game.intro.start</key>
 	<string>Түвшинг эхлүүлэх</string>
+	<key>game.intro.startTutorial</key>
+	<string>Заавар эхлүүлэх</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@-г 1-ээс 12 хүртэлх тоогоор үржүүл.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Дүрээ солихын тулд товш; тавтай морилно уу дэлгэцээс дахин эхлэхийн тулд хоёр секунд дар.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@-г сонго</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>дахиад %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1 дэх өдөр</string>
 	<key>tutorial.answerHint</key>
 	<string>Хариугаа мэдэхгүй байна уу? Бодлогыг товшиж хариуг хар.</string>
+	<key>tutorial.button</key>
+	<string>Заавар</string>
 	<key>tutorial.complete</key>
 	<string>Мундаг! Заавар дууслаа. Одоо дээд онооны төлөө тогло!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1-ээс зайлсхий. Нэг цом хасагдана.</string>
 	<key>tutorial.move</key>
 	<string>Төхөөрөмжөө хөдөлгөж баруун, зүүн тийш яв. Дэлгэцийн хажуугаар нэвт гарч болно.</string>
+	<key>tutorial.notice.message</key>
+	<string>Чи энэ түвшинг тоглож байна. Дуусгах эсвэл шинэ тоглоом эхлүүлээд, зааврыг тоглохын тулд малгайг дахин дар.</string>
 	<key>tutorial.platforms</key>
 	<string>Тавцан дээр үсэрч дээш гар.</string>
 	<key>tutorial.scoreHint</key>

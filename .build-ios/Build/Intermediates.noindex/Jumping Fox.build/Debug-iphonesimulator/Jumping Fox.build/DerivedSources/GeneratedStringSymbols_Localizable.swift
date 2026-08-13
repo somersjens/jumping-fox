@@ -404,6 +404,13 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “game.intro.startTutorial” in table “Localizable.xcstrings”.
+     */
+    static var gameIntroStartTutorial: LocalizedStringResource {
+        LocalizedStringResource("game.intro.startTutorial", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “game.intro.tablesDetail %@ %@” in table “Localizable.xcstrings”.
      */
     static func gameIntroTablesDetail(_ arg1: String, _ arg2: String) -> LocalizedStringResource {
@@ -709,6 +716,13 @@ nonisolated extension LocalizedStringResource {
      */
     static func menuAccessibilityChooseMode(_ arg1: String) -> LocalizedStringResource {
         LocalizedStringResource("menu.accessibility.chooseMode %@", defaultValue: "\(arg1)", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “menu.characterUnlockRemaining %lld” in table “Localizable.xcstrings”.
+     */
+    static func menuCharacterUnlockRemaining(_ arg1: Int) -> LocalizedStringResource {
+        LocalizedStringResource("menu.characterUnlockRemaining %lld", defaultValue: "\(arg1, specifier: "%lld")", table: "Localizable", bundle: resourceBundleDescription)
     }
 
     /**
@@ -1790,6 +1804,13 @@ nonisolated extension LocalizedStringResource {
     }
 
     /**
+     Localized string for key “tutorial.button” in table “Localizable.xcstrings”.
+     */
+    static var tutorialButton: LocalizedStringResource {
+        LocalizedStringResource("tutorial.button", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
      Localized string for key “tutorial.complete” in table “Localizable.xcstrings”.
      */
     static var tutorialComplete: LocalizedStringResource {
@@ -1843,6 +1864,13 @@ nonisolated extension LocalizedStringResource {
      */
     static var tutorialMove: LocalizedStringResource {
         LocalizedStringResource("tutorial.move", table: "Localizable", bundle: resourceBundleDescription)
+    }
+
+    /**
+     Localized string for key “tutorial.notice.message” in table “Localizable.xcstrings”.
+     */
+    static var tutorialNoticeMessage: LocalizedStringResource {
+        LocalizedStringResource("tutorial.notice.message", table: "Localizable", bundle: resourceBundleDescription)
     }
 
     /**

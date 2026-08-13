@@ -112,6 +112,8 @@
 	<string>দুঃখিত! উচ্চস্বরে পড়ার সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।</string>
 	<key>game.intro.start</key>
 	<string>লেভেল আৰম্ভ</string>
+	<key>game.intro.startTutorial</key>
+	<string>টিউটোৰিয়েল আৰম্ভ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ক ১ৰ পৰা ১২লৈ এটা সংখ্যাৰে পূৰণ কৰা।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>চৰিত্ৰ সলাবলৈ টেপ কৰা; স্বাগতম পৰ্দাৰ পৰা নতুনকৈ আৰম্ভ কৰিবলৈ দুই ছেকেণ্ড ধৰি ৰাখা।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ বাছা</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>আৰু %lld</string>
 	<key>menu.maxScore</key>
 	<string>৩০ সৰ্বাধিক</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>১ম দিন</string>
 	<key>tutorial.answerHint</key>
 	<string>উত্তৰ নাজানা? চাবলৈ অংকটো টেপ কৰা।</string>
+	<key>tutorial.button</key>
+	<string>টিউটোৰিয়েল</string>
 	<key>tutorial.complete</key>
 	<string>বঢ়িয়া! শিকনি শেষ। এতিয়া সৰ্বোচ্চ স্ক’ৰৰ বাবে খেলা!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 এৰাই চলা। ই এটা ট্ৰফী কমায়।</string>
 	<key>tutorial.move</key>
 	<string>বাওঁ-সোঁ যাবলৈ ডিভাইচটো লৰোৱা। পৰ্দাৰ কাষেদিও পাৰ হ’ব পাৰা।</string>
+	<key>tutorial.notice.message</key>
+	<string>তুমি এই লেভেলটো ইতিমধ্যে খেলি আছা। শেষ কৰা বা নতুন খেল আৰম্ভ কৰি টুপীটো আকৌ টিপা।</string>
 	<key>tutorial.platforms</key>
 	<string>ওপৰলৈ যাবলৈ প্লেটফৰ্মত জঁপিওৱা।</string>
 	<key>tutorial.scoreHint</key>

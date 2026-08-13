@@ -112,6 +112,8 @@
 	<string>Извини! Функцијата за читање на глас сè уште не е достапна на твојот јазик.</string>
 	<key>game.intro.start</key>
 	<string>Почни ниво</string>
+	<key>game.intro.startTutorial</key>
+	<string>Почни упатство</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Помножи %@%@ со број од 1 до 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Допри за да го смениш ликот; притисни и држи две секунди за да почнеш одново од екранот за добредојде.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Избери %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>уште %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Ден 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Не го знаеш одговорот? Допри ја задачата за да го видиш.</string>
+	<key>tutorial.button</key>
+	<string>Упатство</string>
 	<key>tutorial.complete</key>
 	<string>Браво! Упатството е завршено. Сега постигни најдобар резултат!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Избегни го −1. Ќе изгубиш еден трофеј.</string>
 	<key>tutorial.move</key>
 	<string>Движи го уредот за да одиш лево и десно. Можеш да поминуваш и низ страните на екранот.</string>
+	<key>tutorial.notice.message</key>
+	<string>Веќе го играш ова ниво. Заврши го или почни нова игра, па пак допри го шеширчето за упатството.</string>
 	<key>tutorial.platforms</key>
 	<string>Скокај по платформите за да се движиш нагоре.</string>
 	<key>tutorial.scoreHint</key>

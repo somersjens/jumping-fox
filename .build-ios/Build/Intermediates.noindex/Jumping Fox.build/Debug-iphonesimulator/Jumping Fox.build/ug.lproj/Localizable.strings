@@ -112,6 +112,8 @@
 	<string>كەچۈرۈڭ! ئاۋازلىق ئوقۇش ئىقتىدارى تېخى سىزنىڭ تىلىڭىزدا يوق.</string>
 	<key>game.intro.start</key>
 	<string>دەرىجىنى باشلا</string>
+	<key>game.intro.startTutorial</key>
+	<string>قوللانمىنى باشلا</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ نى 1 دىن 12 گىچە بىر سانغا كۆپەيت.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>قەھرىمانىڭنى ئۆزگەرتىش ئۈچۈن چەك؛ قارشى ئېلىش ئېكرانىدىن قايتا باشلاش ئۈچۈن ئىككى سېكۇنت بېسىپ تۇر.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ تاللا</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>يەنە %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1-كۈن</string>
 	<key>tutorial.answerHint</key>
 	<string>جاۋابنى بىلمىدىڭمۇ؟ كۆرۈش ئۈچۈن مەسىلىنى چەك.</string>
+	<key>tutorial.button</key>
+	<string>قوللانما</string>
 	<key>tutorial.complete</key>
 	<string>يارايسەن! دەرسلىك تامام. ئەمدى ئەڭ يۇقىرى نومۇرغا ئاتلان!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 دىن قاچ. ئۇ بىر لوڭقاڭنى ئالىدۇ.</string>
 	<key>tutorial.move</key>
 	<string>ئۈسكۈنىڭنى ھەرىكەتلەندۈرۈپ سولغا ۋە ئوڭغا ماڭ. ئېكراننىڭ يانلىرىدىنمۇ ئۆتەلەيسەن.</string>
+	<key>tutorial.notice.message</key>
+	<string>بۇ دەرىجىنى ئاللىبۇرۇن ئويناۋاتىسەن. تۈگەت ياكى يېڭى ئويۇن باشلا، ئاندىن قوللانما ئۈچۈن قالپاقنى يەنە باس.</string>
 	<key>tutorial.platforms</key>
 	<string>ئۈستىگە چىقىش ئۈچۈن سۇپىلارغا سەكرە.</string>
 	<key>tutorial.scoreHint</key>

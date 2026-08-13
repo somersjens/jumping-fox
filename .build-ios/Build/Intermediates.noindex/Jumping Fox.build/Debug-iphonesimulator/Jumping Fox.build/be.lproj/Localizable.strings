@@ -112,6 +112,8 @@
 	<string>На жаль! Функцыя чытання ўслых пакуль недаступная на тваёй мове.</string>
 	<key>game.intro.start</key>
 	<string>Пачаць узровень</string>
+	<key>game.intro.startTutorial</key>
+	<string>Пачаць навучанне</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Памнож %@%@ на лік ад 1 да 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Націсні, каб змяніць героя; утрымлівай дзве секунды, каб пачаць нанова з экрана прывітання.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Выберы %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>яшчэ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 МАКС.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Дзень 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Не ведаеш адказ? Націсні на прыклад, каб убачыць яго.</string>
+	<key>tutorial.button</key>
+	<string>Навучанне</string>
 	<key>tutorial.complete</key>
 	<string>Малайчына! Навучанне завершана. Цяпер паспрабуй паставіць рэкорд!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Пазбягай −1. Ён забірае адзін трафей.</string>
 	<key>tutorial.move</key>
 	<string>Нахіляй прыладу, каб рухацца ўлева і ўправа. Можна таксама праходзіць праз бакі экрана.</string>
+	<key>tutorial.notice.message</key>
+	<string>Ты ўжо гуляеш на гэтым узроўні. Скончы яго або пачні новую гульню, а потым зноў націсні на шапачку, каб прайсці навучанне.</string>
 	<key>tutorial.platforms</key>
 	<string>Скачы па платформах, каб падымацца ўверх.</string>
 	<key>tutorial.scoreHint</key>

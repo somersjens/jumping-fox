@@ -112,6 +112,8 @@
 	<string>معذرت! بلند آواز میں پڑھنے کی سہولت ابھی آپ کی زبان میں دستیاب نہیں ہے۔</string>
 	<key>game.intro.start</key>
 	<string>لیول شروع کریں</string>
+	<key>game.intro.startTutorial</key>
+	<string>ٹیوٹوریل شروع کریں</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ کو 1 سے 12 تک کسی عدد سے ضرب دیں۔</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>کردار بدلنے کے لیے ٹیپ کریں؛ خیرمقدمی اسکرین سے دوبارہ شروع کرنے کے لیے دو سیکنڈ دبائے رکھیں۔</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ چنیں</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>مزید %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 زیادہ سے زیادہ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>دن 1</string>
 	<key>tutorial.answerHint</key>
 	<string>جواب نہیں معلوم؟ دیکھنے کے لیے سوال پر ٹیپ کریں۔</string>
+	<key>tutorial.button</key>
+	<string>ٹیوٹوریل</string>
 	<key>tutorial.complete</key>
 	<string>شاباش! سبق مکمل ہوا۔ اب بہترین اسکور بنائیں!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 سے بچیں۔ اس سے ایک ٹرافی کم ہوتی ہے۔</string>
 	<key>tutorial.move</key>
 	<string>دائیں بائیں جانے کے لیے آلہ ہلائیں۔ آپ اسکرین کے کناروں سے بھی گزر سکتے ہیں۔</string>
+	<key>tutorial.notice.message</key>
+	<string>آپ یہ لیول پہلے ہی کھیل رہے ہیں۔ اسے مکمل کریں یا نیا کھیل شروع کریں، پھر ٹیوٹوریل کے لیے ٹوپی پر دوبارہ ٹیپ کریں۔</string>
 	<key>tutorial.platforms</key>
 	<string>اوپر جانے کے لیے پلیٹ فارم پر چھلانگ لگائیں۔</string>
 	<key>tutorial.scoreHint</key>

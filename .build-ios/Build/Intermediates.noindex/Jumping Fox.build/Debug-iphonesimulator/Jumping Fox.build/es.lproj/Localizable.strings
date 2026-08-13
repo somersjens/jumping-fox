@@ -112,6 +112,8 @@
 	<string>Lo sentimos. La función de lectura en voz alta todavía no está disponible en tu idioma.</string>
 	<key>game.intro.start</key>
 	<string>Empezar nivel</string>
+	<key>game.intro.startTutorial</key>
+	<string>Empezar tutorial</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multiplica %@%@ por un número del 1 al 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Toca para cambiar de personaje; mantén pulsado dos segundos para volver a empezar desde la pantalla de bienvenida.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Elige %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld más</string>
 	<key>menu.maxScore</key>
 	<string>30 MÁX.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Día 1</string>
 	<key>tutorial.answerHint</key>
 	<string>¿No sabes la respuesta? Toca la operación para verla.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>¡Muy bien! Has terminado el tutorial. ¡Ahora ve a por el récord!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Evita el −1. Te quita un trofeo.</string>
 	<key>tutorial.move</key>
 	<string>Mueve el dispositivo para ir a izquierda y derecha. También puedes atravesar los lados de la pantalla.</string>
+	<key>tutorial.notice.message</key>
+	<string>Ya estás jugando este nivel. Termínalo o empieza una partida nueva y vuelve a tocar el gorro para hacer el tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Salta sobre las plataformas para subir.</string>
 	<key>tutorial.scoreHint</key>

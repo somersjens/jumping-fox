@@ -24,6 +24,10 @@ final class TutorialProgress: ObservableObject {
     @Published private(set) var scoreHintShown: Bool
     @Published private(set) var shouldShowScoreHint = false
     @Published private(set) var triplerAnswerPending: Bool
+    /// Raised only when the reveal lesson has waited long enough to need a
+    /// clearer cue. It is intentionally transient: resuming the app gives the
+    /// player a fresh few seconds to read the instruction before we freeze.
+    @Published private(set) var isQuestionTapReminderVisible = false
 
     private init(defaults: UserDefaults = .standard) {
         let storedStep = defaults.integer(forKey: Key.step)
@@ -72,6 +76,10 @@ final class TutorialProgress: ObservableObject {
         if !isReplaying { UserDefaults.standard.set(pending, forKey: Key.triplerAnswer) }
     }
 
+    func setQuestionTapReminderVisible(_ visible: Bool) {
+        isQuestionTapReminderVisible = visible
+    }
+
     /// Play the guided tutorial again from its first lesson, on request from
     /// the level start screen. A player who already finished it replays in
     /// memory only, so their completed state (and normal scoring) survives; an
@@ -82,6 +90,7 @@ final class TutorialProgress: ObservableObject {
         lastCompletedStep = 0
         isComplete = false
         triplerAnswerPending = false
+        isQuestionTapReminderVisible = false
         guard !isReplaying else { return }
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: Key.started)
@@ -117,5 +126,6 @@ final class TutorialProgress: ObservableObject {
         started = d.bool(forKey: Key.started); lastCompletedStep = d.integer(forKey: Key.step)
         isComplete = d.bool(forKey: Key.complete); scoreHintShown = d.bool(forKey: Key.scoreHint)
         triplerAnswerPending = d.bool(forKey: Key.triplerAnswer)
+        isQuestionTapReminderVisible = false
     }
 }

@@ -112,6 +112,8 @@
 	<string>ಕ್ಷಮಿಸಿ! ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಸೌಲಭ್ಯವು ಇನ್ನೂ ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ.</string>
 	<key>game.intro.start</key>
 	<string>ಹಂತ ಆರಂಭಿಸು</string>
+	<key>game.intro.startTutorial</key>
+	<string>ಟ್ಯುಟೋರಿಯಲ್ ಆರಂಭಿಸು</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ಅನ್ನು 1ರಿಂದ 12ರವರೆಗಿನ ಸಂಖ್ಯೆಯಿಂದ ಗುಣಿಸು.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ಪಾತ್ರ ಬದಲಿಸಲು ತಟ್ಟು; ಸ್ವಾಗತ ಪರದೆಯಿಂದ ಮತ್ತೆ ಆರಂಭಿಸಲು ಎರಡು ಸೆಕೆಂಡ್ ಒತ್ತಿಹಿಡಿ.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ಆರಿಸು</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ಇನ್ನೂ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ದಿನ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>ಉತ್ತರ ಗೊತ್ತಿಲ್ಲವೇ? ನೋಡಲು ಪ್ರಶ್ನೆಯನ್ನು ತಟ್ಟು.</string>
+	<key>tutorial.button</key>
+	<string>ಟ್ಯುಟೋರಿಯಲ್</string>
 	<key>tutorial.complete</key>
 	<string>ಚೆನ್ನಾಗಿ ಮಾಡಿದೆ! ಪಾಠ ಮುಗಿದಿದೆ. ಈಗ ಅತ್ಯುತ್ತಮ ಅಂಕಕ್ಕಾಗಿ ಆಡು!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ಅನ್ನು ತಪ್ಪಿಸು. ಅದು ಒಂದು ಟ್ರೋಫಿ ಕಳೆಯುತ್ತದೆ.</string>
 	<key>tutorial.move</key>
 	<string>ಎಡಬಲ ಹೋಗಲು ಸಾಧನವನ್ನು ಚಲಿಸು. ಪರದೆಯ ಬದಿಗಳ ಮೂಲಕವೂ ಹೋಗಬಹುದು.</string>
+	<key>tutorial.notice.message</key>
+	<string>ನೀನು ಈ ಹಂತವನ್ನು ಈಗಾಗಲೇ ಆಡುತ್ತಿದ್ದೀಯ. ಅದನ್ನು ಮುಗಿಸು ಅಥವಾ ಹೊಸ ಆಟ ಆರಂಭಿಸು. ನಂತರ ಟ್ಯುಟೋರಿಯಲ್ ಆಡಲು ಟೋಪಿಯನ್ನು ಮತ್ತೆ ಒತ್ತು.</string>
 	<key>tutorial.platforms</key>
 	<string>ಮೇಲೆ ಹೋಗಲು ವೇದಿಕೆಗಳ ಮೇಲೆ ಜಿಗಿ.</string>
 	<key>tutorial.scoreHint</key>

@@ -112,6 +112,8 @@
 	<string>សូមទោស! មុខងារអានឮៗមិនទាន់មានជាភាសារបស់អ្នកទេ។</string>
 	<key>game.intro.start</key>
 	<string>ចាប់ផ្តើមកម្រិត</string>
+	<key>game.intro.startTutorial</key>
+	<string>ចាប់ផ្តើមណែនាំ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>គុណ %@%@ នឹងចំនួនពី 1 ដល់ 12។</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ប៉ះដើម្បីប្ដូរតួអង្គរបស់អ្នក; ចុចឱ្យជាប់ពីរវិនាទី ដើម្បីចាប់ផ្តើមឡើងវិញពីអេក្រង់ស្វាគមន៍។</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>ជ្រើស %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld ទៀត</string>
 	<key>menu.maxScore</key>
 	<string>30 អតិបរមា</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ថ្ងៃទី 1</string>
 	<key>tutorial.answerHint</key>
 	<string>មិនដឹងចម្លើយមែនទេ? ប៉ះលំហាត់ដើម្បីមើលចម្លើយ។</string>
+	<key>tutorial.button</key>
+	<string>ការណែនាំ</string>
 	<key>tutorial.complete</key>
 	<string>ធ្វើបានល្អ! ការណែនាំបានបញ្ចប់។ ឥឡូវទៅរកពិន្ទុខ្ពស់!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>ជៀសវាង −1។ វាធ្វើឱ្យអ្នកបាត់ពានមួយ។</string>
 	<key>tutorial.move</key>
 	<string>ផ្អៀងឧបករណ៍របស់អ្នក ដើម្បីទៅឆ្វេង និងស្ដាំ។ អ្នកក៏អាចឆ្លងកាត់ជ្រុងអេក្រង់បានដែរ។</string>
+	<key>tutorial.notice.message</key>
+	<string>អ្នកកំពុងលេងលេវែលនេះ។ លេងឱ្យចប់ ឬចាប់ហ្គេមថ្មី រួចចុចមួកម្ដងទៀត ដើម្បីលេងការណែនាំ។</string>
 	<key>tutorial.platforms</key>
 	<string>លោតលើវេទិកា ដើម្បីឡើងលើ។</string>
 	<key>tutorial.scoreHint</key>

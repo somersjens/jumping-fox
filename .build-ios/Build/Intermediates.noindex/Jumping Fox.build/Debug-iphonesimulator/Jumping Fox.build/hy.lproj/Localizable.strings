@@ -112,6 +112,8 @@
 	<string>Ներողություն։ Բարձրաձայն կարդալու գործառույթը դեռ հասանելի չէ քո լեզվով։</string>
 	<key>game.intro.start</key>
 	<string>Սկսել մակարդակը</string>
+	<key>game.intro.startTutorial</key>
+	<string>Սկսել ուսուցումը</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Բազմապատկիր %@%@-ը 1-ից 12 թվով։</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Հպվիր՝ կերպարդ փոխելու համար։ Սեղմած պահիր երկու վայրկյան՝ ողջույնի էկրանից նորից սկսելու համար։</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Ընտրիր %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ևս %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ԱՌԱՎԵԼԱԳՈՒՅՆ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Օր 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Չգիտե՞ս պատասխանը։ Հպվիր առաջադրանքին՝ այն տեսնելու համար։</string>
+	<key>tutorial.button</key>
+	<string>Ուսուցում</string>
 	<key>tutorial.complete</key>
 	<string>Ապրե՛ս։ Ուսուցումն ավարտված է։ Այժմ փորձիր լավագույն հաշիվը հավաքել։</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Խուսափիր −1-ից։ Այն քեզնից մեկ գավաթ է վերցնում։</string>
 	<key>tutorial.move</key>
 	<string>Շարժիր սարքդ՝ աջ ու ձախ գնալու համար։ Կարող ես նաև անցնել էկրանի կողքերով։</string>
+	<key>tutorial.notice.message</key>
+	<string>Դու արդեն խաղում ես այս մակարդակը։ Ավարտիր այն կամ սկսիր նոր խաղ, հետո նորից սեղմիր գլխարկին՝ ուսուցումը խաղալու համար։</string>
 	<key>tutorial.platforms</key>
 	<string>Ցատկիր հարթակների վրա՝ վեր բարձրանալու համար։</string>
 	<key>tutorial.scoreHint</key>

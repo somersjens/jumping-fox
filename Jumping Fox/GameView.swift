@@ -177,6 +177,16 @@ struct GameView: View {
                        options: [.shouldCullNonVisibleNodes, .ignoresSiblingOrder])
                 .ignoresSafeArea()
 
+            // If the child has read past the reveal instruction, hold the
+            // scene on the next clean landing. This is deliberately not a
+            // pause card: a warm teaching glow keeps the equation below as the
+            // only active control.
+            if tutorial.isQuestionTapReminderVisible {
+                Color.yellow.opacity(0.16)
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }
+
             VStack(spacing: 0) {
                 topBar
                 Spacer()
@@ -1126,6 +1136,14 @@ struct GameView: View {
                 in: RoundedRectangle(cornerRadius: 20)
             )
             .shadow(color: theme.deepColor.opacity(0.35), radius: 8, y: 4)
+            .overlay {
+                if tutorial.isQuestionTapReminderVisible {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .stroke(.yellow, lineWidth: 3)
+                        .padding(-5)
+                        .shadow(color: .yellow.opacity(0.8), radius: 10)
+                }
+            }
             .overlay(alignment: .topTrailing) { tutorialQuestionCue }
             .padding(.horizontal, 12)
             .contentShape(Rectangle())
@@ -1139,6 +1157,9 @@ struct GameView: View {
             // just the row) so the tutorial cue keeps pointing at the "?", which
             // stays at the trailing end of the equation.
             .environment(\.layoutDirection, .leftToRight)
+            .scaleEffect(tutorial.isQuestionTapReminderVisible ? 1.04 : 1)
+            .animation(.easeInOut(duration: 0.55).repeatForever(autoreverses: true),
+                       value: tutorial.isQuestionTapReminderVisible)
     }
 
     /// The bouncing cue that points at the question mark during the "tap it"

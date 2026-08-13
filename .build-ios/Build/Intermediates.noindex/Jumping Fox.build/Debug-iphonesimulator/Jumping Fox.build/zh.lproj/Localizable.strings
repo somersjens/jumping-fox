@@ -112,6 +112,8 @@
 	<string>抱歉！朗读功能暂不支持你的语言。</string>
 	<key>game.intro.start</key>
 	<string>开始关卡</string>
+	<key>game.intro.startTutorial</key>
+	<string>开始教程</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>用 %@%@ 乘以 1 到 12 的一个数。</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>轻点可更换角色；长按两秒可返回欢迎页重新开始。</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>选择 %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>还差 %lld</string>
 	<key>menu.maxScore</key>
 	<string>最多 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>第 1 天</string>
 	<key>tutorial.answerHint</key>
 	<string>不知道答案？轻点题目就能看到。</string>
+	<key>tutorial.button</key>
+	<string>教程</string>
 	<key>tutorial.complete</key>
 	<string>做得好！教程完成了。现在去挑战最高分吧！</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>避开 −1，它会让你失去一个奖杯。</string>
 	<key>tutorial.move</key>
 	<string>移动设备来左右移动。也可以从屏幕一侧穿到另一侧。</string>
+	<key>tutorial.notice.message</key>
+	<string>你已经在玩这个关卡了。先完成它或开始新游戏，然后再点一次帽子开始教程。</string>
 	<key>tutorial.platforms</key>
 	<string>跳上平台向上移动。</string>
 	<key>tutorial.scoreHint</key>

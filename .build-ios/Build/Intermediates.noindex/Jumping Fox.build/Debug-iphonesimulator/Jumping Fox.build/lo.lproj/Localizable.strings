@@ -112,6 +112,8 @@
 	<string>ຂໍອະໄພ! ຟັງຊັນອ່ານອອກສຽງຍັງບໍ່ຮອງຮັບພາສາຂອງເຈົ້າ.</string>
 	<key>game.intro.start</key>
 	<string>ເລີ່ມດ່ານ</string>
+	<key>game.intro.startTutorial</key>
+	<string>ເລີ່ມບົດສອນ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>ຄູນ %@%@ ດ້ວຍຈຳນວນຈາກ 1 ຫາ 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ແຕະເພື່ອປ່ຽນຕົວລະຄອນ; ກົດຄ້າງສອງວິນາທີເພື່ອເລີ່ມໃໝ່ທີ່ໜ້າຕ້ອນຮັບ.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>ເລືອກ %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ອີກ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ສູງສຸດ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ມື້ທີ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>ບໍ່ຮູ້ຄຳຕອບບໍ? ແຕະໂຈດເພື່ອເບິ່ງຄຳຕອບ.</string>
+	<key>tutorial.button</key>
+	<string>ບົດສອນ</string>
 	<key>tutorial.complete</key>
 	<string>ເກັ່ງຫຼາຍ! ຮຽນວິທີຫຼິ້ນຈົບແລ້ວ. ໄປລ່າຄະແນນສູງສຸດກັນ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>ຫຼີກ −1. ມັນຈະຫັກ 1 ຖ້ວຍ.</string>
 	<key>tutorial.move</key>
 	<string>ຂະຍັບອຸປະກອນໄປຊ້າຍ ແລະ ຂວາ. ເຈົ້າຍັງຜ່ານຂອບຈໍໄດ້.</string>
+	<key>tutorial.notice.message</key>
+	<string>ເຈົ້າກຳລັງຫຼິ້ນດ່ານນີ້ຢູ່. ຫຼິ້ນໃຫ້ຈົບ ຫຼື ເລີ່ມເກມໃໝ່ ແລ້ວກົດໝວກອີກຄັ້ງເພື່ອຫຼິ້ນບົດສອນ.</string>
 	<key>tutorial.platforms</key>
 	<string>ໂດດເທິງແທ່ນເພື່ອຂຶ້ນໄປ.</string>
 	<key>tutorial.scoreHint</key>

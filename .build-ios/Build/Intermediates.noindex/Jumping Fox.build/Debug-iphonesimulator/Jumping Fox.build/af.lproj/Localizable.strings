@@ -112,6 +112,8 @@
 	<string>Jammer! Die voorleesfunksie is nog nie in jou taal beskikbaar nie.</string>
 	<key>game.intro.start</key>
 	<string>Begin vlak</string>
+	<key>game.intro.startTutorial</key>
+	<string>Begin tutoriaal</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Vermenigvuldig %@%@ met ’n getal van 1 tot 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tik om jou karakter te verander; druk en hou twee sekondes om weer by die welkomskerm te begin.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Kies %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>nog %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dag 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Ken jy nie die antwoord nie? Tik op die som om dit te sien.</string>
+	<key>tutorial.button</key>
+	<string>Tutoriaal</string>
 	<key>tutorial.complete</key>
 	<string>Goed gedoen! Die oefenles is klaar. Mik nou vir die toptelling!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Vermy die −1. Dit kos jou een trofee.</string>
 	<key>tutorial.move</key>
 	<string>Beweeg jou toestel om links en regs te gaan. Jy kan ook deur die kante van die skerm beweeg.</string>
+	<key>tutorial.notice.message</key>
+	<string>Jy speel reeds hierdie vlak. Maak dit klaar of begin 'n nuwe speletjie en tik dan weer op die hoedjie vir die tutoriaal.</string>
 	<key>tutorial.platforms</key>
 	<string>Spring op die platforms om op te beweeg.</string>
 	<key>tutorial.scoreHint</key>

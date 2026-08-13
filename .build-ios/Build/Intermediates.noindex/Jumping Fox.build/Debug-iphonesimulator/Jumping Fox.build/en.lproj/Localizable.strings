@@ -112,6 +112,8 @@
 	<string>Sorry! The read-aloud feature is not available in your language yet.</string>
 	<key>game.intro.start</key>
 	<string>Start level</string>
+	<key>game.intro.startTutorial</key>
+	<string>Start tutorial</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multiply %@%@ by a number from 1 to 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tap to change your character; press and hold for two seconds to start over at the welcome screen.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Choose %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld more</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -545,6 +549,8 @@ never been this fun!</string>
 	<string>Day 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Don’t know the answer? Tap the question to see it.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>Well done! The tutorial is complete. Now go for the high score!</string>
 	<key>tutorial.correctAnswer</key>
@@ -561,6 +567,8 @@ never been this fun!</string>
 	<string>Avoid the −1. It costs you one trophy.</string>
 	<key>tutorial.move</key>
 	<string>Move your device to go left and right. You can also move through the sides of the screen.</string>
+	<key>tutorial.notice.message</key>
+	<string>You are already playing this level. Finish it or start a new game, then tap the cap again to play the tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Jump on the platforms to move up.</string>
 	<key>tutorial.scoreHint</key>

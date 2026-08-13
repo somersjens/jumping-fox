@@ -112,6 +112,8 @@
 	<string>ขออภัย! ฟีเจอร์อ่านออกเสียงยังไม่รองรับภาษาของคุณ</string>
 	<key>game.intro.start</key>
 	<string>เริ่มด่าน</string>
+	<key>game.intro.startTutorial</key>
+	<string>เริ่มสอนเล่น</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>คูณ %@%@ ด้วยเลขตั้งแต่ 1 ถึง 12</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>แตะเพื่อเปลี่ยนตัวละคร กดค้างสองวินาทีเพื่อเริ่มใหม่ที่หน้าต้อนรับ</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>เลือก %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>อีก %lld</string>
 	<key>menu.maxScore</key>
 	<string>สูงสุด 30</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>วันที่ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>ไม่รู้คำตอบเหรอ? แตะโจทย์เพื่อดูคำตอบ</string>
+	<key>tutorial.button</key>
+	<string>สอนเล่น</string>
 	<key>tutorial.complete</key>
 	<string>เก่งมาก! จบบทสอนแล้ว ไปทำคะแนนสูงสุดกันเลย!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>หลบ −1 เพราะจะเสียถ้วยรางวัลหนึ่งใบ</string>
 	<key>tutorial.move</key>
 	<string>ขยับอุปกรณ์เพื่อไปทางซ้ายและขวา และยังทะลุขอบจอไปอีกฝั่งได้</string>
+	<key>tutorial.notice.message</key>
+	<string>คุณกำลังเล่นด่านนี้อยู่ เล่นให้จบหรือเริ่มเกมใหม่ แล้วแตะหมวกอีกครั้งเพื่อเล่นบทสอน</string>
 	<key>tutorial.platforms</key>
 	<string>กระโดดบนแท่นเพื่อขึ้นไปด้านบน</string>
 	<key>tutorial.scoreHint</key>

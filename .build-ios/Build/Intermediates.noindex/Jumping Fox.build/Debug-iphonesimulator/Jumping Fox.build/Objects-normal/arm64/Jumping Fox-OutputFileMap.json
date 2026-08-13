@@ -196,6 +196,16 @@
     "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView.swiftdeps",
     "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/PremiumView~partial.swiftmodule"
   },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Prewarm.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/Prewarm~partial.swiftmodule"
+  },
   "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ProgressSync.swift" : {
     "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.swiftconstvalues",
     "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/arm64/ProgressSync.d",

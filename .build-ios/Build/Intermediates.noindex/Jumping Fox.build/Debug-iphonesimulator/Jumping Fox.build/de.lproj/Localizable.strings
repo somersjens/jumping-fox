@@ -112,6 +112,8 @@
 	<string>Entschuldigung! Die Vorlesefunktion ist in deiner Sprache noch nicht verfügbar.</string>
 	<key>game.intro.start</key>
 	<string>Level starten</string>
+	<key>game.intro.startTutorial</key>
+	<string>Tutorial starten</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Multipliziere %@%@ mit einer Zahl von 1 bis 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tippe, um deine Figur zu ändern. Halte zwei Sekunden gedrückt, um beim Willkommensbildschirm neu zu starten.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Wähle %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>noch %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Tag 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Du weißt die Antwort nicht? Tippe auf die Aufgabe, um sie zu sehen.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>Gut gemacht! Das Tutorial ist geschafft. Jetzt knack die Bestleistung!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Weiche der −1 aus. Sie kostet dich einen Pokal.</string>
 	<key>tutorial.move</key>
 	<string>Bewege dein Gerät, um nach links und rechts zu gehen. Du kannst auch durch die Bildschirmränder laufen.</string>
+	<key>tutorial.notice.message</key>
+	<string>Du spielst dieses Level schon. Beende es oder starte ein neues Spiel. Tippe dann erneut auf die Kappe für das Tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Spring auf die Plattformen, um nach oben zu kommen.</string>
 	<key>tutorial.scoreHint</key>

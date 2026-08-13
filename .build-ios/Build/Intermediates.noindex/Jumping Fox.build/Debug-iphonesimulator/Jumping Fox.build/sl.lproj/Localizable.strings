@@ -112,6 +112,8 @@
 	<string>Oprosti! Funkcija glasnega branja še ni na voljo v tvojem jeziku.</string>
 	<key>game.intro.start</key>
 	<string>Začni stopnjo</string>
+	<key>game.intro.startTutorial</key>
+	<string>Začni vadnico</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Pomnoži %@%@ s številom od 1 do 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Tapni za zamenjavo junaka; pritisni in drži dve sekundi, da začneš znova na pozdravnem zaslonu.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Izberi %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>še %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 NAJVEČ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>1. dan</string>
 	<key>tutorial.answerHint</key>
 	<string>Ne poznaš odgovora? Tapni nalogo, da ga vidiš.</string>
+	<key>tutorial.button</key>
+	<string>Vadnica</string>
 	<key>tutorial.complete</key>
 	<string>Odlično! Učenje je končano. Zdaj pa po najboljši rezultat!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Izogni se −1. Vzame ti en pokal.</string>
 	<key>tutorial.move</key>
 	<string>Premikaj napravo, da greš levo in desno. Premikaš se lahko tudi skozi robova zaslona.</string>
+	<key>tutorial.notice.message</key>
+	<string>To stopnjo že igraš. Dokončaj jo ali začni novo igro, nato znova tapni kapico za vadnico.</string>
 	<key>tutorial.platforms</key>
 	<string>Skači po ploščadih, da se pomikaš navzgor.</string>
 	<key>tutorial.scoreHint</key>

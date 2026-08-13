@@ -112,6 +112,8 @@
 	<string>ଦୁଃଖିତ! ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ସୁବିଧାଟି ଏପର୍ଯ୍ୟନ୍ତ ଆପଣଙ୍କ ଭାଷାରେ ଉପଲବ୍ଧ ନାହିଁ।</string>
 	<key>game.intro.start</key>
 	<string>ଲେଭେଲ୍ ଆରମ୍ଭ</string>
+	<key>game.intro.startTutorial</key>
+	<string>ଟ୍ୟୁଟୋରିଆଲ୍ ଆରମ୍ଭ</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ କୁ 1 ରୁ 12 ମଧ୍ୟରେ ଗୋଟିଏ ସଂଖ୍ୟାରେ ଗୁଣ କର।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>ପାତ୍ର ବଦଳାଇବାକୁ ଟ୍ୟାପ୍ କର; ସ୍ୱାଗତ ସ୍କ୍ରିନ୍‌ରୁ ପୁଣି ଆରମ୍ଭ କରିବାକୁ ଦୁଇ ସେକେଣ୍ଡ ଧରି ରଖ।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ ବାଛ</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ଆଉ %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>ଦିନ 1</string>
 	<key>tutorial.answerHint</key>
 	<string>ଉତ୍ତର ଜାଣିନାହଁ? ଦେଖିବାକୁ ପ୍ରଶ୍ନଟିକୁ ଟ୍ୟାପ୍ କର।</string>
+	<key>tutorial.button</key>
+	<string>ଟ୍ୟୁଟୋରିଆଲ୍</string>
 	<key>tutorial.complete</key>
 	<string>ବହୁତ ଭଲ! ଟ୍ୟୁଟୋରିଆଲ୍ ସମ୍ପୂର୍ଣ୍ଣ। ଏବେ ସର୍ବୋଚ୍ଚ ସ୍କୋର କର!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 ଠାରୁ ଦୂରେ ରୁହ। ଏଥିରେ ଗୋଟିଏ ଟ୍ରଫି କମିଯାଏ।</string>
 	<key>tutorial.move</key>
 	<string>ବାମ ଓ ଡାହାଣକୁ ଯିବା ପାଇଁ ଡିଭାଇସ୍‌କୁ ହଲାଅ। ସ୍କ୍ରିନ୍‌ର ଦୁଇ ପାର୍ଶ୍ୱ ଦେଇ ମଧ୍ୟ ଯାଇପାରିବ।</string>
+	<key>tutorial.notice.message</key>
+	<string>ତୁମେ ଏହି ଲେଭେଲ୍ ଆଗରୁ ଖେଳୁଛ। ସେଟା ସାର କିମ୍ବା ନୂଆ ଖେଳ ଆରମ୍ଭ କର, ପରେ ଟ୍ୟୁଟୋରିଆଲ୍ ପାଇଁ ଟୋପିକୁ ପୁଣି ଟ୍ୟାପ୍ କର।</string>
 	<key>tutorial.platforms</key>
 	<string>ଉପରକୁ ଯିବା ପାଇଁ ପ୍ଲାଟଫର୍ମ ଉପରେ ଡେଇଁପଡ଼।</string>
 	<key>tutorial.scoreHint</key>

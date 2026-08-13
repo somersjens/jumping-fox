@@ -112,6 +112,8 @@
 	<string>Συγγνώμη! Η λειτουργία εκφώνησης δεν είναι ακόμη διαθέσιμη στη γλώσσα σου.</string>
 	<key>game.intro.start</key>
 	<string>Έναρξη επιπέδου</string>
+	<key>game.intro.startTutorial</key>
+	<string>Ξεκίνα οδηγό</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Πολλαπλασίασε το %@%@ με έναν αριθμό από το 1 έως το 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Πάτησε για να αλλάξεις χαρακτήρα. Κράτησε πατημένο για δύο δευτερόλεπτα για να ξεκινήσεις ξανά από την οθόνη καλωσορίσματος.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Διάλεξε %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>ακόμα %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 ΜΕΓ.</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Ημέρα 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Δεν ξέρεις την απάντηση; Πάτησε την άσκηση για να τη δεις.</string>
+	<key>tutorial.button</key>
+	<string>Οδηγός</string>
 	<key>tutorial.complete</key>
 	<string>Μπράβο! Το μάθημα τελείωσε. Τώρα κυνήγησε το ρεκόρ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Απόφυγε το −1. Σου κοστίζει ένα τρόπαιο.</string>
 	<key>tutorial.move</key>
 	<string>Κούνησε τη συσκευή σου για να πας αριστερά και δεξιά. Μπορείς επίσης να περνάς από τις άκρες της οθόνης.</string>
+	<key>tutorial.notice.message</key>
+	<string>Παίζεις ήδη αυτό το επίπεδο. Τελείωσέ το ή ξεκίνα νέο παιχνίδι και μετά πάτησε ξανά το καπέλο για τον οδηγό.</string>
 	<key>tutorial.platforms</key>
 	<string>Πήδα στις πλατφόρμες για να ανέβεις.</string>
 	<key>tutorial.scoreHint</key>

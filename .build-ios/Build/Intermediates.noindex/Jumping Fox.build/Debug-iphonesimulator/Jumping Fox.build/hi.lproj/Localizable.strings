@@ -112,6 +112,8 @@
 	<string>माफ़ कीजिए! ज़ोर से पढ़ने की सुविधा अभी आपकी भाषा में उपलब्ध नहीं है।</string>
 	<key>game.intro.start</key>
 	<string>स्तर शुरू करें</string>
+	<key>game.intro.startTutorial</key>
+	<string>ट्यूटोरियल शुरू करो</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ को 1 से 12 तक किसी संख्या से गुणा करें।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>पात्र बदलने के लिए टैप करें; स्वागत स्क्रीन से फिर शुरू करने के लिए दो सेकंड दबाकर रखें।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ चुनें</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>अभी %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>दिन 1</string>
 	<key>tutorial.answerHint</key>
 	<string>उत्तर नहीं पता? सवाल पर टैप करके देखो।</string>
+	<key>tutorial.button</key>
+	<string>ट्यूटोरियल</string>
 	<key>tutorial.complete</key>
 	<string>शाबाश! अभ्यास पूरा हुआ। अब सर्वोच्च स्कोर बनाओ!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 से बचो। इससे एक ट्रॉफी कम होती है।</string>
 	<key>tutorial.move</key>
 	<string>बाएँ-दाएँ जाने के लिए डिवाइस हिलाओ। स्क्रीन के किनारों से भी निकल सकते हो।</string>
+	<key>tutorial.notice.message</key>
+	<string>तुम यह लेवल पहले से खेल रहे हो। इसे पूरा करो या नया खेल शुरू करो, फिर ट्यूटोरियल खेलने के लिए टोपी पर दोबारा टैप करो।</string>
 	<key>tutorial.platforms</key>
 	<string>ऊपर जाने के लिए प्लेटफ़ॉर्म पर कूदो।</string>
 	<key>tutorial.scoreHint</key>

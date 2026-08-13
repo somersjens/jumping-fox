@@ -738,8 +738,8 @@ struct ContentView: View {
         openedTotalTrophies = totalTrophies
     }
 
-    /// The level a fresh player is pointed at: the first free level of the
-    /// selected topic and order — the same one the menu marks as recommended.
+    /// The welcome flow starts each practice subcategory at an approachable
+    /// depth: order → level 2, random → level 5 and mixed → level 10.
     private static var firstLevel: LevelConfig? {
         let defaults = UserDefaults.standard
         let filter = MenuFilter(rawValue: defaults.integer(forKey: "ui.menuFilter")) ?? .tables
@@ -747,9 +747,16 @@ struct ContentView: View {
         let supermix = ChallengeCategory(rawValue: defaults.string(forKey: "ui.supermixCategory") ?? "")
             ?? .superBasic
         let category = filter == .mixed ? supermix : filter.category(for: mode)
-        return LevelCatalog.levels(for: category)
+        let startingIndex: Int
+        switch mode {
+        case .order: startingIndex = 2
+        case .random: startingIndex = 5
+        case .mixed: startingIndex = 10
+        }
+        let levels = LevelCatalog.levels(for: category)
             .map { filter != .mixed ? $0.variant(mode) : $0 }
-            .first { !$0.requiresPremium }
+        return levels.first { $0.index == startingIndex && !$0.requiresPremium }
+            ?? levels.first { !$0.requiresPremium }
     }
 
     /// A long press on the home character always restarts the welcome flow.

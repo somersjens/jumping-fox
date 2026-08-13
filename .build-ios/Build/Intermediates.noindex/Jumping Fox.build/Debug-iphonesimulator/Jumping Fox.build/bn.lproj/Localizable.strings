@@ -112,6 +112,8 @@
 	<string>দুঃখিত! জোরে পড়ে শোনানোর সুবিধাটি এখনও তোমার ভাষায় উপলভ্য নয়।</string>
 	<key>game.intro.start</key>
 	<string>লেভেল শুরু</string>
+	<key>game.intro.startTutorial</key>
+	<string>টিউটোরিয়াল শুরু</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@-কে ১ থেকে ১২-এর একটি সংখ্যা দিয়ে গুণ করো।</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>চরিত্র বদলাতে ট্যাপ করো; স্বাগত স্ক্রিন থেকে আবার শুরু করতে দুই সেকেন্ড চেপে ধরো।</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ বেছে নাও</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>আরও %lld</string>
 	<key>menu.maxScore</key>
 	<string>৩০ সর্বোচ্চ</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>দিন ১</string>
 	<key>tutorial.answerHint</key>
 	<string>উত্তর জানো না? দেখতে অঙ্কটিতে ট্যাপ করো।</string>
+	<key>tutorial.button</key>
+	<string>টিউটোরিয়াল</string>
 	<key>tutorial.complete</key>
 	<string>শাবাশ! টিউটোরিয়াল শেষ। এবার সেরা স্কোর করো!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 এড়িয়ে চলো। এতে একটি ট্রফি যাবে।</string>
 	<key>tutorial.move</key>
 	<string>বাঁ ও ডানে যেতে ডিভাইস নাড়াও। স্ক্রিনের পাশ দিয়েও চলে যেতে পারো।</string>
+	<key>tutorial.notice.message</key>
+	<string>তুমি এই লেভেলটি ইতিমধ্যে খেলছ। এটি শেষ করো বা নতুন খেলা শুরু করো, তারপর টিউটোরিয়াল খেলতে টুপিটিতে আবার চাপ দাও।</string>
 	<key>tutorial.platforms</key>
 	<string>ওপরে উঠতে প্ল্যাটফর্মগুলোর ওপর লাফ দাও।</string>
 	<key>tutorial.scoreHint</key>

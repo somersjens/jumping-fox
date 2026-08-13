@@ -112,6 +112,8 @@
 	<string>Maaf! Fitur baca nyaring belum tersedia dalam bahasamu.</string>
 	<key>game.intro.start</key>
 	<string>Mulai level</string>
+	<key>game.intro.startTutorial</key>
+	<string>Mulai tutorial</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Kalikan %@%@ dengan angka dari 1 sampai 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Ketuk untuk mengganti karakter; tekan dan tahan selama dua detik untuk memulai lagi dari layar sambutan.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Pilih %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>%lld lagi</string>
 	<key>menu.maxScore</key>
 	<string>30 MAKS</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Hari 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Tidak tahu jawabannya? Ketuk soalnya untuk melihat jawaban.</string>
+	<key>tutorial.button</key>
+	<string>Tutorial</string>
 	<key>tutorial.complete</key>
 	<string>Hebat! Tutorial selesai. Sekarang raih skor tertinggi!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Hindari −1. Itu mengurangi satu trofi.</string>
 	<key>tutorial.move</key>
 	<string>Gerakkan perangkatmu untuk bergerak ke kiri dan kanan. Kamu juga bisa melewati sisi layar.</string>
+	<key>tutorial.notice.message</key>
+	<string>Kamu sudah memainkan level ini. Selesaikan atau mulai permainan baru, lalu ketuk topinya lagi untuk memulai tutorial.</string>
 	<key>tutorial.platforms</key>
 	<string>Lompat ke platform untuk naik.</string>
 	<key>tutorial.scoreHint</key>

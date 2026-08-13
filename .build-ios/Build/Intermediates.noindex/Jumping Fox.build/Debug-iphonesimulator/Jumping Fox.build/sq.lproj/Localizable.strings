@@ -112,6 +112,8 @@
 	<string>Na vjen keq! Funksioni i leximit me zë nuk është ende i disponueshëm në gjuhën tënde.</string>
 	<key>game.intro.start</key>
 	<string>Fillo nivelin</string>
+	<key>game.intro.startTutorial</key>
+	<string>Fillo udhëzimin</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>Shumëzo %@%@ me një numër nga 1 deri në 12.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>Prek për të ndryshuar personazhin; mbaje shtypur dy sekonda për të nisur nga ekrani i mirëseardhjes.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>Zgjidh %@</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>edhe %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 MAX</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>Dita 1</string>
 	<key>tutorial.answerHint</key>
 	<string>Nuk e di përgjigjen? Prek detyrën për ta parë.</string>
+	<key>tutorial.button</key>
+	<string>Udhëzimi</string>
 	<key>tutorial.complete</key>
 	<string>Të lumtë! Udhëzuesi përfundoi. Tani syno rekordin!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>Shmang −1. Të kushton një trofe.</string>
 	<key>tutorial.move</key>
 	<string>Lëvize pajisjen për të shkuar majtas e djathtas. Mund të kalosh edhe nga anët e ekranit.</string>
+	<key>tutorial.notice.message</key>
+	<string>Po luan tashmë këtë nivel. Mbaroje ose nis një lojë të re, pastaj prek sërish kapelën për udhëzimin.</string>
 	<key>tutorial.platforms</key>
 	<string>Hidhu mbi platformat për t’u ngjitur.</string>
 	<key>tutorial.scoreHint</key>

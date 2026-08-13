@@ -112,6 +112,8 @@
 	<string>माफ करा! मोठ्याने वाचण्याचे वैशिष्ट्य अजून तुमच्या भाषेत उपलब्ध नाही.</string>
 	<key>game.intro.start</key>
 	<string>स्तर सुरू कर</string>
+	<key>game.intro.startTutorial</key>
+	<string>ट्युटोरियल सुरू करा</string>
 	<key>game.intro.tablesDetail %@ %@</key>
 	<string>%@%@ ला 1 ते 12 मधल्या संख्येने गुण.</string>
 	<key>game.intro.tablesOrLower</key>
@@ -200,6 +202,8 @@
 	<string>पात्र बदलण्यासाठी टॅप कर; स्वागत स्क्रीनपासून पुन्हा सुरू करण्यासाठी दोन सेकंद दाबून ठेव.</string>
 	<key>menu.accessibility.chooseMode %@</key>
 	<string>%@ निवड</string>
+	<key>menu.characterUnlockRemaining %lld</key>
+	<string>आणखी %lld</string>
 	<key>menu.maxScore</key>
 	<string>30 कमाल</string>
 	<key>menu.maximumCount</key>
@@ -544,6 +548,8 @@
 	<string>दिवस 1</string>
 	<key>tutorial.answerHint</key>
 	<string>उत्तर माहीत नाही? ते पाहण्यासाठी उदाहरणावर टॅप कर.</string>
+	<key>tutorial.button</key>
+	<string>ट्युटोरियल</string>
 	<key>tutorial.complete</key>
 	<string>शाब्बास! शिकवणी पूर्ण झाली. आता सर्वोच्च गुण मिळव!</string>
 	<key>tutorial.correctAnswer</key>
@@ -560,6 +566,8 @@
 	<string>−1 टाळ. त्यामुळे एक ट्रॉफी कमी होते.</string>
 	<key>tutorial.move</key>
 	<string>डावीकडे-उजवीकडे जाण्यासाठी डिव्हाइस हलव. स्क्रीनच्या बाजूंमधूनही जाऊ शकतोस.</string>
+	<key>tutorial.notice.message</key>
+	<string>हा स्तर आधीच सुरू आहे. तो पूर्ण कर किंवा नवा खेळ सुरू कर. मग ट्युटोरियलसाठी टोपीवर पुन्हा टॅप कर.</string>
 	<key>tutorial.platforms</key>
 	<string>वर जाण्यासाठी प्लॅटफॉर्मवर उडी मार.</string>
 	<key>tutorial.scoreHint</key>
