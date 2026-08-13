@@ -1,0 +1,72 @@
+{
+  "source": "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/ParentApprovalGate.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "parentGate.title",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.subtitle",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.holdInstruction %@ %lld",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 198
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.tapInstruction %lld %@",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 199
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.holdProgress %lld",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 204
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.tapProgress %lld %lld",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 205
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.attempts %lld %lld",
+        "location": {
+          "startingColumn": 11,
+          "startingLine": 213
+        }
+      },
+      {
+        "comment": "",
+        "key": "parentGate.approved",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 186
+        }
+      }
+    ]
+  },
+  "version": 1
+}

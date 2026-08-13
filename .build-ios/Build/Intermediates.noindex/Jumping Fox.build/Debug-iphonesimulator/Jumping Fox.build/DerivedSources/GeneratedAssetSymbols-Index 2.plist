@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameLaunchBackground</string>
+			<key>relativePath</key>
+			<string>./LaunchBackground.colorset</string>
+			<key>swiftSymbol</key>
+			<string>launchBackground</string>
+		</dict>
+	</array>
+	<key>images</key>
+	<array>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBearNoBackground</string>
+			<key>relativePath</key>
+			<string>./bear_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bearNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBunnyNoBackground</string>
+			<key>relativePath</key>
+			<string>./bunny_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bunnyNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameCrabNoBackground</string>
+			<key>relativePath</key>
+			<string>./crab_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>crabNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameDogNoBackground</string>
+			<key>relativePath</key>
+			<string>./dog_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>dogNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameElephantNoBackground</string>
+			<key>relativePath</key>
+			<string>./elephant_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>elephantNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFrogNoBackground</string>
+			<key>relativePath</key>
+			<string>./frog_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>frogNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameLionNoBackground</string>
+			<key>relativePath</key>
+			<string>./lion_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>lionNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameNoBackground</string>
+			<key>relativePath</key>
+			<string>./no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>noBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameOctupusNoBackground</string>
+			<key>relativePath</key>
+			<string>./octupus_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>octupusNoBackground</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePinquinNoBackground</string>
+			<key>relativePath</key>
+			<string>./pinquin_no_background.imageset</string>
+			<key>swiftSymbol</key>
+			<string>pinquinNoBackground</string>
+		</dict>
+	</array>
+	<key>symbols</key>
+	<array/>
+</dict>
+</plist>
