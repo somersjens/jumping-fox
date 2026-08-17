@@ -11,7 +11,21 @@ struct Jumping_FoxApp: App {
     @StateObject private var language = LanguageManager.shared
     @StateObject private var promotedPurchase = PromotedPurchaseCoordinator.shared
 
+#if TRAILER_EXPORT
+    private var isExportingTrailer: Bool {
+        ProcessInfo.processInfo.arguments.contains("--export-app-store-teaser")
+    }
+#endif
+
     init() {
+#if TRAILER_EXPORT
+        if ProcessInfo.processInfo.arguments.contains("--export-app-store-teaser") {
+            GameSettings.gameSoundsEnabled = true
+            GameSettings.spokenSumsEnabled = false
+            GameSettings.capsTrophiesAtThirty = true
+            return
+        }
+#endif
         // Capture the first launch date independently of when the player first
         // finishes a game; later review phases use age since installation.
         _ = ReviewRequestCoordinator.shared
@@ -30,6 +44,19 @@ struct Jumping_FoxApp: App {
 
     var body: some Scene {
         WindowGroup {
+#if TRAILER_EXPORT
+            if isExportingTrailer {
+                PromoTrailerView()
+            } else {
+                normalRoot
+            }
+#else
+            normalRoot
+#endif
+        }
+    }
+
+    private var normalRoot: some View {
             ZStack {
                 if onboardingComplete {
                     ContentView()
@@ -61,6 +88,5 @@ struct Jumping_FoxApp: App {
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
             }
-        }
     }
 }

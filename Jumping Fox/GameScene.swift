@@ -287,6 +287,54 @@ final class GamePlatform: SKNode {
         label.fontColor = .white
     }
 
+#if TRAILER_EXPORT
+    private var isStagedTrailerAnswer = false
+
+    /// Keeps a later answer visible in the climbing field without making it
+    /// hittable by the current question or by a shooting-star pickup. The
+    /// trailer can therefore reveal upcoming 14/16 stones naturally as they
+    /// enter the viewport instead of constructing them after the 56 landing.
+    func stageForTrailer(theme: AnimalCharacter) {
+        guard role == .answer else { return }
+        status = .neutralResolved
+        isStagedTrailerAnswer = true
+        shape.fillColor = theme.skPrimary
+        shape.strokeColor = theme.skDeep
+        label.fontColor = .white
+        fractionNode?.alpha = 1
+    }
+
+    func activateStagedTrailerAnswer(theme: AnimalCharacter,
+                                     isCorrect: Bool) {
+        guard role == .answer, isStagedTrailerAnswer else { return }
+        isStagedTrailerAnswer = false
+        status = .active
+        alpha = 1
+        label.alpha = 1
+        fractionNode?.alpha = 1
+        styleAsActiveAnswer(theme: theme, isCorrect: isCorrect,
+                            helperEnabled: false)
+    }
+
+    /// Recolours an existing stone during a trailer character/environment
+    /// handoff without changing its identity, geometry, answer or collision.
+    func restyleForTrailer(theme: AnimalCharacter, correctAnswer: String) {
+        if isStagedTrailerAnswer {
+            shape.fillColor = theme.skPrimary
+            shape.strokeColor = theme.skDeep
+            label.fontColor = .white
+            return
+        }
+        if role == .neutralPlatform || status != .active {
+            styleAsNeutral(theme: theme)
+        } else {
+            styleAsActiveAnswer(theme: theme,
+                                isCorrect: value == correctAnswer,
+                                helperEnabled: false)
+        }
+    }
+#endif
+
     // MARK: Status transitions (only via a real landing / question change)
 
     /// Landed correct: replace the number with one clear, centred checkmark.
@@ -766,8 +814,19 @@ final class GameScene: SKScene {
     private var springboard = SKShapeNode()
     /// Keep the safety bounce line visible immediately above the equation
     /// HUD. Every start, reachability and collision calculation uses this
-    /// single anchor.
-    private let springboardY: CGFloat = 142
+    /// single anchor. Trailer phone sits a little lower so the SE capture
+    /// does not leave a dead band between the stones and the sum.
+    private var springboardY: CGFloat {
+#if TRAILER_EXPORT
+        if trailerMode {
+            guard size.height > 0 else { return TrailerChrome.phoneSpringboardY }
+            return size.width / size.height > 0.65
+                ? TrailerChrome.padSpringboardY
+                : TrailerChrome.phoneSpringboardY
+        }
+#endif
+        return 142
+    }
     private var springboardVelocity: CGFloat { 1250 * sqrt(verticalGameplayScale) }
 
     // Loop
@@ -785,6 +844,22 @@ final class GameScene: SKScene {
     /// land on the FIRST correct answer (tutorial step 3) and hitch the frame.
     /// Build it once, up front, and reuse the same texture on every flight.
     private var cachedTrophyTexture: SKTexture?
+
+#if TRAILER_EXPORT
+    private let trailerMode: Bool
+    private var trailerRoute: [GamePlatform] = []
+    private var trailerRouteIndex = 0
+    private var trailerAnswerStage = 0
+    /// Trailer motion deliberately uses the exact production timestep. The
+    /// route is deterministic; the jump speed itself must remain authentic.
+    private let trailerPhysicsTimeScale: CGFloat = 1
+    private var trailerFinalAnswerActivated = false
+    private var trailerFinalAnswers: [GamePlatform] = []
+    private var trailerFinalCorrectAnswer: GamePlatform?
+    private var trailerCaptionNode: SKNode?
+    /// After the dog morph, one hop exits a side edge and re-enters opposite.
+    private var trailerWrapHopActive = false
+#endif
 
     // Haptics: one retained generator kept "warm" via prepare(), so the
     // Taptic Engine never cold-starts on the first correct landing (the
@@ -805,6 +880,9 @@ final class GameScene: SKScene {
 
     init(state: GameState) {
         self.state = state
+#if TRAILER_EXPORT
+        self.trailerMode = false
+#endif
         super.init(size: .zero)
         scaleMode = .resizeFill
         // Set this before SpriteView attaches and lays out the scene. Without
@@ -813,6 +891,16 @@ final class GameScene: SKScene {
             isPremium: GameSettings.premiumUnlockedCache
         ).skSky
     }
+
+#if TRAILER_EXPORT
+    init(state: GameState, trailerMode: Bool) {
+        self.state = state
+        self.trailerMode = trailerMode
+        super.init(size: .zero)
+        scaleMode = .resizeFill
+        backgroundColor = CharacterCatalog.character(id: "fox").skSky
+    }
+#endif
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -997,7 +1085,18 @@ final class GameScene: SKScene {
         // The phone layout remains pixel-for-pixel unchanged.  Portrait iPads
         // receive larger tiles, mascot and vertical jump arc without changing
         // the original horizontal input response.
+#if TRAILER_EXPORT
+        // The App Store's 3:4 tablet master has substantially more logical
+        // width than a phone. Let the native mascot, stones and effects use
+        // that room so the independently rendered iPad composition remains
+        // bold and readable after export to 1200 × 1600.
+        let usesTabletTrailerLayout = trailerMode && size.width / size.height > 0.65
+        tileScale = usesTabletTrailerLayout
+            ? min(1.85, max(1, size.width / 560))
+            : min(1.35, max(1, size.width / 560))
+#else
         tileScale = min(1.35, max(1, size.width / 560))
+#endif
         tileSize = CGSize(width: GamePlatform.platformSize.width * tileScale,
                           height: GamePlatform.platformSize.height * tileScale)
         setupSpringboard()
@@ -1040,7 +1139,21 @@ final class GameScene: SKScene {
     /// edges, wrap-proof (the catch check ignores x entirely).
     private func setupSpringboard() {
         springboard.removeFromParent()
-        springboard = SKShapeNode(rectOf: CGSize(width: size.width + 8, height: 14), cornerRadius: 7)
+        let springboardHeight: CGFloat
+#if TRAILER_EXPORT
+        // The wider native iPad composition scales all other gameplay art up.
+        // Give the safety bar the same visual weight instead of leaving it at
+        // the phone's fixed pixel thickness.
+        springboardHeight = trailerMode && size.width / size.height > 0.65
+            ? TrailerChrome.padSpringboardHeight
+            : TrailerChrome.phoneSpringboardHeight
+#else
+        springboardHeight = 14
+#endif
+        springboard = SKShapeNode(
+            rectOf: CGSize(width: size.width + 8, height: springboardHeight),
+            cornerRadius: springboardHeight / 2
+        )
         springboard.position = CGPoint(x: size.width / 2, y: springboardY)
         springboard.zPosition = 5
         addChild(springboard)
@@ -1098,6 +1211,12 @@ final class GameScene: SKScene {
     /// Places the player and an initial sparse set of platforms.
     func layoutNewGame() {
         guard started else { return }
+#if TRAILER_EXPORT
+        if trailerMode {
+            layoutTrailerGame()
+            return
+        }
+#endif
         // Gameplay must start immediately.  The tutorial is an in-game
         // overlay, never a reason to freeze the physics loop.
         isFrozen = false
@@ -1174,6 +1293,432 @@ final class GameScene: SKScene {
             buildAnswerSet() // validated before the first playable frame
         }
     }
+
+#if TRAILER_EXPORT
+    /// A deterministic vertical route that still runs through the production
+    /// physics, landing, pickup, answer, scrolling and completion code paths.
+    /// Coordinates are expressed as viewport fractions so phone and 4:3 iPad
+    /// get independently composed fields rather than a shared crop.
+    private func layoutTrailerGame() {
+        isFrozen = true
+        platforms.forEach { $0.removeFromParent() }
+        platforms.removeAll()
+        trailerRoute.removeAll()
+        trailerRouteIndex = 0
+        trailerAnswerStage = 0
+        trailerFinalAnswerActivated = false
+        trailerFinalAnswers.removeAll()
+        trailerFinalCorrectAnswer = nil
+        trailerCaptionNode?.removeFromParent()
+        trailerCaptionNode = nil
+        trailerWrapHopActive = false
+
+        helperEnabled = false
+        theme = CharacterCatalog.character(id: "fox")
+        backgroundColor = theme.skSky
+        updateBackgroundPattern()
+        configurePlayerSprite()
+        springNode.strokeColor = theme.skDeep
+        springNode.isHidden = true
+        springboard.fillColor = theme.skPrimary
+        springboard.strokeColor = theme.skDeep
+        springboard.lineWidth = size.width / size.height > 0.65 ? 2.6 : 2
+
+        player.position = CGPoint(x: size.width * 0.50,
+                                  y: springboardY + 110 * verticalGameplayScale)
+        routeAnchorX = player.position.x
+        player.zPosition = 10
+        player.removeAllActions()
+        playerSprite.removeAllActions()
+        player.zRotation = 0
+        velocityY = bounceVelocity
+        velocityX = 0
+        targetX = nil
+        squashTimer = 0
+        totalClimb = 0
+        lastUpdateTime = 0
+        answerRefreshAt = nil
+        answerBuildPending = false
+        completionFinishAt = nil
+        completionPersistenceAt = nil
+        hasPreparedCompletionResult = false
+        answerSetPrompt = state.questionText
+        setTriplerVisual(false)
+
+        // The notch-free SE capture is shorter than modern phones. Its real
+        // production scroll threshold is therefore reached on the first arc;
+        // start the route a little higher so the opening stone cannot scroll
+        // beneath the permanent springboard — but not so high that the first
+        // seconds show a dead band above the bar.
+        let openingOffset: CGFloat = size.height < 750 ? 110 : 64
+        let y0 = springboardY + openingOffset * verticalGameplayScale
+        let gap = 118 * verticalGameplayScale
+        // Opening: two clean stone landings before the first answer. Starting
+        // with a live upward velocity means the very first frame is gameplay.
+        trailerRoute.append(addTrailerPlatform(x: 0.46, y: y0))
+        trailerRoute.append(addTrailerPlatform(x: 0.62, y: y0 + gap))
+
+        let answer15 = addTrailerPlatform(role: .answer, value: "15",
+                                          x: 0.28, y: y0 + gap * 2)
+        _ = addTrailerPlatform(role: .answer, value: "20",
+                               x: 0.78, y: y0 + gap * 2 + 36)
+        trailerRoute.append(answer15)
+
+        // Each power-up gets its own unmistakable landing. The neutral stone
+        // before and after ×3 prevents either pickup reading as a fly-by combo.
+        trailerRoute.append(addTrailerPlatform(x: 0.54, y: y0 + gap * 3))
+        trailerRoute.append(addTrailerPlatform(x: 0.36, y: y0 + gap * 4,
+                                                powerup: .tripler))
+        // Keep this landing in a separate lane from the star two levels up;
+        // the production jump height can otherwise legitimately skip the
+        // empty stone and touch the pickup early.
+        trailerRoute.append(addTrailerPlatform(x: 0.72, y: y0 + gap * 5))
+        trailerRoute.append(addTrailerPlatform(x: 0.34, y: y0 + gap * 6,
+                                                powerup: .eliminator))
+
+        // The 7×8 answer is inserted at gap 7 after 15 is registered. Character
+        // handoffs then run bunny → dog → wrap showcase → bear → fox → 16.
+        // Stack bunny just under the dog so the edge-seat for the wrap
+        // showcase is a short hop, not a long lateral leap.
+        trailerRoute.append(addTrailerPlatform(x: 0.72, y: y0 + gap * 8))
+        // Dog sits near the right edge so the next hop can exit that side.
+        trailerRoute.append(addTrailerPlatform(x: 0.88, y: y0 + gap * 9))
+        // Arrive via horizontal wrap on the left — production screen wrapping.
+        trailerRoute.append(addTrailerPlatform(x: 0.08, y: y0 + gap * 10))
+        trailerRoute.append(addTrailerPlatform(x: 0.55, y: y0 + gap * 11))
+
+        // These answers exist from the beginning, well above the camera. They
+        // become visible through ordinary scrolling and are only armed for
+        // scoring once 7 × 8 has been answered.
+        let answer14 = addTrailerPlatform(role: .answer, value: "14",
+                                          x: 0.18, y: y0 + gap * 12 + 56)
+        let answer16 = addTrailerPlatform(role: .answer, value: "16",
+                                          x: 0.52, y: y0 + gap * 12)
+        answer14.stageForTrailer(theme: theme)
+        answer16.stageForTrailer(theme: theme)
+        trailerFinalAnswers = [answer14, answer16]
+        trailerFinalCorrectAnswer = answer16
+
+        // A fuller production-like world: unused stones occupy the alternate
+        // lanes and some patrol gently. They are real neutral platforms, but
+        // the deterministic steering route never targets them.
+        addTrailerDecoration(x: 0.91, y: y0 + gap * 0.52, moving: true)
+        addTrailerDecoration(x: 0.09, y: y0 + gap * 1.48, moving: false)
+        addTrailerDecoration(x: 0.90, y: y0 + gap * 2.54, moving: true)
+        addTrailerDecoration(x: 0.10, y: y0 + gap * 3.50, moving: true)
+        addTrailerDecoration(x: 0.91, y: y0 + gap * 4.52, moving: false)
+        addTrailerDecoration(x: 0.09, y: y0 + gap * 5.48, moving: true)
+        // Leave gap 6.5–8.5 clear: the 7×8 answer set (52/63/56/67) spawns
+        // there, and spare stones were clipping into those answers.
+        addTrailerDecoration(x: 0.12, y: y0 + gap * 9.20, moving: false)
+        addTrailerDecoration(x: 0.14, y: y0 + gap * 11.40, moving: false)
+        addTrailerDecoration(x: 0.90, y: y0 + gap * 10.55, moving: true)
+        // Spare stones above the last answer pair preserve the endless-world
+        // feel and keep the 16 landing as a reveal rather than a visible roof.
+        addTrailerDecoration(x: 0.80, y: y0 + gap * 12.88, moving: true)
+        addTrailerDecoration(x: 0.18, y: y0 + gap * 13.72, moving: false)
+        addTrailerDecoration(x: 0.66, y: y0 + gap * 14.36, moving: true)
+
+        nextSpawnY = y0 + gap * 16
+        setTrailerCaption("Jump to the correct answer", animated: false)
+    }
+
+    @discardableResult
+    private func addTrailerPlatform(role: GamePlatform.Role = .neutralPlatform,
+                                    value: String = "", x: CGFloat, y: CGFloat,
+                                    powerup: PowerupType? = nil) -> GamePlatform {
+        let platform = GamePlatform(role: role, value: value, size: tileSize)
+        let inset = tileSize.width / 2 + 10
+        platform.position = CGPoint(x: inset + (size.width - inset * 2) * x, y: y)
+        if role == .answer {
+            platform.styleAsActiveAnswer(theme: theme,
+                                         isCorrect: value == state.correctAnswer,
+                                         helperEnabled: false)
+        } else {
+            platform.styleAsNeutral(theme: theme)
+        }
+        if let powerup { platform.attachPowerup(powerup, theme: theme) }
+        addChild(platform)
+        platforms.append(platform)
+        return platform
+    }
+
+    private func addTrailerDecoration(x: CGFloat, y: CGFloat, moving: Bool) {
+        let platform = addTrailerPlatform(x: x, y: y)
+        guard moving else { return }
+        platform.beginPatrol(amplitude: 24 * verticalGameplayScale,
+                             duration: 1.65)
+    }
+
+    private func updateTrailerAutopilot(dt: CGFloat) {
+        guard trailerRouteIndex < trailerRoute.count else {
+            targetX = nil
+            trailerWrapHopActive = false
+            return
+        }
+        let destination = trailerRoute[trailerRouteIndex].position.x
+        let direct = destination - player.position.x
+        let viaWrap = direct > 0 ? direct - size.width : direct + size.width
+        // Prefer the wrap path when it is clearly shorter, or when the dog→left
+        // showcase hop has been armed explicitly.
+        let preferWrap = trailerWrapHopActive || abs(viaWrap) + 40 < abs(direct)
+        if preferWrap {
+            // Aim past the near edge so production wrapping carries us around.
+            targetX = viaWrap < 0 ? -90 : size.width + 90
+            updateHorizontal(dt: dt)
+            // Once we reappear on the destination side, home in normally.
+            if abs(player.position.x - destination) < size.width * 0.42 {
+                trailerWrapHopActive = false
+                targetX = destination
+            }
+        } else {
+            targetX = destination
+            updateHorizontal(dt: dt)
+            player.position.x = min(max(player.position.x, playerHalfWidth + 2),
+                                    size.width - playerHalfWidth - 2)
+        }
+    }
+
+    private func performTrailerQuestionAdvance() {
+        state.advanceQuestion()
+        trailerAnswerStage += 1
+        answerSetPrompt = state.questionText
+
+        if trailerAnswerStage == 1 {
+            for platform in platforms where platform.isActiveAnswer {
+                platform.markSuperseded(theme: theme)
+            }
+            guard trailerRoute.count > 7 else { return }
+            let gap = 118 * verticalGameplayScale
+            // Sit 56 a bit under the bunny stone so empty→56 is unreachable in
+            // one bounce (prevents skipping the star under recordVideo pacing).
+            // Place it clearly right of the star so the hop reads left→right.
+            let y = trailerRoute[7].position.y - gap * 0.55
+            // Four clear lanes — the previous 63@0.16 / 67@0.18 pair stacked
+            // into an unreadable overlap on the left.
+            _ = addTrailerPlatform(role: .answer, value: "52", x: 0.12, y: y)
+            _ = addTrailerPlatform(role: .answer, value: "63", x: 0.30, y: y + 78)
+            let answer56 = addTrailerPlatform(role: .answer, value: "56", x: 0.72, y: y)
+            _ = addTrailerPlatform(role: .answer, value: "67", x: 0.90, y: y + 52)
+            trailerRoute.insert(answer56, at: 7)
+            PromoTrailerRecorder.shared.event("question_7x8")
+        } else if trailerAnswerStage == 2 {
+            PromoTrailerRecorder.shared.event("final_question_armed")
+            activateTrailerFinalAnswer()
+        }
+    }
+
+    private func trailerDidLand(on platform: GamePlatform) {
+        guard trailerRouteIndex < trailerRoute.count,
+              trailerRoute[trailerRouteIndex] === platform else { return }
+        let landedIndex = trailerRouteIndex
+        trailerRouteIndex += 1
+
+        switch landedIndex {
+        case 0: PromoTrailerRecorder.shared.event("opening_landing")
+        case 1: PromoTrailerRecorder.shared.event("opening_empty_landing")
+        case 2: PromoTrailerRecorder.shared.event("answer_15")
+        case 3:
+            PromoTrailerRecorder.shared.event("empty_before_tripler")
+            setTrailerCaption("Collect power-ups")
+        case 4: PromoTrailerRecorder.shared.event("multiplier_landing")
+        case 5: PromoTrailerRecorder.shared.event("empty_after_tripler")
+        case 6: PromoTrailerRecorder.shared.event("star_landing")
+        case 7:
+            PromoTrailerRecorder.shared.event("answer_56")
+            setTrailerCaption("Unlock new characters")
+            transitionTrailerTheme(to: CharacterCatalog.character(id: "bunny"))
+        case 8:
+            PromoTrailerRecorder.shared.event("bunny_landing")
+            transitionTrailerTheme(to: CharacterCatalog.character(id: "dog"))
+            if trailerRouteIndex < trailerRoute.count {
+                let dogX = trailerRoute[trailerRouteIndex].position.x
+                velocityX = (dogX - player.position.x) * 2.2
+                targetX = dogX
+            }
+        case 9:
+            // Second unlock animal: next hop exits a side and wraps around.
+            PromoTrailerRecorder.shared.event("dog_landing")
+            trailerWrapHopActive = true
+            velocityX = 620
+        case 10:
+            PromoTrailerRecorder.shared.event("wrap_landing")
+            setTrailerCaption("Beat your high score")
+            transitionTrailerTheme(to: CharacterCatalog.character(id: "bear"))
+            trailerWrapHopActive = false
+        case 11:
+            PromoTrailerRecorder.shared.event("bear_landing")
+            transitionTrailerTheme(to: CharacterCatalog.character(id: "fox"))
+            if let correct = trailerFinalCorrectAnswer {
+                let delta = correct.position.x - player.position.x
+                velocityX = delta * 1.8
+                targetX = correct.position.x
+            }
+        case 12: PromoTrailerRecorder.shared.event("final_answer")
+        default: break
+        }
+
+        // Soft aim assist only — never teleport X. A hard snap made landings
+        // look hitchy compared with normal play.
+        if trailerRouteIndex < trailerRoute.count, !trailerWrapHopActive {
+            let nextX = trailerRoute[trailerRouteIndex].position.x
+            let delta = nextX - player.position.x
+            velocityX = velocityX * 0.25 + delta * 1.55
+        }
+    }
+
+    /// The trailer's hero pickups only trigger on the actual stone landing.
+    /// Normal gameplay keeps its forgiving touch-to-collect behaviour.
+    private func collectTrailerPowerupOnLanding(from platform: GamePlatform) {
+        guard let collected = platform.takePowerup() else { return }
+        let origin = platform.convert(collected.localOrigin, to: self)
+        apply(powerup: collected.type, origin: origin)
+    }
+
+    private func activateTrailerFinalAnswer() {
+        guard !trailerFinalAnswerActivated else { return }
+        trailerFinalAnswerActivated = true
+        for answer in trailerFinalAnswers {
+            answer.activateStagedTrailerAnswer(theme: theme,
+                                                isCorrect: answer.value == state.correctAnswer)
+        }
+        guard let correct = trailerFinalCorrectAnswer else { return }
+        trailerRoute.append(correct)
+        PromoTrailerRecorder.shared.event("final_question_visible")
+    }
+
+    private func setTrailerCaption(_ text: String, animated: Bool = true) {
+        let isTablet = size.width / size.height > 0.65
+        let fontSize: CGFloat = isTablet ? 22 : 16.5
+        let height: CGFloat = isTablet ? 46 : 36
+        // Match the in-game streak banner: solid theme fill, white type, light rim.
+        let ink = theme.skPrimary
+        let deep = theme.skDeep
+
+        let label = SKLabelNode(fontNamed: "AvenirNext-Heavy")
+        label.text = text
+        label.fontSize = fontSize
+        label.fontColor = .white
+        label.verticalAlignmentMode = .center
+        label.horizontalAlignmentMode = .center
+        label.zPosition = 2
+
+        let width = ceil(label.frame.width) + (isTablet ? 42 : 30)
+        // iPhone: a little air under the HUD. iPad: closer — the prior 188pt
+        // offset left a dead band under the cropped top bar.
+        let topOffset: CGFloat = isTablet ? 132 : 78
+        let container = SKNode()
+        container.position = CGPoint(x: size.width / 2,
+                                     y: size.height - topOffset)
+        container.zPosition = 65
+        container.alpha = animated ? 0 : 1
+
+        let shadow = SKShapeNode(rectOf: CGSize(width: width, height: height),
+                                 cornerRadius: height / 2)
+        shadow.position.y = -2.5
+        shadow.fillColor = .black.withAlphaComponent(0.18)
+        shadow.strokeColor = .clear
+        shadow.zPosition = 0
+        container.addChild(shadow)
+
+        let bubble = SKShapeNode(rectOf: CGSize(width: width, height: height),
+                                 cornerRadius: height / 2)
+        bubble.name = "trailerCaptionBubble"
+        bubble.fillColor = ink.withAlphaComponent(0.94)
+        bubble.strokeColor = SKColor.white.withAlphaComponent(0.88)
+        bubble.lineWidth = isTablet ? 1.8 : 1.4
+        bubble.zPosition = 1
+        container.addChild(bubble)
+
+        // Soft deep wash so the capsule reads as part of the current theme UI.
+        let wash = SKShapeNode(rectOf: CGSize(width: width, height: height),
+                               cornerRadius: height / 2)
+        wash.name = "trailerCaptionWash"
+        wash.fillColor = deep.withAlphaComponent(0.18)
+        wash.strokeColor = .clear
+        wash.zPosition = 1.5
+        container.addChild(wash)
+
+        container.addChild(label)
+        addChild(container)
+
+        let outgoing = trailerCaptionNode
+        trailerCaptionNode = container
+        if animated {
+            container.setScale(0.96)
+            container.run(.group([
+                .fadeIn(withDuration: 0.22),
+                .scale(to: 1, duration: 0.22)
+            ]))
+            outgoing?.run(.sequence([
+                .fadeOut(withDuration: 0.16),
+                .removeFromParent()
+            ]))
+        } else {
+            outgoing?.removeFromParent()
+        }
+    }
+
+    func fadeTrailerCaptionForEndCard() {
+        trailerCaptionNode?.run(.fadeOut(withDuration: 0.45))
+    }
+
+    private func transitionTrailerTheme(to next: AnimalCharacter) {
+        let outgoing = playerSprite.copy() as! SKNode
+        outgoing.zPosition = 3
+        // Copying on a landing frame used to preserve the mascot's squash,
+        // creating a very thin intermediate animal. Every handoff now starts
+        // from the same undistorted pose as the clean bear → fox transition.
+        outgoing.xScale = facing
+        outgoing.yScale = 1
+        outgoing.zRotation = 0
+
+        theme = next
+        configurePlayerSprite()
+        playerSprite.zPosition = 2
+        playerSprite.alpha = 0
+        playerSprite.xScale = facing
+        playerSprite.yScale = 1
+        player.addChild(outgoing)
+        playerSprite.run(.fadeIn(withDuration: 0.28))
+        outgoing.run(.sequence([
+            .fadeOut(withDuration: 0.24),
+            .removeFromParent()
+        ]))
+
+        let wash = SKShapeNode(rectOf: CGSize(width: size.width + 4,
+                                              height: size.height + 4))
+        wash.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        wash.fillColor = next.skSky
+        wash.strokeColor = .clear
+        wash.alpha = 0
+        wash.zPosition = -49
+        addChild(wash)
+        wash.run(.sequence([
+            .fadeAlpha(to: 0.86, duration: 0.28),
+            .run { [weak self] in
+                guard let self else { return }
+                self.backgroundColor = next.skSky
+                self.updateBackgroundPattern()
+                self.springboard.fillColor = next.skPrimary
+                self.springboard.strokeColor = next.skDeep
+                for platform in self.platforms {
+                    platform.restyleForTrailer(theme: next,
+                                               correctAnswer: self.state.correctAnswer)
+                }
+                if let bubble = self.trailerCaptionNode?.childNode(withName: "trailerCaptionBubble") as? SKShapeNode {
+                    bubble.fillColor = next.skPrimary.withAlphaComponent(0.94)
+                }
+                if let wash = self.trailerCaptionNode?.childNode(withName: "trailerCaptionWash") as? SKShapeNode {
+                    wash.fillColor = next.skDeep.withAlphaComponent(0.18)
+                }
+            },
+            .fadeOut(withDuration: 0.18),
+            .removeFromParent()
+        ]))
+        PromoTrailerRecorder.shared.event("character_\(next.id)")
+    }
+#endif
 
     /// Restart after game over.
     func resetGame() {
@@ -2122,16 +2667,21 @@ final class GameScene: SKScene {
         // Preserve more real elapsed time after an isolated slow frame. The
         // previous 1/30 cap made the world visibly enter brief slow motion;
         // 1/20 is still safely bounded for the swept landing checks below.
-        let dt = CGFloat(min(1.0 / 20.0, currentTime - lastUpdateTime))
+        let rawDT = CGFloat(min(1.0 / 20.0, currentTime - lastUpdateTime))
+#if TRAILER_EXPORT
+        let dt = trailerMode ? rawDT * trailerPhysicsTimeScale : rawDT
+#else
+        let dt = rawDT
+#endif
         lastUpdateTime = currentTime
 
         // Victory exit: no steering, collisions, spawning or scrolling. The
         // player follows one uninterrupted launch beyond the top edge while
         // result persistence is absorbed midway through the animation.
         if let finishAt = completionFinishAt {
-            velocityY += gravity * dt
-            player.position.y += velocityY * dt
-            updatePlayerAppearance(dt: dt)
+            velocityY += gravity * rawDT
+            player.position.y += velocityY * rawDT
+            updatePlayerAppearance(dt: rawDT)
 
             if !hasPreparedCompletionResult,
                let persistenceAt = completionPersistenceAt,
@@ -2152,7 +2702,15 @@ final class GameScene: SKScene {
             return
         }
 
+#if TRAILER_EXPORT
+        if trailerMode {
+            updateTrailerAutopilot(dt: dt)
+        } else {
+            updateHorizontal(dt: dt)
+        }
+#else
         updateHorizontal(dt: dt)
+#endif
         if tutorialAwaitingQuestionTap, tutorial.isActive, tutorial.currentStep == 6 {
             if tutorialQuestionTapReminderAt == nil {
                 tutorialQuestionTapReminderAt = currentTime + tutorialQuestionTapReminderDelay
@@ -2207,7 +2765,15 @@ final class GameScene: SKScene {
         // Deferred answer refresh (after the correct-answer confirmation).
         if let refreshAt = answerRefreshAt, currentTime >= refreshAt {
             answerRefreshAt = nil
+#if TRAILER_EXPORT
+            if trailerMode {
+                performTrailerQuestionAdvance()
+            } else {
+                performQuestionAdvance()
+            }
+#else
             performQuestionAdvance()
+#endif
         }
 
         // Do not interpret the previous question's still-visible tiles using
@@ -2217,7 +2783,12 @@ final class GameScene: SKScene {
             && currentTime >= answerBuildNotBefore
 
         // Watchdog: keep the correct answer inside the playable window.
-        if !tutorialSuppressesAnswerTiles,
+#if TRAILER_EXPORT
+        let shouldRunAnswerWatchdog = !trailerMode
+#else
+        let shouldRunAnswerWatchdog = true
+#endif
+        if shouldRunAnswerWatchdog, !tutorialSuppressesAnswerTiles,
            answerRefreshAt == nil, !answerBuildPending,
            currentTime - lastReachabilityCheck > 0.5 {
             lastReachabilityCheck = currentTime
@@ -2230,6 +2801,10 @@ final class GameScene: SKScene {
         updatePlayerAppearance(dt: dt)
         scrollIfNeeded()
         cullPlatforms()
+
+#if TRAILER_EXPORT
+        if trailerMode { return }
+#endif
 
         // Building a platform band means allocating/configuring several
         // SpriteKit nodes. Keep that work away from the fastest part of the
@@ -2260,9 +2835,27 @@ final class GameScene: SKScene {
     /// makes the −1 hazard a real obstacle to steer around.
     private func collectTouchedPowerups() {
         for platform in platforms where platform.powerup != nil {
+#if TRAILER_EXPORT
+            // The two hero pickups are intentionally collected only by a real
+            // landing; production gameplay remains touch-to-collect.
+            if trailerMode,
+               trailerRoute.contains(where: { $0 === platform }) {
+                continue
+            }
+#endif
             let iconY = platform.position.y + tileSize.height / 2 + 18
-            if wrapDx(player.position.x, platform.position.x) < playerHalfWidth + 14,
-               abs(player.position.y - iconY) < playerHalfHeight + 24,
+#if TRAILER_EXPORT
+            // Decorative trailer pickups, if ever added, retain the normal
+            // forgiving touch boundary on the larger tablet playfield.
+            let usesTabletTrailerReach = trailerMode && size.width / size.height > 0.65
+            let pickupXReach = playerHalfWidth + (usesTabletTrailerReach ? 32 : 14)
+            let pickupYReach = playerHalfHeight + (usesTabletTrailerReach ? 58 : 24)
+#else
+            let pickupXReach = playerHalfWidth + 14
+            let pickupYReach = playerHalfHeight + 24
+#endif
+            if wrapDx(player.position.x, platform.position.x) < pickupXReach,
+               abs(player.position.y - iconY) < pickupYReach,
                let collected = platform.takePowerup() {
                 let origin = platform.convert(collected.localOrigin, to: self)
                 apply(powerup: collected.type, origin: origin)
@@ -2290,11 +2883,27 @@ final class GameScene: SKScene {
         // Horizontal screen wrapping: leave one side, appear on the other.
         // Velocity and all state stay untouched; at most one wrap per frame.
         let half = playerHalfWidth
+#if TRAILER_EXPORT
+        // Ordinary trailer hops clamp to the playfield. Only the armed dog→wrap
+        // showcase may exit an edge; otherwise updateHorizontal wraps before the
+        // autopilot clamp and soft-locks on the opposite side.
+        if trailerMode && !trailerWrapHopActive {
+            player.position.x = min(max(player.position.x, half + 2),
+                                    size.width - half - 2)
+        } else {
+            if player.position.x > size.width + half {
+                player.position.x -= size.width + 2 * half
+            } else if player.position.x < -half {
+                player.position.x += size.width + 2 * half
+            }
+        }
+#else
         if player.position.x > size.width + half {
             player.position.x -= size.width + 2 * half
         } else if player.position.x < -half {
             player.position.x += size.width + 2 * half
         }
+#endif
     }
 
     /// Squash & stretch, lean, and facing — the jump cycle.
@@ -2407,6 +3016,16 @@ final class GameScene: SKScene {
             guard previousBottom >= top - 2, bottom <= top else { continue }
             let dx = abs(player.position.x - platform.position.x)
             guard dx < halfWidth + 6 else { continue }
+#if TRAILER_EXPORT
+            // Fall through future (and past) route stones so a tall bounce
+            // cannot skip ahead and then soft-lock waiting for a stone below.
+            if trailerMode,
+               trailerRoute.contains(where: { $0 === platform }),
+               !(trailerRouteIndex < trailerRoute.count
+                 && trailerRoute[trailerRouteIndex] === platform) {
+                continue
+            }
+#endif
 
             if tutorialQuestionTapFreezePending {
                 holdTutorialForQuestionTap(on: platform, top: top)
@@ -2420,11 +3039,20 @@ final class GameScene: SKScene {
             // While the next answer set is pending, the old set is closed:
             // landings are plain bounces, never a second registration.
             if platform.isActiveAnswer && answerRefreshAt == nil && !answerBuildPending {
-                if platform.value == state.correctAnswer {
+#if TRAILER_EXPORT
+                // Deterministic route: never score an ahead-of-route answer if a
+                // tall bounce skipped an intermediate stone.
+                let trailerAllowsScore = !trailerMode
+                    || (trailerRouteIndex < trailerRoute.count
+                        && trailerRoute[trailerRouteIndex] === platform)
+#else
+                let trailerAllowsScore = true
+#endif
+                if trailerAllowsScore, platform.value == state.correctAnswer {
                     // The correct block registers over its full (generous)
                     // landing width — a deliberate jump is always rewarded.
                     landedCorrect(on: platform)
-                } else {
+                } else if trailerAllowsScore {
                     // Any landing that bounces off a wrong block counts as
                     // wrong. If the player touches it enough to spring back
                     // up, it registers as a wrong answer (deduction) — no
@@ -2443,6 +3071,12 @@ final class GameScene: SKScene {
                     completeTutorialStep(2)
                 }
             }
+#if TRAILER_EXPORT
+            if trailerMode {
+                collectTrailerPowerupOnLanding(from: platform)
+                trailerDidLand(on: platform)
+            }
+#endif
             return
         }
     }
@@ -2587,6 +3221,9 @@ final class GameScene: SKScene {
         turn.timingMode = .easeInEaseOut
         playerSprite.run(turn, withKey: "completion-turn")
         arrivalPing(at: origin, color: theme.skPrimary)
+#if TRAILER_EXPORT
+        if trailerMode { PromoTrailerRecorder.shared.event("completion_launch") }
+#endif
     }
 
     /// Register once → cross INSIDE the block → nothing else changes.
@@ -3075,6 +3712,15 @@ final class GameScene: SKScene {
         }
         PlaytimeTracker.shared.registerInteraction()
         handleTutorialPowerup(powerup)
+#if TRAILER_EXPORT
+        if trailerMode {
+            switch powerup {
+            case .tripler: PromoTrailerRecorder.shared.event("tripler_collected")
+            case .eliminator: PromoTrailerRecorder.shared.event("star_collected")
+            default: break
+            }
+        }
+#endif
     }
 
     /// The −1 hazard: a red bubble arcs to the trophy score and takes the
@@ -3602,6 +4248,14 @@ final class GameScene: SKScene {
         let cutoff: CGFloat = -60
         platforms.removeAll { platform in
             if platform.position.y < cutoff {
+#if TRAILER_EXPORT
+                // Deterministic route stones must survive scroll-cull. Recycling
+                // them zeroes their position while trailerRoute still points at
+                // the node — soft-locking the autopilot on a ghost target.
+                if trailerMode && trailerRoute.contains(where: { $0 === platform }) {
+                    return false
+                }
+#endif
                 recycleNeutralPlatformIfPossible(platform)
                 return true
             }

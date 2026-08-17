@@ -11215,7 +11215,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tables"
+            "value": "Times tables"
           }
         },
         "nl": {
@@ -72382,7 +72382,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Table of %lld"
+            "value": "%lld times table"
           }
         },
         "nl": {
@@ -72412,7 +72412,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "جدول %lld"
+            "value": "جدول ضرب %lld"
           }
         },
         "hy": {
@@ -72700,7 +72700,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "جدول %lld"
+            "value": "جدول ضرب %lld"
           }
         },
         "pl": {

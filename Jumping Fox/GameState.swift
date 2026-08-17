@@ -230,6 +230,13 @@ final class GameState: ObservableObject {
     /// against. `highScore` itself is updated as soon as a new best is recorded.
     private var bestAtRunStart: Int
     private var hasPreparedCompletedLevel = false
+#if TRAILER_EXPORT
+    /// Development-only deterministic question chain used by the App Store
+    /// teaser. Normal builds do not compile this storage or its initializer.
+    private var trailerQuestions: [Question] = []
+    private var trailerQuestionIndex = 0
+    private var isTrailerSession = false
+#endif
 
     init(level: LevelConfig) {
         self.level = level
@@ -246,6 +253,25 @@ final class GameState: ObservableObject {
         self.highScore = best
         self.bestAtRunStart = best
     }
+
+#if TRAILER_EXPORT
+    init(trailerLevel level: LevelConfig, questions: [Question],
+         startingScore: Int, previousHighScore: Int) {
+        precondition(!questions.isEmpty)
+        self.level = level
+        self.lifeMode = .three
+        self.isAnswerHelperEnabled = false
+        self.livesHalves = LifeMode.three.startingLives.map { $0 * 2 }
+        self.engine = QuestionEngine(level: level)
+        self.question = questions[0]
+        self.score = startingScore
+        self.highScore = previousHighScore
+        self.bestAtRunStart = previousHighScore
+        self.trailerQuestions = questions
+        self.trailerQuestionIndex = 0
+        self.isTrailerSession = true
+    }
+#endif
 
     /// Recreates an unfinished run after the app was terminated. The engine
     /// starts a fresh question sequence after the restored current question;
@@ -325,9 +351,15 @@ final class GameState: ObservableObject {
         // festive completion sequence instead of letting the run drag on.
         // Do not publish `isGameOver` here: SpriteKit first gets a short,
         // input-locked victory beat in which the character exits the screen.
+        let completionTarget: Int
+#if TRAILER_EXPORT
+        completionTarget = isTrailerSession ? 30 : ProgressStore.maximumTrophies(for: level)
+#else
+        completionTarget = ProgressStore.maximumTrophies(for: level)
+#endif
         if GameSettings.capsTrophiesAtThirty,
-           score >= ProgressStore.maximumTrophies(for: level) {
-            score = ProgressStore.maximumTrophies(for: level)
+           score >= completionTarget {
+            score = completionTarget
             isStreakComboAnimating = false
             isCompletingLevel = true
             return true
@@ -341,6 +373,16 @@ final class GameState: ObservableObject {
     /// bookkeeping cannot hold up the first frame of the result card.
     func prepareCompletedLevel() {
         guard isCompletingLevel, !isGameOver, !hasPreparedCompletedLevel else { return }
+#if TRAILER_EXPORT
+        if isTrailerSession {
+            highScore = max(highScore, score)
+            isNewHighScore = score > bestAtRunStart
+            beatsPreviousHighScore = score > bestAtRunStart
+            didMatchOrBeatBest = score >= bestAtRunStart
+            hasPreparedCompletedLevel = true
+            return
+        }
+#endif
         let result = recordCurrentScore(showNewHighScore: true)
         recordCompletedGame(using: result)
         hasPreparedCompletedLevel = true
@@ -411,6 +453,14 @@ final class GameState: ObservableObject {
     /// safe moment, never in the landing frame.
     func advanceQuestion() {
         guard !isGameOver, !isCompletingLevel else { return }
+#if TRAILER_EXPORT
+        if isTrailerSession, trailerQuestionIndex + 1 < trailerQuestions.count {
+            trailerQuestionIndex += 1
+            question = trailerQuestions[trailerQuestionIndex]
+            isAnswerRevealed = false
+            return
+        }
+#endif
         question = engine.next()
         isAnswerRevealed = false
     }
