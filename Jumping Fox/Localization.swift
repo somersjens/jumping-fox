@@ -357,6 +357,10 @@ private struct GameEnvironment: ViewModifier {
         content
             .environment(\.locale, language.locale)
             .environment(\.layoutDirection, language.layoutDirection)
+            // Palettes and copy are authored for light surfaces. Sheets and
+            // full-screen covers start a fresh environment, so Dark Mode would
+            // otherwise invert system fills and labels on those screens.
+            .preferredColorScheme(.light)
     }
 }
 

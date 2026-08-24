@@ -346,6 +346,9 @@ struct ContentView: View {
     @Environment(\.requestReview) private var requestReview
     @Environment(\.scenePhase) private var scenePhase
     @State private var selection: LevelSelection?
+    /// Welcome hand-off only. A system fullScreenCover would slide up and
+    /// fight the crossfade, so the first game is an overlay instead.
+    @State private var presentsFirstGameAsOverlay = false
     @State private var showPremium = false
     @State private var premiumInitialCharacterID: String?
     @State private var celebratedCharacterUnlock: TrophyCharacterMilestone?
@@ -421,6 +424,7 @@ struct ContentView: View {
         if defaults.bool(forKey: GameSettings.opensFirstLevelKey) {
             defaults.set(false, forKey: GameSettings.opensFirstLevelKey)
             _selection = State(initialValue: Self.firstLevel.map { LevelSelection(level: $0) })
+            _presentsFirstGameAsOverlay = State(initialValue: true)
         }
     }
 
@@ -497,6 +501,14 @@ struct ContentView: View {
             if let flight = flyingTrophy {
                 FlyingTrophyView(flight: flight)
             }
+
+            if presentsFirstGameAsOverlay, let selection {
+                GameView(level: selection.level)
+                    .gameEnvironment()
+                    .environment(\.gameDismissAction, dismissFirstGameOverlay)
+                    .ignoresSafeArea()
+                    .zIndex(1)
+            }
         }
         .coordinateSpace(name: Self.homeSpace)
         .onPreferenceChange(LevelFrameKey.self) { levelFrames = $0 }
@@ -535,82 +547,13 @@ struct ContentView: View {
             // chosen language's layout direction (see `gameEnvironment`).
             .gameEnvironment()
         }
-        .gameCover(item: $selection, onDismiss: {
-            // Stop any in-flight all-level reconciliation from replacing the
-            // menu snapshot while the return celebration is running.
-            defersHomeProgressRefresh = true
-            homeProgressGeneration += 1
-
-            let shouldShowTutorialHint = tutorial.shouldShowScoreHint
-
-            guard let levelID = lastOpenedLevelID, let level = lastOpenedLevel else {
-                defersHomeProgressRefresh = false
-                refreshHomeProgress()
-                return
-            }
-
-            // Gameplay can only have changed this level. Reading and patching
-            // that one entry avoids rebuilding every card as the cover leaves.
-            let updatedProgress = readHomeProgress(for: level)
-            let newScore = answerHelper
-                ? max(updatedProgress.normalBest, updatedProgress.helperBest)
-                : updatedProgress.normalBest
-            let newMaximumCount = answerHelper
-                ? updatedProgress.helperMaximumCount
-                : updatedProgress.normalMaximumCount
-            let scoreDidIncrease = newScore > openedLevelScore
-            let earnedMore = scoreDidIncrease
-                || newMaximumCount > openedLevelMaximumCount
-            var updatedSnapshot = homeProgress
-            updatedSnapshot.levels[levelID] = updatedProgress
-            // Encode/write before the live-frame barrier, so persistence can
-            // never steal time from the outline and score animations.
-            updatedSnapshot.persist()
-
-            let celebration = ScoreCelebration(levelID: levelID,
-                                               levelStart: openedLevelScore,
-                                               maximumCountStart: openedLevelMaximumCount,
-                                               categoryStart: openedCategoryTrophies,
-                                               totalStart: openedTotalTrophies,
-                                               scoreDidIncrease: scoreDidIncrease)
-
-            Task { @MainActor in
-                // fullScreenCover can finish its dismissal using a snapshot of
-                // the presenting view. Give the menu one real presentation
-                // frame before changing the score or starting its animations.
-                await Task.yield()
-                try? await Task.sleep(for: .milliseconds(24))
-                guard selection == nil, lastOpenedLevelID == levelID else {
-                    defersHomeProgressRefresh = false
-                    refreshHomeProgress()
-                    return
-                }
-
-                // First play: the score hint must introduce the number *before*
-                // any of the return animation. Keep the old score on screen (do
-                // not install the new snapshot yet) until the hint is read, then
-                // run the whole celebration. Every later return skips this and
-                // animates immediately, so nothing else is delayed.
-                if shouldShowTutorialHint && earnedMore {
-                    scheduleTutorialScoreHint(for: levelID, after: 0.05) {
-                        installAndCelebrate(celebration: celebration,
-                                            levelID: levelID,
-                                            snapshot: updatedSnapshot,
-                                            earnedMore: earnedMore,
-                                            targetScore: newScore,
-                                            showTutorialHintAfter: false)
-                    }
-                    return
-                }
-
-                installAndCelebrate(celebration: celebration,
-                                    levelID: levelID,
-                                    snapshot: updatedSnapshot,
-                                    earnedMore: earnedMore,
-                                    targetScore: newScore,
-                                    showTutorialHintAfter: shouldShowTutorialHint)
-            }
-        })
+        .gameCover(
+            item: Binding(
+                get: { presentsFirstGameAsOverlay ? nil : selection },
+                set: { selection = $0 }
+            ),
+            onDismiss: handleGameCoverDismiss
+        )
         .onChange(of: selection?.id) { selectionID in
             guard let selectionID, let level = selection?.level else { return }
             ReviewRequestCoordinator.shared.discardPendingReturn()
@@ -725,6 +668,97 @@ struct ContentView: View {
         displayName.contains(" ")
             ? displayName
             : displayName.map(String.init).joined(separator: "\u{00AD}")
+    }
+
+    /// Welcome overlay uses this instead of `dismiss()`, so returning still
+    /// runs the same score-hint / celebration path as a normal cover.
+    @MainActor
+    private func dismissFirstGameOverlay() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            presentsFirstGameAsOverlay = false
+            selection = nil
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            handleGameCoverDismiss()
+        }
+    }
+
+    /// Shared by the ordinary full-screen cover and the welcome overlay.
+    private func handleGameCoverDismiss() {
+        // Stop any in-flight all-level reconciliation from replacing the
+        // menu snapshot while the return celebration is running.
+        defersHomeProgressRefresh = true
+        homeProgressGeneration += 1
+
+        let shouldShowTutorialHint = tutorial.shouldShowScoreHint
+
+        guard let levelID = lastOpenedLevelID, let level = lastOpenedLevel else {
+            defersHomeProgressRefresh = false
+            refreshHomeProgress()
+            return
+        }
+
+        // Gameplay can only have changed this level. Reading and patching
+        // that one entry avoids rebuilding every card as the cover leaves.
+        let updatedProgress = readHomeProgress(for: level)
+        let newScore = answerHelper
+            ? max(updatedProgress.normalBest, updatedProgress.helperBest)
+            : updatedProgress.normalBest
+        let newMaximumCount = answerHelper
+            ? updatedProgress.helperMaximumCount
+            : updatedProgress.normalMaximumCount
+        let scoreDidIncrease = newScore > openedLevelScore
+        let earnedMore = scoreDidIncrease
+            || newMaximumCount > openedLevelMaximumCount
+        var updatedSnapshot = homeProgress
+        updatedSnapshot.levels[levelID] = updatedProgress
+        // Encode/write before the live-frame barrier, so persistence can
+        // never steal time from the outline and score animations.
+        updatedSnapshot.persist()
+
+        let celebration = ScoreCelebration(levelID: levelID,
+                                           levelStart: openedLevelScore,
+                                           maximumCountStart: openedLevelMaximumCount,
+                                           categoryStart: openedCategoryTrophies,
+                                           totalStart: openedTotalTrophies,
+                                           scoreDidIncrease: scoreDidIncrease)
+
+        Task { @MainActor in
+            // fullScreenCover can finish its dismissal using a snapshot of
+            // the presenting view. Give the menu one real presentation
+            // frame before changing the score or starting its animations.
+            await Task.yield()
+            try? await Task.sleep(for: .milliseconds(24))
+            guard selection == nil, lastOpenedLevelID == levelID else {
+                defersHomeProgressRefresh = false
+                refreshHomeProgress()
+                return
+            }
+
+            // First play: the score hint must introduce the number *before*
+            // any of the return animation. Keep the old score on screen (do
+            // not install the new snapshot yet) until the hint is read, then
+            // run the whole celebration. Every later return skips this and
+            // animates immediately, so nothing else is delayed.
+            if shouldShowTutorialHint && earnedMore {
+                scheduleTutorialScoreHint(for: levelID, after: 0.05) {
+                    installAndCelebrate(celebration: celebration,
+                                        levelID: levelID,
+                                        snapshot: updatedSnapshot,
+                                        earnedMore: earnedMore,
+                                        targetScore: newScore,
+                                        showTutorialHintAfter: false)
+                }
+                return
+            }
+
+            installAndCelebrate(celebration: celebration,
+                                levelID: levelID,
+                                snapshot: updatedSnapshot,
+                                earnedMore: earnedMore,
+                                targetScore: newScore,
+                                showTutorialHintAfter: shouldShowTutorialHint)
+        }
     }
 
     /// Remembers what the level looked like on the menu at the moment it was

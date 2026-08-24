@@ -313,7 +313,9 @@ struct OnboardingView: View {
         // screen is already presented in the frame the menu first appears —
         // no menu that builds itself and is then covered a moment later.
         opensFirstLevel = true
-        isComplete = true
+        withAnimation(.easeInOut(duration: 0.45)) {
+            isComplete = true
+        }
     }
 }
 

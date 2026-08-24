@@ -84,8 +84,23 @@ private struct GameHUDAnchors: PreferenceKey {
     }
 }
 
+/// Lets the welcome hand-off present the game as an overlay instead of a
+/// system cover. `dismiss` is a no-op on a non-modal surface, so the menu
+/// supplies this action to return the same way the cover would.
+private struct GameDismissActionKey: EnvironmentKey {
+    static let defaultValue: (@MainActor () -> Void)? = nil
+}
+
+extension EnvironmentValues {
+    var gameDismissAction: (@MainActor () -> Void)? {
+        get { self[GameDismissActionKey.self] }
+        set { self[GameDismissActionKey.self] = newValue }
+    }
+}
+
 struct GameView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.gameDismissAction) private var gameDismissAction
     @StateObject private var state: GameState
     @State private var scene: GameScene
     // Refreshes the intro/end-menu copy when the language is switched.
@@ -535,7 +550,15 @@ struct GameView: View {
         if tutorial.isComplete && state.score > 0 {
             tutorial.markGameOver()
         }
-        dismiss()
+        dismissToMenu()
+    }
+
+    private func dismissToMenu() {
+        if let gameDismissAction {
+            gameDismissAction()
+        } else {
+            dismiss()
+        }
     }
 
     private var isPausedIntro: Bool {
@@ -616,7 +639,9 @@ struct GameView: View {
                     .padding(28 * gameScale)
                     .padding(.top, 4)
                     .frame(maxWidth: 420 * gameScale)
-                    .background(.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+                    // Explicit white: `.background` follows Dark Mode and the
+                    // deep-purple copy on this card becomes unreadable.
+                    .background(Color.white, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
                     .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
                     .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
                     .shadow(color: theme.deepColor.opacity(0.28), radius: 18, y: 8)
@@ -727,7 +752,9 @@ struct GameView: View {
                 }
                 .padding(24 * gameScale)
                 .frame(maxWidth: 340 * gameScale)
-                .background(.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+                // Same light fill as the start/pause card: `.background` turns
+                // black in Dark Mode against this card's deep-purple copy.
+                .background(Color.white, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
                 .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous)
                     .stroke(theme.deepColor.opacity(0.14), lineWidth: 1))
                 .shadow(color: .black.opacity(0.28), radius: 20, y: 8)
@@ -1659,7 +1686,7 @@ struct GameView: View {
                 }
 
                 Button {
-                    dismiss()
+                    dismissToMenu()
                 } label: {
                     Label(endScreenText.mainMenu, systemImage: "house.fill")
                         .font(isPad ? .title3.weight(.semibold) : .headline.weight(.semibold))

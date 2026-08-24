@@ -7,7 +7,7 @@
         "key": "tutorial.complete",
         "location": {
           "startingColumn": 24,
-          "startingLine": 245
+          "startingLine": 265
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "game.intro.trophyBullet %lld",
         "location": {
           "startingColumn": 18,
-          "startingLine": 907
+          "startingLine": 945
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "game.intro.continue",
         "location": {
           "startingColumn": 35,
-          "startingLine": 644
+          "startingLine": 682
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "game.intro.startTutorial",
         "location": {
           "startingColumn": 36,
-          "startingLine": 645
+          "startingLine": 683
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "game.intro.start",
         "location": {
           "startingColumn": 65,
-          "startingLine": 645
+          "startingLine": 683
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "game.intro.backToMainMenu",
         "location": {
           "startingColumn": 38,
-          "startingLine": 600
+          "startingLine": 636
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "game.intro.spokenUnavailable",
         "location": {
           "startingColumn": 44,
-          "startingLine": 665
+          "startingLine": 703
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "tutorial.button",
         "location": {
           "startingColumn": 26,
-          "startingLine": 701
+          "startingLine": 739
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "tutorial.notice.message",
         "location": {
           "startingColumn": 28,
-          "startingLine": 708
+          "startingLine": 746
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "common.done",
         "location": {
           "startingColumn": 30,
-          "startingLine": 715
+          "startingLine": 753
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "tutorial.button",
         "location": {
           "startingColumn": 42,
-          "startingLine": 794
+          "startingLine": 832
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "game.intro.scorePaused",
         "location": {
           "startingColumn": 22,
-          "startingLine": 839
+          "startingLine": 877
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "game.intro.continueFrom %lld",
         "location": {
           "startingColumn": 26,
-          "startingLine": 842
+          "startingLine": 880
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "game.streak.title",
         "location": {
           "startingColumn": 33,
-          "startingLine": 1031
+          "startingLine": 1069
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "game.streak.subtitle",
         "location": {
           "startingColumn": 60,
-          "startingLine": 1031
+          "startingLine": 1069
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "tutorial.move",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1272
+          "startingLine": 1310
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "tutorial.platforms",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1273
+          "startingLine": 1311
         }
       },
       {
@@ -143,7 +143,7 @@
         "key": "tutorial.correctAnswer",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1274
+          "startingLine": 1312
         }
       },
       {
@@ -151,7 +151,7 @@
         "key": "tutorial.wrongAnswer",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1275
+          "startingLine": 1313
         }
       },
       {
@@ -159,7 +159,7 @@
         "key": "tutorial.correctAnswerGreen",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1276
+          "startingLine": 1314
         }
       },
       {
@@ -167,7 +167,7 @@
         "key": "tutorial.answerHint",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1277
+          "startingLine": 1315
         }
       },
       {
@@ -175,7 +175,7 @@
         "key": "tutorial.lifePickup",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1278
+          "startingLine": 1316
         }
       },
       {
@@ -183,7 +183,7 @@
         "key": "tutorial.doubler.answer",
         "location": {
           "startingColumn": 21,
-          "startingLine": 1281
+          "startingLine": 1319
         }
       },
       {
@@ -191,7 +191,7 @@
         "key": "tutorial.doubler.collect",
         "location": {
           "startingColumn": 21,
-          "startingLine": 1282
+          "startingLine": 1320
         }
       },
       {
@@ -199,7 +199,7 @@
         "key": "tutorial.minusOne",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1283
+          "startingLine": 1321
         }
       },
       {
@@ -207,7 +207,7 @@
         "key": "tutorial.star",
         "location": {
           "startingColumn": 27,
-          "startingLine": 1284
+          "startingLine": 1322
         }
       },
       {
@@ -215,7 +215,7 @@
         "key": "game.status.leaderboardMaxed",
         "location": {
           "startingColumn": 19,
-          "startingLine": 1427
+          "startingLine": 1465
         }
       },
       {
@@ -223,7 +223,7 @@
         "key": "game.status.scoreLocked",
         "location": {
           "startingColumn": 19,
-          "startingLine": 1437
+          "startingLine": 1475
         }
       },
       {
@@ -231,7 +231,7 @@
         "key": "game.end.gameOverTitle",
         "location": {
           "startingColumn": 35,
-          "startingLine": 2039
+          "startingLine": 2077
         }
       },
       {
@@ -239,7 +239,7 @@
         "key": "game.end.completionSubtitle",
         "location": {
           "startingColumn": 40,
-          "startingLine": 2037
+          "startingLine": 2075
         }
       },
       {
@@ -247,7 +247,7 @@
         "key": "game.accessibility.scoreOutOf %lld %lld",
         "location": {
           "startingColumn": 37,
-          "startingLine": 1642
+          "startingLine": 1680
         }
       },
       {
@@ -255,7 +255,7 @@
         "key": "game.highScore",
         "location": {
           "startingColumn": 29,
-          "startingLine": 1744
+          "startingLine": 1782
         }
       },
       {
@@ -263,7 +263,7 @@
         "key": "game.end.playAgain",
         "location": {
           "startingColumn": 31,
-          "startingLine": 2040
+          "startingLine": 2078
         }
       },
       {
@@ -271,7 +271,7 @@
         "key": "game.end.mainMenu",
         "location": {
           "startingColumn": 30,
-          "startingLine": 2041
+          "startingLine": 2079
         }
       },
       {
@@ -279,7 +279,7 @@
         "key": "game.highScore",
         "location": {
           "startingColumn": 18,
-          "startingLine": 1705
+          "startingLine": 1743
         }
       },
       {
@@ -287,7 +287,7 @@
         "key": "game.end.completionSuffix",
         "location": {
           "startingColumn": 38,
-          "startingLine": 2038
+          "startingLine": 2076
         }
       }
     ]

@@ -60,18 +60,22 @@ struct Jumping_FoxApp: App {
             ZStack {
                 if onboardingComplete {
                     ContentView()
-                        .transition(.opacity.combined(with: .scale(scale: 1.03)))
+                        .transition(.opacity)
                 } else {
                     OnboardingView()
                         .transition(.opacity)
                 }
             }
-            .animation(.easeInOut(duration: 0.55), value: onboardingComplete)
+            .animation(.easeInOut(duration: 0.45), value: onboardingComplete)
             // Re-renders every `Text` (and formats numbers) when the language
             // changes; combined with the bundle redirection this makes the
             // switch instant, no restart required.
             .environment(\.locale, language.locale)
             .environment(\.layoutDirection, language.layoutDirection)
+            // Palettes and copy are authored for light surfaces. Without this,
+            // Dark Mode turns system fills black and inverts `.primary` /
+            // `.secondary` labels against those same light colours.
+            .preferredColorScheme(.light)
             .sheet(isPresented: Binding(
                 get: { promotedPurchase.isAwaitingParentApproval },
                 set: { isPresented in
@@ -85,6 +89,7 @@ struct Jumping_FoxApp: App {
                     deepColor: character.deepColor,
                     onApproved: { promotedPurchase.approveDeferredPurchase() }
                 )
+                .gameEnvironment()
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
             }

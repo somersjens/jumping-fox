@@ -216,6 +216,16 @@
     "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/ProgressSync.swiftdeps",
     "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/ProgressSync~partial.swiftmodule"
   },
+  "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Promo/PromoTrailer.swift" : {
+    "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.swiftconstvalues",
+    "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.d",
+    "diagnostics" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.dia",
+    "index-unit-output-path" : "/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.o",
+    "llvm-bc" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.bc",
+    "object" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.o",
+    "swift-dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer.swiftdeps",
+    "swiftmodule" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromoTrailer~partial.swiftmodule"
+  },
   "/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/PromotedPurchaseCoordinator.swift" : {
     "const-values" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromotedPurchaseCoordinator.swiftconstvalues",
     "dependencies" : "/Users/jenssomers/Desktop/Jumping Fox/.build-ios/Build/Intermediates.noindex/Jumping Fox.build/Debug-iphonesimulator/Jumping Fox.build/Objects-normal/x86_64/PromotedPurchaseCoordinator.d",

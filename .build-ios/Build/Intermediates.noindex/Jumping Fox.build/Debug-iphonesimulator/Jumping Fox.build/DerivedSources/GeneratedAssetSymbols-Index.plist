@@ -81,6 +81,16 @@
 			<key>catalogPath</key>
 			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameIconForTrailer</string>
+			<key>relativePath</key>
+			<string>./icon_for_trailer.imageset</string>
+			<key>swiftSymbol</key>
+			<string>iconForTrailer</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/jenssomers/Desktop/Jumping Fox/Jumping Fox/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameLionNoBackground</string>
 			<key>relativePath</key>
 			<string>./lion_no_background.imageset</string>

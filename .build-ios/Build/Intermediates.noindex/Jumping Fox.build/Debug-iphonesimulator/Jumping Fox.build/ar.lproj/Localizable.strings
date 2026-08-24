@@ -349,7 +349,7 @@
 	<key>modeIntro.tables.random %lld</key>
 	<string>ستحصل على جدول %lld بترتيب |عشوائي|.</string>
 	<key>modeIntro.tables.title %lld</key>
-	<string>جدول %lld</string>
+	<string>جدول ضرب %lld</string>
 	<key>modeIntro.tablesMix.b1 %lld %lld</key>
 	<string>تدرّب على الجداول من %lld إلى %lld بشكل مختلط.</string>
 	<key>modeIntro.tablesMix.title %lld %lld</key>

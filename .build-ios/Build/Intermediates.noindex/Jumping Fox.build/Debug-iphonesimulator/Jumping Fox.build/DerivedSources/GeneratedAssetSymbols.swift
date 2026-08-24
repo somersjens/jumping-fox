@@ -52,6 +52,9 @@ extension ImageResource {
     /// The "frog_no_background" asset catalog image resource.
     static let frogNoBackground = ImageResource(name: "frog_no_background", bundle: resourceBundle)
 
+    /// The "icon_for_trailer" asset catalog image resource.
+    static let iconForTrailer = ImageResource(name: "icon_for_trailer", bundle: resourceBundle)
+
     /// The "lion_no_background" asset catalog image resource.
     static let lionNoBackground = ImageResource(name: "lion_no_background", bundle: resourceBundle)
 
@@ -181,6 +184,15 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "icon_for_trailer" asset catalog image.
+    static var iconForTrailer: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .iconForTrailer)
+#else
+        .init()
+#endif
+    }
+
     /// The "lion_no_background" asset catalog image.
     static var lionNoBackground: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -274,6 +286,15 @@ extension UIKit.UIImage {
     static var frogNoBackground: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .frogNoBackground)
+#else
+        .init()
+#endif
+    }
+
+    /// The "icon_for_trailer" asset catalog image.
+    static var iconForTrailer: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .iconForTrailer)
 #else
         .init()
 #endif

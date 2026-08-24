@@ -30,6 +30,9 @@ static NSString * const ACImageNameElephantNoBackground AC_SWIFT_PRIVATE = @"ele
 /// The "frog_no_background" asset catalog image resource.
 static NSString * const ACImageNameFrogNoBackground AC_SWIFT_PRIVATE = @"frog_no_background";
 
+/// The "icon_for_trailer" asset catalog image resource.
+static NSString * const ACImageNameIconForTrailer AC_SWIFT_PRIVATE = @"icon_for_trailer";
+
 /// The "lion_no_background" asset catalog image resource.
 static NSString * const ACImageNameLionNoBackground AC_SWIFT_PRIVATE = @"lion_no_background";
 
