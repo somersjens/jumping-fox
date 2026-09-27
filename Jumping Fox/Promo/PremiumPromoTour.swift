@@ -277,7 +277,7 @@ struct PromoLanguagePickerPanel: View {
                         .onAppear {
                             proxy.scrollTo(coordinator.languagePickerInitialCode, anchor: .top)
                         }
-                        .onChange(of: coordinator.languageScrollRequest) { request in
+                        .onChange(of: coordinator.languageScrollRequest) { _, request in
                             guard let request else { return }
                             let anchor: UnitPoint
                             switch request.anchor {

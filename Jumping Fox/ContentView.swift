@@ -649,7 +649,7 @@ struct ContentView: View {
                         GeometryReader { proxy in
                             Color.clear
                                 .onAppear { viewportWidth = proxy.size.width }
-                                .onChange(of: proxy.size.width) { width in viewportWidth = width }
+                                .onChange(of: proxy.size.width) { _, width in viewportWidth = width }
                         }
                     )
                     .onAppear { scrollProxy = proxy }
@@ -725,7 +725,7 @@ struct ContentView: View {
             ),
             onDismiss: handleGameCoverDismiss
         )
-        .onChange(of: selection?.id) { selectionID in
+        .onChange(of: selection?.id) { _, selectionID in
             guard let selectionID, let level = selection?.level else { return }
             ReviewRequestCoordinator.shared.discardPendingReturn()
             // Starting another level ends any return celebration cleanly. Its
@@ -753,17 +753,17 @@ struct ContentView: View {
                 recordOpenedLevel(id: selection.id, level: selection.level)
             }
         }
-        .onChange(of: progress.revision) { _ in
+        .onChange(of: progress.revision) {
             if !promoMenuTrailer && !promoPremiumBackdrop { refreshHomeProgress() }
         }
-        .onChange(of: totalTrophies) { _ in
+        .onChange(of: totalTrophies) {
             // A gameplay return installs its final score before any of the
             // visible celebration runs. Hold the old prompt until that flow
             // explicitly releases it; cloud/restored progress can update now.
             guard scoreCelebration == nil else { return }
             synchronizeCharacterUnlockPrompt(animated: characterUnlockPrompt != nil)
         }
-        .onChange(of: premium.isPremium) { isPremium in
+        .onChange(of: premium.isPremium) { _, isPremium in
             // Returning from the Premium sheet should show the final menu
             // immediately, without a special disappearance animation.
             if isPremium && !promoMenuTrailer {
@@ -774,7 +774,7 @@ struct ContentView: View {
                 synchronizeCharacterUnlockPrompt(animated: false)
             }
         }
-        .onChange(of: lifeModeRaw) { _ in
+        .onChange(of: lifeModeRaw) {
             refreshHomeProgress()
         }
         .onAppear {
@@ -791,7 +791,7 @@ struct ContentView: View {
             if promoMenuTrailer { preparePromoMenuTour() }
 #endif
         }
-        .onChange(of: scenePhase) { phase in
+        .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
             AppAudio.shared.startMusic()
             requestReviewAfterSettledReturn()
@@ -2535,7 +2535,7 @@ struct ContentView: View {
                     .tint(character.deepColor)
                     .scaleEffect(isPad ? 1.612 : 0.8, anchor: .trailing)
                     .accessibilityLabel(title)
-                    .onChange(of: isOn.wrappedValue) { newValue in
+                    .onChange(of: isOn.wrappedValue) { _, newValue in
                         AppAudio.shared.playSwitch(on: newValue)
                     }
             }
@@ -4030,10 +4030,10 @@ struct LevelCardView: View {
             animateTrophyPulseIfNeeded()
             animateMaximumCountIfNeeded()
         }
-        .onChange(of: isCelebratingNewScore) { _ in animateTrophyPulseIfNeeded() }
-        .onChange(of: isCelebratingMaximumCount) { _ in animateMaximumCountIfNeeded() }
-        .onChange(of: isCrossingIntoMax) { _ in animateMaximumCountIfNeeded() }
-        .onChange(of: hasExternallyReachedFirstMax) { reached in
+        .onChange(of: isCelebratingNewScore) { animateTrophyPulseIfNeeded() }
+        .onChange(of: isCelebratingMaximumCount) { animateMaximumCountIfNeeded() }
+        .onChange(of: isCrossingIntoMax) { animateMaximumCountIfNeeded() }
+        .onChange(of: hasExternallyReachedFirstMax) { _, reached in
             guard reached, isCelebratingFirstMax else { return }
             animatedMaxCelebrationID = celebrationID
             animateFirstMaxReveal(forceImmediate: true)
@@ -4041,7 +4041,7 @@ struct LevelCardView: View {
         // The celebration token is the authoritative trigger. Watching it as
         // well makes the outline reliable when score data and celebration
         // state arrive atomically in the same return-to-menu transaction.
-        .onChange(of: celebrationID) { _ in
+        .onChange(of: celebrationID) {
             animateTrophyPulseIfNeeded()
             animateMaximumCountIfNeeded()
         }

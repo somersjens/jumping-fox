@@ -206,7 +206,7 @@ struct PromoTrailerView: View {
                 AppAudio.shared.setGameplayActive(true, questionText: nil)
             }
         }
-        .onChange(of: state.isGameOver) { over in
+        .onChange(of: state.isGameOver) { _, over in
             guard over else { return }
             AppAudio.shared.setGameplayActive(false, questionText: nil)
             scene.fadeTrailerCaptionForEndCard()

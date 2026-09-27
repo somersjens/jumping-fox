@@ -297,13 +297,13 @@ struct GameView: View {
             GeometryReader { proxy in
                 Color.clear
                     .onAppear { updateSceneHUDTargets(anchors, in: proxy) }
-                    .onChange(of: state.score) { _ in updateSceneHUDTargets(anchors, in: proxy) }
-                    .onChange(of: state.livesHalves) { _ in updateSceneHUDTargets(anchors, in: proxy) }
-                    .onChange(of: state.isStreakActive) { _ in updateSceneHUDTargets(anchors, in: proxy) }
-                    .onChange(of: state.isStreakComboAnimating) { _ in
+                    .onChange(of: state.score) { updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.livesHalves) { updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.isStreakActive) { updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: state.isStreakComboAnimating) {
                         updateSceneHUDTargets(anchors, in: proxy)
                     }
-                    .onChange(of: proxy.size) { _ in updateSceneHUDTargets(anchors, in: proxy) }
+                    .onChange(of: proxy.size) { updateSceneHUDTargets(anchors, in: proxy) }
             }
         }
         .onAppear {
@@ -330,7 +330,7 @@ struct GameView: View {
             setScreenAwake(false)
             AppAudio.shared.setGameplayActive(false, questionText: nil)
         }
-        .onChange(of: tutorial.currentStep) { step in
+        .onChange(of: tutorial.currentStep) { _, step in
             // Warm the soft haptic the moment the "tap the question mark" step
             // appears, so the first tap doesn't cold-start the Taptic Engine.
             if step == 6 { scene.prepareHintHaptic() }
@@ -342,14 +342,14 @@ struct GameView: View {
                 AppAudio.shared.speakQuestion(state.questionText)
             }
         }
-        .onChange(of: tutorial.isComplete) { complete in
+        .onChange(of: tutorial.isComplete) { _, complete in
             guard complete else { return }
             withAnimation(.snappy) { showsTutorialCompletion = true }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation(.easeOut(duration: 0.25)) { showsTutorialCompletion = false }
             }
         }
-        .onChange(of: state.isStreakActive) { active in
+        .onChange(of: state.isStreakActive) { _, active in
             guard !state.isCompletingLevel, !state.isGameOver else {
                 showStreakBanner = false
                 return
@@ -372,12 +372,12 @@ struct GameView: View {
                 withAnimation(.easeOut(duration: 0.35)) { showStreakBanner = false }
             }
         }
-        .onChange(of: state.isCompletingLevel) { completing in
+        .onChange(of: state.isCompletingLevel) { _, completing in
             if completing {
                 showStreakBanner = false
             }
         }
-        .onChange(of: state.isPastScoreboardCap) { reachedCap in
+        .onChange(of: state.isPastScoreboardCap) { _, reachedCap in
             guard reachedCap else {
                 showsScoreboardFinishControls = false
                 return
@@ -389,7 +389,7 @@ struct GameView: View {
                 showsScoreboardFinishControls = true
             }
         }
-        .onChange(of: state.isGameOver) { over in
+        .onChange(of: state.isGameOver) { _, over in
             if over {
                 // Completed levels remove their paused snapshot during the
                 // victory exit. Other endings still clean it up here.
@@ -417,17 +417,17 @@ struct GameView: View {
         // Music only plays while a level is actually being played: it starts
         // when the start/pause card is dismissed and stops on pause, game over
         // or when leaving the screen.
-        .onChange(of: showingIntro) { _ in updateGameplayAudio() }
-        .onChange(of: state.isGameOver) { _ in updateGameplayAudio() }
+        .onChange(of: showingIntro) { updateGameplayAudio() }
+        .onChange(of: state.isGameOver) { updateGameplayAudio() }
         // Read each new sum aloud when the selected audio mode and language
         // support it; AppAudio handles both checks.
-        .onChange(of: state.question.prompt) { newPrompt in
+        .onChange(of: state.question.prompt) { _, newPrompt in
             guard !showingIntro, !state.isGameOver else { return }
             AppAudio.shared.speakQuestion(newPrompt)
         }
         // Turning spoken sums on during a level renders the visible sum away
         // from the gameplay and audio-output threads before playback begins.
-        .onChange(of: audio.spokenSumsEnabled) { enabled in
+        .onChange(of: audio.spokenSumsEnabled) { _, enabled in
             guard enabled, !showingIntro, !state.isGameOver,
                   !tutorialEquationHidden else { return }
             AppAudio.shared.speakQuestion(state.questionText)
@@ -1218,7 +1218,7 @@ struct GameView: View {
             .opacity(isVisible ? 1 : 0)
             .animation(.easeInOut(duration: 0.2), value: isVisible)
             .allowsHitTesting(false)
-            .onChange(of: isVisible) { visible in
+            .onChange(of: isVisible) { _, visible in
                 // The repeating bounce needs a state transition to start, and
                 // costs nothing while the cue is not on screen.
                 isTutorialArrowBouncing = false
