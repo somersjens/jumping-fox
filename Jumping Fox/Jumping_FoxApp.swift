@@ -12,17 +12,55 @@ struct Jumping_FoxApp: App {
     @StateObject private var promotedPurchase = PromotedPurchaseCoordinator.shared
 
 #if TRAILER_EXPORT
-    private var isExportingTrailer: Bool {
+    private var isExportingGameplayTrailer: Bool {
         ProcessInfo.processInfo.arguments.contains("--export-app-store-teaser")
+    }
+
+    private var isExportingMenuTour: Bool {
+        ProcessInfo.processInfo.arguments.contains("--export-menu-tour")
+    }
+
+    private var isExportingPremiumTour: Bool {
+        ProcessInfo.processInfo.arguments.contains("--export-premium-tour")
     }
 #endif
 
     init() {
 #if TRAILER_EXPORT
-        if ProcessInfo.processInfo.arguments.contains("--export-app-store-teaser") {
+        if ProcessInfo.processInfo.arguments.contains("--export-app-store-teaser")
+            || ProcessInfo.processInfo.arguments.contains("--export-menu-tour")
+            || ProcessInfo.processInfo.arguments.contains("--export-premium-tour") {
             GameSettings.gameSoundsEnabled = true
             GameSettings.spokenSumsEnabled = false
             GameSettings.capsTrophiesAtThirty = true
+            if ProcessInfo.processInfo.arguments.contains("--export-menu-tour") {
+                let defaults = UserDefaults.standard
+                GameSettings.characterID = CharacterCatalog.freeCharacterID
+                GameSettings.playerName = "Jumping Fox"
+                GameSettings.premiumUnlockedCache = true
+                PremiumStore.shared.preparePromoUnlockedState()
+                defaults.set(MenuFilter.addition.rawValue, forKey: "ui.menuFilter")
+                defaults.set(PracticeMode.order.rawValue, forKey: "ui.menuMode")
+                defaults.set(ChallengeCategory.superBasic.rawValue,
+                             forKey: "ui.supermixCategory")
+                LanguageManager.shared.override = .english
+            } else if ProcessInfo.processInfo.arguments.contains("--export-premium-tour") {
+                // Simulator audio can stall while recordVideo captures a long
+                // SwiftUI scroll. The master adds the bundled soundtrack, so
+                // keep this native visual take silent and deterministic.
+                GameSettings.gameSoundsEnabled = false
+                GameSettings.characterID = CharacterCatalog.freeCharacterID
+                GameSettings.playerName = "ثعلب"
+                CharacterUnlockStore.trophyTotal = 0
+                GameSettings.premiumUnlockedCache = false
+                PremiumStore.shared.preparePromoLockedState()
+                let defaults = UserDefaults.standard
+                defaults.set(MenuFilter.addition.rawValue, forKey: "ui.menuFilter")
+                defaults.set(PracticeMode.order.rawValue, forKey: "ui.menuMode")
+                defaults.set(ChallengeCategory.superBasic.rawValue,
+                             forKey: "ui.supermixCategory")
+                LanguageManager.shared.override = .english
+            }
             return
         }
 #endif
@@ -45,8 +83,22 @@ struct Jumping_FoxApp: App {
     var body: some Scene {
         WindowGroup {
 #if TRAILER_EXPORT
-            if isExportingTrailer {
+            if isExportingGameplayTrailer {
                 PromoTrailerView()
+            } else if isExportingMenuTour {
+                ContentView(promoMenuTrailer: true)
+                    .environment(\.locale, language.locale)
+                    .environment(\.layoutDirection, language.layoutDirection)
+                    .preferredColorScheme(.light)
+                    .persistentSystemOverlays(.hidden)
+                    .statusBarHidden(true)
+            } else if isExportingPremiumTour {
+                PremiumPromoTourView()
+                    .environment(\.locale, language.locale)
+                    .environment(\.layoutDirection, language.layoutDirection)
+                    .preferredColorScheme(.light)
+                    .persistentSystemOverlays(.hidden)
+                    .statusBarHidden(true)
             } else {
                 normalRoot
             }

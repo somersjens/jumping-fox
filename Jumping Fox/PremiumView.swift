@@ -34,12 +34,18 @@ struct PremiumView: View {
     @State private var activeUnlockCharacterID: String?
     @State private var pendingUnlockCharacterIDs: [String] = []
     @State private var unlockCelebrationGeneration = 0
+    private let promoTour: Bool
+#if TRAILER_EXPORT
+    @ObservedObject private var promoTourCoordinator = PremiumPromoTourCoordinator.shared
+#endif
 
     init(initialCharacterID: String? = nil,
          celebratedUnlock: TrophyCharacterMilestone? = nil,
-         isUnlockPreview: Bool = false) {
+         isUnlockPreview: Bool = false,
+         promoTour: Bool = false) {
         self.celebratedUnlock = celebratedUnlock
         self.isUnlockPreview = isUnlockPreview
+        self.promoTour = promoTour
         _previewCharacterID = State(initialValue: initialCharacterID ?? GameSettings.characterID)
     }
 
@@ -48,7 +54,15 @@ struct PremiumView: View {
         activeUnlockCharacterID.map { CharacterCatalog.character(id: $0) }
     }
     private var isPad: Bool { AppLayout.isPad }
-    private var scale: CGFloat { isPad ? 1.4 : 1 }
+    private var scale: CGFloat {
+        isPad ? (promoTour ? 1.46 : 1.4) : 1
+    }
+    private var contentMaximumWidth: CGFloat {
+        isPad ? (promoTour ? 920 : 880) : 620
+    }
+    private var padHeroSize: CGFloat {
+        promoTour ? 350 : 336
+    }
     private let characterColumns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 5)
 
     var body: some View {
@@ -67,7 +81,7 @@ struct PremiumView: View {
                 }
                 .padding(.horizontal, isPad ? 32 : 22)
                 .padding(.bottom, isPad ? 38 : 28)
-                .frame(maxWidth: isPad ? 760 : 620)
+                .frame(maxWidth: contentMaximumWidth)
                 .frame(maxWidth: .infinity)
             }
             .scrollBounceBehavior(.always)
@@ -89,11 +103,32 @@ struct PremiumView: View {
         }
         .overlay(alignment: .topTrailing) {
             if activeUnlockCharacterID == nil {
+#if TRAILER_EXPORT
+                if promoTour {
+                    promoLanguageButton
+                } else {
+                    LanguagePicker(tint: character.deepColor.opacity(0.7), scale: isPad ? 1.25 : 1)
+                        .padding(.top, isPad ? 28 : 24)
+                        .padding(.trailing, isPad ? 28 : 18)
+                }
+#else
                 LanguagePicker(tint: character.deepColor.opacity(0.7), scale: isPad ? 1.25 : 1)
                     .padding(.top, isPad ? 28 : 24)
                     .padding(.trailing, isPad ? 28 : 18)
+#endif
             }
         }
+#if TRAILER_EXPORT
+        .overlay {
+            if promoTour && promoTourCoordinator.isLanguagePickerPresented {
+                PromoLanguagePickerPanel(
+                    tint: character.deepColor,
+                    coordinator: promoTourCoordinator
+                )
+                .transition(.opacity.combined(with: .scale(scale: 0.96, anchor: .topTrailing)))
+            }
+        }
+#endif
         .animation(.easeInOut(duration: 0.25), value: previewCharacterID)
         .animation(.spring(response: 0.42, dampingFraction: 0.7), value: premium.isPremium)
         .onAppear {
@@ -101,8 +136,22 @@ struct PremiumView: View {
                 previewCharacterID = celebratedUnlock.characterID
                 playUnlockCelebration(characterID: celebratedUnlock.characterID)
             }
+#if TRAILER_EXPORT
+            if promoTour {
+                previewCharacterID = promoTourCoordinator.previewCharacterID
+                promoTourCoordinator.premiumViewDidAppear()
+            }
+#endif
         }
-        .task { await premium.refresh() }
+#if TRAILER_EXPORT
+        .onReceive(promoTourCoordinator.$previewCharacterID) { characterID in
+            guard promoTour else { return }
+            previewCharacterID = characterID
+        }
+#endif
+        .task {
+            if !promoTour { await premium.refresh() }
+        }
         .sheet(isPresented: $showsParentApproval) {
             ParentApprovalGate(
                 accent: character.color,
@@ -136,10 +185,38 @@ struct PremiumView: View {
         .padding(.leading, isPad ? 28 : 18)
     }
 
+#if TRAILER_EXPORT
+    private var promoLanguageButton: some View {
+        Button {
+            promoTourCoordinator.setLanguagePickerPresented(
+                !promoTourCoordinator.isLanguagePickerPresented,
+                initialCode: language.effective.code
+            )
+        } label: {
+            HStack(spacing: 5) {
+                Text(language.effective.flag)
+                    .font(.system(size: 20 * (isPad ? 1.25 : 1)))
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 10 * (isPad ? 1.25 : 1), weight: .bold))
+                    .foregroundStyle(character.deepColor.opacity(0.7))
+            }
+            .padding(.horizontal, 12 * (isPad ? 1.25 : 1))
+            .padding(.vertical, 8 * (isPad ? 1.25 : 1))
+            .liquidGlassCapsule()
+            .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
+        .padding(.top, isPad ? 28 : 24)
+        .padding(.trailing, isPad ? 28 : 18)
+        .accessibilityLabel(Text("language.select"))
+    }
+#endif
+
     private var hero: some View {
         VStack(spacing: 4) {
             GeometryReader { proxy in
-                let heroSize = min(isPad ? 280 : 220, max(145, proxy.size.width * 0.50))
+                let heroSize = min(isPad ? padHeroSize : 220,
+                                   max(145, proxy.size.width * 0.50))
                 ZStack {
                     Circle()
                         .fill(RadialGradient(
@@ -160,7 +237,7 @@ struct PremiumView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(height: isPad ? 280 : 220)
+            .frame(height: isPad ? padHeroSize : 220)
 
             Text(character.localizedName)
                 .font(.system(size: 30 * scale, weight: .heavy, design: .rounded))
@@ -634,8 +711,12 @@ private extension View {
     /// sits inside a cell that grows with it, so a fixed size reads as tiny
     /// there.
     func characterChipStyle(character: AnimalCharacter, scale: CGFloat = 1) -> some View {
-        self
-            .font(.system(size: 10 * scale, weight: .heavy, design: .rounded))
+        // Start, the trophy counts and the crown share one size. On iPad the
+        // cell is wide enough that the iPhone size reads small, so the whole
+        // chip steps up together and still keeps a little air at the ends.
+        let chipScale = scale > 1 ? scale * 1.3 : scale
+        return self
+            .font(.system(size: 10 * chipScale, weight: .heavy, design: .rounded))
             .foregroundStyle(character.deepColor)
             .lineLimit(1)
             // The four trophy thresholds are at most four digits and always fit
@@ -645,8 +726,8 @@ private extension View {
             // that one shrink instead of losing its ending.
             .minimumScaleFactor(0.7)
             .allowsTightening(true)
-            .padding(.horizontal, 5 * scale)
-            .padding(.vertical, 4 * scale)
+            .padding(.horizontal, 5 * chipScale)
+            .padding(.vertical, 4 * chipScale)
             .frame(maxWidth: .infinity)
             .background(character.color.opacity(0.16), in: Capsule())
     }
@@ -654,14 +735,25 @@ private extension View {
 
 extension View {
     @ViewBuilder
+    /// A sheet begins a fresh environment and inherits nothing from the app
+    /// root, so the chosen language and its reading direction have to be handed
+    /// back in here — otherwise the premium screen follows the device instead
+    /// of the picker, and never mirrors for Arabic or Hebrew.
     func premiumSheetPresentation() -> some View {
         if #available(iOS 18.0, *) {
             self
-                .presentationSizing(.page)
+                .gameEnvironment()
+                .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, maxHeight: .infinity)
+                // `.page` alone hugs the column's ideal width, so on iPad the
+                // sheet floats inside a dimmed surround. Fitting neither axis
+                // keeps the full page the other games already open at.
+                .presentationSizing(.page.fitted(horizontal: false, vertical: false))
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         } else {
             self
+                .gameEnvironment()
+                .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, maxHeight: .infinity)
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         }

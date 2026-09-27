@@ -25,8 +25,8 @@ struct OnboardingView: View {
                         Image("no_background")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150),
-                                   height: isPad ? (step == 1 ? 160 : 210) : (step == 1 ? 112 : 150))
+                            .frame(width: isPad ? (step == 1 ? 200 : 264) : (step == 1 ? 112 : 150),
+                                   height: isPad ? (step == 1 ? 200 : 264) : (step == 1 ? 112 : 150))
                             .padding(.bottom, isPad ? (step == 1 ? 20 : 30) : (step == 1 ? 14 : 22))
                             .animation(.spring(response: 0.42, dampingFraction: 0.82), value: step)
 
@@ -74,6 +74,7 @@ struct OnboardingView: View {
                 .padding(.top, isPad ? 20 : 8)
                 .padding(.trailing, isPad ? 28 : 16)
         }
+        .modifier(PadOnboardingZoom(isPad: isPad))
         .onAppear {
             // This flow ends in the tutorial, so pay its first-use costs while
             // the player is still reading: decoding sounds, resolving a voice

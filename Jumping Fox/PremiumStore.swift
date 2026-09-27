@@ -34,6 +34,23 @@ final class PremiumStore: ObservableObject {
         updatesTask = Task { await listenForTransactionUpdates() }
     }
 
+#if TRAILER_EXPORT
+    /// Keeps the menu-tour entitlement independent of simulator StoreKit state.
+    func preparePromoUnlockedState() {
+        isPremium = true
+        GameSettings.premiumUnlockedCache = true
+    }
+
+    /// Gives the Premium-tour a deterministic pre-purchase state even when the
+    /// simulator account owns the product or retained a cached entitlement.
+    func preparePromoLockedState() {
+        isPremium = false
+        isPurchasing = false
+        lastError = nil
+        GameSettings.premiumUnlockedCache = false
+    }
+#endif
+
     deinit {
         updatesTask?.cancel()
     }

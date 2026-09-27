@@ -121,6 +121,100 @@ private struct HomeProgressSnapshot: Codable {
         guard let data = try? JSONEncoder().encode(self) else { return }
         UserDefaults.standard.set(data, forKey: Self.cacheKey)
     }
+
+#if TRAILER_EXPORT
+    /// A deterministic, deliberately varied menu state for the App Store tour.
+    /// Every topic/mode combination moves its maximum scores to different later
+    /// cards, making the independent progress per problem type obvious at a
+    /// glance. This snapshot is memory-only and cannot alter real player data.
+    static func promoMenuTour() -> HomeProgressSnapshot {
+        let baseScoresByMode: [PracticeMode: [Int]] = [
+            .order:  [20, 20, 20, 20, 18, 16, 14, 12, 10, 8, 5, 2],
+            .random: [30, 30, 30, 27, 24, 21, 18, 15, 12, 9, 6, 3],
+            .mixed:  [40, 40, 36, 32, 28, 24, 20, 16, 12, 8, 4, 0],
+        ]
+        let maximumPairs = [
+            [4, 9], [5, 10], [6, 11], [7, 8], [4, 10],
+            [5, 11], [6, 8], [7, 9], [4, 11], [5, 8],
+            [6, 9], [7, 10], [4, 8], [5, 9], [6, 10],
+            [7, 11], [4, 7], [5, 6], [8, 11],
+        ]
+
+        func variedScores(_ base: [Int], seed: Int) -> [Int] {
+            guard let maximum = base.max(), !base.isEmpty else { return base }
+            let maximumCount = base.filter { $0 == maximum }.count
+            var maximumSlots = maximumPairs[seed % maximumPairs.count]
+            let higherSlots = Array(4..<min(12, base.count))
+            for offset in 0..<higherSlots.count where maximumSlots.count < maximumCount {
+                let candidate = higherSlots[(offset + seed) % higherSlots.count]
+                if !maximumSlots.contains(candidate) { maximumSlots.append(candidate) }
+            }
+
+            let remaining = base.filter { $0 != maximum }
+            let rotation = remaining.isEmpty ? 0 : seed % remaining.count
+            let rotated = Array(remaining.dropFirst(rotation) + remaining.prefix(rotation))
+            var result = Array(repeating: 0, count: base.count)
+            var remainingIndex = 0
+            for index in result.indices {
+                if maximumSlots.prefix(maximumCount).contains(index) {
+                    result[index] = maximum
+                } else if remainingIndex < rotated.count {
+                    result[index] = rotated[remainingIndex]
+                    remainingIndex += 1
+                }
+            }
+            return result
+        }
+
+        let regularCategories: [ChallengeCategory] = [
+            .addition, .subtraction, .tables, .fractions, .percentages,
+        ]
+        var snapshot = HomeProgressSnapshot()
+
+        for (categoryIndex, category) in regularCategories.enumerated() {
+            let levels = LevelCatalog.levels(for: category).filter { !$0.requiresPremium }
+            for (modeIndex, mode) in PracticeMode.allCases.enumerated() {
+                let seed = categoryIndex * PracticeMode.allCases.count + modeIndex
+                let scores = variedScores(baseScoresByMode[mode] ?? [], seed: seed)
+                for (offset, baseLevel) in levels.enumerated() {
+                    let level = baseLevel.variant(mode)
+                    let score = offset < scores.count ? scores[offset] : 0
+                    let isMaximum = score >= ProgressStore.maximumTrophies(for: level)
+                    snapshot.levels[level.id] = HomeLevelProgress(
+                        normalBest: score,
+                        normalMaximumCount: isMaximum ? 1 + ((seed + offset) % 3) : 0
+                    )
+                }
+            }
+        }
+
+        // Two maxima per Supermix group, while preserving the old 275-trophy
+        // subtotal so the header still alternates between 4350 and 650 to go.
+        let superBaseScores = [50, 50, 40, 35, 30, 25, 20, 15, 5, 5, 0, 0]
+        for (categoryIndex, category) in ChallengeCategory.supermixMenu.enumerated() {
+            let levels = LevelCatalog.levels(for: category).filter { !$0.requiresPremium }
+            let seed = 15 + categoryIndex
+            let superScores = variedScores(superBaseScores, seed: seed)
+            for (offset, level) in levels.enumerated() {
+                let score = offset < superScores.count ? superScores[offset] : 0
+                snapshot.levels[level.id] = HomeLevelProgress(
+                    normalBest: score,
+                    normalMaximumCount: score >= ProgressStore.maximumTrophies(for: level)
+                        ? 1 + ((seed + offset) % 3) : 0
+                )
+            }
+        }
+        return snapshot
+    }
+
+    /// The Premium tour starts before a player has earned anything. Keep that
+    /// zero-state in memory so the production menu can still render every
+    /// control and level card behind the sheet without reading old local/cloud
+    /// progress from the simulator.
+    static func promoPremiumTour() -> HomeProgressSnapshot {
+        HomeProgressSnapshot()
+    }
+#endif
 }
 
 /// Combines the 2D turn and its small circular flight path into one animatable
@@ -181,12 +275,13 @@ private struct HomeCharacterArtwork: View {
     }
 
     var body: some View {
+        let cornerRadius: CGFloat = AppLayout.isPad ? 24.8 : 20
         character.artwork
             .resizable()
             .scaledToFill()
             .frame(width: box, height: box)
             .scaleEffect(artworkScale)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
             .scaleEffect(x: 1, y: jump.squash, anchor: .bottom)
             .modifier(CharacterSaltoGeometryEffect(
                 angle: jump.rotation,
@@ -210,6 +305,11 @@ enum AppLayout {
         false
 #endif
     }
+
+    /// The onboarding still uses its own established portrait composition.
+    /// Keep that concern separate from the production menu and promo capture.
+    static let padOnboardingZoom: CGFloat = 1.24
+
 }
 
 private struct AdaptiveLevelGrid: Layout {
@@ -401,6 +501,7 @@ struct ContentView: View {
     // category header once that level earns more, plus the live flight itself.
     @State private var cardTrophyAnchors: [String: CGRect] = [:]
     @State private var homeViewportFrame: CGRect = .zero
+    @State private var viewportWidth: CGFloat = 0
     @State private var flyingTrophy: FlyingTrophy?
     // When the flying trophy merges into the header, the category and grand
     // totals start counting from this instant — decoupled from the card's own
@@ -414,8 +515,15 @@ struct ContentView: View {
     // card may be rebuilt while its score counts up; keeping this phase here
     // prevents that rebuild from cancelling the reveal or the subsequent flight.
     @State private var reachedMaximumCelebrationID: UUID?
+    private let promoMenuTrailer: Bool
+    private let promoPremiumBackdrop: Bool
+#if TRAILER_EXPORT
+    @State private var promoMenuTourStarted = false
+#endif
 
     init() {
+        promoMenuTrailer = false
+        promoPremiumBackdrop = false
         // The welcome flow hands the player straight to their first level. Take
         // that hand-off here, before the first frame, so the start screen is
         // already up when the menu appears: the player never sees the menu
@@ -427,6 +535,26 @@ struct ContentView: View {
             _presentsFirstGameAsOverlay = State(initialValue: true)
         }
     }
+
+#if TRAILER_EXPORT
+    /// Compile-only menu-tour entry point. It renders the production home menu,
+    /// but injects a fixed in-memory progress snapshot and drives the controls
+    /// without touching gameplay, StoreKit, iCloud, or persisted score data.
+    init(promoMenuTrailer: Bool) {
+        self.promoMenuTrailer = promoMenuTrailer
+        self.promoPremiumBackdrop = false
+        _homeProgress = State(initialValue: .promoMenuTour())
+    }
+
+    /// Premium-tour entry point. Unlike the menu-tour initializer this keeps
+    /// the normal production layout, while supplying a deterministic empty
+    /// progress model and suppressing asynchronous store/cloud refreshes.
+    init(promoPremiumBackdrop: Bool) {
+        self.promoMenuTrailer = false
+        self.promoPremiumBackdrop = promoPremiumBackdrop
+        _homeProgress = State(initialValue: .promoPremiumTour())
+    }
+#endif
 
     private var lifeMode: LifeMode { LifeMode(rawValue: lifeModeRaw) ?? .three }
     private var character: AnimalCharacter { CharacterCatalog.current(isPremium: premium.isPremium) }
@@ -442,73 +570,116 @@ struct ContentView: View {
         category == .tables ? "menu.premiumTables" : "menu.premium"
     }
     private var isPad: Bool { AppLayout.isPad }
-    private var menuScale: CGFloat { isPad ? 1.64 : 1 }
-    private var levelCardHeight: CGFloat { isPad ? 152 : 96 }
-    /// iPad has enough horizontal room for more prominent topic controls;
-    /// iPhone retains its established compact tap targets.
-    private var filterButtonDiameter: CGFloat { isPad ? 82 : 44 }
-    /// Keep the mode choices comfortably above the compact options control,
-    /// without making the three-button row unnecessarily tall on iPad.
-    private var modeButtonHeight: CGFloat { isPad ? 72 : 42 }
-    // Keep the level cards visually grouped in columns, but leave enough
-    // vertical air between rows on the much taller iPad cards.
-    private var levelGridSpacing: CGFloat { isPad ? 24 : 12 }
-    /// On iPad, give the menu's stacked control rows just enough separation
-    /// to match their larger controls without turning the header into a list.
-    private var menuCardSectionSpacing: CGFloat { isPad ? 24 : 14 }
-    private var menuControlSpacing: CGFloat { isPad ? 22 : 11 }
-
+    /// A full-width landscape iPad can show a fourth level card. Portrait,
+    /// including the 12.9" and 13" iPads (about 1032 pt), keeps three columns.
+    /// Measured from the scroll view, not the named-space frame: that frame
+    /// stayed under the cutoff and left the menu on the narrow portrait column.
+    private var isWidePad: Bool { isPad && viewportWidth >= 1100 }
+    /// Portrait uses a real 7.5% safe margin. The menu is laid out directly in
+    /// visible iPad points; the capture path no longer changes its canvas size.
+    private var menuHorizontalPadding: CGFloat {
+        if isWidePad { return 26 }
+        if isPad { return viewportWidth > 0 ? viewportWidth * 0.075 : 62 }
+        return 16
+    }
+    /// Portrait uses the window. A fixed 760 pt column leaves a wide empty band
+    /// on a 13" iPad, and stretching that portrait to 1080 removes the margin.
+    private var menuColumnMaxWidth: CGFloat? {
+        if isWidePad { return 1080 }
+        return isPad ? nil : 720
+    }
+    private var menuScale: CGFloat { isPad ? 1.922 : 1 }
+    private var levelCardHeight: CGFloat {
+        if isPad { return 163.68 }
+        return promoMenuTrailer ? 90 : 96
+    }
+    /// Fixed circles, spread across the menu card by flexible gaps.
+    private var filterButtonDiameter: CGFloat { isPad ? 86.8 : 44 }
+    private var modeButtonHeight: CGFloat { isPad ? 69.44 : 42 }
+    private var levelGridSpacing: CGFloat { isPad ? 19.84 : 12 }
+    private var menuCardSectionSpacing: CGFloat { isPad ? 22.32 : 14 }
+    private var menuControlSpacing: CGFloat { isPad ? 17.36 : 11 }
+    private var promoCanvasOffsetY: CGFloat {
+        guard promoMenuTrailer else { return 0 }
+        return isPad ? 1 : 0
+    }
+    private var promoContentOffsetY: CGFloat {
+        if promoMenuTrailer && !isPad { return -52 }
+        // The iPad Premium page sheet leaves a narrow strip of its presenting
+        // view visible above it. Place the real home content just underneath
+        // the sheet instead of masking that strip in the trailer container;
+        // the gradient remains fixed and opening/closing can no longer reveal
+        // a different synthetic layer.
+        if promoPremiumBackdrop && isPad { return 52 }
+        return 0
+    }
     var body: some View {
         // Read the revision so an iCloud update redraws all score cards.
         let _ = progress.revision
         ZStack {
-            GeometryReader { geo in
-                Color.clear.preference(
-                    key: HomeViewportFrameKey.self,
-                    value: geo.frame(in: .named(Self.homeSpace))
-                )
-            }
-
             LinearGradient(
                 colors: [character.skyColor, character.tintColor],
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea()
 
-            ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(spacing: isPad ? 26 : 18) {
-                        menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
-                            .id(Self.headerScrollID)
-                        levelGrid
-                    }
-                    .padding(isPad ? 32 : 16)
-                    .frame(maxWidth: isPad ? 900 : 720)
-                    .frame(maxWidth: .infinity)
-                    .id(refreshID)
+            ZStack {
+                ZStack {
+                GeometryReader { geo in
+                    Color.clear.preference(
+                        key: HomeViewportFrameKey.self,
+                        value: geo.frame(in: .named(Self.homeSpace))
+                    )
                 }
-                .onAppear { scrollProxy = proxy }
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(spacing: isPad ? 27.28 : 18) {
+                            menuCard.opacity(showTutorialScoreHint ? 0.30 : 1)
+                                .id(Self.headerScrollID)
+                            levelGrid
+                        }
+                        .padding(.horizontal, menuHorizontalPadding)
+                        .padding(.vertical, isPad ? 32.24 : 16)
+                        .frame(maxWidth: menuColumnMaxWidth)
+                        .frame(maxWidth: .infinity)
+                        .id(refreshID)
+                        .offset(y: promoContentOffsetY)
+                    }
+                    .background(
+                        GeometryReader { proxy in
+                            Color.clear
+                                .onAppear { viewportWidth = proxy.size.width }
+                                .onChange(of: proxy.size.width) { width in viewportWidth = width }
+                        }
+                    )
+                    .onAppear { scrollProxy = proxy }
+                }
+
+                if let popup = infoPopup {
+                    infoPopupOverlay(popup)
+                        .transition(.opacity)
+                }
+
+                // The trophy that flies from a card up to the category header lives
+                // here, above the scroll content and inside the "home" space, so its
+                // reported source/destination frames line up one-to-one.
+                if let flight = flyingTrophy {
+                    FlyingTrophyView(flight: flight)
+                }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .coordinateSpace(name: Self.homeSpace)
+                .offset(y: promoCanvasOffsetY)
+
+                if presentsFirstGameAsOverlay, let selection {
+                    GameView(level: selection.level)
+                        .gameEnvironment()
+                        .environment(\.gameDismissAction, dismissFirstGameOverlay)
+                        .ignoresSafeArea()
+                        .zIndex(1)
+                }
             }
 
-            if let popup = infoPopup {
-                infoPopupOverlay(popup)
-                    .transition(.opacity)
-            }
-
-            // The trophy that flies from a card up to the category header lives
-            // here, above the scroll content and inside the "home" space, so its
-            // reported source/destination frames line up one-to-one.
-            if let flight = flyingTrophy {
-                FlyingTrophyView(flight: flight)
-            }
-
-            if presentsFirstGameAsOverlay, let selection {
-                GameView(level: selection.level)
-                    .gameEnvironment()
-                    .environment(\.gameDismissAction, dismissFirstGameOverlay)
-                    .ignoresSafeArea()
-                    .zIndex(1)
-            }
         }
         .coordinateSpace(name: Self.homeSpace)
         .onPreferenceChange(LevelFrameKey.self) { levelFrames = $0 }
@@ -570,8 +741,10 @@ struct ContentView: View {
             recordOpenedLevel(id: selectionID, level: level)
         }
         .task {
-            premium.startInitialRefresh()
-            refreshHomeProgress()
+            if !promoMenuTrailer && !promoPremiumBackdrop {
+                premium.startInitialRefresh()
+                refreshHomeProgress()
+            }
             // A level handed over by the welcome flow is already selected
             // before the first frame, so it never passes through the change
             // handler above. Record its before-values here instead — the
@@ -581,7 +754,7 @@ struct ContentView: View {
             }
         }
         .onChange(of: progress.revision) { _ in
-            refreshHomeProgress()
+            if !promoMenuTrailer && !promoPremiumBackdrop { refreshHomeProgress() }
         }
         .onChange(of: totalTrophies) { _ in
             // A gameplay return installs its final score before any of the
@@ -593,7 +766,7 @@ struct ContentView: View {
         .onChange(of: premium.isPremium) { isPremium in
             // Returning from the Premium sheet should show the final menu
             // immediately, without a special disappearance animation.
-            if isPremium {
+            if isPremium && !promoMenuTrailer {
                 withTransaction(Transaction(animation: nil)) {
                     characterUnlockPrompt = nil
                 }
@@ -614,6 +787,9 @@ struct ContentView: View {
             // flow that a returning player never sees again.
             Prewarm.tutorialGlyphs()
             synchronizeCharacterUnlockPrompt(animated: false)
+#if TRAILER_EXPORT
+            if promoMenuTrailer { preparePromoMenuTour() }
+#endif
         }
         .onChange(of: scenePhase) { phase in
             guard phase == .active else { return }
@@ -663,9 +839,11 @@ struct ContentView: View {
     private var displayName: String { playerName.isEmpty ? "Jumping Fox" : playerName }
     /// The name as shown in the header. When it's a single long word we insert
     /// invisible soft hyphens so it can break across two lines with a "-";
-    /// names with spaces just wrap at the space (no hyphen).
+    /// names with spaces just wrap at the space (no hyphen). RTL scripts must
+    /// remain untouched: separators between their letters break cursive
+    /// shaping and make an Arabic name look disconnected.
     private var wrappableName: String {
-        displayName.contains(" ")
+        language.layoutDirection == .rightToLeft || displayName.contains(" ")
             ? displayName
             : displayName.map(String.init).joined(separator: "\u{00AD}")
     }
@@ -821,9 +999,14 @@ struct ContentView: View {
     private func performCharacterJump(big: Bool, flips: Bool) {
         characterJumpCoordinator.isJumping = true
 
-        let box: CGFloat = isPad ? 118 : 68
+        let box: CGFloat = isPad ? 146.32 : 68
         // A queued salto is deliberately more airborne than an ordinary hop.
-        let peak = box * (big ? 0.5 : 0.25) * (flips ? 1.34 : 1)
+        // Keep the trailer's highest iPhone salto inside the App Store canvas:
+        // at its apex the fox's ears meet the top edge instead of crossing it.
+        // The normal in-game jump, and the roomier iPad trailer, stay unchanged.
+        let trailerLift: CGFloat = promoMenuTrailer && !isPad ? 0.78 : 1
+        let flipLift: CGFloat = promoMenuTrailer && !isPad ? 0.75 : 1.34
+        let peak = box * (big ? 0.5 : 0.25) * trailerLift * (flips ? flipLift : 1)
         let squash: CGFloat = big ? 0.70 : 0.80   // spring compressed before launch
         let stretch: CGFloat = big ? 1.12 : 1.07  // body elongated while rising
         let dip = box * 0.03                       // small crouch downwards
@@ -932,13 +1115,160 @@ struct ContentView: View {
         performCharacterJump(big: flipIsBig, flips: true)
     }
 
+#if TRAILER_EXPORT
+    // MARK: App Store menu tour
+
+    /// One slot in the menu tour. Every slot lasts exactly the same amount of
+    /// wall-clock time; anchor lookup and the pop-out transition happen inside
+    /// that slot rather than adding variable time between selections.
+    private enum PromoMenuStep {
+        case filter(MenuFilter, resetsOrder: Bool = false, describesOrder: Bool = false)
+        case mode(PracticeMode)
+        case superCategory(ChallengeCategory)
+
+        var anchorKey: String {
+            switch self {
+            case .filter(let filter, _, let describesOrder):
+                if describesOrder { return "mode.\(PracticeMode.order.rawValue)" }
+                return "filter.\(filter.rawValue)"
+            case .mode(let mode):
+                return "mode.\(mode.rawValue)"
+            case .superCategory(let category):
+                return "super.\(category.rawValue)"
+            }
+        }
+
+        var eventName: String {
+            switch self {
+            case .filter(let filter, _, _):
+                return "menu_filter_\(filter.rawValue)"
+            case .mode(let mode):
+                return "menu_mode_\(mode.rawValue)"
+            case .superCategory(let category):
+                return "menu_super_\(category.rawValue)"
+            }
+        }
+    }
+
+    private static let promoMenuSteps: [PromoMenuStep] = [
+        // Addition + Order are already selected before recording. Begin on the
+        // useful Order explanation instead of spending a slot explaining `+`.
+        .mode(.order),
+        .mode(.random),
+        .mode(.mixed),
+        .filter(.subtraction),
+        .filter(.tables),
+        .filter(.fractions),
+        .filter(.percentages),
+        .filter(.mixed),
+        .superCategory(.superBasic),
+        .superCategory(.superTimes),
+        .superCategory(.superFraction),
+        .superCategory(.superAll),
+        // Restore both pieces of the opening state, so the last frame joins the
+        // first frame cleanly when an App Store preview repeats. The click still
+        // returns to `+`, but its pop-out describes Order just like frame one.
+        .filter(.addition, resetsOrder: true, describesOrder: true),
+    ]
+
+    @MainActor
+    private func preparePromoMenuTour() {
+        guard !promoMenuTourStarted else { return }
+        promoMenuTourStarted = true
+        let recorder = PromoTrailerRecorder.shared
+        recorder.prepare()
+        recorder.waitForStart {
+            Task { @MainActor in
+                await runPromoMenuTour()
+            }
+        }
+    }
+
+    @MainActor
+    private func runPromoMenuTour() async {
+        let clock = ContinuousClock()
+        let slotDuration = Duration.milliseconds(1_800)
+        let tourStartedAt = clock.now
+
+        for (index, step) in Self.promoMenuSteps.enumerated() {
+            guard !Task.isCancelled else { return }
+            // Anchor every boundary to the same start instant. A busy render
+            // frame can wake one task a few milliseconds late, but it can no
+            // longer accumulate that delay into all later holds.
+            let slotStart = tourStartedAt.advanced(by: slotDuration * index)
+            try? await Task.sleep(until: slotStart, clock: clock)
+            await presentPromoMenuStep(step)
+        }
+
+        let tourEnd = tourStartedAt.advanced(by: slotDuration * Self.promoMenuSteps.count)
+        // Re-enter the same hop pose used at the opening just before the cut.
+        // Besides making the fox animation continuous across the loop seam,
+        // this keeps a real simulator video sample alive through the last frame.
+        let loopSeamJump = tourEnd.advanced(by: .milliseconds(-120))
+        try? await Task.sleep(until: loopSeamJump, clock: clock)
+        triggerCharacterJump(big: true)
+        try? await Task.sleep(until: tourEnd, clock: clock)
+        PromoTrailerRecorder.shared.finish(eventName: "menu_loop_complete")
+    }
+
+    @MainActor
+    private func presentPromoMenuStep(_ step: PromoMenuStep) async {
+        // Remove the previous explanation without spending part of the next
+        // control's equal hold on a fade-out.
+        withTransaction(Transaction(animation: nil)) { infoPopup = nil }
+        AppAudio.shared.playMenuTap()
+
+        switch step {
+        case .filter(let filter, let resetsOrder, _):
+            let changed = menuFilterRaw != filter.rawValue || (resetsOrder && menuMode != .order)
+            if changed { triggerCharacterJump(big: true) }
+            if resetsOrder { menuModeRaw = PracticeMode.order.rawValue }
+            menuFilterRaw = filter.rawValue
+
+        case .mode(let mode):
+            if menuMode != mode { triggerCharacterJump(big: false) }
+            menuModeRaw = mode.rawValue
+
+        case .superCategory(let category):
+            if supermixCategory != category { triggerCharacterJump(big: false) }
+            supermixCategoryRaw = category.rawValue
+        }
+        PromoTrailerRecorder.shared.event(step.eventName)
+
+        // Selection changes can replace the mode row with the taller 2×2
+        // Supermix grid. The tour deliberately shows the star itself for a full
+        // slot before selecting its first subcategory, so the new anchors are
+        // already available by then. One render yield is enough for every step
+        // and keeps the description hold identical throughout the video.
+        // This is the promo-only one-step behaviour: the explanation appears
+        // on the selecting tap instead of requiring the production second tap.
+        await Task.yield()
+        let anchor = controlAnchors[step.anchorKey]
+
+        if let anchor {
+            let kind: InfoPopup.Kind
+            switch step {
+            case .filter(let filter, _, let describesOrder):
+                kind = describesOrder ? .mode(.order, filter.standard) : .filter(filter)
+            case .mode(let mode):
+                kind = .mode(mode, selectedFilter.standard)
+            case .superCategory(let category):
+                kind = .superCategory(category)
+            }
+            withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) {
+                infoPopup = InfoPopup(kind: kind, anchor: anchor)
+            }
+        }
+    }
+#endif
+
     // MARK: Combined top menu
 
     private var menuCard: some View {
         VStack(spacing: menuCardSectionSpacing) {
             // A little extra room keeps the iPad header actions from reading
             // as one dense cluster when the player name is short.
-            HStack(alignment: .center, spacing: isPad ? 20 : 12) {
+            HStack(alignment: .center, spacing: isPad ? 24.8 : 12) {
                 Button {
                     // A long press may also end as a button tap; consume that
                     // trailing action instead of opening the premium sheet.
@@ -949,19 +1279,19 @@ struct ContentView: View {
                     AppAudio.shared.playMenuTap()
                     openCharacterCollection()
                 } label: {
-                    let box: CGFloat = isPad ? 118 : 68
+                    let box: CGFloat = isPad ? 146.32 : 68
                     ZStack {
                         // The fixed box: background sky plus its white outline.
                         // Neither moves or resizes; a little sky shows through
                         // while the character is airborne. The outline lives here
                         // (behind the character) so the character hops in front of
                         // it rather than being cut off by it.
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        RoundedRectangle(cornerRadius: isPad ? 24.8 : 20, style: .continuous)
                             .fill(LinearGradient(colors: [character.skyColor, character.tintColor],
                                                  startPoint: .top, endPoint: .bottom))
                             .overlay {
-                                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                    .stroke(.white.opacity(0.9), lineWidth: 2)
+                                RoundedRectangle(cornerRadius: isPad ? 24.8 : 20, style: .continuous)
+                                    .stroke(.white.opacity(0.9), lineWidth: isPad ? 2.48 : 2)
                             }
                         // Only the character hops. It is clipped to the box shape,
                         // squashed/stretched from its base (the spring), then
@@ -971,10 +1301,13 @@ struct ContentView: View {
                                              jump: characterJumpCoordinator)
                     }
                     .frame(width: box, height: box)
-                    .shadow(color: character.deepColor.opacity(0.18), radius: 7, y: 3)
+                    .shadow(color: character.deepColor.opacity(0.18),
+                            radius: isPad ? 8.68 : 7,
+                            y: isPad ? 3.72 : 3)
                 }
                 .buttonStyle(.plain)
-                .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .contentShape(RoundedRectangle(cornerRadius: isPad ? 24.8 : 20,
+                                               style: .continuous))
                 // This is deliberately high priority: unlike the old pair of
                 // independent tap gestures, a 2-second hold cannot be won by
                 // the ordinary character-button tap.
@@ -987,13 +1320,13 @@ struct ContentView: View {
                 )
                 .accessibilityLabel("menu.accessibility.character")
 
-                VStack(alignment: .leading, spacing: isPad ? 7 : 4) {
+                VStack(alignment: .leading, spacing: isPad ? 8.68 : 4) {
                     Button {
                         nameDraft = playerName
                         showNameEditor = true
                     } label: {
                         Text(wrappableName)
-                            .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
+                            .font(.system(size: isPad ? 42.16 : 20, weight: .heavy, design: .rounded))
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
                             .minimumScaleFactor(0.6)
@@ -1009,7 +1342,7 @@ struct ContentView: View {
                         totalTo: total.to,
                         celebrationStartedAt: total.at,
                         suffix: answerHelper ? "*" : "",
-                        prompt: (!premium.isPremium && totalTrophies > 0)
+                        prompt: ((!premium.isPremium || promoMenuTrailer) && totalTrophies > 0)
                             ? characterUnlockPrompt
                             : nil,
                         immediatePreviewID: characterUnlockPreviewTrigger,
@@ -1048,7 +1381,7 @@ struct ContentView: View {
                 // Fixed width per idiom; the module centres itself vertically in
                 // the row (which is `.center`-aligned), so its height no longer
                 // has to track the name/trophy column beside it.
-                .frame(width: isPad ? 150 : 106)
+                .frame(width: isPad ? 208.32 : 106)
                 // Keep the popover attached to the streak control itself. When
                 // this lived on the screen-wide container, changing the period
                 // rebuilt the picker and let SwiftUI fall back to that
@@ -1063,9 +1396,9 @@ struct ContentView: View {
             Divider().overlay(character.deepColor.opacity(0.22))
 
             VStack(spacing: menuControlSpacing) {
-                HStack(alignment: .center, spacing: isPad ? 8 : 5) {
+                HStack(alignment: .center, spacing: isPad ? 9.92 : 5) {
                     Text(selectedFilter.title)
-                        .font(.system(size: isPad ? 30 : 20, weight: .heavy, design: .rounded))
+                        .font(.system(size: isPad ? 39.68 : 20, weight: .heavy, design: .rounded))
                         .lineLimit(1)
                         .minimumScaleFactor(0.62)
                         .allowsTightening(true)
@@ -1083,7 +1416,7 @@ struct ContentView: View {
                         HeaderTrophyIcon(isHighlighted: highlightsHeaderTrophies)
                             .reportAnchor("categoryTrophy")
                     }
-                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                        .font(.system(size: isPad ? 29.76 : 15, weight: .bold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.72)
                         .layoutPriority(1)
@@ -1093,7 +1426,7 @@ struct ContentView: View {
                         // This is a layout alignment (not a visual-only offset),
                         // so the reported flight destination moves with it.
                         .alignmentGuide(VerticalAlignment.center) { dimensions in
-                            dimensions[VerticalAlignment.center] - (isPad ? 2.2 : 1.5)
+                            dimensions[VerticalAlignment.center] - (isPad ? 2.728 : 1.5)
                         }
 
                     Spacer(minLength: 0)
@@ -1111,20 +1444,22 @@ struct ContentView: View {
                 helperModeRow
             }
         }
-        .padding(isPad ? 22 : 14)
+        .padding(isPad ? 27.28 : 14)
         // Fill and outline both sit behind the card's content, so the character
         // can spring up in front of the card's top edge instead of ducking
         // behind it. The content is inset by the padding, so the outline still
         // frames the card at rest.
         .background {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
+            RoundedRectangle(cornerRadius: isPad ? 29.76 : 24, style: .continuous)
                 .fill(.white.opacity(0.76))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .stroke(.white.opacity(0.9), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: isPad ? 29.76 : 24, style: .continuous)
+                        .stroke(.white.opacity(0.9), lineWidth: isPad ? 1.24 : 1)
                 }
         }
-        .shadow(color: character.deepColor.opacity(0.12), radius: 14, y: 7)
+        .shadow(color: character.deepColor.opacity(0.12),
+                radius: isPad ? 17.36 : 14,
+                y: isPad ? 8.68 : 7)
     }
 
     private func menuFilterButton(_ filter: MenuFilter) -> some View {
@@ -1616,7 +1951,7 @@ struct ContentView: View {
     private func synchronizeCharacterUnlockPrompt(animated: Bool) {
         let nextPrompt: CharacterUnlockPrompt?
 
-        if premium.isPremium || totalTrophies <= 0 {
+        if (premium.isPremium && !promoMenuTrailer) || totalTrophies <= 0 {
             nextPrompt = nil
         } else if let milestone = CharacterUnlockStore.nextMilestone(after: totalTrophies) {
             nextPrompt = .trophies(
@@ -1924,11 +2259,14 @@ struct ContentView: View {
             // Let concise explanations stay compact, while allowing longer
             // labels to remain on one line whenever the menu's side margins
             // permit it.
+            let horizontalInset: CGFloat = isPad
+                ? (promoMenuTrailer ? 26 : 32.24)
+                : 12
             let cardWidth = InfoPopoutCard.preferredWidth(
                 header: popup.header,
                 message: popup.body,
                 isPad: isPad,
-                maximum: geo.size.width - 24
+                maximum: geo.size.width - horizontalInset * 2
             )
             let anchorMidX = popup.anchor.midX - localOrigin.x
             // The first two operation buttons and the first sequencing button
@@ -1940,8 +2278,8 @@ struct ContentView: View {
             let expandsRight = popoutExpandsRight(popup.kind)
             let leadingAnchorX = popup.anchor.minX - localOrigin.x
             let rawX = expandsRight ? leadingAnchorX : anchorMidX - cardWidth / 2
-            let x = min(max(12, rawX), max(12, geo.size.width - cardWidth - 12))
-            let y = popup.anchor.maxY - localOrigin.y + 8
+            let x = min(max(horizontalInset, rawX), max(horizontalInset, geo.size.width - cardWidth - horizontalInset))
+            let y = popup.anchor.maxY - localOrigin.y + (isPad ? 9.92 : 8)
 
             ZStack(alignment: .topLeading) {
                 // Light-dismiss catcher: closes on any tap, and forwards a tap
@@ -1955,7 +2293,7 @@ struct ContentView: View {
 
                 // Caret points at the control, measured from the card's centre
                 // and kept inside its rounded corners.
-                let caretLimit = cardWidth / 2 - 18
+                let caretLimit = cardWidth / 2 - (isPad ? 22.32 : 18)
                 let caret = min(max(anchorMidX - (x + cardWidth / 2), -caretLimit), caretLimit)
                 InfoPopoutCard(header: popup.header,
                                message: popup.body,
@@ -1982,7 +2320,7 @@ struct ContentView: View {
         // Mixed). The label keeps one line and shrinks to fit, so a longer word
         // in another language still fits three-across without changing the base
         // text size the shorter labels use.
-        HStack(spacing: isPad ? 12 : 8) {
+        HStack(spacing: isPad ? 14.88 : 8) {
             ForEach(PracticeMode.allCases) { mode in
                 let isSelected = menuMode == mode
                 Button {
@@ -1998,15 +2336,15 @@ struct ContentView: View {
                     }
                 } label: {
                     Text(mode.title(for: selectedFilter.standard))
-                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                        .font(.system(size: isPad ? 27.28 : 15, weight: .bold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                         .foregroundStyle(isSelected ? .white : character.deepColor)
                         .frame(maxWidth: .infinity)
                         .frame(height: modeButtonHeight)
-                        .padding(.horizontal, isPad ? 8 : 2)
-                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                        .padding(.horizontal, isPad ? 9.92 : 2)
+                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: isPad ? 1.24 : 1))
                         .reportAnchor("mode.\(mode.rawValue)")
                         .animation(.snappy(duration: 0.2), value: isSelected)
                 }
@@ -2019,7 +2357,7 @@ struct ContentView: View {
     /// The Supermix filter's four buttons, each a self-contained 99-level
     /// category that combines progressively more operations.
     private var supermixCategoryPicker: some View {
-        LazyVGrid(columns: [GridItem(.flexible(), spacing: isPad ? 12 : 8), GridItem(.flexible(), spacing: isPad ? 12 : 8)], spacing: isPad ? 12 : 8) {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: isPad ? 14.88 : 8), GridItem(.flexible(), spacing: isPad ? 14.88 : 8)], spacing: isPad ? 14.88 : 8) {
             ForEach(ChallengeCategory.supermixMenu) { menuCategory in
                 let isSelected = supermixCategory == menuCategory
                 Button {
@@ -2039,9 +2377,9 @@ struct ContentView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.85)
                         .frame(maxWidth: .infinity)
-                        .frame(height: isPad ? 84 : 42)
-                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: 1))
+                        .frame(height: isPad ? 69.44 : 42)
+                        .background(isSelected ? character.deepColor : .white.opacity(0.62), in: RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous))
+                        .overlay(RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous).stroke(character.deepColor.opacity(isSelected ? 0 : 0.28), lineWidth: isPad ? 1.24 : 1))
                         .reportAnchor("super.\(menuCategory.rawValue)")
                         .animation(.snappy(duration: 0.2), value: isSelected)
                 }
@@ -2084,14 +2422,14 @@ struct ContentView: View {
     /// also reads visually heavier than the others at the same point size,
     /// so it gets its own smaller size.
     private func supermixLabel(_ category: ChallengeCategory) -> some View {
-        let font = Font.system(size: isPad ? 26 : 19, weight: .bold)
+        let font = Font.system(size: isPad ? 35.96 : 19, weight: .heavy, design: .rounded)
         // jens: tweak these two numbers (iPad, iPhone) to resize the "%" glyph.
-        let percentFont = Font.system(size: isPad ? 21 : 15, weight: .bold)
-        let slotWidth: CGFloat = isPad ? 30 : 20
+        let percentFont = Font.system(size: isPad ? 28.52 : 15, weight: .heavy, design: .rounded)
+        let slotWidth: CGFloat = isPad ? 40.92 : 20
         let activeCount = supermixOperatorCount(category)
         let totalSlots = supermixSlotCount(category)
         let offset = (totalSlots - activeCount) / 2
-        return HStack(spacing: 2) {
+        return HStack(spacing: isPad ? 2.48 : 2) {
             ForEach(0..<totalSlots, id: \.self) { slot in
                 let opIndex = slot - offset
                 let symbol = (opIndex >= 0 && opIndex < activeCount) ? Self.supermixOperators[opIndex] : ""
@@ -2113,13 +2451,13 @@ struct ContentView: View {
             } label: {
                 HStack {
                     Label("menu.options", systemImage: "slider.horizontal.3")
-                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                        .font(.system(size: isPad ? 27.28 : 15, weight: .bold))
                     Spacer()
                     // `chevron.forward` points outward in both LTR and RTL; the
                     // open state rotates it to point down, which is +90° from a
                     // right-pointing chevron but -90° from the mirrored one.
                     Image(systemName: "chevron.forward")
-                        .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                        .font(.system(size: isPad ? 27.28 : 15, weight: .bold))
                         .rotationEffect(.degrees(showsOptions ? (layoutDirection == .rightToLeft ? -90 : 90) : 0))
                 }
                 .foregroundStyle(character.deepColor)
@@ -2131,7 +2469,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Divider()
                         .overlay(character.deepColor.opacity(0.2))
-                        .padding(.top, isPad ? 14 : 9)
+                        .padding(.top, isPad ? 17.36 : 9)
 
                     // Fourth element: an optional SF Symbol shown after the title
                     // (the cap row spells out "Finish at 30 🏆" without the word).
@@ -2153,14 +2491,14 @@ struct ContentView: View {
                 .transition(.opacity)
             }
         }
-        .padding(.horizontal, isPad ? 20 : 11)
-        .padding(.top, isPad ? 18 : 10)
+        .padding(.horizontal, isPad ? 24.8 : 11)
+        .padding(.top, isPad ? 22.32 : 10)
         // No dead space under the last row when the list is open — keep the
         // header symmetric when it's closed.
-        .padding(.bottom, showsOptions ? (isPad ? 8 : 2) : (isPad ? 18 : 10))
+        .padding(.bottom, showsOptions ? (isPad ? 9.92 : 2) : (isPad ? 22.32 : 10))
         // Same light fill as an unselected filter field, for a calmer panel.
-        .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(character.deepColor.opacity(0.18), lineWidth: 1))
+        .background(.white.opacity(0.7), in: RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: isPad ? 14.88 : 12, style: .continuous).stroke(character.deepColor.opacity(0.18), lineWidth: isPad ? 1.24 : 1))
     }
 
     /// A settings row: tap the title (or the info icon, or anywhere in the
@@ -2169,22 +2507,22 @@ struct ContentView: View {
                            trailingIcon: String? = nil) -> some View {
         let isExpanded = expandedOptionInfo == title
         return VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: isPad ? 12 : 8) {
+            HStack(spacing: isPad ? 14.88 : 8) {
                 Button {
                     withAnimation(.easeInOut(duration: 0.28)) {
                         expandedOptionInfo = isExpanded ? nil : title
                     }
                 } label: {
-                    HStack(spacing: isPad ? 8 : 6) {
+                    HStack(spacing: isPad ? 9.92 : 6) {
                         Text(title)
-                            .font(.system(size: isPad ? 22 : 15, weight: .bold))
+                            .font(.system(size: isPad ? 27.28 : 15, weight: .bold))
                             .multilineTextAlignment(.leading)
                         if let trailingIcon {
                             Image(systemName: trailingIcon)
-                                .font(.system(size: isPad ? 18 : 13))
+                                .font(.system(size: isPad ? 22.32 : 13))
                         }
                         Image(systemName: isExpanded ? "info.circle.fill" : "info.circle")
-                            .font(.system(size: isPad ? 18 : 13))
+                            .font(.system(size: isPad ? 22.32 : 13))
                             .foregroundStyle(character.deepColor)
                         Spacer(minLength: 0)
                     }
@@ -2195,24 +2533,24 @@ struct ContentView: View {
                 Toggle(title, isOn: isOn)
                     .labelsHidden()
                     .tint(character.deepColor)
-                    .scaleEffect(isPad ? 1.3 : 0.8, anchor: .trailing)
+                    .scaleEffect(isPad ? 1.612 : 0.8, anchor: .trailing)
                     .accessibilityLabel(title)
                     .onChange(of: isOn.wrappedValue) { newValue in
                         AppAudio.shared.playSwitch(on: newValue)
                     }
             }
             // ~10% taller rows so the list breathes a little more.
-            .frame(minHeight: isPad ? 66 : 42)
+            .frame(minHeight: isPad ? 81.84 : 42)
 
             if isExpanded {
                 Text(info)
-                    .font(.system(size: isPad ? 19 : 14, weight: .regular))
-                    .lineSpacing(isPad ? 3 : 2)
+                    .font(.system(size: isPad ? 23.56 : 14, weight: .regular))
+                    .lineSpacing(isPad ? 3.72 : 2)
                     .foregroundStyle(character.deepColor.opacity(0.7))
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.trailing, isPad ? 44 : 30)
-                    .padding(.bottom, isPad ? 14 : 10)
+                    .padding(.trailing, isPad ? 54.56 : 30)
+                    .padding(.bottom, isPad ? 17.36 : 10)
                     .transition(.opacity)
             }
         }
@@ -2242,10 +2580,12 @@ struct ContentView: View {
         }
         let recommendedID = hasProgress ? nil : regular.first?.id
 
-        return VStack(alignment: .leading, spacing: 14) {
+        let premiumSpacing: CGFloat = promoMenuTrailer && !isPad ? 4 : (isPad ? 17.36 : 14)
+
+        return VStack(alignment: .leading, spacing: premiumSpacing) {
             AdaptiveLevelGrid(spacing: levelGridSpacing,
                               minimumCardWidth: isPad ? 180 : 104,
-                              maximumColumns: isPad ? 3 : .max,
+                              maximumColumns: isPad ? (isWidePad ? 4 : 3) : .max,
                               cardHeight: levelCardHeight) {
                 ForEach(regular) { level in
                     let progress = homeProgress.value(for: level.id)
@@ -2313,27 +2653,27 @@ struct ContentView: View {
     @ViewBuilder
     private func premiumSection(_ levels: [LevelConfig]) -> some View {
         if premium.isPremium {
-            VStack(spacing: 14) {
-                HStack(spacing: 10) {
+            VStack(spacing: promoMenuTrailer && !isPad ? 4 : (isPad ? 17.36 : 14)) {
+                HStack(spacing: isPad ? 12.4 : 10) {
                     Rectangle()
                         .fill(character.deepColor.opacity(0.28))
-                        .frame(height: 1.5)
-                    HStack(spacing: 5) {
+                        .frame(height: isPad ? 1.86 : 1.5)
+                    HStack(spacing: isPad ? 6.2 : 5) {
                         Text(premiumSectionTitle)
-                            .font(.subheadline.weight(.bold))
+                            .font(isPad ? .system(size: 18.6, weight: .bold) : .subheadline.weight(.bold))
                         Image(systemName: "crown.fill")
-                            .font(.caption.weight(.bold))
+                            .font(isPad ? .system(size: 14.88, weight: .bold) : .caption.weight(.bold))
                     }
                     .foregroundStyle(character.deepColor)
                     .fixedSize()
                     Rectangle()
                         .fill(character.deepColor.opacity(0.28))
-                        .frame(height: 1.5)
+                        .frame(height: isPad ? 1.86 : 1.5)
                 }
 
                 AdaptiveLevelGrid(spacing: levelGridSpacing,
                                   minimumCardWidth: isPad ? 180 : 104,
-                                  maximumColumns: isPad ? 3 : .max,
+                                  maximumColumns: isPad ? (isWidePad ? 4 : 3) : .max,
                                   cardHeight: levelCardHeight) {
                     ForEach(levels) { level in
                         let progress = homeProgress.value(for: level.id)
@@ -2383,32 +2723,32 @@ struct ContentView: View {
             Button {
                 openCharacterCollection()
             } label: {
-                HStack(spacing: 10) {
+                    HStack(spacing: isPad ? 12.4 : 10) {
                     Image(systemName: "crown.fill")
-                        .font(.system(size: isPad ? 24 : 17, weight: .bold))
+                        .font(.system(size: isPad ? 29.76 : 17, weight: .bold))
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("menu.moreLevels")
-                            .font(.system(size: isPad ? 20 : 15, weight: .bold))
+                            .font(.system(size: isPad ? 24.8 : 15, weight: .bold))
                             .foregroundStyle(.white)
                         Text("menu.unlockWithPremium")
-                            .font(.system(size: isPad ? 16 : 12, weight: .regular))
+                            .font(.system(size: isPad ? 19.84 : 12, weight: .regular))
                             .foregroundStyle(.white.opacity(0.9))
                     }
                     Spacer()
                     Image(systemName: "chevron.forward")
-                        .font(.system(size: isPad ? 20 : 15, weight: .bold))
+                        .font(.system(size: isPad ? 24.8 : 15, weight: .bold))
                         .foregroundStyle(.white.opacity(0.9))
                         // Match the chevron's right edge with the options
                         // panel above: that panel is inset once by the menu
                         // card and once by its own horizontal padding.
-                        .padding(.trailing, isPad ? 22 : 11)
+                        .padding(.trailing, isPad ? 27.28 : 11)
                 }
-                .padding(isPad ? 20 : 14)
+                .padding(isPad ? 24.8 : 14)
                 .background(
                     LinearGradient(colors: [character.color, character.deepColor],
                                    startPoint: .topLeading, endPoint: .bottomTrailing),
-                    in: RoundedRectangle(cornerRadius: 14)
+                    in: RoundedRectangle(cornerRadius: isPad ? 17.36 : 14)
                 )
             }
             .buttonStyle(.plain)
@@ -2475,20 +2815,20 @@ private struct InfoPopoutCard: View {
                                isPad: Bool,
                                maximum: CGFloat) -> CGFloat {
 #if canImport(UIKit)
-        let headerFont = UIFont.systemFont(ofSize: isPad ? 14 : 11, weight: .heavy)
-        let messageFont = UIFont.systemFont(ofSize: isPad ? 21 : 16, weight: .bold)
+        let headerFont = UIFont.systemFont(ofSize: isPad ? 17.36 : 11, weight: .heavy)
+        let messageFont = UIFont.systemFont(ofSize: isPad ? 26.04 : 16, weight: .bold)
         // `Text(header)` adds 0.6 points between every pair of letters below.
         // Include that tracking here as well, otherwise headings such as
         // "Types of problems" can be measured a little too narrowly and wrap
         // even when the pop-out has room to grow horizontally.
         let uppercasedHeader = header.uppercased()
-        let headerTracking = CGFloat(max(0, uppercasedHeader.count - 1)) * 0.6
+        let headerTracking = CGFloat(max(0, uppercasedHeader.count - 1)) * (isPad ? 0.744 : 0.6)
         let headerWidth = (uppercasedHeader as NSString)
             .size(withAttributes: [.font: headerFont]).width + headerTracking
         let messageString = message as NSString
         let messageWidth = messageString
             .size(withAttributes: [.font: messageFont]).width
-        let horizontalPadding: CGFloat = isPad ? 36 : 28
+        let horizontalPadding: CGFloat = isPad ? 44.64 : 28
         let maximumContentWidth = max(1, maximum - horizontalPadding)
 
         // Keep short explanations on one line. For longer translations, find
@@ -2498,7 +2838,7 @@ private struct InfoPopoutCard: View {
             return ceil(max(headerWidth, messageWidth) + horizontalPadding)
         }
 
-        var lowerBound = min(maximumContentWidth, max(headerWidth, isPad ? 220 : 170))
+        var lowerBound = min(maximumContentWidth, max(headerWidth, isPad ? 272.8 : 170))
         var upperBound = maximumContentWidth
         let twoLineHeight = messageFont.lineHeight * 2.05
 
@@ -2519,7 +2859,7 @@ private struct InfoPopoutCard: View {
 
         return ceil(upperBound + horizontalPadding)
 #else
-        return min(isPad ? 340 : 250, maximum)
+        return min(isPad ? 421.6 : 250, maximum)
 #endif
     }
 
@@ -2527,31 +2867,35 @@ private struct InfoPopoutCard: View {
         VStack(spacing: 0) {
             Triangle()
                 .fill(.white)
-                .frame(width: 18, height: 9)
+                .frame(width: isPad ? 22.32 : 18, height: isPad ? 11.16 : 9)
                 .overlay(alignment: .bottom) {
                     // Hide the seam where the caret meets the card body.
-                    Rectangle().fill(.white).frame(height: 1).padding(.horizontal, 2)
+                    Rectangle().fill(.white)
+                        .frame(height: isPad ? 1.24 : 1)
+                        .padding(.horizontal, isPad ? 2.48 : 2)
                 }
                 .offset(x: caretOffset)
 
-            VStack(alignment: .leading, spacing: isPad ? 5 : 3) {
+            VStack(alignment: .leading, spacing: isPad ? 6.2 : 3) {
                 Text(header.uppercased())
-                    .font(.system(size: isPad ? 14 : 11, weight: .heavy))
-                    .tracking(0.6)
+                    .font(.system(size: isPad ? 17.36 : 11, weight: .heavy))
+                    .tracking(isPad ? 0.744 : 0.6)
                     .foregroundStyle(theme.deepColor.opacity(0.55))
                 Text(message)
-                    .font(.system(size: isPad ? 21 : 16, weight: .bold))
+                    .font(.system(size: isPad ? 26.04 : 16, weight: .bold))
                     .foregroundStyle(theme.deepColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, isPad ? 18 : 14)
-            .padding(.vertical, isPad ? 14 : 11)
-            .background(.white, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(theme.deepColor.opacity(0.18), lineWidth: 1))
+            .padding(.horizontal, isPad ? 22.32 : 14)
+            .padding(.vertical, isPad ? 17.36 : 11)
+            .background(.white, in: RoundedRectangle(cornerRadius: isPad ? 19.84 : 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: isPad ? 19.84 : 16, style: .continuous)
+                .stroke(theme.deepColor.opacity(0.18), lineWidth: isPad ? 1.24 : 1))
         }
-        .shadow(color: theme.deepColor.opacity(0.22), radius: 14, y: 6)
+        .shadow(color: theme.deepColor.opacity(0.22),
+                radius: isPad ? 17.36 : 14,
+                y: isPad ? 7.44 : 6)
     }
 }
 
@@ -2717,7 +3061,7 @@ struct CompactStreakView: View {
 
     // One factor drives every dimension, so the widget keeps its proportions
     // when it scales up for the larger iPad layout.
-    private var scale: CGFloat { isPad ? 1.4 : 1 }
+    private var scale: CGFloat { isPad ? 1.922 : 1 }
     private var railWidth: CGFloat { 74 * scale }
     private var rowSpacing: CGFloat { 5 * scale }
 
@@ -3083,8 +3427,8 @@ private struct AlternatingTrophySummary: View {
     let isPad: Bool
     let action: () -> Void
 
-    private var scale: CGFloat { isPad ? 1.47 : 1 }
-    private var baseFontSize: CGFloat { isPad ? 22 : 15 }
+    private var scale: CGFloat { isPad ? 1.86 : 1 }
+    private var baseFontSize: CGFloat { isPad ? 27.28 : 15 }
     private var opticalLineHeight: CGFloat { baseFontSize * 1.4 }
     @ObservedObject private var language = LanguageManager.shared
     @State private var showsUnlockPreview = false
@@ -4299,6 +4643,26 @@ extension View {
                 .gameEnvironment()
         }
 #endif
+    }
+
+}
+
+struct PadOnboardingZoom: ViewModifier {
+    var isPad: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if isPad {
+            GeometryReader { geo in
+                let zoom = geo.size.width < 1100 ? AppLayout.padOnboardingZoom : 1
+                content
+                    .frame(width: geo.size.width / zoom, height: geo.size.height / zoom)
+                    .scaleEffect(zoom, anchor: .top)
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
+            }
+        } else {
+            content
+        }
     }
 }
 
